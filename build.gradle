@@ -23,6 +23,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+
+
         maven { url 'https://jitpack.io' }
         /*
         *ali热更新
