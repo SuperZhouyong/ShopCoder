@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_part"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y130"
+            android:paddingLeft="@dimen/x30">
+
+            <TextView
+                android:id="@+id/tv_major_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y14"
+                android:layout_marginTop="@dimen/y27"
+                android:text="科学社会主义"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x30" />
+
+            <TextView
+                android:id="@+id/major_type"
+                style="@style/tv_bg"
+                android:layout_below="@id/tv_major_name"
+                android:layout_marginRight="@dimen/x10"
+                android:text="本科" />
+
+            <TextView
+                android:id="@+id/major_code"
+                style="@style/tv_bg"
+                android:layout_below="@id/tv_major_name"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toRightOf="@id/major_type"
+                android:text="020202" />
+
+            <TextView
+                android:id="@+id/tv_term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_major_name"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toRightOf="@id/major_code"
+                android:text="四年"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/tv_degree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_major_name"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toRightOf="@id/tv_term"
+                android:text="学士学位"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/tv_add_select"
+                android:layout_width="@dimen/x150"
+                android:layout_height="@dimen/y56"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:background="@drawable/shape_bt_bg"
+                android:gravity="center"
+                android:text="加入优选"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x26" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@color/app_bottom_colour" />
+        
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/x30"
+            android:layout_height="@dimen/y66">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="@dimen/x24"
+                android:textColor="@color/font_3"
+                android:text="招生人数"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/x5"
+                android:id="@+id/tv_recruit_num"
+                android:layout_toRightOf="@id/textView1"
+                android:textSize="@dimen/x24"
+                android:textColor="@color/app_main"
+                android:text="34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/textView2"
+                android:textSize="@dimen/x24"
+                android:layout_marginLeft="@dimen/x245"
+                android:textColor="@color/font_3"
+                android:text="招生院校数量"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/x5"
+                android:id="@+id/tv_recruit_sch_num"
+                android:layout_toRightOf="@id/textView2"
+                android:textSize="@dimen/x24"
+                android:textColor="@color/app_main"
+                android:text="34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_shade"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@mipmap/shade11"
+                    android:id="@+id/iv_shade"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitXY"
+                    android:layout_height="@dimen/y840" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_marginTop="@dimen/y400"
+                    android:text="将扣除一个大数据报告费用"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/x28"
+                    android:textColor="@color/font_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_to_buy"
+                    android:layout_below="@id/textView"
+                    android:layout_marginTop="@dimen/y30"
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="@dimen/y80"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shape_bt_bg"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x26" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

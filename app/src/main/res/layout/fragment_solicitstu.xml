@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"
+        android:background="@color/app_bottom_colour" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:text="适用于已采用3+3高考模式的省份"
+        android:gravity="center|left"
+        android:textSize="@dimen/x22"
+        android:paddingLeft="@dimen/x30"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y70" />
+
+    <include
+        android:id="@+id/head_tile"
+        layout="@layout/school_vp_headtitle" />
+
+    <include
+
+        layout="@layout/division_long" />
+
+
+    <RelativeLayout
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/solicit_Recy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/x28"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

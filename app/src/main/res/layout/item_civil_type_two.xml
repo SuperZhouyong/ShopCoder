@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@color/app_bottom_colour" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30">
+
+            <TextView
+                android:id="@+id/tv_exam_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="期中考试"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+                android:id="@+id/tv_add_or_change"
+                android:layout_width="@dimen/x100"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center|right"
+                android:text="添加"
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/x26" />
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30" />
+        <!--<ImageView
+            android:layout_marginTop="@dimen/y20"
+            android:background="@color/app_bottom_colour"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1" />-->
+    </LinearLayout>
+</LinearLayout>

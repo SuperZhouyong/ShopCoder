@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/school_vp_headtitle" />
+
+    <TextView
+
+        android:id="@+id/sch_detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x34"
+        android:layout_marginRight="@dimen/x34"
+        android:layout_marginTop="@dimen/y20"
+        android:lineSpacingExtra="@dimen/x10"
+        android:text="北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <LinearLayout
+        android:id="@+id/ll_fold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/part1"
+        android:gravity="center"
+        android:paddingBottom="@dimen/y18"
+        android:paddingTop="@dimen/y20">
+
+        <ImageView
+            android:id="@+id/iv_fold"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y19"
+            android:src="@mipmap/fold" />
+    </LinearLayout>
+</LinearLayout>

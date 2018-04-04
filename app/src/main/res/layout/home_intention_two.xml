@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y364"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/tv_turn"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="志愿填报"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x38" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="表达专业和就业需求"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y5"
+            android:text="系统智能排序并生成志愿清单"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x20" />
+
+        <ImageView
+            android:layout_width="@dimen/x166"
+            android:layout_height="@dimen/y166"
+            android:layout_marginTop="@dimen/y22"
+            android:src="@mipmap/voluntary_report" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/x1"
+        android:layout_height="match_parent"
+        android:background="@color/app_bottom_colour" />
+
+    <LinearLayout
+        android:id="@+id/ll_professional_diagnostic"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="专业诊断与选科"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x38" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基于兴趣和就业前景"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y5"
+            android:text="选择适合的专业方向和考试科目"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x20" />
+
+        <ImageView
+            android:layout_width="@dimen/x166"
+            android:layout_height="@dimen/y166"
+            android:layout_marginTop="@dimen/y22"
+            android:src="@mipmap/professional_diagnostic" />
+
+    </LinearLayout>
+
+</LinearLayout>

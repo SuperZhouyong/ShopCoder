@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y96"
+    android:background="@color/app_focus"
+    android:gravity="center_vertical"
+
+    android:orientation="horizontal">
+    <!--返回键、基本信息-->
+    <RelativeLayout
+        android:id="@+id/rel_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingRight="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/x22"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+
+            android:scaleType="fitCenter"
+            android:src="@mipmap/return_app" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_toRightOf="@id/rel_back"
+        android:text="专业大全"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/x36"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/ll_center"
+        android:visibility="gone"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y60"
+        android:layout_centerInParent="true"
+        android:background="@drawable/title_tv_background_unselect">
+
+        <TextView
+            android:layout_margin="@dimen/x3"
+            android:id="@+id/tv_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="本科"
+            android:textColor="@color/app_main" />
+        <!--  android:paddingBottom="@dimen/x10"
+                    android:paddingTop="@dimen/x10"
+                    android:paddingRight="@dimen/x30"
+                    android:paddingLeft="@dimen/x30"-->
+        <TextView
+            android:layout_margin="@dimen/x3"
+            android:id="@+id/tv_two"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_one"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="专科"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/search" />
+    </RelativeLayout>
+</RelativeLayout>

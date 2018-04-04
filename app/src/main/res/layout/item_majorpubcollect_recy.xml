@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_toRightOf="@id/rel_left">
+        <LinearLayout
+            android:id="@+id/ll_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y30"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_expired"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x6"
+                android:paddingRight="@dimen/x6"
+                android:text="过期"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x22" />
+        </LinearLayout>
+        <TextView
+            android:layout_toRightOf="@id/ll_hint"
+            android:id="@+id/tv_pro_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y88"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxWidth="@dimen/x600"
+            android:gravity="center_vertical"
+            android:text="UI设计师"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y88"
+            android:layout_toRightOf="@id/tv_pro_name"
+            android:gravity="center"
+            android:text="(haha)"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/tv_type"
+            android:gravity="center"
+            android:text="(haha)"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x26" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

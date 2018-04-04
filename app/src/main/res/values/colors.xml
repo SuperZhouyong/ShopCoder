@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!-- app主色调-->
+    <color name="quickIndex_org">#ff7d1d</color>
+    <color name="main_color">#0aa0f6</color>
+    <color name="quickIndex_black">#000000</color>
+    <color name="orange">#ff7d1d</color>
+    <color name="orange1">#ffb10f</color>
+    <color name="orange2">#ffc600</color>
+    <color name="wheel_divider_line_color">#FF000000</color>
+    <color name="wheel_item_text_color_selected">#FF0288ce</color>
+    <color name="wheel_item_text_color_no_select">#FFbbbbbb</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="green">#FF00FF00</color>
+    <color name="white_alpha_half">#99FFFFFF</color>
+    <color name="gray">#FFF0F0F0</color>
+    <color name="background_app_main">#FFE4F4FC</color>
+    <color name="gray_deep">#c9000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="role_right_gray">#929292</color>
+    <color name="role_yellow_gray">#33CC99</color>
+    <color name="tv_right_gray">#929292</color>
+    <color name="bg_white_gray">#f2f2f2</color>
+    <color name="tv_talk_content">#FFB3B3B3</color>
+    <color name="line_recent_contact">#FFEEEEEE</color>
+    <color name="light_gray">#808080</color>
+    <color name="light_white">#33ffffff</color>
+    <color name="chat_tip_color">#FFcccccc</color>
+    <color name="blue">#5CA3E5</color>
+    <color name="main_blue">#0aa0f6</color>
+    <color name="blue_check">#3493d4</color>
+    <color name="toast_white">#ffffff</color>
+    <color name="toast_stroke_gray">#99d4d4d4</color>
+    <color name="navpage">#FFE1E8EB</color>
+    <!--账号字体焦点颜色-->
+    <color name="account_textcolor_focus">#ff333333</color>
+    <!--账号字体未获取焦点颜色-->
+    <color name="account_textcolor_unfocus">#ff999999</color>
+    <!--重置字体颜色-->
+    <color name="reset_password_color">#ff666666</color>
+    <!--app主要的两种状态-->
+    <!--<color name="app_focus">#00c1de</color>-->
+    <color name="add_to_shop_text">#ff4400</color>
+    <color name="app_focus">#0aa0f6</color>
+    <color name="app_focus_alf10">#100aa0f6</color>
+    <color name="app_focus_alf30">#300aa0f6</color>
+    <!--分割线颜色-->
+    <!-- 数字编辑器分割-->
+    <color name="divider">#ffe5e5e5</color>
+    <color name="color_f5">#fff5f5f5</color>
+    <color name="app_bottom_colour">#fff4f4f4</color>
+    <color name="price_commodity">#ffff7a00</color>
+    <color name="mask_color">#66666666</color>
+    <color name="font_1">#ff333333</color>
+    <color name="font_2">#ff666666</color>
+    <color name="font_3">#ff999999</color>
+    <color name="font_4">#1a1a1a</color>
+    <color name="font_price_experts">#ff8400</color>
+    <color name="app_main">#0aa0f6</color><!--//00c2de-->
+    <color name="app_main_2">#ff0aa0f6</color>
+    <color name="app_unfocus">#e5e5e5</color>
+    <color name="textcolor1">#333333</color>
+    <color name="textcolor2">#666666</color>
+    <color name="textcolor3">#999999</color>
+    <!-- 25种标签颜色-->
+    <color name="color1">#70a5ea</color>
+    <color name="color2">#66a7b4</color>
+    <color name="color3">#48ba9f</color>
+    <color name="color4">#66b371</color>
+    <color name="color5">#c6b544</color>
+    <color name="color6">#2dbbd8</color>
+    <color name="color7">#73c7b3</color>
+    <color name="color8">#83ca74</color>
+    <color name="color9">#aea8f4</color>
+    <color name="color10">#88e2f4</color>
+    <color name="color11">#3ddfb9</color>
+    <color name="color12">#86e36d</color>
+    <color name="color13">#ffa32a</color>
+    <color name="color14">#30e8bd</color>
+    <color name="color15">#7ec3f3</color>
+    <color name="color16">#65b66f</color>
+    <color name="color17">#cf8b6a</color>
+    <color name="color18">#6ee69b</color>
+    <color name="color19">#d4991a</color>
+    <color name="color20">#30c9e8</color>
+    <color name="color21">#f77455</color>
+    <color name="color22">#ff9191</color>
+    <color name="color23">#b3c755</color>
+    <color name="color24">#e8e230</color>
+    <color name="color25">#f4c851</color>
+    <color name="round_corner_progress_bar_background_default">#5f5f5f</color>
+    <color name="round_corner_progress_bar_progress_default">#7f7f7f</color>
+    <color name="round_corner_progress_bar_secondary_progress_default">@android:color/transparent
+    </color>
+    <color name="No_Buy_Commod">#BFBFBF</color>
+    <color name="bottom_clear">#b2b2b2</color>
+    <color name="switch_closecolor">#CCCCCC</color>
+    <color name="red_package_text">#f25915</color>
+    <!--三种标签颜色-->
+    <color name="thisMajor">#eb3f2f</color>
+    <color name="publicMajor">#007dde</color>
+    <color name="nationalMajor">#aab8a3</color>
+    <!--企业性质\行业分布的颜色-->
+    <color name="enterprise1">#63ac6e</color>
+    <color name="enterprise2">#8bd1e2</color>
+    <color name="enterprise3">#a9a3d0</color>
+    <color name="enterprise4">#f08c8d</color>
+    <color name="enterprise5">#c98868</color>
+    <color name="enterprise6">#24b0cb</color>
+    <color name="enterprise7">#63a1ad</color>
+    <color name="enterprise8">#ebc252</color>
+    <color name="enterprise9">#ded938</color>
+    <color name="enterprise10">#45b198</color>
+    <!--就业地区分布的十种颜色-->
+    <color name="dis1">#70A6E9</color>
+    <color name="dis2">#66A8B3</color>
+    <color name="dis3">#47BB9F</color>
+    <color name="dis4">#65B370</color>
+    <color name="dis5">#C6B644</color>
+    <color name="dis6">#2DBCD9</color>
+    <color name="dis7">#73C8B3</color>
+    <color name="dis8">#83CA74</color>
+    <color name="dis9">#ADA9F3</color>
+    <color name="dis10">#88E2F3</color>
+    <!--<color name="nationalMajor">#000000</color>-->
+    <!--EditText 不可点击的背景色-->
+    <color name="et_bg_color">#f5f5f5</color>
+    <color name="et_bg_color1">#f7f7f7</color>
+    <color name="text_color_no">#F42C35</color>
+    <color name="tv_intention_bg">#FDB110</color>
+    <color name="tv_select">#E5F6FF</color>
+<!--学生情况的几种颜色-->
+    <color name="school1">#2f8edf</color>
+    <color name="school2">#efabab</color>
+    <color name="school3">#e5e5e5</color>
+    <color name="school4">#10b8a2</color>
+
+    <color name="shadow">#b3000000</color>
+    <color name="bt_to_grade">#f2f2f2</color>
+
+
+</resources>

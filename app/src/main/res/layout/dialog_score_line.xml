@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="@dimen/x500"
+        android:background="@drawable/shape_diglog_score_line"
+        android:paddingBottom="@dimen/y30"
+        android:paddingTop="@dimen/y30"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

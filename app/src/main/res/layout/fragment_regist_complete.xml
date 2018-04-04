@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/Name_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <ImageView
+            android:id="@+id/iv_name"
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/regist_name"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="姓名" />
+
+        <com.intention.sqtwin.widget.ClearEditText
+            android:id="@+id/Name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/tv_name"
+            android:background="@null"
+            android:gravity="right|center_vertical"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:textColor="@color/account_textcolor_focus"
+            android:textColorHint="@color/account_textcolor_unfocus"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x26" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <RelativeLayout
+        android:id="@+id/Sex_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_sex"
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/regist_sex"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="性别" />
+
+        <LinearLayout
+            android:id="@+id/ll_sex"
+            android:layout_width="@dimen/x240"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_man"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y54"
+                android:layout_weight="1"
+                android:background="@drawable/shape_left_corner_unselect"
+                android:gravity="center"
+                android:text="男"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/tv_woman"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y54"
+                android:layout_weight="1"
+                android:background="@drawable/shape_right_corner_unselect"
+                android:gravity="center"
+                android:text="女"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x24" />
+        </LinearLayout>
+        <!-- <LinearLayout
+             android:id="@+id/Rg_sex"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="@dimen/x30"
+             android:layout_marginRight="@dimen/x30"
+             android:layout_toRightOf="@id/iv_sex"
+             android:gravity="center_vertical"
+             android:orientation="horizontal">
+
+             <TextView
+                 android:id="@+id/tv_man"
+                 android:layout_width="0dp"
+                 android:layout_height="@dimen/y54"
+                 android:layout_weight="1"
+                 android:gravity="center"
+                 android:text="男"
+                 android:textColor="@color/font_3"
+                 android:textSize="@dimen/x24" />
+
+             <TextView
+                 android:id="@+id/tv_woman"
+                 android:layout_width="0dp"
+                 android:layout_height="@dimen/y54"
+                 android:layout_marginLeft="@dimen/x10"
+                 android:layout_weight="1"
+                 android:gravity="center"
+                 android:text="女"
+                 android:textColor="@color/font_3"
+                 android:textSize="@dimen/x24" />
+
+
+         </LinearLayout>-->
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <RelativeLayout
+        android:id="@+id/Account_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+
+        <ImageView
+            android:id="@+id/iv_household"
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/registhousehold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_Account_id"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="高考所在地" />
+
+        <ImageView
+            android:id="@+id/iv_Account_id"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/user_houlseId"
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_Account_id"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+  <!--  <RelativeLayout
+        android:id="@+id/rl_exam_type"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+        <TextView
+            android:id="@+id/tv_exam_type"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="高考模式" />
+
+        <ImageView
+            android:id="@+id/iv_exam_type"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical"
+            android:src="@mipmap/list_enter"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/user_exam_type"
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_exam_type"
+            android:gravity="center_vertical|right"
+            android:hint="请先选择高考所在地"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3" />
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />-->
+
+    <RelativeLayout
+        android:id="@+id/schoolarea_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+
+        <ImageView
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/registhousehold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_schoolarea"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="学校所在地" />
+
+        <ImageView
+            android:id="@+id/iv_schoolarea"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/user_schoolareaId"
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_schoolarea"
+            android:ellipsize="end"
+            android:maxLength="12"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <RelativeLayout
+        android:id="@+id/school_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+
+        <ImageView
+
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/registhousehold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_school"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="学校" />
+
+        <ImageView
+            android:id="@+id/iv_school"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/user_schoolId"
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_school"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <RelativeLayout
+        android:id="@+id/rl_grade"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+
+        <ImageView
+
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/registhousehold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="年级" />
+
+        <ImageView
+            android:id="@+id/iv_grade"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/user_grade"
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_grade"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <RelativeLayout
+        android:id="@+id/rl_class"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:focusable="false"
+        android:focusableInTouchMode="false">
+
+
+        <!--<TextView
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="邀请码" />-->
+        <ImageView
+            android:id="@+id/iv_class"
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/regist_invitecode"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_class"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="班级" />
+
+        <com.intention.sqtwin.widget.ClearEditText
+            android:id="@+id/user_class"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_toRightOf="@id/tv_class"
+            android:background="@null"
+            android:gravity="center_vertical|right"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:singleLine="true"
+            android:textColor="@color/account_textcolor_focus"
+            android:textColorHint="@color/account_textcolor_unfocus"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <RelativeLayout
+        android:id="@+id/Invitation_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+
+        <!--<TextView
+            style="@style/phone_password_login_regist"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="邀请码" />-->
+        <ImageView
+            android:id="@+id/iv_invite"
+            android:layout_width="@dimen/x36"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/regist_invitecode"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_invite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="邀请码（选填）" />
+
+        <com.intention.sqtwin.widget.ClearEditText
+            android:id="@+id/Invitation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_toRightOf="@id/tv_invite"
+            android:background="@null"
+            android:digits="0123456789qwertyuioplkjhgfdsazxcvbnm"
+            android:gravity="center_vertical|right"
+            android:maxLength="11"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:textColor="@color/account_textcolor_focus"
+            android:textColorHint="@color/account_textcolor_unfocus"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+
+    <include layout="@layout/division_short" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20"
+        android:paddingLeft="@dimen/x30"
+        android:text="@string/regist_hint"
+        android:textColor="#f42c35"
+        android:textSize="@dimen/x24" />
+
+    <RelativeLayout
+        android:id="@+id/forget_rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y36">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/before_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/before_agreement"
+                android:textColor="@color/reset_password_color"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/tv_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/before_agreement"
+                android:text="@string/agreement_text"
+                android:textColor="@color/app_main"
+                android:textSize="@dimen/x24" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_below="@id/forget_rel"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/app_login_shape"
+        android:gravity="center"
+        android:text="@string/Regist"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/x30" />
+</LinearLayout>

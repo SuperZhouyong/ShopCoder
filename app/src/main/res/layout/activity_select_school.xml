@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/activity_search_head"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y96"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <LinearLayout
+                    android:id="@+id/ll_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingRight="@dimen/x30">
+
+                    <ImageView
+                        android:layout_width="@dimen/x22"
+                        android:layout_height="@dimen/y40"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:src="@mipmap/list_return" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/activity_search_return"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/x30"
+                    android:paddingRight="@dimen/x30"
+                    android:text="筛选"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x30" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_search"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/y56"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/activity_search_return"
+                    android:layout_toRightOf="@id/ll_back"
+                    android:background="@drawable/ed_search_corner_gray"
+                    android:paddingRight="@dimen/x30">
+
+                    <ImageView
+                        android:id="@+id/search_iv"
+                        android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/y30"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:src="@mipmap/search_black" />
+
+                    <TextView
+                        android:id="@+id/search_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_toRightOf="@id/search_iv"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="请输入院校名称关键字搜索"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/account_textcolor_focus"
+                        android:textColorHint="@color/account_textcolor_unfocus"
+                        android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                        android:textSize="@dimen/x26" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_sum_list"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y88"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:text="目标院校"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x26"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_down"
+                    android:layout_width="@dimen/x26"
+                    android:layout_height="@dimen/y14"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:background="@mipmap/list_down" />
+
+                <TextView
+                    android:id="@+id/tv_limit_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_toLeftOf="@id/iv_down"
+                    android:text="0/10" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/selected_recy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/y4"
+                android:paddingLeft="@dimen/x20"
+                android:paddingRight="@dimen/x20"
+                android:layout_marginTop="@dimen/y20" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="match_parent">
+
+                <com.github.jdsjlzx.recyclerview.LRecyclerView
+                    android:id="@+id/Lrecycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+                    android:id="@+id/load_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_recyView"
+            android:layout_width="@dimen/x570"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/white">
+
+            <fragment
+                android:id="@+id/fragment_id"
+                class="com.intention.sqtwin.ui.experts.fragment.SchoolFilterFragment"
+                android:layout_width="@dimen/x570"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>

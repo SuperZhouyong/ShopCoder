@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/y25"
+    android:paddingLeft="@dimen/x30"
+    android:paddingRight="@dimen/x30">
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y25"
+        android:text="我的条件："
+        android:textColor="@color/textcolor3"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv_condition"
+        android:maxWidth="@dimen/x480"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y25"
+        android:layout_toRightOf="@id/tv1"
+        android:text="北京 文科 640"
+        android:textColor="@color/textcolor1"
+        android:textSize="@dimen/x26" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_three"
+        android:orientation="horizontal"
+        android:layout_below="@id/tv1"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选考科目："
+            android:textColor="@color/textcolor3"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_subjects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="北京"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x26" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_three"
+        android:layout_marginTop="@dimen/y10"
+        android:text="院校所在地："
+        android:textColor="@color/textcolor3"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv_areas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_three"
+        android:layout_marginTop="@dimen/y10"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:ellipsize="end"
+        android:layout_toRightOf="@id/tv2"
+        android:text="北京天津上海内蒙古蒙古蒙古蒙古法定发送分"
+        android:textColor="@color/textcolor1"
+        android:textSize="@dimen/x26" />
+
+    <!--   <TextView
+           android:id="@+id/tv3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/tv2"
+           android:layout_marginTop="@dimen/y10"
+           android:text="推荐时间："
+           android:textColor="@color/textcolor3"
+           android:textSize="@dimen/x26" />
+
+       <TextView
+           android:id="@+id/tv_time"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/tv_areas"
+           android:layout_marginTop="@dimen/y10"
+           android:layout_toRightOf="@id/tv3"
+           android:text="北京 天津 上海 内蒙古"
+           android:textColor="@color/textcolor1"
+           android:textSize="@dimen/x26" />-->
+
+    <LinearLayout
+        android:id="@+id/ll_edit"
+        android:layout_width="@dimen/x50"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y30"
+            android:src="@mipmap/list_enter" />
+    </LinearLayout>
+
+</RelativeLayout>

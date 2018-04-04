@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginLeft="@dimen/x30"
+        android:id="@+id/tv_coll_filtrate"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y88"
+        android:gravity="center"
+        android:text="我是筛选的条目"
+        android:textColor="@color/font_2" />
+</LinearLayout>

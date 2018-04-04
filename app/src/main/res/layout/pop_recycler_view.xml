@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/y12"
+        android:paddingLeft="@dimen/x22"
+        android:paddingRight="@dimen/x22"
+        android:paddingTop="@dimen/y22" />
+
+    <LinearLayout
+        android:id="@+id/ll_next"
+        android:layout_below="@id/ll_tab"
+        android:layout_width="match_parent"
+        android:paddingBottom="@dimen/y10"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_marginBottom="@dimen/y10"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y70"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/login_shape_focus"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/x30" />
+    </LinearLayout>
+</LinearLayout>

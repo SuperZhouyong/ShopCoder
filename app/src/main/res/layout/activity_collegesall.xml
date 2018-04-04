@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <com.intention.sqtwin.widget.DropDownMenu
+        android:id="@+id/dropmenu"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:ddmaskColor="@color/mask_color"
+        app:ddmenuSelectedIcon="@mipmap/list_up"
+        app:ddmenuTextSize="@dimen/x28"
+        app:ddmenuUnselectedIcon="@mipmap/list_down"
+        app:ddtextSelectedColor="@color/app_focus"
+        app:ddtextUnselectedColor="@color/textcolor2"
+        app:ddunderlineColor="@color/app_unfocus" />
+</LinearLayout>

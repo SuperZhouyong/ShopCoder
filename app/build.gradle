@@ -1,0 +1,246 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.jakewharton.butterknife'
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+    /* aaptOptions {
+         cruncherEnabled = false
+         useNewCruncher = false
+
+     }*/
+/*
+*400
+* 1.4
+* */
+    defaultConfig {
+        applicationId "com.intention.sqtwin"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+        resConfigs "zh"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
+        flavorDimensions "versionCode"
+        multiDexKeepProguard file('multiDexKeep.pro')
+//        sourceSets.main {
+//            jniLibs.srcDir 'src/main/libs'
+//        }
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86','x86_64', 'x86'
+        }
+    }
+//    yingyongbao{}
+//    baidu{}
+//    xiaomi{}
+//    m360{}
+
+//    anzhi{}
+//    huawei{}
+//    meizu();
+//    Vivo();
+//    Oppo();
+//    wandoujia();
+
+   /* productFlavors {
+     *//*   dev {
+            minSdkVersion 16
+        }
+        prod {
+            minSdkVersion 16
+        }*//*
+        yingyongbao {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+        }
+        baidu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+        }
+        Mxiaomi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Mxiaomi"]
+        }
+        m360 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "m360"]
+        }
+
+        anzhi {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"]
+        }
+
+        huawei {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+        }
+
+        meizu {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
+        }
+        vivo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"]
+        }
+
+        oppo {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
+        }
+        wandoujia {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+        }
+        SQT_HIGHSCHOOL {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "SQT_HIGHSCHOOL"]
+        }
+    }*/
+
+    /*  c360 {
+          manifestPlaceholders = [UMENG_CHANNEL_VALUE: "c360"]
+      }
+
+      uc {
+          manifestPlaceholders = [UMENG_CHANNEL_VALUE: "uc"]
+      }*/
+
+    /*
+    *最简单的多渠道打包方式
+    * */
+    /* productFlavors {
+         wandoujia {}
+         baidu {}
+         c360 {}
+         uc {}
+
+         productFlavors.all { flavor ->
+             flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+         }
+
+     }*/
+    //6e86d552d9666956f9adef2954293697
+//
+    /* 证书指纹:
+     MD5: 6E:86:D5:52:D9:66:69:56:F9:AD:EF:29:54:29:36:97
+     SHA1: C5:7A:6D:D5:9D:9E:02:19:B3:22:F3:CA:AC:42:E8:5C:CD:27:24:B2
+     SHA256: 96:84:B8:8D:E6:33:18:F9:B3:45:3F:F5:2A:01:E6:85:2A:12:69:A1:0A:
+             BE:7D:83:76:33:2B:53:DE:43:6D:33
+     签名算法名称: SHA256withRSA*/
+
+    /*  C:\Users\Administrator>keytool -list -keystore C:\Users\Administrator\Desktop\Sq
+      twin.jks -alias china -v
+      输入密钥库口令:
+      别名: china
+      创建日期: 2017-2-9
+      条目类型: PrivateKeyEntry
+      证书链长度: 1
+      证书[1]:
+      所有者: CN=sqtwin, OU=98, O=98, L=beijing, ST=good, C=98
+      发布者: CN=sqtwin, OU=98, O=98, L=beijing, ST=good, C=98
+      序列号: 2a4b6a1
+      有效期开始日期: Thu Feb 09 18:12:14 GMT+08:00 2017, 截止日期: Mon Feb 03 18:12:1
+      4 GMT+08:00 2042
+      证书指纹:
+      MD5: 6E:86:D5:52:D9:66:69:56:F9:AD:EF:29:54:29:36:97
+      SHA1: C5:7A:6D:D5:9D:9E:02:19:B3:22:F3:CA:AC:42:E8:5C:CD:27:24:B2
+      SHA256: 96:84:B8:8D:E6:33:18:F9:B3:45:3F:F5:2A:01:E6:85:2A:12:69:A1:0A:
+              BE:7D:83:76:33:2B:53:DE:43:6D:33
+      签名算法名称: SHA256withRSA*/
+    //获取证书指纹
+// keytool -list -keystore C:\Users\Administrator\Desktop\Sqtwin.jks -alias china -v
+    buildTypes {
+        release {
+            minifyEnabled false
+            // 去除 多余的资源文件
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
+            versionNameSuffix "-debug"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        // 设置虚拟机堆内存的空间大小 ， 避免在编译期间OOM
+        dexOptions {
+            incremental true
+            javaMaxHeapSize "4g"
+        }
+        //打包不检查
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+
+    }
+
+}
+
+/*
+*
+* */
+greendao {
+
+    /* *Greendao 实体类包文件名
+     **/
+    targetGenDir 'src/main/java'
+
+    /* *版本号 升级的时候使用  2018 1 26   2018 3 6
+     **/
+    schemaVersion 1
+
+    /*   *greendao输出dao数据库操作实体类文件夹
+       **/
+    daoPackage 'com.intention.sqtwin.gen'
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(':LRecyclerview_library')
+    //    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
+    compile project(':MPChartLib')
+    //switch_button
+    //noinspection GradleCompatible
+//    compile "com.android.support:appcompat-v7:27.1.0"
+    //noinspection GradleDependency,GradleCompatible
+    compile "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    //    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+    compile 'com.orhanobut:logger:2.1.1'
+    //    compile 'com.orhanobut:logger:1.15'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'
+    compile 'com.kyleduo.switchbutton:library:1.4.5'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.jakewhartonVersion}"
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.commit451:PhotoView:1.2.4'
+    //微信Gradle
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.1.6'
+    //底部
+    compile "me.shaohui:bottomdialog:${rootProject.ext.bootDialogVersion}"
+    //版本下载
+    compile 'com.liulishuo.filedownloader:library:1.4.3'
+    // 圆形进度条
+    compile 'com.github.lzyzsd:circleprogress:1.2.1'
+    compile 'com.flipboard:bottomsheet-core:1.5.1'
+    compile 'com.android.support:cardview-v7:27.0.0'
+    /* compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+             compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'*/
+    // 权限文件
+    //    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
+}
+
+
+repositories {
+    google()
+}

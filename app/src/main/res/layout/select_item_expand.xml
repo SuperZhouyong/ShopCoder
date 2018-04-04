@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y88"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center_vertical"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/iv_expand"
+            android:layout_width="@dimen/x24"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="@color/app_bottom_colour" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x50"
+        android:background="@color/app_bottom_colour" />
+</LinearLayout>

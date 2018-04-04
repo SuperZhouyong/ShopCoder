@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y85"
+    android:gravity="center_vertical">
+
+    <View
+        android:id="@+id/nullview"
+        android:background="@color/app_focus"
+        android:layout_width="@dimen/x4"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_height="@dimen/y40" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:text="录取概率"
+        android:textSize="@dimen/x30"
+        android:textColor="@color/font_1"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_toRightOf="@id/nullview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_probability"
+        android:text="65%"
+        android:textSize="@dimen/x30"
+        android:textColor="@color/red"
+        android:layout_toRightOf="@id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="我的分数:590"
+        android:textSize="@dimen/x26"
+        android:textColor="@color/font_2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

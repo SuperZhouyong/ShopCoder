@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y70"
+    android:background="@drawable/selector_long_press"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_aspiration_name"
+        android:layout_width="@dimen/x600"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x28" />
+
+    <ImageView
+        android:layout_width="@dimen/x14"
+        android:layout_height="@dimen/y26"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x30"
+        android:src="@mipmap/list_enter" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_alignParentBottom="true"
+        android:background="@color/app_bottom_colour" />
+</RelativeLayout>

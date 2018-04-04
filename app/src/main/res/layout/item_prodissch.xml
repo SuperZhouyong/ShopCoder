@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/y30">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_title1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y85">
+
+        <View
+            android:id="@+id/nullview1"
+            android:layout_width="@dimen/x4"
+            android:layout_height="@dimen/y40"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_centerVertical="true"
+            android:background="@color/app_focus" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/nullview1"
+            android:layout_centerVertical="true"
+            android:text="专业分布"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_title"
+            android:clickable="false"
+            android:text=""
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x24" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_item_title1">
+
+        <LinearLayout
+            android:id="@+id/ll_intr"
+            android:layout_width="@dimen/x350"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/y30"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_intr"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y56"
+                android:layout_weight="1"
+                android:background="@drawable/shape_stoken_blue"
+                android:gravity="center"
+                android:text="整体查看"
+                android:textColor="@color/main_blue"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/tv_intr1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y56"
+                android:layout_weight="1"
+                android:background="@drawable/shape_stoken_gray"
+                android:gravity="center"
+                android:text="分年度查看"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x24" />
+        </LinearLayout>
+
+        <com.intention.sqtwin.widget.flow.FlowTagLayout
+            android:id="@+id/tag_flow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_intr"
+            android:layout_marginLeft="@dimen/x34"
+            android:layout_marginRight="@dimen/x34" />
+
+        <TextView
+            android:id="@+id/tv_year_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:text=""
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/prodis_recy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tag_flow" />
+
+        <LinearLayout
+            android:id="@+id/ll_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/prodis_recy"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y15"
+            android:background="@drawable/shape_dashedline"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y14"
+            android:paddingLeft="@dimen/x12"
+            android:paddingRight="@dimen/x12"
+            android:paddingTop="@dimen/y14">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总结："
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x22" />
+
+            <TextView
+                android:id="@+id/tv_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/y10"
+                android:text="如果不这么在乎，生活会简单得多。学会放下，放下压力，放下往事，放下消极，放下抱怨，放下狭隘，放下世间的劳苦愁烦，学会对自己说声顺其自然，学会坦然地面对厄运，学会积极地看待人生，学会凡事都往好处想。这样，阳光就会照进心里来，驱走恐惧，驱走黑暗，驱走所有的阴霾。"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x22" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_shade"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1280"
+        android:layout_below="@id/rl_item_title1"
+        android:background="@mipmap/shade3">
+
+        <!--<ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1280"
+            android:src="@mipmap/shade3" />-->
+
+        <!--<TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y540"
+            android:text="查看报告需购买相关商品"
+            android:textColor="@color/font_1" />
+
+        <Button
+            android:id="@+id/bt_pay"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/x300"
+            android:layout_height="@dimen/y88"
+            android:layout_below="@+id/tv_pay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y40"
+            android:background="@color/app_focus"
+            android:textColor="@color/white"
+            android:text="去商场" />-->
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_nulldata"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:clickable="true"
+        android:layout_below="@id/rl_item_title1"
+        android:gravity="center"
+        android:background="@color/white"
+        android:text="暂无数据"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/x26"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/tv_nulldata1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y400"
+        android:layout_below="@id/rl_item_title1"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="人才市场数据样本不足，无法进行大数据分析"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26"
+        android:visibility="gone" />
+</RelativeLayout>

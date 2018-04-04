@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!--   android:layout_height="@dimen/y325"-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y170"
+        android:layout_marginTop="@dimen/y46" />
+
+    <TextView
+        android:textColor="@color/font_2"
+        android:id="@+id/Tv_add_compare"
+        android:layout_width="120dp"
+        android:layout_height="@dimen/y170"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y46"
+        android:background="@color/bg_white_gray"
+        android:gravity="center"
+        android:text="添加对比"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y130"
+        android:layout_below="@id/recy_bottom"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y40"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Tv_Compare"
+                android:layout_width="@dimen/x150"
+                android:layout_height="@dimen/y60"
+                android:background="@drawable/app_login_shape"
+                android:gravity="center"
+                android:text="对比"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/Tv_Clear"
+                android:layout_width="@dimen/x150"
+                android:layout_height="@dimen/y60"
+                android:layout_marginLeft="@dimen/x20"
+                android:background="@drawable/bottom_clear"
+                android:gravity="center"
+                android:text="清空"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

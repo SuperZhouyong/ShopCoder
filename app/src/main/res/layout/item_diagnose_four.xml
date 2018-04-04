@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y130"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/x30">
+
+        <TextView
+            android:id="@+id/school_name"
+            android:maxWidth="@dimen/x500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text=""
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/major_name"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxWidth="@dimen/x500"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/school_name"
+            android:layout_marginTop="@dimen/y15"
+            android:text=""
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/tv_tab"
+            android:layout_marginRight="@dimen/x30"
+            android:textSize="@dimen/x30"
+            android:textColor="@color/switch_closecolor"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="不可报考" />
+    </RelativeLayout>
+
+</LinearLayout>

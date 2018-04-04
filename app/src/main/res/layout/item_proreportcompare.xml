@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center|left"
+            android:lineSpacingExtra="@dimen/y5"
+            android:paddingBottom="@dimen/x30"
+            android:paddingTop="@dimen/x30"
+            android:text="UI设计师\n产品经理\n渠道经理"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x26" />
+
+        <ImageView
+            android:id="@+id/iv_division"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_below="@id/tv_name"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_below="@id/iv_division">
+
+        <TextView
+            android:id="@+id/tv_creattime"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="2017年05月13日"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/tv_delete"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y56"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/tv_tolook"
+            android:background="@drawable/shape_corner_stroke2"
+            android:gravity="center"
+            android:text="删除对比"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_tolook"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y56"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@drawable/shape_corner_stroke3"
+            android:gravity="center"
+            android:text="查看"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+</LinearLayout>

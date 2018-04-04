@@ -1,0 +1,87 @@
+apply plugin: 'com.android.library'
+
+
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+            
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            // 去除 多余的资源文件
+//            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+//            shrinkResources false
+            zipAlignEnabled false
+            versionNameSuffix "-debug"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        // 设置虚拟机堆内存的空间大小 ， 避免在编译期间OOM
+        dexOptions {
+            incremental true
+            javaMaxHeapSize "4g"
+        }
+        //打包不检查
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+   /* compile 'com.android.support:appcompat-v7:25.1.1'*/
+    compile 'com.android.support:recyclerview-v7:25.1.1'
+    compile 'com.android.support:design:25.1.1'
+}
+
+// 指定编码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 打包源码
+/*
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+*/
+
+/*task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}*/
+
+// 制作文档(Javadoc)
+/*task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}*/
+
+/*artifacts {
+    archives sourcesJar
+    archives javadocJar
+}*/

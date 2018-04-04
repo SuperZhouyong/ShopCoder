@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:rb="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_toSchool"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150">
+        <ImageView
+            android:id="@+id/iv_shoucang"
+            android:src="@mipmap/shoucangbiaozhi"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/y20" />
+
+        <TextView
+            android:id="@+id/tv_school_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y28"
+            android:text="北京理工科技大学"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_school_name"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y18"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_double"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x10"
+                android:background="@drawable/intention_number_bg"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                android:text="双一流"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x22" />
+
+            <TextView
+
+                android:id="@+id/tv_985"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toRightOf="@id/tv_double"
+                android:background="@drawable/intention_number_bg"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                android:text="985"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x22" />
+
+            <TextView
+                android:id="@+id/tv_211"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_985"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_toRightOf="@id/tv_985"
+                android:background="@drawable/intention_number_bg"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                android:text="211"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x22" />
+
+            <TextView
+                android:id="@+id/tv_province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_985"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toRightOf="@id/tv_211"
+                android:gravity="center"
+                android:text="省市" />
+
+            <TextView
+                android:id="@+id/tv_rank_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_985"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toRightOf="@id/tv_province"
+                android:gravity="center"
+                android:text="院校排名" />
+
+            <TextView
+                android:id="@+id/tv_rank_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_985"
+                android:layout_centerVertical="true"
+
+                android:layout_toRightOf="@id/tv_rank_name"
+                android:gravity="center"
+                android:text="3333" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30">
+
+            <com.intention.sqtwin.widget.BaseRatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                rb:numStars="5"
+                rb:rating="2.5"
+                rb:starHeight="@dimen/y25"
+                rb:starPadding="5dp"
+                rb:starWidth="@dimen/x26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/y8"
+                android:layout_marginTop="@dimen/y8"
+                android:text="风险评级"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x18" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- <android.support.v7.widget.RecyclerView
+         android:nestedScrollingEnabled="false"
+         android:id="@+id/grade_recyclerView"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content" />-->
+
+    <com.intention.sqtwin.widget.table.PanelListLayout
+
+        android:id="@+id/id_pl_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_three_years">
+
+        <android.support.v7.widget.RecyclerView
+            android:nestedScrollingEnabled="false"
+            android:paddingRight="@dimen/x30"
+            android:id="@+id/id_lv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.intention.sqtwin.widget.table.PanelListLayout>
+
+    <include layout="@layout/division_long" />
+
+    <RelativeLayout
+
+        android:id="@+id/rel_to_majorlist"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y70">
+
+        <TextView
+            android:id="@+id/tv_majorNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="专业12个"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/icon_back_right" />
+
+    </RelativeLayout>
+    <ImageView
+        android:background="@color/app_bottom_colour"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10" />
+
+</LinearLayout>

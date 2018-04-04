@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <ImageView
+              android:id="@+id/iv_icon"
+              android:layout_width="@dimen/x150"
+              android:layout_height="@dimen/y150"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="@dimen/y30"
+              android:src="@mipmap/experts_icon" />
+
+          <TextView
+              android:id="@+id/tv_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/iv_icon"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="@dimen/y20"
+              android:text="专家名字"
+              android:textColor="@color/font_4"
+              android:textSize="@dimen/x38" />
+
+          <TextView
+              android:paddingRight="@dimen/x10"
+              android:paddingLeft="@dimen/x10"
+              android:id="@+id/tv_identity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@id/tv_name"
+              android:layout_centerHorizontal="true"
+              android:layout_marginBottom="@dimen/y30"
+              android:layout_marginTop="@dimen/y14"
+              android:background="@drawable/shape_identity"
+              android:text="首席专家"
+              android:textColor="@color/font_4"
+              android:textSize="@dimen/x20" />
+
+
+
+      </RelativeLayout>
+
+    </RelativeLayout>

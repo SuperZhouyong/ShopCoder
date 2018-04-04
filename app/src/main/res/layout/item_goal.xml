@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_part1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_major_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="艺术设计"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="共3个目标院校" />
+
+        <ImageView
+            android:id="@+id/iv_expand"
+            android:layout_width="@dimen/x26"
+            android:layout_height="@dimen/y14"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_down" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_part1"
+        android:background="@color/white" />
+
+
+    <TextView
+        android:id="@+id/tv_Footer"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="选择目标院校/专业"
+        android:textSize="@dimen/x28"
+        android:textColor="@color/main_blue"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88" />
+
+</LinearLayout>

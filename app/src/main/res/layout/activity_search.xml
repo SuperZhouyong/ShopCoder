@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@+id/activity_search_head"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/main_color">
+
+        <TextView
+            android:id="@+id/activity_search_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x33" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/y56"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toLeftOf="@id/activity_search_return"
+            android:background="@drawable/ed_search_corner"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:id="@+id/search_iv"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y30"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:src="@mipmap/search_black" />
+
+            <com.intention.sqtwin.widget.ClearEditText
+                android:id="@+id/search_et"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/search_iv"
+                android:background="@drawable/ed_search_corner"
+                android:gravity="center_vertical"
+                android:hint="请输入搜索的内容"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/account_textcolor_focus"
+                android:textColorHint="@color/account_textcolor_unfocus"
+                android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                android:textSize="@dimen/x26" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_search_head"
+        android:background="@color/app_bottom_colour" />
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_associate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_search_head"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle_view_associate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y650"
+            android:background="@color/app_bottom_colour"
+            android:scrollbars="vertical" />
+
+        <ImageView
+            android:id="@+id/iv_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#40000000" />
+    </LinearLayout>
+
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoad_tip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/activity_search_head" />
+    <!-- android.support.v7.widget.RecyclerView-->
+</RelativeLayout>

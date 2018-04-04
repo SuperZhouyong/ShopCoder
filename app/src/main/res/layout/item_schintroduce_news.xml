@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!-- <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="@dimen/y20">
+
+         <ImageView
+             android:id="@+id/image_iv"
+             android:layout_width="@dimen/x4"
+             android:layout_height="@dimen/y45"
+             android:background="@color/app_main" />
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignTop="@id/image_iv"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="@dimen/x30"
+             android:text="学校介绍"
+             android:textColor="@color/font_1"
+             android:textSize="@dimen/x30" />
+
+     </RelativeLayout>-->
+    <include layout="@layout/school_vp_headtitle" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x34"
+        android:layout_marginTop="@dimen/y20">
+
+        <ImageView
+            android:id="@+id/rel_iv"
+            android:layout_width="@dimen/x32"
+            android:layout_height="@dimen/y30"
+            android:background="@mipmap/sch_phone"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/tv_school_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_toRightOf="@id/rel_iv"
+            android:text="400-855-4430"
+            android:textColor="@color/app_main"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x34"
+        android:layout_marginTop="@dimen/y20">
+
+        <ImageView
+            android:id="@+id/rel_iv2"
+            android:layout_width="@dimen/x32"
+            android:layout_height="@dimen/y30"
+            android:background="@mipmap/sch_adress"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/tv_school_adress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_toRightOf="@id/rel_iv2"
+            android:text="北京市海淀区魏公村"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginRight="@dimen/x30"
+        android:id="@+id/sch_detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x34"
+        android:layout_marginTop="@dimen/y40"
+        android:lineSpacingExtra="@dimen/x10"
+        android:text="北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村北京市海淀区魏公村"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <LinearLayout
+        android:id="@+id/ll_fold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/part1"
+        android:gravity="center"
+        android:paddingBottom="@dimen/y18"
+        android:paddingTop="@dimen/y20">
+
+        <ImageView
+            android:id="@+id/iv_fold"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y19"
+            android:src="@mipmap/fold" />
+    </LinearLayout>
+</LinearLayout>

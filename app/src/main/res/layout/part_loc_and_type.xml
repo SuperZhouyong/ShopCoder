@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <!--定位-->
+
+    <LinearLayout
+        android:id="@+id/ll_location"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x1"
+        android:layout_marginRight="@dimen/x1"
+        android:layout_marginTop="@dimen/y1"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_location"
+            android:layout_width="@dimen/x25"
+            android:layout_height="@dimen/y28"
+            android:layout_marginRight="@dimen/x20"
+            android:src="@mipmap/location" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x28" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/null_view"
+        layout="@layout/division_long" />
+    <!--文科、理科-->
+    <LinearLayout
+        android:id="@+id/ll_both"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88">
+
+        <TextView
+            android:id="@+id/tv_science"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x1"
+            android:layout_weight="1"
+            android:background="@color/app_focus"
+            android:gravity="center"
+            android:text="文理科"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/tv_arts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x1"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="3加3"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x28" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/null_view1"
+        layout="@layout/division_long" />
+
+</LinearLayout>

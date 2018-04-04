@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y88"
+    android:orientation="vertical">
+<!--  android:text="候选志愿清单共有院校12所 专业30个"-->
+    <TextView
+        android:id="@+id/tv_head"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x30"
+        android:gravity="center_vertical"
+
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x24" />
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bottom_colour">
+
+        <EditText
+            android:id="@+id/ed_name"
+            style="@style/my_info_title_normal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x0"
+            android:layout_marginTop="@dimen/y10"
+            android:background="@color/white"
+            android:gravity="center_vertical|left"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:singleLine="true"
+            android:textColor="@color/font_2"
+            android:textColorHint="@color/font_3"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x24" />
+    </LinearLayout>
+
+</LinearLayout>

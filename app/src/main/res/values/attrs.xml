@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ClearEditText">
+        <!-- 清除按钮的图标 -->
+        <attr name="iconClear" format="reference" />
+    </declare-styleable>
+    <declare-styleable name="DropDownMenu">
+
+        <attr name="ddunderlineColor" format="color" />
+        <attr name="dddividerColor" format="color" />
+        <attr name="ddtextSelectedColor" format="color" />
+        <attr name="ddtextUnselectedColor" format="color" />
+        <attr name="ddmenuBackgroundColor" format="color" />
+        <attr name="ddmaskColor" format="color" />
+        <attr name="ddmenuTextSize" format="dimension" />
+        <attr name="ddmenuSelectedIcon" format="reference" />
+        <attr name="ddmenuUnselectedIcon" format="reference" />
+    </declare-styleable>
+    <!--TableView表格-->
+    <declare-styleable name="TableView">
+        <attr name="tv_textsize" format="dimension" />
+        <attr name="tv_textColor" format="color" />
+        <attr name="itemheight" format="dimension" />
+    </declare-styleable>
+    <!--LableView  坐标轴-->
+    <declare-styleable name="LableView">
+        <attr name="lv_textsize" format="dimension" />
+        <attr name="lv_textColor" format="color" />
+    </declare-styleable>
+    <!--平均薪资  坐标轴-->
+    <declare-styleable name="LableView1">
+        <attr name="lv1_textsize" format="dimension" />
+        <attr name="lv1_textColor" format="color" />
+    </declare-styleable>
+    <!-- 滚轮选择器 -->
+    <declare-styleable name="WheelPicker">
+        <attr name="wheel_data" format="reference" />
+        <attr name="wheel_selected_item_position" format="integer" />
+        <attr name="wheel_item_text_size" format="dimension" />
+        <attr name="wheel_item_text_color" format="color" />
+        <attr name="wheel_selected_item_text_color" format="color" />
+        <attr name="wheel_same_width" format="boolean" />
+        <attr name="wheel_maximum_width_text" format="string" />
+        <attr name="wheel_maximum_width_text_position" format="integer" />
+        <attr name="wheel_visible_item_count" format="integer" />
+        <attr name="wheel_item_space" format="dimension" />
+        <attr name="wheel_cyclic" format="boolean" />
+        <attr name="wheel_indicator" format="boolean" />
+        <attr name="wheel_indicator_color" format="color" />
+        <attr name="wheel_indicator_size" format="dimension" />
+        <attr name="wheel_curtain" format="boolean" />
+        <attr name="wheel_curtain_color" format="color" />
+        <attr name="wheel_atmospheric" format="boolean" />
+        <attr name="wheel_curved" format="boolean" />
+        <attr name="wheel_item_align" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="SwipeMenuView">
+        <attr name="swipeEnable" format="boolean" />
+        <attr name="ios" format="boolean" />
+        <attr name="leftSwipe" format="boolean" />
+    </declare-styleable>
+    <!-- 组合自定义控件-->
+    <declare-styleable name="AmountView">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension" />
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension" />
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension" />
+        <attr name="btnTextSize" format="dimension" />
+    </declare-styleable>
+
+    <!-- <declare-styleable name="SwitchButton">
+         <attr name="kswThumbDrawable" format="reference"/>
+         <attr name="kswThumbColor" format="color|reference"/>
+         <attr name="kswThumbMargin" format="dimension|reference"/>
+         <attr name="kswThumbMarginTop" format="dimension|reference"/>
+         <attr name="kswThumbMarginBottom" format="dimension|reference"/>
+         <attr name="kswThumbMarginLeft" format="dimension|reference"/>
+         <attr name="kswThumbMarginRight" format="dimension|reference"/>
+         <attr name="kswThumbWidth" format="dimension|reference"/>
+         <attr name="kswThumbHeight" format="dimension|reference"/>
+         <attr name="kswThumbRadius" format="dimension|reference"/>
+         <attr name="kswBackRadius" format="dimension|reference"/>
+         <attr name="kswBackDrawable" format="reference"/>
+         <attr name="kswBackColor" format="color|reference"/>
+         <attr name="kswFadeBack" format="boolean"/>
+         <attr name="kswBackMeasureRatio" format="float"/>
+         <attr name="kswAnimationDuration" format="integer"/>
+         <attr name="kswTintColor" format="color|reference"/>
+         <attr name="kswTextOn" format="string"/>
+         <attr name="kswTextOff" format="string"/>
+         <attr name="kswTextMarginH" format="dimension"/>
+         <attr name="kswAutoAdjustTextPosition" format="boolean"/>
+     </declare-styleable>-->
+    <!-- <declare-styleable name="CircularImageView">
+
+         &lt;!&ndash; Whether or not to draw a circular border around the image. &ndash;&gt;
+         <attr name="civ_border" format="boolean"/>
+         &lt;!&ndash; The color of the border draw around the image. (if enabled) &ndash;&gt;
+         <attr name="civ_borderColor" format="color"/>
+         &lt;!&ndash; Makes the border this pixels wide. (if enabled) &ndash;&gt;
+         <attr name="civ_borderWidth" format="dimension"/>
+         &lt;!&ndash; Whether or not to draw a selector on this view upon touch events. &ndash;&gt;
+         <attr name="civ_selector" format="boolean"/>
+         &lt;!&ndash; The color of the selector draw on top of the image upon touch events. (if enabled) &ndash;&gt;
+         <attr name="civ_selectorColor" format="color"/>
+         &lt;!&ndash; The color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) &ndash;&gt;
+         <attr name="civ_selectorStrokeColor" format="color"/>
+         &lt;!&ndash; The selector stroke drawn around the image upon touch events this pixels wide. (if enabled) &ndash;&gt;
+         <attr name="civ_selectorStrokeWidth" format="dimension"/>
+         &lt;!&ndash; Whether or not to draw a shadow around your circular image. &ndash;&gt;
+         <attr name="civ_shadow" format="boolean"/>
+         &lt;!&ndash; The radius for the shadow to extend to. (if enabled) &ndash;&gt;
+         <attr name="civ_shadowRadius" format="float"/>
+         &lt;!&ndash; Horizontal shadow offset. (if enabled) &ndash;&gt;
+         <attr name="civ_shadowDx" format="float"/>
+         &lt;!&ndash; Vertical shadow offset. (if enabled) &ndash;&gt;
+         <attr name="civ_shadowDy" format="float"/>
+         &lt;!&ndash; The color of the shadow drawn around your circular image. (if enabled) &ndash;&gt;
+         <attr name="civ_shadowColor" format="color"/>
+     </declare-styleable>
+     <declare-styleable name="CircularImageViewStyle">
+         <attr name="circularImageViewDefault" format="reference"/>
+     </declare-styleable>-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="MyProgressBar">
+        <attr name="round_corner_width" format="dimension" />
+        <attr name="round_corner_background_color" format="color" />
+        <attr name="round_corner_progress_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="RoundCornerProgress">
+        <attr name="rcReverse" format="boolean" />
+        <attr name="rcProgress" format="float" />
+        <attr name="rcMax" format="float" />
+        <attr name="rcSecondaryProgress" format="float" />
+        <attr name="rcBackgroundPadding" format="dimension" />
+        <attr name="rcRadius" format="dimension" />
+        <attr name="rcProgressColor" format="color" />
+        <attr name="rcSecondaryProgressColor" format="color" />
+        <attr name="rcBackgroundColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="PullZoomView">
+        <attr name="pzv_sensitive" format="float" />
+        <attr name="pzv_isZoomEnable" format="boolean" />
+        <attr name="pzv_isParallax" format="boolean" />
+        <attr name="pzv_zoomTime" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="duration" format="integer" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color_tick" format="color" />
+        <attr name="color_checked" format="color" />
+        <attr name="color_unchecked" format="color" />
+        <attr name="color_unchecked_stroke" format="color" />
+    </declare-styleable>
+    <declare-styleable name="switchTextButton">
+
+    </declare-styleable>
+    // 星星的属性
+    <declare-styleable name="RatingBarAttributes">
+        <attr name="numStars" format="integer" />
+        <attr name="rating" format="float" />
+        <attr name="starPadding" format="dimension" />
+        <attr name="drawableEmpty" format="reference" />
+        <attr name="drawableFilled" format="reference" />
+        <attr name="touchable" format="boolean" />
+        <attr name="clearRatingEnabled" format="boolean" />
+        <attr name="starWidth" format="dimension" />
+        <attr name="starHeight" format="dimension" />
+        <attr name="stepSize" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="ChooseTab">
+        <attr name="leftSelectDrawable" format="dimension"/>
+        <attr name="leftUnSelectDrawable" format="dimension"/>
+        <attr name="rightSelectDrawable" format="dimension"/>
+        <attr name="rightUnSelectDrawable" format="dimension"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="selectTextColor" format="color"/>
+        <attr name="unSelectTextColor" format="color"/>
+        <attr name="selectText" format="string"/>
+        <attr name="unSelectText" format="string"/>
+        <attr name="gap" format="dimension"/>
+        <attr name="selectSide" format="boolean"/>
+
+    </declare-styleable>
+</resources>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toor_title"
+        layout="@layout/toolbar_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/toor_title"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/app_bottom_colour">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recy_confirm_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y10"
+                    android:background="@color/app_bottom_colour"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/ll_offer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_bonus"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y70"
+                        android:background="@color/white">
+
+                        <TextView
+                            android:id="@+id/tv_constant_left"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:text="使用红包"
+                            android:textColor="@color/font_1"
+                            android:textSize="@dimen/x28" />
+
+                        <TextView
+                            android:id="@+id/Tv_Bonus_detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_toRightOf="@id/tv_constant_left"
+                            android:text=""
+                            android:textColor="@color/font_3"
+                            android:textSize="@dimen/x22" />
+
+                        <TextView
+                            android:id="@+id/Tv_Bonus1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_toRightOf="@id/Tv_Bonus_detail"
+                            android:text=""
+                            android:textColor="@color/font_3"
+                            android:textSize="@dimen/x22" />
+
+                        <TextView
+                            android:id="@+id/Tv_Bonus2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_toRightOf="@id/Tv_Bonus1"
+                            android:text=""
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/x22" />
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/switch_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/x30"
+                            android:checked="true"
+                            android:textColor="@color/white"
+                            app:kswTintColor="@color/app_main" />
+                        <!--app:kswTextOff="关"
+                          app:kswBackColor="@color/app_main"
+                            kswk
+                            app:kswThumbColor="@color/white"
+                                            app:kswTextOn="开"-->
+                    </RelativeLayout>
+
+                    <include layout="@layout/division" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_discount"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y70"
+                        android:background="@color/white">
+
+                        <TextView
+                            android:id="@+id/tv_discount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:text="使用套餐优惠券"
+                            android:textColor="@color/font_1"
+                            android:textSize="@dimen/x28" />
+
+                        <TextView
+                            android:id="@+id/Tv_discount_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x10"
+                            android:layout_toRightOf="@id/tv_discount"
+                            android:text="元"
+                            android:textColor="@color/orange"
+                            android:textSize="@dimen/x22" />
+
+                        <com.kyleduo.switchbutton.SwitchButton
+                            android:id="@+id/switch_button_discount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/x30"
+                            android:checked="true"
+                            android:textColor="@color/white"
+                            app:kswTintColor="@color/app_main" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y10"
+                        android:background="@color/app_bottom_colour"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y70"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/x30"
+                    android:text="选择支付方式"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x24" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/RecyclerView_pay_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <!--    <RelativeLayout
+                        android:id="@+id/wx_rel"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y88"
+                        android:background="@color/white">
+    
+                        <ImageView
+                            android:id="@+id/wx_icon"
+                            android:layout_width="@dimen/x60"
+                            android:layout_height="@dimen/y60"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x30"
+                            android:src="@mipmap/wx_icon" />
+    
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/x20"
+                            android:layout_toRightOf="@id/wx_icon"
+                            android:text="微信支付"
+                            android:textColor="@color/font_1"
+                            android:textSize="@dimen/x28" />
+    
+                        <RelativeLayout
+                            android:id="@+id/rel_check_box_wx"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+    
+                            <ImageView
+                                android:id="@+id/iv_check_box_wx"
+                                android:layout_width="@dimen/x34"
+                                android:layout_height="@dimen/y34"
+                                android:layout_centerInParent="true"
+                                android:layout_marginLeft="@dimen/x30"
+                                android:layout_marginRight="@dimen/x30"
+                                android:scaleType="centerCrop"
+                                android:src="@mipmap/select_off" />
+    
+                        </RelativeLayout>
+    
+                    </RelativeLayout>-->
+
+                <!--     <RelativeLayout
+                         android:id="@+id/ali_rel"
+                         android:layout_width="match_parent"
+                         android:layout_height="@dimen/y88"
+                         android:background="@color/white">
+    
+                         <ImageView
+                             android:id="@+id/ali_icon"
+                             android:layout_width="@dimen/x60"
+                             android:layout_height="@dimen/y60"
+                             android:layout_centerVertical="true"
+                             android:layout_marginLeft="@dimen/x30"
+                             android:src="@mipmap/ali_icon" />
+    
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_centerVertical="true"
+                             android:layout_marginLeft="@dimen/x20"
+                             android:layout_toRightOf="@id/ali_icon"
+                             android:text="支付宝支付"
+                             android:textColor="@color/font_1"
+                             android:textSize="@dimen/x28" />
+    
+                         <RelativeLayout
+                             android:id="@+id/rel_check_box_ali"
+                             android:layout_width="wrap_content"
+                             android:layout_height="match_parent"
+                             android:layout_alignParentRight="true"
+                             android:layout_centerVertical="true">
+    
+                             <CheckBox
+                                 android:id="@+id/iv_check_box_ali"
+                                 android:layout_width="@dimen/x34"
+                                 android:layout_height="@dimen/y34"
+                                 android:layout_centerInParent="true"
+                                 android:layout_marginLeft="@dimen/x30"
+                                 android:layout_marginRight="@dimen/x30"
+    
+                                 android:background="@mipmap/select_no" />
+    
+                         </RelativeLayout>
+                         &lt;!&ndash;    <ImageView
+                                 android:id="@+id/iv_check_box_ali"
+                                 android:layout_width="@dimen/x34"
+                                 android:layout_height="@dimen/y34"
+                                 android:layout_alignParentRight="true"
+                                 android:layout_centerVertical="true"
+                                 android:layout_marginLeft="@dimen/x30"
+                                 android:layout_marginRight="@dimen/x30"
+                                 android:scaleType="centerCrop"
+                                 android:src="@mipmap/select_off" />&ndash;&gt;
+                     </RelativeLayout>-->
+
+                <!--   <RelativeLayout
+                       android:id="@+id/unionpay_rel"
+                       android:layout_width="match_parent"
+                       android:layout_height="@dimen/y88"
+                       android:background="@color/white">
+    
+                       <ImageView
+                           android:id="@+id/unionpay_icon"
+                           android:layout_width="@dimen/x60"
+                           android:layout_height="@dimen/y60"
+                           android:layout_centerVertical="true"
+                           android:layout_marginLeft="@dimen/x30"
+                           android:src="@mipmap/unionpay_icon" />
+    
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_centerVertical="true"
+                           android:layout_marginLeft="@dimen/x20"
+                           android:layout_toRightOf="@id/unionpay_icon"
+                           android:text="银联支付"
+                           android:textColor="@color/font_1"
+                           android:textSize="@dimen/x28" />
+    
+                       &lt;!&ndash;   <ImageView
+                              android:id="@+id/iv_check_box_unionpay"
+                              android:layout_width="@dimen/x34"
+                              android:layout_height="@dimen/y34"
+                              android:layout_alignParentRight="true"
+                              android:layout_centerVertical="true"
+                              android:layout_marginLeft="@dimen/x30"
+                              android:layout_marginRight="@dimen/x30"
+                              android:scaleType="centerCrop"
+                              android:src="@mipmap/select_off" />&ndash;&gt;
+                       <RelativeLayout
+                           android:id="@+id/rel_check_box_unionpay"
+                           android:layout_width="wrap_content"
+                           android:layout_height="match_parent"
+                           android:layout_alignParentRight="true"
+                           android:layout_centerVertical="true">
+    
+                           <ImageView
+                               android:id="@+id/iv_check_box_unionpay"
+                               android:layout_width="@dimen/x34"
+                               android:layout_height="@dimen/y34"
+                               android:layout_centerInParent="true"
+                               android:layout_marginLeft="@dimen/x30"
+                               android:layout_marginRight="@dimen/x30"
+                               android:scaleType="centerCrop"
+                               android:src="@mipmap/select_off" />
+    
+                       </RelativeLayout>
+                   </RelativeLayout>-->
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <!--  <RelativeLayout
+              android:id="@+id/Rel_recommend_des"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/y70"
+              android:layout_alignParentBottom="true">
+
+              <TextView
+                  android:layout_marginLeft="@dimen/x20"
+                  android:id="@+id/tv_recommend_desc"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerVertical="true"
+                  android:text=""
+                  android:textColor="@color/font_1"
+                  android:textSize="@dimen/x22" />
+
+              <TextView
+                  android:id="@+id/Tv_recommend_buy"
+                  android:layout_marginLeft="@dimen/x20"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerVertical="true"
+                  android:layout_toRightOf="@id/tv_recommend_desc"
+                  android:text="购买"
+                  android:textColor="@color/price_commodity"
+                  android:textSize="@dimen/x22" />
+
+              <ImageView
+                  android:id="@+id/Iv_recommend"
+                  android:layout_width="@dimen/x19"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentRight="true"
+                  android:layout_centerVertical="true"
+                  android:layout_marginRight="@dimen/x20"
+                  android:src="@mipmap/close_icon" />
+          </RelativeLayout>-->
+
+    </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/tv_endline"
+        android:background="#fff6e5"
+        android:gravity="center"
+        android:textColor="@color/font_2"
+        android:textSize="@dimen/x24"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y56" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/bt_confirm_pay"
+            android:layout_width="@dimen/x200"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/buy_immediately"
+            android:text="确认支付"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/Tv_total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@id/bt_confirm_pay"
+            android:text="￥0"
+            android:textColor="@color/price_commodity"
+            android:textSize="@dimen/x28" />
+
+
+        <TextView
+            android:id="@+id/Tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toLeftOf="@id/Tv_total_money"
+            android:text="合计:"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+    </RelativeLayout>
+
+</LinearLayout>

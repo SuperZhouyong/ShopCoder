@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginLeft="@dimen/x30"
+        android:lineSpacingExtra="@dimen/y10"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y30"
+        android:text="鱼丸"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:layout_marginLeft="@dimen/x30"
+        android:id="@+id/tv_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginBottom="@dimen/y30"
+        android:layout_marginTop="@dimen/y24"
+        android:text="2017.04.17注册成功"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x22" />
+    <!-- <RelativeLayout
+         android:layout_marginLeft="@dimen/x30"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+
+         <TextView
+             android:id="@+id/tv_name"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="鱼丸"
+             android:textColor="@color/font_1"
+             android:textSize="@dimen/x24" />
+
+         <TextView
+             android:id="@+id/tv_all"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@id/tv_name"
+             android:text="2017.04.17注册成功"
+             android:textColor="@color/font_3"
+             android:textSize="@dimen/x20" />
+
+     </RelativeLayout>-->
+
+    <!--  <TextView
+          android:id="@+id/tv_money"
+          android:layout_marginRight="@dimen/x30"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:text="+20元"
+          android:textColor="@color/app_main"
+          android:textSize="@dimen/y20" />-->
+</RelativeLayout>

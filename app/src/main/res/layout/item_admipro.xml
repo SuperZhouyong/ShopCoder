@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_title1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y85"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/nullview1"
+            android:layout_width="@dimen/x4"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/app_focus" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toRightOf="@id/nullview1"
+            android:gravity="center_vertical"
+            android:text="录取概率"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/tv_probability"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_title"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/red"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:id="@+id/iv_shade"
+            android:layout_width="@dimen/x70"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_title"
+            android:scaleType="centerInside"
+            android:src="@mipmap/shade1"
+            android:visibility="gone" />
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical"
+            android:text="我的分数:"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+    <!--表格-->
+    <RelativeLayout
+        android:id="@+id/rel_admipro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_item_title1"
+        android:paddingBottom="@dimen/y30"
+        android:paddingTop="@dimen/y10"
+        android:paddingLeft="@dimen/x18"
+        android:paddingRight="@dimen/x18">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y140" />
+
+        <com.intention.sqtwin.widget.LableView
+            android:id="@+id/xaxisview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y25"
+            android:layout_marginTop="@dimen/y110"
+            app:lv_textColor="@color/font_1"
+            app:lv_textsize="@dimen/x20" />
+
+        <LinearLayout
+            android:layout_below="@id/xaxisview"
+            android:layout_marginTop="@dimen/y20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y2"
+                android:layout_marginRight="@dimen/y10"
+                android:background="@color/app_focus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="历年分数"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x20" />
+
+            <ImageView
+                android:layout_marginLeft="@dimen/x40"
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y2"
+                android:layout_marginRight="@dimen/y10"
+                android:background="@color/orange" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的分数"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x20" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_shade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_item_title1"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y200"
+            android:src="@mipmap/shade2" />
+
+    </RelativeLayout>
+</RelativeLayout>

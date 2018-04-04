@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/x30">
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_below="@id/part1"
+        tl:tl_indicator_color="@color/app_focus"
+        tl:tl_indicator_width_equal_title="true"
+
+        tl:tl_textSelectColor="@color/app_focus"
+        tl:tl_textUnselectColor="@color/font_2"
+        tl:tl_textsize="@dimen/x28"
+        tl:tl_underline_color="@color/app_unfocus"
+        tl:tl_underline_height="@dimen/y1" />
+
+    <com.intention.sqtwin.widget.MyViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tab_layout"
+        android:visibility="gone" />
+    <!--   <android.support.v4.view.ViewPager
+           android:id="@+id/view_pager"
+
+           android:layout_width="match_parent"
+
+           android:layout_height="match_parent"
+           android:layout_below="@id/tab_layout" />-->
+    <!--  android:background="@mipmap/shade8"-->
+    <RelativeLayout
+        android:id="@+id/rl_shade"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1280"
+        android:visibility="visible">
+
+        <!-- <ImageView
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/y1280"
+             android:background="@mipmap/shade8" />-->
+
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y580"
+            android:text="查看报告需购买相关商品"
+            android:textColor="@color/font_1" />
+
+        <Button
+            android:id="@+id/bt_pay"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/x300"
+            android:layout_height="@dimen/y88"
+            android:layout_below="@+id/tv_pay"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y40"
+            android:background="@color/app_focus"
+            android:text="去商场"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>

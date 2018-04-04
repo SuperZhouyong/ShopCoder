@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"
+        android:background="@color/app_bottom_colour" />
+
+    <include
+        android:id="@+id/head_tile"
+        layout="@layout/school_vp_headtitle" />
+
+    <include layout="@layout/division_long" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ll_three_years"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y98"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="比较最近三年数据"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/switch_button"
+                app:kswTintColor="@color/app_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:checked="false"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_alignParentBottom="true"
+                android:background="@color/app_bottom_colour" />
+        </RelativeLayout>
+
+        <com.intention.sqtwin.widget.table.PanelListLayout
+            android:id="@+id/id_pl_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/ll_three_years">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/id_lv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.intention.sqtwin.widget.table.PanelListLayout>
+
+        <TextView
+            android:id="@+id/tv_null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/x28"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

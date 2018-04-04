@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.intention.sqtwin.widget.PullZoomView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y350"
+            android:tag="header">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/home_recomend_title"
+                android:tag="zoom" />
+
+
+        </RelativeLayout>
+
+       <!--  <ScrollView
+             android:fillViewport="true"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:scrollbars="none"
+             android:tag="content">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:tag="content">
+
+
+            <include layout="@layout/layout_score" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/app_bottom_colour" />
+
+            <include layout="@layout/home_intention_two" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+
+                android:background="@color/app_bottom_colour" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y140"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:tag="sticky">
+
+                <RelativeLayout
+                    android:id="@+id/ll_colleges"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_colleges"
+                        android:layout_width="@dimen/x60"
+                        android:layout_height="@dimen/y52"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x55"
+                        android:layout_marginRight="@dimen/x30"
+                        android:src="@mipmap/colleges" />
+
+                    <TextView
+                        android:id="@+id/tv_colleges"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/iv_colleges"
+                        android:layout_toRightOf="@id/iv_colleges"
+                        android:text="院校大全"
+                        android:textColor="@color/font_2"
+                        android:textSize="@dimen/x26" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_colleges"
+                        android:layout_toRightOf="@id/iv_colleges"
+                        android:text="2000+高校详细数据"
+                        android:textColor="@color/font_3"
+                        android:textSize="@dimen/x20" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="@dimen/x1"
+                    android:layout_height="@dimen/y100"
+                    android:background="@color/app_bottom_colour" />
+
+                <RelativeLayout
+                    android:id="@+id/ll_professional"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_professional"
+                        android:layout_width="@dimen/x60"
+                        android:layout_height="@dimen/y52"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x55"
+                        android:layout_marginRight="@dimen/x30"
+                        android:src="@mipmap/professional" />
+
+                    <TextView
+                        android:id="@+id/tv_professional"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/iv_professional"
+                        android:layout_toRightOf="@id/iv_professional"
+                        android:text="专业大全"
+                        android:textColor="@color/font_2"
+                        android:textSize="@dimen/x26" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_professional"
+                        android:layout_toRightOf="@id/iv_professional"
+                        android:text="1000+大学专业解读"
+                        android:textColor="@color/font_3"
+                        android:textSize="@dimen/x20" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="@dimen/x1"
+                    android:layout_height="@dimen/y194"
+                    android:background="@color/app_unfocus" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/app_bottom_colour" />
+        </LinearLayout>
+        <!--</ScrollView>-->
+    </LinearLayout>
+</com.intention.sqtwin.widget.PullZoomView>

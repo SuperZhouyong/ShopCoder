@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y50"
+        android:layout_marginBottom="@dimen/y16"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:background="@drawable/shape_slesch_corner"
+        android:paddingLeft="@dimen/x20"
+        android:paddingRight="@dimen/x20">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="学校名称"
+            android:textColor="@color/main_blue"
+            android:textSize="@dimen/x24" />
+
+        <LinearLayout
+            android:id="@+id/ll_close"
+            android:layout_width="@dimen/x50"
+            android:gravity="center|right"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y20"
+                android:src="@mipmap/icon_close" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

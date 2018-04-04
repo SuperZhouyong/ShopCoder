@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y90"
+        android:background="@color/app_bottom_colour">
+
+        <TextView
+            android:id="@+id/tv3"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="共有院校"
+            android:textColor="@color/textcolor3"
+            android:textSize="@dimen/x24" />
+
+        <LinearLayout
+
+            android:id="@+id/ll_recommend"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_reom_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全部" />
+
+            <ImageView
+                android:id="@+id/iv_reom_type"
+                android:layout_marginLeft="@dimen/x20"
+                android:src="@mipmap/list_down"
+                android:layout_width="@dimen/x26"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

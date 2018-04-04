@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <!--定位-->
+
+    <RelativeLayout
+        android:id="@+id/ll_location"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x1"
+        android:layout_marginRight="@dimen/x1"
+        android:layout_marginTop="@dimen/y1"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="推荐适合的学校/专业"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x32" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:text="北京"
+                android:textColor="@color/textcolor2"
+                android:textSize="@dimen/x28" />
+
+            <ImageView
+                android:id="@+id/iv_location"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y26"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_toLeftOf="@id/address"
+                android:src="@mipmap/home_location" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/null_view"
+        layout="@layout/division_long" />
+    <!--文科、理科-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_both"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_arts"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_sex_item_select"
+                android:gravity="center"
+                android:text="文科"
+                android:textColor="@color/app_main"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_science"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="理科"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ll_three"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:background="@drawable/shape_sex_item_select"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:text="3+3"
+            android:textColor="@color/app_main"
+            android:textSize="@dimen/x35"
+            android:visibility="gone">
+
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/null_view1"
+        layout="@layout/division_long" />
+
+
+    <!--   <RelativeLayout
+           android:id="@+id/rl_view_pager"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:paddingBottom="@dimen/y30"
+           android:visibility="invisible">
+
+           <com.intention.sqtwin.widget.MyViewPager
+               android:id="@+id/view_pager"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+
+               android:paddingLeft="@dimen/x20"
+               android:paddingRight="@dimen/x20" />
+       </RelativeLayout>-->
+
+
+    <!--<include
+        android:id="@+id/null_view2"
+        layout="@layout/division_long" />-->
+</LinearLayout>

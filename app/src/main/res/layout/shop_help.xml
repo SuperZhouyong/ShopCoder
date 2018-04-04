@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/y40"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:text="商品介绍"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:background="@color/app_unfocus" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y10"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y10"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y30">
+
+                <ImageView
+                    android:id="@+id/image1"
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/iv_shop1" />
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/image1"
+                    android:text="智能测评"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv1"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="通过评测分析高中生的性格特质适合哪些专业和职业"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y40">
+
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/iv_shop2" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/image2"
+                    android:text="智能推荐"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv2"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="通过高考所在地+考分数分析院校所在地适合的学校/专业"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y40">
+
+                <ImageView
+                    android:id="@+id/image3"
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/iv_shop3" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/image3"
+                    android:text="专业报告"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv3"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="可查看任一专业毕业的人才职业发展历程，并可进行横向对比"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x24" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y40">
+
+                <ImageView
+                    android:id="@+id/image4"
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/iv_shop4" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/image4"
+                    android:text="职业报告"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv4"
+                    android:layout_marginTop="@dimen/y20"
+                    android:text="可查看各职业从业者毕业于哪些专业，薪资水平高低，成长轨迹等，并可进行横向对比"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x24" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

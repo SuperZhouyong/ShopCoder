@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y70">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="true"
+            android:id="@+id/iv_expend"
+            android:layout_marginLeft="@dimen/x35"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_width="@dimen/x26"
+            android:scaleType="fitCenter"
+            android:layout_height="@dimen/y24"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:layout_toRightOf="@id/iv_expend"
+            android:id="@+id/major_name"
+            android:gravity="center|left"
+            android:text="旅游管理类  2"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textSize="@dimen/x26"
+            android:textColor="@color/font_3"
+            android:layout_width="@dimen/x600"
+            android:layout_height="match_parent" />
+
+        <!--<LinearLayout
+            android:id="@+id/ll_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/y70"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>-->
+    </RelativeLayout>
+
+</LinearLayout>

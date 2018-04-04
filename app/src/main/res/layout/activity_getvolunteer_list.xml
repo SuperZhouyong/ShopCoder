@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rel_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/list_return" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/rel_back"
+            android:text="志愿表"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x36"
+            android:visibility="visible" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/image1"
+        android:layout_below="@id/rl_title" />
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y20"
+        android:layout_above="@+id/rl_next"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/rl_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_alignParentBottom="true"
+        android:background="@color/main_blue"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y30"
+            android:layout_marginRight="@dimen/x16"
+            android:src="@mipmap/icon_volunteer" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imageView"
+            android:text="导入志愿表"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/load_tip"
+        android:layout_below="@id/rl_title"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

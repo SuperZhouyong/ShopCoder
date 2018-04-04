@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!--   android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"-->
+
+    <ImageView
+        android:id="@+id/search_iv"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/y30"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x20"
+        android:src="@mipmap/search_black" />
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y88"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_toRightOf="@id/search_iv"
+        android:gravity="center"
+        android:text="我是第一季专业"
+        android:textSize="@dimen/x28"
+        android:textColor="@color/font_1" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_toRightOf="@id/tv_1"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/font_2"
+        android:textSize="@dimen/x26"
+        android:text="(haha)"
+        android:layout_height="@dimen/y88" />
+
+</RelativeLayout>

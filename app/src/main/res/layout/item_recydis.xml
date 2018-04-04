@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x34"
+    android:layout_marginRight="@dimen/x34"
+    android:layout_marginTop="@dimen/y10"
+    android:layout_marginBottom="@dimen/y10"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="专业专业"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x20" />
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginBottom="@dimen/y10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.intention.sqtwin.widget.RundConorPB
+                    android:id="@+id/progress1"
+                    android:layout_width="@dimen/x560"
+                    android:layout_height="@dimen/y17" />
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="50000个"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.intention.sqtwin.widget.RundConorPB
+                    android:id="@+id/progress2"
+                    android:layout_width="@dimen/x560"
+                    android:layout_height="@dimen/y17" />
+
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="2年"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.intention.sqtwin.widget.RundConorPB
+                    android:id="@+id/progress3"
+                    android:layout_width="@dimen/x560"
+                    android:layout_height="@dimen/y17" />
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="2年"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.intention.sqtwin.widget.RundConorPB
+                    android:id="@+id/progress4"
+                    android:layout_width="@dimen/x560"
+                    android:layout_height="@dimen/y17" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="2年"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.intention.sqtwin.widget.RundConorPB
+                    android:id="@+id/progress5"
+                    android:layout_width="@dimen/x560"
+                    android:layout_height="@dimen/y17" />
+
+                <TextView
+                    android:id="@+id/tv5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="2年"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x20" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:id="@+id/tv_null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="暂无数据"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/x20" />
+    </RelativeLayout>
+</LinearLayout>

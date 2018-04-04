@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y1"
+        android:background="#e5e5e5"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/y20"
+        android:paddingTop="@dimen/y20"
+        android:text="此数据只与每年的简历样本相关，不与该专业每年的招生人数相关"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x20" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y1"
+        android:background="#e5e5e5"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_weight="1" />
+</LinearLayout>

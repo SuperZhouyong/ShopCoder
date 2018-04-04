@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/y30"
+    android:paddingLeft="@dimen/x34">
+
+    <ImageView
+        android:id="@+id/iv_item_type"
+        android:layout_width="@dimen/x28"
+        android:layout_height="@dimen/y38"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x10"
+        android:src="@mipmap/type_one_1" />
+
+    <TextView
+        android:id="@+id/tv_major_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y28"
+        android:text="财政学"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x36"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_school_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_major_name"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_toRightOf="@id/tv_major_name"
+        android:text="财政大学"
+        android:textColor="@color/font_2"
+        android:textSize="@dimen/x24" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        style="@style/tv_bg"
+        android:layout_below="@id/tv_major_name"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginTop="@dimen/y30"
+        android:text="本科" />
+
+    <TextView
+        android:id="@+id/tv_code"
+        style="@style/tv_bg"
+        android:layout_below="@id/tv_major_name"
+        android:layout_marginTop="@dimen/y30"
+        android:layout_toRightOf="@id/tv_type"
+        android:text="专业代码:123456" />
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_code"
+        android:layout_marginBottom="@dimen/y18"
+        android:layout_marginTop="@dimen/y38"
+        android:text="专业介绍："
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv_major_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv1"
+        android:layout_marginRight="@dimen/x30"
+        android:text="即国家财政，是以国家为主体，通过政府的收支活动，集中一部分社会资源，满足社会公共需要的经济活动，属于应用经济学。"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_major_intro"
+        android:layout_marginBottom="@dimen/y18"
+        android:layout_marginTop="@dimen/y28"
+        android:text="主要课程："
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv_major_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv2"
+        android:layout_marginRight="@dimen/x30"
+        android:text="国家预算学、国家税收学、公债学、国营企业财务学、固定资产投资学等"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_major_course"
+        android:layout_marginBottom="@dimen/y18"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y28"
+        android:text="授予学位："
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv_major_degree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv3"
+        android:text="学士学位"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_major_degree"
+        android:layout_marginBottom="@dimen/y18"
+        android:layout_marginTop="@dimen/y28"
+        android:text="修学年限："
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+        android:id="@+id/tv_major_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv4"
+        android:layout_marginRight="@dimen/x30"
+        android:text="四年"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26" />
+</RelativeLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_title" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"
+        android:background="@color/app_bottom_colour" />
+
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:id="@+id/alter_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88">
+
+        <TextView
+            style="@style/my_info_title_normal"
+            android:text="修改密码" />
+
+        <ImageView
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/icon_back_right" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_division"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"
+        android:background="@color/app_bottom_colour" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel_clear_cache"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88">
+
+
+            <TextView
+                android:id="@+id/tv_clear_cache"
+                style="@style/my_info_title_normal"
+
+                android:text="清理缓存" />
+
+            <TextView
+                android:id="@+id/tv_cache"
+                style="@style/my_info_title_normal"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:text="123M"
+                android:textColor="@color/font_3" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/division" />
+
+        <RelativeLayout
+            android:id="@+id/rel_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88">
+
+
+            <TextView
+                android:id="@+id/tv_about_us"
+                style="@style/my_info_title_normal"
+                android:text="关于我们" />
+
+
+            <ImageView
+                android:id="@+id/iv_right_next"
+                android:layout_width="@dimen/x14"
+                android:layout_height="@dimen/y26"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:src="@mipmap/icon_back_right" />
+
+
+        </RelativeLayout>
+
+        <include layout="@layout/division" />
+
+        <RelativeLayout
+            android:id="@+id/rel_software_scoring"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88">
+
+            <TextView
+
+                android:id="@+id/tv_scoring_software"
+                style="@style/my_info_title_normal"
+
+                android:text="软件评分" />
+
+
+            <ImageView
+                android:id="@+id/v_scoring_software"
+                android:layout_width="@dimen/x14"
+                android:layout_height="@dimen/y26"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:src="@mipmap/icon_back_right" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:background="@color/app_bottom_colour" />
+
+    <Button
+        android:id="@+id/bt_login_out"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="@color/app_main" />
+
+    <ImageView
+        android:id="@+id/iv_ceshi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/app_bottom_colour" />
+
+</LinearLayout>

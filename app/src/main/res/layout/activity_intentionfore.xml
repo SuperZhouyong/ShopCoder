@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.flipboard.bottomsheet.BottomSheetLayout
+            android:id="@+id/bottomSheetLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_shop_cart"
+            android:layout_below="@id/rl_title"
+            android:descendantFocusability="afterDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+
+                android:orientation="vertical">
+
+
+                <include layout="@layout/toolbar_title" />
+
+                <android.support.design.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.design.widget.AppBarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/y124"
+                            android:background="@color/white"
+                            android:gravity="center_vertical"
+                            tl:layout_scrollFlags="enterAlwaysCollapsed|scroll|snap">
+                            <!--  android:text="你的高考预估分640分"-->
+                            <TextView
+                                android:id="@+id/tv1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/x30"
+                                android:textColor="@color/font_3"
+                                android:textSize="@dimen/x26" />
+                            <!--  android:text="对应2017年位次9128名"-->
+                            <TextView
+                                android:id="@+id/tv2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/x20"
+                                android:layout_toRightOf="@id/tv1"
+
+                                android:textColor="@color/font_3"
+                                android:textSize="@dimen/x26" />
+                            <!-- android:text="参照2017年北京批次线"-->
+                            <TextView
+                                android:id="@+id/tv3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv1"
+                                android:layout_marginLeft="@dimen/x30"
+                                android:layout_marginTop="@dimen/y14"
+
+                                android:textColor="@color/font_3"
+                                android:textSize="@dimen/x26" />
+                            <!-- android:text="超出一本线43分"-->
+                            <TextView
+                                android:id="@+id/tv4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignTop="@id/tv3"
+                                android:layout_marginLeft="@dimen/x20"
+                                android:layout_toRightOf="@id/tv3"
+
+                                android:textColor="@color/font_3"
+                                android:textSize="@dimen/x26" />
+
+
+                        </RelativeLayout>
+
+                        <include layout="@layout/division_long" />
+
+
+                    </android.support.design.widget.AppBarLayout>
+                    <!--tl:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+                    <com.intention.sqtwin.widget.DropDownMenu
+                        android:id="@+id/dropmenu"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/y88"
+                        android:background="@color/white"
+                        tl:ddmaskColor="@color/mask_color"
+                        tl:ddmenuSelectedIcon="@mipmap/list_up"
+                        tl:ddmenuTextSize="@dimen/x28"
+                        tl:ddmenuUnselectedIcon="@mipmap/list_down"
+                        tl:ddtextSelectedColor="@color/app_focus"
+                        tl:ddtextUnselectedColor="@color/textcolor2"
+                        tl:ddunderlineColor="@color/app_unfocus"
+                        tl:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+                    <!-- <com.github.jdsjlzx.recyclerview.LRecyclerView
+                         android:id="@+id/L_recyclerView"
+                         android:layout_width="match_parent"
+                         tl:layout_behavior="@string/appbar_scrolling_view_behavior"
+                         android:layout_height="match_parent"
+                         android:layout_marginBottom="@dimen/y88" />
+
+                     <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+                         android:id="@+id/mLoad_tip"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_marginBottom="@dimen/y88"
+                         android:layout_marginTop="@dimen/y204"
+                         android:visibility="visible" />-->
+
+                </android.support.design.widget.CoordinatorLayout>
+            </LinearLayout>
+        </com.flipboard.bottomsheet.BottomSheetLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="#6a6a6a">
+
+            <ImageView
+
+                android:id="@+id/iv_plane"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y100"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom|start"
+                android:layout_marginBottom="@dimen/y5"
+                android:layout_marginLeft="@dimen/x26"
+
+                android:src="@mipmap/volunteer_empty" />
+
+            <TextView
+                android:id="@+id/tv_volunteer_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x146"
+                android:gravity="center"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+            <!-- android:text="0个学校"-->
+            <TextView
+                android:id="@+id/tv_major_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/tv_volunteer_num"
+                android:gravity="center"
+
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+            <!--  android:text="0个专业"-->
+            <TextView
+                android:id="@+id/tv_next"
+                android:layout_width="@dimen/x200"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@color/account_textcolor_unfocus"
+                android:gravity="center"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+    <!-- 12,21号数据保存--><!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true">
+
+    <android.support.v4.widget.DrawerLayout
+
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.flipboard.bottomsheet.BottomSheetLayout
+                android:id="@+id/bottomSheetLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/rl_shop_cart"
+                android:layout_below="@id/rl_title"
+                android:descendantFocusability="afterDescendants"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+
+                    android:orientation="vertical">
+
+
+                    <include layout="@layout/toolbar_title" />
+
+                    <android.support.design.widget.CoordinatorLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <android.support.design.widget.AppBarLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/y124"
+                                android:background="@color/white"
+                                android:gravity="center_vertical"
+                                tl:layout_scrollFlags="enterAlwaysCollapsed|scroll|snap">
+                                &lt;!&ndash;  android:text="你的高考预估分640分"&ndash;&gt;
+                                <TextView
+                                    android:id="@+id/tv1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/x30"
+
+                                    android:textColor="@color/font_3"
+                                    android:textSize="@dimen/x26" />
+                                &lt;!&ndash;  android:text="对应2017年位次9128名"&ndash;&gt;
+                                <TextView
+                                    android:id="@+id/tv2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/x20"
+                                    android:layout_toRightOf="@id/tv1"
+
+                                    android:textColor="@color/font_3"
+                                    android:textSize="@dimen/x26" />
+                                &lt;!&ndash; android:text="参照2017年北京批次线"&ndash;&gt;
+                                <TextView
+                                    android:id="@+id/tv3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tv1"
+                                    android:layout_marginLeft="@dimen/x30"
+                                    android:layout_marginTop="@dimen/y14"
+
+                                    android:textColor="@color/font_3"
+                                    android:textSize="@dimen/x26" />
+                                &lt;!&ndash; android:text="超出一本线43分"&ndash;&gt;
+                                <TextView
+                                    android:id="@+id/tv4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignTop="@id/tv3"
+                                    android:layout_marginLeft="@dimen/x20"
+                                    android:layout_toRightOf="@id/tv3"
+
+                                    android:textColor="@color/font_3"
+                                    android:textSize="@dimen/x26" />
+
+
+                            </RelativeLayout>
+
+                            <include layout="@layout/division_long" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_Gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/y80"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_major"
+                                    android:layout_width="0dp"
+
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tv_major"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="专业对口率"
+                                        android:textColor="@color/font_2"
+                                        android:textSize="@dimen/x28" />
+
+                                    <ImageView
+                                        android:id="@+id/iv_major"
+                                        android:layout_width="@dimen/x26"
+                                        android:layout_height="@dimen/y23"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="@dimen/x10"
+                                        android:src="@mipmap/sort_no" />
+
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_salary"
+                                    android:layout_width="0dp"
+
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tv_salary"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="平均薪资"
+                                        android:textColor="@color/font_2"
+                                        android:textSize="@dimen/x28" />
+
+                                    <ImageView
+                                        android:id="@+id/iv_salary"
+                                        android:layout_width="@dimen/x26"
+                                        android:layout_height="@dimen/y23"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="@dimen/x10"
+                                        android:src="@mipmap/sort_no" />
+
+
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:layout_width="1px"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="@dimen/y20"
+                                    android:layout_marginTop="@dimen/y20"
+                                    android:background="@color/font_3" />
+
+                                <LinearLayout
+                                    android:id="@+id/ll_filtrate"
+                                    android:layout_width="@dimen/x150"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
+                                    android:gravity="center">
+
+                                    <TextView
+                                        android:id="@+id/tv_filtrate"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="筛选"
+                                        android:textColor="@color/font_2"
+                                        android:textSize="@dimen/x28" />
+
+                                    <ImageView
+                                        android:id="@+id/iv_filtrate"
+                                        android:layout_width="@dimen/x26"
+                                        android:layout_height="@dimen/y26"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="@dimen/x10"
+                                        android:src="@mipmap/filtrate_no" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <include layout="@layout/division_long" />
+                        </android.support.design.widget.AppBarLayout>
+                        &lt;!&ndash;tl:layout_behavior="@string/appbar_scrolling_view_behavior"&ndash;&gt;
+                        <com.github.jdsjlzx.recyclerview.LRecyclerView
+                            android:id="@+id/L_recyclerView"
+                            android:layout_width="match_parent"
+                            tl:layout_behavior="@string/appbar_scrolling_view_behavior"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/y88" />
+
+                        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+                            android:id="@+id/mLoad_tip"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/y88"
+                            android:layout_marginTop="@dimen/y204"
+                            android:visibility="visible" />
+
+                    </android.support.design.widget.CoordinatorLayout>
+                </LinearLayout>
+            </com.flipboard.bottomsheet.BottomSheetLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y88"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="#6a6a6a">
+
+                <ImageView
+
+                    android:id="@+id/iv_plane"
+                    android:layout_width="@dimen/x100"
+                    android:layout_height="@dimen/y100"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginBottom="@dimen/y5"
+                    android:layout_marginLeft="@dimen/x26"
+
+                    android:src="@mipmap/volunteer_empty" />
+
+                <TextView
+                    android:id="@+id/tv_volunteer_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x146"
+                    android:gravity="center"
+
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x30" />
+                &lt;!&ndash; android:text="0个学校"&ndash;&gt;
+                <TextView
+                    android:id="@+id/tv_major_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_toRightOf="@id/tv_volunteer_num"
+                    android:gravity="center"
+
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x30" />
+                &lt;!&ndash;  android:text="0个专业"&ndash;&gt;
+                <TextView
+                    android:id="@+id/tv_next"
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/account_textcolor_unfocus"
+                    android:gravity="center"
+                    android:text="下一步"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x30" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        &lt;!&ndash;<android.support.v7.widget.RecyclerView
+            android:id="@+id/recyView"
+            android:layout_width="@dimen/x570"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/white" />&ndash;&gt;
+        <RelativeLayout
+            android:id="@+id/recyView"
+            android:layout_width="@dimen/x570"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/white">
+
+            <fragment
+                android:id="@+id/fragment_id"
+                class="com.intention.sqtwin.ui.homepage.fragment.IntentionForeFragment"
+                android:layout_width="@dimen/x570"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+
+
+    </android.support.v4.widget.DrawerLayout>
+</RelativeLayout>-->
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rel_left"
+        android:layout_width="@dimen/x100"
+        android:layout_height="@dimen/y150"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_check_box"
+            android:layout_width="@dimen/x34"
+            android:layout_height="@dimen/y34"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:scaleType="fitXY"
+            android:src="@mipmap/select_off" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:paddingLeft="@dimen/x20"
+        android:id="@+id/part1"
+        android:layout_toRightOf="@id/rel_left"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150">
+
+        <TextView
+            android:id="@+id/tv_major_name"
+            android:text="fasdfas"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxWidth="@dimen/x450"
+            android:textSize="@dimen/x32"
+            android:textColor="@color/font_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:text="fasdf"
+            android:textSize="@dimen/x28"
+            android:textColor="@color/font_1"
+            android:layout_toRightOf="@id/tv_major_name"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:text="sadfa"
+            android:layout_marginTop="@dimen/y20"
+            android:textSize="@dimen/x28"
+            android:textColor="@color/font_2"
+            android:layout_below="@id/tv_major_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_collect"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y150"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:layout_width="@dimen/x44"
+            android:layout_height="@dimen/y43"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/collected" />
+    </LinearLayout>
+</RelativeLayout>

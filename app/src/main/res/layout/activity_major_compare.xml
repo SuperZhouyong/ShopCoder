@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x96"
+        android:background="@color/app_focus"
+        android:gravity="center_vertical"
+
+        android:orientation="horizontal">
+        <!--返回键、基本信息-->
+        <RelativeLayout
+            android:id="@+id/rel_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+
+                android:scaleType="fitCenter"
+                android:src="@mipmap/return_app" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/rel_back"
+            android:text="专业大全"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/x36"
+            android:visibility="visible" />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:gravity="center"
+            android:id="@+id/rl_more"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/bt_params"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:clickable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:text="调值参数"
+                android:textColor="@color/white"
+                android:visibility="invisible" />
+
+            <ImageView
+
+                android:layout_centerInParent="true"
+                android:id="@+id/iv_more"
+                android:layout_width="@dimen/x44"
+                android:layout_height="@dimen/y9"
+                android:src="@mipmap/icon_more" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_title"
+        android:background="@color/app_bottom_colour" />
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/loading_tip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_title" />
+</RelativeLayout>

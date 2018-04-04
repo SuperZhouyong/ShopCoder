@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y455"
+        android:layout_marginTop="@dimen/y10"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/x130"
+            android:layout_height="@dimen/y130"
+            android:src="@mipmap/complete" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y30"
+            android:text="订单支付成功"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x36" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y60"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_to_main"
+                android:layout_width="@dimen/x170"
+                android:layout_height="@dimen/y58"
+                android:background="@drawable/login_shape_focus"
+                android:gravity="center"
+                android:text="返回首页"
+                android:textColor="@color/app_main"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+
+                android:id="@+id/tv_to_consulting"
+                android:layout_width="@dimen/x170"
+                android:layout_height="@dimen/y58"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/tv_to_main"
+                android:background="@drawable/app_login_shape"
+                android:gravity="center"
+                android:text="开始咨询"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x26" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

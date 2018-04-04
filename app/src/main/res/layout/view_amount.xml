@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_amount_layout"
+
+    android:focusable="true"
+
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal"
+    android:showDividers="middle">
+
+    <Button
+        android:id="@+id/btnDecrease"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/y40"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_amount"
+        android:gravity="center"
+        android:text="—"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x34" />
+
+    <EditText
+
+        android:id="@+id/etAmount"
+        android:layout_width="@dimen/x80"
+        android:layout_height="@dimen/y40"
+        android:background="@null"
+        android:gravity="center"
+        android:textSize="@dimen/x26"
+        android:inputType="number"
+        android:textCursorDrawable="@drawable/shape_edittext_cursour"
+        android:text="1"
+        android:textColor="@color/font_1" />
+
+    <Button
+        android:id="@+id/btnIncrease"
+        android:layout_width="@dimen/x70"
+        android:layout_height="@dimen/y40"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_amount"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x34" />
+</LinearLayout>

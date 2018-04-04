@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:paddingRight="@dimen/x40"
+    android:orientation="horizontal">
+
+    <!--<ImageView
+        android:id="@+id/iv_label_color"
+        android:background="@color/app_focus"
+        android:layout_marginTop="@dimen/y13"
+        android:layout_width="@dimen/x40"
+        android:layout_marginRight="@dimen/y10"
+        android:layout_height="@dimen/y2" />-->
+    <!--<TextView
+        android:id="@+id/tv_label_name"
+        android:text="相关职业"
+        android:textSize="@dimen/x20"
+        android:gravity="center"
+        android:textColor="@color/font_1"
+        android:layout_width="@dimen/x120"
+        android:layout_height="wrap_content" />-->
+    <ImageView
+        android:id="@+id/iv_label_color"
+        android:background="@color/app_focus"
+        android:layout_marginTop="@dimen/y13"
+        android:layout_width="@dimen/x40"
+        android:layout_marginRight="@dimen/y10"
+        android:layout_height="@dimen/y2" />
+
+    <TextView
+        android:id="@+id/tv_label_name"
+        android:text="相关职业"
+        android:textSize="@dimen/x20"
+        android:gravity="center|left"
+        android:textColor="@color/font_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

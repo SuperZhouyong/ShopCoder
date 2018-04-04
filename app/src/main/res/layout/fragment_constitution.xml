@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <include layout="@layout/school_vp_headtitle" />
+    <ImageView
+        android:layout_marginTop="@dimen/y20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:background="#fff4f4f4"
+        android:orientation="vertical">
+
+    </ImageView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mRecy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

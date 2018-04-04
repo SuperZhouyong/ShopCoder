@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_bottom_colour"
+    android:orientation="vertical">
+
+
+   <LinearLayout
+       android:id="@+id/ll_fold_experts"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@color/white"
+           android:paddingBottom="@dimen/y20"
+           android:paddingTop="@dimen/y20">
+
+           <ImageView
+               android:id="@+id/image_iv"
+               android:layout_width="@dimen/x4"
+               android:layout_height="@dimen/y45"
+               android:background="@color/app_main" />
+
+           <TextView
+               android:id="@+id/tv_left"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerVertical="true"
+               android:layout_marginLeft="@dimen/x30"
+               android:text="其他信息"
+               android:textColor="@color/font_1"
+               android:textSize="@dimen/x30"
+               android:textStyle="bold" />
+       </RelativeLayout>
+
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/mOtherRecyclerView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@color/white" />
+   </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_status_fold"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_marginBottom="@dimen/y160"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@color/app_main"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/iv_experts_unfold"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y30"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/experts_unfold" />
+
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_toRightOf="@id/iv_experts_unfold"
+
+            android:text="展开其他信息"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x28" />
+
+    </RelativeLayout>
+</LinearLayout>

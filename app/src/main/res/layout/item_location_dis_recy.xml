@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/x30"
+    android:paddingRight="@dimen/x30"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_marginBottom="@dimen/y10"
+        android:layout_height="wrap_content"
+        android:text="北京 521个"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x22" />
+
+    <com.intention.sqtwin.widget.RundConorPB
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/x660"
+        android:layout_height="@dimen/y17" />
+
+
+</LinearLayout>

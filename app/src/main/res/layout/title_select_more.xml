@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <!--android:background="@mipmap/more_bg_2"-->
+    <LinearLayout
+        android:layout_width="@dimen/x210"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/more_bg_2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/y25">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_home"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y80"
+                android:gravity="center"
+                android:text="首页"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginRight="@dimen/x10"
+                android:background="#55ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_collect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_collection"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y80"
+                android:gravity="center"
+                android:text="收藏"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginRight="@dimen/x10"
+                android:background="#55ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_compare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_compare"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y80"
+                android:gravity="center"
+                android:text="添加对比"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_marginRight="@dimen/x10"
+                android:background="#55ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_share"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y80"
+                android:gravity="center"
+                android:text="分享报告"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y70"
+        android:layout_marginBottom="@dimen/y20"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/shape_compare_item"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/x22"
+        android:paddingRight="@dimen/x22">
+
+        <TextView
+            android:id="@+id/tv_major_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="专业专业"
+            android:textSize="@dimen/x28" />
+
+        <RelativeLayout
+            android:layout_marginLeft="@dimen/x10"
+            android:id="@+id/rl_close"
+            android:layout_width="@dimen/x45"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/x12">
+
+            <ImageView
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y22"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/close_icon" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

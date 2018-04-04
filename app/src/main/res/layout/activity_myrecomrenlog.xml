@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/toolbar_title" />
+
+    <include layout="@layout/division_long" />
+
+    <!--  <com.intention.sqtwin.widget.ClearEditText
+          android:id="@+id/editText"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/y88"
+          android:layout_below="@id/title"
+          android:background="@color/white"
+          android:hint="请输入学校名称"
+          android:paddingLeft="@dimen/x30"
+          android:paddingRight="@dimen/x30"
+          android:textColor="@color/font_1"
+          android:textColorHint="@color/font_3"
+          android:textCursorDrawable="@drawable/shape_edittext_cursour"
+          android:textSize="@dimen/x26" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/editText"
+        android:background="@color/app_bottom_colour">
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+            android:layout_below="@id/title"
+            android:id="@+id/loading_tip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

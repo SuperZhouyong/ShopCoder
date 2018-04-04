@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/list_return" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/ll_back"
+            android:text="历年批次线"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x36" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_unfocus" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="高考所在地"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/imageView1"
+            android:gravity="right"
+            android:hint="请选择高考所在地"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_item12"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="院校所在地"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/imageView12"
+            android:gravity="right"
+            android:hint="请选择院校所在地"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="招生年份"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/imageView2"
+            android:gravity="right"
+            android:hint="请选择招生年份"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="高考模式"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/imageView3"
+            android:gravity="right"
+            android:hint="请选择高考模式"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="录取批次"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/textview4"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/textview4"
+            android:gravity="right"
+            android:hint="请选择录取批次"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="专业关键词"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/imageView5"
+            android:gravity="right"
+            android:hint="请输入专业关键词(非必填)"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_item6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_item_title6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="院校关键词"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y24"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_enter" />
+
+        <TextView
+            android:id="@+id/tv_item_hint6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/imageView6"
+            android:gravity="right"
+            android:hint="请输入院校关键词(非必填)"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y87"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y40"
+        android:background="@drawable/shape_bt_bg"
+        android:gravity="center"
+        android:text="查询"
+        android:textColor="@color/white" />
+</LinearLayout>

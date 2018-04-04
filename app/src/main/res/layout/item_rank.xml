@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x30"
+    android:layout_marginRight="@dimen/x30"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_major_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y10"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y10"
+        android:gravity="center_vertical">
+
+        <com.intention.sqtwin.widget.RundConorPB
+            android:id="@+id/progress1"
+            android:layout_width="@dimen/x590"
+            android:layout_height="@dimen/y17" />
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="50000个"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x20" />
+    </LinearLayout>
+</LinearLayout>

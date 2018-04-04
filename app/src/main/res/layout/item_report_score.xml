@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:background="@color/white"
+        android:id="@+id/rl_item_title4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y85"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/nullview3"
+            android:layout_width="@dimen/x4"
+            android:layout_height="@dimen/y40"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/app_focus" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toRightOf="@id/nullview3"
+            android:text="历年录取分数"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+    </RelativeLayout>
+
+    <com.intention.sqtwin.widget.table.PanelListLayout
+        android:id="@+id/id_pl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/id_lv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.intention.sqtwin.widget.table.PanelListLayout>
+</LinearLayout>

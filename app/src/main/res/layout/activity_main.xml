@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:fitsSystemWindows="true"
+    xmlns:tl="http://schemas.android.com/apk/res-auto">
+    <!-- android:background="?attr/dayNightBackground"-->
+    <!--app:dayNightBackgroundAttr="dayNightBackground"-->
+    <!--  app:dayNightBackgroundAttr="dayNightBackground"-->
+    <FrameLayout
+        android:id="@+id/fl_body"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/tab_layout"
+        android:layout_height="match_parent" />
+
+    <View
+        android:layout_above="@+id/tab_layout"
+        android:background="@color/app_bottom_colour"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1" />
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_alignParentBottom="true"
+
+        tl:tl_indicator_height="0dp"
+        tl:tl_iconHeight="20dp"
+        tl:tl_iconWidth="20dp"
+        tl:tl_indicator_color="@color/gray"
+        tl:tl_textSelectColor="@color/main_color"
+        tl:tl_textUnselectColor="@color/light_gray"
+        tl:tl_textsize="11sp"
+        tl:tl_underline_height="0dp" />
+</RelativeLayout>

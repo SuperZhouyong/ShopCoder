@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bottom_colour"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/title_toor"
+            layout="@layout/toolbar_title" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!--<android.support.v7.widget.RecyclerView
+                android:id="@+id/recy_shopcart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:paddingTop="5dp" />-->
+            <com.github.jdsjlzx.recyclerview.LRecyclerView
+                android:id="@+id/recy_shopcart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="5dp" />
+
+            <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+                android:id="@+id/loading_tip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y96"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <Button
+                android:id="@+id/bt_goto_pay"
+                android:layout_width="@dimen/x200"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/buy_immediately"
+                android:text="结算"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/Tv_total_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_toLeftOf="@id/bt_goto_pay"
+                android:text="￥0"
+                android:textColor="@color/price_commodity"
+                android:textSize="@dimen/x28" />
+
+            <RelativeLayout
+                android:id="@+id/rel_all_check_box"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/x20">
+
+                <ImageView
+
+                    android:id="@+id/iv_all_check_box"
+                    android:layout_width="@dimen/x34"
+                    android:layout_height="@dimen/y34"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/select_off" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+
+                android:layout_toRightOf="@id/rel_all_check_box"
+                android:text="全选"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/Tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_toLeftOf="@id/Tv_total_money"
+                android:text="合计:"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

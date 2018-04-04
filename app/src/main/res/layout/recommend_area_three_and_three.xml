@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y500" />
+
+    <include layout="@layout/division" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_clear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/x26"
+            android:textColor="@color/font_2"
+            android:gravity="center"
+            android:text="重置" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="0dp"
+            android:textSize="@dimen/x26"
+            android:background="@color/main_blue"
+            android:textColor="@color/white"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确定" />
+    </LinearLayout>
+
+</LinearLayout>

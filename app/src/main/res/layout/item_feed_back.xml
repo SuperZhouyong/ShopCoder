@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y148"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_head_portrait"
+        android:layout_width="@dimen/x88"
+        android:layout_height="@dimen/y88"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_toRightOf="@id/iv_head_portrait">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="专家姓名"
+            android:textColor="@color/font_4"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/tv_specialist_bg"
+            android:layout_marginTop="@dimen/y5"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_toRightOf="@id/tv_name"
+            android:text="首席专家" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y14"
+            android:layout_below="@id/tv_name"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxWidth="@dimen/x490"
+            android:singleLine="true"
+            android:text="志愿填报志愿填报志愿填报志愿填报志愿填报志愿填报"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+        
+        <ImageView
+            android:id="@+id/iv_red"
+            android:background="@drawable/shape_red_point"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/x16"
+            android:layout_height="@dimen/y16" />
+    </RelativeLayout>
+
+</RelativeLayout>

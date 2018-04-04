@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"
+        android:background="@color/app_bottom_colour" />-->
+
+    <RelativeLayout
+        android:id="@+id/card_rel_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:paddingBottom="@dimen/y30"
+        android:paddingTop="@dimen/y30">
+        <!--120  -  160-->
+        <TextView
+            android:id="@+id/tv_commodity_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="@dimen/x20"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="订单号:123456789"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:lineSpacingExtra="@dimen/y5"
+            android:id="@+id/tv_commodity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_commodity_desc"
+            android:layout_marginLeft="@dimen/x25"
+            android:layout_marginTop="@dimen/y30"
+            android:text="智能测评"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x26" />
+
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_commodity_title"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginTop="@dimen/y30"
+            android:text="时间:2017.01.05 15:56:53"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x22" />
+
+
+        <TextView
+            android:id="@+id/tv_pay_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_time"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x30"
+            android:text="待支付"
+            android:textColor="@color/app_main"
+            android:textSize="@dimen/x22" />
+
+        <TextView
+            android:id="@+id/tv_pay"
+            android:layout_alignTop="@id/tv_commodity_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/x30"
+            android:text="￥500"
+            android:textColor="@color/orange"
+            android:textSize="@dimen/x26" />
+
+        <!--   <com.intention.sqtwin.widget.AmountView
+               android:id="@+id/amount_view"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignBottom="@id/iv_commodity"
+               android:layout_alignParentRight="true"
+               android:layout_marginRight="@dimen/x30" />-->
+    </RelativeLayout>
+
+
+</LinearLayout>

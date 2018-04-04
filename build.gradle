@@ -1,0 +1,74 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+//        mavenCentral()
+
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+//        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        /*
+        *ali热更新
+        * */
+        mavenCentral()
+        google()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+/*  12-11 19:23
+    releaseVersionCode = 1000
+    releaseVersionName = '2.0'
+* */
+//    2018 1- 4 18:44
+    /* releaseVersionCode = 1010
+     releaseVersionName = '2.01'*/
+    /*
+    * 2018 1-26 16.40
+    *
+    * releaseVersionCode = 1020
+    releaseVersionName = '2.02'
+    * */
+    /* releaseVersionCode = 1100
+    releaseVersionName = '2.1.0'*/
+    /*2018 2-03 19.33
+    *releaseVersionCode = 1200
+    * releaseVersionName = '2.2.0'
+    */
+    /*
+    *2018 3-12 11.30
+    * */
+    releaseVersionCode = 1400
+    releaseVersionName = '2.4.0'
+
+    androidCompileSdkVersion = 25
+    androidBuildToolsVersion = '27.0.3'
+    androidSupportSdkVersion = '25.0.0'
+    minSdkVersion = 16
+    targetSdkVersion = 22
+
+    bootDialogVersion = '1.1.9'
+    jakewhartonVersion = '8.5.1'
+}
+

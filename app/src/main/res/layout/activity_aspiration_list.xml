@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!--标题-->
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/list_return" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/ll_back"
+            android:text="我的志愿表"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x36" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_unfocus" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_below="@id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/loading_tip"
+        android:layout_below="@id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

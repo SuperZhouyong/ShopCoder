@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y70"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y70"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/y8"
+        android:layout_marginLeft="@dimen/x8"
+        android:layout_marginRight="@dimen/x8"
+        android:layout_marginTop="@dimen/y8"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:text="北京"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x24" />
+
+    <ImageView
+        android:id="@+id/iv_choose"
+        android:layout_width="@dimen/x30"
+        android:layout_height="@dimen/y20"
+        android:layout_alignBottom="@id/tv_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/y8"
+        android:layout_marginLeft="@dimen/x8"
+        android:layout_marginRight="@dimen/x8"
+        android:layout_marginTop="@dimen/y8"
+        android:src="@mipmap/icon_selected_md" />
+</RelativeLayout>

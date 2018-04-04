@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="WheelArrayDefault">
+        <item></item>
+        <item></item>
+    </string-array>
+    <string-array name="WheelArrayWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+    <!-- 选择性别-->
+    <string-array name="WheelArraySex">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
+    <!--学历-->
+    <string-array name="ed_bg">
+        <item>全部</item>
+        <item>本科</item>
+        <item>专科</item>
+    </string-array>
+    <!--文理科-->
+    <string-array name="artsandscience">
+        <item>文科</item>
+        <item>理科</item>
+    </string-array>
+    <!--批次 更改年份-->
+    <string-array name="year">
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+        <item>2009</item>
+        <item>2008</item>
+        <item>2007</item>
+        <item>2006</item>
+    </string-array>
+    <!--批次 -->
+    <string-array name="batch">
+        <item>本科一批</item>
+        <item>本科二批</item>
+        <item>本科三批</item>
+        <item>专科</item>
+    </string-array>
+    <!--学校类型-->
+    <string-array name="sch_type">
+        <item>全部</item>
+        <item>985/211</item>
+        <item>其他</item>
+    </string-array>
+    <!--高中年级-->
+    <string-array name="highsch_grade">
+        <item>高一</item>
+        <item>高二</item>
+        <item>高三</item>
+    </string-array>
+    <!--高中班级-->
+    <string-array name="highsch_class">
+        <item>一班</item>
+        <item>二班</item>
+        <item>三班</item>
+    </string-array>
+    <string-array name="_3and3">
+        <item>物理</item>
+        <item>化学</item>
+        <item>生物</item>
+        <item>历史</item>
+        <item>政治</item>
+        <item>地理</item>
+        <item>技术</item>
+    </string-array>
+
+    <array name="ColorArray">
+        <item>@color/color1</item>
+        <item>@color/color2</item>
+        <item>@color/color3</item>
+        <item>@color/color4</item>
+        <item>@color/color5</item>
+        <item>@color/color6</item>
+        <item>@color/color7</item>
+        <item>@color/color8</item>
+        <item>@color/color9</item>
+        <item>@color/color10</item>
+        <item>@color/color11</item>
+        <item>@color/color12</item>
+        <item>@color/color13</item>
+        <item>@color/color14</item>
+        <item>@color/color15</item>
+        <item>@color/color16</item>
+        <item>@color/color17</item>
+        <item>@color/color18</item>
+        <item>@color/color19</item>
+        <item>@color/color20</item>
+        <item>@color/color21</item>
+        <item>@color/color22</item>
+        <item>@color/color23</item>
+        <item>@color/color24</item>
+        <item>@color/color25</item>
+    </array>
+    <array name="EnterpriseColorArray">
+        <item>@color/enterprise1</item>
+        <item>@color/enterprise2</item>
+        <item>@color/enterprise3</item>
+        <item>@color/enterprise4</item>
+        <item>@color/enterprise5</item>
+        <item>@color/enterprise6</item>
+        <item>@color/enterprise7</item>
+        <item>@color/enterprise8</item>
+        <item>@color/enterprise9</item>
+        <item>@color/enterprise10</item>
+    </array>
+    <array name="LocationColorArray">
+        <item>@color/dis1</item>
+        <item>@color/dis2</item>
+        <item>@color/dis3</item>
+        <item>@color/dis4</item>
+        <item>@color/dis5</item>
+        <item>@color/dis6</item>
+        <item>@color/dis7</item>
+        <item>@color/dis8</item>
+        <item>@color/dis9</item>
+        <item>@color/dis10</item>
+    </array>
+    <array name="threeTabColor">
+        <item>@color/thisMajor</item>
+        <item>@color/publicMajor</item>
+        <item>@color/nationalMajor</item>
+    </array>
+</resources>

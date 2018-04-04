@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rel_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/list_return" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/rel_back"
+            android:text="专业大全"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/x36"
+            android:visibility="visible" />
+
+        <com.intention.sqtwin.widget.ChooseTab
+            android:id="@+id/choose_tab"
+            android:layout_width="@dimen/x300"
+            android:layout_height="@dimen/y60"
+            android:layout_centerInParent="true"
+            app:leftSelectDrawable="@drawable/shape_left_select"
+            app:leftUnSelectDrawable="@drawable/shape_left_unselect"
+            app:rightSelectDrawable="@drawable/shape_right_select"
+            app:rightUnSelectDrawable="@drawable/shape_right_unselect"
+            app:selectText="本科"
+            app:selectTextColor="@color/main_blue"
+            app:textSize="@dimen/x28"
+            app:unSelectText="专科"
+            app:unSelectTextColor="@color/font_1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_sum_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:text="目标专业"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x26"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_down"
+            android:layout_width="@dimen/x26"
+            android:layout_height="@dimen/y14"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@mipmap/list_down" />
+
+        <TextView
+            android:id="@+id/tv_limit_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_down"
+            android:text="0/20" />
+    </RelativeLayout>
+
+    <com.intention.sqtwin.widget.MaxHeightRecyclerView
+        android:id="@+id/selected_recy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y4"
+        android:layout_marginTop="@dimen/y20"
+        android:paddingLeft="@dimen/x20"
+        android:paddingRight="@dimen/x20" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

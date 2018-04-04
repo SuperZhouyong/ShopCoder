@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/pairt1"
+        layout="@layout/toolbar_title" />
+
+    <ImageView
+        android:id="@+id/nullview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_below="@id/pairt1"
+        android:background="#fff4f4f4" />
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_below="@id/nullview"
+        android:background="@color/white"
+        tl:tl_indicator_color="@color/app_focus"
+        tl:tl_indicator_width_equal_title="true"
+        tl:tl_tab_space_equal="false"
+        tl:tl_textSelectColor="@color/app_focus"
+        tl:tl_textUnselectColor="@color/font_2"
+        tl:tl_textsize="@dimen/x28"
+        tl:tl_underline_color="@color/white"
+        tl:tl_underline_height="@dimen/y4" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/nullview1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y10"
+        android:layout_below="@id/tab_layout"
+        android:background="@color/app_bottom_colour" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/nullview1"
+        android:background="@color/app_bottom_colour">
+
+        <com.intention.sqtwin.widget.NoScrollViewPager
+            android:id="@+id/vp_mycollect"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_compare_cancel"
+        android:layout_width="@dimen/x128"
+        android:layout_height="@dimen/y128"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/y30"
+        android:layout_marginRight="@dimen/x30"
+        android:src="@mipmap/icon_compare_cancel" />
+
+    <ImageView
+        android:id="@+id/iv_compare"
+        android:layout_width="@dimen/x128"
+        android:layout_height="@dimen/y128"
+        android:background="@drawable/seletor_icon_big"
+        android:layout_alignTop="@+id/iv_compare_cancel"
+        android:layout_alignLeft="@+id/iv_compare_cancel"
+        android:layout_alignStart="@+id/iv_compare_cancel" />
+
+
+</RelativeLayout>

@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">志愿360</string>
+    <string name="net_error">网络访问错误，请稍候再试</string>
+    <string name="empty">还没有数据哦</string>
+    <string name="loading">请稍候...</string>
+    <string name="reload">重新尝试</string>
+    <string name="no_net">网络不可用,请检查你的网络</string>
+
+    <!--login-->
+    <string name="login">登录</string>
+    <string name="account_hint">输入常用手机号</string>
+    <string name="password_hint">密码由6-18位字符组成</string>
+    <string name="resetpassword">忘记密码？</string>
+    <string name="auth_by_sms">通过短信验证</string>
+    <string name="no_account">没有账号？</string>
+    <string name="immediately_regiest">立即注册</string>
+    <!--短信验证登陆-->
+    <string name="get_auth">获取验证码</string>
+    <string name="login_by_password">通过密码验证</string>
+    <string name="get_iphone_num">请输入手机号</string>
+    <string name="get_auther_num">验证码</string>
+    <!--找回密码界面-->
+    <string name="findbackpassword">找回密码</string>
+    <string name="phone_email">请输入手机号或邮箱</string>
+    <string name="new_password">密码由6-18位字符组成</string>
+    <string name="over">完成</string>
+    <!--注册界面-->
+    <string name="Regist">注册</string>
+    <string name="before_agreement">注册即代表你已同意</string>
+    <string name="agreement_text">志愿360用户协议</string>
+    <string name="homepage_et_hint_score">请输入高考预估分数</string>
+    <string name="homepage_et_hint_rank">请输入高考预估排名</string>
+    <string name="homepage_et_hint1">选择就读意向地区</string>
+
+    <!-- 共享过度动画 -->
+    <string name="transition_photos">transition_animation_news_photos</string>
+    <!--扣费提示-->
+    <string name="charge_hint">将扣除1个"大数据报告"的费用</string>
+    <string name="charge_hint_bt">确定</string>
+    <!--去商城提示-->
+    <string name="shop_hint">请购买商品大数据报告</string>
+    <string name="shop_hint_bt">去商城</string>
+    <!--购买最新报告提示-->
+    <string name="new_hint">购买最新报告</string>
+    <string name="new_hint_bt">确定</string>
+    <!--登录提示-->
+    <string name="login_hint">登录后才能查看专业报告</string>
+    <string name="login_hint_bt">登录</string>
+
+    // 微信 支付
+    <string name="app_tip">提示</string>
+    <string name="pay_result_tip">这个界面用于显示第三方app通过微信支付的结果</string>
+    <string name="pay_result_callback_msg" formatted="false">微信支付结果：%s</string>
+
+    <!--更新界面-->
+    <string name="text_8">"更新地址不可用"</string>
+    <string name="text_6">"更新"</string>
+    <string name="text_12">"暂停"</string>
+    <string name="text_13">"继续"</string>
+    <string name="text_14">"更新出现异常"</string>
+    <string name="text_15">"升级更新"</string>
+    <string name="text_16">"准备中"</string>
+    <string name="text_17">"重试"</string>
+    <string name="text_18">"完成"</string>
+    <string name="text_19">"警告"</string>
+    <string name="text_20">"出现错误"</string>
+
+
+    <string name="share_url">https://www.zhiyuan360.cn/site/DownAppJ</string>
+    <string name="share_title">选专业就用志愿360</string>
+    <string name="share_content">查看各专业就业分布、平均薪资、专业对口率、职业专业分布、职业成长周期、职业转行率，看看哪些专业更受市场欢迎。</string>
+    <string name="review_tv">你比较适合的专业方向为：</string>
+    <string name="revew_tv_first">通过科学准确估计你的独特潜能优势，分析得出适合你的专业，为你规划未来学习方向，填报高考专业志愿提供重要参考依据。</string>
+    <string name="img_url">https://www.zhiyuan360.cn/assets/img/applogo.png</string>
+
+
+    <string name="footer_text">没有找到你的学校？</string>
+    <string name="print_hint">请去电脑端打印</string>
+    <string name="regist_hint">*由于高考改革，为保证推荐结果正确，请正确填写信息</string>
+    <string name="hongbao">您已获得%1$d个奖励红包\n可用于抵扣商品价格</string>
+    <string name="taocan">您已获得一件“套餐服务”商品!</string>
+</resources>

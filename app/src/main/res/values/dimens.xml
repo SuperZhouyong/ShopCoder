@@ -1,0 +1,32 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- font -->
+    <dimen name="font_tiny">10sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_normal">14sp</dimen>
+    <dimen name="font_normal2">16sp</dimen>
+    <dimen name="font_normal3">20sp</dimen>
+    <dimen name="font_large">24sp</dimen>
+    <dimen name="width_right">12dp</dimen>
+    <dimen name="item_margin">8dp</dimen>
+    <!-- 滚轮 -->
+    <dimen name="WheelItemTextSize">24sp</dimen>
+    <dimen name="WheelItemSpace">12dp</dimen>
+    <dimen name="WheelIndicatorSize">2dp</dimen>
+    <dimen name="WheelMargins">12dp</dimen>
+    <!--<dimen name="ksw_md_thumb_ripple_size">42dp</dimen>
+    <dimen name="ksw_md_thumb_solid_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_top">11dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_inset_bottom">10dp</dimen>
+
+    <dimen name="ksw_md_thumb_solid_size">20dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_size">21dp</dimen>
+    <dimen name="ksw_md_thumb_shadow_offset">2dp</dimen>-->
+
+    <dimen name="default_divider_height">1dp</dimen>
+    <!--<dimen name="default_divider_padding">4dp</dimen>-->
+</resources>

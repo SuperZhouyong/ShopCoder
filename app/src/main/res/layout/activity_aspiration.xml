@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_aspiration"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/list_return" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/ll_back"
+            android:text="选择感兴趣的专业"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x36" />
+
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/title"
+            android:text="(1/4)"
+            android:textColor="@color/textcolor2"
+            android:textSize="@dimen/x30" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_unfocus" />
+    </RelativeLayout>
+
+
+    <com.flipboard.bottomsheet.BottomSheetLayout
+        android:id="@+id/bottomSheetLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_shop_cart"
+        android:layout_below="@id/rl_title"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_tab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y80"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_recommend_tab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x50"
+                    android:gravity="center"
+                    android:text="基于测评推荐的专业"
+                    android:textColor="@color/app_main"
+                    android:textSize="@dimen/x28" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_search_tab"
+                    android:layout_width="@dimen/x300"
+                    android:layout_height="@dimen/y58"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x80"
+                    android:layout_marginRight="@dimen/x30"
+                    android:background="@drawable/shape_corner_stroke_major">
+
+                    <ImageView
+                        android:id="@+id/iv_search"
+                        android:layout_width="@dimen/x24"
+                        android:layout_height="@dimen/y24"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:src="@mipmap/search_black" />
+
+                    <com.intention.sqtwin.widget.ClearEditText
+                        android:id="@+id/search_et"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x14"
+                        android:layout_toRightOf="@id/iv_search"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="搜索感兴趣的专业"
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:paddingRight="@dimen/x10"
+                        android:singleLine="true"
+                        android:textColor="@color/font_1"
+                        android:textColorHint="@color/font_3"
+                        android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                        android:textSize="@dimen/x26" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x30"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/x20"
+                    android:text="取消"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x26"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/iv_division"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y1"
+                android:layout_below="@id/rl_tab"
+                android:background="@color/app_bottom_colour" />
+
+            <com.intention.sqtwin.widget.ViewPagerForAspiration
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/iv_division" />
+        </LinearLayout>
+
+    </com.flipboard.bottomsheet.BottomSheetLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_shop_cart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_alignParentBottom="true"
+        android:background="#6a6a6a">
+
+        <TextView
+            android:id="@+id/major_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x150"
+            android:gravity="center"
+            android:text="0个感兴趣的专业"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="@dimen/x200"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/app_main"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_plane"
+        android:layout_width="@dimen/x100"
+        android:layout_height="@dimen/y100"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/y16"
+        android:layout_marginLeft="@dimen/x26"
+        android:background="@mipmap/icon_plane_no" />
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/load_tip"
+        android:layout_below="@id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>

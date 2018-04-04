@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/part1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/y20"
+        android:paddingBottom="@dimen/y20"
+        android:layout_toRightOf="@id/rel_left"
+        android:background="@drawable/shape_item_reco_recy">
+
+        <LinearLayout
+            android:id="@+id/ll_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x15"
+            android:layout_marginRight="@dimen/x15"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y30"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_expired"
+                android:gravity="center"
+                android:paddingLeft="@dimen/x6"
+                android:paddingRight="@dimen/x6"
+                android:text="过期"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x22" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_school"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y80"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ll_hint"
+            android:scaleType="fitXY"
+            android:src="@mipmap/demo" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/iv_school"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_marginBottom="@dimen/y8"
+                android:id="@+id/tv_school_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:maxWidth="@dimen/x510"
+                android:text="北京大学"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/textcolor1"
+                android:textSize="@dimen/x32"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sch_type_type1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_school_name"
+                android:layout_marginLeft="@dimen/x20"
+                android:maxWidth="@dimen/x260"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="财政学"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_school_name"
+                android:layout_toRightOf="@id/sch_type_type1"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="北京-文科-480分"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x26" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

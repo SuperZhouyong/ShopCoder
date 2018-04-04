@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <!--标题栏-->
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/list_return" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@id/ll_back"
+            android:text="修改条件"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x36" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_unfocus" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/part1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@drawable/shape_viewgroup_bg"
+        android:orientation="vertical">
+
+        <!--<include layout="@layout/part_loc_and_type" />-->
+        <!--<include layout="@la"-->
+        <RelativeLayout
+            android:id="@+id/ll_location"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x1"
+            android:layout_marginRight="@dimen/x1"
+            android:layout_marginTop="@dimen/y1"
+            android:background="@color/white">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:text="推荐适合的学校/专业"
+                        android:textColor="@color/font_1"
+                        android:textSize="@dimen/x32" />-->
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginRight="@dimen/x30"
+                    android:gravity="center"
+                    android:text="北京"
+                    android:textColor="@color/textcolor2"
+                    android:textSize="@dimen/x28" />
+
+                <ImageView
+                    android:id="@+id/iv_location"
+                    android:layout_width="@dimen/x20"
+                    android:layout_height="@dimen/y26"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x20"
+                    android:src="@mipmap/list_enter" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/null_view"
+            layout="@layout/division_long"
+            android:visibility="gone" />
+        <!--文科、理科-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/ll_both"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y88"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_arts"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_sex_item_select"
+                    android:gravity="center"
+                    android:text="文科"
+                    android:textColor="@color/app_main"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:id="@+id/tv_science"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_textview_bg_fill_white"
+                    android:gravity="center"
+                    android:text="理科"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:id="@+id/ll_three"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_textview_bg_fill_white"
+                    android:gravity="center"
+                    android:text="3+3"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x28" />
+
+            </LinearLayout>
+
+            <!-- <TextView
+                 android:id="@+id/ll_three"
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/y88"
+                 android:layout_marginLeft="@dimen/x10"
+                 android:layout_marginRight="@dimen/x10"
+                 android:background="@drawable/shape_sex_item_select"
+                 android:gravity="center"
+                 android:orientation="horizontal"
+                 android:text="3+3"
+                 android:textColor="@color/app_main"
+                 android:textSize="@dimen/x35"
+                 android:visibility="gone"/>-->
+
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/null_view"
+            layout="@layout/division_long"
+            android:visibility="gone" />
+        <!--预估分数-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginRight="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="高考预估分数"
+                android:textColor="@color/font_1" />
+
+            <EditText
+                android:id="@+id/et_score"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y88"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center|right"
+                android:hint="@string/homepage_et_hint_score"
+                android:inputType="number"
+                android:paddingLeft="@dimen/x20"
+                android:textColor="@color/textcolor1"
+                android:textColorHint="@color/textcolor3"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_score_unit"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分" />
+        </LinearLayout>
+
+        <include layout="@layout/division_long" />
+
+        <LinearLayout
+            android:id="@+id/ll_rank"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x1"
+            android:layout_marginRight="@dimen/x1"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
+            android:paddingRight="@dimen/x18">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="高考预估排名"
+                android:textColor="@color/font_1" />
+
+            <EditText
+                android:id="@+id/et_rank"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y88"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center|right"
+                android:hint="@string/homepage_et_hint_rank"
+                android:inputType="number"
+                android:maxLength="8"
+                android:paddingLeft="@dimen/x20"
+                android:textColor="@color/textcolor1"
+                android:textColorHint="@color/textcolor3"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_rank_unit"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名" />
+        </LinearLayout>
+
+        <include layout="@layout/division_long" />
+        <!--意向地区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_intenarea"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/y88"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:textColor="@color/textcolor1"
+                android:textSize="@dimen/x28" />
+
+            <ImageView
+                android:layout_width="@dimen/x14"
+                android:layout_height="@dimen/y26"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x20"
+                android:src="@mipmap/list_enter" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_confirm"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_below="@id/part1"
+        android:layout_marginBottom="@dimen/y30"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@drawable/shape_bt_bg"
+        android:text="确定"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

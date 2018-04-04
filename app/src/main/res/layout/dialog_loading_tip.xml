@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_tip_logo"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y200"
+
+            android:src="@mipmap/no_network" />
+        <!--  <ProgressBar
+              android:id="@+id/progress"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:indeterminateDrawable="@drawable/loading_dialog_progressbar" />-->
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y40"
+
+            android:text="加载中..."
+            android:textColor="@color/font_2"
+
+            android:textSize="@dimen/x26" />
+        <!--  android:textSize="@dimen/font_normal"-->
+        <Button
+
+            android:id="@+id/bt_operate"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/y20"
+            android:background="@drawable/common_empty_tip"
+            android:paddingBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/app_main"
+
+            tools:text="@string/reload" />
+
+        <!--  android:background="@drawable/selector_gray"-->
+    </LinearLayout>
+
+</RelativeLayout>

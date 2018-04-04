@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:visibility="invisible"
+        android:clickable="false"
+        android:id="@+id/tv_params"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginBottom="@dimen/y30"
+        android:layout_marginRight="@dimen/x30"
+        android:gravity="center_vertical"
+        android:text="调值参数"
+        android:textColor="@color/app_main_2"
+        android:textSize="@dimen/x26" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/linchart2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y334"
+        android:layout_below="@id/tv_params" />
+
+    <com.intention.sqtwin.widget.LableView1
+        android:id="@+id/lable2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y65"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginTop="@dimen/y420"
+        app:lv1_textColor="@color/font_1"
+        app:lv1_textsize="@dimen/x20" />
+
+    <LinearLayout
+        android:id="@+id/ll_labels1"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lable2"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/ll_labels2"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_labels1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/ll_sum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_labels2"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y15"
+        android:background="@drawable/shape_dashedline"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y14"
+        android:paddingLeft="@dimen/x12"
+        android:paddingRight="@dimen/x12"
+        android:paddingTop="@dimen/y14">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总结："
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x22" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/y10"
+            android:text="如果不这么在乎，生活会简单得多。学会放下，放下压力，放下往事，放下消极，放下抱怨，放下狭隘，放下世间的劳苦愁烦，学会对自己说声顺其自然，学会坦然地面对厄运，学会积极地看待人生，学会凡事都往好处想。这样，阳光就会照进心里来，驱走恐惧，驱走黑暗，驱走所有的阴霾。"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x22" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="网络异常"
+        android:background="@color/white"
+        android:textColor="@color/orange"
+        android:textSize="@dimen/x28"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/tv_nulldata1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y400"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="人才市场数据样本不足，无法进行大数据分析"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26"
+        android:visibility="gone" />
+</RelativeLayout>

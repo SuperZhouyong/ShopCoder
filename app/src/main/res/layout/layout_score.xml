@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y220"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/ll_school_score"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y205"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/x84"
+            android:layout_height="@dimen/y84"
+
+            android:src="@mipmap/school_batch" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:text="院校分数线"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_major_score"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y205"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/x84"
+            android:layout_height="@dimen/y84"
+
+            android:src="@mipmap/major_score" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:text="专业分数线"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_area_score"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y205"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/x84"
+            android:layout_height="@dimen/y84"
+
+            android:src="@mipmap/area_score" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:text="地区批次线"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_rank_score"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/y205"
+        android:layout_weight="1"
+
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/x84"
+            android:layout_height="@dimen/y84"
+
+            android:src="@mipmap/rank_score" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y20"
+            android:text="一分一位"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+    </LinearLayout>
+
+    <!-- <ImageView
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/y1"
+         android:layout_centerInParent="true"
+         android:layout_marginLeft="@dimen/x40"
+         android:layout_marginRight="@dimen/x40"
+         android:background="@color/app_bottom_colour" />
+
+     <ImageView
+         android:layout_width="@dimen/x1"
+         android:layout_height="match_parent"
+         android:layout_centerInParent="true"
+         android:layout_marginBottom="@dimen/y40"
+         android:layout_marginTop="@dimen/y40"
+         android:background="@color/app_bottom_colour" />
+
+     <ImageView
+         android:layout_alignParentBottom="true"
+         android:background="@color/app_bottom_colour"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/y10" />-->
+</LinearLayout>

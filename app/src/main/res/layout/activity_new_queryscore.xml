@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y96">
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/list_return" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/ll_back"
+            android:text="历年批次线"
+            android:textColor="@color/textcolor1"
+            android:textSize="@dimen/x36" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_unfocus" />
+    </RelativeLayout>
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:layout_below="@id/part1"
+        tl:tl_tab_space_equal="true"
+        android:background="@color/white"
+        tl:tl_indicator_color="@color/app_focus"
+        tl:tl_indicator_width_equal_title="true"
+        tl:tl_textSelectColor="@color/app_focus"
+        tl:tl_textUnselectColor="@color/font_2"
+        tl:tl_textsize="@dimen/x28"
+        tl:tl_underline_color="@color/white"
+        tl:tl_underline_height="@dimen/y4" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

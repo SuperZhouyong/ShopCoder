@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/y30">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_title1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y85"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/nullview1"
+            android:layout_width="@dimen/x4"
+            android:layout_height="@dimen/y40"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/app_focus" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toRightOf="@id/nullview1"
+            android:text="平均起薪"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_item_title1">
+
+        <TextView
+            android:id="@+id/tv_intr"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/y10"
+            android:layout_marginLeft="@dimen/x34"
+            android:layout_marginTop="@dimen/y10"
+            android:text="从事该职业人群主要来源专业的百分比前五名"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x22" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/linchart1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y334"
+            android:layout_below="@id/tv_intr" />
+
+        <com.intention.sqtwin.widget.LableView1
+            android:id="@+id/lable1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y65"
+            android:layout_below="@id/tv_intr"
+            android:layout_marginTop="@dimen/y305"
+            app:lv1_textColor="@color/font_1"
+            app:lv1_textsize="@dimen/x20" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lab_recy"
+            android:layout_below="@id/lable1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <!--        <LinearLayout
+                    android:id="@+id/ll_labels1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/lable1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/ll_labels2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_labels1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal" />-->
+
+        <LinearLayout
+            android:id="@+id/ll_sum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_labels2"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y15"
+            android:background="@drawable/shape_dashedline"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/y14"
+            android:paddingLeft="@dimen/x12"
+            android:paddingRight="@dimen/x12"
+            android:paddingTop="@dimen/y14">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总结："
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x22" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/y10"
+                android:text=""
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x22" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_shade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_intr">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y500"
+                android:src="@mipmap/shade5" />
+
+            <!--<TextView
+                android:id="@+id/tv_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y300"
+                android:text="查看报告需购买相关商品"
+                android:textColor="@color/font_1" />
+
+            <Button
+                android:id="@+id/bt_pay"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="@dimen/x300"
+                android:layout_height="@dimen/y88"
+                android:layout_below="@+id/tv_pay"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y40"
+                android:background="@color/app_focus"
+                android:textColor="@color/white"
+                android:text="去商场" />-->
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_nulldata1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y400"
+        android:layout_below="@id/rl_item_title1"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="人才市场数据样本不足，无法进行大数据分析"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26"
+        android:visibility="gone" />
+</RelativeLayout>

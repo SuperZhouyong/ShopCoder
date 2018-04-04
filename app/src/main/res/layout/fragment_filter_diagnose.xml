@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recy_drawer"
+        android:paddingTop="@dimen/y40"
+        android:layout_above="@+id/ll_tab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoad_tip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+
+            android:background="@color/gray"
+            android:id="@+id/tv_clear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="重置"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/main_blue"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x26" />
+    </LinearLayout>
+</RelativeLayout>

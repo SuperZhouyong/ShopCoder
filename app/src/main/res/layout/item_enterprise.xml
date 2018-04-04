@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_title4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y85"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/nullview3"
+            android:layout_width="@dimen/x4"
+            android:layout_height="@dimen/y40"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/app_focus" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toRightOf="@id/nullview3"
+            android:text="企业性质"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+    </RelativeLayout>
+
+    <com.intention.sqtwin.widget.flow.FlowTagLayout
+        android:id="@+id/tag_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20"
+        android:layout_below="@id/rl_item_title4"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y400"
+        android:layout_below="@id/tag_flow" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/iv_shade"
+        android:src="@mipmap/shade9"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y600"
+        android:layout_below="@id/rl_item_title4" />
+
+    <TextView
+        android:id="@+id/tv_nulldata1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y400"
+        android:layout_below="@id/rl_item_title4"
+        android:background="@color/white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="人才市场数据样本不足，无法进行大数据分析"
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26"
+        android:visibility="gone" />
+</RelativeLayout>

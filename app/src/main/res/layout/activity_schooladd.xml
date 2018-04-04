@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bottom_colour"
+        android:orientation="vertical">
+
+        <!-- <com.intention.sqtwin.widget.ClearEditText
+             android:id="@+id/search_et"
+             android:paddingRight="@dimen/x30"
+             android:layout_width="fill_parent"
+             android:layout_height="@dimen/y88"
+             android:layout_centerVertical="true"
+             android:layout_marginTop="@dimen/x20"
+
+             android:background="@drawable/ed_search_corner"
+             android:gravity="center_vertical"
+             android:hint="请输入学校"
+             android:imeOptions="actionSearch"
+             android:maxLines="1"
+             android:paddingLeft="@dimen/x30"
+             android:singleLine="true"
+             android:textColor="@color/account_textcolor_focus"
+             android:textColorHint="@color/account_textcolor_unfocus"
+             android:textCursorDrawable="@drawable/shape_edittext_cursour"
+             android:textSize="@dimen/x26" />-->
+
+        <!--  <android.support.v7.widget.RecyclerView
+
+              android:layout_marginTop="@dimen/y10"
+              android:id="@+id/recy_school"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />-->
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/recy_school"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/y10" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

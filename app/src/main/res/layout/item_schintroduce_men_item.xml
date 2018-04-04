@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+   <RelativeLayout
+       android:layout_marginBottom="@dimen/y20"
+
+       android:gravity="center"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+       <!-- android:layout_width="@dimen/x240"
+           android:layout_height="@dimen/y240" -->
+       <com.github.mikephil.charting.charts.PieChart
+           android:id="@+id/pie_chart"
+           android:layout_width="@dimen/x240"
+           android:layout_height="@dimen/y240" />
+
+       <TextView
+           android:id="@+id/tv"
+           android:layout_marginTop="@dimen/y15"
+           android:layout_centerHorizontal="true"
+           android:layout_below="@id/pie_chart"
+           android:textColor="@color/font_1"
+           android:textSize="@dimen/x26"
+           android:text="男女比例"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+   </RelativeLayout>
+</LinearLayout>
