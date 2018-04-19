@@ -121,8 +121,8 @@ public class Api {
                 String timestamp = PublicKetUtils.getTimestamp();
                 Request build = originalRequest.newBuilder()
                         .addHeader("Content-Type", getContentType(hostType))
-                        .addHeader("timestamp", timestamp)
-                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
+//                        .addHeader("timestamp", timestamp)
+//                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
                         .addHeader("Cache-Control", getCacheControl())
 //                        .header("Cache-Control", getCacheControl())
                         .build();
@@ -163,13 +163,13 @@ public class Api {
                 .addInterceptor(headerInterceptor)
                 .addInterceptor(logInterceptor)
                 // todo 自定义证书删除以下
-                .hostnameVerifier(new HostnameVerifier() {
-                    @Override
-                    public boolean verify(String hostname, SSLSession session) {
-                        return true;
-                    }
-                })
-                .sslSocketFactory(HTTPSUtils.getInstance().getSslSocketFactory(), HTTPSUtils.getInstance().getTrustManager())
+//                .hostnameVerifier(new HostnameVerifier() {
+//                    @Override
+//                    public boolean verify(String hostname, SSLSession session) {
+//                        return true;
+//                    }
+//                })
+//                .sslSocketFactory(HTTPSUtils.getInstance().getSslSocketFactory(), HTTPSUtils.getInstance().getTrustManager())
                 .cache(cache)
                 .build();
 
@@ -178,7 +178,7 @@ public class Api {
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(AppConstant.CESHI)
+                .baseUrl(AppConstant.appUrl)
                 .build();
         // baseUrl 为 公共常用的
         movieService = retrofit.create(ApiService.class);

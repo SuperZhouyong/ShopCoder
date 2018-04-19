@@ -6,6 +6,38 @@ package com.intention.sqtwin.app;
  * on 2016.09.10:44
  */
 public class AppConstant {
+
+//    public static final String appUrl = "http://api.hancang.cn/" ;
+public static final String appUrl = "http://ta.beikunit.com/api/" ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //    wxd2fb38f960eb278e appid  wxd2fb38f960eb278e
     //wxe28f83bf7e4a9ecc
     public static final String WxAPP_ID = "wxd2fb38f960eb278e";

@@ -21,10 +21,11 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseapp.AppManager;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.TabEntity;
-import com.intention.sqtwin.ui.main.fragment.ExpertsFragment;
+import com.intention.sqtwin.ui.main.fragment.AuctionFragment;
+import com.intention.sqtwin.ui.main.fragment.EnterFragment;
 import com.intention.sqtwin.ui.main.fragment.HomePageFragment;
+import com.intention.sqtwin.ui.main.fragment.MallFragment;
 import com.intention.sqtwin.ui.main.fragment.MyInfoFragment;
-import com.intention.sqtwin.ui.main.fragment.ShopFragment;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.ToastUitl;
 
@@ -33,7 +34,6 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import rx.Observable;
-import rx.functions.Action1;
 
 public class MainActivity extends BaseActivity {
 
@@ -42,32 +42,38 @@ public class MainActivity extends BaseActivity {
     FrameLayout flBody;
     @BindView(R.id.tab_layout)
     CommonTabLayout tabLayout;
-    private String[] mTitles = {"首页", "专家咨询", "服务", "我的"};
+    //    private String[] mTitles = {"首页", "专家咨询", "服务", "我的"};
+    private String[] mTitles = {"首页", "拍卖", "入驻", "商城", "我的"};
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal, R.mipmap.icon_specialist, R.mipmap.ic_girl_normal, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_normal, R.mipmap.icon_specialist, R.mipmap.ic_girl_normal, R.mipmap.ic_care_normal, R.mipmap.ic_care_normal};
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_girl_selected, R.mipmap.ic_care_selected};
+            R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_girl_selected, R.mipmap.ic_care_selected, R.mipmap.ic_care_normal};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private static int tabLayoutHeight;
+    // 首页
     private HomePageFragment mPositionFragment;
-    private ExpertsFragment mExpertsFragment;
-    private ShopFragment mMessageFragment;
+    //拍卖
+    private AuctionFragment mAuctionFragment;
+    //入驻
+    private EnterFragment mEnterFragment;
+    //商场
+    private MallFragment mMallFragment;
+    //我的
     private MyInfoFragment mMyInfoFragment;
-    private boolean isExit;
-    //    private String moneyNum1;
 
-    public String getMoneyNum() {
+    private boolean isExit;
+
+/*    public String getMoneyNum() {
         return moneyNum;
     }
 
     public void setMoneyNum(String moneyNum) {
         this.moneyNum = moneyNum;
-    }
+    }*/
 
     private String moneyNum;
 
     /**
-     *
      * @param intent
      */
     @Override
@@ -129,72 +135,6 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         moneyNum = getIntent().getStringExtra(AppConstant.Moneynum);
         initTab();
-      /*  mRxManager.on(AppConstant.ActivitySwictToFragment, new Action1<Integer>() {
-            @Override
-            public void call(Integer integer) {
-
-                SwitchTo(integer);
-                tabLayout.setCurrentTab(integer);
-
-
-            }
-        });*/
-
-       /* RxPermissions rxPermissions = new RxPermissions(MainActivity.this);
-        rxPermissions.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE,
-                Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.CALL_PHONE,
-                Manifest.permission.CHANGE_WIFI_STATE,
-                Manifest.permission.INTERNET,
-                Manifest.permission.GET_ACCOUNTS,
-                Manifest.permission.CHANGE_NETWORK_STATE
-        ).subscribe(new Action1<Permission>() {
-            @Override
-            public void call(Permission permission) {
-                if (permission.granted) {
-                    // 同意权限
-                    LogUtils.logd("System--" + "同意了权限");
-                } else {
-                    if (CheckPhoneSystemUtils.isMIUI()) {
-                        LogUtils.logd("System--" + "产品/硬件的制造商小米:");
-                        Intent intent = new Intent();
-                        intent.setAction("miui.intent.action.APP_PERM_EDITOR");
-                        intent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
-                        intent.putExtra("extra_pkgname", getPackageName());
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        try {
-                            startActivity(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-//                            Toast.makeText(MediaRecoderService.this, "只有MIUI才可以设置哦", Toast.LENGTH_SHORT).show();
-                        }
-                    } else if (CheckPhoneSystemUtils.isFlyme()) {
-                        Intent intent = new Intent();
-                        LogUtils.logd("System--" + "com.meizu.safe.security.SHOW_APPSEC");
-                        intent.setAction("com.meizu.safe.security.SHOW_APPSEC");
-                        intent.addCategory(Intent.CATEGORY_DEFAULT);
-                        intent.putExtra("packageName", getPackageName());
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        try {
-                            startActivity(intent);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-//                            Toast.makeText(MediaRecoderService.this, "只有Flyme才可以设置哦", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-
-                *//*else if (permission.shouldShowRequestPermissionRationale) {
-                    // 用户拒绝了 没选中不再提示
-                } else {
-                    // 拒绝 选中了  不再提示
-                }*//*
-
-            }
-        });*/
 
     }
 
@@ -219,11 +159,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initTabBackGround(int position) {
-       /* TextView tv = (TextView) tabLayout.getChildAt(position).findViewById(R.id.tv_tab_title);
-        if (tv!=null){
-            tv.getPaint().setFakeBoldText(true);
-        }
-        tabLayout.setTextBold(true);*/
+
     }
 
     private void SwitchTo(int position) {
@@ -232,36 +168,49 @@ public class MainActivity extends BaseActivity {
         switch (position) {
             //首页
             case 0:
-                transaction.hide(mMessageFragment);
+
+                transaction.hide(mEnterFragment);
                 transaction.hide(mMyInfoFragment);
-                transaction.hide(mExpertsFragment);
+                transaction.hide(mAuctionFragment);
+                transaction.hide(mMallFragment);
                 transaction.show(mPositionFragment);
                 transaction.commitAllowingStateLoss();
                 break;
-            //专家咨询
+            //拍卖
             case 1:
-                transaction.hide(mPositionFragment);
+                transaction.hide(mEnterFragment);
                 transaction.hide(mMyInfoFragment);
-                transaction.hide(mMessageFragment);
-                transaction.show(mExpertsFragment);
+                transaction.show(mAuctionFragment);
+                transaction.hide(mMallFragment);
+                transaction.hide(mPositionFragment);
 //                mExpertsFragment.ShowIsRed();
                 transaction.commitAllowingStateLoss();
                 break;
-            //服务
+            //入驻
             case 2:
-                transaction.hide(mPositionFragment);
-                transaction.hide(mExpertsFragment);
+                transaction.show(mEnterFragment);
                 transaction.hide(mMyInfoFragment);
-                transaction.show(mMessageFragment);
+                transaction.hide(mAuctionFragment);
+                transaction.hide(mMallFragment);
+                transaction.hide(mPositionFragment);
+                transaction.commitAllowingStateLoss();
+                break;
+            //商城
+            case 3:
+                transaction.hide(mEnterFragment);
+                transaction.hide(mMyInfoFragment);
+                transaction.hide(mAuctionFragment);
+                transaction.show(mMallFragment);
+                transaction.hide(mPositionFragment);
                 transaction.commitAllowingStateLoss();
                 break;
             //我的
-            case 3:
-                transaction.hide(mPositionFragment);
-                transaction.hide(mMessageFragment);
-                transaction.hide(mExpertsFragment);
+            case 4:
+                transaction.hide(mEnterFragment);
                 transaction.show(mMyInfoFragment);
-//                mMyInfoFragment.requestData();
+                transaction.hide(mAuctionFragment);
+                transaction.hide(mMallFragment);
+                transaction.hide(mPositionFragment);
                 transaction.commitAllowingStateLoss();
                 break;
 
@@ -391,20 +340,25 @@ public class MainActivity extends BaseActivity {
         int currentTabPosition = 0;
         if (savedInstanceState != null) {
             mPositionFragment = (HomePageFragment) getSupportFragmentManager().findFragmentByTag("mPositionFragment");
-            mExpertsFragment = (ExpertsFragment) getSupportFragmentManager().findFragmentByTag("mExpertsFragment");
-            mMessageFragment = (ShopFragment) getSupportFragmentManager().findFragmentByTag("mMessageFragment");
+            mAuctionFragment = (AuctionFragment) getSupportFragmentManager().findFragmentByTag("mAuctionFragment");
+            mEnterFragment = (EnterFragment) getSupportFragmentManager().findFragmentByTag("mEnterFragment");
+            mMallFragment = (MallFragment) getSupportFragmentManager().findFragmentByTag("mMallFragment");
+//            mExpertsFragment = (ExpertsFragment) getSupportFragmentManager().findFragmentByTag("mExpertsFragment");
+//            mMessageFragment = (ShopFragment) getSupportFragmentManager().findFragmentByTag("mMessageFragment");
             mMyInfoFragment = (MyInfoFragment) getSupportFragmentManager().findFragmentByTag("mMyInfoFragment");
 
             currentTabPosition = savedInstanceState.getInt(AppConstant.HOME_CURRENT_TAB_POSITION);
         } else {
             mPositionFragment = new HomePageFragment();
-            mExpertsFragment = new ExpertsFragment();
-            mMessageFragment = new ShopFragment();
+            mAuctionFragment = new AuctionFragment();
+            mEnterFragment = new EnterFragment();
+            mMallFragment = new MallFragment();
             mMyInfoFragment = new MyInfoFragment();
 
             transaction.add(R.id.fl_body, mPositionFragment, "mPositionFragment");
-            transaction.add(R.id.fl_body, mExpertsFragment, "mExpertsFragment");
-            transaction.add(R.id.fl_body, mMessageFragment, "mMessageFragment");
+            transaction.add(R.id.fl_body, mAuctionFragment, "mAuctionFragment");
+            transaction.add(R.id.fl_body, mEnterFragment, "mEnterFragment");
+            transaction.add(R.id.fl_body, mMallFragment, "mMallFragment");
             transaction.add(R.id.fl_body, mMyInfoFragment, "mMyInfoFragment");
 
         }

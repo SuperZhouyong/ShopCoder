@@ -1,3 +1,4 @@
+/*
 package com.intention.sqtwin.wxapi;
 
 
@@ -60,8 +61,10 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_result);
         ButterKnife.bind(this);
-     /*   iv_paydown = (ImageView) findViewById(R.id.iv_paydown);
-        pay = (TextView) findViewById(R.id.tv_pay);*/
+     */
+/*   iv_paydown = (ImageView) findViewById(R.id.iv_paydown);
+        pay = (TextView) findViewById(R.id.tv_pay);*//*
+
         api = WXAPIFactory.createWXAPI(this, AppConstant.WxAPP_ID);
         api.handleIntent(getIntent(), this);
         toolTitleLeft.setText("返回");
@@ -154,4 +157,4 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         super.onDestroy();
         RxBus.getInstance().unregister(AppConstant.TOCONFIRMORDER);
     }
-}
+}*/

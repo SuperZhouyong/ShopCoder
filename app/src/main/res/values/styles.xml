@@ -15,6 +15,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+   <!-- <style name="AppTheme.AllActivity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/app_bottom_colour</item>
+        &lt;!&ndash;<item name="android:listDivider">@drawable/divider</item>&ndash;&gt;
+    </style>-->
     <!--引导页界面-->
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <!--<item name="android:windowNoTitle">true</item>&lt;!&ndash;//无标题&ndash;&gt;
@@ -26,7 +30,7 @@
     </style>
     <!--冷启动界面-->
     <style name="AppTheme.Launcher" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@mipmap/splase_icon</item>
+        <!--<item name="android:windowBackground">@mipmap/splase_icon</item>-->
         <item name="android:windowFullscreen">true</item>
         <!--<item name="android:windowBackground">@color/white</item>
         <item name="android:windowNoTitle">true</item>-->
@@ -40,7 +44,7 @@
     </style>
     <style name="AppTheme.AllActivity" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/app_bottom_colour</item>
-        <item name="android:listDivider">@drawable/divider</item>
+        <!--<item name="android:listDivider">@drawable/divider</item>-->
     </style>
     <!--普通dialoh-->
     <style name="CustomProgressDialog" parent="@style/CustomDialog">
@@ -88,7 +92,7 @@
         <item name="android:layout_height">@dimen/y30</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@drawable/shape_textview_bg_fill_orange</item>
+        <!--<item name="android:background">@drawable/shape_textview_bg_fill_orange</item>-->
         <item name="android:paddingLeft">@dimen/x6</item>
         <item name="android:paddingRight">@dimen/x6</item>
 
@@ -100,7 +104,7 @@
         <item name="android:layout_height">@dimen/y28</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:background">@drawable/shape_specialist_bg</item>
+        <!--<item name="android:background">@drawable/shape_specialist_bg</item>-->
         <item name="android:paddingLeft">@dimen/x10</item>
         <item name="android:paddingRight">@dimen/x10</item>
 

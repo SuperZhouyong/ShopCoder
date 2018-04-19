@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.intention.sqtwin">
 
-    <uses-sdk
+  <!--  <uses-sdk
         android:minSdkVersion="16"
-        android:targetSdkVersion="22" />
+        android:targetSdkVersion="22" />-->
     <!-- 权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -45,9 +45,17 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme.AllActivity">
-        <meta-data
+        <!--<meta-data
             android:name="com.intention.sqtwin.base.BaseGlideCache"
-            android:value="GlideModule" />
+            android:value="GlideModule" />-->
+        <activity
+            android:name="com.intention.sqtwin.ui.main.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- umeng需要的 -->
         <!-- android:value="5900713a7f2c743d9900147a" -->
        <!-- <meta-data
@@ -59,7 +67,7 @@
             android:value="${UMENG_CHANNEL_VALUE}" />-->
         <!-- splash 界面 -->
         <!-- Splash -->
-        <activity
+      <!--  <activity
             android:name=".ui.main.activity.SplashActivity"
             android:theme="@style/AppTheme.Launcher">
             <intent-filter>
@@ -67,12 +75,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ui.main.activity.UpdateActivity" />
-        <activity
-            android:name=".ui.main.activity.GuidetwoActivity"
-            android:icon="@mipmap/ic_launcher"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        </activity>-->
+        <!--<activity android:name=".ui.main.activity.UpdateActivity" />-->
+        <!--<activity-->
+            <!--android:name=".ui.main.activity.GuidetwoActivity"-->
+            <!--android:icon="@mipmap/ic_launcher"-->
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />-->
         <!--<activity
             android:name=".ui.main.activity.GuideActivity"
             android:icon="@mipmap/ic_launcher"
@@ -85,35 +93,35 @@
               </intent-filter>
             &ndash;&gt;
         </activity>-->
-        <activity
-            android:name=".ui.main.activity.MainActivity"
-            android:icon="@mipmap/ic_launcher"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustPan" />
+        <!--<activity-->
+            <!--android:name=".ui.main.activity.MainActivity"-->
+            <!--android:icon="@mipmap/ic_launcher"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:windowSoftInputMode="adjustPan" />-->
         <!-- 登陆 注册 重置密码 短信登陆界面 -->
-        <activity
+        <!--<activity
             android:name=".ui.main.activity.LoginActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize" />-->
         <!--
           <intent-filter>
               <action android:name="android.intent.action.MAIN" />
               <category android:name="android.intent.category.LAUNCHER" />
           </intent-filter>
         -->
-        <activity
+       <!-- <activity
             android:name=".ui.main.activity.RegistFragActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />-->
         <!--  <activity
               android:name=".ui.main.activity.RegistActivity"
               android:configChanges="keyboard|keyboardHidden|orientation"
               android:launchMode="singleTask"
               android:screenOrientation="portrait"
               android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />-->
-        <activity
+       <!-- <activity
             android:name=".ui.main.activity.ResetPasswordActivity"
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:launchMode="singleTask"
@@ -124,7 +132,7 @@
             android:configChanges="keyboard|keyboardHidden|orientation"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
+            android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />-->
         <!-- 搜索界面 -->
     <!--    <activity
             android:name=".ui.main.activity.SearchActivity"
@@ -289,7 +297,7 @@
         <activity android:name=".ui.MyInfo.DeveloperActivity" />-->
         <!-- ShareSDk -->
         <!-- 开始 -->
-        <activity
+      <!--  <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
@@ -303,15 +311,15 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-            <!-- 调用新浪原生SDK，需要注册的回调activity -->
+            &lt;!&ndash; 调用新浪原生SDK，需要注册的回调activity &ndash;&gt;
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>
+        </activity>-->
 
-        <!-- 微信分享回调 -->
+       <!-- &lt;!&ndash; 微信分享回调 &ndash;&gt;
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -319,13 +327,13 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
 
-            <!--
+            &lt;!&ndash;
              <intent-filter>
                  <action android:name="android.intent.action.VIEW" />
                  <category android:name="android.intent.category.DEFAULT" />
                  <data android:scheme="wxd2fb38f960eb278e" />
              </intent-filter>
-            -->
+            &ndash;&gt;
 
         </activity>
         <activity
@@ -333,10 +341,10 @@
             android:exported="true"
             android:launchMode="singleTop" />
 
-        <!-- ShareSDk -->
-        <!-- 结束 -->
-        <!-- 银联集成的开始 -->
-        <!--
+        &lt;!&ndash; ShareSDk &ndash;&gt;
+        &lt;!&ndash; 结束 &ndash;&gt;
+        &lt;!&ndash; 银联集成的开始 &ndash;&gt;
+        &lt;!&ndash;
            <activity
                android:name="com.unionpay.uppay.PayActivity"
                android:configChanges="orientation|keyboardHidden|keyboard"
@@ -347,9 +355,9 @@
                android:configChanges="orientation|keyboardHidden|fontScale"
                android:screenOrientation="portrait"
                android:windowSoftInputMode="adjustResize" />
-        -->
-        <!-- 银联集成的结束 -->
-        <!-- 支付宝 -->
+        &ndash;&gt;
+        &lt;!&ndash; 银联集成的结束 &ndash;&gt;
+        &lt;!&ndash; 支付宝 &ndash;&gt;
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
@@ -361,67 +369,7 @@
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" />
-      <!--  &lt;!&ndash;修改成绩的接口&ndash;&gt;
-        <activity android:name=".ui.MyInfo.ChangeScoreActivity" />
-        &lt;!&ndash;学校添加界面&ndash;&gt;
-        <activity android:name=".ui.main.activity.SchoolAddActivity" />
-        &lt;!&ndash; 填报志愿-1&ndash;&gt;
-        <activity
-            android:name=".ui.homepage.AspirationActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged">
-
-        </activity>
-        &lt;!&ndash; 填报志愿 &ndash;&gt;
-        <activity android:name=".ui.MyInfo.AspiraitonDetailActivity">
-
-        </activity>
-        &lt;!&ndash; 志愿单列表 &ndash;&gt;
-        <activity android:name=".ui.homepage.AspirationListActivity" />
-        &lt;!&ndash;志愿填报-5&ndash;&gt;
-        <activity android:name=".ui.homepage.IntentionFiveActivity">
-            &lt;!&ndash;<intent-filter>&ndash;&gt;
-            &lt;!&ndash;<action android:name="android.intent.action.MAIN" />&ndash;&gt;
-
-            &lt;!&ndash;<category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;
-            &lt;!&ndash;</intent-filter>&ndash;&gt;
-
-        </activity>
-        &lt;!&ndash;志愿填报-4&ndash;&gt;
-        <activity android:name=".ui.homepage.IntentionForeActivity">
-            &lt;!&ndash;  <intent-filter>
-                  <action android:name="android.intent.action.MAIN" />
-
-                  <category android:name="android.intent.category.LAUNCHER" />
-              </intent-filter>&ndash;&gt;
-
-        </activity>
-        <activity android:name=".ui.homepage.IntentionForeMajorListActivity" />
-        <activity android:name=".ui.homepage.DiagnoseActivity" />
-        <activity android:name=".ui.homepage.DiagnoseTwoActivity" />
-        <activity android:name=".ui.homepage.DiagnoseThreeActivity" />
-        <activity android:name=".ui.homepage.DiagnoseFourActivity" />
-        <activity android:name=".ui.homepage.ReportIntroduceActivity" />
-        <activity android:name=".ui.homepage.NormalRecyclerViewActivity" />
-        <activity android:name=".ui.experts.activity.SelectSchoolActivity" />
-        <activity android:name=".ui.experts.activity.SelectMajorActivity" />
-        <activity android:name=".ui.experts.activity.VolunteerListActivity" />
-        <activity android:name=".ui.experts.activity.GetVolunteerListActivity" />
-        <activity android:name=".ui.experts.activity.FeedBackActivity" />
-        <activity android:name=".ui.experts.activity.ChatActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
-        <activity android:name=".ui.experts.activity.EditorScoreActivity" />
-        &lt;!&ndash;专家详情界面&ndash;&gt;
-        <activity android:name=".ui.experts.activity.ExpertsDetailActivity" />
-        &lt;!&ndash;开始预约第一步&ndash;&gt;
-        <activity android:name=".ui.experts.activity.ExpertsAppointmentActivity" />
-        &lt;!&ndash;开始预约第二步&ndash;&gt;
-        <activity android:name=".ui.experts.activity.ExpertsAppointmentTwoActivity" />
-        &lt;!&ndash;开始预约第三步&ndash;&gt;
-        <activity android:name=".ui.experts.activity.ExpertsAppointmentThreeActivity"/>
-        &lt;!&ndash;咨询界面确认订单页&ndash;&gt;
-        <activity android:name=".ui.experts.activity.ExpertsOrderActivity"/>
-        &lt;!&ndash;咨询界面支付完成页&ndash;&gt;
-        <activity android:name=".ui.experts.activity.ExpertsOrderSucceedActivity"/>-->
+    -->
     </application>
 
 </manifest>

@@ -1,28 +1,49 @@
 package com.intention.sqtwin.api;
 
 
-import com.intention.sqtwin.bean.*;
+import com.intention.sqtwin.bean.RecommendField;
+import com.intention.sqtwin.bean.RecommendedLots;
+import com.intention.sqtwin.bean.ShufflingPictureBean;
 
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.Query;
 import rx.Observable;
 
 /**
  * des:ApiService
- * Created by xsf
+ * Created by xsfm
  * on 2016.06.15:47
  */
 public interface ApiService {
+    /*
+    * 首页轮播图
+    * */
+    @GET("Auctionfield/get_home_adv")
+    Observable<ShufflingPictureBean> getShufflingPicture(
+            @Query("page") String page,
+            @Query("position") Integer postion
+    );
+
+    /**
+     *
+     * @param type 推荐拍品
+     * @return
+     */
+    @GET("Index/get_recommend_auction_item")
+    Observable<RecommendedLots>  getRecommendedLots(
+            @Query("type") String type
+    );
+    @GET("index/get_recommend_auction_field")
+    Observable<RecommendField> getRecommendield(
+            @Query("type") String type
+    );
+//    @GET("get_home_adv")
+//    Observable<> getBanner(
+//            @Query("page") String page ,
+////            @Query()
+//    );
+
 
     /*
     * 版本号获取

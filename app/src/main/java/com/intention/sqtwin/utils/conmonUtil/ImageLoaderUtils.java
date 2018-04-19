@@ -31,11 +31,12 @@ public class ImageLoaderUtils {
         }
         Glide.with(context).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .placeholder(R.mipmap.colleges_icon)
-                .error(R.mipmap.colleges_icon)
+//                .centerCrop()
+//                .fitCenter()
+//                .placeholder(R.mipmap.colleges_icon)
+//                .error(R.mipmap.colleges_icon)
                 .crossFade().into(imageView);
-        Glide.with(context).load(url).into(imageView);
+//        Glide.with(context).load(url).into(imageView);
 
     }
 

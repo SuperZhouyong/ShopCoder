@@ -30,7 +30,7 @@ android {
 //        }
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86','x86_64', 'x86'
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86_64', 'x86', 'x86_64', 'x86'
         }
     }
 //    yingyongbao{}
@@ -45,51 +45,51 @@ android {
 //    Oppo();
 //    wandoujia();
 
-   /* productFlavors {
-     *//*   dev {
-            minSdkVersion 16
-        }
-        prod {
-            minSdkVersion 16
-        }*//*
-        yingyongbao {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
-        }
-        baidu {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
-        }
-        Mxiaomi {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Mxiaomi"]
-        }
-        m360 {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "m360"]
-        }
+    /* productFlavors {
+      *//*   dev {
+             minSdkVersion 16
+         }
+         prod {
+             minSdkVersion 16
+         }*//*
+         yingyongbao {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "yingyongbao"]
+         }
+         baidu {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+         }
+         Mxiaomi {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "Mxiaomi"]
+         }
+         m360 {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "m360"]
+         }
 
-        anzhi {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"]
-        }
+         anzhi {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "anzhi"]
+         }
 
-        huawei {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
-        }
+         huawei {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+         }
 
-        meizu {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
-        }
-        vivo {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"]
-        }
+         meizu {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "meizu"]
+         }
+         vivo {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "vivo"]
+         }
 
-        oppo {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
-        }
-        wandoujia {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
-        }
-        SQT_HIGHSCHOOL {
-            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "SQT_HIGHSCHOOL"]
-        }
-    }*/
+         oppo {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "oppo"]
+         }
+         wandoujia {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+         }
+         SQT_HIGHSCHOOL {
+             manifestPlaceholders = [UMENG_CHANNEL_VALUE: "SQT_HIGHSCHOOL"]
+         }
+     }*/
 
     /*  c360 {
           manifestPlaceholders = [UMENG_CHANNEL_VALUE: "c360"]
@@ -198,9 +198,10 @@ dependencies {
     compile project(':LRecyclerview_library')
     //    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
     compile project(':MPChartLib')
+    //    compile project(':loopViewpager')
     //switch_button
     //noinspection GradleCompatible
-//    compile "com.android.support:appcompat-v7:27.1.0"
+    //    compile "com.android.support:appcompat-v7:27.1.0"
     //noinspection GradleDependency,GradleCompatible
     compile "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -235,9 +236,10 @@ dependencies {
     compile 'com.flipboard:bottomsheet-core:1.5.1'
     compile 'com.android.support:cardview-v7:27.0.0'
     /* compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
-             compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'*/
+                 compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'*/
     // 权限文件
     //    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
+    implementation project(':loopViewpager')
 }
 
 

@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/LRecyclerview_library" />
             <option value="$PROJECT_DIR$/MPChartLib" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/loopViewpager" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

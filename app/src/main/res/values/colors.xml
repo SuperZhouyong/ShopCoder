@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <color name="font_1">#ff303030</color>
+    <color name="font_2">#ffb60005</color>
+    <color name="font_3">#ff999999</color>
+    <color name="font_4">#ff444444</color>
+
+
+
+
+
+
+
+
+
+
+
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -56,10 +73,7 @@
     <color name="app_bottom_colour">#fff4f4f4</color>
     <color name="price_commodity">#ffff7a00</color>
     <color name="mask_color">#66666666</color>
-    <color name="font_1">#ff333333</color>
-    <color name="font_2">#ff666666</color>
-    <color name="font_3">#ff999999</color>
-    <color name="font_4">#1a1a1a</color>
+
     <color name="font_price_experts">#ff8400</color>
     <color name="app_main">#0aa0f6</color><!--//00c2de-->
     <color name="app_main_2">#ff0aa0f6</color>

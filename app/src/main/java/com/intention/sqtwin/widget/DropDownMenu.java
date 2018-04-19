@@ -154,7 +154,7 @@ public class DropDownMenu extends LinearLayout {
         }
 
 
-        addTabCollect(isShowCollected);
+//        addTabCollect(isShowCollected);
 
 
         containerView.addView(contentView, 0);
@@ -189,7 +189,7 @@ public class DropDownMenu extends LinearLayout {
 
     }
 
-    private void addTabCollect(boolean isShowCollected) {
+    /*private void addTabCollect(boolean isShowCollected) {
         if (isShowCollected) {
             View inflate = LayoutInflater.from(getContext()).inflate(R.layout.item_collect, null, false);
 //            LinearLayout mLinlayout = new LinearLayout(getContext());
@@ -214,7 +214,7 @@ public class DropDownMenu extends LinearLayout {
         }
 
     }
-
+*/
     private void addTab(@NonNull List<String> tabTexts, int i) {
 
         final TextView tab = new TextView(getContext());
