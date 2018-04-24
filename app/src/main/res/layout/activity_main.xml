@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:layout_alignParentBottom="true"
-
         tl:tl_indicator_height="0dp"
         tl:tl_iconHeight="20dp"
         tl:tl_iconWidth="20dp"

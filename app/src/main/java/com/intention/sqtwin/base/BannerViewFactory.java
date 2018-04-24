@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.ShufflingPictureBean;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 
@@ -17,13 +18,14 @@ import ezy.ui.view.BannerView;
  * QQ: 437397161
  */
 
-public  class BannerViewFactory implements BannerView.ViewFactory<ShufflingPictureBean.DataBean> {
+public  class BannerViewFactory implements BannerView.ViewFactory<AllDateBean.DataBean.Adv1Bean> {
+
     @Override
-    public View create(ShufflingPictureBean.DataBean item, int position, ViewGroup container) {
+    public View create(AllDateBean.DataBean.Adv1Bean adv1Bean, int position, ViewGroup container) {
         ImageView iv = new ImageView(container.getContext());
 //        iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
 //            RequestOptions options = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.DATA);
-        ImageLoaderUtils.display(container.getContext().getApplicationContext(),iv,item.getImage());
+        ImageLoaderUtils.display(container.getContext().getApplicationContext(),iv,adv1Bean.getImage());
 //            Glide.with(container.getContext().getApplicationContext()).load(item.image).apply(options).into(iv);
         return iv;
     }

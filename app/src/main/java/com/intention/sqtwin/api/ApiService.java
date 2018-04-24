@@ -1,12 +1,11 @@
 package com.intention.sqtwin.api;
 
 
-import com.intention.sqtwin.bean.RecommendField;
-import com.intention.sqtwin.bean.RecommendedLots;
-import com.intention.sqtwin.bean.ShufflingPictureBean;
+import com.intention.sqtwin.bean.AllDateBean;
+import com.intention.sqtwin.bean.PpAllDateBean;
 
-import retrofit2.http.Field;
 import retrofit2.http.GET;
+
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -17,27 +16,43 @@ import rx.Observable;
  */
 public interface ApiService {
     /*
-    * 首页轮播图
+    * HOmePage 首页全部数据
+    *
     * */
+    @GET("index/index")
+    Observable<AllDateBean> getHomeAllDate();
+
+    @GET("Auctionfield/get_self_auction_field_info")
+    Observable<PpAllDateBean> getPlAllDate(
+            @Query("category_id") Integer categoryId,
+            @Query("status") Integer status,
+            @Query("page_no") Integer page_no
+
+
+    );
+
+   /* *//*
+    * 首页轮播图
+    * *//*
     @GET("Auctionfield/get_home_adv")
     Observable<ShufflingPictureBean> getShufflingPicture(
             @Query("page") String page,
             @Query("position") Integer postion
     );
 
-    /**
-     *
+    *//**
      * @param type 推荐拍品
      * @return
-     */
+     *//*
     @GET("Index/get_recommend_auction_item")
-    Observable<RecommendedLots>  getRecommendedLots(
+    Observable<RecommendedLots> getRecommendedLots(
             @Query("type") String type
     );
+
     @GET("index/get_recommend_auction_field")
     Observable<RecommendField> getRecommendield(
             @Query("type") String type
-    );
+    );*/
 //    @GET("get_home_adv")
 //    Observable<> getBanner(
 //            @Query("page") String page ,

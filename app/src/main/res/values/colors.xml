@@ -6,6 +6,8 @@
     <color name="font_2">#ffb60005</color>
     <color name="font_3">#ff999999</color>
     <color name="font_4">#ff444444</color>
+    <color name="title_bg">#ffc0000d</color>
+    <color name="lots_bg">#f8f8f8</color>
 
 
 
@@ -70,7 +72,7 @@
     <!-- 数字编辑器分割-->
     <color name="divider">#ffe5e5e5</color>
     <color name="color_f5">#fff5f5f5</color>
-    <color name="app_bottom_colour">#fff4f4f4</color>
+    <color name="app_bottom_colour">#fff8f8f8</color>
     <color name="price_commodity">#ffff7a00</color>
     <color name="mask_color">#66666666</color>
 

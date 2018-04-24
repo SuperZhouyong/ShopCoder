@@ -1,6 +1,7 @@
 package com.intention.sqtwin.ui.main.presenter;
 
 import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.RecommendField;
 import com.intention.sqtwin.bean.RecommendedLots;
 import com.intention.sqtwin.bean.ShufflingPictureBean;
@@ -15,6 +16,21 @@ import com.intention.sqtwin.ui.main.contract.MainContract;
 
 public class MainPresenter extends MainContract.Presenter {
     @Override
+    public void getHomeAllDate() {
+        mRxManage.add(mModel.getAllDateBean().subscribe(new RxSubscriber<AllDateBean>(mContext) {
+            @Override
+            protected void _onNext(AllDateBean allDateBean) {
+                mView.returnHomeAllDate(allDateBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+
+            }
+        }));
+    }
+
+   /* @Override
     public void getViewpagerPic(String page, Integer postion) {
         mRxManage.add(mModel.getViewpagerPic(page, postion).subscribe(new RxSubscriber<ShufflingPictureBean>(mContext) {
             @Override
@@ -57,5 +73,5 @@ public class MainPresenter extends MainContract.Presenter {
                 mView.showErrorTip("recommendFiled", message);
             }
         }));
-    }
+    }*/
 }

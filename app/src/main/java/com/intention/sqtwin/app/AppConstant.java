@@ -10,7 +10,8 @@ public class AppConstant {
 //    public static final String appUrl = "http://api.hancang.cn/" ;
 public static final String appUrl = "http://ta.beikunit.com/api/" ;
 
-
+public static final String WEBVIEW = "WEBVIEW";
+public static final String WEBVIEWURL = "WEBVIEWURL";
 
 
 

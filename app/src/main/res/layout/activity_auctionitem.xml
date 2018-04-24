@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/actionbar_title" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y120"
+            android:background="@color/title_bg">
+
+            <TextView
+                android:id="@+id/Tv_time_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x150"
+                android:text="拍卖时间"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:id="@+id/Tv_time_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_toRightOf="@id/Tv_time_one"
+                android:text="11.20 10:00-11.21 10:00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x36" />
+
+        </RelativeLayout>
+
+        <!-- <com.github.jdsjlzx.recyclerview.LRecyclerView
+             android:id="@+id/mLRecyclerView"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent" />-->
+
+        <include layout="@layout/item_auction_one" />
+
+        <ezy.ui.view.BannerView
+            android:id="@+id/mLoopViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:bvAspectRatio="0.427350"
+            app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
+            app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
+            app:bvIsAuto="true"
+            app:bvIsLoop="true" />
+
+        <include layout="@layout/item_auction_two" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的世界啥卡的接口" />
+
+        <ImageView
+            android:id="@+id/iv_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y400"
+            android:src="@drawable/bg_amount_layout" />
+
+        <include layout="@layout/item_auction_three" />
+
+        <include layout="@layout/item_divider" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>

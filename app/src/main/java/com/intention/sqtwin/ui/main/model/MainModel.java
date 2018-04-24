@@ -3,6 +3,7 @@ package com.intention.sqtwin.ui.main.model;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.baserx.RxSchedulers;
+import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.RecommendField;
 import com.intention.sqtwin.bean.RecommendedLots;
 import com.intention.sqtwin.bean.ShufflingPictureBean;
@@ -19,6 +20,10 @@ import rx.Observable;
 
 public class MainModel implements MainContract.Model {
     @Override
+    public Observable<AllDateBean> getAllDateBean() {
+        return Api.getDefault(HostType.Jsonpart).getHomeAllDate().compose(RxSchedulers.<AllDateBean>io_main());
+    }
+   /* @Override
     public Observable<ShufflingPictureBean> getViewpagerPic(String page, Integer postion) {
         return Api.getDefault(HostType.Jsonpart).getShufflingPicture(page, postion).compose(RxSchedulers.<ShufflingPictureBean>io_main());
     }
@@ -31,5 +36,5 @@ public class MainModel implements MainContract.Model {
     @Override
     public Observable<RecommendField> getRecommendField(String type) {
         return Api.getDefault(HostType.Jsonpart).getRecommendield(type).compose(RxSchedulers.<RecommendField>io_main());
-    }
+    }*/
 }

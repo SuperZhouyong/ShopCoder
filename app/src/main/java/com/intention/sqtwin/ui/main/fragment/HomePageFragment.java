@@ -3,22 +3,21 @@ package com.intention.sqtwin.ui.main.fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
-import com.intention.sqtwin.base.BannerViewFactory;
 import com.intention.sqtwin.base.BaseFragment;
-import com.intention.sqtwin.bean.RecommendField;
-import com.intention.sqtwin.bean.RecommendedLots;
-import com.intention.sqtwin.bean.ShufflingPictureBean;
+import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
+import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
@@ -40,6 +39,8 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     private HomeAdapter homeAdapter;
     private BannerView mBannerView;
     private HeadTwoAdapter mHeadTwoAdapter;
+    private BannerView mBannerViewTwo;
+
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_homepage;
@@ -56,8 +57,8 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     // 初始化全部的布局
     @Override
     protected void initView() {
-        mPresenter.getViewpagerPic("首页1", 1);
-        homeAdapter = new HomeAdapter(getActivity(), R.layout.item_homepage);
+
+        homeAdapter = new HomeAdapter(getActivity());
         mLadapter = new LRecyclerViewAdapter(homeAdapter);
         mLRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mLRecyclerView.setAdapter(mLadapter);
@@ -66,18 +67,29 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         View headViewPager = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
 
         mBannerView = (BannerView) headViewPager.findViewById(R.id.mLoopViewPager);
-        mBannerView.setIsAuto(true);
-        mPresenter.getRecommentLots("");
-        mPresenter.getRecommentFILED("");
+//        mBannerView.setIsAuto(true);
+
+
+//        View headViewOne = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_one, null);
+
 
         View HeadViewTwo = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
         mHeadTwoAdapter = new HeadTwoAdapter(getActivity());
         RecyclerView mRecyclerView = (RecyclerView) HeadViewTwo.findViewById(R.id.mRecyclerView);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2,GridLayoutManager.VERTICAL,false));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mHeadTwoAdapter);
 
+
+        View HeadViewThree = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
+        mBannerViewTwo = (BannerView) HeadViewThree.findViewById(R.id.mLoopViewPager);
+
+
         mLadapter.addHeaderView(headViewPager);
+//        mLadapter.addHeaderView(headViewOne);
         mLadapter.addHeaderView(HeadViewTwo);
+        mLadapter.addHeaderView(HeadViewThree);
+
+        mPresenter.getHomeAllDate();
     }
 
 
@@ -96,34 +108,51 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
     }
 
-    /**
-     * @param shufflingPictureBean 轮播图
-     */
     @Override
-    public void returnViewpagerPic(ShufflingPictureBean shufflingPictureBean) {
-        mBannerView.setViewFactory(new BannerViewFactory());
-        mBannerView.setDataList(shufflingPictureBean.getData());
+    public void returnHomeAllDate(AllDateBean allDateBean) {
+        if (!allDateBean.isIs_success()) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(new LoadingTip.onReloadListener() {
+                @Override
+                public void reload() {
+                    mPresenter.getHomeAllDate();
+                }
+            });
+            return;
+        }
+        // 取消显示页
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+        // 第一个轮播图
+        mBannerView.setViewFactory(new BannerView.ViewFactory<AllDateBean.DataBean.Adv1Bean>() {
+            @Override
+            public View create(AllDateBean.DataBean.Adv1Bean adv1Bean, int position, ViewGroup container) {
+                ImageView iv = new ImageView(container.getContext());
+                ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, adv1Bean.getImage());
+                return iv;
+            }
+
+
+        });
+
+        mBannerView.setDataList(allDateBean.getData().getAdv1());
         mBannerView.start();
+        //推荐作品
+        mHeadTwoAdapter.addAll(allDateBean.getData().getRecommend_item());
+        // 轮播图第二
+        mBannerViewTwo.setViewFactory(new BannerView.ViewFactory<AllDateBean.DataBean.Adv2Bean>() {
+            @Override
+            public View create(AllDateBean.DataBean.Adv2Bean adv2Bean, int position, ViewGroup container) {
+                ImageView iv = new ImageView(container.getContext());
+                ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, adv2Bean.getImage());
+                return iv;
+            }
+        });
+        mBannerViewTwo.setDataList(allDateBean.getData().getAdv2());
+        mBannerViewTwo.start();
+        // 推荐专场
+        homeAdapter.addAll(allDateBean.getData().getRecommend_field());
 
-    }
-
-    /**
-     *
-     * @param recommendedLots 推荐拍品
-     */
-    @Override
-    public void returnRecommendedLot(RecommendedLots recommendedLots) {
-
-        mHeadTwoAdapter.addAll(recommendedLots.getData());
-    }
-
-    /**
-     *
-     * @param recommendField 推荐专场
-     */
-    @Override
-    public void returnRecommendField(RecommendField recommendField) {
-        homeAdapter.addAll(recommendField.getData());
 
     }
 

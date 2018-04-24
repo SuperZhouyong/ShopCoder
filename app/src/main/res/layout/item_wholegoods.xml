@@ -6,21 +6,31 @@
     android:layout_marginRight="@dimen/x24"
     android:background="@color/white"
     android:orientation="vertical">
+    <TextView
 
+        android:paddingTop="@dimen/y30"
+        android:paddingBottom="@dimen/y19"
+        android:textSize="@dimen/x39"
+        android:id="@+id/tv_filed_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="推荐拍场"
+        android:textColor="@color/font_1" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
         android:background="@color/black">
 
         <ImageView
+
             android:id="@+id/iv_logo"
             android:layout_width="@dimen/x76"
             android:layout_height="@dimen/y76"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x20"
-            android:background="@color/red" />
+            android:layout_marginLeft="@dimen/x20" />
 
         <TextView
+            android:id="@+id/tv_company_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -31,6 +41,7 @@
             android:textSize="@dimen/x31" />
 
         <RelativeLayout
+            android:id="@+id/rel_focus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -77,6 +88,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tv_filed_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x22"
