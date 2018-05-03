@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y100"
+    android:background="@color/black">
+
+    <ImageView
+
+        android:id="@+id/iv_logo"
+        android:layout_width="@dimen/x76"
+        android:layout_height="@dimen/y76"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x20" />
+
+    <TextView
+        android:id="@+id/tv_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_toRightOf="@id/iv_logo"
+        android:text="中国嘉德拍卖公司"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x31" />
+
+    <RelativeLayout
+        android:id="@+id/rel_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@drawable/shape_focus_add">
+
+        <ImageView
+            android:id="@+id/iv_focus"
+            android:layout_width="@dimen/x35"
+            android:layout_height="@dimen/y35"
+            android:layout_centerVertical="true"
+            android:background="@color/green" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_toRightOf="@id/iv_focus"
+            android:text="关注"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x25" />
+    </RelativeLayout>
+</RelativeLayout>
+

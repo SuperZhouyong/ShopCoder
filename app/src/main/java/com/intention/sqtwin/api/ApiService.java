@@ -2,10 +2,15 @@ package com.intention.sqtwin.api;
 
 
 import com.intention.sqtwin.bean.AllDateBean;
+import com.intention.sqtwin.bean.ArtDetailBean;
+import com.intention.sqtwin.bean.AuctionFiledAllBean;
+import com.intention.sqtwin.bean.AuctionOrgBean;
+import com.intention.sqtwin.bean.AutionItemDetailBean;
+import com.intention.sqtwin.bean.BidRecordBean;
+import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 
 import retrofit2.http.GET;
-
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -22,6 +27,12 @@ public interface ApiService {
     @GET("index/index")
     Observable<AllDateBean> getHomeAllDate();
 
+    /**
+     * @param categoryId
+     * @param status
+     * @param page_no
+     * @return 获取自营拍的数据
+     */
     @GET("Auctionfield/get_self_auction_field_info")
     Observable<PpAllDateBean> getPlAllDate(
             @Query("category_id") Integer categoryId,
@@ -31,6 +42,62 @@ public interface ApiService {
 
     );
 
+    /**
+     * @param auction_field_id
+     * @return 获取拍场的数据
+     */
+    @GET("auction/get_field_page_info")
+    Observable<AuctionFiledAllBean> getAuctionFiled(
+            @Query("auction_field_id") Integer auction_field_id
+    );
+
+    /**
+     * @param id
+     * @return 出价界面
+     */
+    @GET("Auction/get_price_history")
+    Observable<BidRecordBean> getBidRecord(
+            @Query("goods_id") Integer id
+    );
+
+    /**
+     * @param artId
+     * @param page_no
+     * @return 艺术者详情
+     */
+    @GET("auction/get_artist_home")
+    Observable<ArtDetailBean> getArtDetail(
+            @Query("artist_id") Integer artId,
+            @Query("page_no") Integer page_no);
+
+    /**
+     * @param OrgId
+     * @param page_no
+     * @return 拍卖机构主页
+     */
+    @GET("auction/get_organization_home")
+    Observable<AuctionOrgBean> getArtIst(
+            @Query("organization_id") Integer OrgId,
+            @Query("page_no") Integer page_no);
+
+    /**
+     * @param staff_id
+     * @param page
+     * @return 获取主理人数据
+     */
+    @GET("auction/get_staff_home")
+    Observable<OrganPeBean> getOrganPeData(
+            @Query("staff_id") Integer staff_id,
+            @Query("page_no") Integer page
+    );
+
+    /**
+     * @param id
+     * @return 获取拍品界面
+     */
+    @GET("auction/get_item_info")
+    Observable<AutionItemDetailBean> getAuctionItemDetail(
+            @Query("auction_item_id") Integer id);
    /* *//*
     * 首页轮播图
     * *//*
@@ -40,10 +107,7 @@ public interface ApiService {
             @Query("position") Integer postion
     );
 
-    *//**
-     * @param type 推荐拍品
-     * @return
-     *//*
+
     @GET("Index/get_recommend_auction_item")
     Observable<RecommendedLots> getRecommendedLots(
             @Query("type") String type

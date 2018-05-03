@@ -27,13 +27,14 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
 
     @Override
     public void convert(ViewHolderHelper helper, AllDateBean.DataBean.RecommendFieldBean recommendFieldBean, int position) {
-        helper.setVisible(R.id.tv_filed_title, position == 0);
+//        helper.setVisible(R.id.tv_filed_title, position == 0);
         helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganzation().getName());
         helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganzation().getLogo());
         helper.setText(R.id.tv_fouce_num, recommendFieldBean.getFans_count());
         helper.setText(R.id.tv_lot_num, recommendFieldBean.getItem_count());
         helper.setText(R.id.tv_price_num, recommendFieldBean.getBid_count());
         helper.setText(R.id.tv_filed_name, recommendFieldBean.getName());
+        helper.setImageUrl(R.id.iv_pos_goods,recommendFieldBean.getImage());
         helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -35,6 +35,9 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import rx.Observable;
 
+/**
+ * 首页
+ */
 public class MainActivity extends BaseActivity {
 
 

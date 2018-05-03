@@ -31,7 +31,7 @@ public class ImageLoaderUtils {
         }
         Glide.with(context).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .centerCrop()
+                .centerCrop()
 //                .fitCenter()
 //                .placeholder(R.mipmap.colleges_icon)
 //                .error(R.mipmap.colleges_icon)

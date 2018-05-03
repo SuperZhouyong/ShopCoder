@@ -23,7 +23,13 @@ public class PpAuctionPresenter extends PpAuctionContract.Presenter {
 
             @Override
             protected void _onError(String message) {
+                mView.showErrorTip("one",message);
+            }
 
+            @Override
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading("one");
             }
         }));
     }

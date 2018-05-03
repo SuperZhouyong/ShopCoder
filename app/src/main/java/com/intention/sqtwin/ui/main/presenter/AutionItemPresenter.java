@@ -1,5 +1,8 @@
 package com.intention.sqtwin.ui.main.presenter;
 
+import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.ui.main.contract.AutionItemContract;
 
 /**
@@ -11,23 +14,25 @@ import com.intention.sqtwin.ui.main.contract.AutionItemContract;
  */
 
 public class AutionItemPresenter extends AutionItemContract.Presenter {
-    @Override
-    public void getWorkListRequest(Integer id, Integer type) {
-
-    }
 
     @Override
     public void getAutionDetailRequest(Integer id) {
+        mRxManage.add(mModel.getAutionDetaiData(id).subscribe(new RxSubscriber<AutionItemDetailBean>(mContext) {
+            @Override
+            protected void _onNext(AutionItemDetailBean autionItemDetailBean) {
+                mView.returnAutionItemDeatil(autionItemDetailBean);
+            }
 
-    }
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.oneMessage,message);
+            }
 
-    @Override
-    public void getArtistDetailRequest(Integer id) {
-
-    }
-
-    @Override
-    public void getPriceRecordRequest(Integer id) {
-
+            @Override
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading(AppConstant.oneMessage);
+            }
+        }));
     }
 }

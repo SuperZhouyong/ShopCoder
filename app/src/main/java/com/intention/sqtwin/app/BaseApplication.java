@@ -43,7 +43,7 @@ public class BaseApplication extends Application {
         // 初始化自定义的数据库
         DaoManager.init(this);
         // 初始化异常捕获类
-        CrashHandler.getInstance().init(this);
+//        CrashHandler.getInstance().init(this);
         // 内存检测工具
         ShareSDK.initSDK(this);
         // 这里和Manifest中的文件不可重复添加

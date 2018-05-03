@@ -1,60 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingBottom="@dimen/y30"
-        android:paddingTop="@dimen/y30">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        <TextView
-
-            android:id="@+id/tv_lot_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x22"
-            android:text="青花器摆件一晚茶一对"
-            android:textColor="@color/font_1"
-            android:textSize="@dimen/x30" />
-
-        <TextView
-            android:id="@+id/tv_lost_price_desc"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tv_lot_name"
-            android:layout_below="@id/tv_lot_name"
-            android:layout_marginTop="@dimen/y30"
-            android:text="当前价"
-            android:textColor="@color/font_3"
-            android:textSize="@dimen/x28" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/tv_lost_price_desc"
-            android:layout_marginLeft="@dimen/x30"
-            android:layout_toRightOf="@id/tv_lost_price_desc"
-            android:text="1600"
-            android:textColor="@color/font_2"
-            android:textSize="@dimen/x36" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/tv_lost_price_desc"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/x22"
-            android:background="@drawable/shape_time_countdown"
-            android:padding="@dimen/x2"
-            android:text="1506人关注"
-            android:textColor="@color/font_2"
-            android:textSize="@dimen/x30" />
-    </RelativeLayout>
-
+    <include layout="@layout/item_ayction_three_price" />
+    <include layout="@layout/item_ayction_item_price"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
@@ -70,6 +21,7 @@
             android:layout_weight="1">
 
             <ImageView
+
                 android:id="@+id/iv_select_one"
                 android:layout_width="@dimen/x20"
                 android:layout_height="@dimen/y20"

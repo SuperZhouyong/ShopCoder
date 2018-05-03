@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_pos_goods"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y360"
+            android:layout_marginLeft="@dimen/x22"
+
+            android:layout_marginRight="@dimen/x22"
+            android:layout_marginTop="@dimen/y20"
+            android:background="@color/orange" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_filed_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x22"
+            android:paddingBottom="@dimen/y10"
+            android:paddingTop="@dimen/y10"
+            android:text="青花瓷拍卖专场"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x35" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/x234"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@drawable/shape_time_countdown">
+
+            <ImageView
+                android:id="@+id/iv_time"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y20"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:background="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/iv_time"
+                android:text="距结束  9时30分"
+                android:textColor="@color/font_2" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22"
+        android:paddingBottom="@dimen/y20"
+        android:paddingTop="@dimen/y20">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_lot_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拍品"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x27" />
+
+            <TextView
+                android:id="@+id/tv_lot_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/tv_lot_name"
+                android:text="126件"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x31" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/tv_price_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="出价"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x27" />
+
+            <TextView
+                android:id="@+id/tv_price_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/tv_price_name"
+                android:text="365次"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x31" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/x22">
+
+            <TextView
+                android:id="@+id/tv_fouce_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关注"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x27" />
+
+            <TextView
+                android:id="@+id/tv_fouce_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/tv_fouce_name"
+                android:text="617人"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x31" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

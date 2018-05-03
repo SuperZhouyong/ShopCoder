@@ -90,7 +90,7 @@ public class LoadingTip extends LinearLayout {
             @Override
             public void onClick(View view) {
                 if (onReloadListener != null) {
-                    onReloadListener.reload();
+                    onReloadListener.reloadLodTip();
                 }
             }
         });
@@ -182,7 +182,7 @@ public class LoadingTip extends LinearLayout {
      * 重新尝试接口
      */
     public interface onReloadListener {
-        void reload();
+        void reloadLodTip();
     }
 
 

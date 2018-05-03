@@ -12,8 +12,8 @@ import com.intention.sqtwin.baserx.RxManager;
  */
 public abstract class BasePresenter<T, E> {
     public Context mContext;
-    public E mModel;
     public T mView;
+    public E mModel;
     public RxManager mRxManage = new RxManager();
 
     public void setVM(T v, E m) {

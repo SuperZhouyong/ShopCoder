@@ -8,30 +8,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.app.BaseApplication;
-import com.intention.sqtwin.utils.HTTPSUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.NetWorkUtils;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.security.GeneralSecurityException;
-import java.security.KeyStore;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.concurrent.TimeUnit;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.TrustManagerFactory;
-import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;

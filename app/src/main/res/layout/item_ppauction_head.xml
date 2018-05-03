@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <com.flyco.tablayout.SlidingTabLayout
+    <com.intention.sqtwin.widget.SlidingTabLayout
         app:tl_indicator_color="@color/title_bg"
         app:tl_indicator_width_equal_title="false"
         app:tl_textsize="@dimen/x28"
@@ -18,5 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp" />
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
     <include layout="@layout/item_homepage_headview"/>
 </LinearLayout>

@@ -8,7 +8,11 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.baseapp.AppManager;
@@ -327,5 +331,23 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
         return UserUtil.getLoginInfo();
     }
+    public void setMarGinTop(View v, int marGTop, int top) {
+        if (v.getLayoutParams() instanceof LinearLayout.LayoutParams) {
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
+            v.setLayoutParams(layoutParams);
 
+        } else if (v.getLayoutParams() instanceof RelativeLayout.LayoutParams) {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
+            v.setLayoutParams(layoutParams);
+
+        } else if (v.getLayoutParams() != null) {
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop,top,marGTop,0);
+            v.setLayoutParams(layoutParams);
+        }
+
+
+    }
 }

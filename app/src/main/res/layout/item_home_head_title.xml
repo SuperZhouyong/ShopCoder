@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:paddingBottom="@dimen/y20"
+        android:paddingTop="@dimen/y20"
+        android:id="@+id/ll_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--   <android.support.v7.widget.RecyclerView
+               android:id="@+id/filtrate_Title"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />-->
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="全部"
+            android:textSize="@dimen/x31"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_ongoing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="拍卖中"
+            android:textSize="@dimen/x31"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_preview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="预展中"
+            android:textSize="@dimen/x31"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_over"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:text="已结拍"
+            android:textSize="@dimen/x31"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</RelativeLayout>

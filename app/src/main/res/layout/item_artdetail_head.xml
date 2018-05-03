@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rel_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y350"
+
+        android:layout_marginTop="@dimen/y100"
+        android:background="@color/white">
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_header_icon"
+            android:layout_width="@dimen/x116"
+            android:layout_height="@dimen/y116"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y50"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/art_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_header_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y20"
+            android:text="阿小样"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x32" />
+
+        <RelativeLayout
+            android:id="@+id/rel_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/art_name"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/y20"
+            android:background="@drawable/shape_focus_add_redcolor">
+
+            <ImageView
+                android:id="@+id/iv_focus"
+                android:layout_width="@dimen/x35"
+                android:layout_height="@dimen/y35"
+                android:layout_centerVertical="true"
+                android:background="@color/green" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/iv_focus"
+                android:text="关注"
+                android:textColor="@color/title_bg"
+                android:textSize="@dimen/x25" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_focus"
+            android:layout_marginTop="@dimen/y50"
+
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_lot_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="拍品"
+                    android:textColor="@color/font_3"
+                    android:textSize="@dimen/x27" />
+
+                <TextView
+                    android:id="@+id/tv_lot_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_toRightOf="@id/tv_lot_name"
+                    android:text="126件"
+                    android:textColor="@color/font_4"
+                    android:textSize="@dimen/x31" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/app_bottom_colour" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_price_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="出价"
+                    android:textColor="@color/font_3"
+                    android:textSize="@dimen/x27" />
+
+                <TextView
+                    android:id="@+id/tv_price_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_toRightOf="@id/tv_price_name"
+                    android:text="365次"
+                    android:textColor="@color/font_4"
+                    android:textSize="@dimen/x31" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rel_background"
+
+        android:layout_marginTop="@dimen/y30"
+        android:background="@color/white">
+
+        <TextView
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x36"
+            android:id="@+id/tv_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x22"
+            android:text="中国艺术家的字画艺术源远流长" />
+
+        <TextView
+
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_desc"
+            android:paddingRight="@dimen/x22"
+
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x25"
+            android:text="更多"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:textColor="@color/font_1"
+    android:text="羊啊羊金主"
+    android:textSize="@dimen/x28"
+    android:gravity="center"
+    android:id="@+id/tv_art_name_item_foot"
+    android:layout_height="@dimen/y100">
+
+</TextView>

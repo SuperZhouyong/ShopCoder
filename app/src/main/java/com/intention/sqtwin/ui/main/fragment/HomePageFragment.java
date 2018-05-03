@@ -7,13 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
 import com.intention.sqtwin.base.BaseFragment;
+import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AllDateBean;
+import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
+import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
@@ -28,7 +32,7 @@ import ezy.ui.view.BannerView;
  * Created by Administrator on 2017/2/9 0009.
  */
 
-public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View {
+public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener {
     @BindView(R.id.mLRecyclerView)
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -64,6 +68,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mLRecyclerView.setAdapter(mLadapter);
         mLRecyclerView.setPullRefreshEnabled(false);
         mLRecyclerView.setLoadMoreEnabled(false);
+        mLRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 20, 1, getResources().getColor(R.color.app_bottom_colour)));
         View headViewPager = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
 
         mBannerView = (BannerView) headViewPager.findViewById(R.id.mLoopViewPager);
@@ -83,11 +88,35 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         View HeadViewThree = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
         mBannerViewTwo = (BannerView) HeadViewThree.findViewById(R.id.mLoopViewPager);
 
+//        View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_home_head_title, null);
+
+        View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
+
 
         mLadapter.addHeaderView(headViewPager);
 //        mLadapter.addHeaderView(headViewOne);
         mLadapter.addHeaderView(HeadViewTwo);
         mLadapter.addHeaderView(HeadViewThree);
+        mLadapter.addHeaderView(homeHeadTitle);
+
+
+        mHeadTwoAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
+                startActivity(getActivity(), AuctionItemActivity.class);
+            }
+
+            @Override
+            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
+                return false;
+            }
+        });
+        mLadapter.setOnItemClickListener(new com.github.jdsjlzx.interfaces.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                startActivity(getActivity(), AuctionFiledActivity.class);
+            }
+        });
 
         mPresenter.getHomeAllDate();
     }
@@ -112,12 +141,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     public void returnHomeAllDate(AllDateBean allDateBean) {
         if (!allDateBean.isIs_success()) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-            mLoadingTip.setOnReloadListener(new LoadingTip.onReloadListener() {
-                @Override
-                public void reload() {
-                    mPresenter.getHomeAllDate();
-                }
-            });
+            mLoadingTip.setOnReloadListener(this);
             return;
         }
         // 取消显示页
@@ -157,4 +181,8 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     }
 
 
+    @Override
+    public void reloadLodTip() {
+        mPresenter.getHomeAllDate();
+    }
 }

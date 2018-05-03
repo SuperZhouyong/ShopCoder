@@ -1,5 +1,8 @@
 package com.intention.sqtwin.ui.main.model;
 
+import com.intention.sqtwin.api.Api;
+import com.intention.sqtwin.api.HostType;
+import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.bean.ArtistDetailBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.PriceRecordBena;
@@ -17,23 +20,9 @@ import rx.Observable;
  */
 
 public class AutionItemModel implements AutionItemContract.Model {
-    @Override
-    public Observable<WorkerListBean> getWorkListDate(Integer id, Integer type) {
-        return null;
-    }
 
     @Override
     public Observable<AutionItemDetailBean> getAutionDetaiData(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Observable<ArtistDetailBean> getArtistDeatilData(Integer id) {
-        return null;
-    }
-
-    @Override
-    public Observable<PriceRecordBena> getPriceRecordData(Integer id) {
-        return null;
+        return Api.getDefault(HostType.Jsonpart).getAuctionItemDetail(id).compose(RxSchedulers.<AutionItemDetailBean>io_main());
     }
 }

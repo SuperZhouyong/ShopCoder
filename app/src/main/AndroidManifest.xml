@@ -49,13 +49,16 @@
             android:name="com.intention.sqtwin.base.BaseGlideCache"
             android:value="GlideModule" />-->
         <activity android:name="com.intention.sqtwin.ui.main.activity.MainActivity">
-            <!-- <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
-        <activity android:name=".ui.main.activity.PpAuctionActivity">
+
+
+        <!--拍品页-->
+        <activity android:name=".ui.main.activity.AuctionItemActivity" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,7 +66,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.activity.AuctionItemActivity" />
+        <!--拍场页-->
+        <activity android:name=".ui.main.activity.AuctionFiledActivity">
+
+
+
+
+        </activity>
+        <!--艺术家主页-->
+        <activity android:name=".ui.main.activity.ArtDetatilActivity">
+
+
+        </activity>
+        <!--拍卖机构页-->
+        <activity android:name=".ui.main.activity.AuctionOrgActivity">
+
+        </activity>
+        <!--主理人界面-->
+        <activity android:name=".ui.main.activity.OrganPeoActivity">
+
+        </activity>
+
         <!-- umeng需要的 -->
         <!-- android:value="5900713a7f2c743d9900147a" -->
         <!-- <meta-data

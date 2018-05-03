@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/item_ayction_three_price" />
+    <!--<TextView-->
+    <!--<me.codeboy.android.aligntextview.AlignTextView-->
+    <TextView
+        android:paddingLeft="@dimen/x22"
+        android:paddingRight="@dimen/x22"
+        android:gravity="center_vertical"
+        android:id="@+id/tv_author_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20" />
+
+
+</LinearLayout>

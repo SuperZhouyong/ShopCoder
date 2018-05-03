@@ -28,6 +28,14 @@ public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
     private Paint mPaint;
 
+    /**
+     *
+     * @param horizontalSpacing
+     * @param verticalSpacing
+     * @param spanCount
+     * @param color
+     * @return
+     */
     public static SpacesItemDecoration newInstance(int horizontalSpacing, int verticalSpacing, int spanCount, int color) {
         int maxNumberOfSpaces = spanCount - 1;
         int totalSpaceToSplitBetweenItems = maxNumberOfSpaces * horizontalSpacing;

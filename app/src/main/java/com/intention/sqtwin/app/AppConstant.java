@@ -7,27 +7,12 @@ package com.intention.sqtwin.app;
  */
 public class AppConstant {
 
-//    public static final String appUrl = "http://api.hancang.cn/" ;
-public static final String appUrl = "http://ta.beikunit.com/api/" ;
+    //    public static final String appUrl = "http://api.hancang.cn/" ;
+    public static final String appUrl = "http://ta.beikunit.com/api/";
 
-public static final String WEBVIEW = "WEBVIEW";
-public static final String WEBVIEWURL = "WEBVIEWURL";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public static final String WEBVIEW = "WEBVIEW";
+    public static final String WEBVIEWURL = "WEBVIEWURL";
+    public static final String oneMessage = "one";
 
 
 
@@ -348,6 +333,7 @@ public static final String WEBVIEWURL = "WEBVIEWURL";
     public static final String PID = "PID";
     public static final String Experts = "expert";
     public static final String content = "content";
+
     /*public static String SelectArea = "area";
     public static String SelectMajor = "major";
     public static String Selectbatch = "batch";*/

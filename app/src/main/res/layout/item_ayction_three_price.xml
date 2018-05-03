@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y200"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/y30"
+        android:paddingLeft="@dimen/x22"
+        android:paddingRight="@dimen/x22"
+        android:paddingTop="@dimen/y30">
+
+        <TextView
+
+            android:id="@+id/tv_lot_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="青花器摆件一晚茶一对"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/ll_one"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_lost_price_desc_one"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="当前价"
+                    android:textColor="@color/font_3"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:id="@+id/tv_num_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="1600"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x36" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/ll_two"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:id="@+id/tv_lost_price_desc_two"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="当前价"
+                    android:textColor="@color/font_3"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:id="@+id/tv_num_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="1600"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x36" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/ll_three"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_lost_price_desc_three"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="当前价"
+                    android:textColor="@color/font_3"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:id="@+id/tv_num_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:text="1600"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x36" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_focus_ren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tv_lot_name"
+
+            android:background="@drawable/shape_time_countdown"
+            android:padding="@dimen/x2"
+            android:text="1506人关注"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x30" />
+    </RelativeLayout>

@@ -1,3 +1,4 @@
+/*
 package com.intention.sqtwin.widget;
 
 import android.content.Context;
@@ -23,12 +24,14 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
+*/
 /**
  * Description: 绝无Bug
  * Data：2017/11/9 0009-上午 11:36
  * Blog：Super简单
  * Author: ZhouYong
- */
+ *//*
+
 
 public class BaseRatingBar extends LinearLayout {
     public interface OnRatingChangeListener {
@@ -66,16 +69,20 @@ public class BaseRatingBar extends LinearLayout {
         this(context, null);
     }
 
-    /* Call by xml layout */
+    */
+/* Call by xml layout *//*
+
     public BaseRatingBar(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    /**
+    */
+/**
      * @param context      context
      * @param attrs        attributes from XML => app:mainText="mainText"
      * @param defStyleAttr attributes from default style (Application theme or activity theme)
-     */
+     *//*
+
     public BaseRatingBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -139,15 +146,18 @@ public class BaseRatingBar extends LinearLayout {
 
 //        Rect bounds = mFilledDrawable.getBounds();
 //        LogUtils.logd(TAG + "----" + bounds.left + "---" + bounds.top + "---" + bounds.right + "---" + bounds.bottom);
-       /* mFilledDrawable.setBounds(0,0,mStarWidth,mStarHeight);
-        mEmptyDrawable.setBounds(0,0,mStarWidth,mStarHeight);*/
+       */
+/* mFilledDrawable.setBounds(0,0,mStarWidth,mStarHeight);
+        mEmptyDrawable.setBounds(0,0,mStarWidth,mStarHeight);*//*
+
 //        LogUtils.logd(TAG + "----" + bounds.left + "---" + bounds.top + "---" + bounds.right + "---" + bounds.bottom);
         for (int i = 1; i <= mNumStars; i++) {
             PartialView partialView = getPartialView(i, mFilledDrawable, mEmptyDrawable);
 //            ViewGroup.LayoutParams layoutParams = partialView.getLayoutParams();
 
 
-          /* if (layoutParams!=null){
+          */
+/* if (layoutParams!=null){
                layoutParams.width = mStarWidth ;
                layoutParams.height = mStarHeight;
                partialView.setLayoutParams(layoutParams);
@@ -157,7 +167,8 @@ public class BaseRatingBar extends LinearLayout {
                addView(partialView, params);
                LogUtils.logd(TAG+"----"+"!!!!null");
 
-           }*/
+           }*//*
+
 
             mPartialViews.add(partialView);
             addView(partialView, params);
@@ -180,17 +191,21 @@ public class BaseRatingBar extends LinearLayout {
         return partialView;
     }
 
-    /**
+    */
+/**
      * Retain this method to let other RatingBar can custom their decrease animation.
-     */
+     *//*
+
     protected void emptyRatingBar() {
         fillRatingBar(0);
     }
 
-    /**
+    */
+/**
      * Use {maxIntOfRating} because if the rating is 3.5
      * the view which id is 3 also need to be filled.
-     */
+     *//*
+
     protected void fillRatingBar(final float rating) {
         for (PartialView partialView : mPartialViews) {
             int ratingViewId = (int) partialView.getTag();
@@ -414,3 +429,4 @@ public class BaseRatingBar extends LinearLayout {
     }
 }
 
+*/

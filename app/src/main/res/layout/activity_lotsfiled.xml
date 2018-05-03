@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/incude"
+        layout="@layout/title_auction" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/incude"
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/y100"
+                tl:layout_scrollFlags="enterAlwaysCollapsed|scroll">
+
+                <include layout="@layout/item_auction_file_header" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/y20"
+                android:paddingTop="@dimen/y20">
+
+                <!--   <android.support.v7.widget.RecyclerView
+                       android:id="@+id/filtrate_Title"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content" />-->
+                <TextView
+                    android:id="@+id/tv_all"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="默认"
+                    android:textColor="@color/font_5"
+                    android:textSize="@dimen/x31"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_ongoing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="拍卖中"
+                    android:textColor="@color/font_5"
+                    android:textSize="@dimen/x31"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_preview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="热度"
+
+                    android:textColor="@color/font_5"
+                    android:textSize="@dimen/x31"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/mLRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="481dp"
+            tl:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:layout_editor_absoluteY="352dp" />
+
+        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+            android:id="@+id/mLoadingTip"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:padding="5dp"
+
+        tl:tl_iconHeight="20dp"
+        tl:tl_iconWidth="20dp"
+        tl:tl_indicator_color="@color/gray"
+        tl:tl_indicator_height="0dp"
+        tl:tl_textSelectColor="@color/title_bg"
+        tl:tl_textUnselectColor="@color/font_3"
+        tl:tl_textsize="11sp"
+        tl:tl_underline_height="0dp" />
+</RelativeLayout>
