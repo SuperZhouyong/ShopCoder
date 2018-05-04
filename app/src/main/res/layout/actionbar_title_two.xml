@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/title_bg"
+    android:layout_height="@dimen/y96">
+    <ImageView
+        android:src="@mipmap/category_logo"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x45"
+        android:layout_height="@dimen/y45" />
+    <RelativeLayout
+        android:background="@drawable/shape_bg_search"
+        android:layout_marginLeft="@dimen/x120"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x400"
+        android:layout_height="@dimen/y60">
+        <ImageView
+            android:layout_marginLeft="@dimen/x10"
+            android:src="@mipmap/remind_logo"
+
+            android:layout_centerVertical="true"
+            android:layout_width="@dimen/x35"
+            android:layout_height="@dimen/y35" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginRight="@dimen/x22"
+        android:layout_alignParentRight="true"
+        android:id="@+id/iv_love"
+        android:src="@mipmap/remind_logo"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x45"
+        android:layout_height="@dimen/y45" />
+    <ImageView
+        android:layout_toLeftOf="@id/iv_love"
+        android:id="@+id/iv_readme"
+        android:src="@mipmap/remind_logo"
+
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x45"
+        android:layout_height="@dimen/y45" />
+</RelativeLayout>

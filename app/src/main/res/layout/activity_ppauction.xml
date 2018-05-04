@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <include
         android:id="@+id/title"
-        layout="@layout/actionbar_title" />
+        layout="@layout/actionbar_title_two"/>
+   <!-- <include
+
+        layout="@layout/actionbar_title" />-->
 
     <com.github.jdsjlzx.recyclerview.LRecyclerView
         android:layout_below="@id/title"

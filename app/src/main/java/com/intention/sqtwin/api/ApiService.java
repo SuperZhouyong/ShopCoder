@@ -4,9 +4,11 @@ package com.intention.sqtwin.api;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
+import com.intention.sqtwin.bean.AuctionListBean;
 import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.BidRecordBean;
+import com.intention.sqtwin.bean.CategoryBena;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 
@@ -98,6 +100,24 @@ public interface ApiService {
     @GET("auction/get_item_info")
     Observable<AutionItemDetailBean> getAuctionItemDetail(
             @Query("auction_item_id") Integer id);
+
+    /**
+     * @param categoryId
+     * @return 分类界面数据
+     */
+    @GET("auction/get_category")
+    Observable<CategoryBena> getCategoryDate(
+            @Query("current_category_id") Integer categoryId);
+
+    /**
+     * @param category
+     * @param page
+     * @return 拍品列表页
+     */
+    @GET("auction/get_auction_item_list")
+    Observable<AuctionListBean> getAuctionList(
+            @Query("category_id") Integer category,
+            @Query("page_no") Integer page);
    /* *//*
     * 首页轮播图
     * *//*

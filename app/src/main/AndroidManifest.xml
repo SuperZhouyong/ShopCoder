@@ -58,18 +58,12 @@
 
 
         <!--拍品页-->
-        <activity android:name=".ui.main.activity.AuctionItemActivity" >
+        <activity android:name=".ui.main.activity.AuctionItemActivity">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--拍场页-->
         <activity android:name=".ui.main.activity.AuctionFiledActivity">
-
-
 
 
         </activity>
@@ -84,7 +78,11 @@
         </activity>
         <!--主理人界面-->
         <activity android:name=".ui.main.activity.OrganPeoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- umeng需要的 -->

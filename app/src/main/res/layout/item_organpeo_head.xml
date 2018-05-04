@@ -11,17 +11,20 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="主理人名字"
             android:textColor="@color/font_1" />
 
         <TextView
+            android:id="@+id/tv_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="主理人职位" />
 
         <TextView
+            android:id="@+id/tv_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="主理人介绍" />

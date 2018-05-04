@@ -53,6 +53,9 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     private Integer staffID = 1;
     private Integer page = 0;
     private int pagesize = 10;
+    private TextView tv_one;
+    private TextView tv_two;
+    private TextView tv_three;
 
     @Override
     public int getLayoutId() {
@@ -72,8 +75,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         mcomAdapter = new CommonRecycleViewAdapter<OrganPeBean.DataBean.AuctionFieldListBean>(this, R.layout.item_wholegoods) {
             @Override
             public void convert(ViewHolderHelper helper, OrganPeBean.DataBean.AuctionFieldListBean itemListBean, int position) {
-                helper.setText(R.id.tv_company_name, itemListBean.getOrganzation().getName());
-                helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganzation().getLogo());
+//                helper.setText(R.id.tv_company_name, itemListBean.getOrganzation().getName());
+//                helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganzation().getLogo());
 //                helper.setText(R.id.tv_fouce_num, itemListBean.get);
                 helper.setText(R.id.tv_lot_num, itemListBean.getItem_count());
                 helper.setText(R.id.tv_price_num, itemListBean.getBid_count());
@@ -96,11 +99,17 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         mRecyclerView.setOnLoadMoreListener(this);
         mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 30, 1, getResources().getColor(R.color.app_bottom_colour)));
         View artDetailHead = getLayoutInflater().inflate(R.layout.item_organpeo_head, null);
+        tv_one = (TextView) artDetailHead.findViewById(R.id.tv_one);
+        tv_two = (TextView) artDetailHead.findViewById(R.id.tv_two);
+        tv_three = (TextView) artDetailHead.findViewById(R.id.tv_three);
+
 //        setMarGinTop(artDetailHead.findViewById(R.id.rel_desc), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y30));
 //        setMarGinTop(artDetailHead.findViewById(R.id.rel_background), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y100));
         mLadapter.addHeaderView(artDetailHead);
         //item_home_head_title
         View homeHeadTitle = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
+        TextView tv_title = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
+        tv_title.setText("参与主理的拍场");
         setMarGinTop(homeHeadTitle.findViewById(R.id.yv_all_recy_head_title), (int) getResources().getDimension(R.dimen.x22), 0);
         mLadapter.addHeaderView(homeHeadTitle);
 //        View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
@@ -146,6 +155,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
+            tv_one.setText(organPeBean.getData().getStaff_info().getName());
+//            tv_two.setText(organPeBean.getData().getStaff_info().get);
 
         }
         mcomAdapter.addAll(organPeBean.getData().getAuction_field_list());
