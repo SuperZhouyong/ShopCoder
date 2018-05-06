@@ -19,16 +19,17 @@ import com.intention.sqtwin.ui.main.presenter.BidRecordPresenter;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
- * Description: 保佑无bug
+ * Description: 出价列表
  * Data：2018/4/26-下午11:59
  * Blog：Super简单
  * Author: ZhouYong
  * QQ: 437397161
  */
 
-public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecordModel> implements BidRecordContract.View, OnLoadMoreListener, LoadingTip.onReloadListener {
+public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecordModel> implements BidRecordContract.View, LoadingTip.onReloadListener {
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
     @BindView(R.id.left_title)
@@ -45,6 +46,7 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
     private LRecyclerViewAdapter mLadapter;
     private BidRecordAdapter bidRecordAdapter;
     private Integer goodId = null;
+    private int pagesize = 10;
 
     @Override
     public int getLayoutId() {
@@ -80,14 +82,24 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
 
     @Override
     public void stopLoading(String RequestId) {
-
+        mRecyclerView.refreshComplete(pagesize);
     }
 
-
+    @Override
     public void showErrorTip(String RequestId, String msg) {
         mLoadingTips.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
         mLoadingTips.setOnReloadListener(this);
     }
+
+    @OnClick({R.id.rel_back})
+    void onclick(View v) {
+        switch (v.getId()) {
+            case R.id.rel_back:
+                finish();
+                break;
+        }
+    }
+
 
     @Override
     public void returnBidRecord(BidRecordBean bidRecordBean) {
@@ -100,11 +112,6 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
         if (mLoadingTips.getVisibility() == View.VISIBLE)
             mLoadingTips.setViewGone();
         bidRecordAdapter.addAll(bidRecordBean.getData().getPrice());
-    }
-
-    @Override
-    public void onLoadMore() {
-
     }
 
 

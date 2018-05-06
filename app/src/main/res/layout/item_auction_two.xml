@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <include layout="@layout/item_ayction_three_price" />
-    <include layout="@layout/item_ayction_item_price"/>
+    <!--<include layout="@layout/item_ayction_item_price"/>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"

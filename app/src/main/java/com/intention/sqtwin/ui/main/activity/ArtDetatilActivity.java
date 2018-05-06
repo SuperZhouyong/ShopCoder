@@ -6,6 +6,7 @@ import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.ui.main.contract.ArtDetatilContract;
 import com.intention.sqtwin.ui.main.model.ArtDetatilModel;
 import com.intention.sqtwin.ui.main.presenter.ArtDetatilPresenter;
+import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
@@ -35,7 +37,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDetatilModel> implements OnLoadMoreListener, ArtDetatilContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener {
+public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDetatilModel> implements OnLoadMoreListener, ArtDetatilContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, View.OnClickListener {
 
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
@@ -54,6 +56,11 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
     private LRecyclerViewAdapter mLadapter;
     private CommonRecycleViewAdapter<ArtDetailBean.DataBean.ItemListBean> mcomAdapter;
     private int pagesize = 10;
+    private ImageView iv_icon;
+    private TextView tv_name;
+    private TextView tv_bid_nUm;
+    private TextView tv_price_num;
+    private TextView tv_desc;
 
     @Override
     public int getLayoutId() {
@@ -88,6 +95,16 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         mRecyclerView.setOnLoadMoreListener(this);
         View artDetailHead = getLayoutInflater().inflate(R.layout.item_artdetail_head, null);
         mLadapter.addHeaderView(artDetailHead);
+        iv_icon = (ImageView) artDetailHead.findViewById(R.id.iv_header_icon);
+        tv_name = (TextView) artDetailHead.findViewById(R.id.art_name);
+        tv_bid_nUm = (TextView) artDetailHead.findViewById(R.id.tv_lot_num);
+        artDetailHead.findViewById(R.id.rel_focus).setOnClickListener(this);
+
+        /*TextView tv_name_price = (TextView) artDetailHead.findViewById(R.id.tv_price_name);
+        tv_name_price.setText("粉丝");*/
+        tv_price_num = (TextView) artDetailHead.findViewById(R.id.tv_price_num);
+        tv_desc = (TextView) artDetailHead.findViewById(R.id.tv_desc);
+
         View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         mLadapter.addHeaderView(allHeadView);
         mPresenter.getArtDetailRequest(artId, page);
@@ -142,16 +159,21 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
     @Override
     public void returnArtDetail(ArtDetailBean artDetailBean) {
-        if (!artDetailBean.isIs_success() && page == 0) {
-            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-            mLoadingTip.setOnReloadListener(this);
+        if (!artDetailBean.isIs_success()) {
+            if (page == 0) {
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+                mLoadingTip.setOnReloadListener(this);
+            }
             return;
         }
-        if (!artDetailBean.isIs_success())
-            return;
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
+            ImageLoaderUtils.display(this, iv_icon, artDetailBean.getData().getArtist_info().getAvatar());
+            tv_name.setText(artDetailBean.getData().getArtist_info().getName());
+            tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getGoods_count());
+            tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count());
+            tv_desc.setText(artDetailBean.getData().getArtist_info().getDescription());
 
         }
         mcomAdapter.addAll(artDetailBean.getData().getItem_list());
@@ -159,6 +181,8 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         //TODO 这里我取出来了
         if (page == artDetailBean.getData().getTotal_page())
             mRecyclerView.setNoMore(true);
+
+
     }
 
 
@@ -170,5 +194,14 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
     @Override
     public void reloadLodTip() {
         mPresenter.getArtDetailRequest(artId, page);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.rel_focus:
+                // 关注
+                break;
+        }
     }
 }

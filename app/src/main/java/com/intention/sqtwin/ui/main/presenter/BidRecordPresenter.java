@@ -26,6 +26,12 @@ public class BidRecordPresenter extends BidRecordContract.Presenter {
             protected void _onError(String message) {
                 mView.showErrorTip(AppConstant.oneMessage, message);
             }
+
+            @Override
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading(AppConstant.oneMessage);
+            }
         }));
     }
 }

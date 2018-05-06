@@ -3,7 +3,7 @@ package com.intention.sqtwin.ui.main.contract;
 import com.intention.sqtwin.base.BaseModel;
 import com.intention.sqtwin.base.BasePresenter;
 import com.intention.sqtwin.base.BaseView;
-import com.intention.sqtwin.bean.CategoryBena;
+import com.intention.sqtwin.bean.CategoryAllBean;
 
 import rx.Observable;
 
@@ -17,10 +17,10 @@ import rx.Observable;
 
 public class CategoryContract {
     public interface Model extends BaseModel{
-        Observable<CategoryBena> getCategoryDate(Integer CategoryId);
+        Observable<CategoryAllBean> getCategoryDate(Integer CategoryId);
     }
     public interface View extends BaseView{
-        void returnCategoryData(CategoryBena categoryBena);
+        void returnCategoryData(CategoryAllBean categoryAllBean);
     }
     public abstract static class presenter extends BasePresenter<View,Model>{
         public abstract void getCategoryBeanRequest(Integer CategoryId);

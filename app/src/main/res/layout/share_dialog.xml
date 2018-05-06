@@ -7,9 +7,9 @@
 
     <RelativeLayout
         android:id="@+id/rel_all"
-        android:layout_centerInParent="true"
         android:layout_width="@dimen/x580"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:background="@drawable/dialog_bg">
 
         <ImageView
@@ -57,28 +57,28 @@
             android:layout_marginLeft="@dimen/x20">
 
             <TextView
-                android:paddingBottom="@dimen/y2"
-                android:paddingTop="@dimen/y2"
-                android:paddingRight="@dimen/x10"
-                android:paddingLeft="@dimen/x10"
-                android:textSize="@dimen/x24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_time_countdown"
+                android:paddingBottom="@dimen/y2"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                android:paddingTop="@dimen/y2"
                 android:text="拍卖时间"
-                android:textColor="@color/font_2" />
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x24" />
 
             <TextView
-                android:textSize="@dimen/x28"
-                android:textColor="@color/font_6"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:layout_marginRight="@dimen/x20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x22"
-                android:text="拍卖时间" />
+                android:layout_marginRight="@dimen/x20"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="拍卖时间"
+                android:textColor="@color/font_6"
+                android:textSize="@dimen/x28" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,51 +91,53 @@
             android:layout_marginTop="@dimen/y18">
 
             <TextView
-                android:paddingBottom="@dimen/y2"
-                android:paddingTop="@dimen/y2"
-                android:paddingRight="@dimen/x10"
-                android:paddingLeft="@dimen/x10"
-                android:textSize="@dimen/x24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_time_countdown"
+                android:paddingBottom="@dimen/y2"
+                android:paddingLeft="@dimen/x10"
+                android:paddingRight="@dimen/x10"
+                android:paddingTop="@dimen/y2"
                 android:text="拍卖价格"
-                android:textColor="@color/font_2" />
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x24" />
 
             <TextView
-                android:textSize="@dimen/x28"
-                android:textColor="@color/font_6"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:layout_marginRight="@dimen/x20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x22"
-                android:text="拍卖时间" />
+                android:layout_marginRight="@dimen/x20"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="拍卖时间"
+                android:textColor="@color/font_6"
+                android:textSize="@dimen/x28" />
         </LinearLayout>
+
         <RelativeLayout
-            android:layout_marginTop="@dimen/y20"
-            android:layout_marginBottom="@dimen/y30"
-            android:layout_marginRight="@dimen/x50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/ll_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginRight="@dimen/x50"
+            android:layout_marginTop="@dimen/y20">
 
             <ImageView
                 android:id="@+id/iv_code"
-                android:layout_centerHorizontal="true"
                 android:layout_width="@dimen/x120"
-                android:layout_height="@dimen/y120" />
+                android:layout_height="@dimen/y120"
+                android:layout_centerHorizontal="true" />
+
             <TextView
-                android:layout_marginTop="@dimen/y10"
-                android:textColor="@color/font_3"
-                android:textSize="@dimen/x25"
-                android:text="长按识别二维码"
-                android:layout_below="@id/iv_code"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_code"
+                android:layout_marginTop="@dimen/y10"
+                android:text="长按识别二维码"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x25" />
 
         </RelativeLayout>
     </RelativeLayout>
@@ -150,12 +152,12 @@
         android:background="@color/black" />
 
     <LinearLayout
+        android:layout_width="@dimen/x720"
+        android:layout_height="@dimen/y130"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:paddingLeft="@dimen/x50"
-        android:paddingRight="@dimen/x50"
-        android:layout_alignParentBottom="true"
-        android:layout_width="@dimen/x720"
-        android:layout_height="@dimen/y130">
+        android:paddingRight="@dimen/x50">
 
         <LinearLayout
             android:id="@+id/ll_wx"
@@ -201,6 +203,7 @@
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x24" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_save_pic"
             android:layout_width="0dp"

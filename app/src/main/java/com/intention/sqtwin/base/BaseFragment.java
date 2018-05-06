@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.baserx.RxManager;
@@ -191,6 +193,10 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
         startActivity(cls, null);
     }
 
+    public void startActivity(Class<?> cls) {
+        startActivity(cls, null);
+    }
+
     /**
      * 通过Class跳转界面
      **/
@@ -332,6 +338,25 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     public SQTUser getSqtUser() {
 
         return UserUtil.getLoginInfo();
+    }
+    public void setMarGinTop(View v, int marGTop, int top) {
+        if (v.getLayoutParams() instanceof LinearLayout.LayoutParams) {
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
+            v.setLayoutParams(layoutParams);
+
+        } else if (v.getLayoutParams() instanceof RelativeLayout.LayoutParams) {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
+            v.setLayoutParams(layoutParams);
+
+        } else if (v.getLayoutParams() != null) {
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop,top,marGTop,0);
+            v.setLayoutParams(layoutParams);
+        }
+
+
     }
 
 }

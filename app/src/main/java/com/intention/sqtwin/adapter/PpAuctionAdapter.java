@@ -1,6 +1,7 @@
 package com.intention.sqtwin.adapter;
 
 import android.content.Context;
+import android.view.View;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
@@ -25,7 +26,19 @@ public class PpAuctionAdapter extends CommonRecycleViewAdapter<PpAllDateBean.Dat
     @Override
     public void convert(ViewHolderHelper helper, PpAllDateBean.DataBeanX.AuctionFieldListBean auctionFieldListBean, int position) {
 //        helper.setVisible(R.id.ll_sort, position == 0);
-
+        helper.setText(R.id.tv_company_name, auctionFieldListBean.getOrganzation().getName());
+        helper.setImageRoundUrl(R.id.iv_logo, auctionFieldListBean.getOrganzation().getLogo());
+        helper.setText(R.id.tv_fouce_num, String.valueOf(auctionFieldListBean.getFans_count()));
+        helper.setText(R.id.tv_lot_num, String.valueOf(auctionFieldListBean.getItem_count()));
+        helper.setText(R.id.tv_price_num, String.valueOf(auctionFieldListBean.getBid_count()));
+        helper.setText(R.id.tv_filed_name, auctionFieldListBean.getName());
+        helper.setImageUrl(R.id.iv_pos_goods, auctionFieldListBean.getImage());
+        helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击关注
+            }
+        });
 
     }
 }

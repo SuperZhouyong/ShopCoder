@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.main.activity;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -92,7 +93,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     TextView tvFocusRen;
     @BindView(R.id.tab_layout)
     CommonTabLayout tabLayout;
-    private Integer auctiuonFiled = 1 ;
+    private Integer auctiuonFiled = 26;
     private LRecyclerViewAdapter mLadapter;
     private CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean> mAdapter;
     private CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.StaffListBean> mArtAdapter;
@@ -116,11 +117,19 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
     @Override
     public void initView() {
+
+
         mAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean>(this, R.layout.item_auction_file_item) {
             @Override
             public void convert(ViewHolderHelper helper, AuctionFiledAllBean.DataBean.AuctionItemListBean auctionItemListBean, int position) {
                 helper.setImageUrl(R.id.iv_goods, auctionItemListBean.getImage());
                 helper.setText(R.id.tv_goods_name, auctionItemListBean.getName());
+
+                helper.setText(R.id.tv_goods_price_foot, auctionItemListBean.getBid_leader());
+                helper.setText(R.id.tv_goods_desc_foot, "领先者");
+
+                helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
+                helper.setText(R.id.tv_goods_desc, "当前价");
             }
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);
@@ -191,6 +200,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void returnAuctionFileData(final AuctionFiledAllBean auctionFiledAllBean) {
         if (!auctionFiledAllBean.isIs_success()) {
@@ -201,9 +211,9 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         tvLotName.setText(auctionFiledAllBean.getData().getField_info().getName());
         tvAuthorDesc.setText(auctionFiledAllBean.getData().getField_info().getDescription());
 
-        tvNumOne.setText(auctionFiledAllBean.getData().getField_info().getItem_count());
-        tvNumTwo.setText(auctionFiledAllBean.getData().getField_info().getBid_count());
-        tvNumThree.setText(auctionFiledAllBean.getData().getField_info().getFans_count());
+        tvNumOne.setText(auctionFiledAllBean.getData().getField_info().getItem_count() + "件");
+        tvNumTwo.setText(auctionFiledAllBean.getData().getField_info().getBid_count() + "次");
+        tvNumThree.setText(auctionFiledAllBean.getData().getField_info().getFans_count() + "人");
 
         mArtAdapter.addAll(auctionFiledAllBean.getData().getStaff_list());
         mAdapter.addAll(auctionFiledAllBean.getData().getAuction_item_list());

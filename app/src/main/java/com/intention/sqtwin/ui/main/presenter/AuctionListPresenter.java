@@ -1,5 +1,8 @@
 package com.intention.sqtwin.ui.main.presenter;
 
+import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AuctionListBean;
 import com.intention.sqtwin.ui.main.contract.AuctionListContract;
 
 /**
@@ -13,6 +16,22 @@ import com.intention.sqtwin.ui.main.contract.AuctionListContract;
 public class AuctionListPresenter extends AuctionListContract.Presenter {
     @Override
     public void getRequestAuctionList(Integer category, Integer page) {
+        mRxManage.add(mModel.getAuctionListBean(category, page).subscribe(new RxSubscriber<AuctionListBean>(mContext) {
+            @Override
+            protected void _onNext(AuctionListBean auctionListBean) {
+                mView.returnAuctionList(auctionListBean);
+            }
 
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.oneMessage,message);
+            }
+
+            @Override
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading(AppConstant.oneMessage);
+            }
+        }));
     }
 }

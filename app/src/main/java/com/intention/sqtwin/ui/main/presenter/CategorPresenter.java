@@ -2,7 +2,7 @@ package com.intention.sqtwin.ui.main.presenter;
 
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
-import com.intention.sqtwin.bean.CategoryBena;
+import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.ui.main.contract.CategoryContract;
 
 /**
@@ -16,10 +16,10 @@ import com.intention.sqtwin.ui.main.contract.CategoryContract;
 public class CategorPresenter extends CategoryContract.presenter {
     @Override
     public void getCategoryBeanRequest(Integer CategoryId) {
-        mRxManage.add(mModel.getCategoryDate(CategoryId).subscribe(new RxSubscriber<CategoryBena>(mContext) {
+        mRxManage.add(mModel.getCategoryDate(CategoryId).subscribe(new RxSubscriber<CategoryAllBean>(mContext) {
             @Override
-            protected void _onNext(CategoryBena categoryBena) {
-                mView.returnCategoryData(categoryBena);
+            protected void _onNext(CategoryAllBean categoryAllBean) {
+                mView.returnCategoryData(categoryAllBean);
             }
 
             @Override

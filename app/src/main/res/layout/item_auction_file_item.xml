@@ -2,35 +2,69 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/y348"
-    android:paddingLeft="@dimen/x22"
-    android:paddingRight="@dimen/x2"
     android:background="@color/white"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/x22"
+    android:paddingRight="@dimen/x2">
 
     <ImageViewb
-        android:layout_gravity="center_vertical"
         android:id="@+id/iv_goods"
         android:layout_width="@dimen/x300"
-        android:layout_height="@dimen/x300" />
+        android:layout_height="@dimen/x300"
+        android:layout_gravity="center_vertical" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x22"
             android:layout_marginRight="@dimen/x22"
             android:layout_marginTop="@dimen/y50"
             android:textColor="@color/font_1"
-            android:textSize="@dimen/x32"
-            android:id="@+id/tv_goods_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/x32" />
 
         <LinearLayout
-            android:id="@+id/ll_header"
-            android:layout_width="match_parent"
+            android:background="@drawable/shape_time_countdown"
+            android:id="@+id/ll_footer"
+            android:layout_width="@dimen/x224"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginLeft="@dimen/x22"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_goods_desc_foot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:textColor="@color/title_bg" />
+
+            <TextView
+                android:id="@+id/tv_goods_price_foot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20"
+                android:textColor="@color/title_bg" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@drawable/shape_time_countdown"
+            android:id="@+id/ll_header"
+            android:layout_width="@dimen/x224"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/ll_footer"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginLeft="@dimen/x22"
             android:orientation="horizontal">
 
             <ImageView
@@ -40,12 +74,15 @@
             <TextView
                 android:id="@+id/tv_goods_desc"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x10"
+                android:textColor="@color/title_bg" />
 
             <TextView
                 android:id="@+id/tv_goods_price"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x20" />
 
         </LinearLayout>
 

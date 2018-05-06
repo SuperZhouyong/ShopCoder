@@ -144,14 +144,16 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 
     @Override
     public void returnOrganPeData(OrganPeBean organPeBean) {
-        if (!organPeBean.isIs_success() && page == 0) {
-            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-            mLoadingTip.setOnReloadListener(this);
+        if (!organPeBean.isIs_success()) {
+            // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
+            if (page == 0) {
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+                mLoadingTip.setOnReloadListener(this);
+            }
             return;
         }
-        // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
-        if (!organPeBean.isIs_success())
-            return;
+
+
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {

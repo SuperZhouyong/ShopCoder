@@ -2,6 +2,7 @@ package com.intention.sqtwin.ui.main.model;
 
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
+import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.bean.AuctionListBean;
 import com.intention.sqtwin.ui.main.contract.AuctionListContract;
 
@@ -18,6 +19,6 @@ import rx.Observable;
 public class AuctionListModel implements AuctionListContract.Model {
     @Override
     public Observable<AuctionListBean> getAuctionListBean(Integer category, Integer page) {
-        return Api.getDefault(HostType.Jsonpart).getAuctionList(category,page);
+        return Api.getDefault(HostType.Jsonpart).getAuctionList(category,page).compose(RxSchedulers.<AuctionListBean>io_main());
     }
 }

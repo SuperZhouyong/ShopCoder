@@ -3,7 +3,7 @@ package com.intention.sqtwin.ui.main.model;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.baserx.RxSchedulers;
-import com.intention.sqtwin.bean.CategoryBena;
+import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.ui.main.contract.CategoryContract;
 
 import rx.Observable;
@@ -18,7 +18,7 @@ import rx.Observable;
 
 public class CategoryModel implements CategoryContract.Model {
     @Override
-    public Observable<CategoryBena> getCategoryDate(Integer CategoryId) {
-        return Api.getDefault(HostType.Jsonpart).getCategoryDate(CategoryId).compose(RxSchedulers.<CategoryBena>io_main());
+    public Observable<CategoryAllBean> getCategoryDate(Integer CategoryId) {
+        return Api.getDefault(HostType.Jsonpart).getCategoryDate(CategoryId).compose(RxSchedulers.<CategoryAllBean>io_main());
     }
 }

@@ -4,11 +4,10 @@
     android:background="@color/title_bg"
     android:layout_height="@dimen/y96">
     <ImageView
-        android:id="@+id/category_logo"
-        android:src="@mipmap/category_logo"
+        android:src="@mipmap/logo"
         android:layout_marginLeft="@dimen/x22"
         android:layout_centerVertical="true"
-        android:layout_width="@dimen/x45"
+        android:layout_width="@dimen/x70"
         android:layout_height="@dimen/y45" />
     <RelativeLayout
         android:background="@drawable/shape_bg_search"

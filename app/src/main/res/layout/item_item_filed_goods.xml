@@ -17,6 +17,34 @@
             android:layout_marginRight="@dimen/x22"
             android:layout_marginTop="@dimen/y20"
             android:background="@color/orange" />
+        <RelativeLayout
+            android:layout_width="@dimen/x234"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_alignBottom="@id/iv_pos_goods"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@drawable/shape_time_countdown">
+
+            <ImageView
+                android:id="@+id/iv_time"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y20"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:background="@color/red" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/iv_time"
+                android:text="距结束  9时30分"
+                android:textColor="@color/font_2" />
+
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -34,32 +62,7 @@
             android:textColor="@color/font_1"
             android:textSize="@dimen/x35" />
 
-        <RelativeLayout
-            android:layout_width="@dimen/x234"
-            android:layout_height="@dimen/y40"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x22"
-            android:background="@drawable/shape_time_countdown">
 
-            <ImageView
-                android:id="@+id/iv_time"
-                android:layout_width="@dimen/x20"
-                android:layout_height="@dimen/y20"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x10"
-                android:background="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x10"
-                android:layout_toRightOf="@id/iv_time"
-                android:text="距结束  9时30分"
-                android:textColor="@color/font_2" />
-
-        </RelativeLayout>
 
     </RelativeLayout>
 

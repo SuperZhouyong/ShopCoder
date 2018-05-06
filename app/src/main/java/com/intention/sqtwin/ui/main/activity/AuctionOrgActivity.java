@@ -27,14 +27,14 @@ import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import butterknife.BindView;
 
 /**
- * Description: 保佑无bug
+ * Description: 拍卖机构主页
  * Data：2018/5/3-下午10:40
  * Blog：Super简单
  * Author: ZhouYong
  * QQ: 437397161
  */
 
-public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, AuctionOrgModel> implements AuctionOrgContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener {
+public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, AuctionOrgModel> implements AuctionOrgContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener, View.OnClickListener {
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
     @BindView(R.id.left_title)
@@ -100,6 +100,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         setMarGinTop(artDetailHead.findViewById(R.id.rel_background), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y100));
         mLadapter.addHeaderView(artDetailHead);
         View homeHeadTitle = getLayoutInflater().inflate(R.layout.item_home_head_title, null);
+        homeHeadTitle.findViewById(R.id.tv_all).setOnClickListener(this);
+        homeHeadTitle.findViewById(R.id.tv_ongoing).setOnClickListener(this);
+        homeHeadTitle.findViewById(R.id.tv_preview).setOnClickListener(this);
+        homeHeadTitle.findViewById(R.id.tv_over).setOnClickListener(this);
         mLadapter.addHeaderView(homeHeadTitle);
 //        View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
 //        mLadapter.addHeaderView(allHeadView);
@@ -170,4 +174,18 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_all:
+                break;
+            case R.id.tv_ongoing:
+                break;
+            case R.id.tv_preview:
+                break;
+            case R.id.tv_over:
+                break;
+
+        }
+    }
 }

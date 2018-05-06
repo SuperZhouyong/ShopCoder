@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -76,6 +77,10 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
 
 //        View headViewOne = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_one, null);
+        View homeHeadTitleOnew = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
+        TextView viewById1 = (TextView) homeHeadTitleOnew.findViewById(R.id.yv_all_recy_head_title);
+        viewById1.setText("推荐作品");
+        setMarGinTop(viewById1, (int) getResources().getDimension(R.dimen.x22),0);
 
 
         View HeadViewTwo = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
@@ -89,12 +94,16 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mBannerViewTwo = (BannerView) HeadViewThree.findViewById(R.id.mLoopViewPager);
 
 //        View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_home_head_title, null);
+        View home_fore = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_fore_item,null);
 
         View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
-
+        TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
+        viewById.setText("推荐专场");
+        setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22),0);
 
         mLadapter.addHeaderView(headViewPager);
-//        mLadapter.addHeaderView(headViewOne);
+        mLadapter.addHeaderView(home_fore);
+        mLadapter.addHeaderView(homeHeadTitleOnew);
         mLadapter.addHeaderView(HeadViewTwo);
         mLadapter.addHeaderView(HeadViewThree);
         mLadapter.addHeaderView(homeHeadTitle);
@@ -117,7 +126,6 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 startActivity(getActivity(), AuctionFiledActivity.class);
             }
         });
-
         mPresenter.getHomeAllDate();
     }
 
@@ -144,6 +152,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
             mLoadingTip.setOnReloadListener(this);
             return;
         }
+
         // 取消显示页
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();

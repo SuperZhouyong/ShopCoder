@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="wrap_content"
-
+    android:padding="@dimen/y20"
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/iv_goods_pic"
         android:layout_width="@dimen/x330"
         android:layout_height="@dimen/y330" />
     <TextView
+        android:maxLines="2"
+        android:ellipsize="end"
         android:id="@+id/tv_goods_name"
         android:text="青花瓷"
         android:paddingTop="@dimen/y10"
         android:paddingBottom="@dimen/y10"
         android:textSize="@dimen/x35"
         android:textColor="@color/font_1"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/x330"
         android:layout_height="wrap_content" />
     <TextView
         android:id="@+id/tv_price"
         android:text="1600"
         android:textSize="@dimen/x32"
         android:textColor="@color/font_2"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/x330"
         android:layout_height="wrap_content" />
 </LinearLayout>

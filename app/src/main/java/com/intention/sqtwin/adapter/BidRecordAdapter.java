@@ -24,6 +24,11 @@ public class BidRecordAdapter extends CommonRecycleViewAdapter<BidRecordBean.Dat
 
     @Override
     public void convert(ViewHolderHelper helper, BidRecordBean.DataBean.PriceBean priceBean, int position) {
-            helper.setImageUrl(R.id.iv_goods,priceBean.getAvatar());
+        helper.setImageUrl(R.id.iv_goods, priceBean.getAvatar());
+
+        helper.setText(R.id.tv_name, priceBean.getNickname());
+        helper.setText(R.id.tv_bid_desc, "出价");
+        helper.setText(R.id.tv_bid_price, priceBean.getPrice() + ("0".equals(priceBean.getPrice()) ? "" : "(代理)"));
+        helper.setText(R.id.tv_time, priceBean.getBid_time());
     }
 }

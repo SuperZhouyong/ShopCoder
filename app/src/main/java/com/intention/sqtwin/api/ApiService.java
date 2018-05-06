@@ -8,7 +8,7 @@ import com.intention.sqtwin.bean.AuctionListBean;
 import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.BidRecordBean;
-import com.intention.sqtwin.bean.CategoryBena;
+import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 
@@ -106,7 +106,7 @@ public interface ApiService {
      * @return 分类界面数据
      */
     @GET("auction/get_category")
-    Observable<CategoryBena> getCategoryDate(
+    Observable<CategoryAllBean> getCategoryDate(
             @Query("current_category_id") Integer categoryId);
 
     /**

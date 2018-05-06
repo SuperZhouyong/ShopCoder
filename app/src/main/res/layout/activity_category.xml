@@ -1,28 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/actionbar_title" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title_two" />
 
     <RelativeLayout
+        android:background="@color/white"
+        android:layout_below="@id/title"
         android:id="@+id/rel_all"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mrecy_left"
-            android:layout_width="@dimen/x200"
+            android:layout_width="@dimen/x160"
             android:layout_height="match_parent" />
 
-        <android.support.v7.widget.RecyclerView
+        <ImageView
+            android:id="@+id/iv_dilver"
+            android:layout_width="@dimen/x20"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/mrecy_left"
+            android:background="@color/app_bottom_colour" />
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+
             android:id="@+id/mrecy_right"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/mrecy_left" />
+            android:layout_toRightOf="@id/iv_dilver" />
 
     </RelativeLayout>
 
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoadingTip"
+        android:layout_below="@id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-</LinearLayout>
+</RelativeLayout>

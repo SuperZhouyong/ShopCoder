@@ -119,7 +119,7 @@
                     android:id="@+id/tv_price_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="出价"
+                    android:text="粉丝"
                     android:textColor="@color/font_3"
                     android:textSize="@dimen/x27" />
 
