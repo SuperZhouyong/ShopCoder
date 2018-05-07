@@ -8,9 +8,11 @@
     <color name="font_4">#ff444444</color>
     <color name="font_5">#ff404040</color>
     <color name="font_6">#ff424242</color>
+    <color name="font_7">#ff505050</color>
+    <color name="font_8">#ff222222</color>
     <color name="title_bg">#ffc0000d</color>
     <color name="lots_bg">#f8f8f8</color>
-    <color name="app_bottom_colour">#fff8f8f8</color>
+    <color name="app_bottom_colour">#ffe7e7e7</color>
 
 
 
@@ -81,7 +83,7 @@
     <color name="mask_color">#66666666</color>
 
     <color name="font_price_experts">#ff8400</color>
-    <color name="app_main">#0aa0f6</color><!--//00c2de-->
+    <color name="app_main">#ffaf0003</color><!--//00c2de-->
     <color name="app_main_2">#ff0aa0f6</color>
     <color name="app_unfocus">#e5e5e5</color>
     <color name="textcolor1">#333333</color>

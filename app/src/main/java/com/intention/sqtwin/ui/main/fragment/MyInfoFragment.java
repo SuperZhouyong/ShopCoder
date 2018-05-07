@@ -17,7 +17,6 @@ import butterknife.BindView;
 public class MyInfoFragment extends BaseFragment {
 
 
-
     @Override
     protected int getLayoutResource() {
         return R.layout.fragment_myinfo;
@@ -29,7 +28,8 @@ public class MyInfoFragment extends BaseFragment {
     }
 
     @Override
-    protected void initView() {}
+    protected void initView() {
+    }
 
 
 }

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y80"
+        android:text="实付款"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="￥100"
+        android:textColor="@color/font_8"
+        android:textSize="@dimen/x80" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y220"
+        android:layout_marginTop="@dimen/y100"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel_wx_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y110"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_wx_pay"
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/y60"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/wx_pay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/iv_wx_pay"
+                android:text="微信支付"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <ImageView
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y40"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:src="@mipmap/list_right" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginRight="@dimen/x22"
+                android:background="@color/app_bottom_colour" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_ali_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_message"
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/y60"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/ali_pay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/iv_message"
+                android:text="支付宝"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <ImageView
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y40"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:src="@mipmap/list_right" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginRight="@dimen/x22"
+                android:background="@color/app_bottom_colour" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="@dimen/x445"
+            android:layout_height="@dimen/y70"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/y100"
+            android:background="@drawable/tv_bg_confirm"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x35" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_confirm">
+
+            <CheckBox
+                android:id="@+id/cb_check"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/y50"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/y30"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@id/cb_check"
+                android:text="阅读并同意《支付宝协议》" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
