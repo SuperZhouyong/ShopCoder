@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+
+
+//group = 'com.github.czy1121'
+//version = '1.0.2'
+//archivesBaseName = 'bannerview'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+    }
+        buildTypes {
+        release {
+            minifyEnabled false
+            // 去除 多余的资源文件
+//            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+//            shrinkResources false
+            zipAlignEnabled false
+            versionNameSuffix "-debug"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        // 设置虚拟机堆内存的空间大小 ， 避免在编译期间OOM
+        dexOptions {
+            incremental true
+            javaMaxHeapSize "4g"
+        }
+        //打包不检查
+        lintOptions {
+            abortOnError false
+            checkReleaseBuilds false
+            abortOnError false
+        }
+
+    }
+   /* buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }*/
+}
+
+
+repositories {
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        provided "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+//        provided 'com.android.support:appcompat-v7:25.+'
+    }
+}
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+// build a jar with source files
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// build a jar with javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+
