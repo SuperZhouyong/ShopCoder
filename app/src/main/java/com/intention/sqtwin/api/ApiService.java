@@ -1,6 +1,7 @@
 package com.intention.sqtwin.api;
 
 
+import com.intention.sqtwin.bean.AccountBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
@@ -9,6 +10,8 @@ import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.BidRecordBean;
 import com.intention.sqtwin.bean.CategoryAllBean;
+import com.intention.sqtwin.bean.MessageBean;
+import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 
@@ -118,6 +121,36 @@ public interface ApiService {
     Observable<AuctionListBean> getAuctionList(
             @Query("category_id") Integer category,
             @Query("page_no") Integer page);
+
+    /**
+     * 获取订单列表
+     *
+     * @param status
+     * @return
+     */
+    @GET("membercenter/get_order_list")
+    Observable<OrderListBean> getOrderList(
+
+            @Query("status") Integer status);
+
+    /**
+     * 获取消息列表
+     * @param page_no
+     * @return
+     */
+    @GET("membercenter/get_message_list")
+    Observable<MessageBean> getMessageBean(
+            @Query("page_no") Integer page_no);
+
+    /**
+     * 获取账户信息
+     * @param accountId
+     * @return
+     */
+    @GET("membercenter/get_member_balance")
+    Observable<AccountBean> getAccountBeab(
+
+           @Query("id") Integer accountId);
    /* *//*
     * 首页轮播图
     * *//*

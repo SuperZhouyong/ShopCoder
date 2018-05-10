@@ -161,7 +161,7 @@
                 android:layout_width="@dimen/x150"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/ll_one"
+                android:layout_toRightOf="@id/ll_one_bottom"
                 android:gravity="center"
                 android:orientation="vertical">
 

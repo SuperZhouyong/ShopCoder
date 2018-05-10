@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
+    <color name="app_main">#ffaf0003</color><!--//00c2de-->
     <color name="font_1">#ff303030</color>
     <color name="font_2">#ffb60005</color>
     <color name="font_3">#ff999999</color>
@@ -83,7 +83,7 @@
     <color name="mask_color">#66666666</color>
 
     <color name="font_price_experts">#ff8400</color>
-    <color name="app_main">#ffaf0003</color><!--//00c2de-->
+
     <color name="app_main_2">#ff0aa0f6</color>
     <color name="app_unfocus">#e5e5e5</color>
     <color name="textcolor1">#333333</color>

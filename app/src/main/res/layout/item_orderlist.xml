@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y300"
+    android:layout_marginLeft="@dimen/x22"
+    android:layout_marginRight="@dimen/x22"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_order_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22"
+        android:paddingBottom="@dimen/y20"
+        android:paddingTop="@dimen/y20"
+        android:text="商城订单"
+        android:textColor="@color/font_2"
+        android:textSize="@dimen/x24" />
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y146"
+        android:layout_marginLeft="@dimen/x22">
+
+        <ImageView
+            android:id="@+id/iv_goods_pic"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/y120"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_goods_pic"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toRightOf="@id/iv_goods_pic"
+            android:text="青花器拍卖"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/tv_goods_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_goods_pic"
+            android:layout_marginBottom="@dimen/y5"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toRightOf="@id/iv_goods_pic"
+            android:text="2018-04-19"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+
+        <TextView
+            android:id="@+id/tv_goods_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_goods_name"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x22"
+            android:text="x3"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+
+            android:id="@+id/tv_goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignBaseline="@+id/tv_goods_name"
+            android:layout_alignBottom="@+id/tv_goods_name"
+            android:layout_marginEnd="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@+id/tv_goods_num"
+            android:layout_toStartOf="@+id/tv_goods_num"
+            android:text="￥3900"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end|"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@drawable/tv_bg_confirm"
+            android:gravity="center"
+            android:paddingBottom="@dimen/y5"
+            android:paddingLeft="@dimen/x10"
+            android:paddingRight="@dimen/x10"
+            android:paddingTop="@dimen/y5"
+            android:text="待支付"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</LinearLayout>

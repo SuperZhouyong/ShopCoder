@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title" />
+
+
+    <com.intention.sqtwin.widget.SlidingTabLayout
+
+        android:id="@+id/slid_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/title"
+        app:tl_indicator_color="@color/title_bg"
+        app:tl_indicator_corner_radius="5dp"
+        app:tl_indicator_style="NORMAL"
+        app:tl_indicator_width_equal_title="false"
+        app:tl_tab_space_equal="false"
+        app:tl_textSelectColor="@color/title_bg"
+        app:tl_textUnselectColor="@color/font_1"
+        app:tl_textsize="@dimen/x28" />
+
+    <android.support.v4.view.ViewPager
+
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/slid_tab_layout" />
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoadingTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
+</RelativeLayout>

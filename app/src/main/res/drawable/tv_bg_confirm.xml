@@ -2,7 +2,9 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <solid android:color="@color/app_main" />
-
+    <stroke
+        android:width="@dimen/y3"
+        android:color="@color/black" />
     <!-- 圆角 -->
     <corners android:radius="@dimen/x8" />
 
