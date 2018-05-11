@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -47,6 +47,7 @@
         android:layout_height="@dimen/y70"
         android:layout_below="@id/rel_head"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/y50"
         android:background="@drawable/tv_bg_confirm"
         android:gravity="center"
@@ -60,26 +61,60 @@
         android:layout_height="@dimen/y70"
         android:layout_below="@id/tv_recharge"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/y50"
         android:background="@drawable/tv_agent_price"
 
         android:gravity="center"
-        android:text="充值"
+        android:text="提现"
         android:textColor="@color/font_2"
         android:textSize="@dimen/x30" />
 
     <RelativeLayout
+        android:layout_width="@dimen/x560"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@id/tv_withdrawal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_below="@id/tv_withdrawal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y40">
 
         <TextView
-
+            android:id="@+id/tv_money_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="被冻结的金额" />
+            android:text="被冻结的金额"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/tv_money_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toRightOf="@id/tv_money_desc"
+            android:text="￥0.00"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x26" />
 
 
     </RelativeLayout>
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/tv_bank_card_manager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y200"
+        android:text="银行卡管理"
+        android:textColor="@color/font_9" />
+
+    <TextView
+        android:id="@+id/tv_Transaction_manage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y20"
+        android:text="交易明细"
+        android:textColor="@color/font_9" />
+
+</LinearLayout>
