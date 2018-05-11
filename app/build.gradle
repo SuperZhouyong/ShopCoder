@@ -15,7 +15,7 @@ android {
 * 1.4
 * */
     defaultConfig {
-        applicationId "com.intention.sqtwin"
+        applicationId "com.huiwang.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.releaseVersionCode

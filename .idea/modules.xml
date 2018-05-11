@@ -3,10 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LRecyclerview_library/LRecyclerview_library.iml" filepath="$PROJECT_DIR$/LRecyclerview_library/LRecyclerview_library.iml" />
+      <module fileurl="file://E:\CompanyProjectAndSantao\ShopCoder\LRecyclerview_library\LRecyclerview_library.iml" filepath="E:\CompanyProjectAndSantao\ShopCoder\LRecyclerview_library\LRecyclerview_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
+      <module fileurl="file://E:\CompanyProjectAndSantao\ShopCoder\MPChartLib\MPChartLib.iml" filepath="E:\CompanyProjectAndSantao\ShopCoder\MPChartLib\MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShopCoder.iml" filepath="$PROJECT_DIR$/ShopCoder.iml" />
+      <module fileurl="file://E:\CompanyProjectAndSantao\ShopCoder\ShopCoder.iml" filepath="E:\CompanyProjectAndSantao\ShopCoder\ShopCoder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\CompanyProjectAndSantao\ShopCoder\app\app.iml" filepath="E:\CompanyProjectAndSantao\ShopCoder\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/loopViewpager/loopViewpager.iml" filepath="$PROJECT_DIR$/loopViewpager/loopViewpager.iml" />
+      <module fileurl="file://E:\CompanyProjectAndSantao\ShopCoder\loopViewpager\loopViewpager.iml" filepath="E:\CompanyProjectAndSantao\ShopCoder\loopViewpager\loopViewpager.iml" />
     </modules>
   </component>
 </project>

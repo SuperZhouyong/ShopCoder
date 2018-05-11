@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">志愿360</string>
+    <string name="app_name">拍卖</string>
 
     <string name="listview_header_hint_normal">查看更多</string>
     <string name="listview_header_hint_release">释放立即查看</string>

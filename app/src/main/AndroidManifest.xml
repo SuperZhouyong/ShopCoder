@@ -49,11 +49,11 @@
             android:name="com.intention.sqtwin.base.BaseGlideCache"
             android:value="GlideModule" />-->
         <activity android:name="com.intention.sqtwin.ui.main.activity.MainActivity">
-            <intent-filter>
+          <!--  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
 
@@ -87,6 +87,15 @@
         <!--拍品列表页-->
         <activity android:name=".ui.main.activity.AuctionItemListActivity">
 
+        </activity>
+
+        <!--衍生品界面-->
+        <activity android:name=".ui.mall.activity.DerivativesActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- umeng需要的 -->
