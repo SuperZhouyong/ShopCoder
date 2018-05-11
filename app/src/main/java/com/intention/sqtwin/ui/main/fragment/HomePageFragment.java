@@ -14,6 +14,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AllDateBean;
@@ -80,7 +81,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         View homeHeadTitleOnew = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById1 = (TextView) homeHeadTitleOnew.findViewById(R.id.yv_all_recy_head_title);
         viewById1.setText("推荐作品");
-        setMarGinTop(viewById1, (int) getResources().getDimension(R.dimen.x22),0);
+        setMarGinTop(viewById1, (int) getResources().getDimension(R.dimen.x22), 0);
 
 
         View HeadViewTwo = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
@@ -94,12 +95,12 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mBannerViewTwo = (BannerView) HeadViewThree.findViewById(R.id.mLoopViewPager);
 
 //        View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_home_head_title, null);
-        View home_fore = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_fore_item,null);
+        View home_fore = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_fore_item, null);
 
         View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
         viewById.setText("推荐专场");
-        setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22),0);
+        setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22), 0);
 
         mLadapter.addHeaderView(headViewPager);
         mLadapter.addHeaderView(home_fore);
@@ -142,7 +143,10 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
-
+        if (AppConstant.oneMessage.equals(RequestId)) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(this);
+        }
     }
 
     @Override

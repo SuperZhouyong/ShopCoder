@@ -10,6 +10,7 @@ import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.BidRecordBean;
 import com.intention.sqtwin.bean.CategoryAllBean;
+import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.MessageBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
@@ -135,6 +136,7 @@ public interface ApiService {
 
     /**
      * 获取消息列表
+     *
      * @param page_no
      * @return
      */
@@ -144,13 +146,24 @@ public interface ApiService {
 
     /**
      * 获取账户信息
+     *
      * @param accountId
      * @return
      */
     @GET("membercenter/get_member_balance")
     Observable<AccountBean> getAccountBeab(
 
-           @Query("id") Integer accountId);
+            @Query("id") Integer accountId);
+
+    /**
+     * 衍生品界面
+     * @param type
+     * @return
+     */
+    @GET("shop/get_goods_page")
+    Observable<DerivativesBean> getDerivativesDate(
+            @Query("docID") Integer type);
+
    /* *//*
     * 首页轮播图
     * *//*
