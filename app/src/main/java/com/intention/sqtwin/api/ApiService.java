@@ -2,16 +2,19 @@ package com.intention.sqtwin.api;
 
 
 import com.intention.sqtwin.bean.AccountBean;
+import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
 import com.intention.sqtwin.bean.AuctionListBean;
 import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
+import com.intention.sqtwin.bean.BidBean;
 import com.intention.sqtwin.bean.BidRecordBean;
 import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.MessageBean;
+import com.intention.sqtwin.bean.MyCompeteBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
@@ -54,7 +57,8 @@ public interface ApiService {
      */
     @GET("auction/get_field_page_info")
     Observable<AuctionFiledAllBean> getAuctionFiled(
-            @Query("auction_field_id") Integer auction_field_id
+            @Query("auction_field_id") Integer auction_field_id,
+            @Query("sort") Integer sort
     );
 
     /**
@@ -157,12 +161,38 @@ public interface ApiService {
 
     /**
      * 衍生品界面
+     *
      * @param type
      * @return
      */
     @GET("shop/get_goods_page")
     Observable<DerivativesBean> getDerivativesDate(
             @Query("docID") Integer type);
+
+    @GET("membercenter/get_bid_item_list")
+    Observable<MyCompeteBean> getMyCompeteBean(Integer page);
+
+    /**
+     * goods_id 拍品id  price 报价 member_id 报价者id
+     *
+     * @param good_id
+     * @param price
+     * @param member_id
+     * @return
+     */
+    @GET("auction/agentbid")
+    Observable<AgentBidBean> getAgenBidDate(
+            @Query("goods_id") Integer good_id,
+            @Query("price") Integer price,
+            @Query("member_id") Integer member_id
+    );
+
+    @GET("auction/bid")
+    Observable<BidBean> getBidDate(
+            @Query("goods_id") Integer good_id,
+            @Query("price") Integer price,
+            @Query("member_id") Integer member_id
+    );
 
    /* *//*
     * 首页轮播图

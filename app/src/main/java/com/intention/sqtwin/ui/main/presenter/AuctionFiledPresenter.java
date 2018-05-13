@@ -14,8 +14,8 @@ import com.intention.sqtwin.ui.main.contract.AuctionFiledContract;
 
 public class AuctionFiledPresenter extends AuctionFiledContract.Presenter {
     @Override
-    public void getAuctionFiledRequest(Integer auction_filed_id) {
-        mRxManage.add(mModel.getAuctionFileDate(auction_filed_id).subscribe(new RxSubscriber<AuctionFiledAllBean>(mContext) {
+    public void getAuctionFiledRequest(Integer auction_filed_id, Integer sort) {
+        mRxManage.add(mModel.getAuctionFileDate(auction_filed_id, sort).subscribe(new RxSubscriber<AuctionFiledAllBean>(mContext, true) {
             @Override
             protected void _onNext(AuctionFiledAllBean auctionFiledAllBean) {
                 mView.returnAuctionFileData(auctionFiledAllBean);

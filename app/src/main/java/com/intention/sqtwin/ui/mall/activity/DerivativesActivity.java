@@ -1,6 +1,5 @@
 package com.intention.sqtwin.ui.mall.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,7 +31,6 @@ import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ezy.ui.view.BannerView;
 

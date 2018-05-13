@@ -56,13 +56,16 @@
             android:textSize="@dimen/x24" />
 
         <TextView
-
+            android:maxLines="1"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:id="@+id/Tv_time_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/y15"
             android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x100"
             android:layout_toRightOf="@id/Tv_time_one"
             android:text="11.20 10:00-11.21 10:00"
             android:textColor="@color/white"

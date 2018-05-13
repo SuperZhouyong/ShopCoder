@@ -3,8 +3,10 @@ package com.intention.sqtwin.ui.main.contract;
 import com.intention.sqtwin.base.BaseModel;
 import com.intention.sqtwin.base.BasePresenter;
 import com.intention.sqtwin.base.BaseView;
+import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.ArtistDetailBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
+import com.intention.sqtwin.bean.BidBean;
 import com.intention.sqtwin.bean.PriceRecordBena;
 import com.intention.sqtwin.bean.WorkerListBean;
 
@@ -20,27 +22,30 @@ import rx.Observable;
 
 public class AutionItemContract {
     public interface Model extends BaseModel {
-        //获取工作人员列表
-//        Observable<WorkerListBean> getWorkListDate(Integer id, Integer type);
+
         // 获取拍品详情
         Observable<AutionItemDetailBean> getAutionDetaiData(Integer id);
-        // 获取艺术家详情
-//        Observable<ArtistDetailBean> getArtistDeatilData(Integer id);
-        // 获取出价记录
-//        Observable<PriceRecordBena> getPriceRecordData(Integer id);
+       //代理出价  goods_id 拍品id  price 报价 member_id 报价者id
+        Observable<AgentBidBean> getAgentBidDate(Integer goods_id,Integer price,Integer member_id);
+        //出价
+        Observable<BidBean> getBindDate(Integer goods_id,Integer price,Integer member_id);
     }
 
     public interface View extends BaseView {
 //        void  returnWorkList(WorkerListBean workerListBean);
         void returnAutionItemDeatil(AutionItemDetailBean autionItemDetailBean);
-//        void returnArtistDetail(ArtistDetailBean artistDetailBean);
-//        void returnPriceRecord(PriceRecordBena priceRecordBena);
+
+        void returnAgentBidDate(Integer goods_id,Integer price,Integer member_id);
+
+        void returnBidDate(Integer goods_id,Integer price,Integer member_id);
     }
 
     public abstract static class Presenter extends BasePresenter<View, Model> {
 //        public abstract void getWorkListRequest(Integer id, Integer type);
         public abstract void getAutionDetailRequest(Integer id);
-//        public abstract void getArtistDetailRequest(Integer id);
-//        public abstract void getPriceRecordRequest(Integer id);
+
+        public abstract void getAgentBidBeanRequest(Integer goods_id,Integer price,Integer member_id);
+
+        public abstract void getBidBeanRequest(Integer goods_id,Integer price,Integer member_id);
     }
 }

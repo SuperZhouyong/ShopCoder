@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/x30"
+            android:text="匿名"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <CheckBox
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_desc" />
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/x50"
+            android:layout_height="@dimen/y50"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/close_all" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_amount_layout"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
+            android:showDividers="middle">
+
+            <Button
+                android:id="@+id/btnDecrease"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y100"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_amount"
+                android:gravity="center"
+                android:text="—"
+
+                android:textColor="@color/title_bg"
+                android:textSize="@dimen/x34" />
+
+            <TextView
+
+                android:id="@+id/etAmount"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/font_1"
+                android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                android:textSize="@dimen/x36" />
+
+            <Button
+                android:id="@+id/btnIncrease"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/y100"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_amount"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/title_bg"
+                android:textSize="@dimen/x34" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/y20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30">
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="此次出价冻结保证金￥60，被超后立即返回"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x26" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_one"
+            android:layout_marginTop="@dimen/y20">
+
+
+            <TextView
+                android:id="@+id/tv_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="当前信誉额度：0元"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_one"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/tv_two"
+
+                android:background="@drawable/tv_noagent_price"
+                android:padding="@dimen/x10"
+                android:text="我要提升额度"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginBottom="@dimen/y40"
+        android:id="@+id/tv_confirm_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@drawable/tv_noagent_price"
+        android:paddingBottom="@dimen/y10"
+        android:paddingLeft="@dimen/x40"
+        android:paddingRight="@dimen/x40"
+        android:paddingTop="@dimen/y10"
+        android:text="确认出价"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x40" />
+</LinearLayout>

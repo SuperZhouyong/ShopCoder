@@ -19,7 +19,7 @@ import rx.Observable;
 public class AuctionFiledContract {
     public interface Model extends BaseModel {
         // 获取专场全部数据
-        Observable<AuctionFiledAllBean> getAuctionFileDate(Integer auction_filed_id);
+        Observable<AuctionFiledAllBean> getAuctionFileDate(Integer auction_filed_id,Integer sort);
     }
 
     public interface View extends BaseView {
@@ -27,7 +27,7 @@ public class AuctionFiledContract {
     }
 
     public abstract static class Presenter extends BasePresenter<View, Model> {
-        public abstract void getAuctionFiledRequest(Integer auction_filed_id);
+        public abstract void getAuctionFiledRequest(Integer auction_filed_id,Integer sort);
 
     }
 }

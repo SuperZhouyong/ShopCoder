@@ -1,8 +1,12 @@
 package com.intention.sqtwin.ui.main.activity;
 
 import android.app.Dialog;
-import android.os.Bundle;
+import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,7 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
+import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.ui.main.contract.AutionItemContract;
 import com.intention.sqtwin.ui.main.model.AutionItemModel;
@@ -19,10 +26,13 @@ import com.intention.sqtwin.ui.main.presenter.AutionItemPresenter;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
+import java.util.List;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ezy.ui.view.BannerView;
+import me.shaohui.bottomdialog.BaseBottomDialog;
+import me.shaohui.bottomdialog.BottomDialog;
 
 /**
  * Description: 拍品页
@@ -32,9 +42,7 @@ import ezy.ui.view.BannerView;
  * QQ: 437397161
  */
 
-public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, AutionItemModel> implements AutionItemContract.View {
-
-
+public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, AutionItemModel> implements AutionItemContract.View, LoadingTip.onReloadListener, BottomDialog.ViewListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -61,6 +69,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     TextView tv3;
     @BindView(R.id.tv_3_name)
     TextView tv3Name;
+    @BindView(R.id.mLoopViewPager)
+    BannerView mLoopViewPager;
     @BindView(R.id.tv_lot_name)
     TextView tvLotName;
     @BindView(R.id.tv_lost_price_desc_one)
@@ -89,8 +99,16 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     ImageView ivSelectTwo;
     @BindView(R.id.iv_select_three)
     ImageView ivSelectThree;
-    @BindView(R.id.mLoopViewPager)
-    BannerView mLoopViewPager;
+    @BindView(R.id.tv_disclaimer)
+    TextView tvDisclaimer;
+    @BindView(R.id.tv_num_one_com)
+    TextView tvNumOneCom;
+    @BindView(R.id.tv_num_two_com)
+    TextView tvNumTwoCom;
+    @BindView(R.id.tv_num_three_com)
+    TextView tvNumThreeCom;
+    @BindView(R.id.tv_num_fore_com)
+    TextView tvNumForeCom;
     @BindView(R.id.tv_desc)
     TextView tvDesc;
     @BindView(R.id.iv_qr_code)
@@ -115,8 +133,19 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     TextView tvNoagentPrice;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
+    @BindView(R.id.rel_other_lots)
+    RelativeLayout relOtherLots;
     private Integer auctItemId = 1;
 
+    private CommonRecycleViewAdapter<AutionItemDetailBean.DataBean.PriceListBean> mAdapter;
+    private BaseBottomDialog bottomDialog;
+    private TextView tvNum;
+    private String current_price;
+    private String increment_value;
+    private TextView tvTwo;
+    private TextView tvOne;
+    private String credit_line;
+    private String deposit;
 
     @Override
     public int getLayoutId() {
@@ -130,6 +159,20 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
     @Override
     public void initView() {
+        // 获取拍品Id
+        auctItemId = getIntent().getIntExtra(AppConstant.auctionItemId, -1);
+
+
+        mAdapter = new CommonRecycleViewAdapter<AutionItemDetailBean.DataBean.PriceListBean>(this, R.layout.item_price_list) {
+            @Override
+            public void convert(ViewHolderHelper helper, AutionItemDetailBean.DataBean.PriceListBean priceListBean, int position) {
+                helper.setImageRoundUrl(R.id.iv_price_icon, priceListBean.getAvatar());
+                helper.setText(R.id.tv_price_name, priceListBean.getNickname());
+                helper.setText(R.id.tv_price_num, priceListBean.getPrice() + "元");
+            }
+        };
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mAdapter);
 
         mPresenter.getAutionDetailRequest(auctItemId);
     }
@@ -146,20 +189,100 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
-
+        if (AppConstant.oneMessage.equals(RequestId)) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(this);
+        }
     }
 
 
     @Override
-    public void returnAutionItemDeatil(AutionItemDetailBean autionItemDetailBean) {
-//        ImageLoaderUtils.display(this, ivIcon,autionItemDetailBean.getData().getItem_info().getImage());
-//        tv1Name.setText(autionItemDetailBean.getData().getItem_info().getName());
-//        tv2Name.setText(autionItemDetailBean.getData().getItem_info().getStart_time());
-//        tv3Name.setText(autionItemDetailBean.getData().getItem_info().get);
+    public void returnAutionItemDeatil(final AutionItemDetailBean autionItemDetailBean) {
+        if (!autionItemDetailBean.isIs_success()) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(this);
+            return;
+        }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+
+        AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
+        AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
+        //title
+        TvTimeTwo.setText(item_info.getStart_time() + "-" + item_info.getEnd_time());
+        // 拍卖人详情
+        ImageLoaderUtils.display(this, ivIcon, autionItemDetailBean.getData().getStaff_list().get(0).getAvatar());
+        tv1Name.setText(staffListBean.getName());
+        tv1Name.setText(staffListBean.getName());
+        tv2Name.setText(staffListBean.getType() == 0 ? "主理人" : "专家");
+        tv3Name.setText(staffListBean.getRun_count() + "场拍卖");
+
+        List<AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean> images = autionItemDetailBean.getData().getItem_info().getImages();
+        // 第二部分录播图
+        mLoopViewPager.setViewFactory(new BannerView.ViewFactory<AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean>() {
+
+
+            @Override
+            public View create(AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean imagesBean, int position, ViewGroup container) {
+                ImageView iv = new ImageView(container.getContext());
+                ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, imagesBean.getGoodsimage_url());
+                return iv;
+            }
+        });
+        mLoopViewPager.setDataList(images);
+        mLoopViewPager.start();
+
+        // 第三部分 详情
+//        tv_lost_price_desc_two
+        current_price = item_info.getCurrent_price();
+        increment_value = item_info.getIncrement_value();
+        credit_line = autionItemDetailBean.getData().getCredit_line();
+        deposit = item_info.getDeposit();
+        tvLostPriceDescOne.setText("当前价");
+        tvLostPriceDescTwo.setText("起拍价");
+        tvLostPriceDescThree.setText("竞拍次数");
+        tvLotName.setText(item_info.getName());
+        tvNumOne.setText(item_info.getCurrent_price() + "");
+        tvNumTwo.setText(item_info.getStart_price() + "");
+        tvNumThree.setText(autionItemDetailBean.getData().getPrice_count() + "");
+        tvFocusRen.setText(item_info.getFans_count() + "人关注");
+
+        // 第四部分 com
+        tvNumOneCom.setText(item_info.getStart_price() + "");
+        tvNumTwoCom.setText(item_info.getIncrement_value() + "");
+        tvNumThreeCom.setText(item_info.getCommission());
+        tvNumForeCom.setText(item_info.getDeposit());
+        // 作者描述 tv_recoed_two
+        tvDesc.setText(autionItemDetailBean.getData().getItem_info().getDescription());
+        // 出价记录
+        tvRecoedTwo.setText(autionItemDetailBean.getData().getPrice_count() + "次");
+
+
+        mAdapter.addAll(autionItemDetailBean.getData().getPrice_list());
+
+        relOtherLots.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int auction_field_id = autionItemDetailBean.getData().getItem_info().getAuction_field_id();
+                Intent intent = new Intent(AuctionItemActivity.this, AuctionFiledActivity.class);
+                intent.putExtra(AppConstant.aucotonFileId, auction_field_id);
+                startActivity(intent);
+            }
+        });
 
     }
 
-    @OnClick({R.id.rel_back, R.id.iv_qr_code})
+    @Override
+    public void returnAgentBidDate(Integer goods_id, Integer price, Integer member_id) {
+
+    }
+
+    @Override
+    public void returnBidDate(Integer goods_id, Integer price, Integer member_id) {
+
+    }
+
+    @OnClick({R.id.rel_back, R.id.iv_qr_code, R.id.tv_disclaimer, R.id.tv_agent_price})
     void onclick(View v) {
         switch (v.getId()) {
             case R.id.rel_back:
@@ -174,9 +297,77 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 shareDialog.show();
                 break;
+            // 免责
+            case R.id.tv_disclaimer:
+                break;
+            // 代理出价
+            case R.id.tv_agent_price:
+//                View priveView = getLayoutInflater().inflate(R.layout.price_dialog, null);
+                bottomDialog = BottomDialog
+                        .create(getSupportFragmentManager())
+                        .setLayoutRes(R.layout.price_dialog)
+                        .setCancelOutside(true)
+                        .setViewListener(this)
+                        .show();
+
+
+                break;
+
         }
     }
 
 
+    @Override
+    public void reloadLodTip() {
+        mPresenter.getAutionDetailRequest(auctItemId);
+    }
 
+    private void updateTextColor(TextView tv, int starts, int end, int textSize) {
+        SpannableString spannedString = new SpannableString(tv.getText().toString());
+//        spannedString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.app_main)), starts[i], starts[i + 1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannedString.setSpan(new AbsoluteSizeSpan(textSize), starts, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv.setText(spannedString);
+    }
+
+    @Override
+    public void bindView(View view) {
+        view.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomDialog.dismiss();
+            }
+        });
+
+        tvNum = (TextView) view.findViewById(R.id.etAmount);
+        tvNum.setText("￥" + Float.parseFloat(current_price));
+
+
+        tvOne = (TextView) view.findViewById(R.id.tv_one);
+        tvOne.setText("此次出价冻结保证金￥" + deposit + "，被超后立即返回");
+        tvTwo = (TextView) view.findViewById(R.id.tv_two);
+        tvTwo.setText("当前信誉额度：" + credit_line + "元");
+        updateTextColor(tvNum, 0, 1, (int) getResources().getDimension(R.dimen.x30));
+
+        //-
+        view.findViewById(R.id.btnDecrease).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String substring = tvNum.getText().toString().substring(1);
+                if (Float.parseFloat(substring) > Float.parseFloat(current_price)) {
+                    tvNum.setText("￥" + (Float.parseFloat(substring) - Float.parseFloat(increment_value)));
+                    updateTextColor(tvNum, 0, 1, (int) getResources().getDimension(R.dimen.x30));
+                }
+            }
+        });
+        //+
+        view.findViewById(R.id.btnIncrease).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String substring = tvNum.getText().toString().substring(1);
+
+                tvNum.setText("￥" + (Float.parseFloat(substring) + Float.parseFloat(increment_value)));
+                updateTextColor(tvNum, 0, 1, (int) getResources().getDimension(R.dimen.x30));
+            }
+        });
+    }
 }

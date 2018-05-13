@@ -12,10 +12,11 @@ import java.util.List;
 
 public class AuctionFiledAllBean {
 
+
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"field_info":{"id":"1","name":"拍场名称","description":"拍场描述，拍场描述，拍场描述，拍场描述，拍场描述，","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},"staff_list":[{"id":5,"name":"石头","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"id":5,"name":"石头","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"}],"auction_item_list":[{"id":1,"name":"拍品名称0","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头0","description":"产品介绍0"},{"id":2,"name":"拍品名称1","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头1","description":"产品介绍1"},{"id":3,"name":"拍品名称2","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头2","description":"产品介绍2"},{"id":4,"name":"拍品名称3","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头3","description":"产品介绍3"},{"id":5,"name":"拍品名称4","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头4","description":"产品介绍4"},{"id":6,"name":"拍品名称5","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头5","description":"产品介绍5"},{"id":7,"name":"拍品名称6","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头6","description":"产品介绍6"},{"id":8,"name":"拍品名称7","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头7","description":"产品介绍7"},{"id":9,"name":"拍品名称8","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头8","description":"产品介绍8"},{"id":10,"name":"拍品名称9","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头9","description":"产品介绍9"}],"artist_list":[{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"}]}
+     * data : {"field_info":{"id":26,"name":"集萃斋玉器杂项","description":"欢庆五一,本专场甄选和田玉大师作品18件，全部保真，其中包括多位玉雕大师作品，作品材料有和田玉籽料、和田玉碧玉、和田玉翠青玉、和田玉白玉等。本专场遵循雅昌在线拍平台规则，如需了解拍品详情请联系雅昌在线拍客户人员！","organization_id":1,"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00","item_count":21,"bid_count":6,"fans_count":0,"organization":{"id":1,"name":"中国嘉德","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","is_favorite":"false"}},"staff_list":[{"id":1,"name":"张三","avatar":"1","type":0,"run_count":1}],"auction_item_list":[{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0}],"artist_list":[{},{"id":1,"name":"张三","avatar":"5acb04f502753.jpg","auction_count":8},{"id":4,"name":"李武","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_89904_2018041017304712202.png","auction_count":7},{"id":5,"name":"张四","avatar":"","auction_count":4}]}
      */
 
     private boolean is_success;
@@ -48,10 +49,10 @@ public class AuctionFiledAllBean {
 
     public static class DataBean {
         /**
-         * field_info : {"id":"1","name":"拍场名称","description":"拍场描述，拍场描述，拍场描述，拍场描述，拍场描述，","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}}
-         * staff_list : [{"id":5,"name":"石头","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"id":5,"name":"石头","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"}]
-         * auction_item_list : [{"id":1,"name":"拍品名称0","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头0","description":"产品介绍0"},{"id":2,"name":"拍品名称1","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头1","description":"产品介绍1"},{"id":3,"name":"拍品名称2","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头2","description":"产品介绍2"},{"id":4,"name":"拍品名称3","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头3","description":"产品介绍3"},{"id":5,"name":"拍品名称4","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头4","description":"产品介绍4"},{"id":6,"name":"拍品名称5","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头5","description":"产品介绍5"},{"id":7,"name":"拍品名称6","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头6","description":"产品介绍6"},{"id":8,"name":"拍品名称7","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头7","description":"产品介绍7"},{"id":9,"name":"拍品名称8","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头8","description":"产品介绍8"},{"id":10,"name":"拍品名称9","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","current_price":"888","start_price":"666","bid_leader":"石头9","description":"产品介绍9"}]
-         * artist_list : [{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},{"artist_id":5,"name":"艺术家姓名","fans_count":"1500","goods_count":"100","description":"详情","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"}]
+         * field_info : {"id":26,"name":"集萃斋玉器杂项","description":"欢庆五一,本专场甄选和田玉大师作品18件，全部保真，其中包括多位玉雕大师作品，作品材料有和田玉籽料、和田玉碧玉、和田玉翠青玉、和田玉白玉等。本专场遵循雅昌在线拍平台规则，如需了解拍品详情请联系雅昌在线拍客户人员！","organization_id":1,"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00","item_count":21,"bid_count":6,"fans_count":0,"organization":{"id":1,"name":"中国嘉德","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","is_favorite":"false"}}
+         * staff_list : [{"id":1,"name":"张三","avatar":"1","type":0,"run_count":1}]
+         * auction_item_list : [{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_price":10000,"commission":"0.05","deposit":"10000.00","auction_field_id":26,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","current_price":"3100.00","bid_leader":"","fans_count":0}]
+         * artist_list : [{},{"id":1,"name":"张三","avatar":"5acb04f502753.jpg","auction_count":8},{"id":4,"name":"李武","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_89904_2018041017304712202.png","auction_count":7},{"id":5,"name":"张四","avatar":"","auction_count":4}]
          */
 
         private FieldInfoBean field_info;
@@ -93,36 +94,34 @@ public class AuctionFiledAllBean {
 
         public static class FieldInfoBean {
             /**
-             * id : 1
-             * name : 拍场名称
-             * description : 拍场描述，拍场描述，拍场描述，拍场描述，拍场描述，
-             * image : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
-             * is_favorite : false
-             * start_time : 2018-2-1 10:00:00
-             * end_time : 2018-3-1 10:00:00
-             * item_count : 50
-             * bid_count : 50
-             * fans_count : 500
-             * organzation : {"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}
+             * id : 26
+             * name : 集萃斋玉器杂项
+             * description : 欢庆五一,本专场甄选和田玉大师作品18件，全部保真，其中包括多位玉雕大师作品，作品材料有和田玉籽料、和田玉碧玉、和田玉翠青玉、和田玉白玉等。本专场遵循雅昌在线拍平台规则，如需了解拍品详情请联系雅昌在线拍客户人员！
+             * organization_id : 1
+             * start_time : 2018-05-02 00:05:00
+             * end_time : 2018-12-31 00:05:00
+             * item_count : 21
+             * bid_count : 6
+             * fans_count : 0
+             * organization : {"id":1,"name":"中国嘉德","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","is_favorite":"false"}
              */
 
-            private String id;
+            private int id;
             private String name;
             private String description;
-            private String image;
-            private String is_favorite;
+            private int organization_id;
             private String start_time;
             private String end_time;
-            private String item_count;
-            private String bid_count;
-            private String fans_count;
-            private OrganzationBean organzation;
+            private int item_count;
+            private int bid_count;
+            private int fans_count;
+            private OrganizationBean organization;
 
-            public String getId() {
+            public int getId() {
                 return id;
             }
 
-            public void setId(String id) {
+            public void setId(int id) {
                 this.id = id;
             }
 
@@ -142,20 +141,12 @@ public class AuctionFiledAllBean {
                 this.description = description;
             }
 
-            public String getImage() {
-                return image;
+            public int getOrganization_id() {
+                return organization_id;
             }
 
-            public void setImage(String image) {
-                this.image = image;
-            }
-
-            public String getIs_favorite() {
-                return is_favorite;
-            }
-
-            public void setIs_favorite(String is_favorite) {
-                this.is_favorite = is_favorite;
+            public void setOrganization_id(int organization_id) {
+                this.organization_id = organization_id;
             }
 
             public String getStart_time() {
@@ -174,54 +165,56 @@ public class AuctionFiledAllBean {
                 this.end_time = end_time;
             }
 
-            public String getItem_count() {
+            public int getItem_count() {
                 return item_count;
             }
 
-            public void setItem_count(String item_count) {
+            public void setItem_count(int item_count) {
                 this.item_count = item_count;
             }
 
-            public String getBid_count() {
+            public int getBid_count() {
                 return bid_count;
             }
 
-            public void setBid_count(String bid_count) {
+            public void setBid_count(int bid_count) {
                 this.bid_count = bid_count;
             }
 
-            public String getFans_count() {
+            public int getFans_count() {
                 return fans_count;
             }
 
-            public void setFans_count(String fans_count) {
+            public void setFans_count(int fans_count) {
                 this.fans_count = fans_count;
             }
 
-            public OrganzationBean getOrganzation() {
-                return organzation;
+            public OrganizationBean getOrganization() {
+                return organization;
             }
 
-            public void setOrganzation(OrganzationBean organzation) {
-                this.organzation = organzation;
+            public void setOrganization(OrganizationBean organization) {
+                this.organization = organization;
             }
 
-            public static class OrganzationBean {
+            public static class OrganizationBean {
                 /**
-                 * id : 5
-                 * name : 拍卖机构名称
-                 * logo : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg
+                 * id : 1
+                 * name : 中国嘉德
+                 * logo : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png
+                 * is_favorite : false
                  */
 
-                private String id;
+                private int id;
                 private String name;
                 private String logo;
+                private String is_favorite;
 
-                public String getId() {
+                public int getId() {
                     return id;
                 }
 
-                public void setId(String id) {
+                public void setId(int id) {
                     this.id = id;
                 }
 
@@ -240,19 +233,31 @@ public class AuctionFiledAllBean {
                 public void setLogo(String logo) {
                     this.logo = logo;
                 }
+
+                public String getIs_favorite() {
+                    return is_favorite;
+                }
+
+                public void setIs_favorite(String is_favorite) {
+                    this.is_favorite = is_favorite;
+                }
             }
         }
 
         public static class StaffListBean {
             /**
-             * id : 5
-             * name : 石头
-             * avatar : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
+             * id : 1
+             * name : 张三
+             * avatar : 1
+             * type : 0
+             * run_count : 1
              */
 
             private int id;
             private String name;
             private String avatar;
+            private int type;
+            private int run_count;
 
             public int getId() {
                 return id;
@@ -277,26 +282,48 @@ public class AuctionFiledAllBean {
             public void setAvatar(String avatar) {
                 this.avatar = avatar;
             }
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
+
+            public int getRun_count() {
+                return run_count;
+            }
+
+            public void setRun_count(int run_count) {
+                this.run_count = run_count;
+            }
         }
 
         public static class AuctionItemListBean {
             /**
-             * id : 1
-             * name : 拍品名称0
-             * image : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
-             * current_price : 888
-             * start_price : 666
-             * bid_leader : 石头0
-             * description : 产品介绍0
+             * id : 172
+             * name : a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架
+             * start_price : 10000
+             * commission : 0.05
+             * deposit : 10000.00
+             * auction_field_id : 26
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg
+             * current_price : 3100.00
+             * bid_leader :
+             * fans_count : 0
              */
 
             private int id;
             private String name;
+            private int start_price;
+            private String commission;
+            private String deposit;
+            private int auction_field_id;
             private String image;
             private String current_price;
-            private String start_price;
             private String bid_leader;
-            private String description;
+            private int fans_count;
 
             public int getId() {
                 return id;
@@ -312,6 +339,38 @@ public class AuctionFiledAllBean {
 
             public void setName(String name) {
                 this.name = name;
+            }
+
+            public int getStart_price() {
+                return start_price;
+            }
+
+            public void setStart_price(int start_price) {
+                this.start_price = start_price;
+            }
+
+            public String getCommission() {
+                return commission;
+            }
+
+            public void setCommission(String commission) {
+                this.commission = commission;
+            }
+
+            public String getDeposit() {
+                return deposit;
+            }
+
+            public void setDeposit(String deposit) {
+                this.deposit = deposit;
+            }
+
+            public int getAuction_field_id() {
+                return auction_field_id;
+            }
+
+            public void setAuction_field_id(int auction_field_id) {
+                this.auction_field_id = auction_field_id;
             }
 
             public String getImage() {
@@ -330,14 +389,6 @@ public class AuctionFiledAllBean {
                 this.current_price = current_price;
             }
 
-            public String getStart_price() {
-                return start_price;
-            }
-
-            public void setStart_price(String start_price) {
-                this.start_price = start_price;
-            }
-
             public String getBid_leader() {
                 return bid_leader;
             }
@@ -346,38 +397,34 @@ public class AuctionFiledAllBean {
                 this.bid_leader = bid_leader;
             }
 
-            public String getDescription() {
-                return description;
+            public int getFans_count() {
+                return fans_count;
             }
 
-            public void setDescription(String description) {
-                this.description = description;
+            public void setFans_count(int fans_count) {
+                this.fans_count = fans_count;
             }
         }
 
         public static class ArtistListBean {
             /**
-             * artist_id : 5
-             * name : 艺术家姓名
-             * fans_count : 1500
-             * goods_count : 100
-             * description : 详情
-             * avatar : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
+             * id : 1
+             * name : 张三
+             * avatar : 5acb04f502753.jpg
+             * auction_count : 8
              */
 
-            private int artist_id;
+            private int id;
             private String name;
-            private String fans_count;
-            private String goods_count;
-            private String description;
             private String avatar;
+            private int auction_count;
 
-            public int getArtist_id() {
-                return artist_id;
+            public int getId() {
+                return id;
             }
 
-            public void setArtist_id(int artist_id) {
-                this.artist_id = artist_id;
+            public void setId(int id) {
+                this.id = id;
             }
 
             public String getName() {
@@ -388,36 +435,20 @@ public class AuctionFiledAllBean {
                 this.name = name;
             }
 
-            public String getFans_count() {
-                return fans_count;
-            }
-
-            public void setFans_count(String fans_count) {
-                this.fans_count = fans_count;
-            }
-
-            public String getGoods_count() {
-                return goods_count;
-            }
-
-            public void setGoods_count(String goods_count) {
-                this.goods_count = goods_count;
-            }
-
-            public String getDescription() {
-                return description;
-            }
-
-            public void setDescription(String description) {
-                this.description = description;
-            }
-
             public String getAvatar() {
                 return avatar;
             }
 
             public void setAvatar(String avatar) {
                 this.avatar = avatar;
+            }
+
+            public int getAuction_count() {
+                return auction_count;
+            }
+
+            public void setAuction_count(int auction_count) {
+                this.auction_count = auction_count;
             }
         }
     }

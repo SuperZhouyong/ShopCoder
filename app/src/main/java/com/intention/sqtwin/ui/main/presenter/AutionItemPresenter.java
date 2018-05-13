@@ -35,4 +35,14 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
             }
         }));
     }
+
+    @Override
+    public void getAgentBidBeanRequest(Integer goods_id, Integer price, Integer member_id) {
+
+    }
+
+    @Override
+    public void getBidBeanRequest(Integer goods_id, Integer price, Integer member_id) {
+
+    }
 }

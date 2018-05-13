@@ -18,7 +18,7 @@ import rx.Observable;
 
 public class AuctionFiledModel implements AuctionFiledContract.Model {
     @Override
-    public Observable<AuctionFiledAllBean> getAuctionFileDate(Integer auction_filed_id) {
-        return Api.getDefault(HostType.Jsonpart).getAuctionFiled(auction_filed_id).compose(RxSchedulers.<AuctionFiledAllBean>io_main());
+    public Observable<AuctionFiledAllBean> getAuctionFileDate(Integer auction_filed_id,Integer sort) {
+        return Api.getDefault(HostType.Jsonpart).getAuctionFiled(auction_filed_id,sort).compose(RxSchedulers.<AuctionFiledAllBean>io_main());
     }
 }

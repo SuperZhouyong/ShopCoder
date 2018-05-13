@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,7 +12,8 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_below="@id/incude"
         android:orientation="vertical">
 
@@ -34,49 +35,110 @@
             <LinearLayout
                 android:id="@+id/ll_sort"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/y100"
                 android:background="@color/white"
                 android:orientation="horizontal"
-                android:paddingBottom="@dimen/y20"
+
                 android:paddingTop="@dimen/y20">
 
                 <!--   <android.support.v7.widget.RecyclerView
                        android:id="@+id/filtrate_Title"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content" />-->
-                <TextView
-                    android:id="@+id/tv_all"
+                <RelativeLayout
+                    android:id="@+id/rel_all"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="默认"
-                    android:textColor="@color/font_5"
-                    android:textSize="@dimen/x31"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/tv_ongoing"
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/tv_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="默认"
+                        android:textColor="@color/font_5"
+                        android:textSize="@dimen/x31"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/iv_all"
+                       android:layout_centerHorizontal="true"
+                        android:layout_width="@dimen/x100"
+                        android:paddingBottom="@dimen/y10"
+                        android:background="@drawable/tv_noagent_price"
+                        android:layout_height="@dimen/y10"
+                        android:layout_alignParentBottom="true" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rel_onging"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="拍卖中"
-                    android:textColor="@color/font_5"
-                    android:textSize="@dimen/x31"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                <TextView
-                    android:id="@+id/tv_preview"
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/tv_ongoing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="价格"
+                        android:textColor="@color/font_5"
+                        android:textSize="@dimen/x31"
+                        android:textStyle="bold" />
+                    <ImageView
+
+                        android:src="@mipmap/heat_unselect"
+                        android:layout_marginLeft="@dimen/x20"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tv_ongoing"
+                        android:id="@+id/iv_on_top"
+                        android:layout_width="@dimen/x20"
+                        android:layout_height="@dimen/y40" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/iv_onging"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="@dimen/x100"
+                        android:paddingBottom="@dimen/y10"
+                        android:background="@drawable/tv_noagent_price"
+                        android:layout_height="@dimen/y10"
+                        android:layout_alignParentBottom="true" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rel_preview"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="热度"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
 
-                    android:textColor="@color/font_5"
-                    android:textSize="@dimen/x31"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:id="@+id/tv_preview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="热度"
+                        android:textColor="@color/font_5"
+                        android:textSize="@dimen/x31"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/iv_preview"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="@dimen/x100"
+                        android:paddingBottom="@dimen/y10"
+                        android:background="@drawable/tv_noagent_price"
+                        android:layout_height="@dimen/y10"
+                        android:layout_alignParentBottom="true" />
+
+                </RelativeLayout>
+
+
 
 
             </LinearLayout>
@@ -85,15 +147,13 @@
         <com.github.jdsjlzx.recyclerview.LRecyclerView
             android:id="@+id/mLRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="481dp"
-            tl:layout_behavior="@string/appbar_scrolling_view_behavior"
-            />
+            android:layout_height="match_parent"
+            tl:layout_behavior="@string/appbar_scrolling_view_behavior" />
         <!--tools:layout_editor_absoluteY="352dp" -->
-     <!--  <com.intention.sqtwin.widget.ViewPagerFixed
-           tl:layout_behavior="@string/appbar_scrolling_view_behavior"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">-->
-
+        <!--  <com.intention.sqtwin.widget.ViewPagerFixed
+              tl:layout_behavior="@string/appbar_scrolling_view_behavior"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">-->
 
 
         <com.intention.sqtwin.widget.conmonWidget.LoadingTip
@@ -121,4 +181,4 @@
         tl:tl_textUnselectColor="@color/font_3"
         tl:tl_textsize="11sp"
         tl:tl_underline_height="0dp" />
-</RelativeLayout>
+</LinearLayout>

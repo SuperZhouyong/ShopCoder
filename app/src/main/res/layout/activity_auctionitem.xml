@@ -18,8 +18,8 @@
 
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,19 +38,22 @@
                     app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
                     app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
                     app:bvIsAuto="true"
-                    app:bvIsLoop="true" >
+                    app:bvIsLoop="true">
 
-                    <include layout="@layout/item_auction_two" />
+
                 </ezy.ui.view.BannerView>
+
+                <include layout="@layout/item_auction_two" />
 
                 <TextView
                     android:id="@+id/tv_desc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:padding="@dimen/x22"
                     android:text="我的世界啥卡的接口"
                     android:textColor="@color/font_1"
-                    android:textSize="@dimen/x36" />
+                    android:textSize="@dimen/x26" />
 
                 <ImageView
                     android:id="@+id/iv_qr_code"
@@ -68,6 +71,7 @@
                     android:layout_height="wrap_content" />
 
                 <RelativeLayout
+                    android:id="@+id/rel_other_lots"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/y100"
                     android:layout_marginTop="@dimen/y20"
@@ -85,12 +89,12 @@
 
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/x14"
+                        android:layout_height="@dimen/y26"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/x22"
-                        android:src="@drawable/ic_loading_rotate" />
+                        android:src="@mipmap/list_right" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -105,18 +109,18 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="本场其他拍品"
+                        android:text="参拍指南"
                         android:textColor="@color/font_1"
                         android:textSize="@dimen/x30" />
 
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/x14"
+                        android:layout_height="@dimen/y26"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/x22"
-                        android:src="@drawable/ic_loading_rotate" />
+                        android:src="@mipmap/list_right" />
                 </RelativeLayout>
 
                 <ImageView
@@ -222,8 +226,8 @@
     </LinearLayout>
 
     <com.intention.sqtwin.widget.conmonWidget.LoadingTip
-        android:layout_below="@id/title"
         android:id="@+id/mLoadingTip"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
 </RelativeLayout>

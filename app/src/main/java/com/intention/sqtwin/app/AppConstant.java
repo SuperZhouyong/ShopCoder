@@ -13,9 +13,10 @@ public class AppConstant {
     public static final String WEBVIEW = "WEBVIEW";
     public static final String WEBVIEWURL = "WEBVIEWURL";
     public static final String oneMessage = "one";
-
-
-
+    // 拍品ID
+    public static String auctionItemId = "auctionItemId";
+    // 拍场Id
+    public static String aucotonFileId = "aucotonFileId";
 
 
 
@@ -333,6 +334,8 @@ public class AppConstant {
     public static final String PID = "PID";
     public static final String Experts = "expert";
     public static final String content = "content";
+
+
 
     /*public static String SelectArea = "area";
     public static String SelectMajor = "major";

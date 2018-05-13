@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/x22"
     android:paddingRight="@dimen/x2">
 
-    <ImageViewb
+    <ImageView
         android:id="@+id/iv_goods"
         android:layout_width="@dimen/x300"
         android:layout_height="@dimen/x300"
@@ -28,9 +28,10 @@
             android:textSize="@dimen/x32" />
 
         <LinearLayout
+            android:padding="@dimen/x8"
             android:background="@drawable/shape_time_countdown"
             android:id="@+id/ll_footer"
-            android:layout_width="@dimen/x224"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/y30"
@@ -38,19 +39,21 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@mipmap/leading_peo"
+                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y30" />
 
             <TextView
                 android:id="@+id/tv_goods_desc_foot"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x10"
                 android:textColor="@color/title_bg" />
 
             <TextView
                 android:id="@+id/tv_goods_price_foot"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x20"
                 android:textColor="@color/title_bg" />
@@ -58,9 +61,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:padding="@dimen/x8"
             android:background="@drawable/shape_time_countdown"
             android:id="@+id/ll_header"
-            android:layout_width="@dimen/x224"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/ll_footer"
             android:layout_marginBottom="@dimen/y20"
@@ -68,19 +72,22 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:src="@mipmap/current_price"
+                android:layout_gravity="center_vertical"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y30" />
 
             <TextView
                 android:id="@+id/tv_goods_desc"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x10"
                 android:textColor="@color/title_bg" />
 
             <TextView
+                android:textColor="@color/title_bg"
                 android:id="@+id/tv_goods_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x20" />
 

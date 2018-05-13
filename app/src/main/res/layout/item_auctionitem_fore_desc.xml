@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/y30">
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="起拍价"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_num_one_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:text="1600"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x36" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="竞价阶梯"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_num_two_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+
+                android:text="1600"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x36" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:orientation="vertical">
+
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="佣金"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_num_three_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:text="1600"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x36" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:orientation="vertical">
+
+            <TextView
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="保证金"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_num_fore_com"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:text="1600"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x36" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

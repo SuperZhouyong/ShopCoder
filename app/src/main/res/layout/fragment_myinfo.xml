@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/y400"
-            android:background="@mipmap/info_bg">
+            android:background="@mipmap/myinfo_head_bg">
 
             <ImageView
                 android:layout_width="@dimen/x40"
@@ -43,10 +43,10 @@
 
 
         <LinearLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y150"
-            android:layout_marginTop="@dimen/y20">
+            android:layout_marginTop="@dimen/y20"
+            android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -117,9 +117,9 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_message"
@@ -155,10 +155,11 @@
                 android:layout_marginRight="@dimen/x22"
                 android:background="@color/app_bottom_colour" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_account"
@@ -194,10 +195,11 @@
                 android:layout_marginRight="@dimen/x22"
                 android:background="@color/app_bottom_colour" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_mycompete"
@@ -233,10 +235,11 @@
                 android:layout_marginRight="@dimen/x22"
                 android:background="@color/app_bottom_colour" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_identity"
@@ -272,10 +275,11 @@
                 android:layout_marginRight="@dimen/x22"
                 android:background="@color/app_bottom_colour" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_setting"
@@ -311,10 +315,11 @@
                 android:layout_marginRight="@dimen/x22"
                 android:background="@color/app_bottom_colour" />
         </RelativeLayout>
+
         <RelativeLayout
-            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_help"
@@ -346,10 +351,10 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/y20"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:layout_marginTop="@dimen/y20"
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/iv_store_manage"
@@ -379,10 +384,11 @@
 
 
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="@dimen/y20"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:layout_marginTop="@dimen/y20">
 
             <ImageView
                 android:id="@+id/iv_focus"
@@ -412,11 +418,12 @@
 
 
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginBottom="@dimen/y30"
-            android:layout_marginTop="@dimen/y20"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y107">
+            android:layout_height="@dimen/y107"
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginTop="@dimen/y20">
 
             <ImageView
                 android:id="@+id/iv_treasure"

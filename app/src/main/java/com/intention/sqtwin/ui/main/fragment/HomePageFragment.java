@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.main.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,7 @@ import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
@@ -46,6 +48,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     private BannerView mBannerView;
     private HeadTwoAdapter mHeadTwoAdapter;
     private BannerView mBannerViewTwo;
+    private java.lang.String TAG = "HomePageFragment";
 
     @Override
     protected int getLayoutResource() {
@@ -86,6 +89,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
         View HeadViewTwo = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
         mHeadTwoAdapter = new HeadTwoAdapter(getActivity());
+
         RecyclerView mRecyclerView = (RecyclerView) HeadViewTwo.findViewById(R.id.mRecyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(mHeadTwoAdapter);
@@ -110,21 +114,27 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mLadapter.addHeaderView(homeHeadTitle);
 
 
-        mHeadTwoAdapter.setOnItemClickListener(new OnItemClickListener() {
+       /* mHeadTwoAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                startActivity(getActivity(), AuctionItemActivity.class);
+                Intent intent = new Intent(getActivity(), AuctionItemActivity.class);
+                intent.putExtra(AppConstant.auctionItemId,mHeadTwoAdapter.get(position).getId());
+//                startActivity(getActivity(), AuctionItemActivity.class);
+                startActivity(intent);
             }
 
             @Override
             public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
                 return false;
             }
-        });
+        });*/
         mLadapter.setOnItemClickListener(new com.github.jdsjlzx.interfaces.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(getActivity(), AuctionFiledActivity.class);
+                Intent intent = new Intent(getActivity(),AuctionFiledActivity.class);
+                intent.putExtra(AppConstant.aucotonFileId,homeAdapter.get(position).getId());
+                LogUtils.logd(TAG+"-------"+homeAdapter.get(position).getId());
+                startActivity(intent);
             }
         });
         mPresenter.getHomeAllDate();

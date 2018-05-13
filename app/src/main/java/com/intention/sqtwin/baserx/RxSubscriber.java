@@ -110,14 +110,14 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         try {
             _onNext(t);
         } catch (Exception r) {
-            LogUtils.logd(TAG + "--onNext");
+            LogUtils.logd(TAG + "--onNext"+r.getMessage());
         }
     }
 
     @Override
     public void onError(Throwable e) {
         try {
-            LogUtils.logd(TAG + "onError" + e);
+            LogUtils.logd(TAG + "onError" + e.getMessage());
 //        LoadingDialog.cancelDialogForLoading();
             if (showDialog) {
                 LoadingDialog.cancelDialogForLoading();

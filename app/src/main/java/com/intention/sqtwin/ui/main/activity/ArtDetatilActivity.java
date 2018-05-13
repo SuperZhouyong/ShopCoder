@@ -85,7 +85,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
                 helper.setText(R.id.tv_goods_name, itemListBean.getName());
 //                helper.setText(R.id.tv_price,itemListBean.getCurrent_price());
                 helper.setText(R.id.tv_price, "￥ " + itemListBean.getCurrent_price());
-                updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1);
+                updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1,(int) getResources().getDimension(R.dimen.x20));
             }
         };
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -110,10 +110,10 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         mPresenter.getArtDetailRequest(artId, page);
     }
 
-    private void updateTextColor(TextView tv, int starts, int end) {
+    private void updateTextColor(TextView tv, int starts, int end,int textSize) {
         SpannableString spannedString = new SpannableString(tv.getText().toString());
 //        spannedString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.app_main)), starts[i], starts[i + 1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannedString.setSpan(new AbsoluteSizeSpan((int) getResources().getDimension(R.dimen.x20)), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannedString.setSpan(new AbsoluteSizeSpan(textSize), starts, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         tv.setText(spannedString);
     }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <include layout="@layout/item_ayction_three_price" />
-    <!--<include layout="@layout/item_ayction_item_price"/>-->
+   <!-- <include layout="@layout/item_ayction_item_price"/>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
 
-        android:layout_marginLeft="@dimen/x22"
+        android:paddingLeft="@dimen/x22"
         android:layout_marginTop="@dimen/y20"
         android:background="@color/white"
         android:gravity="center_vertical">
@@ -21,12 +21,12 @@
             android:layout_weight="1">
 
             <ImageView
-
+                
                 android:id="@+id/iv_select_one"
-                android:layout_width="@dimen/x20"
-                android:layout_height="@dimen/y20"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y39"
                 android:layout_centerVertical="true"
-                android:background="@color/title_bg" />
+                android:src="@mipmap/auction_item_select" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,10 +47,10 @@
 
             <ImageView
                 android:id="@+id/iv_select_two"
-                android:layout_width="@dimen/x20"
-                android:layout_height="@dimen/y20"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y39"
                 android:layout_centerVertical="true"
-                android:background="@color/title_bg" />
+                android:src="@mipmap/auction_item_select" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,10 +71,10 @@
 
             <ImageView
                 android:id="@+id/iv_select_three"
-                android:layout_width="@dimen/x20"
-                android:layout_height="@dimen/y20"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y39"
                 android:layout_centerVertical="true"
-                android:background="@color/title_bg" />
+                android:src="@mipmap/auction_item_select" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,6 +89,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_disclaimer"
             android:layout_width="@dimen/x200"
             android:layout_height="match_parent"
             android:background="@color/white"
@@ -97,4 +98,6 @@
             android:textColor="@color/title_bg"
             android:textSize="@dimen/x24" />
     </LinearLayout>
+    <include layout="@layout/item_auctionitem_fore_desc"/>
+
 </LinearLayout>

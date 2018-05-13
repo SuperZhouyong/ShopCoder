@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/y100"
-    android:layout_marginLeft="@dimen/x22"
+    android:paddingLeft="@dimen/x22"
     android:background="@color/white">
 
     <TextView
@@ -25,10 +25,10 @@
         android:text="40次" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x14"
+        android:layout_height="@dimen/y26"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/x22"
-        android:src="@drawable/ic_loading_rotate" />
+        android:src="@mipmap/list_right" />
 </RelativeLayout>

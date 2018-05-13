@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,14 +17,15 @@
             android:layout_marginRight="@dimen/x22"
             android:layout_marginTop="@dimen/y20"
             android:background="@color/orange" />
+
         <RelativeLayout
             android:id="@+id/rel_time_d"
             android:layout_width="@dimen/x234"
             android:layout_height="@dimen/y40"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="@dimen/x22"
             android:layout_alignBottom="@id/iv_pos_goods"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
             android:layout_marginRight="@dimen/x22"
             android:background="@drawable/shape_time_countdown">
 
@@ -32,9 +35,10 @@
                 android:layout_height="@dimen/y20"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x10"
-                android:background="@color/red" />
+                android:src="@mipmap/from_end" />
 
             <TextView
+                android:id="@+id/tv_time_calculate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -60,7 +64,6 @@
             android:text="青花瓷拍卖专场"
             android:textColor="@color/font_1"
             android:textSize="@dimen/x35" />
-
 
 
     </RelativeLayout>

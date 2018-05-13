@@ -9,6 +9,11 @@
     <!--<TextView-->
     <!--<me.codeboy.android.aligntextview.AlignTextView-->
     <TextView
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x26"
+        android:paddingTop="@dimen/y20"
+        android:paddingBottom="@dimen/y20"
+        android:background="@color/white"
         android:paddingLeft="@dimen/x22"
         android:paddingRight="@dimen/x22"
         android:gravity="center_vertical"

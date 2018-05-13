@@ -8,6 +8,10 @@ import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.RecommendField;
+import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
+
+import java.text.ParseException;
+import java.util.Date;
 
 /**
  * Description: 保佑无bug
@@ -35,6 +39,30 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
         helper.setText(R.id.tv_price_num, String.valueOf(recommendFieldBean.getBid_count()));
         helper.setText(R.id.tv_filed_name, recommendFieldBean.getName());
         helper.setImageUrl(R.id.iv_pos_goods, recommendFieldBean.getImage());
+        String start_time = recommendFieldBean.getStart_time();
+        String end_time = recommendFieldBean.getEnd_time();
+
+        try {
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
+            Date currentTime = new Date();
+            if (currentTime.getTime()<endTime.getTime()&&currentTime.getTime()>startTime.getTime()){
+                // 拍卖中
+                long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
+                helper.setText(R.id.tv_time_calculate,OverMin/60+"时"+OverMin%60+"分");
+
+            }else if (currentTime.getTime()<startTime.getTime()){
+//                未开拍
+                helper.setText(R.id.tv_time_calculate,"距开拍"+start_time);
+
+            }else {
+                helper.setText(R.id.tv_time_calculate,"已结束"+end_time);
+            }
+//            if (new Date().getTime()<endTime.getTime()&&)
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        helper.setText(R.id.tv_time_calculate)
         helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
