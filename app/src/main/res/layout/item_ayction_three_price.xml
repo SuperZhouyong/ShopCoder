@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="当前价"
+                android:text="起拍价"
                 android:textColor="@color/font_3"
                 android:textSize="@dimen/x28" />
 
@@ -101,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="当前价"
+                android:text="竞拍次数"
                 android:textColor="@color/font_3"
                 android:textSize="@dimen/x28" />
 

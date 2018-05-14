@@ -2,34 +2,40 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y100"
-    android:paddingLeft="@dimen/x22"
-    android:id="@+id/rel_bid_record"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_recoed_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="出价记录"
-        android:textColor="@color/font_1"
-        android:textSize="@dimen/x30" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rel_bid_record"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/x22">
 
-    <TextView
-        android:id="@+id/tv_recoed_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/x30"
-        android:layout_toRightOf="@id/tv_recoed_one"
-        android:text="40次" />
+        <TextView
+            android:id="@+id/tv_recoed_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="出价记录"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
 
-    <ImageView
-        android:layout_width="@dimen/x14"
-        android:layout_height="@dimen/y26"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/x22"
-        android:src="@mipmap/list_right" />
+        <TextView
+            android:id="@+id/tv_recoed_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@id/tv_recoed_one"
+            android:text="40次"
+            android:visibility="gone" />
+
+        <ImageView
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x22"
+            android:src="@mipmap/list_right" />
+    </RelativeLayout>
 </RelativeLayout>

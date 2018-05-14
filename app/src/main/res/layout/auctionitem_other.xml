@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_other_lots"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y100"
+    android:layout_marginTop="@dimen/y20"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/x22">
+
+    <TextView
+        android:id="@+id/tv_other_lots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="本场其他拍品"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x30" />
+
+
+    <ImageView
+        android:layout_width="@dimen/x14"
+        android:layout_height="@dimen/y26"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x22"
+        android:src="@mipmap/list_right" />
+</RelativeLayout>

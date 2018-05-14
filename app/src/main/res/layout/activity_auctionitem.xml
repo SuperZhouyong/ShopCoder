@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,7 +8,115 @@
         android:id="@+id/title"
         layout="@layout/title_auction" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/mLRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+            android:id="@id/mLoadingTip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y120"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_one_bottom"
+            android:layout_width="@dimen/x150"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/aution_remind" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:text="参拍提醒"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x25" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_two_bottom"
+            android:layout_width="@dimen/x150"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ll_one_bottom"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/aution_remind" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:text="联系客服"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x25" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_agent_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginRight="@dimen/x22"
+                android:layout_weight="1"
+                android:background="@drawable/tv_agent_price"
+                android:gravity="center"
+                android:paddingBottom="@dimen/y15"
+                android:paddingTop="@dimen/y15"
+                android:text="代理出价"
+                android:textColor="@color/title_bg"
+                android:textSize="@dimen/x30" />
+
+            <TextView
+                android:id="@+id/tv_noagent_price"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x22"
+                android:layout_weight="1"
+                android:background="@drawable/tv_noagent_price"
+                android:gravity="center"
+                android:paddingBottom="@dimen/y15"
+                android:paddingTop="@dimen/y15"
+                android:text="出价"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title"
@@ -45,15 +153,7 @@
 
                 <include layout="@layout/item_auction_two" />
 
-                <TextView
-                    android:id="@+id/tv_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:padding="@dimen/x22"
-                    android:text="我的世界啥卡的接口"
-                    android:textColor="@color/font_1"
-                    android:textSize="@dimen/x26" />
+               <include layout="@layout/auctionitem_auther_desc"/>
 
                 <ImageView
                     android:id="@+id/iv_qr_code"
@@ -70,32 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-                <RelativeLayout
-                    android:id="@+id/rel_other_lots"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/y100"
-                    android:layout_marginTop="@dimen/y20"
-                    android:background="@color/white"
-                    android:paddingLeft="@dimen/x22">
-
-                    <TextView
-                        android:id="@+id/tv_other_lots"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="本场其他拍品"
-                        android:textColor="@color/font_1"
-                        android:textSize="@dimen/x30" />
-
-
-                    <ImageView
-                        android:layout_width="@dimen/x14"
-                        android:layout_height="@dimen/y26"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/x22"
-                        android:src="@mipmap/list_right" />
-                </RelativeLayout>
+                <include layout="@layout/auctionitem_other" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -131,103 +206,9 @@
 
         </ScrollView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/y150"
-            android:layout_alignParentBottom="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/ll_one_bottom"
-                android:layout_width="@dimen/x150"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/aution_remind" />
+    </LinearLayout>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/y10"
-                    android:text="参拍提醒"
-                    android:textColor="@color/font_3"
-                    android:textSize="@dimen/x25" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_two_bottom"
-                android:layout_width="@dimen/x150"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/ll_one_bottom"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/aution_remind" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/y10"
-                    android:text="联系客服"
-                    android:textColor="@color/font_3"
-                    android:textSize="@dimen/x25" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/tv_agent_price"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x22"
-                    android:layout_marginRight="@dimen/x22"
-                    android:layout_weight="1"
-                    android:background="@drawable/tv_agent_price"
-                    android:gravity="center"
-                    android:paddingBottom="@dimen/y15"
-                    android:paddingTop="@dimen/y15"
-                    android:text="代理出价"
-                    android:textColor="@color/title_bg"
-                    android:textSize="@dimen/x30" />
-
-                <TextView
-                    android:id="@+id/tv_noagent_price"
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/x22"
-                    android:layout_weight="1"
-                    android:background="@drawable/tv_noagent_price"
-                    android:gravity="center"
-                    android:paddingBottom="@dimen/y15"
-                    android:paddingTop="@dimen/y15"
-                    android:text="出价"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/x30" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
-        android:id="@+id/mLoadingTip"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title" />
-</RelativeLayout>
+</LinearLayout>

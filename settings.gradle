@@ -1,1 +1,1 @@
-include ':app', ':LRecyclerview_library', ':MPChartLib', ':loopViewpager'
+include ':app', ':LRecyclerview_library', ':MPChartLib', ':loopViewpager', ':LRecyclerview'

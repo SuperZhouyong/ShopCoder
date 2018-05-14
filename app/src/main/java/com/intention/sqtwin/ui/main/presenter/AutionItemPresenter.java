@@ -19,7 +19,7 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
     @Override
     public void getAutionDetailRequest(Integer id) {
-        mRxManage.add(mModel.getAutionDetaiData(id).subscribe(new RxSubscriber<AutionItemDetailBean>(mContext) {
+        mRxManage.add(mModel.getAutionDetaiData(id).subscribe(new RxSubscriber<AutionItemDetailBean>(mContext,true) {
             @Override
             protected void _onNext(AutionItemDetailBean autionItemDetailBean) {
                 mView.returnAutionItemDeatil(autionItemDetailBean);
