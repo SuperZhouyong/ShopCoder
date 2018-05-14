@@ -11,6 +11,7 @@ import com.intention.sqtwin.app.BaseApplication;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.NetWorkUtils;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
+import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -107,6 +108,7 @@ public class Api {
                         .addHeader("Content-Type", getContentType(hostType))
 //                        .addHeader("timestamp", timestamp)
 //                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
+                        .addHeader("session_id", UserUtil.getLoginInfo()==null?"":String.valueOf(UserUtil.getLoginInfo().getMember_id()))
                         .addHeader("Cache-Control", getCacheControl())
 //                        .header("Cache-Control", getCacheControl())
                         .build();

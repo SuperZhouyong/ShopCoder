@@ -18,10 +18,12 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.main.contract.PpAuctionContract;
 import com.intention.sqtwin.ui.main.model.PpAuctionModel;
 import com.intention.sqtwin.ui.main.presenter.PpAuctionPresenter;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
@@ -102,7 +104,10 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         mLAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(getActivity(), AuctionFiledActivity.class);
+
+//                startActivity(getActivity(), AuctionFiledActivity.class);
+                LogUtils.logd("PostionId---"+position+"-----------"+mAdapter.get(position).getId());
+                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity)getActivity(),mAdapter.get(position).getId());
             }
         });
 
@@ -174,7 +179,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         vgll.setVisibility(View.VISIBLE);
         ++page_no;
 
-        if (allDateBean.getData().getTotal_page()==page_no)
+        if (allDateBean.getData().getTotal_page() == page_no)
             mRecyclerView.setNoMore(true);
 
     }

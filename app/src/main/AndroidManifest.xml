@@ -59,11 +59,7 @@
 
         <!--拍品页-->
         <activity android:name=".ui.main.activity.AuctionItemActivity">
-           <!-- <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
 
         </activity>
         <!--拍场页-->
@@ -97,7 +93,13 @@
         <activity android:name=".ui.mall.activity.DerivativesActivity">
 
         </activity>
+        <!--登录界面-->
+        <activity android:name=".ui.myinfo.activity.LoginActivity" >
 
+
+        </activity>
+        <!--出价列表-->
+        <activity android:name=".ui.main.activity.BidRecordActivity"/>
         <!-- umeng需要的 -->
         <!-- android:value="5900713a7f2c743d9900147a" -->
         <!-- <meta-data

@@ -19,6 +19,7 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.app.BaseApplication;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseapp.AppManager;
+import com.intention.sqtwin.baserx.RxBus;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.TabEntity;
 import com.intention.sqtwin.ui.main.fragment.AuctionFragment;
@@ -34,6 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import rx.Observable;
+import rx.functions.Action1;
 
 /**
  * 首页
@@ -66,13 +68,6 @@ public class MainActivity extends BaseActivity {
 
     private boolean isExit;
 
-/*    public String getMoneyNum() {
-        return moneyNum;
-    }
-
-    public void setMoneyNum(String moneyNum) {
-        this.moneyNum = moneyNum;
-    }*/
 
     private String moneyNum;
 
@@ -138,7 +133,18 @@ public class MainActivity extends BaseActivity {
     public void initView() {
         moneyNum = getIntent().getStringExtra(AppConstant.Moneynum);
         initTab();
+        initRxBus();
 
+    }
+
+    private void initRxBus() {
+        mRxManager.on(AppConstant.SwitchToPostion, new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+                tabLayout.setCurrentTab(integer);
+                SwitchTo(integer);
+            }
+        });
     }
 
     private void initTab() {

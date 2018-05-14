@@ -44,7 +44,7 @@
                 android:id="@+id/iv_two"
                 android:layout_width="@dimen/x111"
                 android:layout_height="@dimen/y148"
-                android:src="@mipmap/home_item_one"
+                android:src="@mipmap/home_item_two"
 
 
                 />
@@ -62,7 +62,7 @@
                 android:id="@+id/iv_three"
                 android:layout_width="@dimen/x111"
                 android:layout_height="@dimen/y148"
-                android:src="@mipmap/home_item_one"
+                android:src="@mipmap/home_item_three"
 
 
                 />

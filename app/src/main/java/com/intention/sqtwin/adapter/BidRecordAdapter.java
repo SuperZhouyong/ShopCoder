@@ -24,7 +24,7 @@ public class BidRecordAdapter extends CommonRecycleViewAdapter<BidRecordBean.Dat
 
     @Override
     public void convert(ViewHolderHelper helper, BidRecordBean.DataBean.PriceBean priceBean, int position) {
-        helper.setImageUrl(R.id.iv_goods, priceBean.getAvatar());
+        helper.setImageRoundUrl(R.id.iv_icon, priceBean.getAvatar());
 
         helper.setText(R.id.tv_name, priceBean.getNickname());
         helper.setText(R.id.tv_bid_desc, "出价");

@@ -35,9 +35,9 @@ public class AutionItemContract {
 //        void  returnWorkList(WorkerListBean workerListBean);
         void returnAutionItemDeatil(AutionItemDetailBean autionItemDetailBean);
 
-        void returnAgentBidDate(Integer goods_id,Integer price,Integer member_id);
+        void returnAgentBidDate(AgentBidBean agentBidBean);
 
-        void returnBidDate(Integer goods_id,Integer price,Integer member_id);
+        void returnBidDate(BidBean bidBean);
     }
 
     public abstract static class Presenter extends BasePresenter<View, Model> {

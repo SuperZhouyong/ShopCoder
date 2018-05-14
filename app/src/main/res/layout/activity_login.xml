@@ -1,7 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
 
-</LinearLayout>
+
+    android:orientation="vertical">
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/rel_boot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <RelativeLayout
+        android:id="@+id/rel_bottom"
+        android:layout_width="@dimen/x602"
+        android:layout_height="@dimen/y300"
+        android:layout_centerInParent="true"
+        android:background="@drawable/login_all_bg">
+
+        <RelativeLayout
+            android:id="@+id/username_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+
+
+            android:layout_marginTop="@dimen/y50"
+            android:background="@drawable/login_shape_focus"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+
+            <com.intention.sqtwin.widget.ClearEditText
+                android:id="@+id/username"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/y88"
+                android:layout_toRightOf="@id/iv_phone"
+                android:background="@null"
+                android:hint="手机号"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                android:textSize="@dimen/x28" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/code_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_below="@id/username_layout"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+
+
+            android:layout_marginTop="@dimen/y50"
+            android:background="@drawable/login_shape_focus"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+
+            <com.intention.sqtwin.widget.ClearEditText
+                android:id="@+id/code"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/y88"
+                android:layout_toRightOf="@id/iv_phone"
+                android:background="@null"
+                android:hint="验证码"
+                android:inputType="number"
+                android:maxLength="11"
+                android:paddingLeft="@dimen/x30"
+                android:paddingRight="@dimen/x30"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/auth_code_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:background="@drawable/code_focus"
+                android:gravity="center"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x5"
+                android:paddingRight="@dimen/x5"
+                android:paddingTop="@dimen/y10"
+                android:text="发送验证码"
+                android:textColor="@color/code_textcolor"
+                android:textSize="@dimen/x28" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_login_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rel_bottom"
+        android:layout_alignLeft="@id/rel_bottom"
+        android:background="@drawable/login_tv_bg"
+        android:padding="@dimen/x20"
+        android:text="登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
+
+    <TextView
+        android:id="@+id/tv_regist_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/rel_bottom"
+        android:layout_toRightOf="@id/tv_login_desc"
+
+        android:background="@drawable/regist_tv_bg"
+        android:padding="@dimen/x10"
+        android:text="注册"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
+
+    <TextView
+        android:id="@+id/tv_login_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rel_bottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y80"
+        android:background="@drawable/tv_login_confirm"
+        android:paddingBottom="@dimen/y20"
+        android:paddingLeft="@dimen/x40"
+        android:paddingRight="@dimen/x40"
+        android:paddingTop="@dimen/y20"
+        android:text="• 登录 •"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
+</RelativeLayout>

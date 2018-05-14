@@ -6,55 +6,65 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_marginLeft="@dimen/x22"
-        android:layout_centerVertical="true"
         android:id="@+id/iv_icon"
         android:layout_width="@dimen/x110"
-        android:layout_height="@dimen/y110" />
+        android:layout_height="@dimen/y110"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x22" />
 
     <RelativeLayout
-        android:paddingLeft="@dimen/x22"
-        android:layout_toRightOf="@id/iv_icon"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv_icon"
+        android:paddingLeft="@dimen/x22">
+
         <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/y50"
             android:text="名字"
             android:textColor="@color/font_1"
-            android:textSize="@dimen/x28"
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/x28" />
+
         <TextView
-            android:layout_marginTop="@dimen/y10"
-            android:textColor="@color/font_1"
-            android:textSize="@dimen/x24"
-            android:layout_below="@id/tv_name"
-            android:text="chujia"
             android:id="@+id/tv_bid_desc"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_marginTop="@dimen/y10"
+            android:text="chujia"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+
         <TextView
-            android:textSize="@dimen/x24"
-            android:textColor="@color/font_2"
-            android:layout_marginLeft="@dimen/x22"
-            android:layout_toRightOf="@id/tv_bid_desc"
-            android:layout_alignBottom="@id/tv_bid_desc"
-            android:text="价格"
             android:id="@+id/tv_bid_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_marginRight="@dimen/x22"
+            android:layout_height="wrap_content"
             android:layout_alignBottom="@id/tv_bid_desc"
-            android:layout_alignParentRight="true"
-            android:text="时间"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toRightOf="@id/tv_bid_desc"
+            android:text="价格"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x24" />
+
+        <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_bid_desc"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x22"
+            android:text="时间" />
 
 
     </RelativeLayout>
 
-    <!--<include layout="@layout/item_auction_file_item" />-->
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y2"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginRight="@dimen/x22"
+        android:background="@color/app_bottom_colour" />
 </RelativeLayout>

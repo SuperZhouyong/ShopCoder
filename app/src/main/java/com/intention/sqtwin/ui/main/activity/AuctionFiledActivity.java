@@ -1,5 +1,7 @@
 package com.intention.sqtwin.ui.main.activity;
 
+import android.app.Activity;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -129,6 +131,12 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     private RelativeLayout rel_fouce;
     private boolean isLoadHead;
 
+    public static void gotoAuctionFiledActivity(BaseActivity mActivity, Integer auctiuonFiled) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.aucotonFileId, auctiuonFiled);
+        mActivity.startActivity(AuctionFiledActivity.class, bundle);
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_lotsfiled;
@@ -141,8 +149,8 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
     @Override
     public void initView() {
-        auctiuonFiled = getIntent().getIntExtra(AppConstant.aucotonFileId,-1);
 
+        auctiuonFiled = getIntent().getExtras().getInt(AppConstant.aucotonFileId, -1);
         mAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean>(this, R.layout.item_auction_file_item) {
             @Override
             public void convert(ViewHolderHelper helper, AuctionFiledAllBean.DataBean.AuctionItemListBean auctionItemListBean, int position) {

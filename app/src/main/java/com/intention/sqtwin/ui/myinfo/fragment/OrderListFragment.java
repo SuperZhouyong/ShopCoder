@@ -1,19 +1,14 @@
 package com.intention.sqtwin.ui.myinfo.fragment;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
-import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
-import com.intention.sqtwin.adapter.PpAuctionAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
@@ -26,11 +21,9 @@ import com.intention.sqtwin.ui.myinfo.presenter.OrderListPresenter;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
- * Description: 保佑无bug
+ * Description: 订单列表
  * Data：2018/5/10-上午12:18
  * Blog：Super简单
  * Author: ZhouYong

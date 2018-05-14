@@ -11,6 +11,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.BidRecordAdapter;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.BidRecordBean;
 import com.intention.sqtwin.ui.main.contract.BidRecordContract;
@@ -60,6 +61,8 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
 
     @Override
     public void initView() {
+
+        goodId = getIntent().getExtras().getInt(AppConstant.BidRecordId,-1);
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("出价列表");
         bidRecordAdapter = new BidRecordAdapter(this);
@@ -69,7 +72,7 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
         mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadMoreEnabled(false);
 //        mRecyclerView.setOnLoadMoreListener(this);
-        mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 10, 1, getResources().getColor(R.color.app_bottom_colour)));
+//        mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 10, 1, getResources().getColor(R.color.app_bottom_colour)));
 
         mPresenter.getBidRecordRequest(goodId);
     }

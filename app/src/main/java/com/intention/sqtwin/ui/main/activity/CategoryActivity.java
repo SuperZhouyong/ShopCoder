@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,7 +15,6 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
-import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.ui.main.contract.CategoryContract;
@@ -49,6 +47,10 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     RecyclerView mrecyLeft;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
+    @BindView(R.id.category_logo)
+    ImageView categoryLogo;
+    @BindView(R.id.iv_dilver)
+    ImageView ivDilver;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean> mLeftAdapter;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.SubCategoryBean> mRightAdapter;
     private Integer current_category_id = 19;
@@ -67,6 +69,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
 
     @Override
     public void initView() {
+        categoryLogo.setImageResource(R.mipmap.logo);
 
         mLeftAdapter = new CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean>(this, R.layout.item_category_left) {
             @Override
@@ -99,12 +102,12 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
             public void convert(ViewHolderHelper helper, CategoryAllBean.DataBean.SubCategoryBean categoryBean, int position) {
                 helper.setImageUrl(R.id.iv_goods, categoryBean.getImage());
                 helper.setText(R.id.tv_name, categoryBean.getName());
-               helper.getConvertView().setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       startActivity(AuctionItemListActivity.class);
-                   }
-               });
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(AuctionItemListActivity.class);
+                    }
+                });
             }
         };
 
@@ -163,4 +166,6 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     public void reloadLodTip() {
         mPresenter.getCategoryBeanRequest(current_category_id);
     }
+
+
 }

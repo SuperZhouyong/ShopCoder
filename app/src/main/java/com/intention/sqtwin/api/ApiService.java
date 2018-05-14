@@ -13,13 +13,17 @@ import com.intention.sqtwin.bean.BidBean;
 import com.intention.sqtwin.bean.BidRecordBean;
 import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.bean.DerivativesBean;
+import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
 import com.intention.sqtwin.bean.MyCompeteBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -193,7 +197,12 @@ public interface ApiService {
             @Query("price") Integer price,
             @Query("member_id") Integer member_id
     );
-
+    @FormUrlEncoded
+    @POST("membercenter/login")
+    Observable<LoginBean> getLoginBean(
+            @Field("phone") String phone,
+            @Field("code") String coer
+    );
    /* *//*
     * 首页轮播图
     * *//*

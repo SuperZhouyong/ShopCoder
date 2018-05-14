@@ -144,7 +144,7 @@ public abstract class LazzyFragment<T extends BasePresenter, E extends BaseModel
             return false;
         }
 
-        if (TextUtils.isEmpty(UserUtil.getLoginInfo().getGid())) {// 根据登录保存的信息进行是否登录判断
+        if (TextUtils.isEmpty(String.valueOf(UserUtil.getLoginInfo().getMember_id()))) {// 根据登录保存的信息进行是否登录判断
             return false;
         } else {
             return true;

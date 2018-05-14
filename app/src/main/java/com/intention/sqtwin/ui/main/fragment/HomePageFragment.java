@@ -21,9 +21,11 @@ import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
+import com.intention.sqtwin.ui.mall.activity.DerivativesActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
@@ -36,7 +38,7 @@ import ezy.ui.view.BannerView;
  * Created by Administrator on 2017/2/9 0009.
  */
 
-public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener {
+public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener, View.OnClickListener {
     @BindView(R.id.mLRecyclerView)
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -100,6 +102,11 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
 //        View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_home_head_title, null);
         View home_fore = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_fore_item, null);
+        home_fore.findViewById(R.id.iv_one).setOnClickListener(this);
+        home_fore.findViewById(R.id.iv_two).setOnClickListener(this);
+        home_fore.findViewById(R.id.iv_three).setOnClickListener(this);
+        home_fore.findViewById(R.id.iv_fore).setOnClickListener(this);
+
 
         View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
@@ -131,10 +138,12 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mLadapter.setOnItemClickListener(new com.github.jdsjlzx.interfaces.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent(getActivity(),AuctionFiledActivity.class);
-                intent.putExtra(AppConstant.aucotonFileId,homeAdapter.get(position).getId());
-                LogUtils.logd(TAG+"-------"+homeAdapter.get(position).getId());
-                startActivity(intent);
+               /* Intent intent = new Intent(getActivity(), AuctionFiledActivity.class);
+                intent.putExtra(AppConstant.aucotonFileId, homeAdapter.get(position).getId());
+                LogUtils.logd(TAG + "-------" + homeAdapter.get(position).getId());*/
+//                startActivity(intent);
+                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), homeAdapter.get(position).getId());
+
             }
         });
         mPresenter.getHomeAllDate();
@@ -207,5 +216,22 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     @Override
     public void reloadLodTip() {
         mPresenter.getHomeAllDate();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_one:
+                // 转向自营拍
+                mRxManager.post(AppConstant.SwitchToPostion, 1);
+                break;
+            case R.id.iv_two:
+                startActivity(DerivativesActivity.class);
+                break;
+            case R.id.iv_three:
+                break;
+            case R.id.iv_fore:
+                break;
+        }
     }
 }

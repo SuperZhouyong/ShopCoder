@@ -13,16 +13,16 @@ public class AppConstant {
     public static final String WEBVIEW = "WEBVIEW";
     public static final String WEBVIEWURL = "WEBVIEWURL";
     public static final String oneMessage = "one";
+    public static final String twoMessage = "two";
+    public static final String threeMessage = "three";
     // 拍品ID
     public static String auctionItemId = "auctionItemId";
     // 拍场Id
     public static String aucotonFileId = "aucotonFileId";
-
-
-
-
-
-
+    // 出价记录Id
+    public static String BidRecordId = "BidRecordId";
+    // 滑动 mainactivity
+    public static String SwitchToPostion = "SwitchToPostion";
 
 
     //    wxd2fb38f960eb278e appid  wxd2fb38f960eb278e
@@ -334,6 +334,8 @@ public class AppConstant {
     public static final String PID = "PID";
     public static final String Experts = "expert";
     public static final String content = "content";
+
+
 
 
 

@@ -21,6 +21,7 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.DerivativesBean;
+import com.intention.sqtwin.bean.TabEntity;
 import com.intention.sqtwin.ui.main.activity.CategoryActivity;
 import com.intention.sqtwin.ui.mall.contract.DerivativesContract;
 import com.intention.sqtwin.ui.mall.model.DerivativesModel;
@@ -70,7 +71,7 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this, mModel);
     }
 
     private DerivativesOneAdapter mDerivativesOneAdapter;
@@ -80,7 +81,7 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
 
     @Override
     public void initView() {
-        mPresenter.setVM(this, mModel);
+
 
         // 首部轮播图
         View headViewPager = getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
@@ -145,7 +146,9 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
         mLadapter.addHeaderView(HeadViewTwoBottom);
         mLadapter.addHeaderView(homeHeadTitleThree);
         mPresenter.getDerivativesRequest(type);
-
+        for (int i = 0; i < mTitles.length; i++) {
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+        }
         tabLayout.setTabData(mTabEntities);
         //点击监听
         tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
