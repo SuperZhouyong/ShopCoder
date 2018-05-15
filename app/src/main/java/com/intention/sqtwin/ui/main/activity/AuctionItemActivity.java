@@ -229,7 +229,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     public void initView() {
         // 获取拍品Id
         auctItemId = getIntent().getIntExtra(AppConstant.auctionItemId, -1);
-        relSearch.setVisibility(View.GONE);
+//        relSearch.setVisibility(View.GONE);
 
         mAdapter = new CommonRecycleViewAdapter<AutionItemDetailBean.DataBean.PriceListBean>(this, R.layout.item_price_list) {
             @Override
@@ -242,6 +242,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
 
         mComAdapter = new CommonRecycleViewAdapter<NullBean>(this, R.layout.item_price_list) {
+
             @Override
             public void convert(ViewHolderHelper helper, NullBean nullBean, int position) {
 
@@ -307,7 +308,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         // 参拍指南
         auction_guide = getLayoutInflater().inflate(R.layout.item_auction_three, null);
         auctionGuide = (TextView) price_title.findViewById(R.id.tv_recoed_one);
-
+        mLadapter.getHeaderViews().clear();
+        mLadapter.getmHeaderTypes().clear();
         mLadapter.addHeaderView(auctionItem_one);
         mLadapter.addHeaderView(headViewPager);
         mLadapter.addHeaderView(auction_three);
@@ -456,7 +458,6 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 shareDialog.show();
             }
         });
-
 
 
 //        mComAdapter.notifyDataSetChanged();

@@ -3,6 +3,7 @@ package com.github.jdsjlzx.recyclerview;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,6 +24,15 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     private static final int TYPE_NORMAL = 0;
     private static final int TYPE_FOOTER_VIEW = 10001;
     private static final int HEADER_INIT_INDEX = 10002;
+
+    public ArrayList<View> getmHeaderViews() {
+        return mHeaderViews;
+    }
+
+    public void setmHeaderViews(ArrayList<View> mHeaderViews) {
+        this.mHeaderViews = mHeaderViews;
+    }
+
     private static List<Integer> mHeaderTypes = new ArrayList<>();
 
     private IRefreshHeader mRefreshHeader;
@@ -38,7 +48,16 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     private ArrayList<View> mHeaderViews = new ArrayList<>();
     private ArrayList<View> mFooterViews = new ArrayList<>();
 
+    public static List<Integer> getmHeaderTypes() {
+        return mHeaderTypes;
+    }
+
+    public static void setmHeaderTypes(List<Integer> mHeaderTypes) {
+        LRecyclerViewAdapter.mHeaderTypes = mHeaderTypes;
+    }
+
     private SpanSizeLookup mSpanSizeLookup;
+    private String TAG = "LRecyclerViewAdapter";
 
 
     public LRecyclerViewAdapter(RecyclerView.Adapter innerAdapter) {
@@ -54,11 +73,11 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public void addHeaderView(View view) {
-
+//        Log.i(TAG,"sssssssss Before" +(HEADER_INIT_INDEX+mHeaderViews.size()));
         if (view == null) {
             throw new RuntimeException("header is null");
         }
-
+//        Log.i(TAG,"sssssssss After" +(HEADER_INIT_INDEX+mHeaderViews.size()));
         mHeaderTypes.add(HEADER_INIT_INDEX + mHeaderViews.size());
         mHeaderViews.add(view);
     }
@@ -82,6 +101,7 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
         if(!isHeaderType(itemType)) {
             return null;
         }
+//        Log.i(TAG,"sssssssss " +(itemType-HEADER_INIT_INDEX));
         return mHeaderViews.get(itemType - HEADER_INIT_INDEX);
     }
 
@@ -160,9 +180,9 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             return new ViewHolder(mRefreshHeader.getHeaderView());
         } else if (isHeaderType(viewType)) {
-            ViewHolder viewHolder = new ViewHolder(getHeaderViewByType(viewType));
-            viewHolder.setIsRecyclable(false);
-            return viewHolder;
+//            ViewHolder viewHolder = new ViewHolder(getHeaderViewByType(viewType));
+//            viewHolder.setIsRecyclable(false);
+            return new ViewHolder(getHeaderViewByType(viewType));
         } else if (viewType == TYPE_FOOTER_VIEW) {
             return new ViewHolder(mFooterViews.get(0));
         }
@@ -239,12 +259,15 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemViewType(int position) {
+//        Log.i(TAG,"sssssssss mHeaderTypes " +mHeaderTypes.toString());
+//        Log.i(TAG,"sssssssss position " +position+"---isheader   "+(isHeader(position)));
         int adjPosition = position - (getHeaderViewsCount() + 1);
         if (isRefreshHeader(position)) {
             return TYPE_REFRESH_HEADER;
         }
         if (isHeader(position)) {
             position = position - 1;
+//            Log.i(TAG,"sssssssss getItemViewTYpe " +mHeaderTypes.get(position));
             return mHeaderTypes.get(position);
         }
         if (isFooter(position)) {
