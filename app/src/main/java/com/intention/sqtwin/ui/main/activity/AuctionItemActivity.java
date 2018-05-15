@@ -32,7 +32,6 @@ import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -70,100 +69,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     TextView tvAgentPrice;
     @BindView(R.id.tv_noagent_price)
     TextView tvNoagentPrice;
-    /*@BindView(R.id.iv_back)
-        ImageView ivBack;
-        @BindView(R.id.rel_back)
-        RelativeLayout relBack;
-        @BindView(R.id.Tv_time_one)
-        TextView TvTimeOne;
-        @BindView(R.id.Tv_time_two)
-        TextView TvTimeTwo;
-        @BindView(R.id.iv_search)
-        ImageView ivSearch;
-        @BindView(R.id.rel_search)
-        RelativeLayout relSearch;
-        @BindView(R.id.iv_icon)
 
-        @BindView(R.id.tv_1)
-        TextView tv1;
-        @BindView(R.id.tv_1_name)
-
-        @BindView(R.id.tv_2)
-        TextView tv2;
-        @BindView(R.id.tv_2_name)
-
-        @BindView(R.id.tv_3)
-        TextView tv3;
-        @BindView(R.id.tv_3_name)
-        TextView tv3Name;
-        @BindView(R.id.mLoopViewPager)
-
-        @BindView(R.id.tv_lot_name)
-        TextView tvLotName;
-        @BindView(R.id.tv_lost_price_desc_one)
-        TextView tvLostPriceDescOne;
-        @BindView(R.id.tv_num_one)
-        TextView tvNumOne;
-        @BindView(R.id.ll_one)
-        LinearLayout llOne;
-        @BindView(R.id.tv_lost_price_desc_two)
-        TextView tvLostPriceDescTwo;
-        @BindView(R.id.tv_num_two)
-        TextView tvNumTwo;
-        @BindView(R.id.ll_two)
-        LinearLayout llTwo;
-        @BindView(R.id.tv_lost_price_desc_three)
-        TextView tvLostPriceDescThree;
-        @BindView(R.id.tv_num_three)
-        TextView tvNumThree;
-        @BindView(R.id.ll_three)
-        LinearLayout llThree;
-        @BindView(R.id.tv_focus_ren)
-        TextView tvFocusRen;
-        @BindView(R.id.iv_select_one)
-        ImageView ivSelectOne;
-        @BindView(R.id.iv_select_two)
-        ImageView ivSelectTwo;
-        @BindView(R.id.iv_select_three)
-        ImageView ivSelectThree;
-        @BindView(R.id.tv_disclaimer)
-        TextView tvDisclaimer;
-        @BindView(R.id.tv_num_one_com)
-        TextView tvNumOneCom;
-        @BindView(R.id.tv_num_two_com)
-        TextView tvNumTwoCom;
-        @BindView(R.id.tv_num_three_com)
-        TextView tvNumThreeCom;
-        @BindView(R.id.tv_num_fore_com)
-        TextView tvNumForeCom;
-        @BindView(R.id.tv_desc)
-        TextView tvDesc;
-        @BindView(R.id.iv_qr_code)
-        ImageView ivQrCode;
-        @BindView(R.id.tv_recoed_one)
-        TextView tvRecoedOne;
-        @BindView(R.id.tv_recoed_two)
-        TextView tvRecoedTwo;
-        @BindView(R.id.mRecyclerView)
-        RecyclerView mRecyclerView;
-        @BindView(R.id.tv_other_lots)
-        TextView tvOtherLots;
-        @BindView(R.id.tv_aution_guide)
-        TextView tvAutionGuide;
-        @BindView(R.id.ll_one_bottom)
-        LinearLayout llOneBottom;
-        @BindView(R.id.ll_two_bottom)
-        LinearLayout llTwoBottom;
-        @BindView(R.id.tv_agent_price)
-        TextView tvAgentPrice;
-        @BindView(R.id.tv_noagent_price)
-        TextView tvNoagentPrice;
-        @BindView(R.id.mLoadingTip)
-        LoadingTip mLoadingTip;
-        @BindView(R.id.rel_other_lots)
-        RelativeLayout relOtherLots;
-        @BindView(R.id.rel_bid_record)
-        RelativeLayout relBidRecord;*/
 
     private TextView tv1Name;
     private TextView tv2Name;
@@ -182,6 +88,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private String increment_value;
     private TextView tvTwo;
     private TextView tvOne;
+    // 信誉额度
     private String credit_line;
     private String deposit;
     private int goods_id;
@@ -214,6 +121,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private View iv_qrcode;
     private View headViewTwo;
     private RecyclerView mRecyclerView;
+    private boolean isAgentBid;
+    private boolean isBid;
 
     @Override
     public int getLayoutId() {
@@ -284,7 +193,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         //作何介绍
         auther_desc = getLayoutInflater().inflate(R.layout.auctionitem_auther_desc, null);
-        tvAutherDesc = (TextView) auther_desc .findViewById(R.id.tv_desc);
+        tvAutherDesc = (TextView) auther_desc.findViewById(R.id.tv_desc);
 
 
         //二维码图片
@@ -295,24 +204,29 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         price_title = getLayoutInflater().inflate(R.layout.item_auction_three, null);
         priceTitle = (TextView) price_title.findViewById(R.id.tv_recoed_one);
         tvPriceNum = (TextView) price_title.findViewById(R.id.tv_recoed_two);
+        ImageView ivDelver = (ImageView) price_title.findViewById(R.id.iv_bottom_delvier);
+        ivDelver.setVisibility(View.VISIBLE);
 
         headViewTwo = getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
         View viewById = headViewTwo.findViewById(R.id.mRecy_rel_parent);
         mRecyclerView = (RecyclerView) headViewTwo.findViewById(R.id.mRecyclerView);
-        setMarGinTop(viewById,0,0);
+        setMarGinTop(viewById, 0, 0);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
 
+        View viewSpace1 = getLayoutInflater().inflate(R.layout.item_space, null);
 
         //foot  其他拍品
         other_item = getLayoutInflater().inflate(R.layout.item_auction_three, null);
 
         OtherTitle = (TextView) other_item.findViewById(R.id.tv_recoed_one);
-        setMarGinTop(OtherTitle,0, (int) getResources().getDimension(R.dimen.y20));
+        setMarGinTop(other_item, 0, (int) getResources().getDimension(R.dimen.y20));
+        View viewSpace2 = getLayoutInflater().inflate(R.layout.item_space, null);
         // 参拍指南
         auction_guide = getLayoutInflater().inflate(R.layout.item_auction_three, null);
         auctionGuide = (TextView) auction_guide.findViewById(R.id.tv_recoed_one);
-        setMarGinTop(auctionGuide,0, (int) getResources().getDimension(R.dimen.y20));
+        setMarGinTop(auction_guide, 0, (int) getResources().getDimension(R.dimen.y20));
+//        View viewSpace3 = getLayoutInflater().inflate(R.layout.item_space, null);
         mLadapter.getHeaderViews().clear();
         mLadapter.getmHeaderTypes().clear();
 
@@ -328,14 +242,18 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         mLadapter.addHeaderView(iv_qrcode);
         mLadapter.addHeaderView(price_title);
         mLadapter.addHeaderView(headViewTwo);
+        mLadapter.addHeaderView(viewSpace1);
         mLadapter.addHeaderView(other_item);
+        mLadapter.addHeaderView(viewSpace2);
         mLadapter.addHeaderView(auction_guide);
+//        mLadapter.addHeaderView(viewSpace3);
     }
 
     @Override
     public void showLoading(String RequestId, String title) {
 
     }
+
     public void setMarGinTop(View v, int marGTop, int top) {
         if (v.getLayoutParams() instanceof LinearLayout.LayoutParams) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) v.getLayoutParams();
@@ -349,12 +267,13 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         } else if (v.getLayoutParams() != null) {
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            layoutParams.setMargins(marGTop,top,marGTop,0);
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
             v.setLayoutParams(layoutParams);
         }
 
 
     }
+
     @Override
     public void stopLoading(String RequestId) {
 
@@ -380,9 +299,36 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
+        if (isAgentBid || isBid) {
+            tvPriceNum.setVisibility(View.VISIBLE);
+            tvPriceNum.setText(autionItemDetailBean.getData().getPrice_count() + "次");
 
 
-        AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
+            // 出价列表
+            price_title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(AppConstant.BidRecordId, goods_id);
+                    startActivity(BidRecordActivity.class, bundle);
+                }
+            });
+            if (mAdapter.getDataList().size() != 0) {
+                mAdapter.clear();
+            }
+            if (autionItemDetailBean.getData().getPrice_list().size() > 4) {
+                autionItemDetailBean.getData().setPrice_list(autionItemDetailBean.getData().getPrice_list().subList(0, 4));
+            }
+            mAdapter.addAll(autionItemDetailBean.getData().getPrice_list());
+
+            isBid = false;
+            isAgentBid = false;
+            return;
+
+        }
+
+
+        final AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
         AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
         //title
         TvTimeTwo.setText(item_info.getStart_time() + "-" + item_info.getEnd_time());
@@ -430,13 +376,14 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tvNumForeCom.setText(item_info.getDeposit());
         // 作者描述 tv_recoed_two
         tvAutherDesc.setText(autionItemDetailBean.getData().getItem_info().getDescription());
+
+
         // 出价记录
         priceTitle.setText("出价列表");
         tvPriceNum.setVisibility(View.VISIBLE);
         tvPriceNum.setText(autionItemDetailBean.getData().getPrice_count() + "次");
 
-        OtherTitle.setText("本场其他拍品");
-        auctionGuide.setText("参拍指南");
+
         // 出价列表
         price_title.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -446,14 +393,16 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 startActivity(BidRecordActivity.class, bundle);
             }
         });
-        /*if (mAdapter.getDataList().size() != 0) {
+        if (mAdapter.getDataList().size() != 0) {
             mAdapter.clear();
-        }*/
+        }
         if (autionItemDetailBean.getData().getPrice_list().size() > 4) {
             autionItemDetailBean.getData().setPrice_list(autionItemDetailBean.getData().getPrice_list().subList(0, 4));
         }
         mAdapter.addAll(autionItemDetailBean.getData().getPrice_list());
         // 其他拍场
+        OtherTitle.setText("本场其他拍品");
+        auctionGuide.setText("参拍指南");
         other_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -466,7 +415,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tvDisclaimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MyWebviewActivity.GotoActiviy(AuctionItemActivity.this, autionItemDetailBean.getData().getArticle(), "免责申明");
             }
         });
         ivQrcode.setOnClickListener(new View.OnClickListener() {
@@ -475,22 +424,30 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
 //                ShareDialog shareDialog = new ShareDialog(this);
                 Dialog shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
-                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog, null));
+                View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
+                ImageView ivShareCode = (ImageView) shareView.findViewById(R.id.iv_share_code);
+
+                shareDialog.setContentView(shareView);
 //                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 shareDialog.show();
+                ImageLoaderUtils.displayBigPhoto(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getWx_code());
             }
         });
-
+        auctionItem_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OrganPeoActivity.gotoActivity( AuctionItemActivity.this, item_info.getAuthor_id());
+            }
+        });
 
     }
 
     @Override
     public void returnAgentBidDate(AgentBidBean agentBidBean) {
         if (agentBidBean.isIs_success()) {
-
             bottomDialog.dismiss();
-
+            isAgentBid = true;
             mPresenter.getAutionDetailRequest(auctItemId);
         } else {
             showShortToast(agentBidBean.getMessage());
@@ -501,6 +458,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     public void returnBidDate(BidBean bidBean) {
         if (bidBean.isIs_success()) {
             bottomDialog.dismiss();
+            isBid = true;
             mPresenter.getAutionDetailRequest(auctItemId);
         } else {
             showShortToast(bidBean.getMessage());
@@ -515,15 +473,6 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 finish();
                 break;
 
-//                ShareDialog shareDialog = new ShareDialog(this,R.layout.share_dialog,false);
-//                ShareDialog shareDialog = new ShareDialog(this);
-//                Dialog shareDialog = new Dialog(this, R.style.MyDialog);
-//                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog, null));
-////                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-//                shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//                shareDialog.show();
-//                break;
-            // 免责
 
             // 代理出价
             case R.id.tv_agent_price:

@@ -2,10 +2,15 @@ package com.intention.sqtwin.ui.main.activity;
 
 import android.graphics.Bitmap;
 import android.net.http.SslError;
+import android.os.Bundle;
+import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
@@ -14,6 +19,8 @@ import com.intention.sqtwin.baseapp.AppManager;
 import com.intention.sqtwin.widget.conmonWidget.LoadingDialog;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Description: 保佑无bug
@@ -26,6 +33,21 @@ import butterknife.BindView;
 public class MyWebviewActivity extends BaseActivity {
     @BindView(R.id.my_web_view)
     WebView myWebView;
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+
+
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
+
+    @BindView(R.id.rel_back)
+    RelativeLayout relBack;
+    @BindView(R.id.left_title)
+    TextView leftTitle;
+    @BindView(R.id.center_title)
+    TextView centerTitle;
+    @BindView(R.id.rel_search)
+    RelativeLayout relSearch;
     private String webUrl;
 
     @Override
@@ -40,7 +62,11 @@ public class MyWebviewActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        webUrl = getIntent().getBundleExtra(AppConstant.WEBVIEW).getString(AppConstant.WEBVIEWURL);
+        String sTitle = getIntent().getExtras().getString(AppConstant.WEBTITLE);
+        webUrl = getIntent().getExtras().getString(AppConstant.WEBURL);
+        leftTitle.setText(sTitle);
+        relSearch.setVisibility(View.GONE);
+
         WebSettings settings = myWebView.getSettings();
         //todo 缓存
         settings.setDomStorageEnabled(false);
@@ -101,4 +127,22 @@ public class MyWebviewActivity extends BaseActivity {
     }
 
 
+    public static void GotoActiviy(BaseActivity mBaseactivity, String article, String mTitle) {
+        Bundle bundle = new Bundle();
+        bundle.putString(AppConstant.WEBURL, article);
+        bundle.putString(AppConstant.WEBTITLE, mTitle);
+        mBaseactivity.startActivity(MyWebviewActivity.class, bundle);
+    }
+
+
+    @OnClick({R.id.rel_back, R.id.rel_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_back:
+                finish();
+                break;
+            case R.id.rel_search:
+                break;
+        }
+    }
 }

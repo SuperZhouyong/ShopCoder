@@ -3,9 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent">
+        <ImageView
+            android:id="@+id/iv_share_code"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/x580"
+            android:layout_height="@dimen/y801" />
 
-
-    <RelativeLayout
+  <!--  <RelativeLayout
         android:id="@+id/rel_all"
         android:layout_width="@dimen/x580"
         android:layout_height="wrap_content"
@@ -141,25 +145,27 @@
 
         </RelativeLayout>
     </RelativeLayout>
-
+-->
     <ImageView
+        android:src="@mipmap/close_all"
         android:id="@+id/iv_close"
         android:layout_width="@dimen/x40"
         android:layout_height="@dimen/y40"
-        android:layout_above="@+id/rel_all"
-        android:layout_toEndOf="@+id/rel_all"
-        android:layout_toRightOf="@+id/rel_all"
-        android:background="@color/black" />
+        android:layout_above="@+id/iv_share_code"
+        android:layout_toEndOf="@+id/iv_share_code"
+        android:layout_toRightOf="@+id/iv_share_code"
+        />
 
     <LinearLayout
         android:layout_width="@dimen/x720"
-        android:layout_height="@dimen/y130"
+        android:layout_height="@dimen/y150"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:paddingLeft="@dimen/x50"
         android:paddingRight="@dimen/x50">
 
         <LinearLayout
+
             android:id="@+id/ll_wx"
             android:layout_width="0dp"
             android:layout_height="match_parent"

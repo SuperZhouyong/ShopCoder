@@ -12,10 +12,11 @@ import java.util.List;
 
 public class OrganPeBean {
 
+
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"staff_info":{"id":5,"name":"石头","run_count":"5","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"},"auction_field_list":[{"id":0,"name":"拍场名称0","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称0","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":1,"name":"拍场名称1","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称1","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":2,"name":"拍场名称2","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称2","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":3,"name":"拍场名称3","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称3","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":4,"name":"拍场名称4","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称4","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":5,"name":"拍场名称5","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称5","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":6,"name":"拍场名称6","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称6","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":7,"name":"拍场名称7","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称7","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":8,"name":"拍场名称8","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称8","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":9,"name":"拍场名称9","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称9","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}}],"total_page":10}
+     * data : {"staff_info":{"staff_id":1,"create_time":"2018-04-04 14:25:11","name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"description":"描述"},"auction_field_list":[{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":21,"bid_count":7,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00"}]}
      */
 
     private boolean is_success;
@@ -48,13 +49,11 @@ public class OrganPeBean {
 
     public static class DataBean {
         /**
-         * staff_info : {"id":5,"name":"石头","run_count":"5","avatar":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg"}
-         * auction_field_list : [{"id":0,"name":"拍场名称0","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称0","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":1,"name":"拍场名称1","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称1","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":2,"name":"拍场名称2","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称2","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":3,"name":"拍场名称3","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称3","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":4,"name":"拍场名称4","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称4","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":5,"name":"拍场名称5","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称5","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":6,"name":"拍场名称6","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称6","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":7,"name":"拍场名称7","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称7","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":8,"name":"拍场名称8","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称8","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":9,"name":"拍场名称9","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称9","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}}]
-         * total_page : 10
+         * staff_info : {"staff_id":1,"create_time":"2018-04-04 14:25:11","name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"description":"描述"}
+         * auction_field_list : [{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":21,"bid_count":7,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00"}]
          */
 
         private StaffInfoBean staff_info;
-        private int total_page;
         private List<AuctionFieldListBean> auction_field_list;
 
         public StaffInfoBean getStaff_info() {
@@ -63,14 +62,6 @@ public class OrganPeBean {
 
         public void setStaff_info(StaffInfoBean staff_info) {
             this.staff_info = staff_info;
-        }
-
-        public int getTotal_page() {
-            return total_page;
-        }
-
-        public void setTotal_page(int total_page) {
-            this.total_page = total_page;
         }
 
         public List<AuctionFieldListBean> getAuction_field_list() {
@@ -83,23 +74,35 @@ public class OrganPeBean {
 
         public static class StaffInfoBean {
             /**
-             * id : 5
-             * name : 石头
-             * run_count : 5
-             * avatar : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
+             * staff_id : 1
+             * create_time : 2018-04-04 14:25:11
+             * name : 张三
+             * avatar : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png
+             * type : 0
+             * description : 描述
              */
 
-            private int id;
+            private int staff_id;
+            private String create_time;
             private String name;
-            private String run_count;
             private String avatar;
+            private int type;
+            private String description;
 
-            public int getId() {
-                return id;
+            public int getStaff_id() {
+                return staff_id;
             }
 
-            public void setId(int id) {
-                this.id = id;
+            public void setStaff_id(int staff_id) {
+                this.staff_id = staff_id;
+            }
+
+            public String getCreate_time() {
+                return create_time;
+            }
+
+            public void setCreate_time(String create_time) {
+                this.create_time = create_time;
             }
 
             public String getName() {
@@ -110,14 +113,6 @@ public class OrganPeBean {
                 this.name = name;
             }
 
-            public String getRun_count() {
-                return run_count;
-            }
-
-            public void setRun_count(String run_count) {
-                this.run_count = run_count;
-            }
-
             public String getAvatar() {
                 return avatar;
             }
@@ -125,32 +120,50 @@ public class OrganPeBean {
             public void setAvatar(String avatar) {
                 this.avatar = avatar;
             }
+
+            public int getType() {
+                return type;
+            }
+
+            public void setType(int type) {
+                this.type = type;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(String description) {
+                this.description = description;
+            }
         }
 
         public static class AuctionFieldListBean {
             /**
-             * id : 0
-             * name : 拍场名称0
-             * image : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
-             * is_favorite : false
-             * start_time : 2018-2-1 10:00:00
-             * end_time : 2018-3-1 10:00:00
-             * item_count : 50
-             * bid_count : 50
-             * fans_count : 500
-             * organzation : {"id":"5","name":"拍卖机构名称0","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}
+             * id : 26
+             * name : 集萃斋玉器杂项
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg
+             * organization_id : 1
+             * is_favorite : true
+             * item_count : 21
+             * bid_count : 7
+             * fans_count : 0
+             * organization : {"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"}
+             * start_time : 2018-05-02 00:05:00
+             * end_time : 2018-12-31 00:05:00
              */
 
             private int id;
             private String name;
             private String image;
+            private int organization_id;
             private String is_favorite;
+            private int item_count;
+            private int bid_count;
+            private int fans_count;
+            private OrganizationBean organization;
             private String start_time;
             private String end_time;
-            private String item_count;
-            private String bid_count;
-            private String fans_count;
-            private OrganzationBean organzation;
 
             public int getId() {
                 return id;
@@ -176,12 +189,52 @@ public class OrganPeBean {
                 this.image = image;
             }
 
+            public int getOrganization_id() {
+                return organization_id;
+            }
+
+            public void setOrganization_id(int organization_id) {
+                this.organization_id = organization_id;
+            }
+
             public String getIs_favorite() {
                 return is_favorite;
             }
 
             public void setIs_favorite(String is_favorite) {
                 this.is_favorite = is_favorite;
+            }
+
+            public int getItem_count() {
+                return item_count;
+            }
+
+            public void setItem_count(int item_count) {
+                this.item_count = item_count;
+            }
+
+            public int getBid_count() {
+                return bid_count;
+            }
+
+            public void setBid_count(int bid_count) {
+                this.bid_count = bid_count;
+            }
+
+            public int getFans_count() {
+                return fans_count;
+            }
+
+            public void setFans_count(int fans_count) {
+                this.fans_count = fans_count;
+            }
+
+            public OrganizationBean getOrganization() {
+                return organization;
+            }
+
+            public void setOrganization(OrganizationBean organization) {
+                this.organization = organization;
             }
 
             public String getStart_time() {
@@ -200,55 +253,25 @@ public class OrganPeBean {
                 this.end_time = end_time;
             }
 
-            public String getItem_count() {
-                return item_count;
-            }
-
-            public void setItem_count(String item_count) {
-                this.item_count = item_count;
-            }
-
-            public String getBid_count() {
-                return bid_count;
-            }
-
-            public void setBid_count(String bid_count) {
-                this.bid_count = bid_count;
-            }
-
-            public String getFans_count() {
-                return fans_count;
-            }
-
-            public void setFans_count(String fans_count) {
-                this.fans_count = fans_count;
-            }
-
-            public OrganzationBean getOrganzation() {
-                return organzation;
-            }
-
-            public void setOrganzation(OrganzationBean organzation) {
-                this.organzation = organzation;
-            }
-
-            public static class OrganzationBean {
+            public static class OrganizationBean {
                 /**
-                 * id : 5
-                 * name : 拍卖机构名称0
-                 * logo : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg
+                 * organization_id : 1
+                 * name : 中国嘉德
+                 * image :
+                 * is_favorite : true
                  */
 
-                private String id;
+                private int organization_id;
                 private String name;
-                private String logo;
+                private String image;
+                private String is_favorite;
 
-                public String getId() {
-                    return id;
+                public int getOrganization_id() {
+                    return organization_id;
                 }
 
-                public void setId(String id) {
-                    this.id = id;
+                public void setOrganization_id(int organization_id) {
+                    this.organization_id = organization_id;
                 }
 
                 public String getName() {
@@ -259,12 +282,20 @@ public class OrganPeBean {
                     this.name = name;
                 }
 
-                public String getLogo() {
-                    return logo;
+                public String getImage() {
+                    return image;
                 }
 
-                public void setLogo(String logo) {
-                    this.logo = logo;
+                public void setImage(String image) {
+                    this.image = image;
+                }
+
+                public String getIs_favorite() {
+                    return is_favorite;
+                }
+
+                public void setIs_favorite(String is_favorite) {
+                    this.is_favorite = is_favorite;
                 }
             }
         }

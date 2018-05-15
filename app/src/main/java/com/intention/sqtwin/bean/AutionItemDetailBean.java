@@ -16,7 +16,7 @@ public class AutionItemDetailBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"item_info":{"description":"此件玉笔架的用料十分考究，系采用上品和田双色籽料雕琢而成，密度高、润度好，堪称凝滑脂润、如酪似膏，且呈色均匀、色界分明。造型圆润流畅，雅致精巧，气韵灵动。雕琢极尽精致，刻画入微，一丝不苟，纤毫毕现\u2014\u2014以呈色均匀且油润的糖黄玉料雕琢竹排；","author":"张三","author_id":1,"resume":"一个程序员","goods_id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_time":"2018-05-07 15:05:00","end_time":"2018-05-15 00:05:00","start_price":"10000.00","increment_type":1,"increment_value":"500.00","commission":"0.05","deposit":"10000.00","auction_field_id":26,"images":[{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451987310.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451959811.jpg"}],"current_price":"13000.00","fans_count":3},"staff_list":[{"id":1,"name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"run_count":1}],"price_list":[{"id":46,"bid_time":"2018-05-14 18:38:12","type":0,"price":"13000.00","nickname":"17600298095","avatar":""},{"id":45,"bid_time":"2018-05-14 18:23:57","type":0,"price":"12500.00","nickname":"13381183167","avatar":""}],"price_count":2,"is_fav":true,"credit_line":"100.00","article":"https://www.hao123.com/","wx_code":"http://ta.beikunit.com/images/å¾®ä¿¡å\u009b¾ç\u0089\u0087_20180512160612.jpg"}
+     * data : {"item_info":{"description":"此件玉笔架的用料十分考究，系采用上品和田双色籽料雕琢而成，密度高、润度好，堪称凝滑脂润、如酪似膏，且呈色均匀、色界分明。造型圆润流畅，雅致精巧，气韵灵动。雕琢极尽精致，刻画入微，一丝不苟，纤毫毕现\u2014\u2014以呈色均匀且油润的糖黄玉料雕琢竹排；","author":"张三","author_id":1,"resume":"一个程序员","goods_id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","start_time":"2018-05-07 15:05:00","end_time":"2018-05-15 00:05:00","start_price":"10000.00","increment_type":1,"increment_value":"500.00","commission":"0.05","deposit":"10000.00","auction_field_id":26,"images":[{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451987310.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451959811.jpg"}],"current_price":"13000.00","fans_count":3},"staff_list":[{"id":1,"name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"run_count":1}],"price_list":[{"id":46,"bid_time":"2018-05-14 18:38:12","type":0,"price":"13000.00","nickname":"17600298095","avatar":""},{"id":45,"bid_time":"2018-05-14 18:23:57","type":0,"price":"12500.00","nickname":"13381183167","avatar":""}],"price_count":2,"is_fav":true,"credit_line":"100.00","article":"https://www.hao123.com/","wx_code":"http://ta.beikunit.com/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180512160612.jpg"}
      */
 
     private boolean is_success;
@@ -56,7 +56,7 @@ public class AutionItemDetailBean {
          * is_fav : true
          * credit_line : 100.00
          * article : https://www.hao123.com/
-         * wx_code : http://ta.beikunit.com/images/å¾®ä¿¡å¾ç_20180512160612.jpg
+         * wx_code : http://ta.beikunit.com/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180512160612.jpg
          */
 
         private ItemInfoBean item_info;

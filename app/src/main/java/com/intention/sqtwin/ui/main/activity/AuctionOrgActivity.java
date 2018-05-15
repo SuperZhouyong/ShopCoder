@@ -1,9 +1,9 @@
 package com.intention.sqtwin.ui.main.activity;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +21,7 @@ import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.ui.main.contract.AuctionOrgContract;
 import com.intention.sqtwin.ui.main.model.AuctionOrgModel;
 import com.intention.sqtwin.ui.main.presenter.AuctionOrgPresenter;
+import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
@@ -52,6 +53,11 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     private Integer artOrgId = 1;
     private Integer page = 0;
     private int pagesize = 10;
+    private TextView orgName;
+    private TextView tvLostNum;
+    private TextView tvFans;
+    private ImageView ivIcon;
+    private TextView tvDesc;
 
     @Override
     public int getLayoutId() {
@@ -68,15 +74,15 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         leftTitle.setVisibility(View.GONE);
         relSearch.setVisibility(View.GONE);
 
-
+        artOrgId = getIntent().getExtras().getInt(AppConstant.OrgID);
         mcomAdapter = new CommonRecycleViewAdapter<AuctionOrgBean.DataBean.AuctionFieldListBean>(this, R.layout.item_wholegoods) {
             @Override
             public void convert(ViewHolderHelper helper, AuctionOrgBean.DataBean.AuctionFieldListBean itemListBean, int position) {
-                helper.setText(R.id.tv_company_name, itemListBean.getOrganzation().getName());
-                helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganzation().getLogo());
+                helper.setText(R.id.tv_company_name, itemListBean.getOrganization().getName());
+                helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganization().getImage());
 //                helper.setText(R.id.tv_fouce_num, itemListBean.get);
-                helper.setText(R.id.tv_lot_num, itemListBean.getItem_count());
-                helper.setText(R.id.tv_price_num, itemListBean.getBid_count());
+                helper.setText(R.id.tv_lot_num, String.valueOf(itemListBean.getItem_count()));
+                helper.setText(R.id.tv_price_num, String.valueOf(itemListBean.getBid_count()));
                 helper.setText(R.id.tv_filed_name, itemListBean.getName());
                 helper.setImageUrl(R.id.iv_pos_goods, itemListBean.getImage());
                 LogUtils.logd("我是每个条目");
@@ -96,8 +102,13 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         mRecyclerView.setOnLoadMoreListener(this);
         mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 30, 1, getResources().getColor(R.color.app_bottom_colour)));
         View artDetailHead = getLayoutInflater().inflate(R.layout.item_artdetail_head, null);
-        setMarGinTop(artDetailHead.findViewById(R.id.rel_desc), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y30));
-        setMarGinTop(artDetailHead.findViewById(R.id.rel_background), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y100));
+        setMarGinTop(artDetailHead.findViewById(R.id.rel_desc), (int) getResources().getDimension(R.dimen.x22), (int) getResources().getDimension(R.dimen.y30));
+        setMarGinTop(artDetailHead.findViewById(R.id.rel_background), (int) getResources().getDimension(R.dimen.x22), (int) getResources().getDimension(R.dimen.y100));
+        ivIcon = (ImageView) artDetailHead.findViewById(R.id.iv_header_icon);
+        orgName = (TextView) artDetailHead.findViewById(R.id.art_name);
+        tvLostNum = (TextView) artDetailHead.findViewById(R.id.tv_lot_num);
+        tvFans = (TextView) artDetailHead.findViewById(R.id.tv_price_num);
+        tvDesc = (TextView) artDetailHead.findViewById(R.id.tv_desc);
         mLadapter.addHeaderView(artDetailHead);
         View homeHeadTitle = getLayoutInflater().inflate(R.layout.item_home_head_title, null);
         homeHeadTitle.findViewById(R.id.tv_all).setOnClickListener(this);
@@ -141,8 +152,15 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         if (!auctionOrgBean.isIs_success() && page == 0) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
             mLoadingTip.setOnReloadListener(this);
+            showShortToast(auctionOrgBean.getMessage());
             return;
         }
+        AuctionOrgBean.DataBean.OrganizationInfoBean organization_info = auctionOrgBean.getData().getOrganization_info();
+        orgName.setText(organization_info.getName());
+        ImageLoaderUtils.displayRound(this,ivIcon,organization_info.getImage());
+        tvLostNum.setText(organization_info.getGoods_count()+"件");
+        tvFans.setText(organization_info.getFans_count()+"人");
+        tvDesc.setText(organization_info.getDescription());
         // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
         if (!auctionOrgBean.isIs_success())
             return;
@@ -153,8 +171,8 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         }
         mcomAdapter.addAll(auctionOrgBean.getData().getAuction_field_list());
         ++page;
-        if (page == auctionOrgBean.getData().getTotal_page())
-            mRecyclerView.setNoMore(true);
+        /*if (page == auctionOrgBean.getData().getTotal_page())
+            mRecyclerView.setNoMore(true);*/
     }
 
 
@@ -176,7 +194,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_all:
                 break;
             case R.id.tv_ongoing:
@@ -187,5 +205,12 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                 break;
 
         }
+    }
+
+    public static void gotoAuctionOrg(BaseActivity mActivity, Integer artOrgId) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.OrgID, artOrgId);
+        mActivity.startActivity(AuctionOrgActivity.class, bundle);
+
     }
 }

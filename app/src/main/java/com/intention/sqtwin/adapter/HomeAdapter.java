@@ -8,6 +8,8 @@ import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.RecommendField;
+import com.intention.sqtwin.ui.main.activity.AuctionOrgActivity;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 
 import java.text.ParseException;
@@ -30,7 +32,7 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
 
 
     @Override
-    public void convert(ViewHolderHelper helper, AllDateBean.DataBean.RecommendFieldBean recommendFieldBean, int position) {
+    public void convert(ViewHolderHelper helper, final AllDateBean.DataBean.RecommendFieldBean recommendFieldBean, int position) {
 //        helper.setVisible(R.id.tv_filed_title, position == 0);
         helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
         helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
@@ -67,6 +69,12 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
             @Override
             public void onClick(View v) {
                 // 点击关注
+            }
+        });
+        helper.setOnClickListener(R.id.tv_company_name,new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuctionOrgActivity.gotoAuctionOrg((MainActivity)mContext,recommendFieldBean.getOrganization_id());
             }
         });
     }

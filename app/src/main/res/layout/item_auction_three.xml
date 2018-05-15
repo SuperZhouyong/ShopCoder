@@ -37,5 +37,14 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/x22"
             android:src="@mipmap/list_right" />
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_bottom_delvier"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+
+            android:layout_marginRight="@dimen/x22"
+            android:background="@color/app_bottom_colour"
+            android:layout_height="@dimen/y2" />
     </RelativeLayout>
 </RelativeLayout>

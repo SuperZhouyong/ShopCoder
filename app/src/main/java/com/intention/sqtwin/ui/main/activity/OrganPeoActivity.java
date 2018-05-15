@@ -22,7 +22,11 @@ import com.intention.sqtwin.ui.main.contract.OrganPeContract;
 import com.intention.sqtwin.ui.main.model.OrganPeModel;
 import com.intention.sqtwin.ui.main.presenter.OrganPePresenter;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
+import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+
+import java.text.ParseException;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,6 +73,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 
     @Override
     public void initView() {
+
+         staffID = getIntent().getExtras().getInt(AppConstant.PeoID);
         leftTitle.setVisibility(View.GONE);
         relSearch.setVisibility(View.GONE);
         centerTitle.setText("主理人");
@@ -78,8 +84,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 //                helper.setText(R.id.tv_company_name, itemListBean.getOrganzation().getName());
 //                helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganzation().getLogo());
 //                helper.setText(R.id.tv_fouce_num, itemListBean.get);
-                helper.setText(R.id.tv_lot_num, itemListBean.getItem_count());
-                helper.setText(R.id.tv_price_num, itemListBean.getBid_count());
+                helper.setText(R.id.tv_lot_num, String.valueOf(itemListBean.getItem_count()));
+                helper.setText(R.id.tv_price_num, String.valueOf(itemListBean.getBid_count()));
                 helper.setText(R.id.tv_filed_name, itemListBean.getName());
                 helper.setImageUrl(R.id.iv_pos_goods, itemListBean.getImage());
                 LogUtils.logd("我是每个条目");
@@ -89,7 +95,28 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
                         // 点击关注
                     }
                 });
-//                updateTextColor((TextView) helper.gmetView(R.id.tv_price), 0, 1);
+                String start_time = itemListBean.getStart_time();
+                String end_time = itemListBean.getEnd_time();
+
+                try {
+                    Date startTime = PublicKetUtils.df.get().parse(start_time);
+                    Date endTime = PublicKetUtils.df.get().parse(end_time);
+                    Date currentTime = new Date();
+                    if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+                        // 拍卖中
+                        long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
+                        helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+
+                    } else if (currentTime.getTime() < startTime.getTime()) {
+//                未开拍
+                        helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
+
+                    } else {
+                        helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -146,6 +173,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     public void returnOrganPeData(OrganPeBean organPeBean) {
         if (!organPeBean.isIs_success()) {
             // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
+            showShortToast(organPeBean.getMessage());
             if (page == 0) {
                 mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
                 mLoadingTip.setOnReloadListener(this);
@@ -153,7 +181,9 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
             return;
         }
 
-
+        tv_one.setText(organPeBean.getData().getStaff_info().getName());
+        tv_two.setText(organPeBean.getData().getStaff_info().getType()==0 ? "主理人" : "专家");
+        tv_three.setText(organPeBean.getData().getStaff_info().getDescription());
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
@@ -163,8 +193,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         }
         mcomAdapter.addAll(organPeBean.getData().getAuction_field_list());
         ++page;
-        if (page == organPeBean.getData().getTotal_page())
-            mRecyclerView.setNoMore(true);
+//        if (page == organPeBean.getData().getTotal_page())
+//            mRecyclerView.setNoMore(true);
     }
 
 
@@ -181,5 +211,11 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     @Override
     public void reload() {
         mPresenter.getRequestData(staffID, page);
+    }
+
+    public static void gotoActivity(BaseActivity auctionItemActivity, int author_id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.PeoID,author_id);
+        auctionItemActivity.startActivity(OrganPeoActivity.class,bundle);
     }
 }

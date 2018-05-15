@@ -5,12 +5,17 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x22"
+        android:paddingLeft="@dimen/x22"
         android:orientation="vertical">
 
         <TextView
+            android:textSize="@dimen/x30"
+            android:paddingRight="@dimen/y10"
+            android:paddingTop="@dimen/y20"
+            android:paddingBottom="@dimen/y20"
             android:id="@+id/tv_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,12 +23,23 @@
             android:textColor="@color/font_1" />
 
         <TextView
+            android:textSize="@dimen/x25"
+            android:paddingRight="@dimen/y10"
+            android:paddingTop="@dimen/y10"
+            android:paddingBottom="@dimen/y10"
             android:id="@+id/tv_two"
+
+            android:textColor="@color/font_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="主理人职位" />
 
         <TextView
+            android:textSize="@dimen/x25"
+            android:textColor="@color/font_4"
+            android:paddingTop="@dimen/y10"
+            android:paddingRight="@dimen/y10"
+            android:paddingBottom="@dimen/y10"
             android:id="@+id/tv_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
