@@ -23,7 +23,11 @@ import com.intention.sqtwin.ui.main.model.AuctionOrgModel;
 import com.intention.sqtwin.ui.main.presenter.AuctionOrgPresenter;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
+import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+
+import java.text.ParseException;
+import java.util.Date;
 
 import butterknife.BindView;
 
@@ -92,6 +96,28 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                         // 点击关注
                     }
                 });
+                String start_time = itemListBean.getStart_time();
+                String end_time = itemListBean.getEnd_time();
+                try {
+                    Date startTime = PublicKetUtils.df.get().parse(start_time);
+                    Date endTime = PublicKetUtils.df.get().parse(end_time);
+                    Date currentTime = new Date();
+                    if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+                        // 拍卖中
+                        long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
+                        helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+
+                    } else if (currentTime.getTime() < startTime.getTime()) {
+//                未开拍
+                        helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
+
+                    } else {
+                        helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
+                    }
+//            if (new Date().getTime()<endTime.getTime()&&)
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 //                updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1);
             }
         };
@@ -157,9 +183,9 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         }
         AuctionOrgBean.DataBean.OrganizationInfoBean organization_info = auctionOrgBean.getData().getOrganization_info();
         orgName.setText(organization_info.getName());
-        ImageLoaderUtils.displayRound(this,ivIcon,organization_info.getImage());
-        tvLostNum.setText(organization_info.getGoods_count()+"件");
-        tvFans.setText(organization_info.getFans_count()+"人");
+        ImageLoaderUtils.displayRound(this, ivIcon, organization_info.getImage());
+        tvLostNum.setText(organization_info.getGoods_count() + "件");
+        tvFans.setText(organization_info.getFans_count() + "人");
         tvDesc.setText(organization_info.getDescription());
         // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
         if (!auctionOrgBean.isIs_success())
