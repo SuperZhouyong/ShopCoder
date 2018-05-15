@@ -284,7 +284,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         //作何介绍
         auther_desc = getLayoutInflater().inflate(R.layout.auctionitem_auther_desc, null);
-        tvAutherDesc = (TextView) auction_three.findViewById(R.id.tv_desc);
+        tvAutherDesc = (TextView) auther_desc .findViewById(R.id.tv_desc);
 
 
         //二维码图片
@@ -297,19 +297,30 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tvPriceNum = (TextView) price_title.findViewById(R.id.tv_recoed_two);
 
         headViewTwo = getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
+        View viewById = headViewTwo.findViewById(R.id.mRecy_rel_parent);
         mRecyclerView = (RecyclerView) headViewTwo.findViewById(R.id.mRecyclerView);
+        setMarGinTop(viewById,0,0);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
 
 
         //foot  其他拍品
         other_item = getLayoutInflater().inflate(R.layout.item_auction_three, null);
-        OtherTitle = (TextView) price_title.findViewById(R.id.tv_recoed_one);
+
+        OtherTitle = (TextView) other_item.findViewById(R.id.tv_recoed_one);
+        setMarGinTop(OtherTitle,0, (int) getResources().getDimension(R.dimen.y20));
         // 参拍指南
         auction_guide = getLayoutInflater().inflate(R.layout.item_auction_three, null);
-        auctionGuide = (TextView) price_title.findViewById(R.id.tv_recoed_one);
+        auctionGuide = (TextView) auction_guide.findViewById(R.id.tv_recoed_one);
+        setMarGinTop(auctionGuide,0, (int) getResources().getDimension(R.dimen.y20));
         mLadapter.getHeaderViews().clear();
         mLadapter.getmHeaderTypes().clear();
+
+
+//        mLRecyclerView.set
+        mPresenter.getAutionDetailRequest(auctItemId);
+
+
         mLadapter.addHeaderView(auctionItem_one);
         mLadapter.addHeaderView(headViewPager);
         mLadapter.addHeaderView(auction_three);
@@ -319,18 +330,31 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         mLadapter.addHeaderView(headViewTwo);
         mLadapter.addHeaderView(other_item);
         mLadapter.addHeaderView(auction_guide);
-
-
-//        mLRecyclerView.set
-        mPresenter.getAutionDetailRequest(auctItemId);
-
     }
 
     @Override
     public void showLoading(String RequestId, String title) {
 
     }
+    public void setMarGinTop(View v, int marGTop, int top) {
+        if (v.getLayoutParams() instanceof LinearLayout.LayoutParams) {
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
+            v.setLayoutParams(layoutParams);
 
+        } else if (v.getLayoutParams() instanceof RelativeLayout.LayoutParams) {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
+            v.setLayoutParams(layoutParams);
+
+        } else if (v.getLayoutParams() != null) {
+            ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            layoutParams.setMargins(marGTop,top,marGTop,0);
+            v.setLayoutParams(layoutParams);
+        }
+
+
+    }
     @Override
     public void stopLoading(String RequestId) {
 
@@ -356,16 +380,14 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
-       /* ArrayList<NullBean> nullBeans = new ArrayList<>();
-        nullBeans.add(new NullBean());
-        mComAdapter.addAll(nullBeans);*/
+
 
         AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
         AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
         //title
         TvTimeTwo.setText(item_info.getStart_time() + "-" + item_info.getEnd_time());
         // 拍卖人详情
-        ImageLoaderUtils.display(this, ivIcon, autionItemDetailBean.getData().getStaff_list().get(0).getAvatar());
+        ImageLoaderUtils.displayRound(this, ivIcon, autionItemDetailBean.getData().getStaff_list().get(0).getAvatar());
         tv1Name.setText(staffListBean.getName());
         tv1Name.setText(staffListBean.getName());
         tv2Name.setText(staffListBean.getType() == 0 ? "主理人" : "专家");
@@ -410,6 +432,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tvAutherDesc.setText(autionItemDetailBean.getData().getItem_info().getDescription());
         // 出价记录
         priceTitle.setText("出价列表");
+        tvPriceNum.setVisibility(View.VISIBLE);
         tvPriceNum.setText(autionItemDetailBean.getData().getPrice_count() + "次");
 
         OtherTitle.setText("本场其他拍品");
@@ -459,9 +482,6 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             }
         });
 
-
-//        mComAdapter.notifyDataSetChanged();
-//        mLadapter.notifyDataSetChanged();
 
     }
 

@@ -6,11 +6,10 @@
 
     <RelativeLayout
         android:id="@+id/mRecy_rel_parent"
-        android:layout_marginLeft="@dimen/x22"
-        android:layout_marginRight="@dimen/x22"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginRight="@dimen/x22">
 
 
         <android.support.v7.widget.RecyclerView

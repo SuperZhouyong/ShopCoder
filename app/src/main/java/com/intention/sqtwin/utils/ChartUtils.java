@@ -1,3 +1,4 @@
+/*
 package com.intention.sqtwin.utils;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -5,14 +6,18 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.BaseApplication;
 
+*/
 /**
  * Created by Administrator on 2017/4/17 0017.
- */
+ *//*
+
 
 public class ChartUtils {
-    /***
+    */
+/***
      * 线条样式
-     */
+     *//*
+
     public static void lineStyle(LineDataSet set1, int color) {
         if (color == -1) {
             set1.setColor(BaseApplication.getAppContext().getResources().getColor(R.color.app_focus));
@@ -28,12 +33,14 @@ public class ChartUtils {
         set1.setDrawValues(false);
     }
 
-    /**
+    */
+/**
      * 虚线样式
      *
      * @param d11
      * @param
-     */
+     *//*
+
     public static void dashline(LineDataSet d11, int color) {
         d11.setDrawHighlightIndicators(false);
         d11.enableDashedLine(10, 10, 0);
@@ -87,3 +94,4 @@ public class ChartUtils {
     }
 
 }
+*/

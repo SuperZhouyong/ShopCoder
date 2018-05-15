@@ -196,7 +196,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
-    compile project(':MPChartLib')
+//    compile project(':MPChartLib')
     //    compile project(':loopViewpager')
     //switch_button
     //noinspection GradleCompatible
