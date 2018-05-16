@@ -16,7 +16,6 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
-import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.ui.main.contract.OrganPeContract;
 import com.intention.sqtwin.ui.main.model.OrganPeModel;
@@ -30,6 +29,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Description: 主理人界面没找到
@@ -40,8 +40,7 @@ import butterknife.ButterKnife;
  */
 
 public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeModel> implements OrganPeContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener {
-    @BindView(R.id.rel_back)
-    RelativeLayout relBack;
+
     @BindView(R.id.left_title)
     TextView leftTitle;
     @BindView(R.id.center_title)
@@ -52,6 +51,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
+    @BindView(R.id.rel_back)
+    RelativeLayout relBack;
     private CommonRecycleViewAdapter<OrganPeBean.DataBean.AuctionFieldListBean> mcomAdapter;
     private LRecyclerViewAdapter mLadapter;
     private Integer staffID = 1;
@@ -74,7 +75,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     @Override
     public void initView() {
 
-         staffID = getIntent().getExtras().getInt(AppConstant.PeoID);
+        staffID = getIntent().getExtras().getInt(AppConstant.PeoID);
         leftTitle.setVisibility(View.GONE);
         relSearch.setVisibility(View.GONE);
         centerTitle.setText("主理人");
@@ -182,7 +183,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         }
 
         tv_one.setText(organPeBean.getData().getStaff_info().getName());
-        tv_two.setText(organPeBean.getData().getStaff_info().getType()==0 ? "主理人" : "专家");
+        tv_two.setText(organPeBean.getData().getStaff_info().getType() == 0 ? "主理人" : "专家");
         tv_three.setText(organPeBean.getData().getStaff_info().getDescription());
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
@@ -215,7 +216,21 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 
     public static void gotoActivity(BaseActivity auctionItemActivity, int author_id) {
         Bundle bundle = new Bundle();
-        bundle.putInt(AppConstant.PeoID,author_id);
-        auctionItemActivity.startActivity(OrganPeoActivity.class,bundle);
+        bundle.putInt(AppConstant.PeoID, author_id);
+        auctionItemActivity.startActivity(OrganPeoActivity.class, bundle);
+    }
+
+
+    @OnClick({R.id.rel_back, R.id.left_title, R.id.center_title})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_back:
+                finish();
+                break;
+            case R.id.left_title:
+                break;
+            case R.id.center_title:
+                break;
+        }
     }
 }

@@ -6,7 +6,6 @@
     android:background="@mipmap/filed_bg">
 
     <ImageView
-
         android:id="@+id/iv_logo"
         android:layout_width="@dimen/x76"
         android:layout_height="@dimen/y76"
@@ -35,10 +34,10 @@
 
         <ImageView
             android:id="@+id/iv_focus"
-            android:layout_width="@dimen/x35"
-            android:layout_height="@dimen/y35"
+            android:layout_width="@dimen/x28"
+            android:layout_height="@dimen/y30"
             android:layout_centerVertical="true"
-            android:background="@color/green" />
+            android:src="@mipmap/icon_auction_add" />
 
         <TextView
             android:id="@+id/tv_focus"

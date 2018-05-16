@@ -19,6 +19,8 @@ import com.intention.sqtwin.bean.MyCompeteBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
+import com.intention.sqtwin.bean.SynchronousAuctionBean;
+import com.intention.sqtwin.bean.SynchronousItemBean;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -191,17 +193,46 @@ public interface ApiService {
             @Query("member_id") Integer member_id
     );
 
+    /**
+     * 出价
+     *
+     * @param good_id
+     * @param price
+     * @param member_id
+     * @return
+     */
     @GET("auction/bid")
     Observable<BidBean> getBidDate(
             @Query("goods_id") Integer good_id,
             @Query("price") Integer price,
             @Query("member_id") Integer member_id
     );
+
+    /**
+     * 登陆接口
+     *
+     * @param phone
+     * @param coer
+     * @return
+     */
     @FormUrlEncoded
     @POST("membercenter/login")
     Observable<LoginBean> getLoginBean(
             @Field("phone") String phone,
             @Field("code") String coer
+    );
+
+    /*
+    * 同步拍
+    * */
+    @GET("auction/sync_auction_field")
+    Observable<SynchronousAuctionBean> getSynchronousAuction(
+
+            @Query("page_no") Integer page_no);
+
+    @GET("auction/sync_auction_goods")
+    Observable<SynchronousItemBean> getSynchronousItemBean(
+            @Query("goods_id") Integer goods_id
     );
    /* *//*
     * 首页轮播图

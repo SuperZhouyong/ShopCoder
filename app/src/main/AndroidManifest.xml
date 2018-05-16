@@ -94,12 +94,19 @@
 
         </activity>
         <!--登录界面-->
-        <activity android:name=".ui.myinfo.activity.LoginActivity" >
+        <activity android:name=".ui.myinfo.activity.LoginActivity">
 
 
         </activity>
         <!--出价列表-->
-        <activity android:name=".ui.main.activity.BidRecordActivity"/>
+        <activity android:name=".ui.main.activity.BidRecordActivity" />
+        <!--加载H5界面-->
+        <activity android:name=".ui.main.activity.MyWebviewActivity" />
+        <!--同步拍-->
+        <activity android:name=".ui.main.activity.SynchronousAuctionActivity" />
+        <!--同步拍拍品页-->
+        <activity android:name=".ui.main.activity.SynchAuctionItemActivity"/>
+
         <!-- umeng需要的 -->
         <!-- android:value="5900713a7f2c743d9900147a" -->
         <!-- <meta-data

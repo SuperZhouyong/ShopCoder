@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -130,10 +131,13 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     private TextView tv_fouce;
     private RelativeLayout rel_fouce;
     private boolean isLoadHead;
+    // 进入排场的方式
+    private String intoWay;
 
-    public static void gotoAuctionFiledActivity(BaseActivity mActivity, Integer auctiuonFiled) {
+    public static void gotoAuctionFiledActivity(BaseActivity mActivity, Integer auctiuonFiled, String IntoTheWay) {
         Bundle bundle = new Bundle();
         bundle.putInt(AppConstant.aucotonFileId, auctiuonFiled);
+        bundle.putString(AppConstant.IntoTheWay, IntoTheWay);
         mActivity.startActivity(AuctionFiledActivity.class, bundle);
     }
 
@@ -151,9 +155,10 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     public void initView() {
 
         auctiuonFiled = getIntent().getExtras().getInt(AppConstant.aucotonFileId, -1);
+        intoWay = getIntent().getExtras().getString(AppConstant.IntoTheWay,"");
         mAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean>(this, R.layout.item_auction_file_item) {
             @Override
-            public void convert(ViewHolderHelper helper, AuctionFiledAllBean.DataBean.AuctionItemListBean auctionItemListBean, int position) {
+            public void convert(ViewHolderHelper helper, final AuctionFiledAllBean.DataBean.AuctionItemListBean auctionItemListBean, int position) {
                 helper.setImageUrl(R.id.iv_goods, auctionItemListBean.getImage());
                 helper.setText(R.id.tv_goods_name, auctionItemListBean.getName());
 
@@ -162,6 +167,16 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
                 helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
                 helper.setText(R.id.tv_goods_desc, "当前价");
+
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (TextUtils.isEmpty(intoWay)||AppConstant.IntoWayOne.equals(intoWay))
+                            AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, auctionItemListBean.getId());
+                        else
+                            SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext, auctionItemListBean.getId());
+                    }
+                });
             }
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);
@@ -174,7 +189,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
         mArtAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.StaffListBean>(this, R.layout.item_auction_one) {
             @Override
-            public void convert(ViewHolderHelper helper, AuctionFiledAllBean.DataBean.StaffListBean artistListBean, int position) {
+            public void convert(ViewHolderHelper helper, final AuctionFiledAllBean.DataBean.StaffListBean artistListBean, int position) {
                 helper.setImageRoundUrl(R.id.iv_icon, artistListBean.getAvatar());
                 helper.setText(R.id.tv_1_name, artistListBean.getName());
 

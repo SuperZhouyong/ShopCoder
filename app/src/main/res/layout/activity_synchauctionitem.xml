@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_auction" />
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoadingTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
+</RelativeLayout>
+
+    <!--    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:orientation="vertical">
+
+            <ezy.ui.view.BannerView
+                android:id="@+id/mLoopViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                app:bvAspectRatio="0.427350"
+                app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
+                app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
+                app:bvIsAuto="true"
+                app:bvIsLoop="true" />
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x22"
+                android:paddingBottom="@dimen/y10"
+                android:paddingTop="@dimen/y10"
+                android:text="拍场名字"
+                android:textSize="@dimen/x30" />
+
+            <LinearLayout
+                android:id="@+id/ll_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginTop="@dimen/y10"
+                android:paddingBottom="@dimen/y10">
+
+
+                <TextView
+                    android:id="@+id/tv_lost_price_desc_one"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="当前价"
+                    android:textColor="@color/font_3"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:id="@+id/tv_num_one"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:maxLines="1"
+                    android:text="1600"
+                    android:textColor="@color/font_2"
+                    android:textSize="@dimen/x36" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>-->
+

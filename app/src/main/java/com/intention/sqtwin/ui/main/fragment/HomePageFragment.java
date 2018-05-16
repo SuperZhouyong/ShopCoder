@@ -22,6 +22,7 @@ import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.ui.main.activity.SynchronousAuctionActivity;
 import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
@@ -142,7 +143,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 intent.putExtra(AppConstant.aucotonFileId, homeAdapter.get(position).getId());
                 LogUtils.logd(TAG + "-------" + homeAdapter.get(position).getId());*/
 //                startActivity(intent);
-                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), homeAdapter.get(position).getId());
+                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), homeAdapter.get(position).getId(),AppConstant.IntoWayOne);
 
             }
         });
@@ -231,6 +232,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
             case R.id.iv_three:
                 break;
             case R.id.iv_fore:
+                startActivity(SynchronousAuctionActivity.class);
                 break;
         }
     }

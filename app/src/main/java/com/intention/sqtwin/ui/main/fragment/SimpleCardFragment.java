@@ -107,7 +107,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
 
 //                startActivity(getActivity(), AuctionFiledActivity.class);
                 LogUtils.logd("PostionId---"+position+"-----------"+mAdapter.get(position).getId());
-                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity)getActivity(),mAdapter.get(position).getId());
+                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity)getActivity(),mAdapter.get(position).getId(),AppConstant.IntoWayOne);
             }
         });
 

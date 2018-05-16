@@ -67,7 +67,7 @@
             android:layout_marginLeft="@dimen/x20"
             android:layout_marginRight="@dimen/x100"
             android:layout_toRightOf="@id/Tv_time_one"
-            android:text="11.20 10:00-11.21 10:00"
+
             android:textColor="@color/white"
             android:textSize="@dimen/x36" />
 

@@ -137,7 +137,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     @Override
     public void initView() {
         // 获取拍品Id
-        auctItemId = getIntent().getIntExtra(AppConstant.auctionItemId, -1);
+//        auctItemId = getIntent().getIntExtra(AppConstant.auctionItemId, -1);
+        auctItemId = getIntent().getExtras().getInt(AppConstant.auctionItemId, -1);
 //        relSearch.setVisibility(View.GONE);
 
         mAdapter = new CommonRecycleViewAdapter<AutionItemDetailBean.DataBean.PriceListBean>(this, R.layout.item_price_list) {
@@ -333,11 +334,18 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         //title
         TvTimeTwo.setText(item_info.getStart_time() + "-" + item_info.getEnd_time());
         // 拍卖人详情
-        ImageLoaderUtils.displayRound(this, ivIcon, autionItemDetailBean.getData().getStaff_list().get(0).getAvatar());
-        tv1Name.setText(staffListBean.getName());
-        tv1Name.setText(staffListBean.getName());
-        tv2Name.setText(staffListBean.getType() == 0 ? "主理人" : "专家");
-        tv3Name.setText(staffListBean.getRun_count() + "场拍卖");
+
+        if (autionItemDetailBean.getData().getStaff_list() == null || autionItemDetailBean.getData().getStaff_list().size() == 0) {
+//                mLadapter.removeIndexHearView();
+        } else {
+            ImageLoaderUtils.displayRound(this, ivIcon, autionItemDetailBean.getData().getStaff_list().get(0).getAvatar());
+            tv1Name.setText(staffListBean.getName());
+            tv1Name.setText(staffListBean.getName());
+            tv2Name.setText(staffListBean.getType() == 0 ? "主理人" : "专家");
+            tv3Name.setText(staffListBean.getRun_count() + "场拍卖");
+
+        }
+
 
         List<AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean> images = autionItemDetailBean.getData().getItem_info().getImages();
         // 第二部分录播图
@@ -408,7 +416,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public void onClick(View v) {
                 int auction_field_id = autionItemDetailBean.getData().getItem_info().getAuction_field_id();
 
-                AuctionFiledActivity.gotoAuctionFiledActivity(AuctionItemActivity.this, auction_field_id);
+                AuctionFiledActivity.gotoAuctionFiledActivity(AuctionItemActivity.this, auction_field_id, AppConstant.IntoWayOne);
             }
         });
         // 免责申明
@@ -437,7 +445,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         auctionItem_one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OrganPeoActivity.gotoActivity( AuctionItemActivity.this, item_info.getAuthor_id());
+                OrganPeoActivity.gotoActivity(AuctionItemActivity.this, item_info.getAuthor_id());
             }
         });
 
@@ -595,5 +603,11 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             case R.id.tv_noagent_price:
                 break;
         }
+    }
+
+    public static void gotoAuctionItemActivity(BaseActivity mContext, int id) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.auctionItemId, id);
+        mContext.startActivity(AuctionItemActivity.class, bundle);
     }
 }
