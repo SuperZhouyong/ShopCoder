@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_identity_one"
+        android:layout_width="@dimen/x320"
+        android:layout_height="@dimen/y200"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_bg_identity" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="+"
+        android:textColor="@color/font_2"
+        android:textSize="@dimen/x60" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_identity_one"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y20"
+        android:text="上传身份证正面照"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x24" />
+</RelativeLayout>

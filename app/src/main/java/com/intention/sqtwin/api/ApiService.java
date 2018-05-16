@@ -16,16 +16,24 @@ import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
 import com.intention.sqtwin.bean.MyCompeteBean;
+import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
+import com.intention.sqtwin.bean.UpdateIndentityBean;
 
+import java.util.Map;
+
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -230,9 +238,31 @@ public interface ApiService {
 
             @Query("page_no") Integer page_no);
 
+    /**
+     * 同步拍拍品
+     *
+     * @param goods_id
+     * @return
+     */
     @GET("auction/sync_auction_goods")
     Observable<SynchronousItemBean> getSynchronousItemBean(
             @Query("goods_id") Integer goods_id
+    );
+
+    /**
+     * 获取个人信息
+     *
+     * @return
+     */
+    @GET("membercenter/get_member_info")
+    Observable<MyInfoBean> getMyInfoBean();
+
+    @Multipart
+    @POST("")
+    Observable<UpdateIndentityBean> getUpdateIndentity(
+//            @PartMap() Map<String, RequestBody> maps
+            @Body RequestBody body
+
     );
    /* *//*
     * 首页轮播图

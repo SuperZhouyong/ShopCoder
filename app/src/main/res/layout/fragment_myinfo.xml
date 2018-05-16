@@ -15,15 +15,18 @@
             android:background="@mipmap/myinfo_head_bg">
 
             <ImageView
+                android:layout_marginRight="@dimen/x22"
+                android:id="@+id/iv_shareicon"
                 android:layout_width="@dimen/x40"
                 android:layout_height="@dimen/y40"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/x22"
-                android:layout_marginTop="@dimen/y30"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="14dp"
                 android:src="@mipmap/share" />
 
             <ImageView
-                android:id="@+id/iv_icon"
+                android:id="@+id/iv_head_icon"
                 android:layout_width="@dimen/x144"
                 android:layout_height="@dimen/y144"
                 android:layout_centerInParent="true"
@@ -49,6 +52,7 @@
             android:background="@color/white">
 
             <LinearLayout
+                android:id="@+id/ll_one"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -58,7 +62,7 @@
                 <ImageView
                     android:layout_width="@dimen/x60"
                     android:layout_height="@dimen/y60"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/waiting_pay" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -71,6 +75,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_two"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -80,7 +85,7 @@
                 <ImageView
                     android:layout_width="@dimen/x60"
                     android:layout_height="@dimen/y60"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/waiting_goods" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -93,6 +98,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ll_three"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -102,7 +108,7 @@
                 <ImageView
                     android:layout_width="@dimen/x60"
                     android:layout_height="@dimen/y60"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/all_order" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,6 +123,7 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_message"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:background="@color/white">
@@ -127,7 +134,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_message" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -157,6 +164,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_acount"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:background="@color/white">
@@ -167,7 +175,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_account" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -197,6 +205,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_mycompete"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:background="@color/white">
@@ -207,7 +216,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_mycompete" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -237,6 +246,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_identit"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:background="@color/white">
@@ -247,7 +257,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_identit" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -277,6 +287,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_setting"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:background="@color/white">
@@ -287,7 +298,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_setting" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -295,7 +306,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
                 android:layout_toRightOf="@id/iv_setting"
-                android:text="消息"
+                android:text="设置"
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
@@ -317,6 +328,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_help"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:background="@color/white">
@@ -327,7 +339,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_help" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -335,7 +347,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
                 android:layout_toRightOf="@id/iv_help"
-                android:text="消息"
+                android:text="帮助中心"
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
@@ -351,6 +363,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_store_mange"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:layout_marginTop="@dimen/y20"
@@ -362,7 +375,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_storemange" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -386,6 +399,8 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/rel_focus"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:layout_marginTop="@dimen/y20">
@@ -396,7 +411,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/icon_focus" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -419,7 +434,7 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
+       <!-- <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
             android:layout_marginBottom="@dimen/y30"
@@ -452,7 +467,7 @@
                 android:src="@mipmap/list_right" />
 
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
     </LinearLayout>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">拍卖</string>
+    <string name="app_name">瀚藏拍卖</string>
     <string name="net_error">网络访问错误，请稍候再试</string>
     <string name="empty">还没有数据哦</string>
     <string name="loading">请稍候...</string>

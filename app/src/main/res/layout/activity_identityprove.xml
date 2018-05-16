@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_below="@id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_head_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x22"
+                android:paddingTop="@dimen/y10"
+                android:text="带有＂*＂的项目为必填项，其他为选填"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:textSize="@dimen/x28"
+                android:textColor="@color/font_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/y30"
+                android:paddingLeft="@dimen/x22"
+                android:paddingTop="@dimen/y20"
+                android:text="* 上传身份证" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/x22"
+                android:paddingRight="@dimen/x22">
+
+                <RelativeLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_identity_one"
+                        android:layout_width="@dimen/x320"
+                        android:layout_height="@dimen/y200"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/shape_bg_identity" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="+"
+                        android:textColor="@color/font_2"
+                        android:textSize="@dimen/x60" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_identity_one"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/y20"
+                        android:text="上传身份证正面照"
+                        android:textColor="@color/font_1"
+                        android:textSize="@dimen/x24" />
+                </RelativeLayout>
+
+                <RelativeLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_identity_two"
+                        android:layout_width="@dimen/x320"
+                        android:layout_height="@dimen/y200"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/shape_bg_identity" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="+"
+                        android:textColor="@color/font_2"
+                        android:textSize="@dimen/x60" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_identity_two"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/y20"
+                        android:text="上传身份证背面照"
+                        android:textColor="@color/font_1"
+                        android:textSize="@dimen/x24" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:layout_marginTop="@dimen/y50"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/x22">
+
+                <TextView
+
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="* 真实姓名"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x28" />
+
+                <EditText
+                    android:id="@+id/ec_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入您的名字"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/font_1"
+                    android:textColorHint="@color/font_3"
+                    android:textSize="@dimen/x24" />
+
+            </LinearLayout>
+
+            <include layout="@layout/item_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/x22">
+
+                <TextView
+
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="* 身份证号"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x28" />
+
+                <EditText
+                    android:id="@+id/ec_identity_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入您的名字"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/font_1"
+                    android:textColorHint="@color/font_3"
+                    android:textSize="@dimen/x24" />
+
+            </LinearLayout>
+
+            <include layout="@layout/item_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/x22">
+
+                <TextView
+
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="* 职位头衔"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x28" />
+
+                <EditText
+                    android:id="@+id/ec_postion_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入您的名字"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/font_1"
+                    android:textColorHint="@color/font_3"
+                    android:textSize="@dimen/x24" />
+
+            </LinearLayout>
+
+            <include layout="@layout/item_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100"
+                android:background="@color/white"
+                android:paddingLeft="@dimen/x22">
+
+                <TextView
+
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="推荐人"
+                    android:textColor="@color/font_1"
+                    android:textSize="@dimen/x28" />
+
+                <EditText
+                    android:id="@+id/ec_recommend_peo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="请输入您的名字"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/font_1"
+                    android:textColorHint="@color/font_3"
+                    android:textSize="@dimen/x24" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x22"
+                android:paddingBottom="@dimen/y30"
+                android:paddingLeft="@dimen/x22"
+                android:paddingTop="@dimen/y30"
+                android:text="工作证明"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x22"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x22"
+                android:paddingTop="@dimen/y10"
+                android:text="上传工作证或名片或艺术作品，可上传多张照片"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x22"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x22"
+                android:paddingTop="@dimen/y10"
+                android:text="上传此项可提高认证通过率"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x24" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="@dimen/y20"
+                android:id="@+id/mRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginRight="@dimen/x22" />
+
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="@dimen/x560"
+                android:layout_height="@dimen/y70"
+                android:layout_below="@id/rel_head"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/y50"
+                android:background="@drawable/tv_bg_confirm"
+                android:gravity="center"
+                android:text="充值"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

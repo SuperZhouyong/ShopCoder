@@ -23,19 +23,11 @@
 
     <!-- 银联的需要的权限 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!--照相系列权限-->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <!-- <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" /> -->
-    <!-- 暂时不确定需要nfc功能 -->
-    <!--
-<uses-permission android:name="android.permission.NFC" />
-    <uses-feature android:name="android.hardware.nfc.hce" />
-    -->
-    <!-- 支付宝 -->
-    <!-- android:persistent="true" -->
-    <!-- umeng的权限已经完全够用了 -->
-    <!--         tools:replace="icon,label,theme" -->
-    <!-- android:supportsRtl="true" -->
-    <!-- tools:replace="icon,label,theme" -->
     <application
 
         android:name=".app.BaseApplication"
@@ -48,6 +40,8 @@
         <!--<meta-data
             android:name="com.intention.sqtwin.base.BaseGlideCache"
             android:value="GlideModule" />-->
+
+
         <activity android:name="com.intention.sqtwin.ui.main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -96,7 +90,7 @@
         <!--登录界面-->
         <activity android:name=".ui.myinfo.activity.LoginActivity">
 
-
+            m
         </activity>
         <!--出价列表-->
         <activity android:name=".ui.main.activity.BidRecordActivity" />
@@ -105,322 +99,33 @@
         <!--同步拍-->
         <activity android:name=".ui.main.activity.SynchronousAuctionActivity" />
         <!--同步拍拍品页-->
-        <activity android:name=".ui.main.activity.SynchAuctionItemActivity"/>
-
-        <!-- umeng需要的 -->
-        <!-- android:value="5900713a7f2c743d9900147a" -->
-        <!-- <meta-data
-             android:name="UMENG_APPKEY"
-             android:value="591c056d45297d0e410016e2" />
-         &lt;!&ndash; umeng渠道 &ndash;&gt;
-         <meta-data
-             android:name="UMENG_CHANNEL"
-             android:value="${UMENG_CHANNEL_VALUE}" />-->
-        <!-- splash 界面 -->
-        <!-- Splash -->
-        <!--  <activity
-              android:name=".ui.main.activity.SplashActivity"
-              android:theme="@style/AppTheme.Launcher">
-              <intent-filter>
-                  <action android:name="android.intent.action.MAIN" />
-
-                  <category android:name="android.intent.category.LAUNCHER" />
-              </intent-filter>
-          </activity>-->
-        <!--<activity android:name=".ui.main.activity.UpdateActivity" />-->
-        <!--<activity-->
-        <!--android:name=".ui.main.activity.GuidetwoActivity"-->
-        <!--android:icon="@mipmap/ic_launcher"-->
-        <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />-->
-        <!--<activity
-            android:name=".ui.main.activity.GuideActivity"
-            android:icon="@mipmap/ic_launcher"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-
-            &lt;!&ndash;
-              <intent-filter>
-                  <action android:name="android.intent.action.MAIN" />
-                  <category android:name="android.intent.category.LAUNCHER" />
-              </intent-filter>
-            &ndash;&gt;
-        </activity>-->
-        <!--<activity-->
-        <!--android:name=".ui.main.activity.MainActivity"-->
-        <!--android:icon="@mipmap/ic_launcher"-->
-        <!--android:launchMode="singleTask"-->
-        <!--android:windowSoftInputMode="adjustPan" />-->
-        <!-- 登陆 注册 重置密码 短信登陆界面 -->
-        <!--<activity
-            android:name=".ui.main.activity.LoginActivity"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize" />-->
-        <!--
-          <intent-filter>
-              <action android:name="android.intent.action.MAIN" />
-              <category android:name="android.intent.category.LAUNCHER" />
-          </intent-filter>
-        -->
-        <!-- <activity
-             android:name=".ui.main.activity.RegistFragActivity"
-             android:configChanges="keyboard|keyboardHidden|orientation"
-             android:launchMode="singleTask"
-             android:screenOrientation="portrait"
-             android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />-->
-        <!--  <activity
-              android:name=".ui.main.activity.RegistActivity"
-              android:configChanges="keyboard|keyboardHidden|orientation"
-              android:launchMode="singleTask"
-              android:screenOrientation="portrait"
-              android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />-->
-        <!-- <activity
-             android:name=".ui.main.activity.ResetPasswordActivity"
-             android:configChanges="keyboard|keyboardHidden|orientation"
-             android:launchMode="singleTask"
-             android:screenOrientation="portrait"
-             android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
-         <activity
-             android:name=".ui.main.activity.AuthcodeActivity"
-             android:configChanges="keyboard|keyboardHidden|orientation"
-             android:launchMode="singleTask"
-             android:screenOrientation="portrait"
-             android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />-->
-        <!-- 搜索界面 -->
-        <!--    <activity
-                android:name=".ui.main.activity.SearchActivity"
-                android:configChanges="keyboard|keyboardHidden|orientation|touchscreen"
-                android:screenOrientation="portrait"
-                android:windowSoftInputMode="adjustResize">
-    -->
-        <!--
-         <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-             <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-        -->
-
-        <!--   </activity>
-           &lt;!&ndash; 推荐院校 &ndash;&gt;
-           <activity android:name=".ui.homepage.RecommendActivity" />
-           &lt;!&ndash; 条件填写 &ndash;&gt;
-           <activity android:name=".ui.homepage.ConditionActivity" />
-           &lt;!&ndash; 历年批次线 &ndash;&gt;
-           &lt;!&ndash;<activity android:name=".ui.homepage.BatchLineActivity" />&ndash;&gt;
-           &lt;!&ndash; 查分数 &ndash;&gt;
-           <activity android:name=".ui.homepage.QueryScoreActivity" />
-           &lt;!&ndash; 一分一位 &ndash;&gt;
-           <activity android:name=".ui.homepage.QueryScoreNewActivity" />
-           &lt;!&ndash; 查分数结果页面 &ndash;&gt;
-           <activity android:name=".ui.homepage.ScoreResultActivity" />
-           &lt;!&ndash; 查分数结果页面(表格样式) &ndash;&gt;
-           <activity android:name=".ui.homepage.ScoreResultTabActivity" />
-           &lt;!&ndash; 分数查位次、位次查分数 烛状图 &ndash;&gt;
-           <activity
-               android:name=".ui.homepage.CandleActivity"
-               android:hardwareAccelerated="false" />
-           &lt;!&ndash; 一分一位详情列表 &ndash;&gt;
-           <activity android:name=".ui.homepage.LRecyclerViewActivity" />
-
-           &lt;!&ndash; 填报志愿第二步 &ndash;&gt;
-           <activity android:name=".ui.homepage.AspirationTwoActivity" />
-           &lt;!&ndash;备注&ndash;&gt;
-           <activity android:name=".ui.homepage.NoteActivity" />
-           &lt;!&ndash; 填报志愿——选考科目 &ndash;&gt;
-           <activity android:name=".ui.homepage.AreaSelectActivity" />
-           &lt;!&ndash; 院校详情 &ndash;&gt;
-           <activity android:name=".ui.homepage.SchoolDetailActivity" />
-           &lt;!&ndash; 专业大全 &ndash;&gt;
-           <activity android:name=".ui.homepage.ProfessionalbooksActivity" />
-           &lt;!&ndash; 院校大全 &ndash;&gt;
-           <activity android:name=".ui.homepage.CollegesAllActivity" />
-           &lt;!&ndash;
-              &lt;!&ndash;购物车&ndash;&gt; &lt;!&ndash;防止 键盘连动&ndash;&gt;
-              <activity
-                  android:name=".ui.shoppingmall.ShopCartActivity"
-                  android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
-           &ndash;&gt;
-           &lt;!&ndash; 订单确认页 &ndash;&gt;
-           <activity android:name=".ui.shoppingmall.ConfirmAnOrderActivity" />
-           &lt;!&ndash;订单记录&ndash;&gt;
-           <activity android:name=".ui.shoppingmall.OrderRecordActivity" />
-           &lt;!&ndash;消费记录&ndash;&gt;
-           <activity android:name=".ui.shoppingmall.ConsumedRecordActivity" />
-
-           &lt;!&ndash; 调值参数 &ndash;&gt;
-           <activity android:name=".ui.homepage.ToneValueActivity" />
-           &lt;!&ndash; 调值参数里的学校 &ndash;&gt;
-           <activity android:name=".ui.homepage.ToneSchoolActivity" />
-           &lt;!&ndash; 搜索界面，仅限学校、地区 &ndash;&gt;
-           <activity android:name=".ui.homepage.SearchViewActivity" />
-           &lt;!&ndash; 查看其他院校相同专业 &ndash;&gt;
-           <activity android:name=".ui.homepage.CheckOtherActivity" />
-           &lt;!&ndash; 对比页面 &ndash;&gt;
-           <activity android:name=".ui.homepage.CompareActivity" />
-
-           &lt;!&ndash; 四个报告页 &ndash;&gt;
-           &lt;!&ndash; 专业报告(公共)ZY &ndash;&gt;
-           <activity android:name=".ui.homepage.report.MajorReportPubZyActivity" />
-           &lt;!&ndash; 专业报告(学校的) &ndash;&gt;
-           <activity android:name=".ui.homepage.report.MajorReportSchActivity" />
-           &lt;!&ndash; 职业报告 &ndash;&gt;
-           <activity android:name=".ui.homepage.report.ProfessionReportActivity" />
-           &lt;!&ndash; 专业报告页(推荐的) &ndash;&gt;
-           &lt;!&ndash; 当前学校当前专业 &ndash;&gt;
-           <activity android:name=".ui.homepage.report.MajorReportActivity" />
-
-           &lt;!&ndash; 个人信息页 &ndash;&gt;
-           <activity
-               android:name=".ui.MyInfo.MyBasicInfoActivity"
-               android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
-           &lt;!&ndash; 激活码 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.ActivationCodeActivity" />
-           &lt;!&ndash; 分数趋势 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.ScoreTrendActicity" />
-           &lt;!&ndash; 邀请页 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.InviteBageActivity" />
-           &lt;!&ndash; 我的分数 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyCollectActivity" />
-           &lt;!&ndash; 我的目标 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyGoalActivity" />
-           &lt;!&ndash; 我的收藏 &ndash;&gt;
-           <activity
-               android:name=".ui.MyInfo.MyScoreActivity"
-               android:configChanges="keyboard|keyboardHidden|orientation|touchscreen"
-               android:screenOrientation="portrait"
-               android:windowSoftInputMode="adjustResize" />
-           &lt;!&ndash; 添加分数 &ndash;&gt;
-           <activity
-               android:name=".ui.MyInfo.NewScoreActivity"
-               android:windowSoftInputMode="adjustPan|stateHidden|stateAlwaysHidden" />
-           &lt;!&ndash; 我的推荐 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyRecommendActivity" />
-           &lt;!&ndash; 我的财务记录 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyCheckActivity" />
-           &lt;!&ndash; 我的设置 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MySettingActivity" />
-           &lt;!&ndash; 我的志愿 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyAspirationActivity" />
-           &lt;!&ndash; 志愿修改 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.AspirationModifyActivity" />
-           &lt;!&ndash; 我的测评 &ndash;&gt;
-           &lt;!&ndash; 暂时定位webview &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyAssessmentActivity" />
-           &lt;!&ndash;webView跳转的图片的界面&ndash;&gt;
-           <activity android:name=".ui.homepage.WebPicActivity" />
-           &lt;!&ndash; 已购买推荐条件 &ndash;&gt;
-           <activity android:name=".ui.homepage.PurchasedActivity" />
-           &lt;!&ndash; 专业比较界面 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.comparereport.MajorCompareActivity" />
-           &lt;!&ndash; 职业比较界面 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.comparereport.ProfessionCompareActivity" />
-           &lt;!&ndash; 公共报告比较界面 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.comparereport.PublicCompareActivity" />
-           &lt;!&ndash; 关于我们的界面 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.AbusActivity" />
-           &lt;!&ndash; 已购买记录 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyReportActivity" />
-           &lt;!&ndash; 对比记录 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.CollectCompareActivity" />
-           &lt;!&ndash; 邀请规则界面 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.EmptyActivity" />
-           &lt;!&ndash; 支付完成页面 &ndash;&gt;
-           <activity android:name=".ui.shoppingmall.AlipayCompleteActivity" />
-           &lt;!&ndash;  &ndash;&gt;
-           <activity android:name=".ui.homepage.SchoolPicSDetilActivity" />
-           &lt;!&ndash; 完善信息 &ndash;&gt;
-           &lt;!&ndash;<activity android:name=".ui.main.activity.CompleteInfoActivity" />&ndash;&gt;
-           &lt;!&ndash; 修改名字 &ndash;&gt;
-           <activity
-               android:name=".ui.MyInfo.ChangeNameActivity"
-               android:windowSoftInputMode="stateVisible|adjustResize" />
-           <activity android:name=".ui.homepage.SchoolDetailItemActivity" />
-
-           &lt;!&ndash; 学校照片详情大图页 &ndash;&gt;
-           <activity
-               android:name=".ui.homepage.SchoolPicDetilActivity"
-               android:theme="@style/PicThemeTrans" />
-           &lt;!&ndash; 个人信息——修改密码 &ndash;&gt;
-           <activity android:name=".ui.MyInfo.AlterPasswordActivity" />
-           &lt;!&ndash;我的推荐&ndash;&gt;
-           <activity android:name=".ui.MyInfo.MyrecommendLogActivity" />
-           &lt;!&ndash;奖励记录&ndash;&gt;
-           <activity android:name=".ui.shoppingmall.AwardrecordActivity" />
-           &lt;!&ndash;开发者后台1&ndash;&gt;
-           <activity android:name=".ui.MyInfo.DeveloperActivity" />-->
-        <!-- ShareSDk -->
-        <!-- 开始 -->
-        <!--  <activity
-              android:name="com.mob.tools.MobUIShell"
-              android:configChanges="keyboardHidden|orientation|screenSize"
-              android:theme="@android:style/Theme.Translucent.NoTitleBar"
-              android:windowSoftInputMode="stateHidden|adjustResize">
-              <intent-filter>
-                  <data android:scheme="tencent100371282" />
-
-                  <action android:name="android.intent.action.VIEW" />
-
-                  <category android:name="android.intent.category.BROWSABLE" />
-                  <category android:name="android.intent.category.DEFAULT" />
-              </intent-filter>
-
-              &lt;!&ndash; 调用新浪原生SDK，需要注册的回调activity &ndash;&gt;
-              <intent-filter>
-                  <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
-
-                  <category android:name="android.intent.category.DEFAULT" />
-              </intent-filter>
-          </activity>-->
-
-        <!-- &lt;!&ndash; 微信分享回调 &ndash;&gt;
-         <activity
-             android:name=".wxapi.WXEntryActivity"
-             android:configChanges="keyboardHidden|orientation|screenSize"
-             android:exported="true"
-             android:screenOrientation="portrait"
-             android:theme="@android:style/Theme.Translucent.NoTitleBar">
-
-             &lt;!&ndash;
-              <intent-filter>
-                  <action android:name="android.intent.action.VIEW" />
-                  <category android:name="android.intent.category.DEFAULT" />
-                  <data android:scheme="wxd2fb38f960eb278e" />
-              </intent-filter>
-             &ndash;&gt;
-
-         </activity>
-         <activity
-             android:name=".wxapi.WXPayEntryActivity"
-             android:exported="true"
-             android:launchMode="singleTop" />
-
-         &lt;!&ndash; ShareSDk &ndash;&gt;
-         &lt;!&ndash; 结束 &ndash;&gt;
-         &lt;!&ndash; 银联集成的开始 &ndash;&gt;
-         &lt;!&ndash;
-            <activity
-                android:name="com.unionpay.uppay.PayActivity"
-                android:configChanges="orientation|keyboardHidden|keyboard"
-                android:screenOrientation="portrait" />
-
-            <activity
-                android:name="com.unionpay.UPPayWapActivity"
-                android:configChanges="orientation|keyboardHidden|fontScale"
-                android:screenOrientation="portrait"
-                android:windowSoftInputMode="adjustResize" />
-         &ndash;&gt;
-         &lt;!&ndash; 银联集成的结束 &ndash;&gt;
-         &lt;!&ndash; 支付宝 &ndash;&gt;
-         <activity
-             android:name="com.alipay.sdk.app.H5PayActivity"
-             android:configChanges="orientation|keyboardHidden|navigation"
-             android:exported="false"
-             android:screenOrientation="behind" />
-
-         <activity
-             android:name="com.alipay.sdk.auth.AuthActivity"
-             android:configChanges="orientation|keyboardHidden|navigation"
-             android:exported="false"
-             android:screenOrientation="behind" />
-     -->
+        <activity android:name=".ui.main.activity.SynchAuctionItemActivity" />
+        <!--充值界面-->
+        <activity android:name=".ui.myinfo.activity.ChargeActivity" />
+        <!--充值方式界面-->
+        <activity android:name=".ui.myinfo.activity.ChargeWayActivity" />
+        <!--编辑资料-->
+        <activity android:name=".ui.myinfo.activity.EditInfoActivity" />
+        <!--订单列表-->
+        <activity android:name=".ui.myinfo.activity.OrderListActivity" />
+        <!--消息列表-->
+        <activity android:name=".ui.myinfo.activity.MessageActicity" />
+        <!--账户-->
+        <activity android:name=".ui.myinfo.activity.AccountActivity" />
+        <!--参拍-->
+        <activity android:name=".ui.myinfo.activity.MyCompeteActivity" />
+        <!--身份认证-->
+        <activity android:name=".ui.myinfo.activity.IdentityProveActivity" />
+        <!--照片的内容提供者-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
     </application>
 
 </manifest>

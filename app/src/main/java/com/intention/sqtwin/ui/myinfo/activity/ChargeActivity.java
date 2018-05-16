@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Description: 保佑无bug
+ * Description: 充值界面
  * Data：2018/5/8-上午1:26
  * Blog：Super简单
  * Author: ZhouYong

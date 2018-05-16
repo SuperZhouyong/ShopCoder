@@ -30,6 +30,7 @@ import com.intention.sqtwin.ui.main.model.AutionItemModel;
 import com.intention.sqtwin.ui.main.presenter.AutionItemPresenter;
 import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import java.util.List;
@@ -484,6 +485,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
             // 代理出价
             case R.id.tv_agent_price:
+                if (!isLogin())
+                    startActivity(LoginActivity.class);
                 bottomDialog = BottomDialog
                         .create(getSupportFragmentManager())
                         .setLayoutRes(R.layout.price_dialog)
@@ -496,6 +499,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 break;
             // 出价
             case R.id.tv_noagent_price:
+                if (!isLogin())
+                    startActivity(LoginActivity.class);
                 bottomDialog = BottomDialog
                         .create(getSupportFragmentManager())
                         .setLayoutRes(R.layout.price_dialog)

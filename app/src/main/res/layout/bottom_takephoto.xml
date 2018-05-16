@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_take_carema"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/x20"
+        android:text="拍照"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x40" />
+
+    <include layout="@layout/item_divider" />
+
+    <TextView
+        android:id="@+id/tv_take_albun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/x20"
+        android:text="相册选取"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x40" />
+
+
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -12,18 +11,14 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BasePageStateAdapter;
-import com.intention.sqtwin.bean.PpAllDateBean;
-import com.intention.sqtwin.ui.main.fragment.SimpleCardFragment;
 import com.intention.sqtwin.ui.myinfo.fragment.OrderListFragment;
 import com.intention.sqtwin.widget.SlidingTabLayout;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

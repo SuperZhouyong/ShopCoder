@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Description: 保佑无bug
+ * Description:
  * Data：2018/5/10-上午1:41
  * Blog：Super简单
  * Author: ZhouYong
