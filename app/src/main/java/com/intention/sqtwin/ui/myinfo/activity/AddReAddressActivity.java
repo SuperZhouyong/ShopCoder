@@ -16,6 +16,9 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.BeanId;
+import com.intention.sqtwin.bean.SubmitAddressBean;
+import com.intention.sqtwin.ui.myinfo.model.AddReAddressModel;
+import com.intention.sqtwin.ui.myinfo.presenter.AddReAddressPresenter;
 import com.intention.sqtwin.widget.wheelpicker.WheelPickerUtils;
 import com.kyleduo.switchbutton.SwitchButton;
 
@@ -35,7 +38,7 @@ import rx.functions.Action1;
  * Author: ZhouYong
  */
 
-public class AddReAddressActivity extends BaseActivity {
+public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter,AddReAddressModel> implements AddReAddressContract.View {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -80,7 +83,7 @@ public class AddReAddressActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this,mModel);
     }
 
     @Override
@@ -92,6 +95,7 @@ public class AddReAddressActivity extends BaseActivity {
 
             }
         });
+        mPresenter.getAllRegion();
     }
 
 
@@ -143,4 +147,28 @@ public class AddReAddressActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void showLoading(String RequestId, String title) {
+
+    }
+
+    @Override
+    public void stopLoading(String RequestId) {
+
+    }
+
+    @Override
+    public void showErrorTip(String RequestId, String msg) {
+
+    }
+
+    @Override
+    public void returnAllregion(AllRegion allRegion) {
+
+    }
+
+    @Override
+    public void returnSubmitAddressBean(SubmitAddressBean submitAddressBean) {
+
+    }
 }

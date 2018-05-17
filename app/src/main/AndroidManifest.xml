@@ -90,7 +90,7 @@
         <!--登录界面-->
         <activity android:name=".ui.myinfo.activity.LoginActivity">
 
-            m
+
         </activity>
         <!--出价列表-->
         <activity android:name=".ui.main.activity.BidRecordActivity" />
@@ -119,7 +119,9 @@
         <!--绑定银行卡-->
         <activity android:name=".ui.myinfo.activity.BindBankCardActivity" />
         <!--收获地址-->
-        <activity android:name=".ui.myinfo.activity.ReceivedGoodsActivity"/>
+        <activity android:name=".ui.myinfo.activity.ReceivedGoodsActivity" />
+        <!--增加收货地址-->
+        <activity android:name=".ui.myinfo.activity.AddReAddressActivity" />
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

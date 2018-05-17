@@ -4,6 +4,7 @@ package com.intention.sqtwin.api;
 import com.intention.sqtwin.bean.AccountBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AllDateBean;
+import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
 import com.intention.sqtwin.bean.AuctionListBean;
@@ -325,6 +326,9 @@ public interface ApiService {
     Observable<SubmitAddressBean> submitAddress(
             @Body UpdateAddressBean updateAddressBean
     );
+
+    @GET("membercenter/get_area_info")
+    Observable<AllRegion> getAllRegion();
 
    /* *//*
     * 首页轮播图
