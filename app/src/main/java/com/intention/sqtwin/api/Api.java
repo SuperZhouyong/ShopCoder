@@ -108,7 +108,7 @@ public class Api {
                         .addHeader("Content-Type", getContentType(hostType))
 //                        .addHeader("timestamp", timestamp)
 //                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
-                        .addHeader("session_id", UserUtil.getLoginInfo()==null?"":String.valueOf(UserUtil.getLoginInfo().getMember_id()))
+                        .addHeader("SESSIONID", UserUtil.getLoginInfo()==null?"":String.valueOf(UserUtil.getLoginInfo().getId()))
                         .addHeader("Cache-Control", getCacheControl())
 //                        .header("Cache-Control", getCacheControl())
                         .build();

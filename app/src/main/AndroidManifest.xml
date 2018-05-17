@@ -24,9 +24,9 @@
     <!-- 银联的需要的权限 -->
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!--照相系列权限-->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
 
@@ -116,6 +116,10 @@
         <activity android:name=".ui.myinfo.activity.MyCompeteActivity" />
         <!--身份认证-->
         <activity android:name=".ui.myinfo.activity.IdentityProveActivity" />
+        <!--绑定银行卡-->
+        <activity android:name=".ui.myinfo.activity.BindBankCardActivity" />
+        <!--收获地址-->
+        <activity android:name=".ui.myinfo.activity.ReceivedGoodsActivity"/>
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

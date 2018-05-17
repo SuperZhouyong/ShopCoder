@@ -11,6 +11,7 @@ import com.intention.sqtwin.bean.AuctionOrgBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.BidBean;
 import com.intention.sqtwin.bean.BidRecordBean;
+import com.intention.sqtwin.bean.BindCardInfoBean;
 import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.LoginBean;
@@ -20,8 +21,11 @@ import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
+import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SubmitAddressBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
+import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.bean.UpdateIndentityBean;
 
 import java.util.Map;
@@ -36,6 +40,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import rx.Observable;
+import rx.Subscription;
 
 /**
  * des:ApiService
@@ -183,8 +188,15 @@ public interface ApiService {
     Observable<DerivativesBean> getDerivativesDate(
             @Query("docID") Integer type);
 
+    /**
+     * 我的竞拍
+     *
+     * @param page
+     * @return
+     */
     @GET("membercenter/get_bid_item_list")
-    Observable<MyCompeteBean> getMyCompeteBean(Integer page);
+    Observable<MyCompeteBean> getMyCompeteBean(
+            @Query("page_no") Integer page);
 
     /**
      * goods_id 拍品id  price 报价 member_id 报价者id
@@ -257,6 +269,12 @@ public interface ApiService {
     @GET("membercenter/get_member_info")
     Observable<MyInfoBean> getMyInfoBean();
 
+    /**
+     * 上传照片各种参数，身份认证
+     *
+     * @param body
+     * @return
+     */
     @Multipart
     @POST("")
     Observable<UpdateIndentityBean> getUpdateIndentity(
@@ -264,6 +282,50 @@ public interface ApiService {
             @Body RequestBody body
 
     );
+
+    /**
+     * 绑定银行卡号
+     *
+     * @param bank_account_name
+     * @param bank_name
+     * @param bank_card_number
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Membercenter/Member_bind_card_info")
+    Observable<BindCardInfoBean> getBindCardInfo(
+            @Field("bank_account_name") String bank_account_name,
+            @Field("bank_name") String bank_name,
+            @Field("bank_card_number") String bank_card_number
+    );
+
+    /**
+     * 收货地址列表
+     *
+     * @return
+     */
+    @GET("membercenter/get_address_list")
+    Observable<ReceivedGoodsBean> getReceivedGoods();
+/*
+*   @Field("name") String name,
+            @Field("phone") String phone,
+            @Field("province_id") Integer id,
+            @Field("city_id") Integer city_id,
+            @Field("area_id") Integer area_id,
+            @Field("address_is_default") Integer address_is_default,
+            @Field("op") Integer op*/
+
+    /**
+     * 修改和新增地址
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Membercenter/Member_address_edit_submit")
+    Observable<SubmitAddressBean> submitAddress(
+            @Body UpdateAddressBean updateAddressBean
+    );
+
    /* *//*
     * 首页轮播图
     * *//*

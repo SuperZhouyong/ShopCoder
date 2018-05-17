@@ -31,6 +31,11 @@ public class LoadingTip extends LinearLayout {
     private Button bt_operate;
     private String errorMsg;
     private onReloadListener onReloadListener;
+    private LinearLayout llTip;
+    private RelativeLayout relTip;
+    private ImageView ivTipStatus;
+    private TextView tvTipStatusDesc;
+    private TextView tvTipConfirl;
 
 
     public LoadingTip(Context context) {
@@ -77,7 +82,7 @@ public class LoadingTip extends LinearLayout {
     // 扣费失败 ，没有收藏 ，无网络 ， 没有收藏记录 ， 购物车为空 ,搜素无结果
 
     public static enum NoloadStatus {
-        FeeFailed, NoCollect, NoNetWork, NoRecorrd, NoShopCart, NoResult, NoLogin
+        FeeFailed, NoCollect, NoNetWork, NoRecorrd, NoShopCart, NoResult, NoLogin, NoReceivedAdress
     }
 
     private void initView(Context context) {
@@ -85,6 +90,14 @@ public class LoadingTip extends LinearLayout {
         img_tip_logo = (ImageView) findViewById(R.id.img_tip_logo);
         tv_tips = (TextView) findViewById(R.id.tv_tips);
         bt_operate = (Button) findViewById(R.id.bt_operate);
+
+        llTip = (LinearLayout) findViewById(R.id.ll_tip);
+        relTip = (RelativeLayout) findViewById(R.id.rel_tip);
+        ivTipStatus = (ImageView) findViewById(R.id.iv_tip_status);
+        tvTipStatusDesc = (TextView) findViewById(R.id.tv_tip_status_desc);
+        tvTipConfirl = (TextView) findViewById(R.id.tv_tip_confirm);
+
+
         //重新尝试
         bt_operate.setOnClickListener(new OnClickListener() {
             @Override
@@ -156,6 +169,13 @@ public class LoadingTip extends LinearLayout {
                 img_tip_logo.setImageResource(R.mipmap.fee_failed);
                 tv_tips.setText("请先登录");
                 bt_operate.setText("登录");
+                break;
+            // 没有收获地址
+            case NoReceivedAdress:
+                llTip.setVisibility(GONE);
+                relTip.setVisibility(VISIBLE);
+                tvTipStatusDesc.setText("您还没有添加收获地址");
+                tvTipConfirl.setText("+  新建地址");
                 break;
         }
         if (getLayoutParams() instanceof LinearLayout.LayoutParams) {

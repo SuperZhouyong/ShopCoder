@@ -38,7 +38,8 @@ public class AppConstant {
     public static String IntoWayOne;
     //同步拍进入排场的方式
     public static String IntoWayTwo;
-
+    // 三级城市连动ID
+    public static final String ConfirmOk = "ConfirmOk";
     //    wxd2fb38f960eb278e appid  wxd2fb38f960eb278e
     //wxe28f83bf7e4a9ecc
     public static final String WxAPP_ID = "wxd2fb38f960eb278e";
@@ -61,6 +62,7 @@ public class AppConstant {
     public static final String Moneynum = "Moneynum";
 
     public static final String content = "content";
+
 
 
 }

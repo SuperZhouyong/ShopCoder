@@ -9,10 +9,11 @@ package com.intention.sqtwin.bean;
 
 public class LoginBean {
 
+
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"member_id":16}
+     * data : {"id":16,"image":"","name":"17600298095","sex":"","birthday":"","member_provinceid":"","member_cityid":"","member_areaid":"","phone":"17600298095"}
      */
 
     private boolean is_success;
@@ -45,17 +46,97 @@ public class LoginBean {
 
     public static class DataBean {
         /**
-         * member_id : 16
+         * id : 16
+         * image :
+         * name : 17600298095
+         * sex :
+         * birthday :
+         * member_provinceid :
+         * member_cityid :
+         * member_areaid :
+         * phone : 17600298095
          */
 
-        private int member_id;
+        private int id;
+        private String image;
+        private String name;
+        private String sex;
+        private String birthday;
+        private String member_provinceid;
+        private String member_cityid;
+        private String member_areaid;
+        private String phone;
 
-        public int getMember_id() {
-            return member_id;
+        public int getId() {
+            return id;
         }
 
-        public void setMember_id(int member_id) {
-            this.member_id = member_id;
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSex() {
+            return sex;
+        }
+
+        public void setSex(String sex) {
+            this.sex = sex;
+        }
+
+        public String getBirthday() {
+            return birthday;
+        }
+
+        public void setBirthday(String birthday) {
+            this.birthday = birthday;
+        }
+
+        public String getMember_provinceid() {
+            return member_provinceid;
+        }
+
+        public void setMember_provinceid(String member_provinceid) {
+            this.member_provinceid = member_provinceid;
+        }
+
+        public String getMember_cityid() {
+            return member_cityid;
+        }
+
+        public void setMember_cityid(String member_cityid) {
+            this.member_cityid = member_cityid;
+        }
+
+        public String getMember_areaid() {
+            return member_areaid;
+        }
+
+        public void setMember_areaid(String member_areaid) {
+            this.member_areaid = member_areaid;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
         }
     }
 }

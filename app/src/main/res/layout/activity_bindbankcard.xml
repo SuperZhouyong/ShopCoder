@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/x22">
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="@dimen/x200"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:text="姓名"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <EditText
+            android:id="@+id/ec_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@null"
+            android:hint="请输入您的名字"
+            android:maxLines="1"
+            android:minWidth="@dimen/x200"
+            android:singleLine="true"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/x22">
+
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_width="@dimen/x200"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:text="银行"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <EditText
+            android:id="@+id/ec_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@null"
+            android:hint="请输入您的名字"
+            android:maxLines="1"
+            android:minWidth="@dimen/x200"
+            android:singleLine="true"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+    </RelativeLayout>
+
+    <include layout="@layout/item_divider" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/x22">
+
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="@dimen/x200"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:text="银行卡号"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <EditText
+            android:id="@+id/ec_bank_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@null"
+            android:hint="请输入您的名字"
+            android:maxLines="1"
+            android:minWidth="@dimen/x200"
+            android:singleLine="true"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="@dimen/x560"
+        android:layout_height="@dimen/y70"
+
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y120"
+        android:background="@drawable/tv_bg_confirm"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
+</LinearLayout>

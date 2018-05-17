@@ -546,9 +546,9 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public void onClick(View v) {
                 if (isLogin()) {
                     if (bottomDialog.getTag().equals("one")) {
-                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), getSqtUser().getMember_id());
+                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), getSqtUser().getId());
                     } else {
-                        mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), getSqtUser().getMember_id());
+                        mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), getSqtUser().getId());
                     }
 
 
