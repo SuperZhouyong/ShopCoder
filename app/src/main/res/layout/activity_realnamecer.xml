@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y50"
+        android:text="个人实名认证流程"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x34" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/x60"
+        android:paddingRight="@dimen/x60">
+
+        <TextView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:layout_marginTop="@dimen/y5"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_below="@id/imageView"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_width="@dimen/x2"
+            android:layout_height="@dimen/y70"
+            android:background="@color/font_2" />
+
+        <TextView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_alignRight="@+id/imageView"
+            android:layout_below="@id/imageView2"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="填写真实姓名，联系电话，身份证号并上传身份证正面、反面和手持身份证的清晰照"
+            android:textColor="@color/font_11"
+
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/imageView3"
+            android:text="提交实名认证申请后，工作人员将在三个工作日内与您联系核对信息"
+            android:textColor="@color/font_11"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/imageView2"
+            android:text="设置店铺名称，店铺logo及店铺介绍"
+            android:textColor="@color/font_11"
+            android:textSize="@dimen/x24" />
+    </RelativeLayout>
+</LinearLayout>

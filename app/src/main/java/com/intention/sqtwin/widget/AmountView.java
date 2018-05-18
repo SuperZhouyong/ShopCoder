@@ -2,15 +2,20 @@ package com.intention.sqtwin.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
@@ -19,7 +24,7 @@ import com.intention.sqtwin.utils.conmonUtil.LogUtils;
  * @data 2017/4/17 0017
  * @aurher Administrator
  */
-public class AmountView extends LinearLayout implements View.OnClickListener, TextWatcher {
+public class AmountView extends LinearLayout implements View.OnClickListener{
 
     private static final String TAG = "AmountView";
     private int amount = 1; //购买数量
@@ -27,7 +32,8 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
 
     private OnAmountChangeListener mListener;
 
-    private EditText etAmount;
+//    private EditText etAmount;
+    private TextView etAmount;
     private Button btnDecrease;
     private Button btnIncrease;
 
@@ -35,18 +41,54 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
         this(context, null);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public AmountView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr, defStyleAttr);
+//        this(context, null, null);
+        init(context,attrs);
+    }
+
     public AmountView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        init(context, attrs);
+    }
+
+    private void init(Context context, AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.view_amount, this);
-        etAmount = (EditText) findViewById(R.id.etAmount);
+//        etAmount = (EditText) findViewById(R.id.etAmount);
+        etAmount = (TextView) findViewById(R.id.etAmount);
         btnDecrease = (Button) findViewById(R.id.btnDecrease);
         btnIncrease = (Button) findViewById(R.id.btnIncrease);
         btnDecrease.setOnClickListener(this);
         btnIncrease.setOnClickListener(this);
-        etAmount.addTextChangedListener(this);
-        etAmount.clearFocus();
+//        etAmount.addTextChangedListener(this);
+//        etAmount.clearFocus();
         TypedArray obtainStyledAttributes = getContext().obtainStyledAttributes(attrs, R.styleable.AmountView);
+        float btWidTh = obtainStyledAttributes.getDimension(R.styleable.AmountView_btnWidth,  getResources().getDimension(R.dimen.x70));
+        float tvWidTh = obtainStyledAttributes.getDimension(R.styleable.AmountView_tvWidth,  getResources().getDimension(R.dimen.x70));
+        float btTextSize = obtainStyledAttributes.getDimension(R.styleable.AmountView_btnTextSize,  getResources().getDimension(R.dimen.x34));
+        float tvTextSize = obtainStyledAttributes.getDimension(R.styleable.AmountView_tvTextSize,  getResources().getDimension(R.dimen.x34));
+        btnDecrease.setTextSize(btTextSize);
+        btnIncrease.setTextSize(btTextSize);
+        etAmount.setTextSize(tvTextSize);
+
+        ViewGroup.LayoutParams layoutParams = btnDecrease.getLayoutParams();
+        layoutParams.width = (int) btWidTh;
+        layoutParams.height = (int) btWidTh;
+        btnDecrease.setLayoutParams(layoutParams);
+
+
+        ViewGroup.LayoutParams layoutParams1 = btnIncrease.getLayoutParams();
+        layoutParams1.width = (int) btWidTh;
+        layoutParams1.height = (int) btWidTh;
+        btnIncrease.setLayoutParams(layoutParams1);
+
+        ViewGroup.LayoutParams layoutParams2 = etAmount.getLayoutParams();
+        layoutParams2.width = (int) tvWidTh;
+        layoutParams2.height = (int) tvWidTh;
+        etAmount.setLayoutParams(layoutParams2);
+
         obtainStyledAttributes.recycle();
     }
 
@@ -94,7 +136,7 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
         }
     }
 
-    @Override
+/*    @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
     }
@@ -109,14 +151,14 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
         if (TextUtils.isEmpty(s.toString())) {
             etAmount.setText("1");
             amount = 1;
-            etAmount.setSelection(etAmount.getText().length());
+//            etAmount.setSelection(etAmount.getText().length());
             return;
         }
 
-       /* String SPut = s.toString();
+       *//* String SPut = s.toString();
         while (SPut.startsWith("0")&&SPut.length()>=2) {
             SPut = SPut.substring(1);
-        }*/
+        }*//*
         amount = Integer.valueOf(s.toString());
 //        etAmount.setText(amount + "");
         if (amount > goods_storage) {
@@ -127,14 +169,14 @@ public class AmountView extends LinearLayout implements View.OnClickListener, Te
 
             etAmount.setText("1");
             amount = 1;
-            etAmount.setSelection(etAmount.getText().length());
+//            etAmount.setSelection(etAmount.getText().length());
         }
 
         if (mListener != null) {
             LogUtils.logd("ShoCartAdapter---Edittext" + "接口监听了");
             mListener.onAmountChange(this, amount);
         }
-    }
+    }*/
 
 
     public interface OnAmountChangeListener {

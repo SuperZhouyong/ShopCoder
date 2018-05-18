@@ -50,9 +50,9 @@ public class MainActivity extends BaseActivity {
     //    private String[] mTitles = {"首页", "专家咨询", "服务", "我的"};
     private String[] mTitles = {"首页", "拍卖", "入驻", "商城", "我的"};
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal, R.mipmap.icon_specialist, R.mipmap.ic_girl_normal, R.mipmap.ic_care_normal, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_normal, R.mipmap.icon_specialist, R.mipmap.ic_girl_normal, R.mipmap.ic_home_normal, R.mipmap.ic_home_normal};
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_girl_selected, R.mipmap.ic_care_selected, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_girl_selected, R.mipmap.ic_care_selected, R.mipmap.ic_myinfo_slect};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private static int tabLayoutHeight;
     // 首页

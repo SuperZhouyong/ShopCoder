@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/y96"
-    android:background="@color/title_bg"
+    android:id="@+id/rel_com_title"
+    android:background="@color/app_main"
     android:gravity="center_vertical"
     android:orientation="horizontal">
 

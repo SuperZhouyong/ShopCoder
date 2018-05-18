@@ -14,7 +14,7 @@ import butterknife.OnClick;
 import ezy.ui.view.BannerView;
 
 /**
- * Description: 保佑无bug
+ * Description: 商品详情
  * Data：2018/5/18-上午1:27
  * Blog：Super简单
  * Author: ZhouYong

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <RelativeLayout
+        android:id="@+id/activity_search_head"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/y96"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/activity_search_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:text="取消"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/y56"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toLeftOf="@id/activity_search_return"
+            android:background="@drawable/ed_search_corner"
+            android:paddingRight="@dimen/x30">
+
+            <ImageView
+                android:id="@+id/search_iv"
+                android:layout_width="@dimen/x30"
+                android:layout_height="@dimen/y30"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:src="@mipmap/search_black" />
+
+            <com.intention.sqtwin.widget.ClearEditText
+                android:id="@+id/search_et"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/search_iv"
+                android:background="@drawable/ed_search_corner"
+                android:gravity="center_vertical"
+                android:hint="请输入搜索的内容"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/account_textcolor_focus"
+                android:textColorHint="@color/account_textcolor_unfocus"
+                android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                android:textSize="@dimen/x26" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/tl_6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="@color/white"
+        tl:tl_iconVisible="false"
+        tl:tl_indicator_corner_radius="1.5dp"
+        tl:tl_indicator_height="3dp"
+        tl:tl_indicator_width="10dp"
+        tl:tl_textSelectColor="@color/app_main"
+        tl:tl_textUnselectColor="@color/font_1"
+        tl:tl_textsize="@dimen/x30" />
+
+    <com.intention.sqtwin.widget.flow.FlowTagLayout
+        android:id="@+id/tag_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y30" />
+</LinearLayout>

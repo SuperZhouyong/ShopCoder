@@ -10,38 +10,57 @@
     android:orientation="horizontal"
     android:showDividers="middle">
 
-    <Button
-        android:id="@+id/btnDecrease"
-        android:layout_width="@dimen/x70"
-        android:layout_height="@dimen/y70"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_amount"
-        android:gravity="center"
-        android:text="—"
-        android:textColor="@color/font_3"
-        android:textSize="@dimen/x34" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <EditText
+        <Button
+            android:id="@+id/btnDecrease"
+            android:layout_width="@dimen/x70"
+            android:layout_height="@dimen/y70"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_amount"
+            android:gravity="center"
+            android:text="—"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x34" />
+        <TextView
 
-        android:id="@+id/etAmount"
-        android:layout_width="@dimen/x80"
-        android:layout_height="@dimen/y80"
-        android:background="@null"
-        android:gravity="center"
-        android:textSize="@dimen/x26"
-        android:inputType="number"
-        android:textCursorDrawable="@drawable/shape_edittext_cursour"
-        android:text="1"
-        android:textColor="@color/font_1" />
+            android:id="@+id/etAmount"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y80"
+            android:background="@null"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="1"
+            android:textColor="@color/font_1"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x26" />
+    <!--    <EditText
 
-    <Button
-        android:id="@+id/btnIncrease"
-        android:layout_width="@dimen/x70"
-        android:layout_height="@dimen/y70"
-        android:layout_gravity="center"
-        android:background="@drawable/btn_amount"
-        android:gravity="center"
-        android:text="+"
-        android:textColor="@color/font_3"
-        android:textSize="@dimen/x34" />
+            android:id="@+id/etAmount"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y80"
+            android:background="@null"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="1"
+            android:textColor="@color/font_1"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x26" />-->
+
+        <Button
+            android:id="@+id/btnIncrease"
+            android:layout_width="@dimen/x70"
+            android:layout_height="@dimen/y70"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_amount"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x34" />
+
+    </LinearLayout>
+
 </LinearLayout>

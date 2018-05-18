@@ -36,7 +36,7 @@ import butterknife.OnClick;
 import ezy.ui.view.BannerView;
 
 /**
- * Description: 绝无Bug
+ * Description: 衍生品
  * Data：2018/5/11 0011-下午 16:23
  * Blog：Super简单
  * Author: ZhouYong

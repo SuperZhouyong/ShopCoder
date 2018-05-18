@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title" />
+
+
+    <RelativeLayout
+        android:id="@+id/rel_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="@dimen/x150"
+            android:layout_height="@dimen/y80"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/tv_noagent_price"
+            android:gravity="center"
+            android:text="结算"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x28" />
+
+        <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+            android:id="@+id/sCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toRightOf="@id/sCheckBox"
+            android:text="全选"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+
+            android:id="@+id/tv_price_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/tv_confirm"
+            android:text="1950"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toLeftOf="@id/tv_price_num"
+            android:text="购物金额小计"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x24" />
+
+
+    </RelativeLayout>
+
+
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/mLRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rel_bottom"
+        android:layout_below="@id/title" />
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title" />
+</RelativeLayout>

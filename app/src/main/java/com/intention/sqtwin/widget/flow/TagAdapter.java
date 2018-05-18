@@ -1,4 +1,3 @@
-/*
 package com.intention.sqtwin.widget.flow;
 
 import android.content.Context;
@@ -16,11 +15,9 @@ import com.intention.sqtwin.widget.CircleImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-*/
 /**
  * Created by HanHailong on 15/10/19.
- *//*
-
+ */
 public class TagAdapter extends BaseAdapter implements OnInitSelectedPosition {
 
     private final Context mContext;
@@ -64,11 +61,11 @@ public class TagAdapter extends BaseAdapter implements OnInitSelectedPosition {
 //        LogUtils.logi("2222222222222222222222222");
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_flowlayout, null);
 
-        CircleImageView ivColor = (CircleImageView) view.findViewById(R.id.iv_color);
+//        CircleImageView ivColor = (CircleImageView) view.findViewById(R.id.iv_color);
         TextView name = (TextView) view.findViewById(R.id.tv_name);
-        ivColor.setEnabled(false);
+//        ivColor.setEnabled(false);
 //        ivColor.setImageDrawable(new ColorDrawable(mDataList.get(position).getCurrentId()));
-//        name.setText(mDataList.get(position).getName());
+        name.setText(mDataList.get(position).getName());
 
 //        if (t instanceof String) {
 //            // 字数超过了，就设置其宽度
@@ -100,4 +97,3 @@ public class TagAdapter extends BaseAdapter implements OnInitSelectedPosition {
         return false;
     }
 }
-*/

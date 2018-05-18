@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:AmountView="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y230"
+    android:background="@color/white"
+
+    android:orientation="vertical">
+
+    <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+        android:id="@+id/sCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+
+        android:layout_marginLeft="@dimen/x30" />
+
+    <ImageView
+        android:id="@+id/iv_goods_pic"
+        android:layout_width="@dimen/x200"
+        android:layout_height="@dimen/y150"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_toRightOf="@id/sCheckBox"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/tv_goods_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_goods_pic"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="@dimen/y5"
+        android:layout_toEndOf="@+id/iv_goods_pic"
+        android:layout_toRightOf="@+id/iv_goods_pic"
+        android:text="TextView"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x28" />
+
+    <TextView
+        android:id="@+id/tv_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_goods_name"
+        android:layout_alignStart="@+id/tv_goods_name"
+        android:layout_below="@+id/sCheckBox"
+        android:text="TextView"
+        android:textColor="@color/font_2"
+        android:textSize="@dimen/x36" />
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="@dimen/x55"
+        android:layout_height="@dimen/y40"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/iv_goods_pic"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:src="@mipmap/goods_cart_delete" />
+
+    <com.intention.sqtwin.widget.AmountView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_goods_price"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/x30"
+        AmountView:btnTextSize="@dimen/x10"
+        AmountView:btnWidth="@dimen/x50"
+        AmountView:tvTextSize="@dimen/x10"
+        AmountView:tvWidth="@dimen/x50" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginRight="@dimen/x22"
+        android:background="@color/app_bottom_colour" />
+</RelativeLayout>

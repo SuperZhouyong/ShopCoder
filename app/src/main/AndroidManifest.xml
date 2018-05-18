@@ -88,10 +88,7 @@
 
         </activity>
         <!--登录界面-->
-        <activity android:name=".ui.myinfo.activity.LoginActivity">
-
-
-        </activity>
+        <activity android:name=".ui.myinfo.activity.LoginActivity"></activity>
         <!--出价列表-->
         <activity android:name=".ui.main.activity.BidRecordActivity" />
         <!--加载H5界面-->
@@ -122,6 +119,14 @@
         <activity android:name=".ui.myinfo.activity.ReceivedGoodsActivity" />
         <!--增加收货地址-->
         <activity android:name=".ui.myinfo.activity.AddReAddressActivity" />
+        <!--商品详情页-->
+        <activity android:name=".ui.mall.activity.GoodsPageActivity" />
+        <!--购物车-->
+        <activity android:name=".ui.mall.activity.ShopCartActivity" />
+        <!--搜索界面-->
+        <activity android:name=".ui.main.activity.SearchActivity" />
+        <!--店铺-->
+        <activity android:name=".ui.Store.activity.TheStoreActivity" />
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

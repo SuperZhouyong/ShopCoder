@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,22 +32,22 @@
             android:layout_marginTop="@dimen/y40"
 
             android:text="加载中..."
-            android:textColor="@color/font_2"
+            android:textColor="@color/font_1"
 
             android:textSize="@dimen/x26" />
         <!--  android:textSize="@dimen/font_normal"-->
-        <Button
-
+        <TextView
             android:id="@+id/bt_operate"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginTop="@dimen/y20"
             android:background="@drawable/common_empty_tip"
+            android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:paddingTop="5dp"
-            android:textColor="@color/app_main"
+            android:textColor="@color/font_1"
 
             tools:text="@string/reload" />
 
@@ -56,10 +55,11 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/rel_tip"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
         <ImageView
             android:id="@+id/iv_tip_status"
             android:layout_width="@dimen/x386"
@@ -90,7 +90,6 @@
             android:text="充值"
             android:textColor="@color/white"
             android:textSize="@dimen/x30" />
-
 
 
     </RelativeLayout>

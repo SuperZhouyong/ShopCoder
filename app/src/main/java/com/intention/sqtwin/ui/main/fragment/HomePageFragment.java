@@ -1,15 +1,18 @@
 package com.intention.sqtwin.ui.main.fragment;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -17,21 +20,22 @@ import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
-import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
-import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.ui.main.activity.SearchActivity;
 import com.intention.sqtwin.ui.main.activity.SynchronousAuctionActivity;
 import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
 import com.intention.sqtwin.ui.mall.activity.DerivativesActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
-import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 import ezy.ui.view.BannerView;
 
 
@@ -44,6 +48,13 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
+    @BindView(R.id.rel_search)
+    RelativeLayout relSearch;
+    @BindView(R.id.iv_love)
+    ImageView ivLove;
+    @BindView(R.id.iv_readme)
+    ImageView ivReadme;
+    Unbinder unbinder;
 
     private LRecyclerViewAdapter mLadapter;
     // 末尾的adapter
@@ -51,7 +62,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     private BannerView mBannerView;
     private HeadTwoAdapter mHeadTwoAdapter;
     private BannerView mBannerViewTwo;
-    private java.lang.String TAG = "HomePageFragment";
+    private String TAG = "HomePageFragment";
 
     @Override
     protected int getLayoutResource() {
@@ -136,14 +147,14 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 return false;
             }
         });*/
-        mLadapter.setOnItemClickListener(new com.github.jdsjlzx.interfaces.OnItemClickListener() {
+        mLadapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                /* Intent intent = new Intent(getActivity(), AuctionFiledActivity.class);
                 intent.putExtra(AppConstant.aucotonFileId, homeAdapter.get(position).getId());
                 LogUtils.logd(TAG + "-------" + homeAdapter.get(position).getId());*/
 //                startActivity(intent);
-                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), homeAdapter.get(position).getId(),AppConstant.IntoWayOne);
+                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), homeAdapter.get(position).getId(), AppConstant.IntoWayOne);
 
             }
         });
@@ -233,6 +244,35 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 break;
             case R.id.iv_fore:
                 startActivity(SynchronousAuctionActivity.class);
+                break;
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_search:
+                startActivity(SearchActivity.class);
+                break;
+            // 关注
+            case R.id.iv_love:
+                break;
+            // 提醒
+            case R.id.iv_readme:
                 break;
         }
     }

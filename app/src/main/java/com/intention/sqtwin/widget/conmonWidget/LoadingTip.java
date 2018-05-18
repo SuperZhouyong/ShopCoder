@@ -28,7 +28,7 @@ public class LoadingTip extends LinearLayout {
     private ImageView img_tip_logo;
     //    private ProgressBar progress;
     private TextView tv_tips;
-    private Button bt_operate;
+    private TextView bt_operate;
     private String errorMsg;
     private onReloadListener onReloadListener;
     private LinearLayout llTip;
@@ -89,7 +89,7 @@ public class LoadingTip extends LinearLayout {
         View.inflate(context, R.layout.dialog_loading_tip, this);
         img_tip_logo = (ImageView) findViewById(R.id.img_tip_logo);
         tv_tips = (TextView) findViewById(R.id.tv_tips);
-        bt_operate = (Button) findViewById(R.id.bt_operate);
+        bt_operate = (TextView) findViewById(R.id.bt_operate);
 
         llTip = (LinearLayout) findViewById(R.id.ll_tip);
         relTip = (RelativeLayout) findViewById(R.id.rel_tip);
@@ -140,9 +140,9 @@ public class LoadingTip extends LinearLayout {
             case NoNetWork:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_network);
-                tv_tips.setText("数据加载失败");
+                tv_tips.setText("网络不太给力，点击重新加载");
                 bt_operate.setVisibility(View.VISIBLE);
-                bt_operate.setText("请重试");
+                bt_operate.setText("刷新");
                 break;
             case NoRecorrd:
                 setVisibility(View.VISIBLE);

@@ -8,4 +8,13 @@ package com.intention.sqtwin.bean;
  */
 
 public class ChooseBean1 {
+    private String name ;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -1,7 +1,6 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -25,10 +24,7 @@ import com.kyleduo.switchbutton.SwitchButton;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.shaohui.bottomdialog.BaseBottomDialog;
-import me.shaohui.bottomdialog.BottomDialog;
 import rx.functions.Action1;
 
 /**
@@ -38,7 +34,7 @@ import rx.functions.Action1;
  * Author: ZhouYong
  */
 
-public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter,AddReAddressModel> implements AddReAddressContract.View {
+public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, AddReAddressModel> implements AddReAddressContract.View {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -83,7 +79,7 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter,Add
 
     @Override
     public void initPresenter() {
-        mPresenter.setVM(this,mModel);
+        mPresenter.setVM(this, mModel);
     }
 
     @Override

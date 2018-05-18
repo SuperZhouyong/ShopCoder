@@ -90,10 +90,10 @@ public class WheelPickerUtils {
 
         }*/
         for (AllRegion.DataBean Ad : mList) {
-            list1.add(Ad.getName());
+            list1.add(Ad.getArea_name());
         }
         AllRegion.DataBean dataBean;
-        AllRegion.DataBean.ChildBeanX childBeanX;
+        AllRegion.DataBean.CityBean childBeanX;
         if (split != null) {
             dataBean = mList.get(list1.indexOf(split[0]));
 
@@ -103,18 +103,18 @@ public class WheelPickerUtils {
         }
         list2.clear();
         list3.clear();
-        for (AllRegion.DataBean.ChildBeanX child : dataBean.getChild()) {
-            list2.add(child.getName());
+        for (AllRegion.DataBean.CityBean child : dataBean.getCity()) {
+            list2.add(child.getArea_name());
         }
         if (split != null) {
-            childBeanX = dataBean.getChild().get(list2.indexOf(split[1]));
+            childBeanX = dataBean.getCity().get(list2.indexOf(split[1]));
         } else {
-            childBeanX = dataBean.getChild().get(0);
+            childBeanX = dataBean.getCity().get(0);
         }
 
 //        List<AllRegion.DataBean.ChildBeanX.ChildBean> child = dataBean.getChild().get(0).getChild();
-        for (AllRegion.DataBean.ChildBeanX.ChildBean mChild : childBeanX.getChild()) {
-            list3.add(mChild.getName());
+        for (AllRegion.DataBean.CityBean.AreaBean mChild : childBeanX.getArea()) {
+            list3.add(mChild.getArea_name());
         }
 
 
@@ -147,12 +147,12 @@ public class WheelPickerUtils {
 //                ArrayList mlist2 = new ArrayList()
                 list2.clear();
                 list3.clear();
-                for (AllRegion.DataBean.ChildBeanX child : dataBean.getChild()) {
-                    list2.add(child.getName());
+                for (AllRegion.DataBean.CityBean child : dataBean.getCity()) {
+                    list2.add(child.getArea_name());
                 }
 //                List<AllRegion.DataBean.ChildBeanX.ChildBean> child = dataBean.getChild().get(0).getChild();
-                for (AllRegion.DataBean.ChildBeanX.ChildBean mChild : dataBean.getChild().get(0).getChild()) {
-                    list3.add(mChild.getName());
+                for (AllRegion.DataBean.CityBean.AreaBean mChild : dataBean.getCity().get(0).getArea()) {
+                    list3.add(mChild.getArea_name());
                 }
 
 
@@ -188,8 +188,8 @@ public class WheelPickerUtils {
 //                cityPicker.getCurrentItemPosition();
 //                AllRegion.DataBean.ChildBeanX.ChildBean childBean = mList.get(provincePicker.getCurrentItemPosition()).getChild().get(cityPicker.getCurrentItemPosition()).getChild().get(position);
                 list3.clear();
-                for (AllRegion.DataBean.ChildBeanX.ChildBean childBean : mList.get(provincePicker.getCurrentItemPosition()).getChild().get(cityPicker.getCurrentItemPosition()).getChild()) {
-                    list3.add(childBean.getName());
+                for (AllRegion.DataBean.CityBean.AreaBean childBean : mList.get(provincePicker.getCurrentItemPosition()).getCity().get(cityPicker.getCurrentItemPosition()).getArea()) {
+                    list3.add(childBean.getArea_name());
                 }
 
                 regionPicker.setData(list3);
@@ -223,9 +223,9 @@ public class WheelPickerUtils {
                 textView.setText(provincePicker.getData().get(provincePicker.getCurrentItemPosition()) + "/" +
                         cityPicker.getData().get(cityPicker.getCurrentItemPosition()) + "/" +
                         regionPicker.getData().get(regionPicker.getCurrentItemPosition()));
-                String ProvinceId = mList.get(provincePicker.getCurrentItemPosition()).getId();
-                String CityID = mList.get(provincePicker.getCurrentItemPosition()).getChild().get(cityPicker.getCurrentItemPosition()).getId();
-                String RegionId = mList.get(provincePicker.getCurrentItemPosition()).getChild().get(cityPicker.getCurrentItemPosition()).getChild().get(regionPicker.getCurrentItemPosition()).getId();
+                Integer ProvinceId = mList.get(provincePicker.getCurrentItemPosition()).getArea_id();
+                Integer CityID = mList.get(provincePicker.getCurrentItemPosition()).getCity().get(cityPicker.getCurrentItemPosition()).getArea_id();
+                Integer RegionId = mList.get(provincePicker.getCurrentItemPosition()).getCity().get(cityPicker.getCurrentItemPosition()).getArea().get(regionPicker.getCurrentItemPosition()).getArea_id();
 //                Log.i("position","省  ===  "+provincePicker.getCurrentItemPosition()+"市  ===  "+cityPicker.getCurrentItemPosition()+"区  ===  "+regionPicker.getCurrentItemPosition());
                 //todo 需要传递给当前调用的类
                 BeanId mBeanID = new BeanId();

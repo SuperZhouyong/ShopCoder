@@ -2,6 +2,7 @@
 <resources>
 
     <color name="app_main">#ffaf0003</color><!--//00c2de-->
+    <!--<color name="app_main">#0aa0f6</color>&lt;!&ndash;//00c2de&ndash;&gt;-->
     <color name="font_1">#ff303030</color>
     <color name="font_2">#ffb60005</color>
     <color name="font_3">#ff999999</color>
@@ -20,6 +21,8 @@
     <color name="code_textcolor">#661612</color>
     <color name="iv_bg_indentity">#ffb8b8b8</color>
     <color name="font_10">#454545</color>
+    <color name="num_bg_two">#FDDBE6</color>
+    <color name="font_11">#333333</color>
 
 
 

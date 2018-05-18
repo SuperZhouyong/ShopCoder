@@ -11,31 +11,31 @@ import android.os.Parcelable;
  */
 
 public class BeanId implements Parcelable {
-    private String ProvinceId;
-    private String CityId;
-    private String RegionID;
+    private Integer ProvinceId;
+    private Integer CityId;
+    private Integer RegionID;
 
-    public String getProvinceId() {
+    public Integer getProvinceId() {
         return ProvinceId;
     }
 
-    public void setProvinceId(String provinceId) {
+    public void setProvinceId(Integer provinceId) {
         ProvinceId = provinceId;
     }
 
-    public String getCityId() {
+    public Integer getCityId() {
         return CityId;
     }
 
-    public void setCityId(String cityId) {
+    public void setCityId(Integer cityId) {
         CityId = cityId;
     }
 
-    public String getRegionID() {
+    public Integer getRegionID() {
         return RegionID;
     }
 
-    public void setRegionID(String regionID) {
+    public void setRegionID(Integer regionID) {
         RegionID = regionID;
     }
 
@@ -46,18 +46,18 @@ public class BeanId implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.ProvinceId);
-        dest.writeString(this.CityId);
-        dest.writeString(this.RegionID);
+        dest.writeValue(this.ProvinceId);
+        dest.writeValue(this.CityId);
+        dest.writeValue(this.RegionID);
     }
 
     public BeanId() {
     }
 
     protected BeanId(Parcel in) {
-        this.ProvinceId = in.readString();
-        this.CityId = in.readString();
-        this.RegionID = in.readString();
+        this.ProvinceId = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.CityId = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.RegionID = (Integer) in.readValue(Integer.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<BeanId> CREATOR = new Parcelable.Creator<BeanId>() {
