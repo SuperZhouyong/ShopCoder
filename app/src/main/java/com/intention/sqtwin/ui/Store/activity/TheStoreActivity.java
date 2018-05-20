@@ -23,6 +23,8 @@ import butterknife.OnClick;
  */
 
 public class TheStoreActivity extends BaseActivity {
+
+
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -35,8 +37,7 @@ public class TheStoreActivity extends BaseActivity {
     ImageView ivSearch;
     @BindView(R.id.rel_search)
     RelativeLayout relSearch;
-    @BindView(R.id.rel_com_title)
-    RelativeLayout relComTitle;
+
     @BindView(R.id.iv_head_icon)
     CircleImageView ivHeadIcon;
     @BindView(R.id.tv_store_name)
@@ -98,4 +99,6 @@ public class TheStoreActivity extends BaseActivity {
                 break;
         }
     }
+
+
 }

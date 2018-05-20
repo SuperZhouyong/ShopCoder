@@ -1,1 +1,1 @@
-include ':app', ':loopViewpager', ':LRecyclerview'
+include ':app', ':loopViewpager', ':LRecyclerview', ':stepview'

@@ -252,6 +252,11 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }
@@ -546,9 +551,9 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public void onClick(View v) {
                 if (isLogin()) {
                     if (bottomDialog.getTag().equals("one")) {
-                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), getSqtUser().getId());
+                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)),null);
                     } else {
-                        mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), getSqtUser().getId());
+                        mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
                     }
 
 

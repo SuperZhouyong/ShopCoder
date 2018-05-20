@@ -106,6 +106,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

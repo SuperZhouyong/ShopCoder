@@ -53,6 +53,11 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
     private int pagesize = 10;
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

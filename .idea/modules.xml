@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/ShopCoder.iml" filepath="$PROJECT_DIR$/ShopCoder.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/loopViewpager/loopViewpager.iml" filepath="$PROJECT_DIR$/loopViewpager/loopViewpager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stepview/stepview.iml" filepath="$PROJECT_DIR$/stepview/stepview.iml" />
     </modules>
   </component>
 </project>

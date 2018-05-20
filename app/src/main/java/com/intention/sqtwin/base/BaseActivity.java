@@ -315,8 +315,8 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if (null == UserUtil.getLoginInfo()) {// 进入首页面先判断本地是否有信息
             return false;
         }
-
-        if (TextUtils.isEmpty(String.valueOf(UserUtil.getLoginInfo().getId()))) {// 根据登录保存的信息进行是否登录判断
+        SQTUser loginInfo = UserUtil.getLoginInfo();
+        if (TextUtils.isEmpty(String.valueOf(UserUtil.getLoginInfo().getMember_id()))) {// 根据登录保存的信息进行是否登录判断
             return false;
         } else {
             return true;

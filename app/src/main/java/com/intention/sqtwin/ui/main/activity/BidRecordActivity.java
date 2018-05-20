@@ -79,6 +79,11 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
 
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

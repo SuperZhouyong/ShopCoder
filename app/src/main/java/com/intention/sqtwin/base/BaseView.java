@@ -12,6 +12,7 @@ public interface BaseView {
     void stopLoading();
 
     void showErrorTip(String msg);*/
+    void StartLoading(String RequestId);
 
     void showLoading(String RequestId, String title);
 

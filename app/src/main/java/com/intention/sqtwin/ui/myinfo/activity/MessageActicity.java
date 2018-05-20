@@ -87,6 +87,11 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

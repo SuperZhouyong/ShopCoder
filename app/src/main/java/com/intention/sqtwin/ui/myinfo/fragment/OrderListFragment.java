@@ -59,7 +59,7 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 30, 1, getResources().getColor(R.color.app_bottom_colour)));
         mRecyclerView.setAdapter(mLAdapter);
-//        mRecyclerView.setPullRefreshEnabled(false);
+        mRecyclerView.setPullRefreshEnabled(true);
         mRecyclerView.setOnRefreshListener(this);
         mRecyclerView.setLoadMoreEnabled(true);
 //        mRecyclerView.setOnLoadMoreListener(this);
@@ -86,6 +86,11 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }
@@ -106,6 +111,7 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
 
     @Override
     public void returnOrderList(OrderListBean orderListBean) {
+
         if (mAdapter.getDataList().size() != 0) {
             mAdapter.clearData();
             mLAdapter.notifyDataSetChanged();

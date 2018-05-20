@@ -59,6 +59,11 @@ public class SynchAuctionItemActivity extends BaseActivity<SynchAuctionPresenter
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingTop="@dimen/y30"
+    android:paddingBottom="@dimen/y30"
+    android:layout_height="wrap_content">
+
+    <com.intention.sqtwin.widget.CircleImageView
+        android:id="@+id/iv_head"
+        android:layout_width="@dimen/x104"
+        android:layout_height="@dimen/y104"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginStart="@dimen/x30" />
+
+    <TextView
+        android:textSize="@dimen/x28"
+        android:textColor="@color/font_1"
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_head"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_toEndOf="@+id/iv_head"
+        android:layout_toRightOf="@+id/iv_head"
+        android:text="公告" />
+
+    <TextView
+        android:textColor="@color/font_3"
+        android:textSize="@dimen/x26"
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_head"
+        android:layout_alignLeft="@+id/tv_name"
+        android:text="秒速" />
+
+    <TextView
+        android:textSize="@dimen/x24"
+        android:textColor="@color/font_3"
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/tv_name"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:text="时间" />
+</RelativeLayout>

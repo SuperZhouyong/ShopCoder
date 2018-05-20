@@ -21,7 +21,7 @@
         android:layout_toRightOf="@id/iv_logo"
         android:text="中国嘉德拍卖公司"
         android:textColor="@color/white"
-        android:textSize="@dimen/x31" />
+        android:textSize="@dimen/x26" />
 
     <RelativeLayout
         android:id="@+id/rel_focus"
@@ -34,8 +34,8 @@
 
         <ImageView
             android:id="@+id/iv_focus"
-            android:layout_width="@dimen/x28"
-            android:layout_height="@dimen/y30"
+            android:layout_width="@dimen/x24"
+            android:layout_height="@dimen/y24"
             android:layout_centerVertical="true"
             android:src="@mipmap/icon_auction_add" />
 
@@ -48,7 +48,7 @@
             android:layout_toRightOf="@id/iv_focus"
             android:text="关注"
             android:textColor="@color/white"
-            android:textSize="@dimen/x25" />
+            android:textSize="@dimen/x24" />
     </RelativeLayout>
 </RelativeLayout>
 

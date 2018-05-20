@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y50"
+        android:text="企业实名认证流程"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x34" />
+
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginRight="@dimen/x22"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@drawable/real_ll_two_select"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/x22"
+        android:paddingRight="@dimen/x22">
+
+        <TextView
+
+
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/y50"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:layout_width="@dimen/x2"
+            android:layout_height="@dimen/y70"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_below="@id/imageView"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y5"
+            android:background="@color/font_2" />
+
+
+        <TextView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_below="@+id/imageView"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:layout_width="@dimen/x2"
+            android:layout_height="@dimen/y70"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_below="@id/imageView2"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y5"
+            android:background="@color/font_2"
+            android:id="@+id/imageView5" />
+
+        <TextView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_alignRight="@+id/imageView"
+            android:layout_below="@id/imageView2"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:layout_width="@dimen/x2"
+            android:layout_height="@dimen/y70"
+            android:layout_alignLeft="@+id/imageView5"
+            android:layout_alignStart="@+id/imageView5"
+            android:layout_below="@+id/imageView3"
+            android:background="@color/font_2" />
+
+        <TextView
+
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:lineSpacingExtra="@dimen/x5"
+            android:text="填写企业名称，法人名字并上传企业营业执照清晰照片及法人身份证正面和反面清晰照"
+            android:textColor="@color/font_11"
+
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_marginBottom="@dimen/y50"
+            android:lineSpacingExtra="@dimen/x5"
+            android:text="设置店铺名称、电偶logo及店铺介绍"
+            android:textColor="@color/font_11"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/imageView2"
+            android:lineSpacingExtra="@dimen/x5"
+            android:text="填写联系人真实姓名，联系电话，身份证号并上传身份证正面、反面和手持身份证的清晰照"
+            android:textColor="@color/font_11"
+            android:textSize="@dimen/x24" />
+        <TextView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignEnd="@+id/imageView"
+            android:layout_alignRight="@+id/imageView"
+            android:layout_below="@id/imageView3"
+            android:layout_marginTop="@dimen/y80"
+            android:background="@drawable/real_name_bg"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_alignTop="@+id/imageView4"
+            android:layout_marginBottom="@dimen/y50"
+            android:lineSpacingExtra="@dimen/x5"
+            android:text="提交实名认证申请后，工作人员将在3个工作日内与您取得联系核对信息"
+            android:textColor="@color/font_11"
+            android:textSize="@dimen/x24" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y100">
+
+
+        <TextView
+
+
+            android:id="@+id/tv_confirm"
+            android:layout_width="@dimen/x560"
+            android:layout_height="@dimen/y70"
+
+
+            android:layout_centerHorizontal="true"
+
+
+            android:background="@drawable/tv_bg_confirm"
+            android:gravity="center"
+            android:text="我要认证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_confirm"
+            android:layout_below="@id/tv_confirm"
+            android:layout_marginTop="@dimen/y50"
+            android:text="点击表示同意瀚藏认证增值服务协议"
+            android:textColor="@color/font_7"
+            android:textSize="@dimen/x22" />
+    </RelativeLayout>
+</LinearLayout>

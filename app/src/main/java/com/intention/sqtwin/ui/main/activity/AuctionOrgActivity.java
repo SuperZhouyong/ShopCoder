@@ -148,6 +148,11 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

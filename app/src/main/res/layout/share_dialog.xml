@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/transparent">
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/iv_share_code"
             android:layout_centerInParent="true"
             android:layout_width="@dimen/x580"

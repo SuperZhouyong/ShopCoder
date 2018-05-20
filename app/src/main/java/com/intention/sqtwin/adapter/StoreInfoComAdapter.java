@@ -1,0 +1,184 @@
+package com.intention.sqtwin.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.View;
+
+import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
+import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.bean.StoreInfoComBean;
+import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
+import com.intention.sqtwin.ui.main.activity.AuctionOrgActivity;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.ui.main.activity.SynchAuctionItemActivity;
+import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
+
+import java.text.ParseException;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Description: 保佑无bug
+ * Data：2018/5/19-下午4:13
+ * Blog：Super简单
+ * Author: ZhouYong
+ * QQ: 437397161
+ */
+
+public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
+    private Integer mTypeId;
+
+    public StoreInfoComAdapter(Context context, int layoutId, Integer mTypeId) {
+        super(context, layoutId);
+        this.mTypeId = mTypeId;
+    }
+
+    @Override
+    public void convert(ViewHolderHelper helper, Object o, int position) {
+        // 拍品
+        /*if (mTypeId == 0)
+
+            //拍场
+            if (mTypeId == 1)
+
+
+                if (mTypeId == 2)
+
+                    if (mTypeId == 3)
+
+                        //店鋪，需要設置底部的价格为gone
+                        if (mTypeId == 4)*/
+        switch (mTypeId) {
+            case 1:
+                convertOne(helper, o, position);
+                break;
+            case 2:
+                convertTwo(helper, o, position);
+                break;
+            case 3:
+                convertThree(helper, o, position);
+                break;
+            case 4:
+                convertFore(helper, o, position);
+                break;
+            case 5:
+                convertFive(helper, o, position);
+                break;
+        }
+
+
+    }
+
+    private void convertFive(ViewHolderHelper helper, Object o, int position) {
+        StoreInfoComBean.DataBean.FavoriteStoreBean mBean = (StoreInfoComBean.DataBean.FavoriteStoreBean)o;
+        helper.setImageUrl(R.id.iv_goods_pic,mBean.getStore_logo());
+        helper.setText(R.id.tv_goods_name,mBean.getStore_name());
+
+    }
+
+    private void convertFore(ViewHolderHelper helper, Object o, int position) {
+        StoreInfoComBean.DataBean.FavoriteArtistBean mBean = (StoreInfoComBean.DataBean.FavoriteArtistBean) o;
+        helper.setText(R.id.tv_name, mBean.getName());
+        helper.setText(R.id.tv_bid_desc, "拍品数量");
+        helper.setText(R.id.tv_bid_price, mBean.getAuction_count() + "");
+        // 取消关注
+        helper.getView(R.id.tv_time).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+    private void convertThree(ViewHolderHelper helper, Object o, int position) {
+        StoreInfoComBean.DataBean.FavoriteOrganBean mBean = (StoreInfoComBean.DataBean.FavoriteOrganBean) o;
+        helper.setImageUrl(R.id.iv_icon, mBean.getLogo());
+        helper.setText(R.id.tv_name, mBean.getName());
+        helper.setText(R.id.tv_bid_desc, mBean.getDescription());
+        helper.setVisible(R.id.tv_bid_price, false);
+        //取消关注
+        helper.getView(R.id.tv_time).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+    private void convertTwo(ViewHolderHelper helper, Object o, int position) {
+        final StoreInfoComBean.DataBean.FavoriteFieldBean recommendFieldBean = (StoreInfoComBean.DataBean.FavoriteFieldBean) o;
+        helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
+        helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+        helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
+        helper.setText(R.id.tv_lot_num, String.valueOf(recommendFieldBean.getItem_count()));
+        helper.setText(R.id.tv_price_num, String.valueOf(recommendFieldBean.getBid_count()));
+        helper.setText(R.id.tv_filed_name, recommendFieldBean.getName());
+        helper.setImageUrl(R.id.iv_pos_goods, recommendFieldBean.getImage());
+        String start_time = recommendFieldBean.getStart_time();
+        String end_time = recommendFieldBean.getEnd_time();
+
+        try {
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
+            Date currentTime = new Date();
+            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+                // 拍卖中
+                long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
+                helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+
+            } else if (currentTime.getTime() < startTime.getTime()) {
+//                未开拍
+                helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
+
+            } else {
+                helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
+            }
+//            if (new Date().getTime()<endTime.getTime()&&)
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        // 取消关注
+        helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+            }
+        });
+
+    }
+
+    private void convertOne(ViewHolderHelper helper, Object o, int position) {
+        final StoreInfoComBean.DataBean.FavoriteItemBean auctionItemListBean = (StoreInfoComBean.DataBean.FavoriteItemBean) o;
+        helper.setImageUrl(R.id.iv_goods, auctionItemListBean.getImage());
+        helper.setText(R.id.tv_goods_name, auctionItemListBean.getName());
+
+        helper.setText(R.id.tv_goods_price_foot, auctionItemListBean.getBid_leader());
+        helper.setText(R.id.tv_goods_desc_foot, "领先者");
+
+        helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
+        helper.setText(R.id.tv_goods_desc, "当前价");
+        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                if (TextUtils.isEmpty(intoWay) || AppConstant.IntoWayOne.equals(intoWay))
+                    AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, auctionItemListBean.getId());
+                /*else
+                    SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext, auctionItemListBean.getId());*/
+            }
+        });
+    }
+
+
+}

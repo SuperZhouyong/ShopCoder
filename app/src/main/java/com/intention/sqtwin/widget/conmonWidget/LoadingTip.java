@@ -82,7 +82,7 @@ public class LoadingTip extends LinearLayout {
     // 扣费失败 ，没有收藏 ，无网络 ， 没有收藏记录 ， 购物车为空 ,搜素无结果
 
     public static enum NoloadStatus {
-        FeeFailed, NoCollect, NoNetWork, NoRecorrd, NoShopCart, NoResult, NoLogin, NoReceivedAdress
+        NoCollect, NoNetWork, StartLoading, NoReceivedAdress
     }
 
     private void initView(Context context) {
@@ -123,20 +123,20 @@ public class LoadingTip extends LinearLayout {
     public void setNoLoadTip(NoloadStatus noLoadTip) {
         switch (noLoadTip) {
 //              FeeFailed , NoCollect ,NoEmpty ,NoRecorrd ,NoShopCart ,Noresulte
-            case FeeFailed:
+           /* case FeeFailed:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.fee_failed);
 
                 tv_tips.setText("扣费失败,请重试");
                 bt_operate.setVisibility(View.VISIBLE);
                 bt_operate.setText("重试");
-                break;
-            case NoCollect:
+                break;*/
+           /* case NoCollect:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_collect);
                 tv_tips.setText("暂无任何收藏内容");
                 bt_operate.setVisibility(View.GONE);
-                break;
+                break;*/
             case NoNetWork:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_network);
@@ -144,38 +144,42 @@ public class LoadingTip extends LinearLayout {
                 bt_operate.setVisibility(View.VISIBLE);
                 bt_operate.setText("刷新");
                 break;
-            case NoRecorrd:
+           /* case NoRecorrd:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_record);
                 tv_tips.setText("暂无任何记录");
                 bt_operate.setVisibility(View.GONE);
-                break;
-            case NoShopCart:
+                break;*/
+            /*ase NoShopCart:
                 setVisibility(View.VISIBLE);
 
                 img_tip_logo.setImageResource(R.mipmap.no_shopcart);
                 tv_tips.setText("你的购物车还是空的,赶紧行动吧");
                 bt_operate.setVisibility(View.VISIBLE);
                 bt_operate.setText("去商场");
-                break;
-            case NoResult:
+                break;*/
+           /* case NoResult:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.fee_failed);
                 tv_tips.setText("暂无结果");
                 bt_operate.setVisibility(View.GONE);
-                break;
-            case NoLogin:
+                break;*/
+           /* case NoLogin:
                 setVisibility(View.VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.fee_failed);
                 tv_tips.setText("请先登录");
                 bt_operate.setText("登录");
-                break;
+                break;*/
             // 没有收获地址
             case NoReceivedAdress:
                 llTip.setVisibility(GONE);
                 relTip.setVisibility(VISIBLE);
                 tvTipStatusDesc.setText("您还没有添加收获地址");
                 tvTipConfirl.setText("+  新建地址");
+                break;
+            case StartLoading:
+                llTip.setVisibility(GONE);
+                relTip.setVisibility(VISIBLE);
                 break;
         }
         if (getLayoutParams() instanceof LinearLayout.LayoutParams) {

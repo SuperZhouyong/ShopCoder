@@ -93,6 +93,8 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         LogUtils.logd(TAG + "onStart");
         super.onStart();
         if (showDialog) {
+
+
             try {
                 if (LoadingDialog.getmLoadingDialog() == null) {
                     LoadingDialog.showDialogForLoading((Activity) mContext, msg, true);
@@ -110,7 +112,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
         try {
             _onNext(t);
         } catch (Exception r) {
-            LogUtils.logd(TAG + "--onNext"+r.getMessage());
+            LogUtils.logd(TAG + "--onNext" + r.getMessage());
         }
     }
 
@@ -156,6 +158,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
     protected abstract void _onNext(T t);
 
     protected abstract void _onError(String message);
+
 
 //    protected abstract void ShowNoNet();
 

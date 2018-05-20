@@ -64,5 +64,12 @@ public class AppConstant {
     public static final String content = "content";
 
 
-
+    public static final String EnterFragment = "EnterFragment";
+    public static final String RealNameType = "RealNameType";
+    //个人
+    public static final String RealNameTypeOne = "RealNameTypeOne";
+    //企业
+    public static final String RealNameTypeTwo = "RealNameTypeTwo";
+    // 步数
+    public static final String RealNameTypeNum = "RealNameTypeNum";
 }

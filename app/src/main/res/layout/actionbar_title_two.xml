@@ -8,8 +8,8 @@
         android:src="@mipmap/category_logo"
         android:layout_marginLeft="@dimen/x22"
         android:layout_centerVertical="true"
-        android:layout_width="@dimen/x45"
-        android:layout_height="@dimen/y45" />
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/y40" />
     <RelativeLayout
         android:background="@drawable/shape_bg_search"
         android:layout_marginLeft="@dimen/x130"

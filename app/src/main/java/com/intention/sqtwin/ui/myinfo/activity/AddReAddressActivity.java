@@ -16,6 +16,7 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.BeanId;
 import com.intention.sqtwin.bean.SubmitAddressBean;
+import com.intention.sqtwin.ui.myinfo.contract.AddReAddressContract;
 import com.intention.sqtwin.ui.myinfo.model.AddReAddressModel;
 import com.intention.sqtwin.ui.myinfo.presenter.AddReAddressPresenter;
 import com.intention.sqtwin.widget.wheelpicker.WheelPickerUtils;
@@ -142,6 +143,11 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
         });
     }
 
+
+    @Override
+    public void StartLoading(String RequestId) {
+
+    }
 
     @Override
     public void showLoading(String RequestId, String title) {

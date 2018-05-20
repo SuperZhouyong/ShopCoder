@@ -17,5 +17,5 @@
         android:paddingTop="@dimen/y30"
         android:text="艺术家拍品"
         android:textColor="@color/font_1"
-        android:textSize="@dimen/x39" />
+        android:textSize="@dimen/x34" />
 </LinearLayout>

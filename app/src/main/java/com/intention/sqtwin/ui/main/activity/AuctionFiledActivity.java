@@ -242,6 +242,11 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

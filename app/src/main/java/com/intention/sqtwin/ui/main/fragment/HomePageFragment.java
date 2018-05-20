@@ -54,7 +54,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     ImageView ivLove;
     @BindView(R.id.iv_readme)
     ImageView ivReadme;
-    Unbinder unbinder;
+
 
     private LRecyclerViewAdapter mLadapter;
     // 末尾的adapter
@@ -163,6 +163,11 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }
@@ -248,19 +253,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
-        return rootView;
-    }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 
     @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
     public void onViewClicked(View view) {

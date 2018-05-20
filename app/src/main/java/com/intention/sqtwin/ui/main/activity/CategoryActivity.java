@@ -130,6 +130,11 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

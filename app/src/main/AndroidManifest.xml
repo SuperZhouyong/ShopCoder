@@ -127,6 +127,27 @@
         <activity android:name=".ui.main.activity.SearchActivity" />
         <!--店铺-->
         <activity android:name=".ui.Store.activity.TheStoreActivity" />
+        <!--店铺实名认证流程-->
+        <activity android:name=".ui.Store.activity.RealNamePeoOneActivity">
+
+        </activity>
+        <!--店铺认证第一步-->
+        <activity android:name=".ui.Store.activity.RealCerOneActivity">
+
+
+        </activity>
+        <!--店铺认证，个人信息-->
+        <activity android:name=".ui.Store.activity.RealNamePeoTwoActivity" />
+        <!--店铺认证，店铺信息-->
+        <activity android:name=".ui.Store.activity.StoreInfoCerActivity" />
+        <!--企业认证-->
+        <activity android:name=".ui.Store.activity.RealNameEnterOneActivity" />
+        <activity android:name=".ui.Store.activity.RealNameEnterTwoActivity" />
+        <activity android:name=".ui.Store.activity.RealNameEnterThreeActivity" />
+        <!--提交-->
+        <activity android:name=".ui.Store.activity.SubmitAuditActivity" />
+        <!--店铺关注界面-->
+        <activity android:name=".ui.Store.activity.StoreFocusActivity" />
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

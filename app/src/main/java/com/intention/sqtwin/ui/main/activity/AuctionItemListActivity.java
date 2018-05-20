@@ -83,6 +83,11 @@ public class AuctionItemListActivity extends BaseActivity<AuctionListPresenter, 
 
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

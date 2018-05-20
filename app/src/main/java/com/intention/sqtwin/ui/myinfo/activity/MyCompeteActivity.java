@@ -98,6 +98,11 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

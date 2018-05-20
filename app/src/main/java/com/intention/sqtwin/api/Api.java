@@ -102,13 +102,14 @@ public class Api {
                 }*/
                 // 登陆的话
 
-                LogUtils.logd("Retorfit" + "调用了headerInterceptor" + "----");
+//                LogUtils.logd("Retorfit" + "调用了headerInterceptor" + "-------"+UserUtil.getLoginInfo()+"---"+UserUtil.getLoginInfo().getData()+"  "+UserUtil.getLoginInfo().getData().getMember_id());
                 String timestamp = PublicKetUtils.getTimestamp();
                 Request build = originalRequest.newBuilder()
-                        .addHeader("Content-Type", getContentType(hostType))
+//                        .addHeader("Content-Type", getContentType(hostType))
 //                        .addHeader("timestamp", timestamp)
 //                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
-                        .addHeader("SESSIONID", UserUtil.getLoginInfo()==null?"":String.valueOf(UserUtil.getLoginInfo().getId()))
+
+                        .addHeader("SESSIONID", UserUtil.getLoginInfo()==null?"":String.valueOf(UserUtil.getLoginInfo().getMember_id()))
                         .addHeader("Cache-Control", getCacheControl())
 //                        .header("Cache-Control", getCacheControl())
                         .build();

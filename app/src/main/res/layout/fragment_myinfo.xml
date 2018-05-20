@@ -23,9 +23,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/x22"
                 android:layout_marginTop="14dp"
-                android:src="@mipmap/share" />
+                android:src="@mipmap/myinfo_edit" />
 
-            <ImageView
+            <com.intention.sqtwin.widget.CircleImageView
                 android:id="@+id/iv_head_icon"
                 android:layout_width="@dimen/x144"
                 android:layout_height="@dimen/y144"

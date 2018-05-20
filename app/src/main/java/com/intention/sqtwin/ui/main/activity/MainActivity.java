@@ -68,8 +68,28 @@ public class MainActivity extends BaseActivity {
 
     private boolean isExit;
 
+    private Boolean isLoadEnterFragment = false;
+
 
     private String moneyNum;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // 初始化fragmnet
+        initFragment(savedInstanceState);
+        tabLayout.measure(0, 0);
+        tabLayoutHeight = tabLayout.getMeasuredHeight();
+        //监听菜单显示或隐藏
+       /* mRxManager.on(AppConstant.MENU_SHOW_HIDE, new Action1<Boolean>() {
+
+            @Override
+            public void call(Boolean hideOrShow) {
+                startAnimation(hideOrShow);
+            }
+        });*/
+
+    }
 
     /**
      * @param intent
@@ -171,7 +191,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void SwitchTo(int position) {
+    public void SwitchTo(int position) {
         LogUtils.logd("主页菜单position" + position);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         switch (position) {
@@ -203,6 +223,8 @@ public class MainActivity extends BaseActivity {
                 transaction.hide(mMallFragment);
                 transaction.hide(mPositionFragment);
                 transaction.commitAllowingStateLoss();
+                isLoadEnterFragment = true;
+                mRxManager.post(AppConstant.EnterFragment, isLoadEnterFragment);
                 break;
             //商城
             case 3:
@@ -226,24 +248,6 @@ public class MainActivity extends BaseActivity {
             default:
                 break;
         }
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // 初始化fragmnet
-        initFragment(savedInstanceState);
-        tabLayout.measure(0, 0);
-        tabLayoutHeight = tabLayout.getMeasuredHeight();
-        //监听菜单显示或隐藏
-       /* mRxManager.on(AppConstant.MENU_SHOW_HIDE, new Action1<Boolean>() {
-
-            @Override
-            public void call(Boolean hideOrShow) {
-                startAnimation(hideOrShow);
-            }
-        });*/
-
     }
 
     @Override
@@ -342,6 +346,11 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    public void setCurrentPostion(int postion) {
+        SwitchTo(postion);
+        tabLayout.setCurrentTab(postion);
     }
 
     private void initFragment(Bundle savedInstanceState) {

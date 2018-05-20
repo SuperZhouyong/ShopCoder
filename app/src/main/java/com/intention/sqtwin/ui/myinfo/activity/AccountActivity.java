@@ -71,6 +71,11 @@ public class AccountActivity extends BaseActivity<AccountPresenter, AccountModel
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

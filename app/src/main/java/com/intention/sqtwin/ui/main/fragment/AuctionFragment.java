@@ -114,6 +114,11 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
 
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

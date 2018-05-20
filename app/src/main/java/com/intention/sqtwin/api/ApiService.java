@@ -24,9 +24,13 @@ import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.StoreInfoBean;
+import com.intention.sqtwin.bean.StoreInfoComBean;
+import com.intention.sqtwin.bean.StoreMessageBean;
 import com.intention.sqtwin.bean.SubmitAddressBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
+import com.intention.sqtwin.bean.TradingDeatilBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.bean.UpdateIndentityBean;
 
@@ -345,4 +349,42 @@ public interface ApiService {
             @Field("recharge") Float recharge
 
     );
+
+    /**
+     * 入驻界面
+     *
+     * @return
+     */
+    @GET("membercenter/get_store_info")
+    Observable<StoreInfoBean> getStoreInfo(
+
+
+    );
+
+    /**
+     * 获取交易明细
+     *
+     * @return
+     */
+    @GET("Membercenter/financial_details")
+    Observable<TradingDeatilBean> getTradingDeatil();
+
+    /**
+     * 获取店铺关注列表
+     *
+     * @return
+     */
+    @GET("membercenter/get_favorite")
+    Observable<StoreInfoComBean> getStoreInfoComBean(
+            @Query("page") Integer page,
+            @Query("type") Integer type
+    );
+
+    /**
+     * 获取卖家消息列表
+     * @return
+     */
+    @GET("membercenter/get_store_message_list")
+    Observable<StoreMessageBean> getStoreMessagebean();
+
 }

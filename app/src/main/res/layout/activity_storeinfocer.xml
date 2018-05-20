@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <com.baoyachi.stepview.HorizontalStepView
+
+            android:id="@+id/stepView"
+            android:layout_width="@dimen/x700"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bottom_colour"
+            android:padding="@dimen/x30"
+            android:text="请上传真实的个人信息,认证通过后降无法修改"
+            android:textColor="@color/font_12"
+            android:textSize="@dimen/x24" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:paddingLeft="@dimen/x22">
+
+            <TextView
+                android:id="@+id/tv_one"
+                android:layout_width="@dimen/x200"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="店铺名字"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x28" />
+
+            <EditText
+                android:id="@+id/ec_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x210"
+                android:background="@null"
+                android:hint="请输入店铺名称"
+                android:maxLines="1"
+                android:minWidth="@dimen/x200"
+                android:singleLine="true"
+                android:textColor="@color/font_1"
+                android:textColorHint="@color/font_3"
+                android:textSize="@dimen/x30" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/item_divider" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:paddingLeft="@dimen/x22">
+
+            <TextView
+                android:id="@+id/tv_two"
+                android:layout_width="@dimen/x200"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="店铺LOGO"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x28" />
+
+            <EditText
+                android:id="@+id/ec_identity_num"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x210"
+                android:background="@null"
+                android:hint="请上传店铺LOGO"
+                android:maxLines="1"
+                android:minWidth="@dimen/x200"
+                android:singleLine="true"
+                android:textColor="@color/font_1"
+                android:textColorHint="@color/font_3"
+                android:textSize="@dimen/x30" />
+
+        </RelativeLayout>
+
+        <include layout="@layout/item_divider" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y400"
+            android:paddingLeft="@dimen/x22">
+
+            <TextView
+                android:layout_width="@dimen/x200"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y30"
+
+                android:text="店铺介绍"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x28" />
+
+            <EditText
+                android:id="@+id/ec_phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x210"
+                android:layout_marginTop="@dimen/y30"
+                android:background="@null"
+                android:hint="请输入店铺介绍，不超过500字"
+                android:lineSpacingExtra="@dimen/x10"
+                android:minWidth="@dimen/x200"
+                android:paddingRight="@dimen/x22"
+                android:textColor="@color/font_1"
+                android:textColorHint="@color/font_3"
+                android:textSize="@dimen/x30" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="@dimen/x560"
+        android:layout_height="@dimen/y70"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y100"
+        android:background="@drawable/tv_bg_confirm"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
+</LinearLayout>

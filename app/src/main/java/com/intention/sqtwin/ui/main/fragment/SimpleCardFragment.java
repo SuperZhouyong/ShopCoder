@@ -124,6 +124,11 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

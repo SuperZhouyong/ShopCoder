@@ -6,7 +6,7 @@ import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.SubmitAddressBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
-import com.intention.sqtwin.ui.myinfo.activity.AddReAddressContract;
+import com.intention.sqtwin.ui.myinfo.contract.AddReAddressContract;
 
 import rx.Observable;
 

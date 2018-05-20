@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/LRecyclerview" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/loopViewpager" />
+            <option value="$PROJECT_DIR$/stepview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

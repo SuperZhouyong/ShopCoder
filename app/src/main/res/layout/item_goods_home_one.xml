@@ -63,7 +63,7 @@
             android:paddingTop="@dimen/y10"
             android:text="青花瓷拍卖专场"
             android:textColor="@color/font_1"
-            android:textSize="@dimen/x35" />
+            android:textSize="@dimen/x28" />
 
 
     </RelativeLayout>

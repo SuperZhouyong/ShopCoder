@@ -11,17 +11,22 @@ import android.widget.RelativeLayout;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.MyInfoBean;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.myinfo.activity.AccountActivity;
+import com.intention.sqtwin.ui.myinfo.activity.EditInfoActivity;
 import com.intention.sqtwin.ui.myinfo.activity.IdentityProveActivity;
 import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.ui.myinfo.activity.MyCompeteActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
 import com.intention.sqtwin.ui.myinfo.contract.MyCompeteContract;
+import com.intention.sqtwin.widget.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +43,7 @@ public class MyInfoFragment extends LazzyFragment {
     @BindView(R.id.iv_shareicon)
     ImageView ivShareicon;
     @BindView(R.id.iv_head_icon)
-    ImageView ivHeadIcon;
+    CircleImageView ivHeadIcon;
     @BindView(R.id.ll_one)
     LinearLayout llOne;
     @BindView(R.id.ll_two)
@@ -99,6 +104,8 @@ public class MyInfoFragment extends LazzyFragment {
                     protected void _onError(String message) {
 
                     }
+
+
                 }));
     }
 
@@ -118,6 +125,7 @@ public class MyInfoFragment extends LazzyFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_shareicon:
+                startActivity(getActivity(), EditInfoActivity.class);
                 break;
             case R.id.iv_head_icon:
                 break;
@@ -144,12 +152,15 @@ public class MyInfoFragment extends LazzyFragment {
                 break;
             case R.id.rel_setting:
 
+
                 break;
             case R.id.rel_help:
                 break;
             case R.id.rel_store_mange:
+                ((MainActivity) getActivity()).setCurrentPostion(2);
                 break;
             case R.id.rel_focus:
+                startActivity(getActivity(), StoreFocusActivity.class);
                 break;
         }
     }

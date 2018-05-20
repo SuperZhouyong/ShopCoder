@@ -46,9 +46,10 @@
             android:layout_toRightOf="@id/tv_bid_desc"
             android:text="价格"
             android:textColor="@color/font_2"
-            android:textSize="@dimen/x24" />
+            android:textSize="@dimen/x28" />
 
         <TextView
+            android:textSize="@dimen/x26"
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

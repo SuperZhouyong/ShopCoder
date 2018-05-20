@@ -146,6 +146,11 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

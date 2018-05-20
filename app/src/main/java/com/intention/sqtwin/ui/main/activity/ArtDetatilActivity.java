@@ -133,6 +133,11 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
     }
 
     @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
     public void showLoading(String RequestId, String title) {
 
     }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y180"
+        android:background="@color/white">
+
+        <com.intention.sqtwin.widget.CircleImageView
+            android:id="@+id/iv_head"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/y100"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_head"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_toRightOf="@id/iv_head"
+            android:text="名字"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_name"
+            android:layout_below="@id/tv_name"
+            android:layout_marginTop="@dimen/y20"
+            android:layout_toRightOf="@id/iv_head"
+            android:text="立即实名认证享更多特权服务"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+
+            android:id="@+id/tv_to_cer"
+            android:layout_width="@dimen/x90"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:background="@color/app_bottom_colour"
+            android:gravity="center"
+            android:text="未认证"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y310"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginRight="@dimen/x22"
+        android:layout_marginTop="@dimen/y50">
+
+        <LinearLayout
+            android:id="@+id/ll_one_peo"
+            android:layout_width="@dimen/x310"
+            android:layout_height="@dimen/y310"
+            android:background="@drawable/real_ll_two_select"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="@dimen/x80"
+                android:layout_height="@dimen/y75"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/real_cer_one_peo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y20"
+                android:text="个人实名认证"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y20"
+                android:background="@drawable/real_cer_peo_enter"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x40"
+                android:paddingRight="@dimen/x40"
+                android:paddingTop="@dimen/y10"
+                android:text="申请"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x28" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_one_enter"
+            android:layout_width="@dimen/x310"
+            android:layout_height="@dimen/y310"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/real_ll_two_select"
+
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="@dimen/x80"
+                android:layout_height="@dimen/y75"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/real_cer_one_enter" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y20"
+                android:text="企业实名认证"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y20"
+                android:background="@drawable/real_cer_peo_enter"
+                android:paddingBottom="@dimen/y10"
+                android:paddingLeft="@dimen/x40"
+                android:paddingRight="@dimen/x40"
+                android:paddingTop="@dimen/y10"
+                android:text="申请"
+                android:textColor="@color/font_2"
+                android:textSize="@dimen/x28" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</LinearLayout>
