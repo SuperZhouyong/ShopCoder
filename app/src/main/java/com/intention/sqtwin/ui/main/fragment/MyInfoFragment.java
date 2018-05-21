@@ -1,6 +1,7 @@
 package com.intention.sqtwin.ui.main.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.ui.myinfo.activity.MyCompeteActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
 import com.intention.sqtwin.ui.myinfo.contract.MyCompeteContract;
+import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.SPUtils;
 import com.intention.sqtwin.widget.CircleImageView;
 
 import butterknife.BindView;
@@ -91,22 +94,7 @@ public class MyInfoFragment extends LazzyFragment {
 
     @Override
     protected void RequestNetWorkData() {
-        mRxManager.add(Api.getDefault(HostType.Jsonpart)
-                .getMyInfoBean()
-                .compose(RxSchedulers.<MyInfoBean>io_main())
-                .subscribe(new RxSubscriber<MyInfoBean>(getActivity()) {
-                    @Override
-                    protected void _onNext(MyInfoBean myInfoBean) {
 
-                    }
-
-                    @Override
-                    protected void _onError(String message) {
-
-                    }
-
-
-                }));
     }
 
     @Override
@@ -116,6 +104,8 @@ public class MyInfoFragment extends LazzyFragment {
 
     @Override
     protected void initView() {
+        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
+            ImageLoaderUtils.display(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
 
 
     }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * @data 2017/4/28 0028
- * @aurher Administrator
+ * @aurher Administrator  目前按照后台的逻辑修改
  */
 
 public class SQTUser implements Serializable {

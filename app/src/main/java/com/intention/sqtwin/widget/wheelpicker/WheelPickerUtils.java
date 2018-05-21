@@ -52,7 +52,62 @@ public class WheelPickerUtils {
 //        }
         return instance;
     }
+    /**
+     * 只有单个选择器的PopupWindow
+     */
+    public static PopupWindow oneWheelPickerPop(View view,
+                                                final TextView textView, final List list, boolean isCyclic) {
 
+        final PopupWindow pop = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+//        final PopupWindow pop =getPopupWindowInstance(view);
+        pop.setOutsideTouchable(true);
+
+        pop.setFocusable(true);// 点击back退出pop
+        pop.setBackgroundDrawable(new ColorDrawable(0x30ff0000));// 设置背景透明，点击back退出pop
+        pop.showAtLocation(view, Gravity.BOTTOM, 0, -450);//在父控件下方出来
+        final WheelPicker wheelPicker = (WheelPicker) view.findViewById(R.id.wheelPicker);
+        Button cancel = (Button) view.findViewById(R.id.cancel);
+        Button confirm = (Button) view.findViewById(R.id.confirm);
+//        wheelPicker.setOnItemSelectedListener(new WheelPicker.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(WheelPicker picker, Object data, int position) {
+//                String chooseitem = String.valueOf(data);
+//                text = chooseitem;
+//                TAG = true;
+//            }
+//        });
+
+        if (list != null) {
+            wheelPicker.setData(list);// 设置数据
+        }
+        wheelPicker.setCyclic(isCyclic);// 是否循环
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pop.dismiss();
+            }
+        });
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pop.dismiss();
+
+                // 判断滚轮是否在有过滑动，然后点击确定
+//                if (TAG) {
+//                    textView.setText(text);
+//                    TAG = false;
+//                    text = "";
+//                } else {
+//                    textView.setText((String) list.get(0));
+//                }
+                textView.setText((String) list.get(wheelPicker.getCurrentItemPosition()));
+
+            }
+        });
+        return pop;
+    }
 
     public static PopupWindow threeWheelPickerPop(View view,
                                                   final TextView textView, final List<AllRegion.DataBean> mList) {

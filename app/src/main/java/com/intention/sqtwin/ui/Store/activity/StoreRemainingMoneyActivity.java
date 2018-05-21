@@ -1,7 +1,6 @@
 package com.intention.sqtwin.ui.Store.activity;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
@@ -19,7 +18,6 @@ import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.StoreMoneyBean;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

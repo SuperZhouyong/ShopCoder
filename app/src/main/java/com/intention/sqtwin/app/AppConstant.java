@@ -74,4 +74,5 @@ public class AppConstant {
     public static final String RealNameTypeNum = "RealNameTypeNum";
     public static final String OrderListStatus = "OrderListStatus";
     public static final String OrderListStatusType = "OrderListStatusType";
+    public static final String ImageUrl = "ImageUrl";
 }

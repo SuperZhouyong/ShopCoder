@@ -109,10 +109,13 @@
         <activity android:name=".ui.myinfo.activity.MessageActicity" />
         <!--账户-->
         <activity android:name=".ui.myinfo.activity.AccountActivity" />
+
         <!--参拍-->
         <activity android:name=".ui.myinfo.activity.MyCompeteActivity" />
         <!--身份认证-->
         <activity android:name=".ui.myinfo.activity.IdentityProveActivity" />
+        <!--绑定手机号-->
+        <activity android:name=".ui.myinfo.activity.BindPhoneNumActivity" />
         <!--绑定银行卡-->
         <activity android:name=".ui.myinfo.activity.BindBankCardActivity" />
         <!--收获地址-->
