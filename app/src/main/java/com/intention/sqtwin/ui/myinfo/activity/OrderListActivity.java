@@ -1,5 +1,8 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -9,8 +12,10 @@ import android.widget.TextView;
 
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BasePageStateAdapter;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.myinfo.fragment.OrderListFragment;
 import com.intention.sqtwin.widget.SlidingTabLayout;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
@@ -22,7 +27,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * Description: 保佑无bug
+ * Description: 会员，店铺 共用的一个列表
  * Data：2018/5/10-上午12:09
  * Blog：Super简单
  * Author: ZhouYong
@@ -46,9 +51,10 @@ public class OrderListActivity extends BaseActivity implements OnTabSelectListen
     ViewPager viewpager;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    private String[] mTitles = {"全部","未付款","已发货","已收货"};
+    private String[] mTitles = {"全部", "未付款", "已发货", "已收货"};
     private BasePageStateAdapter basePageStateAdapter;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_orderlist;
@@ -58,25 +64,42 @@ public class OrderListActivity extends BaseActivity implements OnTabSelectListen
     public void initPresenter() {
 
     }
-    public static OrderListFragment getInstance(String title, Integer category_id) {
-        OrderListFragment sf = new OrderListFragment();
-        sf.mTitle = title;
-        sf.category_id = category_id;
-        return sf;
+
+    /**
+     *
+     * @param activity
+     * @param status 订单状态：0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
+     * @param type  0=商城订单；1=拍卖订单
+     */
+    public static void GotoOrderListActivity(BaseActivity activity, Integer status, Integer type) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.OrderListStatus, status);
+        bundle.putInt(AppConstant.OrderListStatusType, type);
+        activity.startActivity(OrderListActivity.class, bundle);
+
+
     }
+
     @Override
     public void initView() {
+        int mOrderListStatus = getIntent().getExtras().getInt(AppConstant.OrderListStatus, 0);
+        int mOdeerListStatusType = getIntent().getExtras().getInt(AppConstant.OrderListStatusType, 1);
+        leftTitle.setVisibility(View.GONE);
+        centerTitle.setText("订单列表");
+        relSearch.setVisibility(View.GONE);
+
         slidTabLayout.setOnTabSelectListener(this);
 //        List<PpAllDateBean.DataBeanX.MainCategoryBean> main_category = allDateBean.getData().getMain_category();
-        for (String s:mTitles){
-
+        for (int i = 0; i < mTitles.length; i++) {
+            mFragments.add(OrderListFragment.getInstance(mTitles[i], i, mOdeerListStatusType));
         }
 
         basePageStateAdapter = new BasePageStateAdapter(getSupportFragmentManager(), mFragments, Arrays.asList(mTitles));
         viewpager.setAdapter(basePageStateAdapter);
         slidTabLayout.setViewPager(viewpager);
-    }
 
+        slidTabLayout.setCurrentTab(mOrderListStatus);
+    }
 
 
     @OnClick({R.id.rel_back, R.id.rel_search})

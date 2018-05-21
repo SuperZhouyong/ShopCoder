@@ -16,7 +16,7 @@ public class StoreMessageBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : [{"storemsg_id":12,"storemt_code":"1","store_id":4,"storemsg_content":"1","storemsg_addtime":1,"storemsg_readids":"1","store_logo":"beijing.aliyuncs.com/home/store/goods/12/oss_12_2018051715511178174.png"}]
+     * data : [{"storemsg_id":12,"storemt_code":"1","store_id":4,"storemsg_content":"1","storemsg_addtime":"0000-00-00","storemsg_readids":"1","store_logo":"beijing.aliyuncs.com/home/store/goods/12/oss_12_2018051715511178174.png"}]
      */
 
     private boolean is_success;
@@ -53,7 +53,7 @@ public class StoreMessageBean {
          * storemt_code : 1
          * store_id : 4
          * storemsg_content : 1
-         * storemsg_addtime : 1
+         * storemsg_addtime : 0000-00-00
          * storemsg_readids : 1
          * store_logo : beijing.aliyuncs.com/home/store/goods/12/oss_12_2018051715511178174.png
          */

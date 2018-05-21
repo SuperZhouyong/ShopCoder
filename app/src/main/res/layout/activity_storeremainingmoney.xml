@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y546"
+        android:background="@color/title_bg">
+        <include
+            android:id="@+id/title"
+            layout="@layout/actionbar_title" />
+        <TextView
+
+            android:id="@+id/tv_num_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_desc"
+            android:layout_centerInParent="true"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x45"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y120"
+            android:layout_alignParentBottom="true"
+            android:background="@color/text_bg"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="代付款"
+                    android:textColor="@color/font_14"
+                    android:textSize="@dimen/x24" />
+
+                <TextView
+                    android:id="@+id/tv_num_one_com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x30" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="代发货"
+                    android:textColor="@color/font_14"
+                    android:textSize="@dimen/x24" />
+
+                <TextView
+                    android:id="@+id/tv_num_two_com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x30" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+                <TextView
+
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="待收货"
+                    android:textColor="@color/font_14"
+                    android:textSize="@dimen/x24" />
+
+                <TextView
+                    android:id="@+id/tv_num_three_com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/x30" />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/y40"
+        android:id="@+id/rel_charge"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y107"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_charge"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/icon_charge" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@id/iv_charge"
+            android:text="充值"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_right" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/y15"
+        android:id="@+id/rel_cash"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y107"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_cash"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/icon_cash" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@id/iv_cash"
+            android:text="提现"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_right" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/y15"
+        android:id="@+id/rel_management_bank"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y107"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_management_bank"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:src="@mipmap/icon_manger_bank" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@id/iv_management_bank"
+            android:text="管理银行卡"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_right" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -27,6 +27,9 @@ import com.intention.sqtwin.bean.ReceivedGoodsBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.bean.StoreMessageBean;
+import com.intention.sqtwin.bean.StoreMoneyBean;
+import com.intention.sqtwin.bean.StoreReportOne;
+import com.intention.sqtwin.bean.StoreReportTwo;
 import com.intention.sqtwin.bean.SubmitAddressBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
@@ -153,15 +156,19 @@ public interface ApiService {
             @Query("page_no") Integer page);
 
     /**
-     * 获取订单列表
-     *
-     * @param status
+     * 获取订单列表 （会员中心）
+     * @param status title状态
+     * @param page_no 页码
+     * @param type  个人和店铺的去人
      * @return
      */
     @GET("membercenter/get_order_list")
     Observable<OrderListBean> getOrderList(
 
-            @Query("status") Integer status);
+            @Query("status") Integer status,
+            @Query("page_no") Integer page_no,
+            @Query("type") Integer type
+    );
 
     /**
      * 获取消息列表
@@ -382,9 +389,33 @@ public interface ApiService {
 
     /**
      * 获取卖家消息列表
+     *
      * @return
      */
     @GET("membercenter/get_store_message_list")
     Observable<StoreMessageBean> getStoreMessagebean();
 
+    /**
+     * 获取店铺余额
+     *
+     * @return
+     */
+    @GET("membercenter/get_store_balance")
+    Observable<StoreMoneyBean> get_store_balance();
+
+    /**
+     * 获取 资金报表接口
+     *
+     * @return
+     */
+    @GET("membercenter/get_capital_report")
+    Observable<StoreReportOne> getCapitalReport();
+
+    /**
+     * 获取 经营报表接口
+     *
+     * @return
+     */
+    @GET("membercenter/get_manage_report")
+    Observable<StoreReportTwo> getManageReport();
 }

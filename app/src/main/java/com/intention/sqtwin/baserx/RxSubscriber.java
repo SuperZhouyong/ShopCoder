@@ -133,7 +133,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
 //            ShowNoNet();
                 LogUtils.logd(TAG + "无网络状态");
             } else if (e instanceof SocketTimeoutException) {
-                _onError("SocketTimeoutException");
+                _onError(BaseApplication.getAppContext().getString(R.string.net_error));
                 LogUtils.logd(TAG + "无网络状态");
             } /*else if (e instanceof Exception) {
                 _onError("Exception");
@@ -141,7 +141,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
             }*/
             //服务器
             else if (e instanceof ServerException) {
-                _onError(e.getMessage());
+                _onError(BaseApplication.getAppContext().getString(R.string.net_error));
                 LogUtils.logd("DialogForLoading" + "服务器位置错误");
             }
             //其它

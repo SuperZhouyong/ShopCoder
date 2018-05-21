@@ -1,6 +1,9 @@
 package com.intention.sqtwin.ui.main.fragment;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,14 +14,20 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.ui.Store.activity.RealCerOneActivity;
+import com.intention.sqtwin.ui.Store.activity.StoreMessageActivity;
+import com.intention.sqtwin.ui.Store.activity.StoreRemainingMoneyActivity;
+import com.intention.sqtwin.ui.Store.activity.StoreReportActivity;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.main.contract.EnterContract;
 import com.intention.sqtwin.ui.main.model.EnterModel;
 import com.intention.sqtwin.ui.main.presenter.EnterPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
 import com.intention.sqtwin.widget.CircleImageView;
 
-
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import rx.functions.Action1;
 
 /**
@@ -56,8 +65,8 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     LinearLayout llTwo;
     @BindView(R.id.ll_three)
     LinearLayout llThree;
-    @BindView(R.id.ll_fore)
-    LinearLayout llFore;
+    /*   @BindView(R.id.ll_fore)
+       LinearLayout llFore;*/
     @BindView(R.id.ll_five)
     LinearLayout llFive;
     @BindView(R.id.iv_account)
@@ -74,6 +83,7 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     RelativeLayout relIdentit;
     @BindView(R.id.title)
     RelativeLayout relHeadTitle;
+    Unbinder unbinder;
 
     @Override
     protected int getLayoutResource() {
@@ -108,19 +118,6 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     }
 
 
-    @OnClick({R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-
-            case R.id.rel_remaining_sum:
-                break;
-            case R.id.rel_seller_message:
-                break;
-            case R.id.rel_identit:
-                break;
-        }
-    }
-
     @Override
     public void StartLoading(String RequestId) {
 
@@ -153,5 +150,46 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
         },1000);*/
         startActivity(RealCerOneActivity.class, null);
 //        sta
+    }
+
+
+    @OnClick({R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.ll_five, R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit})
+    public void onViewClicked(View view) {
+
+        switch (view.getId()) {
+            // 待付款
+            case R.id.ll_one:
+
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 0);
+                break;
+            //待发货---> 已发货
+            case R.id.ll_two:
+
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 0);
+                break;
+            // 待收货 ---> 已收货
+            case R.id.ll_three:
+
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 0);
+                break;
+            //售后
+          /*  case R.id.ll_fore:
+                break;*/
+            //店铺报表
+            case R.id.ll_five:
+                startActivity(StoreReportActivity.class, null);
+                break;
+            //余额
+            case R.id.rel_remaining_sum:
+                startActivity(StoreRemainingMoneyActivity.class, null);
+                break;
+            // 进入消息界面
+            case R.id.rel_seller_message:
+                startActivity(StoreMessageActivity.class, null);
+                break;
+
+            case R.id.rel_identit:
+                break;
+        }
     }
 }

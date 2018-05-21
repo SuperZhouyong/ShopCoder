@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="销售报表"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x30" />
+
+        <ImageView
+            android:id="@+id/iv_two"
+            android:layout_width="@dimen/x14"
+            android:layout_height="@dimen/y26"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginRight="@dimen/x22"
+            android:gravity="center_vertical"
+            android:src="@mipmap/list_right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_two"
+            android:gravity="center_vertical"
+            android:text="更多"
+            android:textColor="@color/font_3"
+            android:textSize="@dimen/x24" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@color/app_bottom_colour"
+            android:orientation="vertical">
+
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30">
+
+
+        <TextView
+            android:id="@+id/tv_two_one"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="今日已付款"
+            android:textColor="@color/font_7"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_two_one_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/tv_two_one"
+            android:gravity="center_vertical"
+            android:text="30"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x34" />
+
+
+        <TextView
+            android:id="@+id/tv_two_one_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x22"
+            android:gravity="center_vertical"
+            android:text="30"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x34" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toLeftOf="@id/tv_two_one_num"
+            android:gravity="center"
+            android:text="笔数"
+            android:textColor="@color/font_7"
+            android:textSize="@dimen/x26" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@color/app_bottom_colour"
+            android:orientation="vertical">
+
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y88"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30">
+
+
+        <TextView
+            android:id="@+id/tv_two_two"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="今日已退款"
+            android:textColor="@color/font_7"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/tv_two_two_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_toRightOf="@id/tv_two_two"
+            android:gravity="center_vertical"
+            android:text="30"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x34" />
+
+
+
+        <TextView
+            android:id="@+id/tv_two_two_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x22"
+            android:gravity="center_vertical"
+            android:text="30"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x34" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toLeftOf="@id/tv_two_two_num"
+            android:gravity="center"
+            android:text="笔数"
+            android:textColor="@color/font_7"
+            android:textSize="@dimen/x26" />
+    </RelativeLayout>
+
+
+</LinearLayout>

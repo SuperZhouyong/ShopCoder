@@ -72,4 +72,6 @@ public class AppConstant {
     public static final String RealNameTypeTwo = "RealNameTypeTwo";
     // 步数
     public static final String RealNameTypeNum = "RealNameTypeNum";
+    public static final String OrderListStatus = "OrderListStatus";
+    public static final String OrderListStatusType = "OrderListStatusType";
 }

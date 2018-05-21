@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
+import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -30,27 +31,60 @@ import butterknife.BindView;
  * QQ: 437397161
  */
 
-public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderListModer> implements OrderListContract.View, OnRefreshListener, LoadingTip.onReloadListener {
-    public String mTitle;
-    public Integer category_id;
+public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderListModer> implements OrderListContract.View, OnRefreshListener, LoadingTip.onReloadListener, OnNetWorkErrorListener {
+    private String mTitle;
+
     @BindView(R.id.mRecyclerView)
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    private CommonRecycleViewAdapter<OrderListBean> mAdapter;
+    private CommonRecycleViewAdapter<OrderListBean.DataBean> mAdapter;
     private LRecyclerViewAdapter mLAdapter;
     private int pagesize = 10;
+    //yema
+    private Integer page = 0;
+    //status
+    private Integer category_id;
+    //type
+    private Integer type;
 
     @Override
     public void initPresenter() {
         mPresenter.setVM(this, mModel);
     }
 
+    /**
+     * @param title
+     * @param category_id 订单状态：0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
+     * @param type        0=商城订单；1=拍卖订单
+     * @return
+     */
+    public static OrderListFragment getInstance(String title, Integer category_id, Integer type) {
+        OrderListFragment sf = new OrderListFragment();
+        sf.mTitle = title;
+        if (category_id == 0)
+            category_id = 0;
+        if (category_id == 1)
+            category_id = 10;
+        if (category_id == 2)
+            category_id = 30;
+        if (category_id == 3)
+            category_id = 40;
+        sf.category_id = category_id;
+        sf.type = type;
+        return sf;
+    }
+
     @Override
     protected void initView() {
-        mAdapter = new CommonRecycleViewAdapter<OrderListBean>(getActivity(), R.layout.item_orderlist) {
+        mAdapter = new CommonRecycleViewAdapter<OrderListBean.DataBean>(getActivity(), R.layout.item_orderlist) {
             @Override
-            public void convert(ViewHolderHelper helper, OrderListBean orderListBean, int position) {
+            public void convert(ViewHolderHelper helper, OrderListBean.DataBean orderListBean, int position) {
+                //todo type 可以换成内置的type
+                helper.setText(R.id.tv_order_name, type == 0 ? "商城订单" : "拍卖订单");
+                helper.setImageUrl(R.id.iv_goods_pic,orderListBean.getMain_goods_image());
+                helper.setText(R.id.tv_goods_name,orderListBean.getMain_goods_name());
+                helper.setText(R.id.tv_goods_time,orderListBean.getOrder_time());
 
             }
         };
@@ -81,13 +115,13 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
 
     @Override
     protected void RequestNetWorkData() {
-        mPresenter.getOrderListRquest(category_id);
+        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
 
     }
 
     @Override
     public void StartLoading(String RequestId) {
-
+        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override
@@ -105,19 +139,26 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
         if (AppConstant.oneMessage.equals(RequestId)) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
             mLoadingTip.setOnReloadListener(this);
-
         }
     }
 
     @Override
     public void returnOrderList(OrderListBean orderListBean) {
-
-        if (mAdapter.getDataList().size() != 0) {
-            mAdapter.clearData();
+        if (!orderListBean.isIs_success()) {
+            if (page == 0)
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+            else
+                mRecyclerView.setOnNetWorkErrorListener(this);
+            return;
+        }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+        if (page == 0 && mAdapter.getDataList().size() != 0) {
+            mAdapter.clear();
             mLAdapter.notifyDataSetChanged();
         }
-        //测试未写完毕
-        mAdapter.add(orderListBean);
+        mAdapter.addAll(orderListBean.getData());
+        ++page;
     }
 
 
@@ -130,11 +171,16 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
     @Override
     public void onRefresh() {
 
-        mPresenter.getOrderListRquest(category_id);
+        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
     }
 
     @Override
     public void reloadLodTip() {
-        mPresenter.getOrderListRquest(category_id);
+        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+    }
+
+    @Override
+    public void reload() {
+        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
     }
 }

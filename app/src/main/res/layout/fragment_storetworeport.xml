@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--   <include
+           android:id="@+id/title"
+           layout="@layout/actionbar_title" />-->
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="@color/app_bottom_colour" />
+
+            <include layout="@layout/store_report_two_one" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="@color/app_bottom_colour" />
+
+            <include layout="@layout/store_report_two_two" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="@color/app_bottom_colour" />-->
+
+            <include layout="@layout/store_report_two_three" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y20"
+                android:background="@color/app_bottom_colour" />
+
+            <!--<include layout="@layout/store_report_fore" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y50"
+                android:background="@color/app_bottom_colour" />-->
+        </LinearLayout>
+    </ScrollView>
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoadingTip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

@@ -72,8 +72,8 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
         mAdapter = new CommonRecycleViewAdapter<StoreMessageBean.DataBean>(this, R.layout.item_storemessage) {
             @Override
             public void convert(ViewHolderHelper helper, StoreMessageBean.DataBean storeMessageBean, int position) {
-//                    helper.setImageUrl(R.id.iv_head,storeMessageBean.get)
-                helper.setText(R.id.tv_name, storeMessageBean.getStoremsg_content());
+                helper.setImageUrl(R.id.iv_head, storeMessageBean.getStore_logo());
+                helper.setText(R.id.tv_desc, storeMessageBean.getStoremsg_content());
                 helper.setText(R.id.tv_time, storeMessageBean.getStoremsg_addtime());
             }
         };

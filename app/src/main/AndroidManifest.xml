@@ -148,6 +148,12 @@
         <activity android:name=".ui.Store.activity.SubmitAuditActivity" />
         <!--店铺关注界面-->
         <activity android:name=".ui.Store.activity.StoreFocusActivity" />
+        <!--卖家消息-->
+        <activity android:name=".ui.Store.activity.StoreMessageActivity" />
+        <!--店铺金额-->
+        <activity android:name=".ui.Store.activity.StoreRemainingMoneyActivity" />
+        <!--店铺报表-->
+        <activity android:name=".ui.Store.activity.StoreReportActivity" />
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

@@ -16,14 +16,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Description: 绝无Bug
+ * Description: 已经被 入驻界面替代
  * Data：2018/5/18 0018-下午 16:03
  * Blog：Super简单
  * Author: ZhouYong
  */
 
-public class TheStoreActivity extends BaseActivity {
+public class TheStoreActivity {
 
+/*
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
@@ -100,5 +101,6 @@ public class TheStoreActivity extends BaseActivity {
         }
     }
 
+*/
 
 }
