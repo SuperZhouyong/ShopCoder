@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -31,7 +32,7 @@ import butterknife.OnClick;
  * Author: ZhouYong
  */
 
-public class ReceivedGoodsActivity extends BaseActivity {
+public class ReceivedGoodsActivity extends BaseActivity implements LoadingTip.onReloadListener, OnRefreshListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -63,6 +64,9 @@ public class ReceivedGoodsActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        leftTitle.setVisibility(View.GONE);
+        centerTitle.setText("收货地址");
+        relSearch.setVisibility(View.GONE);
         mAdapter = new CommonRecycleViewAdapter<ReceivedGoodsBean>(this, R.layout.item_receivedgoods) {
             @Override
             public void convert(ViewHolderHelper helper, ReceivedGoodsBean receivedGoodsBean, int position) {
@@ -72,17 +76,29 @@ public class ReceivedGoodsActivity extends BaseActivity {
         mLadapter = new LRecyclerViewAdapter(mAdapter);
         mLRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mLRecyclerView.setAdapter(mLadapter);
-        mLRecyclerView.setPullRefreshEnabled(false);
+        mLRecyclerView.setPullRefreshEnabled(true);
         mLRecyclerView.setLoadMoreEnabled(false);
+        mLRecyclerView.setOnRefreshListener(this);
+        RequestDateInfo();
+    }
 
+    private void RequestDateInfo() {
         mRxManager.add(Api.getDefault(HostType.Jsonpart).getReceivedGoods()
                 .compose(RxSchedulers.<ReceivedGoodsBean>io_main())
                 .subscribe(new RxSubscriber<ReceivedGoodsBean>(mContext) {
                     @Override
                     protected void _onNext(ReceivedGoodsBean receivedGoodsBean) {
-                        if (!receivedGoodsBean.isIs_success()||receivedGoodsBean.getData().size()==0){
-                            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+                        if (!receivedGoodsBean.isIs_success() || receivedGoodsBean.getData().size() == 0) {
+                            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoReceivedAdress);
+                            mLoadingTip.setOnReloadListener(ReceivedGoodsActivity.this);
+                            return;
                         }
+                        if (mLoadingTip.getVisibility() == View.VISIBLE)
+                            mLoadingTip.setViewGone();
+                        if (mAdapter.getDataList().size() != 0)
+                            mAdapter.clear();
+//                        mAdapter.addAll(receivedGoodsBean.getData());
+
                     }
 
                     @Override
@@ -102,5 +118,15 @@ public class ReceivedGoodsActivity extends BaseActivity {
             case R.id.rel_search:
                 break;
         }
+    }
+
+    @Override
+    public void reloadLodTip() {
+        startActivity(AddReAddressActivity.class);
+    }
+
+    @Override
+    public void onRefresh() {
+        RequestDateInfo();
     }
 }

@@ -1,12 +1,9 @@
 package com.intention.sqtwin.ui.main.fragment;
 
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +14,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
+import com.intention.sqtwin.adapter.MallAdapter;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.bean.AllMallDateBean;
 import com.intention.sqtwin.ui.main.contract.MallContract;
@@ -25,12 +23,11 @@ import com.intention.sqtwin.ui.main.presenter.MallPresenter;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import ezy.ui.view.BannerView;
 
 /**
- * Description: 绝无Bug
+ * Description: 商城列表
  * Data：2018/4/15-下午2:48
  * Blog：Super简单
  * Author: ZhouYong
@@ -47,8 +44,9 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    Unbinder unbinder;
-    private HomeAdapter homeAdapter;
+//    private HomeAdapter homeAdapter;
+
+    private MallAdapter mallAdapter ;
     private LRecyclerViewAdapter mLadapter;
     private BannerView mBannerView;
     private HeadTwoAdapter mHeadTwoAdapter;
@@ -65,9 +63,9 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
 
     @Override
     protected void initView() {
-        homeAdapter = new HomeAdapter(getActivity());
-
-        mLadapter = new LRecyclerViewAdapter(homeAdapter);
+//        homeAdapter = new HomeAdapter(getActivity());
+        mallAdapter = new MallAdapter(getActivity());
+        mLadapter = new LRecyclerViewAdapter(mallAdapter);
         mLRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mLRecyclerView.setAdapter(mLadapter);
         mLRecyclerView.setPullRefreshEnabled(false);
@@ -106,6 +104,15 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
         viewById.setText("推荐专场");
         setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22), 0);
+
+        mLadapter.addHeaderView(headViewPager);
+        mLadapter.addHeaderView(homeStoreTitle);
+        mLadapter.addHeaderView(HeadStoreView);
+        mLadapter.addHeaderView(homeHeadTitleOnew);
+        mLadapter.addHeaderView(HeadViewTwo);
+        mLadapter.addHeaderView(homeHeadTitle);
+        mPresenter.getAllMallDateRequest();
+
     }
 
 

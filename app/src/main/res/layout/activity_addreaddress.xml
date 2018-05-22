@@ -69,6 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/x210"
                 android:background="@null"
+                android:inputType="number"
                 android:hint="请输入您的联系电话"
                 android:maxLines="1"
                 android:minWidth="@dimen/x200"
@@ -99,7 +100,9 @@
 
             <TextView
                 android:id="@+id/tv_city"
-                android:layout_width="wrap_content"
+                android:layout_marginRight="@dimen/x90"
+                android:ellipsize="end"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/x210"
                 android:background="@null"
@@ -141,16 +144,17 @@
                 android:textSize="@dimen/x28" />
 
             <EditText
+                android:layout_marginRight="@dimen/x30"
                 android:id="@+id/ec_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x210"
                 android:layout_marginTop="@dimen/y30"
                 android:background="@null"
                 android:hint="请输入您的详细地址"
-                android:maxLines="1"
+
                 android:minWidth="@dimen/x200"
-                android:singleLine="true"
+
                 android:textColor="@color/font_1"
                 android:textColorHint="@color/font_3"
                 android:textSize="@dimen/x30" />

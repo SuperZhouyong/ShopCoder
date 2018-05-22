@@ -340,7 +340,7 @@ public interface ApiService {
      *
      * @return
      */
-    @FormUrlEncoded
+
     @POST("Membercenter/Member_address_edit_submit")
     Observable<SubmitAddressBean> submitAddress(
             @Body UpdateAddressBean updateAddressBean

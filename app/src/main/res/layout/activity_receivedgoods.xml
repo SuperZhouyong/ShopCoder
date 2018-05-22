@@ -9,11 +9,13 @@
         layout="@layout/actionbar_title" />
 
     <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:layout_below="@id/title"
         android:id="@+id/mLRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:layout_below="@id/title"
         android:id="@+id/mLoadingTip"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

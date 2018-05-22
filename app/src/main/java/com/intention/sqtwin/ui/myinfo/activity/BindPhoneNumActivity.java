@@ -83,7 +83,7 @@ public class BindPhoneNumActivity extends BaseActivity {
                 if (TextUtils.isEmpty(PhoneNum))
                     showShortToast("请输入正确的手机号");
                 Intent intent = new Intent();
-                intent.putExtra(AppConstant.PhoneNum, Integer.parseInt(PhoneNum));
+                intent.putExtra(AppConstant.PhoneNum, PhoneNum);
                 setResult(RESULT_OK, intent);
                 finish();
                 break;

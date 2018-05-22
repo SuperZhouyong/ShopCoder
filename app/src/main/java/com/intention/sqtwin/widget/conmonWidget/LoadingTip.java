@@ -139,10 +139,18 @@ public class LoadingTip extends LinearLayout {
                 break;
             // 没有收获地址
             case NoReceivedAdress:
+                setVisibility(VISIBLE);
                 llTip.setVisibility(GONE);
                 relTip.setVisibility(VISIBLE);
                 tvTipStatusDesc.setText("您还没有添加收获地址");
                 tvTipConfirl.setText("+  新建地址");
+                tvTipConfirl.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onReloadListener != null)
+                            onReloadListener.reloadLodTip();
+                    }
+                });
                 break;
             case StartLoading:
                 llTip.setVisibility(GONE);

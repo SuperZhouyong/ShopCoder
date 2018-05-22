@@ -1,9 +1,11 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -16,6 +18,7 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.BeanId;
 import com.intention.sqtwin.bean.SubmitAddressBean;
+import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.ui.myinfo.contract.AddReAddressContract;
 import com.intention.sqtwin.ui.myinfo.model.AddReAddressModel;
 import com.intention.sqtwin.ui.myinfo.presenter.AddReAddressPresenter;
@@ -35,7 +38,7 @@ import rx.functions.Action1;
  * Author: ZhouYong
  */
 
-public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, AddReAddressModel> implements AddReAddressContract.View {
+public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, AddReAddressModel> implements AddReAddressContract.View, CompoundButton.OnCheckedChangeListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -72,6 +75,8 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
     SwitchButton switchButton;
     @BindView(R.id.tv_save)
     TextView tvSave;
+    private AllRegion mAllRegion;
+    private UpdateAddressBean mUpdateAddressBean;
 
     @Override
     public int getLayoutId() {
@@ -85,14 +90,22 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
 
     @Override
     public void initView() {
+        leftTitle.setVisibility(View.GONE);
+        centerTitle.setText("添加收货地址");
+        relSearch.setVisibility(View.GONE);
+        mUpdateAddressBean = new UpdateAddressBean();
+        mUpdateAddressBean.setAddress_is_default(0);
         // 监听到确认按钮
         mRxManager.on(AppConstant.ConfirmOk, new Action1<BeanId>() {
             @Override
             public void call(BeanId beanId) {
-
+                mUpdateAddressBean.setProvince_id(beanId.getProvinceId());
+                mUpdateAddressBean.setCity_id(beanId.getCityId());
+                mUpdateAddressBean.setArea_id(beanId.getRegionID());
             }
         });
         mPresenter.getAllRegion();
+        switchButton.setOnCheckedChangeListener(this);
     }
 
 
@@ -104,18 +117,37 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
                 break;
             case R.id.rel_city:
                 IsShowHideInput();
-               /* if (mAllRegion != null) {
+
+                if (mAllRegion != null) {
                     intithreepop(mAllRegion.getData());
                 } else {
                     // 重试重试机制
-                    mPresenter.getAllRegionRequest();
+                    mPresenter.getAllRegion();
                     showShortToast("请稍候再试");
-                }*/
+                }
                 break;
             case R.id.tv_save:
                 String name = ecName.getText().toString().trim();
                 String phoneNum = ecPhone.getText().toString().trim();
                 String address = ecAddress.getText().toString().trim();
+                if (TextUtils.isEmpty(name)) {
+                    showShortToast("请填写您的名字");
+                    return;
+                }
+                if (TextUtils.isEmpty(phoneNum)) {
+                    showShortToast("请填写联系电话");
+                    return;
+                }
+                if (TextUtils.isEmpty(address)) {
+                    showShortToast("请填写详细地址");
+                    return;
+                }
+
+                mUpdateAddressBean.setName(name);
+                mUpdateAddressBean.setPhone(phoneNum);
+                mUpdateAddressBean.setAddress(address);
+
+                mPresenter.getSubmitAddressBean(mUpdateAddressBean);
                 break;
         }
     }
@@ -166,11 +198,17 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
 
     @Override
     public void returnAllregion(AllRegion allRegion) {
-
+        if (allRegion.isIs_success())
+            mAllRegion = allRegion;
     }
 
     @Override
     public void returnSubmitAddressBean(SubmitAddressBean submitAddressBean) {
 
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        mUpdateAddressBean.setAddress_is_default(isChecked?1:0);
     }
 }

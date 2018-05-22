@@ -192,26 +192,8 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
         });
     }
 
-    // 地址选择
- /*   private void intithreepop(List<AllRegion.DataBean> mAllRegion) {
 
-        View view = getLayoutInflater().inflate(R.layout.wheelviewthree, null);
-        final PopupWindow pop = WheelPickerUtils.threeWheelPickerPop(view, tvCity, mAllRegion);
-        final WindowManager.LayoutParams params = getWindow().getAttributes();
-        params.alpha = 0.7f;
-        getWindow().setAttributes(params);
-        // 消失的监听，让背景色变回来
-        pop.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                params.alpha = 1f;
-                getWindow().setAttributes(params);
-
-            }
-        });
-    }*/
-
-    @OnClick({R.id.rel_back, R.id.rel_search, R.id.rel_icon, R.id.tv_confirm, R.id.rel_sex, R.id.rel_phone})
+    @OnClick({R.id.rel_back, R.id.rel_search, R.id.rel_icon, R.id.tv_confirm, R.id.rel_sex, R.id.rel_phone, R.id.rel_adress})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
@@ -257,14 +239,14 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
                     if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
                         submitClientInfo.setSex(userSex.getText().toString().trim());
 
-                    if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
-                        submitClientInfo.setAddress(userAddress.getText().toString().trim());
+                    /*if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
+                        submitClientInfo.setAddress(userAddress.getText().toString().trim());*/
 
                     if (!TextUtils.isEmpty(userName.getText().toString().trim()))
                         submitClientInfo.setName(userName.getText().toString().trim());
 
-                    if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
-                        submitClientInfo.setPhone(Integer.parseInt(userPhone.getText().toString().trim()));
+                    /*if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
+                        submitClientInfo.setPhone(userPhone.getText().toString().trim());*/
 
                    /* if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
                         submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());*/
@@ -283,6 +265,10 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
             // 绑定手机号
             case R.id.rel_phone:
                 startActivityForResult(BindPhoneNumActivity.class, requestCodePhone);
+                break;
+            // 进入收货地址列表
+            case R.id.rel_adress:
+                startActivity(ReceivedGoodsActivity.class);
                 break;
         }
     }
@@ -322,9 +308,9 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
         switch (requestCode) {
             // 电话号码输入
             case requestCodePhone:
-                Integer phoneNum = data.getIntExtra(AppConstant.PhoneNum, 1);
-                if (phoneNum != 1) {
-                    submitClientInfo.setPhone(phoneNum);
+                String phoneNum = data.getStringExtra(AppConstant.PhoneNum);
+                if (!TextUtils.isEmpty(phoneNum)) {
+//                    submitClientInfo.setPhone(phoneNum);
                     userPhone.setText(String.valueOf(phoneNum));
                 }
                 break;
@@ -419,18 +405,20 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
             showShortToast(updateImageBean.getMessage());
             return;
         }
+        if (!TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
+            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());
 
         if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
             submitClientInfo.setSex(userSex.getText().toString().trim());
 
-        if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
-            submitClientInfo.setAddress(userAddress.getText().toString().trim());
+//        if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
+//            submitClientInfo.setAddress(userAddress.getText().toString().trim());
 
         if (!TextUtils.isEmpty(userName.getText().toString().trim()))
             submitClientInfo.setName(userName.getText().toString().trim());
 
-        if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
-            submitClientInfo.setPhone(Integer.parseInt(userPhone.getText().toString().trim()));
+//        if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
+//            submitClientInfo.setPhone(userPhone.getText().toString().trim());
 
         if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
             submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());
