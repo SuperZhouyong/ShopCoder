@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
@@ -23,7 +24,6 @@ import com.intention.sqtwin.ui.main.presenter.CategorPresenter;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Description: 保佑无bug
@@ -69,7 +69,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
 
     @Override
     public void initView() {
-        categoryLogo.setImageResource(R.mipmap.logo);
+//        categoryLogo.setImageResource(R.mipmap.logo);
 
         mLeftAdapter = new CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean>(this, R.layout.item_category_left) {
             @Override
@@ -127,6 +127,13 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
         mLadapter.addHeaderView(homeHeadTitle);
 
         mPresenter.getCategoryBeanRequest(current_category_id);
+    }
+
+    public static void GotoCategoryActivity(BaseActivity mActivity, Integer type) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.CategoryType, type);
+        mActivity.startActivity(CategoryActivity.class, bundle);
+
     }
 
     @Override

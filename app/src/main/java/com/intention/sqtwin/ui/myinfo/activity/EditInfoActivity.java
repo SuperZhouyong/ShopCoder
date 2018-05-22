@@ -22,21 +22,34 @@ import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.MyInfoBean;
+import com.intention.sqtwin.bean.SubmitClientInfo;
+import com.intention.sqtwin.bean.UpdateImageBean;
+import com.intention.sqtwin.bean.UpdateResultInfo;
+import com.intention.sqtwin.ui.Store.contract.EditInfoContract;
+import com.intention.sqtwin.ui.Store.model.EditInfoModel;
+import com.intention.sqtwin.ui.Store.presenter.EditInfoPresenter;
 import com.intention.sqtwin.utils.TakePictureManager;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.SPUtils;
+import com.intention.sqtwin.widget.CircleImageView;
+import com.intention.sqtwin.widget.NormalDialog;
+import com.intention.sqtwin.widget.ShareDialog;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import com.intention.sqtwin.widget.wheelpicker.WheelPickerUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.shaohui.bottomdialog.BaseBottomDialog;
 import me.shaohui.bottomdialog.BottomDialog;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * Description: 保佑无bug
@@ -46,7 +59,7 @@ import me.shaohui.bottomdialog.BottomDialog;
  * QQ: 437397161
  */
 
-public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloadListener, TakePictureManager.takePictureCallBackListener, BottomDialog.ViewListener {
+public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoModel> implements LoadingTip.onReloadListener, TakePictureManager.takePictureCallBackListener, BottomDialog.ViewListener, EditInfoContract.View {
 
 
     @BindView(R.id.iv_back)
@@ -77,14 +90,14 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
     TextView userName;
     @BindView(R.id.rel_name)
     RelativeLayout relName;
-    @BindView(R.id.iv_postion)
-    ImageView ivPostion;
-    @BindView(R.id.tv_postion)
-    TextView tvPostion;
-    @BindView(R.id.user_postion)
-    TextView userPostion;
-    @BindView(R.id.rel_postion)
-    RelativeLayout relPostion;
+    /*  @BindView(R.id.iv_postion)
+      ImageView ivPostion;
+      @BindView(R.id.tv_postion)
+      TextView tvPostion;
+      @BindView(R.id.user_postion)
+      TextView userPostion;
+      @BindView(R.id.rel_postion)
+      RelativeLayout relPostion;*/
     @BindView(R.id.tv_sex)
     TextView tvSex;
     @BindView(R.id.iv_sex)
@@ -93,22 +106,22 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
     TextView userSex;
     @BindView(R.id.rel_sex)
     RelativeLayout relSex;
-    @BindView(R.id.tv_birthday)
-    TextView tvBirthday;
-    @BindView(R.id.iv_birthday)
-    ImageView ivBirthday;
-    @BindView(R.id.user_birthday)
-    TextView userBirthday;
-    @BindView(R.id.rel_birthday)
-    RelativeLayout relBirthday;
-    @BindView(R.id.tv_city)
+    /* @BindView(R.id.tv_birthday)
+     TextView tvBirthday;
+     @BindView(R.id.iv_birthday)
+     ImageView ivBirthday;
+     @BindView(R.id.user_birthday)
+     TextView userBirthday;
+     @BindView(R.id.rel_birthday)
+     RelativeLayout relBirthday;*/
+  /*  @BindView(R.id.tv_city)
     TextView tvCity;
     @BindView(R.id.iv_city)
     ImageView ivCity;
     @BindView(R.id.user_city)
     TextView userCity;
     @BindView(R.id.rel_city)
-    RelativeLayout relCity;
+    RelativeLayout relCity;*/
     @BindView(R.id.tv_address)
     TextView tvAddress;
     @BindView(R.id.iv_address)
@@ -134,6 +147,10 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
     private final int requestCodePhone = 300;
     private final int requestCodeName = 301;
 
+    // 需要上传的东西
+    private SubmitClientInfo submitClientInfo;
+    private List<String> mList;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_editinfo;
@@ -141,7 +158,7 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
@@ -153,8 +170,9 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
         takePictureManager.setTailor(1, 1, 200, 200);
 
         takePictureManager.setTakePictureCallBackListener(this);
-        RequestMyinfo();
-
+        mList = new ArrayList<>();
+        submitClientInfo = new SubmitClientInfo();
+        mPresenter.getEditInfoRequest();
     }
 
     // 性别选择
@@ -175,7 +193,7 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
     }
 
     // 地址选择
-    private void intithreepop(List<AllRegion.DataBean> mAllRegion) {
+ /*   private void intithreepop(List<AllRegion.DataBean> mAllRegion) {
 
         View view = getLayoutInflater().inflate(R.layout.wheelviewthree, null);
         final PopupWindow pop = WheelPickerUtils.threeWheelPickerPop(view, tvCity, mAllRegion);
@@ -191,14 +209,34 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
 
             }
         });
-    }
+    }*/
 
     @OnClick({R.id.rel_back, R.id.rel_search, R.id.rel_icon, R.id.tv_confirm, R.id.rel_sex, R.id.rel_phone})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
+                finish();
                 break;
             case R.id.rel_search:
+                final ShareDialog shareDialog = new ShareDialog(this, R.layout.item_reminder, false);
+                shareDialog.setMessage("17600298095");
+                shareDialog.setYesOnclickListener("确定", new NormalDialog.onYesOnclickListener() {
+                    @Override
+                    public void onYesClick() {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_CALL);
+                        intent.setData(Uri.parse("tel:" + shareDialog.getMessageStr()));
+                        startActivity(intent);
+                        shareDialog.dismiss();
+                    }
+                });
+                shareDialog.setNoOnclickListener("取消", new NormalDialog.onNoOnclickListener() {
+                    @Override
+                    public void onNoClick() {
+                        shareDialog.dismiss();
+                    }
+                });
+                shareDialog.show();
                 break;
             // 头像
             case R.id.rel_icon:
@@ -206,6 +244,34 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
                 break;
             // 确认上传编辑数据
             case R.id.tv_confirm:
+                //1,上传图片
+                Map<String, RequestBody> mMaps = new HashMap<>();
+                for (String sFile : mList) {
+                    File file = new File(sFile);
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    mMaps.put("image\"; filename=\"" + file.getName(), requestFile);
+                }
+                if (mMaps.size() != 0)
+                    mPresenter.updateImageRequest(mMaps);
+                else {
+                    if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
+                        submitClientInfo.setSex(userSex.getText().toString().trim());
+
+                    if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
+                        submitClientInfo.setAddress(userAddress.getText().toString().trim());
+
+                    if (!TextUtils.isEmpty(userName.getText().toString().trim()))
+                        submitClientInfo.setName(userName.getText().toString().trim());
+
+                    if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
+                        submitClientInfo.setPhone(Integer.parseInt(userPhone.getText().toString().trim()));
+
+                   /* if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
+                        submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());*/
+
+                    mPresenter.updateAnnEditInfoRequest(submitClientInfo);
+
+                }
                 break;
             // 选择性别
             case R.id.rel_sex:
@@ -221,50 +287,9 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
         }
     }
 
-    private void RequestMyinfo() {
-        mRxManager.add(Api.getDefault(HostType.Jsonpart)
-                .getMyInfoBean()
-                .compose(RxSchedulers.<MyInfoBean>io_main())
-                .subscribe(new RxSubscriber<MyInfoBean>(mContext) {
-                    @Override
-                    protected void _onNext(MyInfoBean myInfoBean) {
-                        if (!myInfoBean.isIs_success()) {
-                            showShortToast(myInfoBean.getMessage());
-                            return;
-                        }
-                        if (mLoadingTip.getVisibility() == View.VISIBLE)
-                            mLoadingTip.setViewGone();
-                        ImageLoaderUtils.display(mContext, userIcon, myInfoBean.getData().getImage());
-                        if (!TextUtils.isEmpty(myInfoBean.getData().getImage()))
-                            SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, myInfoBean.getData().getImage());
-                        MyInfoBean.DataBean data = myInfoBean.getData();
-                        userName.setText(data.getName());
-                        userPostion.setText(data.getTitle());
-                        userSex.setText(data.getSex());
-                        userBirthday.setText(data.getBirthday());
-                        // 城市Id 不对
-//                        userCity.setText(data.getCity_id());
-                        userAddress.setText(data.getAddress());
-                        userPhone.setText(data.getPhone());
-                    }
-
-                    @Override
-                    protected void _onError(String message) {
-                        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-                        mLoadingTip.setOnReloadListener(EditInfoActivity.this);
-                    }
-
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
-                    }
-                }));
-    }
-
     @Override
     public void reloadLodTip() {
-        RequestMyinfo();
+        mPresenter.getEditInfoRequest();
     }
 
     private void ShowBootomDialog(String tag) {
@@ -278,7 +303,8 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
     @Override
     public void successful(boolean isTailor, File outFile, Uri filePath) {
         // 生成图片
-        ImageLoaderUtils.display(this, userIcon, outFile);
+        ImageLoaderUtils.displayRoundFile(this, userIcon, outFile);
+        mList.add(outFile.getAbsolutePath());
     }
 
     @Override
@@ -296,8 +322,18 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
         switch (requestCode) {
             // 电话号码输入
             case requestCodePhone:
+                Integer phoneNum = data.getIntExtra(AppConstant.PhoneNum, 1);
+                if (phoneNum != 1) {
+                    submitClientInfo.setPhone(phoneNum);
+                    userPhone.setText(String.valueOf(phoneNum));
+                }
                 break;
             case requestCodeName:
+                String stringExtra = data.getStringExtra(AppConstant.EditInfo).trim();
+                if (!TextUtils.isEmpty(stringExtra)) {
+                    userName.setText(stringExtra);
+                    submitClientInfo.setName(stringExtra);
+                }
                 break;
         }
 
@@ -326,5 +362,90 @@ public class EditInfoActivity extends BaseActivity implements LoadingTip.onReloa
                 takePictureManager.startTakeWayByAlbum();
             }
         });
+    }
+
+    @Override
+    public void StartLoading(String RequestId) {
+        if (AppConstant.oneMessage.equals(RequestId))
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+    }
+
+    @Override
+    public void showLoading(String RequestId, String title) {
+
+    }
+
+    @Override
+    public void stopLoading(String RequestId) {
+
+    }
+
+    @Override
+    public void showErrorTip(String RequestId, String msg) {
+        if (AppConstant.oneMessage.equals(RequestId)) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(EditInfoActivity.this);
+        }
+    }
+
+    @Override
+    public void returnEditInfoBena(MyInfoBean myInfoBean) {
+        if (!myInfoBean.isIs_success()) {
+            showShortToast(myInfoBean.getMessage());
+            return;
+        }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+        ImageLoaderUtils.displayRound(mContext, userIcon, myInfoBean.getData().getImage());
+        if (!TextUtils.isEmpty(myInfoBean.getData().getImage()))
+            SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, myInfoBean.getData().getImage());
+        if (!TextUtils.isEmpty(myInfoBean.getData().getName()))
+            SPUtils.setSharedStringData(mContext, AppConstant.UserName, myInfoBean.getData().getName());
+        MyInfoBean.DataBean data = myInfoBean.getData();
+        userName.setText(data.getName());
+//        userPostion.setText(data.getTitle());
+        userSex.setText(data.getSex());
+//        userBirthday.setText(data.getBirthday());
+        // 城市Id 不对
+//                        userCity.setText(data.getCity_id());
+        userAddress.setText(data.getAddress());
+        userPhone.setText(data.getPhone());
+    }
+
+    @Override
+    public void returnUpdateImage(UpdateImageBean updateImageBean) {
+        // 图片上传成功
+        if (!updateImageBean.isIs_success()) {
+            showShortToast(updateImageBean.getMessage());
+            return;
+        }
+
+        if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
+            submitClientInfo.setSex(userSex.getText().toString().trim());
+
+        if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
+            submitClientInfo.setAddress(userAddress.getText().toString().trim());
+
+        if (!TextUtils.isEmpty(userName.getText().toString().trim()))
+            submitClientInfo.setName(userName.getText().toString().trim());
+
+        if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
+            submitClientInfo.setPhone(Integer.parseInt(userPhone.getText().toString().trim()));
+
+        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
+            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());
+
+        mPresenter.updateAnnEditInfoRequest(submitClientInfo);
+
+    }
+
+    @Override
+    public void returnUodateInfo(UpdateResultInfo updateResultInfo) {
+
+    }
+
+    @Override
+    public void returnAllregion(AllRegion allRegion) {
+
     }
 }

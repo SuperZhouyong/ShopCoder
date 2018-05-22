@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.api.Api;
@@ -85,7 +86,8 @@ public class MyInfoFragment extends LazzyFragment {
     ImageView ivFocus;
     @BindView(R.id.rel_focus)
     RelativeLayout relFocus;
-
+    @BindView(R.id.tv_name)
+    TextView tvname;
 
     @Override
     protected int getLayoutResource() {
@@ -105,8 +107,9 @@ public class MyInfoFragment extends LazzyFragment {
     @Override
     protected void initView() {
         if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
-            ImageLoaderUtils.display(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
-
+            ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
+        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName)))
+            tvname.setText(SPUtils.getSharedStringData(getActivity(),AppConstant.UserName));
 
     }
 
@@ -120,15 +123,18 @@ public class MyInfoFragment extends LazzyFragment {
             case R.id.iv_head_icon:
                 break;
             case R.id.ll_one:
-                startActivity(getActivity(), OrderListActivity.class);
+                OrderListActivity.GotoOrderListActivity((MainActivity)getActivity(),10,1);
+//                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_two:
-                startActivity(getActivity(), OrderListActivity.class);
+                OrderListActivity.GotoOrderListActivity((MainActivity)getActivity(),10,1);
+//                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_three:
-                startActivity(getActivity(), OrderListActivity.class);
+//                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.rel_message:
+                OrderListActivity.GotoOrderListActivity((MainActivity)getActivity(),10,1);
                 startActivity(getActivity(), MessageActicity.class);
                 break;
             case R.id.rel_acount:

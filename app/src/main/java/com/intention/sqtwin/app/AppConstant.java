@@ -15,6 +15,8 @@ public class AppConstant {
     public static final String oneMessage = "one";
     public static final String twoMessage = "two";
     public static final String threeMessage = "three";
+    public static final String foreMessage = "fore";
+
     // 拍品ID
     public static final String auctionItemId = "auctionItemId";
     // 拍场Id
@@ -75,4 +77,8 @@ public class AppConstant {
     public static final String OrderListStatus = "OrderListStatus";
     public static final String OrderListStatusType = "OrderListStatusType";
     public static final String ImageUrl = "ImageUrl";
+    public static final String EditInfo = "EditInfo";
+    public static final String CategoryType = "CategoryType";
+    public static final String UserName = "UserName";
+    public static final String PhoneNum = "PhoneNum";
 }

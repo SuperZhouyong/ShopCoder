@@ -28,6 +28,15 @@ public class ShareDialog extends Dialog{
     private TextView titleTv;//消息标题文本
     private TextView messageTv;//消息提示文本
     private String titleStr;//从外界设置的title文本
+
+    public String getMessageStr() {
+        return messageStr;
+    }
+
+    public void setMessageStr(String messageStr) {
+        this.messageStr = messageStr;
+    }
+
     private String messageStr;//从外界设置的消息文本
     private String yesStr, noStr;
     private NormalDialog.onNoOnclickListener noOnclickListener;//取消按钮被点击了的监听器
@@ -95,11 +104,11 @@ public class ShareDialog extends Dialog{
         setCanceledOnTouchOutside(canCancleOutSide);
 
         //初始化界面控件
-//        initView();
+        initView();
         //初始化界面数据
-//        initData();
+        initData();
         //初始化界面控件的事件
-//        initEvent();
+        initEvent();
 
     }
 

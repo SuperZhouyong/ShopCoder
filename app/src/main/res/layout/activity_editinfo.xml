@@ -123,7 +123,7 @@
                 </ImageView>
             </RelativeLayout>
 
-            <RelativeLayout
+       <!--     <RelativeLayout
                 android:id="@+id/rel_postion"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y88"
@@ -157,7 +157,7 @@
 
                     android:id="@+id/user_postion"
                     style="@style/phone_password_login_regist"
-                    android:layout_alignTop="@+id/iv_postion"
+
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
@@ -167,7 +167,7 @@
                     android:textSize="@dimen/x30" />
 
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/rel_sex"
@@ -223,7 +223,7 @@
                     android:orientation="vertical" />
             </RelativeLayout>
 
-            <RelativeLayout
+        <!--    <RelativeLayout
                 android:id="@+id/rel_birthday"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y88"
@@ -257,7 +257,7 @@
 
                     android:id="@+id/user_birthday"
                     style="@style/phone_password_login_regist"
-                    android:layout_alignTop="@+id/iv_birthday"
+
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
@@ -276,9 +276,10 @@
                     android:orientation="vertical">
 
                 </ImageView>
-            </RelativeLayout>
+            </RelativeLayout>-->
 
-            <RelativeLayout
+       <!--     <RelativeLayout
+                android:gravity="center_vertical"
                 android:id="@+id/rel_city"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y88"
@@ -312,7 +313,7 @@
 
                     android:id="@+id/user_city"
                     style="@style/phone_password_login_regist"
-                    android:layout_alignTop="@+id/iv_city"
+
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
@@ -322,7 +323,7 @@
                     android:textSize="@dimen/x30" />
 
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/rel_adress"
@@ -359,7 +360,7 @@
 
                     android:id="@+id/user_address"
                     style="@style/phone_password_login_regist"
-                    android:layout_alignTop="@+id/iv_address"
+
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"
@@ -412,10 +413,11 @@
                     android:src="@mipmap/list_right" />
 
                 <TextView
-
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
                     android:id="@+id/user_phone"
                     style="@style/phone_password_login_regist"
-                    android:layout_alignTop="@+id/iv_phone"
+
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x30"
                     android:layout_marginRight="@dimen/x30"

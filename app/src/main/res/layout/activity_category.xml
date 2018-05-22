@@ -5,9 +5,12 @@
     android:orientation="vertical">
 
 
+   <!-- <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title_two" />-->
     <include
         android:id="@+id/title"
-        layout="@layout/actionbar_title_two" />
+        layout="@layout/actionbar_title_three" />
 
     <RelativeLayout
         android:background="@color/white"

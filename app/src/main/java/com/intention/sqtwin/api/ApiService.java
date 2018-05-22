@@ -4,6 +4,7 @@ package com.intention.sqtwin.api;
 import com.intention.sqtwin.bean.AccountBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AllDateBean;
+import com.intention.sqtwin.bean.AllMallDateBean;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
@@ -31,11 +32,15 @@ import com.intention.sqtwin.bean.StoreMoneyBean;
 import com.intention.sqtwin.bean.StoreReportOne;
 import com.intention.sqtwin.bean.StoreReportTwo;
 import com.intention.sqtwin.bean.SubmitAddressBean;
+import com.intention.sqtwin.bean.SubmitClientInfo;
+import com.intention.sqtwin.bean.SubmitInfoBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
 import com.intention.sqtwin.bean.TradingDeatilBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
+import com.intention.sqtwin.bean.UpdateImageBean;
 import com.intention.sqtwin.bean.UpdateIndentityBean;
+import com.intention.sqtwin.bean.UpdateResultInfo;
 
 import java.util.Map;
 
@@ -46,6 +51,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -157,9 +163,10 @@ public interface ApiService {
 
     /**
      * 获取订单列表 （会员中心）
-     * @param status title状态
+     *
+     * @param status  title状态
      * @param page_no 页码
-     * @param type  个人和店铺的去人
+     * @param type    个人和店铺的去人
      * @return
      */
     @GET("membercenter/get_order_list")
@@ -418,4 +425,35 @@ public interface ApiService {
      */
     @GET("membercenter/get_manage_report")
     Observable<StoreReportTwo> getManageReport();
+
+    /**
+     * 万能上传多张图片
+     *
+     * @param maps
+     * @return
+     */
+    @Multipart
+    @POST("index/batch_upload_images")
+    Observable<UpdateImageBean> PostImage(
+            @PartMap Map<String, RequestBody> maps
+    );
+
+    /**
+     * 提交编辑的信息
+     *
+     * @param submitClientInfo
+     * @return
+     */
+    @POST("membercenter/member_edit_submit")
+    Observable<UpdateResultInfo> submitInfo(
+            @Body SubmitClientInfo submitClientInfo
+    );
+
+    /**
+     * 获取商城列表的数据
+     *
+     * @return
+     */
+    @GET("Taobao/Taobao_index")
+    Observable<AllMallDateBean> getAllMallDate();
 }

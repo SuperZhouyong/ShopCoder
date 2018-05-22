@@ -122,54 +122,21 @@ public class LoadingTip extends LinearLayout {
 
     public void setNoLoadTip(NoloadStatus noLoadTip) {
         switch (noLoadTip) {
-//              FeeFailed , NoCollect ,NoEmpty ,NoRecorrd ,NoShopCart ,Noresulte
-           /* case FeeFailed:
+            case NoCollect:
                 setVisibility(View.VISIBLE);
-                img_tip_logo.setImageResource(R.mipmap.fee_failed);
-
-                tv_tips.setText("扣费失败,请重试");
-                bt_operate.setVisibility(View.VISIBLE);
-                bt_operate.setText("重试");
-                break;*/
-           /* case NoCollect:
-                setVisibility(View.VISIBLE);
-                img_tip_logo.setImageResource(R.mipmap.no_collect);
-                tv_tips.setText("暂无任何收藏内容");
+                img_tip_logo.setImageResource(R.mipmap.no_date);
+                tv_tips.setText("暂无内容");
                 bt_operate.setVisibility(View.GONE);
-                break;*/
+                break;
             case NoNetWork:
                 setVisibility(View.VISIBLE);
+                relTip.setVisibility(GONE);
+                llTip.setVisibility(VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_network);
                 tv_tips.setText("网络不太给力，点击重新加载");
                 bt_operate.setVisibility(View.VISIBLE);
                 bt_operate.setText("刷新");
                 break;
-           /* case NoRecorrd:
-                setVisibility(View.VISIBLE);
-                img_tip_logo.setImageResource(R.mipmap.no_record);
-                tv_tips.setText("暂无任何记录");
-                bt_operate.setVisibility(View.GONE);
-                break;*/
-            /*ase NoShopCart:
-                setVisibility(View.VISIBLE);
-
-                img_tip_logo.setImageResource(R.mipmap.no_shopcart);
-                tv_tips.setText("你的购物车还是空的,赶紧行动吧");
-                bt_operate.setVisibility(View.VISIBLE);
-                bt_operate.setText("去商场");
-                break;*/
-           /* case NoResult:
-                setVisibility(View.VISIBLE);
-                img_tip_logo.setImageResource(R.mipmap.fee_failed);
-                tv_tips.setText("暂无结果");
-                bt_operate.setVisibility(View.GONE);
-                break;*/
-           /* case NoLogin:
-                setVisibility(View.VISIBLE);
-                img_tip_logo.setImageResource(R.mipmap.fee_failed);
-                tv_tips.setText("请先登录");
-                bt_operate.setText("登录");
-                break;*/
             // 没有收获地址
             case NoReceivedAdress:
                 llTip.setVisibility(GONE);

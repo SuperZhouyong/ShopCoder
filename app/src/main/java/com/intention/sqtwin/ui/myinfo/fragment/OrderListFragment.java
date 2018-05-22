@@ -82,9 +82,9 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
             public void convert(ViewHolderHelper helper, OrderListBean.DataBean orderListBean, int position) {
                 //todo type 可以换成内置的type
                 helper.setText(R.id.tv_order_name, type == 0 ? "商城订单" : "拍卖订单");
-                helper.setImageUrl(R.id.iv_goods_pic,orderListBean.getMain_goods_image());
-                helper.setText(R.id.tv_goods_name,orderListBean.getMain_goods_name());
-                helper.setText(R.id.tv_goods_time,orderListBean.getOrder_time());
+                helper.setImageUrl(R.id.iv_goods_pic, orderListBean.getMain_goods_image());
+                helper.setText(R.id.tv_goods_name, orderListBean.getMain_goods_name());
+                helper.setText(R.id.tv_goods_time, orderListBean.getOrder_time());
 
             }
         };

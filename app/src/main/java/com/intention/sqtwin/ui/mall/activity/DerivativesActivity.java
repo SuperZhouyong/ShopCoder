@@ -60,9 +60,9 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
     private Integer type = null;
     private String[] mTitles = {"首页", "衍生品", "商城", "我的"};
     private int[] mIconUnselectIds = {
-            R.mipmap.ic_home_normal, R.mipmap.icon_specialist, R.mipmap.ic_girl_normal, R.mipmap.ic_care_normal, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_normal, R.mipmap.icon_specialist, R.mipmap.ic_care_normal, R.mipmap.ic_myinfo_normal};
     private int[] mIconSelectIds = {
-            R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_girl_selected, R.mipmap.ic_care_selected, R.mipmap.ic_care_normal};
+            R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_care_selected, R.mipmap.ic_myinfo_slect};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     @Override
     public int getLayoutId() {

@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.intention.sqtwin.R;
 
 import java.io.File;
@@ -61,6 +64,19 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)
+                /*.listener(new RequestListener<File, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, File model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        LogUtils.logd("Glide------" + "失败");
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, File model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        LogUtils.logd("Glide-------" + "陈宫");
+                        return false;
+                    }
+                })*/
                 .crossFade().into(imageView);
     }
 
@@ -101,6 +117,18 @@ public class ImageLoaderUtils {
     }
 
     public static void displayRound(Context context, ImageView imageView, String url) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(context).load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.mipmap.colleges_icon)
+                .error(R.mipmap.colleges_icon)
+                .thumbnail(0.5f)
+                .centerCrop().transform(new GlideRoundTransformUtil(context)).into(imageView);
+    }
+
+    public static void displayRoundFile(Context context, ImageView imageView, File url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
         }
