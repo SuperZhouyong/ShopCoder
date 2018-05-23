@@ -238,7 +238,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         /*if (page == auctionOrgBean.getData().getTotal_page())
             mRecyclerView.setNoMore(true);*/
     }
-
+    // 机构的关注
     @Override
     public void returnArtFavBean(AddFavBean addFavBean) {
         showShortToast(addFavBean.getMessage());
@@ -249,7 +249,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         ivFocus.setVisibility(View.GONE);
         tvFocus.setText("已关注");
     }
-
+    // 拍场机构的关注
     @Override
     public void returnArtFavBeanFiled(AddFavBean addFavBean) {
         showShortToast(addFavBean.getMessage());

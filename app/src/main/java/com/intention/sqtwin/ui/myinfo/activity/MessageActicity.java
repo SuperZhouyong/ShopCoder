@@ -64,7 +64,7 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this,mModel);
     }
 
     @Override
@@ -83,6 +83,8 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
         mRecyclerView.setAdapter(mLAdapter);
         mRecyclerView.setLoadMoreEnabled(false);
         mRecyclerView.setOnRefreshListener(this);
+
+        mPresenter.getMessageBeanRequest(page_no);
 
     }
 
@@ -118,9 +120,10 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
     @Override
     public void returnMessage(MessageBean messageBean) {
         if (!messageBean.isIs_success()) {
+            showShortToast(messageBean.getMessage());
             if (page_no == 0) {
-                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-                mLoadingTip.setOnReloadListener(this);
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+//                mLoadingTip.setOnReloadListener(this);
             }
             return;
         }

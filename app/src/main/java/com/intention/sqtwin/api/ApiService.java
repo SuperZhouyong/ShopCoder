@@ -39,6 +39,7 @@ import com.intention.sqtwin.bean.SubmitClientInfo;
 import com.intention.sqtwin.bean.SubmitInfoBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
+import com.intention.sqtwin.bean.TaobaoStoreInfoBean;
 import com.intention.sqtwin.bean.TradingDeatilBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.bean.UpdateImageBean;
@@ -494,5 +495,15 @@ public interface ApiService {
     Observable<DeleteFavBean> getDeleteFavBean(
             @Query("fav_id") Integer fac_id,
             @Query("fav_type") String fav_type
+    );
+
+    /**
+     * 获取淘宝店铺的信息
+     *
+     * @return
+     */
+    @GET("auction/get_store_home_page")
+    Observable<TaobaoStoreInfoBean> getTaoBaoStoreInfo(
+            @Query("store_id") Integer  store_id
     );
 }

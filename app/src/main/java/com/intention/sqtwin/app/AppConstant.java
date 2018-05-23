@@ -86,6 +86,7 @@ public class AppConstant {
     // 首页的排场关注
 //    类型:goods为商品,store为店铺, artst为艺术家, organ为拍卖机构，field为拍场
     public static final String HomeFiled = "HomeFiled";
+    public static final String TaoBaoFiled = "TaoBaoFiled";
     public static final String field = "field";
 
     public static final String goods = "goods";
@@ -98,4 +99,7 @@ public class AppConstant {
 
     // 进入艺术家主页Id
     public static String artDetailId = "artDetailId";
+
+    // 进入店铺需要的Id
+    public static String StoreId;
 }

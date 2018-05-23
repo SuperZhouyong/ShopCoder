@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.main.presenter;
 
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.ui.main.contract.PpAuctionContract;
@@ -23,13 +24,19 @@ public class PpAuctionPresenter extends PpAuctionContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip("one",message);
+                mView.showErrorTip(AppConstant.oneMessage,message);
             }
 
             @Override
             public void onCompleted() {
                 super.onCompleted();
-                mView.stopLoading("one");
+                mView.stopLoading(AppConstant.oneMessage);
+            }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
             }
         }));
     }

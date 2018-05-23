@@ -159,6 +159,8 @@
         <activity android:name=".ui.Store.activity.StoreReportActivity" />
         <!--文本编辑的类，名字修改-->
         <activity android:name=".ui.myinfo.activity.EditTextInputActivity" />
+        <!--淘宝店铺信息页面-->
+        <activity android:name=".ui.mall.activity.TaoBaoStoreInfoActivity"/>
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

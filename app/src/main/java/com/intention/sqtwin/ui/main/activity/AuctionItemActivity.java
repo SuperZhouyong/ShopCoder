@@ -253,7 +253,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
     @Override
     public void StartLoading(String RequestId) {
-
+        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override

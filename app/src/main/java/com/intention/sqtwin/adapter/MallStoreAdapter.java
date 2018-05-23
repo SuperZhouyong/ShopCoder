@@ -1,11 +1,14 @@
 package com.intention.sqtwin.adapter;
 
 import android.content.Context;
+import android.view.View;
 
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AllMallDateBean;
+import com.intention.sqtwin.ui.mall.activity.TaoBaoStoreInfoActivity;
 
 import java.util.List;
 
@@ -22,8 +25,15 @@ public class MallStoreAdapter extends CommonRecycleViewAdapter<AllMallDateBean.D
     }
 
     @Override
-    public void convert(ViewHolderHelper helper, AllMallDateBean.DataBean.StoreBean storeBean, int position) {
+    public void convert(ViewHolderHelper helper, final AllMallDateBean.DataBean.StoreBean storeBean, int position) {
         helper.setImageUrl(R.id.iv_headtwo, storeBean.getStore_logo());
         helper.setText(R.id.tv_headtwo, storeBean.getStore_name());
+
+        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TaoBaoStoreInfoActivity.GotoTaoBaoSTireInfoActivity((BaseActivity) mContext, storeBean.getStore_id());
+            }
+        });
     }
 }

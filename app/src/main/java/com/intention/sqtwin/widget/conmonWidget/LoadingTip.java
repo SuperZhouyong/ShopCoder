@@ -153,8 +153,12 @@ public class LoadingTip extends LinearLayout {
                 });
                 break;
             case StartLoading:
-                llTip.setVisibility(GONE);
-                relTip.setVisibility(VISIBLE);
+                setVisibility(VISIBLE);
+                llTip.setVisibility(VISIBLE);
+                tv_tips.setText("加载中...");
+                img_tip_logo.setVisibility(GONE);
+                bt_operate.setVisibility(GONE);
+                relTip.setVisibility(GONE);
                 break;
         }
         if (getLayoutParams() instanceof LinearLayout.LayoutParams) {

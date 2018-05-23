@@ -56,7 +56,8 @@ public class AuctionOrgPresenter extends AuctionOrgContract.Presenter {
         mRxManage.add(mModel.getAddFavArtFiled(favId, FavType).subscribe(new RxSubscriber<AddFavBean>(mContext) {
             @Override
             protected void _onNext(AddFavBean addFavBean) {
-                mView.returnArtFavBean(addFavBean);
+//                mView.returnArtFavBean(addFavBean);
+                mView.returnArtFavBeanFiled(addFavBean);
             }
 
             @Override

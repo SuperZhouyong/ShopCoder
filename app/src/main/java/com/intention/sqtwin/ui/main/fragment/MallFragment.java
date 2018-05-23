@@ -21,6 +21,7 @@ import com.intention.sqtwin.adapter.MallStoreAdapter;
 import com.intention.sqtwin.adapter.MallWorksAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
+import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AllMallDateBean;
 import com.intention.sqtwin.ui.main.contract.MallContract;
 import com.intention.sqtwin.ui.main.model.MallModel;

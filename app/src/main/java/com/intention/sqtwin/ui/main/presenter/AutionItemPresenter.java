@@ -35,12 +35,18 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
                 super.onCompleted();
                 mView.stopLoading(AppConstant.oneMessage);
             }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
+            }
         }));
     }
 
     @Override
     public void getAgentBidBeanRequest(Integer goods_id, Integer price, Integer member_id) {
-        mRxManage.add(mModel.getAgentBidDate(goods_id, price, member_id).subscribe(new RxSubscriber<AgentBidBean>(mContext) {
+        mRxManage.add(mModel.getAgentBidDate(goods_id, price, member_id).subscribe(new RxSubscriber<AgentBidBean>(mContext,true) {
             @Override
             protected void _onNext(AgentBidBean agentBidBean) {
                 mView.returnAgentBidDate(agentBidBean);
@@ -55,7 +61,7 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
     @Override
     public void getBidBeanRequest(Integer goods_id, Integer price, Integer member_id) {
-            mRxManage.add(mModel.getBindDate(goods_id, price, member_id).subscribe(new RxSubscriber<BidBean>(mContext) {
+            mRxManage.add(mModel.getBindDate(goods_id, price, member_id).subscribe(new RxSubscriber<BidBean>(mContext,true) {
                 @Override
                 protected void _onNext(BidBean bidBean) {
                     mView.returnBidDate(bidBean);

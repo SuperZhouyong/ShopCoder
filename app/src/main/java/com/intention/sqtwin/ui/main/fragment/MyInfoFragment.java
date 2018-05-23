@@ -134,7 +134,6 @@ public class MyInfoFragment extends LazzyFragment {
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.rel_message:
-                OrderListActivity.GotoOrderListActivity((MainActivity)getActivity(),10,1);
                 startActivity(getActivity(), MessageActicity.class);
                 break;
             case R.id.rel_acount:

@@ -190,7 +190,9 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
-            ImageLoaderUtils.display(this, iv_icon, artDetailBean.getData().getArtist_info().getAvatar());
+//            if (artDetailBean.getData().getArtist_info().)
+
+            ImageLoaderUtils.displayRound(this, iv_icon, artDetailBean.getData().getArtist_info().getAvatar());
             tv_name.setText(artDetailBean.getData().getArtist_info().getName());
             tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getGoods_count());
             tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count());

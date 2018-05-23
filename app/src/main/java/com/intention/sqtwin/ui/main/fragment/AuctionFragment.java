@@ -167,6 +167,8 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
             mLoadingTip.setOnReloadListener(this);
             return;
         }
+        if (mLoadingTip.getVisibility()==View.VISIBLE)
+            mLoadingTip.setViewGone();
 
         // 头部
         slidTabLayout.setOnTabSelectListener(this);
