@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.main.activity;
 
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -19,6 +20,7 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.ui.main.contract.ArtDetatilContract;
 import com.intention.sqtwin.ui.main.model.ArtDetatilModel;
@@ -61,6 +63,8 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
     private TextView tv_bid_nUm;
     private TextView tv_price_num;
     private TextView tv_desc;
+    private ImageView ivFocus;
+    private TextView tvFocus;
 
     @Override
     public int getLayoutId() {
@@ -77,7 +81,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("艺术家");
         relSearch.setVisibility(View.GONE);
-
+        artId = getIntent().getExtras().getInt(AppConstant.artDetailId, -1);
         mcomAdapter = new CommonRecycleViewAdapter<ArtDetailBean.DataBean.ItemListBean>(this, R.layout.item_artdetail) {
             @Override
             public void convert(ViewHolderHelper helper, ArtDetailBean.DataBean.ItemListBean itemListBean, int position) {
@@ -85,7 +89,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
                 helper.setText(R.id.tv_goods_name, itemListBean.getName());
 //                helper.setText(R.id.tv_price,itemListBean.getCurrent_price());
                 helper.setText(R.id.tv_price, "￥ " + itemListBean.getCurrent_price());
-                updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1,(int) getResources().getDimension(R.dimen.x20));
+                updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1, (int) getResources().getDimension(R.dimen.x20));
             }
         };
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -97,6 +101,8 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         mLadapter.addHeaderView(artDetailHead);
         iv_icon = (ImageView) artDetailHead.findViewById(R.id.iv_header_icon);
         tv_name = (TextView) artDetailHead.findViewById(R.id.art_name);
+        ivFocus = (ImageView) artDetailHead.findViewById(R.id.iv_focus);
+        tvFocus = (TextView) artDetailHead.findViewById(R.id.tv_focus);
         tv_bid_nUm = (TextView) artDetailHead.findViewById(R.id.tv_lot_num);
         artDetailHead.findViewById(R.id.rel_focus).setOnClickListener(this);
 
@@ -110,7 +116,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         mPresenter.getArtDetailRequest(artId, page);
     }
 
-    private void updateTextColor(TextView tv, int starts, int end,int textSize) {
+    private void updateTextColor(TextView tv, int starts, int end, int textSize) {
         SpannableString spannedString = new SpannableString(tv.getText().toString());
 //        spannedString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.app_main)), starts[i], starts[i + 1], Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannedString.setSpan(new AbsoluteSizeSpan(textSize), starts, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -125,6 +131,13 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
                 finish();
                 break;
         }
+    }
+
+    public static void GotoArtDetailActivity(BaseActivity baseActivity, Integer artId) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.artDetailId, artId);
+        baseActivity.startActivity(ArtDetatilActivity.class, bundle);
+
     }
 
     @Override
@@ -160,6 +173,9 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
             }
 
         }
+        if (AppConstant.twoMessage.equals(RequestId)) {
+            showShortToast(msg);
+        }
     }
 
     @Override
@@ -190,6 +206,16 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
     }
 
+    @Override
+    public void returnArtFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        ivFocus.setVisibility(View.GONE);
+        tvFocus.setText("已关注");
+    }
+
 
     @Override
     public void reload() {
@@ -203,8 +229,9 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.rel_focus:
+                mPresenter.getAddFavArtRequest(artId, AppConstant.artst);
                 // 关注
                 break;
         }

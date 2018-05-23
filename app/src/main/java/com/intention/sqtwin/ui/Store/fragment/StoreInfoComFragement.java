@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
@@ -13,11 +14,16 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.StoreInfoComAdapter;
 import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.ui.Store.contract.StoreInfoComContract;
 import com.intention.sqtwin.ui.Store.model.StoreInfoComModel;
 import com.intention.sqtwin.ui.Store.presenter.StoreInfoComPresenter;
+import com.intention.sqtwin.ui.main.activity.ArtDetatilActivity;
+import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
+import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
+import com.intention.sqtwin.ui.main.activity.OrganPeoActivity;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
@@ -31,7 +37,7 @@ import butterknife.BindView;
  * QQ: 437397161
  */
 
-public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, StoreInfoComModel> implements StoreInfoComContract.View, OnNetWorkErrorListener, OnLoadMoreListener, OnRefreshListener {
+public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, StoreInfoComModel> implements StoreInfoComContract.View, OnNetWorkErrorListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener {
 
     private String mTitle;
     private Integer mcategory_id;
@@ -77,6 +83,7 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         mLRecyclerView.setOnLoadMoreListener(this);
         mLRecyclerView.setOnRefreshListener(this);
 
+        mLadapter.setOnItemClickListener(this);
     }
 
     private Integer switctResId(Integer mcategory_id) {
@@ -158,8 +165,8 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
 
-       /* if (page == 0 && mAdapter.getDataList().size() != 0)
-            mAdapter.clear();*/
+        if (page == 0 && mAdapter.getDataList().size() != 0)
+            mAdapter.clear();
 
         if (mcategory_id == 1) {
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_item());
@@ -200,5 +207,31 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         page = 0;
         mLRecyclerView.setNoMore(false);
         mPresenter.getStoreInfoComRequest(page, mcategory_id);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        if (mcategory_id == 1) {
+            AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) getActivity(),((StoreInfoComBean.DataBean.FavoriteItemBean)mAdapter.get(position)).getId());
+        }
+        //拍场
+        if (mcategory_id == 2) {
+            // 常规的排场
+            AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity)getActivity(),((StoreInfoComBean.DataBean.FavoriteFieldBean)mAdapter.get(position)).getId(),AppConstant.IntoWayOne);
+        }
+
+        if (mcategory_id == 3) {
+            OrganPeoActivity.gotoActivity((BaseActivity)getActivity(),((StoreInfoComBean.DataBean.FavoriteOrganBean)mAdapter.get(position)).getOrganization_id());
+//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_organ());
+        }
+        if (mcategory_id == 4) {
+            ArtDetatilActivity.GotoArtDetailActivity((BaseActivity)getActivity(),((StoreInfoComBean.DataBean.FavoriteArtistBean)mAdapter.get(position)).getId());
+//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_artist());
+        }
+        //店鋪，需要設置底部的价格为gone
+        if (mcategory_id == 5) {
+
+//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_store());
+        }
     }
 }

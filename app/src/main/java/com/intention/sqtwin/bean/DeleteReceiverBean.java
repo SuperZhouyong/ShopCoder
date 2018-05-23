@@ -2,22 +2,22 @@ package com.intention.sqtwin.bean;
 
 /**
  * Description: 绝无Bug
- * Data：2018/5/17 0017-下午 16:59
+ * Data：2018/5/23 0023-上午 11:12
  * Blog：Super简单
  * Author: ZhouYong
  */
 
-public class SubmitAddressBean {
+public class DeleteReceiverBean {
 
     /**
      * is_success : true
-     * message : 操作成功
-     * data : null
+     * message : 删除成功
+     * data : 12
      */
 
     private boolean is_success;
     private String message;
-    private Object data;
+    private String data;
 
     public boolean isIs_success() {
         return is_success;
@@ -35,11 +35,11 @@ public class SubmitAddressBean {
         this.message = message;
     }
 
-    public Object getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(String data) {
         this.data = data;
     }
 }

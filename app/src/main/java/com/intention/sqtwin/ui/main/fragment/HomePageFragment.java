@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -20,7 +21,9 @@ import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllDateBean;
+import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.main.activity.SearchActivity;
@@ -30,6 +33,7 @@ import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
 import com.intention.sqtwin.ui.mall.activity.DerivativesActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
@@ -37,13 +41,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import ezy.ui.view.BannerView;
+import rx.functions.Action1;
 
 
 /**
  * Created by Administrator on 2017/2/9 0009.
  */
 
-public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener, View.OnClickListener {
+public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener, View.OnClickListener, OnRefreshListener {
     @BindView(R.id.mLRecyclerView)
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -63,6 +68,9 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     private HeadTwoAdapter mHeadTwoAdapter;
     private BannerView mBannerViewTwo;
     private String TAG = "HomePageFragment";
+    private int pagesize = 10;
+    private Integer currentPostion = -1;
+    private Integer currentFavId;
 
     @Override
     protected int getLayoutResource() {
@@ -85,7 +93,8 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mLadapter = new LRecyclerViewAdapter(homeAdapter);
         mLRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mLRecyclerView.setAdapter(mLadapter);
-        mLRecyclerView.setPullRefreshEnabled(false);
+        mLRecyclerView.setPullRefreshEnabled(true);
+        mLRecyclerView.setOnRefreshListener(this);
         mLRecyclerView.setLoadMoreEnabled(false);
         mLRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 20, 1, getResources().getColor(R.color.app_bottom_colour)));
         View headViewPager = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
@@ -133,32 +142,25 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         mLadapter.addHeaderView(homeHeadTitle);
 
 
-       /* mHeadTwoAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(ViewGroup parent, View view, Object o, int position) {
-                Intent intent = new Intent(getActivity(), AuctionItemActivity.class);
-                intent.putExtra(AppConstant.auctionItemId,mHeadTwoAdapter.get(position).getId());
-//                startActivity(getActivity(), AuctionItemActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public boolean onItemLongClick(ViewGroup parent, View view, Object o, int position) {
-                return false;
-            }
-        });*/
         mLadapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-               /* Intent intent = new Intent(getActivity(), AuctionFiledActivity.class);
-                intent.putExtra(AppConstant.aucotonFileId, homeAdapter.get(position).getId());
-                LogUtils.logd(TAG + "-------" + homeAdapter.get(position).getId());*/
-//                startActivity(intent);
+                LogUtils.logd("Postion   " + position);
                 AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), homeAdapter.get(position).getId(), AppConstant.IntoWayOne);
 
             }
         });
         mPresenter.getHomeAllDate();
+        mRxManager.on(AppConstant.HomeFiled, new Action1<FavBean>() {
+            @Override
+            public void call(FavBean favBean) {
+                currentPostion = favBean.getPostion();
+                currentFavId = favBean.getFavId();
+                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+            }
+
+
+        });
     }
 
 
@@ -174,7 +176,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
     @Override
     public void stopLoading(String RequestId) {
-
+        mLRecyclerView.refreshComplete(pagesize);
     }
 
     @Override
@@ -182,6 +184,10 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         if (AppConstant.oneMessage.equals(RequestId)) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
             mLoadingTip.setOnReloadListener(this);
+        }
+        // 关注遇到网络不好
+        if (AppConstant.twoMessage.equals(RequestId)) {
+            showShortToast(msg);
         }
     }
 
@@ -196,6 +202,13 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         // 取消显示页
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
+        if (mHeadTwoAdapter.getDataList().size() != 0)
+            mHeadTwoAdapter.clear();
+        if (homeAdapter.getDataList().size() != 0) {
+            homeAdapter.clear();
+        }
+
+
         // 第一个轮播图
         mBannerView.setViewFactory(new BannerView.ViewFactory<AllDateBean.DataBean.Adv1Bean>() {
             @Override
@@ -229,6 +242,18 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
     }
 
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        // 收藏完毕就刷新
+        homeAdapter.AddList(currentFavId);
+        homeAdapter.notifyItemChanged(currentPostion);
+        showShortToast(addFavBean.getMessage());
+    }
+
 
     @Override
     public void reloadLodTip() {
@@ -254,7 +279,6 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     }
 
 
-
     @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -268,5 +292,10 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
             case R.id.iv_readme:
                 break;
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.getHomeAllDate();
     }
 }

@@ -2,7 +2,9 @@ package com.intention.sqtwin.ui.main.model;
 
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
+import com.intention.sqtwin.baserx.RxBus;
 import com.intention.sqtwin.baserx.RxSchedulers;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.RecommendField;
 import com.intention.sqtwin.bean.RecommendedLots;
@@ -22,6 +24,11 @@ public class MainModel implements MainContract.Model {
     @Override
     public Observable<AllDateBean> getAllDateBean() {
         return Api.getDefault(HostType.Jsonpart).getHomeAllDate().compose(RxSchedulers.<AllDateBean>io_main());
+    }
+
+    @Override
+    public Observable<AddFavBean> getAddFavFiled(Integer fav_id, String fav_type) {
+        return Api.getDefault(HostType.Jsonpart).getAddFavbean(fav_id, fav_type).compose(RxSchedulers.<AddFavBean>io_main());
     }
    /* @Override
     public Observable<ShufflingPictureBean> getViewpagerPic(String page, Integer postion) {

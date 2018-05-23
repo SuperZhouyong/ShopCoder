@@ -2,6 +2,7 @@ package com.intention.sqtwin.api;
 
 
 import com.intention.sqtwin.bean.AccountBean;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.AllMallDateBean;
@@ -16,6 +17,8 @@ import com.intention.sqtwin.bean.BidRecordBean;
 import com.intention.sqtwin.bean.BindCardInfoBean;
 import com.intention.sqtwin.bean.CategoryAllBean;
 import com.intention.sqtwin.bean.ChargeBean;
+import com.intention.sqtwin.bean.DeleteFavBean;
+import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
@@ -122,7 +125,9 @@ public interface ApiService {
     @GET("auction/get_organization_home")
     Observable<AuctionOrgBean> getArtIst(
             @Query("organization_id") Integer OrgId,
-            @Query("page_no") Integer page_no);
+            @Query("page_no") Integer page_no,
+            @Query("status") Integer status
+    );
 
     /**
      * @param staff_id
@@ -341,7 +346,7 @@ public interface ApiService {
      * @return
      */
 
-    @POST("Membercenter/Member_address_edit_submit")
+    @POST("membercenter/Member_address_submit")
     Observable<SubmitAddressBean> submitAddress(
             @Body UpdateAddressBean updateAddressBean
     );
@@ -456,4 +461,38 @@ public interface ApiService {
      */
     @GET("Taobao/Taobao_index")
     Observable<AllMallDateBean> getAllMallDate();
+
+    /**
+     * 删除收获地址
+     *
+     * @return
+     */
+    @GET("membercenter/delete_address_info")
+    Observable<DeleteReceiverBean> getDeleteReceiver(
+            @Query("address_id") Integer addressId
+    );
+
+    //index/del_fav_info?fav_id&fav_type 取消关注
+    //http://ta.beikunit.com/api/index/get_fav_info?fav_id=1&fav_type=store 加入关注
+    //类型:goods为商品,store为店铺, artst为艺术家, organ为拍卖机构，field为拍场
+
+    /**
+     * 加入关注
+     *
+     * @param fav_id
+     * @param fav_type
+     * @return
+     */
+    @GET("index/get_fav_info")
+    Observable<AddFavBean> getAddFavbean(
+            @Query("fav_id") Integer fav_id,
+            @Query("fav_type") String fav_type
+    );
+
+    // 删除收藏
+    @GET("index/del_fav_info")
+    Observable<DeleteFavBean> getDeleteFavBean(
+            @Query("fav_id") Integer fac_id,
+            @Query("fav_type") String fav_type
+    );
 }

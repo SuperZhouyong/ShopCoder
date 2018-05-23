@@ -65,8 +65,10 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
 
     @Override
     public void initView() {
+        leftTitle.setVisibility(View.GONE);
         centerTitle.setText("参拍");
-        relBack.setVisibility(View.GONE);
+        relSearch.setVisibility(View.GONE);
+//        relBack.setVisibility(View.GONE);
         mAdapter = new CommonRecycleViewAdapter<MyCompeteBean.DataBean.GoodsListBean>(this, R.layout.item_auction_file_item) {
             @Override
             public void convert(ViewHolderHelper helper, MyCompeteBean.DataBean.GoodsListBean auctionItemListBean, int position) {
@@ -127,6 +129,7 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
+                finish();
                 break;
             case R.id.rel_search:
                 break;

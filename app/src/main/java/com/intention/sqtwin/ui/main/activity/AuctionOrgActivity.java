@@ -17,7 +17,10 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.baserx.RxBus;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AuctionOrgBean;
+import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.ui.main.contract.AuctionOrgContract;
 import com.intention.sqtwin.ui.main.model.AuctionOrgModel;
 import com.intention.sqtwin.ui.main.presenter.AuctionOrgPresenter;
@@ -27,9 +30,13 @@ import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Description: 拍卖机构主页
@@ -62,6 +69,12 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     private TextView tvFans;
     private ImageView ivIcon;
     private TextView tvDesc;
+    private Integer status = 0;
+    private ImageView ivFocus;
+    private TextView tvFocus;
+    private List<Integer> mList;
+    private int currentPostion = -1;
+    private int currentFavId = -1;
 
     @Override
     public int getLayoutId() {
@@ -75,13 +88,32 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
 
     @Override
     public void initView() {
+        mList = new ArrayList<>();
         leftTitle.setVisibility(View.GONE);
         relSearch.setVisibility(View.GONE);
-
+        centerTitle.setText("拍卖机构");
         artOrgId = getIntent().getExtras().getInt(AppConstant.OrgID);
         mcomAdapter = new CommonRecycleViewAdapter<AuctionOrgBean.DataBean.AuctionFieldListBean>(this, R.layout.item_wholegoods) {
             @Override
-            public void convert(ViewHolderHelper helper, AuctionOrgBean.DataBean.AuctionFieldListBean itemListBean, int position) {
+            public void convert(ViewHolderHelper helper, final AuctionOrgBean.DataBean.AuctionFieldListBean itemListBean, final int position) {
+                if ("true".equals(itemListBean.getIs_favorite()) || mList.contains(itemListBean.getId())) {
+                    helper.setVisible(R.id.iv_focus, false);
+                    helper.setText(R.id.tv_focus, "已关注");
+                } else {
+                    helper.setVisible(R.id.iv_focus, true);
+                    helper.setText(R.id.tv_focus, "关注");
+                    helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // 关注拍场
+
+                            currentPostion = position;
+                            currentFavId = itemListBean.getId();
+                            mPresenter.getAddFavArtFiledRequest(itemListBean.getId(), AppConstant.field);
+                        }
+                    });
+                }
+
                 helper.setText(R.id.tv_company_name, itemListBean.getOrganization().getName());
                 helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganization().getImage());
 //                helper.setText(R.id.tv_fouce_num, itemListBean.get);
@@ -90,12 +122,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                 helper.setText(R.id.tv_filed_name, itemListBean.getName());
                 helper.setImageUrl(R.id.iv_pos_goods, itemListBean.getImage());
                 LogUtils.logd("我是每个条目");
-                helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 点击关注
-                    }
-                });
+
                 String start_time = itemListBean.getStart_time();
                 String end_time = itemListBean.getEnd_time();
                 try {
@@ -118,7 +145,8 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-//                updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1);
+
+
             }
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -132,6 +160,9 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         setMarGinTop(artDetailHead.findViewById(R.id.rel_background), (int) getResources().getDimension(R.dimen.x22), (int) getResources().getDimension(R.dimen.y100));
         ivIcon = (ImageView) artDetailHead.findViewById(R.id.iv_header_icon);
         orgName = (TextView) artDetailHead.findViewById(R.id.art_name);
+        ivFocus = (ImageView) artDetailHead.findViewById(R.id.iv_focus);
+        tvFocus = (TextView) artDetailHead.findViewById(R.id.tv_focus);
+        artDetailHead.findViewById(R.id.rel_focus).setOnClickListener(this);
         tvLostNum = (TextView) artDetailHead.findViewById(R.id.tv_lot_num);
         tvFans = (TextView) artDetailHead.findViewById(R.id.tv_price_num);
         tvDesc = (TextView) artDetailHead.findViewById(R.id.tv_desc);
@@ -144,7 +175,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         mLadapter.addHeaderView(homeHeadTitle);
 //        View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
 //        mLadapter.addHeaderView(allHeadView);
-        mPresenter.getAuctionOrgRequest(artOrgId, page);
+        mPresenter.getAuctionOrgRequest(artOrgId, page, status);
     }
 
     @Override
@@ -170,10 +201,12 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                 mLoadingTip.setOnReloadListener(this);
 
             } else {
-
                 mRecyclerView.setOnNetWorkErrorListener(this);
             }
 
+        }
+        if (AppConstant.twoMessage.equals(RequestId)) {
+            showShortToast(msg);
         }
     }
 
@@ -206,20 +239,43 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
             mRecyclerView.setNoMore(true);*/
     }
 
+    @Override
+    public void returnArtFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+
+        ivFocus.setVisibility(View.GONE);
+        tvFocus.setText("已关注");
+    }
+
+    @Override
+    public void returnArtFavBeanFiled(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success())
+            return;
+        if (currentFavId != -1 && currentPostion != -1){
+
+            mList.add(currentFavId);
+            mcomAdapter.notifyItemChanged(currentPostion);
+        }
+    }
+
 
     @Override
     public void onLoadMore() {
-        mPresenter.getAuctionOrgRequest(artOrgId, page);
+        mPresenter.getAuctionOrgRequest(artOrgId, page, status);
     }
 
     @Override
     public void reloadLodTip() {
-        mPresenter.getAuctionOrgRequest(artOrgId, page);
+        mPresenter.getAuctionOrgRequest(artOrgId, page, status);
     }
 
     @Override
     public void reload() {
-        mPresenter.getAuctionOrgRequest(artOrgId, page);
+        mPresenter.getAuctionOrgRequest(artOrgId, page, status);
     }
 
 
@@ -227,13 +283,38 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_all:
+                if (status == 0)
+                    return;
+                page = 0;
+                status = 0;
+                mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             case R.id.tv_ongoing:
+                if (status == 1)
+                    return;
+                page = 0;
+                status = 1;
+                mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             case R.id.tv_preview:
+                if (status == 2)
+                    return;
+                page = 0;
+                status = 2;
+                mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             case R.id.tv_over:
+                if (status == 3)
+                    return;
+                page = 0;
+                status = 3;
+                mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
+            // 拍卖机构的关注
+            case R.id.rel_focus:
+                mPresenter.getAddFavArtRequest(artOrgId, AppConstant.organ);
+                break;
+
 
         }
     }
@@ -243,5 +324,11 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         bundle.putInt(AppConstant.OrgID, artOrgId);
         mActivity.startActivity(AuctionOrgActivity.class, bundle);
 
+    }
+
+
+    @OnClick(R.id.rel_back)
+    public void onViewClicked() {
+        finish();
     }
 }

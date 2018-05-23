@@ -24,6 +24,8 @@ import com.intention.sqtwin.ui.main.presenter.CategorPresenter;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Description: 保佑无bug
@@ -34,8 +36,24 @@ import butterknife.BindView;
  */
 
 public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryModel> implements CategoryContract.View, LoadingTip.onReloadListener {
-
+    @BindView(R.id.rel_search)
+    RelativeLayout relSearch;
+    @BindView(R.id.iv_love)
+    ImageView ivLove;
+    @BindView(R.id.iv_readme)
+    ImageView ivReadme;
+    @BindView(R.id.mrecy_left)
+    RecyclerView mrecyLeft;
+    @BindView(R.id.iv_dilver)
+    ImageView ivDilver;
     @BindView(R.id.mrecy_right)
+    LRecyclerView mrecyRight;
+    @BindView(R.id.rel_all)
+    RelativeLayout relAll;
+    @BindView(R.id.mLoadingTip)
+    LoadingTip mLoadingTip;
+
+  /*  @BindView(R.id.mrecy_right)
     LRecyclerView mrecyRight;
     @BindView(R.id.rel_all)
     RelativeLayout relAll;
@@ -50,7 +68,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     @BindView(R.id.category_logo)
     ImageView categoryLogo;
     @BindView(R.id.iv_dilver)
-    ImageView ivDilver;
+    ImageView ivDilver*/;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean> mLeftAdapter;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.SubCategoryBean> mRightAdapter;
     private Integer current_category_id = 19;
@@ -180,4 +198,18 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     }
 
 
+    @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            // 去搜索
+            case R.id.rel_search:
+                break;
+            //去关注
+            case R.id.iv_love:
+                break;
+            // 去提醒
+            case R.id.iv_readme:
+                break;
+        }
+    }
 }

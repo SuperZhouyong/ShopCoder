@@ -3,8 +3,8 @@
 
     <corners android:radius="@dimen/x50" />
     <padding
-        android:top="@dimen/y10"
-        android:bottom="@dimen/y10"
+        android:top="@dimen/y5"
+        android:bottom="@dimen/y5"
         android:left="@dimen/x15"
         android:right="@dimen/x15" />
     <stroke

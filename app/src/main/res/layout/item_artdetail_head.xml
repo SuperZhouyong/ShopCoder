@@ -51,17 +51,17 @@
 
             <ImageView
                 android:id="@+id/iv_focus"
-                android:layout_width="@dimen/x35"
-                android:layout_height="@dimen/y35"
+                android:layout_width="@dimen/x25"
+                android:layout_height="@dimen/y25"
                 android:layout_centerVertical="true"
-                android:background="@color/green" />
+                android:src="@mipmap/red_add" />
 
             <TextView
-
+                android:id="@+id/tv_focus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x10"
+
                 android:layout_toRightOf="@id/iv_focus"
                 android:text="关注"
                 android:textColor="@color/title_bg"

@@ -1,7 +1,5 @@
 package com.intention.sqtwin.bean;
 
-import retrofit2.http.Field;
-
 /**
  * Description: 绝无Bug
  * Data：2018/5/17 0017-下午 17:07
@@ -22,10 +20,13 @@ public class UpdateAddressBean {
     private Integer area_id;
     // 是否默认
     private Integer address_is_default;
-    // 新增还是修改 0=新增，1=修改
-    private Integer op;
+    /*// 新增还是修改 0=新增，1=修改
+    private Integer op;*/
     // 详细地址
-    private String address ;
+    private String address_detail;
+
+    private Integer address_id;
+
 
     public String getName() {
         return name;
@@ -75,19 +76,20 @@ public class UpdateAddressBean {
         this.address_is_default = address_is_default;
     }
 
-    public Integer getOp() {
-        return op;
+
+    public String getAddress_detail() {
+        return address_detail;
     }
 
-    public void setOp(Integer op) {
-        this.op = op;
+    public void setAddress_detail(String address_detail) {
+        this.address_detail = address_detail;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getAddress_id() {
+        return address_id;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddress_id(Integer address_id) {
+        this.address_id = address_id;
     }
 }

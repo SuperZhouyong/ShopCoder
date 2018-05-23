@@ -32,8 +32,23 @@ public class MallAdapter extends CommonRecycleViewAdapter<AllMallDateBean.DataBe
 
     @Override
     public void convert(ViewHolderHelper helper, final AllMallDateBean.DataBean.FieldBean recommendFieldBean, int position) {
-        helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
-        helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+
+        if (recommendFieldBean.getOrganization() == null) {
+            helper.setVisible(R.id.tv_company_name, false);
+            helper.setVisible(R.id.iv_logo, false);
+        } else {
+            helper.setVisible(R.id.tv_company_name, true);
+            helper.setVisible(R.id.iv_logo, true);
+            helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
+            helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+            helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                }
+            });
+        }
+
         helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
         helper.setText(R.id.tv_lot_num, String.valueOf(recommendFieldBean.getItem_count()));
         helper.setText(R.id.tv_price_num, String.valueOf(recommendFieldBean.getBid_count()));
@@ -69,11 +84,6 @@ public class MallAdapter extends CommonRecycleViewAdapter<AllMallDateBean.DataBe
                 // 点击关注
             }
         });
-        helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
-            }
-        });
+
     }
 }

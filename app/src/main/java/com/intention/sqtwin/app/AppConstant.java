@@ -37,9 +37,9 @@ public class AppConstant {
     // 排场页面进入的方式
     public static final String IntoTheWay = "IntoTheWay";
     //进入排场的常规方式
-    public static String IntoWayOne;
+    public static final String IntoWayOne = "IntoWayOne";
     //同步拍进入排场的方式
-    public static String IntoWayTwo;
+    public static final String IntoWayTwo = "IntoWayTwo";
     // 三级城市连动ID
     public static final String ConfirmOk = "ConfirmOk";
     //    wxd2fb38f960eb278e appid  wxd2fb38f960eb278e
@@ -81,4 +81,21 @@ public class AppConstant {
     public static final String CategoryType = "CategoryType";
     public static final String UserName = "UserName";
     public static final String PhoneNum = "PhoneNum";
+    public static final String AddressId = "AddressId";
+    public static final String AddressBean = "AddressBean";
+    // 首页的排场关注
+//    类型:goods为商品,store为店铺, artst为艺术家, organ为拍卖机构，field为拍场
+    public static final String HomeFiled = "HomeFiled";
+    public static final String field = "field";
+
+    public static final String goods = "goods";
+
+    public static final String store = "store";
+
+    public static final String artst = "artst";
+
+    public static final String organ = "prgan";
+
+    // 进入艺术家主页Id
+    public static String artDetailId = "artDetailId";
 }

@@ -87,6 +87,14 @@ public class BannerView<Item> extends FrameLayout {
 
     private int mIndicatorVisible;
 
+    public List<Item> getmDataList() {
+        return mDataList;
+    }
+
+    public void setmDataList(List<Item> mDataList) {
+        this.mDataList = mDataList;
+    }
+
     private List<Item> mDataList = new ArrayList();
     private ViewPager.OnPageChangeListener mOnPageChangeListener;
     private ViewFactory mViewFactory;

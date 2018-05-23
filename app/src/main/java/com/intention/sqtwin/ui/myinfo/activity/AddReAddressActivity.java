@@ -1,6 +1,9 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,6 +20,7 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.AllRegion;
 import com.intention.sqtwin.bean.BeanId;
+import com.intention.sqtwin.bean.ReceivedGoodsBean;
 import com.intention.sqtwin.bean.SubmitAddressBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.ui.myinfo.contract.AddReAddressContract;
@@ -77,6 +81,7 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
     TextView tvSave;
     private AllRegion mAllRegion;
     private UpdateAddressBean mUpdateAddressBean;
+    private int addressID;
 
     @Override
     public int getLayoutId() {
@@ -88,12 +93,26 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
         mPresenter.setVM(this, mModel);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void initView() {
+        mUpdateAddressBean = new UpdateAddressBean();
+        addressID = getIntent().getExtras().getInt(AppConstant.AddressId, -1);
+        ReceivedGoodsBean.DataBean mDataBean = getIntent().getExtras().getParcelable(AppConstant.AddressBean);
+        if (mDataBean != null) {
+            ecName.setText(mDataBean.getName());
+            ecPhone.setText(mDataBean.getPhone());
+            ecAddress.setText(mDataBean.getAddress());
+
+            mUpdateAddressBean.setProvince_id(mDataBean.getProvince_id());
+            mUpdateAddressBean.setCity_id(mDataBean.getCity_id());
+            mUpdateAddressBean.setArea_id(mDataBean.getArea_id());
+            tvCity.setText(mDataBean.getProvince_name() + "/" + mDataBean.getCity_name() + "/" + mDataBean.getArea_name());
+        }
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("添加收货地址");
         relSearch.setVisibility(View.GONE);
-        mUpdateAddressBean = new UpdateAddressBean();
+
         mUpdateAddressBean.setAddress_is_default(0);
         // 监听到确认按钮
         mRxManager.on(AppConstant.ConfirmOk, new Action1<BeanId>() {
@@ -108,6 +127,19 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
         switchButton.setOnCheckedChangeListener(this);
     }
 
+  /*  public static void GotoAddReAddressActivity(BaseActivity baseActivity, Integer addressid) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.AddressId, addressid);
+        baseActivity.startActivity(AddReAddressActivity.class, bundle);
+
+    }*/
+
+    public static void GotoAddReAddressActivity(BaseActivity baseActivity, Integer addressid, ReceivedGoodsBean.DataBean receivedGoodsBean) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.AddressId, addressid);
+        bundle.putParcelable(AppConstant.AddressBean, receivedGoodsBean);
+        baseActivity.startActivity(AddReAddressActivity.class, bundle);
+    }
 
     @OnClick({R.id.rel_back, R.id.rel_city, R.id.tv_save})
     public void onViewClicked(View view) {
@@ -145,8 +177,9 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
 
                 mUpdateAddressBean.setName(name);
                 mUpdateAddressBean.setPhone(phoneNum);
-                mUpdateAddressBean.setAddress(address);
+                mUpdateAddressBean.setAddress_detail(address);
 
+                mUpdateAddressBean.setAddress_id(addressID == -1 ? null : addressID);
                 mPresenter.getSubmitAddressBean(mUpdateAddressBean);
                 break;
         }
@@ -204,11 +237,17 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
 
     @Override
     public void returnSubmitAddressBean(SubmitAddressBean submitAddressBean) {
-
+        if (!submitAddressBean.isIs_success()) {
+            showShortToast(submitAddressBean.getMessage());
+            return;
+        }
+        showShortToast(submitAddressBean.getMessage());
     }
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        mUpdateAddressBean.setAddress_is_default(isChecked?1:0);
+        mUpdateAddressBean.setAddress_is_default(isChecked ? 1 : 0);
     }
+
+
 }

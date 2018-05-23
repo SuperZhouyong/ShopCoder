@@ -1,6 +1,8 @@
 package com.intention.sqtwin.ui.main.presenter;
 
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.RecommendField;
 import com.intention.sqtwin.bean.RecommendedLots;
@@ -25,53 +27,39 @@ public class MainPresenter extends MainContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-
-            }
-        }));
-    }
-
-   /* @Override
-    public void getViewpagerPic(String page, Integer postion) {
-        mRxManage.add(mModel.getViewpagerPic(page, postion).subscribe(new RxSubscriber<ShufflingPictureBean>(mContext) {
-            @Override
-            protected void _onNext(ShufflingPictureBean shufflingPictureBean) {
-                mView.returnViewpagerPic(shufflingPictureBean);
+                mView.showErrorTip(AppConstant.oneMessage, message);
             }
 
             @Override
-            protected void _onError(String message) {
-                mView.showErrorTip("Viewpager", message);
-            }
-        }));
-    }
-
-    @Override
-    public void getRecommentLots(String type) {
-        mRxManage.add(mModel.getRecommendLots(type).subscribe(new RxSubscriber<RecommendedLots>(mContext) {
-            @Override
-            protected void _onNext(RecommendedLots recommendedLots) {
-                mView.returnRecommendedLot(recommendedLots);
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading(AppConstant.oneMessage);
             }
 
             @Override
-            protected void _onError(String message) {
-                mView.showErrorTip("recommendLots", message);
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
             }
         }));
     }
 
     @Override
-    public void getRecommentFILED(String type) {
-        mRxManage.add(mModel.getRecommendField(type).subscribe(new RxSubscriber<RecommendField>(mContext) {
+    public void getAddFavBean(Integer fav_id, String fav_type) {
+        mRxManage.add(mModel.getAddFavFiled(fav_id, fav_type).subscribe(new RxSubscriber<AddFavBean>(mContext) {
             @Override
-            protected void _onNext(RecommendField recommendField) {
-                mView.returnRecommendField(recommendField);
+            protected void _onNext(AddFavBean addFavBean) {
+                mView.returnAddFavBean(addFavBean);
             }
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip("recommendFiled", message);
+                mView.showErrorTip(AppConstant.twoMessage,message);
             }
+
+
         }));
-    }*/
+    }
+
+
 }

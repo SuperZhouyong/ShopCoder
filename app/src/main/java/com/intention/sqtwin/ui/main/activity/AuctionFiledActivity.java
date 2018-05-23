@@ -122,9 +122,9 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     private String[] mTitles = {"参拍指南", "参拍提醒", "联系客服"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private int[] mIconUnselectIds = {
-            R.mipmap.aution_guide, R.mipmap.aution_remind, R.mipmap.auction_contact};
+            R.mipmap.aution_guide_unselect, R.mipmap.aution_remind, R.mipmap.auction_contact};
     private int[] mIconSelectIds = {
-            R.mipmap.aution_guide, R.mipmap.aution_remind, R.mipmap.auction_contact};
+            R.mipmap.aution_guide, R.mipmap.aution_remind_select, R.mipmap.contact_peo};
     private ImageView iv_com_icon;
     private TextView tv_com_name;
     private ImageView iv_add_fouce;
@@ -155,7 +155,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     public void initView() {
 
         auctiuonFiled = getIntent().getExtras().getInt(AppConstant.aucotonFileId, -1);
-        intoWay = getIntent().getExtras().getString(AppConstant.IntoTheWay,"");
+        intoWay = getIntent().getExtras().getString(AppConstant.IntoTheWay, "");
         mAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean>(this, R.layout.item_auction_file_item) {
             @Override
             public void convert(ViewHolderHelper helper, final AuctionFiledAllBean.DataBean.AuctionItemListBean auctionItemListBean, int position) {
@@ -171,7 +171,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
                 helper.getConvertView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (TextUtils.isEmpty(intoWay)||AppConstant.IntoWayOne.equals(intoWay))
+                        if (TextUtils.isEmpty(intoWay) || AppConstant.IntoWayOne.equals(intoWay))
                             AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, auctionItemListBean.getId());
                         else
                             SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext, auctionItemListBean.getId());
@@ -206,8 +206,14 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
         mAAboutAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.ArtistListBean>(this, R.layout.item_auction_file_foot_item) {
             @Override
-            public void convert(ViewHolderHelper helper, AuctionFiledAllBean.DataBean.ArtistListBean artistListBean, int position) {
+            public void convert(ViewHolderHelper helper, final AuctionFiledAllBean.DataBean.ArtistListBean artistListBean, int position) {
                 helper.setText(R.id.tv_art_name_item_foot, artistListBean.getName());
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ArtDetatilActivity.GotoArtDetailActivity(AuctionFiledActivity.this, artistListBean.getId());
+                    }
+                });
             }
         };
         View footView = getLayoutInflater().inflate(R.layout.item_auction_file_foot, null);

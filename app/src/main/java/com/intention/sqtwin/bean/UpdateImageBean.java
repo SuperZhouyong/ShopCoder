@@ -11,10 +11,11 @@ import java.util.List;
 
 public class UpdateImageBean {
 
+
     /**
      * is_success : true
      * message : 操作成功
-     * data : [{"id":0,"image_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_78539_2018050511450375689.png"},{"id":1,"image_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_78539_2018050511450375689.png"},{"id":2,"image_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_78539_2018050511450375689.png"}]
+     * data : [{"id":0,"url":"http://hancang.oss-cn-beijing.aliyuncs.com/20180523101035/F9373CF6-BA17-5C38-42D7-3508BE7FD588.jpg"}]
      */
 
     private boolean is_success;
@@ -48,11 +49,11 @@ public class UpdateImageBean {
     public static class DataBean {
         /**
          * id : 0
-         * image_url : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_78539_2018050511450375689.png
+         * url : http://hancang.oss-cn-beijing.aliyuncs.com/20180523101035/F9373CF6-BA17-5C38-42D7-3508BE7FD588.jpg
          */
 
         private int id;
-        private String image_url;
+        private String url;
 
         public int getId() {
             return id;
@@ -62,12 +63,12 @@ public class UpdateImageBean {
             this.id = id;
         }
 
-        public String getImage_url() {
-            return image_url;
+        public String getUrl() {
+            return url;
         }
 
-        public void setImage_url(String image_url) {
-            this.image_url = image_url;
+        public void setUrl(String url) {
+            this.url = url;
         }
     }
 }

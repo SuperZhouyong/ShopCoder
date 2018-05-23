@@ -110,7 +110,7 @@
                 android:maxLines="1"
                 android:minWidth="@dimen/x200"
                 android:singleLine="true"
-                android:text="北京"
+
                 android:textColor="@color/font_1"
                 android:textColorHint="@color/font_3"
                 android:textSize="@dimen/x30" />

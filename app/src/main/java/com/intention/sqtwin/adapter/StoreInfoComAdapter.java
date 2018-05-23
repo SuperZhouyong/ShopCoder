@@ -169,15 +169,15 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
 
         helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
         helper.setText(R.id.tv_goods_desc, "当前价");
-        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+     /*   helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                if (TextUtils.isEmpty(intoWay) || AppConstant.IntoWayOne.equals(intoWay))
                     AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, auctionItemListBean.getId());
-                /*else
-                    SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext, auctionItemListBean.getId());*/
+                *//*else
+                    SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext, auctionItemListBean.getId());*//*
             }
-        });
+        });*/
     }
 
 

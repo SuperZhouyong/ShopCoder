@@ -165,7 +165,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     public void initView() {
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("编辑资料");
-        ImageLoaderUtils.display(this, ivSearch, R.mipmap.icon_contact);
+        ImageLoaderUtils.display(this, ivSearch, R.mipmap.contact_editinfo);
         takePictureManager = new TakePictureManager(this);
         takePictureManager.setTailor(1, 1, 200, 200);
 
@@ -405,8 +405,8 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
             showShortToast(updateImageBean.getMessage());
             return;
         }
-        if (!TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
-            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());
+        if (!TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl()))
+            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
 
         if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
             submitClientInfo.setSex(userSex.getText().toString().trim());
@@ -420,8 +420,8 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
 //        if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
 //            submitClientInfo.setPhone(userPhone.getText().toString().trim());
 
-        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
-            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());
+        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl()))
+            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
 
         mPresenter.updateAnnEditInfoRequest(submitClientInfo);
 
