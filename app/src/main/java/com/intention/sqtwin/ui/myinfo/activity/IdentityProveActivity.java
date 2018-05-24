@@ -148,7 +148,7 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
         mAdapter.add("");
 
         takePictureManager = new TakePictureManager(this);
-        takePictureManager.setTailor(320, 200, 320, 200);
+        takePictureManager.setTailor(320, 200, 300, 300);
 
         takePictureManager.setTakePictureCallBackListener(this);
 
@@ -245,7 +245,7 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
         // 正面照
         String tag = bottomDialog.getFragmentTag();
         if (AppConstant.oneMessage.equals(bottomDialog.getFragmentTag())) {
-            ImageLoaderUtils.display(this, ivIdentityOne, outFile);
+            ImageLoaderUtils.display(this, ivIdentityOne, outFile.getAbsolutePath());
             mHashMap.put(AppConstant.oneMessage, outFile.getAbsolutePath());
 //            updateMySelf.setId_card_photo_front(outFile);
         } else if (AppConstant.twoMessage.equals(bottomDialog.getFragmentTag())) {
