@@ -18,7 +18,7 @@
         android:layout_height="@dimen/y60">
         <ImageView
             android:layout_marginLeft="@dimen/x10"
-            android:src="@mipmap/remind_logo"
+            android:src="@mipmap/home_search"
 
             android:layout_centerVertical="true"
             android:layout_width="@dimen/x35"

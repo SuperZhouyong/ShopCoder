@@ -24,6 +24,7 @@ import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.FavBean;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.main.activity.SearchActivity;
@@ -32,6 +33,7 @@ import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
 import com.intention.sqtwin.ui.mall.activity.DerivativesActivity;
+import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
@@ -287,9 +289,11 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 break;
             // 关注
             case R.id.iv_love:
+                startActivity(StoreFocusActivity.class);
                 break;
             // 提醒
             case R.id.iv_readme:
+                startActivity(MessageActicity.class);
                 break;
         }
     }

@@ -52,7 +52,7 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     RelativeLayout relSearch;
 
     @BindView(R.id.iv_head_icon)
-    CircleImageView ivHeadIcon;
+    ImageView ivHeadIcon;
     @BindView(R.id.tv_store_name)
     TextView tvStoreName;
     @BindView(R.id.tv_fans_num)

@@ -34,7 +34,7 @@
             android:layout_toLeftOf="@id/activity_search_return"
             android:background="@drawable/ed_search_corner"
             android:paddingRight="@dimen/x30">
-
+<!--search_black-->
             <ImageView
                 android:id="@+id/search_iv"
                 android:layout_width="@dimen/x30"

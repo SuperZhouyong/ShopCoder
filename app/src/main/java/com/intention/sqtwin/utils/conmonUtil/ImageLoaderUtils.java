@@ -64,19 +64,7 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)
-                /*.listener(new RequestListener<File, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, File model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        LogUtils.logd("Glide------" + "失败");
-                        return false;
-                    }
 
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, File model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        LogUtils.logd("Glide-------" + "陈宫");
-                        return false;
-                    }
-                })*/
                 .crossFade().into(imageView);
     }
 

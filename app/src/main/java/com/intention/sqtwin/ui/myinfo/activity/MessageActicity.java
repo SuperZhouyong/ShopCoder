@@ -1,11 +1,13 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -33,7 +35,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel> implements MessageContract.View, OnRefreshListener, LoadingTip.onReloadListener {
+public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel> implements MessageContract.View, OnRefreshListener, LoadingTip.onReloadListener, OnNetWorkErrorListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -51,7 +53,7 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
 
-    private CommonRecycleViewAdapter<MessageBean> mAdapter;
+    private CommonRecycleViewAdapter<MessageBean.DataBean> mAdapter;
     private LRecyclerViewAdapter mLAdapter;
     private int pagesize = 10;
     private Integer page_no = 0;
@@ -64,7 +66,7 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
 
     @Override
     public void initPresenter() {
-        mPresenter.setVM(this,mModel);
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
@@ -73,13 +75,23 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
         centerTitle.setText("消息");
         relSearch.setVisibility(View.GONE);
 
-        mAdapter = new CommonRecycleViewAdapter<MessageBean>(this, R.layout.item_message) {
+        mAdapter = new CommonRecycleViewAdapter<MessageBean.DataBean>(this, R.layout.item_message) {
             @Override
-            public void convert(ViewHolderHelper helper, MessageBean messageBean, int position) {
-
+            public void convert(ViewHolderHelper helper, MessageBean.DataBean messageBean, int position) {
+                helper.setText(R.id.tv_1, messageBean.getTitle());
+                helper.setText(R.id.tv_2, messageBean.getMessage());
+                helper.setImageUrl(R.id.iv_1, messageBean.getImage());
+                helper.setText(R.id.tv_time, messageBean.getMsg_time() + "");
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showShortToast("消息暂不支持点击");
+                    }
+                });
             }
         };
         mLAdapter = new LRecyclerViewAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mLAdapter);
         mRecyclerView.setLoadMoreEnabled(false);
         mRecyclerView.setOnRefreshListener(this);
@@ -112,6 +124,7 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
                 mLoadingTip.setOnReloadListener(this);
             } else {
                 // 并不提示，直接关闭
+                mRecyclerView.setOnNetWorkErrorListener(this);
             }
 
         }
@@ -123,12 +136,15 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
             showShortToast(messageBean.getMessage());
             if (page_no == 0) {
                 mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
-//                mLoadingTip.setOnReloadListener(this);
             }
             return;
         }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+        if (page_no == 0 && mAdapter.getDataList().size() != 0)
+            mAdapter.clear();
+        mAdapter.addAll(messageBean.getData());
         ++page_no;
-        mAdapter.add(messageBean);
     }
 
 
@@ -149,11 +165,17 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
 
     @Override
     public void onRefresh() {
+        page_no = 0;
         mPresenter.getMessageBeanRequest(page_no);
     }
 
     @Override
     public void reloadLodTip() {
+        mPresenter.getMessageBeanRequest(page_no);
+    }
+
+    @Override
+    public void reload() {
         mPresenter.getMessageBeanRequest(page_no);
     }
 }

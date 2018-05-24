@@ -47,7 +47,7 @@ public class MyInfoFragment extends LazzyFragment {
     @BindView(R.id.iv_shareicon)
     ImageView ivShareicon;
     @BindView(R.id.iv_head_icon)
-    CircleImageView ivHeadIcon;
+    ImageView ivHeadIcon;
     @BindView(R.id.ll_one)
     LinearLayout llOne;
     @BindView(R.id.ll_two)
@@ -106,55 +106,63 @@ public class MyInfoFragment extends LazzyFragment {
 
     @Override
     protected void initView() {
-        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
-            ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
-        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName)))
-            tvname.setText(SPUtils.getSharedStringData(getActivity(),AppConstant.UserName));
+//        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
+        ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
+//        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName)))
+        tvname.setText(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName));
 
     }
 
 
-    @OnClick({R.id.iv_shareicon, R.id.iv_head_icon, R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.rel_message, R.id.rel_acount, R.id.rel_mycompete, R.id.rel_identit, R.id.rel_setting, R.id.rel_help, R.id.rel_store_mange, R.id.rel_focus})
+    @OnClick({R.id.iv_shareicon, R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.rel_message, R.id.rel_acount, R.id.rel_mycompete, R.id.rel_identit, R.id.rel_setting, R.id.rel_help, R.id.rel_store_mange, R.id.rel_focus})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_shareicon:
                 startActivity(getActivity(), EditInfoActivity.class);
                 break;
-            case R.id.iv_head_icon:
-                break;
+
             case R.id.ll_one:
-                OrderListActivity.GotoOrderListActivity((MainActivity)getActivity(),10,1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 1);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_two:
-                OrderListActivity.GotoOrderListActivity((MainActivity)getActivity(),10,1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 1);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_three:
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 1);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
+            // 消息
             case R.id.rel_message:
                 startActivity(getActivity(), MessageActicity.class);
                 break;
+            // 资金账户
             case R.id.rel_acount:
                 startActivity(getActivity(), AccountActivity.class);
                 break;
+            // 我的竞拍
             case R.id.rel_mycompete:
                 startActivity(getActivity(), MyCompeteActivity.class);
                 break;
+            // 身份认证
             case R.id.rel_identit:
                 startActivity(getActivity(), IdentityProveActivity.class);
                 break;
+            // 设置
             case R.id.rel_setting:
 
 
                 break;
+            // 帮助中心
             case R.id.rel_help:
                 break;
+            // 店铺管理
             case R.id.rel_store_mange:
                 ((MainActivity) getActivity()).setCurrentPostion(2);
                 break;
             case R.id.rel_focus:
+                // 关注列表
                 startActivity(getActivity(), StoreFocusActivity.class);
                 break;
         }

@@ -62,6 +62,11 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        leftTitle.setVisibility(View.GONE);
+        centerTitle.setText("搜索");
+        relSearch.setVisibility(View.GONE);
+
+
         TagAdapter tagAdapter = new TagAdapter(this);
         tagFlow.setAdapter(tagAdapter);
     }

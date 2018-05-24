@@ -35,7 +35,7 @@
                             android:layout_marginTop="14dp"
                             android:src="@mipmap/share" />-->
 
-            <com.intention.sqtwin.widget.CircleImageView
+            <ImageView
                 android:id="@+id/iv_head_icon"
                 android:layout_width="@dimen/x120"
                 android:layout_height="@dimen/y120"

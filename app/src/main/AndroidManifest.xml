@@ -161,6 +161,8 @@
         <activity android:name=".ui.myinfo.activity.EditTextInputActivity" />
         <!--淘宝店铺信息页面-->
         <activity android:name=".ui.mall.activity.TaoBaoStoreInfoActivity"/>
+        <!--交易明细-->
+        <activity android:name=".ui.Store.activity.TradingDetailActivity"/>
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

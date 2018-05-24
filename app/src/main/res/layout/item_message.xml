@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/y30"
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_time"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/tv_message_bg"
+        android:paddingBottom="@dimen/y5"
+        android:paddingLeft="@dimen/x10"
+        android:paddingRight="@dimen/x10"
+        android:paddingTop="@dimen/y5"
+        android:text="前天 10:15" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@drawable/dialog_bg"
+        android:layout_marginRight="@dimen/x22"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginTop="@dimen/y30"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y230">
+        <TextView
+            android:gravity="center_vertical"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x26"
+            android:id="@+id/tv_1"
+            android:text="您关注的排场即将开始"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+     <RelativeLayout
+         android:layout_alignParentBottom="true"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/y150">
+
+         <ImageView
+             android:layout_marginLeft="@dimen/x22"
+             android:layout_centerVertical="true"
+             android:id="@+id/iv_1"
+             android:layout_width="@dimen/x120"
+             android:layout_height="@dimen/y120" />
+         <TextView
+             android:id="@+id/tv_2"
+             android:textColor="@color/font_1"
+             android:textSize="@dimen/x26"
+             android:layout_marginLeft="@dimen/x30"
+             android:layout_toRightOf="@id/iv_1"
+             android:layout_centerVertical="true"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content" />
+     </RelativeLayout>
+
+
+    </LinearLayout>
 </LinearLayout>

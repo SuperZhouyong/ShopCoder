@@ -32,6 +32,12 @@ public class MessagePresenter extends MessageContract.Presenter {
                 super.onCompleted();
                 mView.stopLoading(AppConstant.oneMessage);
             }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
+            }
         }));
     }
 }

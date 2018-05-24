@@ -4,6 +4,7 @@ package com.intention.sqtwin.base;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.TUtil;
 import com.intention.sqtwin.utils.conmonUtil.ToastUitl;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
+import com.intention.sqtwin.widget.NormalDialog;
+import com.intention.sqtwin.widget.ShareDialog;
 import com.intention.sqtwin.widget.conmonWidget.LoadingDialog;
 import com.umeng.analytics.MobclickAgent;
 
@@ -331,6 +334,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
         return UserUtil.getLoginInfo();
     }
+
     public void setMarGinTop(View v, int marGTop, int top) {
         if (v.getLayoutParams() instanceof LinearLayout.LayoutParams) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) v.getLayoutParams();
@@ -344,10 +348,32 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
         } else if (v.getLayoutParams() != null) {
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            layoutParams.setMargins(marGTop,top,marGTop,0);
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
             v.setLayoutParams(layoutParams);
         }
 
 
+    }
+
+    public void showContractDialog() {
+        final ShareDialog shareDialog = new ShareDialog(this, R.layout.item_reminder, false);
+        shareDialog.setMessage("17600298095");
+        shareDialog.setYesOnclickListener("确定", new NormalDialog.onYesOnclickListener() {
+            @Override
+            public void onYesClick() {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:" + shareDialog.getMessageStr()));
+                startActivity(intent);
+                shareDialog.dismiss();
+            }
+        });
+        shareDialog.setNoOnclickListener("取消", new NormalDialog.onNoOnclickListener() {
+            @Override
+            public void onNoClick() {
+                shareDialog.dismiss();
+            }
+        });
+        shareDialog.show();
     }
 }

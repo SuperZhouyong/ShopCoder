@@ -33,7 +33,7 @@
             android:layout_below="@id/tv_desc"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/y20"
-            android:text="16812.00"
+
             android:textColor="@color/white"
             android:textSize="@dimen/x50"
             android:textStyle="bold" />
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x22"
             android:layout_toRightOf="@id/tv_money_desc"
-            android:text="￥0.00"
+
             android:textColor="@color/font_1"
             android:textSize="@dimen/x26" />
 

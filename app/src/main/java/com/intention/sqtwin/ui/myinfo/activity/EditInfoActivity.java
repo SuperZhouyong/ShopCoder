@@ -200,25 +200,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
                 finish();
                 break;
             case R.id.rel_search:
-                final ShareDialog shareDialog = new ShareDialog(this, R.layout.item_reminder, false);
-                shareDialog.setMessage("17600298095");
-                shareDialog.setYesOnclickListener("确定", new NormalDialog.onYesOnclickListener() {
-                    @Override
-                    public void onYesClick() {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_CALL);
-                        intent.setData(Uri.parse("tel:" + shareDialog.getMessageStr()));
-                        startActivity(intent);
-                        shareDialog.dismiss();
-                    }
-                });
-                shareDialog.setNoOnclickListener("取消", new NormalDialog.onNoOnclickListener() {
-                    @Override
-                    public void onNoClick() {
-                        shareDialog.dismiss();
-                    }
-                });
-                shareDialog.show();
+                showContractDialog();
                 break;
             // 头像
             case R.id.rel_icon:

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.AccountBean;
+import com.intention.sqtwin.ui.Store.activity.TradingDetailActivity;
 import com.intention.sqtwin.ui.myinfo.contract.AccountContract;
 import com.intention.sqtwin.ui.myinfo.model.AccountModel;
 import com.intention.sqtwin.ui.myinfo.presenter.AccountPresenter;
@@ -62,12 +63,16 @@ public class AccountActivity extends BaseActivity<AccountPresenter, AccountModel
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
     public void initView() {
-
+        leftTitle.setVisibility(View.GONE);
+        centerTitle.setText("账户");
+//        relSearch.setVisibility(View.GONE);
+        ivSearch.setImageResource(R.mipmap.contact_editinfo);
+        mPresenter.getAccountBeanRequest(null);
     }
 
     @Override
@@ -92,18 +97,34 @@ public class AccountActivity extends BaseActivity<AccountPresenter, AccountModel
 
     @Override
     public void returnAccountBean(AccountBean accountBean) {
+        if (!accountBean.isIs_success()) {
+            showShortToast(accountBean.getMessage());
+            return;
+        }
+//        tv_num_one
+        tvNumOne.setText(accountBean.getData().getAvailable_predeposit());
+//        tv_money_num
+        tvMoneyNum.setText("￥ " + accountBean.getData().getFreeze_predeposit());
 
     }
 
 
-    @OnClick({R.id.rel_back, R.id.tv_bank_card_manager, R.id.tv_Transaction_manage})
+    @OnClick({R.id.rel_back, R.id.tv_bank_card_manager, R.id.tv_Transaction_manage,R.id.rel_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
+                finish();
                 break;
+            // 银行卡管理
             case R.id.tv_bank_card_manager:
+                startActivity(BindBankCardActivity.class);
                 break;
+            // 交易明细
             case R.id.tv_Transaction_manage:
+                startActivity(TradingDetailActivity.class);
+                break;
+            case R.id.rel_search:
+                showContractDialog();
                 break;
         }
     }

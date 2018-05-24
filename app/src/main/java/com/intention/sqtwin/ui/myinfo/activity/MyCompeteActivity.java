@@ -7,14 +7,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.MyCompeteBean;
+import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
+import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 import com.intention.sqtwin.ui.myinfo.contract.MyCompeteContract;
 import com.intention.sqtwin.ui.myinfo.model.MyCompeteModel;
 import com.intention.sqtwin.ui.myinfo.presenter.MyCompetePresenter;
@@ -32,7 +37,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompeteModel> implements MyCompeteContract.View {
+public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompeteModel> implements MyCompeteContract.View, OnRefreshListener, LoadingTip.onReloadListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -52,6 +57,7 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
     private CommonRecycleViewAdapter<MyCompeteBean.DataBean.GoodsListBean> mAdapter;
     private LRecyclerViewAdapter mLadapter;
     private Integer page = null;
+    private int pagesize = 10;
 
     @Override
     public int getLayoutId() {
@@ -86,17 +92,18 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mLadapter);
         mRecyclerView.setLoadMoreEnabled(false);
-        mRecyclerView.setPullRefreshEnabled(false);
+        mRecyclerView.setOnRefreshListener(this);
+//        mRecyclerView.setPullRefreshEnabled(false);
+        mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 20, 1, getResources().getColor(R.color.app_bottom_colour)));
 
-        mPresenter.getMyCompeteRequest(page);
 
         mLadapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, mAdapter.get(position).getId());
             }
         });
-
+        mPresenter.getMyCompeteRequest(page);
     }
 
     @Override
@@ -111,16 +118,28 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
 
     @Override
     public void stopLoading(String RequestId) {
-
+        mRecyclerView.refreshComplete(pagesize);
     }
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
-
+        if (AppConstant.oneMessage.equals(RequestId)) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(this);
+        }
     }
 
     @Override
     public void returnMyCompeteBean(MyCompeteBean myCompeteBean) {
+        if (!myCompeteBean.isIs_success()) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+            return;
+        }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+
+        if (mAdapter.getDataList().size() != 0)
+            mAdapter.clear();
         mAdapter.addAll(myCompeteBean.getData().getGoods_list());
     }
 
@@ -134,5 +153,15 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
             case R.id.rel_search:
                 break;
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.getMyCompeteRequest(null);
+    }
+
+    @Override
+    public void reloadLodTip() {
+        mPresenter.getMyCompeteRequest(null);
     }
 }

@@ -12,7 +12,7 @@ public class SQTUser implements Serializable {
     private static final long serialVersionUID = 2L;
 
 
-    private int member_id = 16;
+    private int member_id = 13;
 
     public int getMember_id() {
         return member_id;

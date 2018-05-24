@@ -20,6 +20,7 @@ import com.intention.sqtwin.bean.ChargeBean;
 import com.intention.sqtwin.bean.DeleteFavBean;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.DerivativesBean;
+import com.intention.sqtwin.bean.IdentityProveBean;
 import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
 import com.intention.sqtwin.bean.MyCompeteBean;
@@ -36,7 +37,6 @@ import com.intention.sqtwin.bean.StoreReportOne;
 import com.intention.sqtwin.bean.StoreReportTwo;
 import com.intention.sqtwin.bean.SubmitAddressBean;
 import com.intention.sqtwin.bean.SubmitClientInfo;
-import com.intention.sqtwin.bean.SubmitInfoBean;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
 import com.intention.sqtwin.bean.TaobaoStoreInfoBean;
@@ -44,6 +44,7 @@ import com.intention.sqtwin.bean.TradingDeatilBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.bean.UpdateImageBean;
 import com.intention.sqtwin.bean.UpdateIndentityBean;
+import com.intention.sqtwin.bean.UpdateMySelf;
 import com.intention.sqtwin.bean.UpdateResultInfo;
 
 import java.util.Map;
@@ -55,11 +56,9 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
-import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 import rx.Observable;
-import rx.Subscription;
 
 /**
  * des:ApiService
@@ -506,4 +505,10 @@ public interface ApiService {
     Observable<TaobaoStoreInfoBean> getTaoBaoStoreInfo(
             @Query("store_id") Integer  store_id
     );
+
+    @POST("Membercenter/member_information")
+    Observable<IdentityProveBean> getIdentityProveBean(
+            @Body UpdateMySelf updateMySelf
+    );
+
 }

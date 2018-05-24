@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:background="@drawable/shape_bg_identity"
         android:id="@+id/rel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
             android:layout_width="@dimen/x320"
             android:layout_height="@dimen/y200"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/shape_bg_identity" />
+            />
 
         <TextView
 

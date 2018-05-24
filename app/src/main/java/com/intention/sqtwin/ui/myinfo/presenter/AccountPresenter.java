@@ -24,13 +24,19 @@ public class AccountPresenter extends AccountContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.oneMessage,message);
+                mView.showErrorTip(AppConstant.oneMessage, message);
             }
 
             @Override
             public void onCompleted() {
                 super.onCompleted();
                 mView.stopLoading(AppConstant.oneMessage);
+            }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
             }
         }));
     }
