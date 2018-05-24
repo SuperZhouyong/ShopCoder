@@ -13,6 +13,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
@@ -36,7 +37,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, TradingDeatilModel> implements OnRefreshListener, TradingDetailContract.View {
+public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, TradingDeatilModel> implements OnRefreshListener, TradingDetailContract.View, LoadingTip.onReloadListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -135,12 +136,15 @@ public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, 
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
-
+        if (AppConstant.oneMessage.equals(RequestId)){
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(this);
+        }
     }
 
     @Override
     public void returnTradingDetail(TradingDeatilBean tradingDeatilBean) {
-        if (!tradingDeatilBean.isIs_success()) {
+        if (!tradingDeatilBean.isIs_success()||tradingDeatilBean.getData().size()==0) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
             return;
         }
@@ -149,5 +153,10 @@ public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, 
         if (mAdapter.getDataList().size() != 0)
             mAdapter.clear();
         mAdapter.addAll(tradingDeatilBean.getData());
+    }
+
+    @Override
+    public void reloadLodTip() {
+        mPresenter.getTradingDeatilBeanRequest();
     }
 }

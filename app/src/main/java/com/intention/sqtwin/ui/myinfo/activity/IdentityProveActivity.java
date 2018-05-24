@@ -32,6 +32,7 @@ import com.intention.sqtwin.ui.myinfo.model.IdentityProveModel;
 import com.intention.sqtwin.ui.myinfo.presenter.IdentityProvePresenter;
 import com.intention.sqtwin.utils.TakePictureManager;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.RegexUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.shaohui.bottomdialog.BaseBottomDialog;
 import me.shaohui.bottomdialog.BottomDialog;
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
@@ -117,6 +119,11 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("身份认证");
         relSearch.setVisibility(View.GONE);
+        tvConfirm.setText("确认");
+        ecRecommendPeo.setHint("请填写推荐人");
+        ecIdentityNum.setHint("请填写身份证号码");
+        ecPostionName.setHint("请填写职位");
+
 
         updateMySelf = new UpdateMySelf();
         ArrayList<String> strings = new ArrayList<>();
@@ -148,17 +155,17 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
         mAdapter.add("");
 
         takePictureManager = new TakePictureManager(this);
-        takePictureManager.setTailor(320, 200, 300, 300);
+        takePictureManager.setTailor(1, 1, 300, 300);
 
         takePictureManager.setTakePictureCallBackListener(this);
 
         mMaps = new HashMap<>();
 
 
-        updateTextColor(tvUpdatecolorOne,0,1);
-        updateTextColor(tvUpdatecolorTwo,0,1);
-        updateTextColor(tvUpdatecolorThree,0,1);
-        updateTextColor(tvUpdatecolorFore,0,1);
+        updateTextColor(tvUpdatecolorOne, 0, 1);
+        updateTextColor(tvUpdatecolorTwo, 0, 1);
+        updateTextColor(tvUpdatecolorThree, 0, 1);
+        updateTextColor(tvUpdatecolorFore, 0, 1);
     }
 
     @Override
@@ -188,6 +195,21 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
 
     @Override
     public void returnUpdateImage(UpdateImageBean updateImageBean) {
+        if (!updateImageBean.isIs_success()) {
+            showShortToast(updateImageBean.getMessage());
+            return;
+        }
+        List<UpdateImageBean.DataBean> data = updateImageBean.getData();
+        updateMySelf.setId_card_photo_front(data.get(0).getUrl());
+        updateMySelf.setId_card_photo_back(data.get(1).getUrl());
+//        ArrayList<String> strings = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            if (i < 2) {
+                continue;
+            }
+            updateMySelf.getImages().add(data.get(i).getUrl());
+        }
+        mPresenter.getIdentityProveRequest(updateMySelf);
 
     }
 
@@ -218,6 +240,55 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
                 ShowBootomDialog(AppConstant.twoMessage);
                 break;
             case R.id.tv_confirm:
+                String uName = ecName.getText().toString().trim();
+                String idenNUm = ecIdentityNum.getText().toString().trim();
+                String postionName = ecPostionName.getText().toString().trim();
+                String recomPeo = ecRecommendPeo.getText().toString().trim();
+                if (TextUtils.isEmpty(uName) || TextUtils.isEmpty(idenNUm) || TextUtils.isEmpty(postionName)) {
+                    showShortToast("请检查必填信息，确认是否完整填写");
+                    return;
+
+                }
+               /* if (!RegexUtils.isIDCard15(idenNUm) || !RegexUtils.isIDCard18(idenNUm)) {
+                    showShortToast("请检查身份证码是否填写正确");
+                    return;
+                }*/
+
+                updateMySelf.setMember_name(uName);
+                updateMySelf.setId_card_number(idenNUm);
+                updateMySelf.setProfession(postionName);
+                if (!TextUtils.isEmpty(recomPeo))
+                    updateMySelf.setOrderinviter_member_name(recomPeo);
+
+
+                mMaps.clear();
+//                if (mHashMap.get(AppConstant.oneMessage))
+                if (TextUtils.isEmpty(mHashMap.get(AppConstant.oneMessage))) {
+                    showShortToast("请上传身份证正面照");
+                    return;
+                }
+                if (TextUtils.isEmpty(mHashMap.get(AppConstant.twoMessage))) {
+                    showShortToast("请上传身份证背面照");
+                    return;
+                }
+                File file1 = new File(mHashMap.get(AppConstant.oneMessage));
+                RequestBody requestFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+                mMaps.put("image\"; filename=\"" + file1.getName(), requestFile1);
+
+                File file2 = new File(mHashMap.get(AppConstant.twoMessage));
+                RequestBody requestFile2 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+                mMaps.put("image\"; filename=\"" + file2.getName(), requestFile2);
+
+                for (String sFile : mAdapter.getDataList()) {
+                    if (TextUtils.isEmpty(sFile))
+                        continue;
+                    File file = new File(sFile);
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    mMaps.put("image\"; filename=\"" + file.getName(), requestFile);
+                }
+
+
+                mPresenter.updateImageRequest(mMaps);
 
                 break;
 
@@ -239,6 +310,7 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
 
         tv.setText(spannedString);
     }
+
     // 照片回调成功
     @Override
     public void successful(boolean isTailor, File outFile, Uri filePath) {
@@ -250,7 +322,7 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
 //            updateMySelf.setId_card_photo_front(outFile);
         } else if (AppConstant.twoMessage.equals(bottomDialog.getFragmentTag())) {
             //背面照
-            ImageLoaderUtils.display(this, ivIdentityTwo, outFile);
+            ImageLoaderUtils.display(this, ivIdentityTwo, outFile.getAbsolutePath());
             mHashMap.put(AppConstant.twoMessage, outFile.getAbsolutePath());
         } else if (AppConstant.threeMessage.equals(bottomDialog.getFragmentTag())) {
             List<String> dataList = mAdapter.getDataList();

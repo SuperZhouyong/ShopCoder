@@ -32,12 +32,13 @@
                 android:layout_centerInParent="true" />
 
             <TextView
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_name"
-                android:layout_marginTop="@dimen/y50"
-
+                android:layout_below="@id/iv_head_icon"
                 android:layout_centerHorizontal="true"
+
+                android:layout_marginTop="@dimen/y50"
                 android:text="啊样样样"
                 android:textColor="@color/white" />
 

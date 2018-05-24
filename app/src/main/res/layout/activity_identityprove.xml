@@ -318,6 +318,7 @@
 
 
             <TextView
+                android:layout_marginBottom="@dimen/y150"
                 android:id="@+id/tv_confirm"
                 android:layout_width="@dimen/x560"
                 android:layout_height="@dimen/y70"

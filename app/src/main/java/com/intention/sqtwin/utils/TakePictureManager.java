@@ -93,6 +93,9 @@ public class TakePictureManager {
     //内部权限接口，学习于郭神
     private PermissionListener permissionListener;
 
+    // 生成的文件名字
+    private String mFilename;
+
 
     public TakePictureManager(Activity mActivity) {
         this.mActivity = mActivity;
@@ -113,6 +116,7 @@ public class TakePictureManager {
 
     //开始拍照
     public void startTakeWayByCarema() {
+//        this.mFilename = filename;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //如果是6.0或6.0以上，则要申请运行时权限，这里需要申请拍照和写入SD卡的权限
             requestRuntimePermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}
@@ -136,7 +140,7 @@ public class TakePictureManager {
 
     //开始从图库获取
     public void startTakeWayByAlbum() {
-
+//        this.mFilename = filename;
         imgPath = generateImgePath(mContext);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             //如果是6.0或6.0以上，则要申请运行时权限，这里需要申请拍照和写入SD卡的权限
@@ -524,7 +528,7 @@ public class TakePictureManager {
     //产生图片的路径，带文件夹和文件名，文件名为当前毫秒数
 
     private static String generateImgePath(Context context) {
-        return getAppDir(context, ICON_DIR) + String.valueOf(System.currentTimeMillis()) + ".jpg";
+        return getAppDir(context, ICON_DIR+String.valueOf(System.currentTimeMillis())) + String.valueOf(System.currentTimeMillis()) + ".jpg";
     }
 
     //裁剪根据文件路径获取uri

@@ -383,9 +383,9 @@ public interface ApiService {
     /**
      * 获取交易明细
      *
-     * @return
+     * @return   membercenter/get_financial_details
      */
-    @GET("Membercenter/financial_details")
+    @GET("membercenter/get_financial_details")
     Observable<TradingDeatilBean> getTradingDeatil();
 
     /**
