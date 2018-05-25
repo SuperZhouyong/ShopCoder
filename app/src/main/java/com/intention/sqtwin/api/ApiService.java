@@ -28,6 +28,7 @@ import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
+import com.intention.sqtwin.bean.RealNameStatusBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
@@ -79,7 +80,7 @@ public interface ApiService {
      * @param page_no
      * @return 获取自营拍的数据
      */
-    @GET("Auctionfield/get_self_auction_field_info")
+    @GET("auction/get_self_auction_field_info")
     Observable<PpAllDateBean> getPlAllDate(
             @Query("category_id") Integer categoryId,
             @Query("status") Integer status,
@@ -383,7 +384,7 @@ public interface ApiService {
     /**
      * 获取交易明细
      *
-     * @return   membercenter/get_financial_details
+     * @return membercenter/get_financial_details
      */
     @GET("membercenter/get_financial_details")
     Observable<TradingDeatilBean> getTradingDeatil();
@@ -503,12 +504,25 @@ public interface ApiService {
      */
     @GET("auction/get_store_home_page")
     Observable<TaobaoStoreInfoBean> getTaoBaoStoreInfo(
-            @Query("store_id") Integer  store_id
+            @Query("store_id") Integer store_id
     );
 
+    /**
+     * 会员中心的 个人认证
+     *
+     * @param updateMySelf
+     * @return
+     */
     @POST("Membercenter/member_information")
     Observable<IdentityProveBean> getIdentityProveBean(
             @Body UpdateMySelf updateMySelf
     );
 
+    /**
+     * 获取已完成的认证状态
+     *
+     * @return
+     */
+    @GET("Membercenter/join_in_home")
+    Observable<RealNameStatusBean> getRealNameStatus();
 }

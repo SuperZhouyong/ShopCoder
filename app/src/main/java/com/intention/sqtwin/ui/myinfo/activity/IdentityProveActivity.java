@@ -32,11 +32,13 @@ import com.intention.sqtwin.ui.myinfo.model.IdentityProveModel;
 import com.intention.sqtwin.ui.myinfo.presenter.IdentityProvePresenter;
 import com.intention.sqtwin.utils.TakePictureManager;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.RegexUtils;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -159,7 +161,7 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
 
         takePictureManager.setTakePictureCallBackListener(this);
 
-        mMaps = new HashMap<>();
+        mMaps = new LinkedHashMap<>();
 
 
         updateTextColor(tvUpdatecolorOne, 0, 1);
@@ -273,21 +275,24 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
                 }
                 File file1 = new File(mHashMap.get(AppConstant.oneMessage));
                 RequestBody requestFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
-                mMaps.put("image\"; filename=\"" + file1.getName(), requestFile1);
+                mMaps.put("1image\"; filename=\"" + file1.getName(), requestFile1);
 
                 File file2 = new File(mHashMap.get(AppConstant.twoMessage));
                 RequestBody requestFile2 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
-                mMaps.put("image\"; filename=\"" + file2.getName(), requestFile2);
+                mMaps.put("2image\"; filename=\"" + file2.getName(), requestFile2);
 
-                for (String sFile : mAdapter.getDataList()) {
+                for (int i = 0; i < mAdapter.getDataList().size(); i++) {
+                    String sFile = mAdapter.get(i);
                     if (TextUtils.isEmpty(sFile))
                         continue;
                     File file = new File(sFile);
                     RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                    mMaps.put("image\"; filename=\"" + file.getName(), requestFile);
+//                    mMaps.put("image\"; filename=\"" + file.getName(), requestFile);
+                    mMaps.put((i+3)+"image\"; filename=\"" + file.getName(), requestFile);
+
                 }
 
-
+                LogUtils.logd("图片集合"+mMaps.toString());
                 mPresenter.updateImageRequest(mMaps);
 
                 break;

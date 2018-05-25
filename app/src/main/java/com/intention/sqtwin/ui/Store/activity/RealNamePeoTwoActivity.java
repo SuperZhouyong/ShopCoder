@@ -254,7 +254,7 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
             @Override
             public void onClick(View v) {
                 bottomDialog.dismiss();
-                takePictureManager.startTakeWayByAlbum(bottomDialog.getFragmentTag());
+                takePictureManager.startTakeWayByAlbum();
             }
         });
     }

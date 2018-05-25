@@ -10,6 +10,7 @@ import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -31,7 +32,7 @@ import ezy.ui.view.BannerView;
 
 
 //@SuppressLint("ValidFragment")
-public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnLoadMoreListener, View.OnClickListener {
+public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnLoadMoreListener, View.OnClickListener, OnRefreshListener {
     @BindView(R.id.mRecyclerView)
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -73,7 +74,8 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 30, 1, getResources().getColor(R.color.app_bottom_colour)));
         mRecyclerView.setAdapter(mLAdapter);
-        mRecyclerView.setPullRefreshEnabled(false);
+        mRecyclerView.setOnRefreshListener(this);
+//        mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadMoreEnabled(true);
         mRecyclerView.setOnLoadMoreListener(this);
 
@@ -106,8 +108,8 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
             public void onItemClick(View view, int position) {
 
 //                startActivity(getActivity(), AuctionFiledActivity.class);
-                LogUtils.logd("PostionId---"+position+"-----------"+mAdapter.get(position).getId());
-                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity)getActivity(),mAdapter.get(position).getId(),AppConstant.IntoWayOne);
+                LogUtils.logd("PostionId---" + position + "-----------" + mAdapter.get(position));
+                AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), mAdapter.get(position).getId(), AppConstant.IntoWayOne);
             }
         });
 
@@ -125,7 +127,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
 
     @Override
     public void StartLoading(String RequestId) {
-        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+//        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
 
     }
 
@@ -155,25 +157,26 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     public void returnPpAllDate(PpAllDateBean allDateBean) {
         if (!allDateBean.isIs_success()) {
             if (page_no == 0) {
-                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-                mLoadingTip.setOnReloadListener(this);
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+//                mLoadingTip.setOnReloadListener(this);
             }
             return;
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
+        if (page_no == 0 && mAdapter.getDataList().size() != 0)
+            mAdapter.clearData();
 
-
-        mBannerView.setViewFactory(new BannerView.ViewFactory<PpAllDateBean.DataBeanX.AdvBean.DataBean>() {
+        mBannerView.setViewFactory(new BannerView.ViewFactory<PpAllDateBean.DataBean.AdvBean>() {
 
             @Override
-            public View create(PpAllDateBean.DataBeanX.AdvBean.DataBean dataBean, int position, ViewGroup container) {
+            public View create(PpAllDateBean.DataBean.AdvBean dataBean, int position, ViewGroup container) {
                 ImageView iv = new ImageView(container.getContext());
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, dataBean.getImage());
                 return iv;
             }
         });
-        mBannerView.setDataList(allDateBean.getData().getAdv().getData());
+        mBannerView.setDataList(allDateBean.getData().getAdv());
         mBannerView.start();
 
         mAdapter.addAll(allDateBean.getData().getAuction_field_list());
@@ -230,5 +233,11 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
             mAdapter.clearData();
             mLAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        page_no = 0;
+        mPresenter.getPpAlldate(category_id, status, page_no);
     }
 }

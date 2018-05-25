@@ -69,6 +69,7 @@ public class BindBankCardActivity extends BaseActivity {
     @Override
     public void initView() {
         leftTitle.setVisibility(View.GONE);
+        centerTitle.setText("绑定银行卡");
         relSearch.setVisibility(View.GONE);
         BankCardTextWatcher.bind(ecBankNum);
     }

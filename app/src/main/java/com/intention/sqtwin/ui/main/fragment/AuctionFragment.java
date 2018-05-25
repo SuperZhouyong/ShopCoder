@@ -77,38 +77,7 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
         mPresenter.getPpAlldate(category_id, status, page_no);
 
 
-//        sTabLayout.setViewPager(viewPager, mTitles, getActivity().getSupportFragmentManager(), mFragments);
 
-
-       /* mAdapter = new PpAuctionAdapter(getActivity());
-        mLAdapter = new LRecyclerViewAdapter(mAdapter);
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 30, 1, getResources().getColor(R.color.app_bottom_colour)));
-        mRecyclerView.setAdapter(mLAdapter);
-        mRecyclerView.setPullRefreshEnabled(false);
-        mRecyclerView.setLoadMoreEnabled(true);
-        mRecyclerView.setOnLoadMoreListener(this);
-
-        View headView_pp = getActivity().getLayoutInflater().inflate(R.layout.item_ppauction_head, null);
-        sTabLayout = (SlidingTabLayout) headView_pp.findViewById(R.id.slid_tab_layout);
-        mBannerView = (BannerView) headView_pp.findViewById(R.id.mLoopViewPager);
-        viewPager = (ViewPager) headView_pp.findViewById(R.id.viewpager);
-
-        View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_home_head_title, null);
-
-//        mBannerView.setAspectRatio((float) 0.5555555);
-        mLAdapter.addHeaderView(headView_pp);
-        mLAdapter.addHeaderView(homeHeadTitle);
-
-        mLAdapter.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                startActivity(getActivity(), AuctionFiledActivity.class);
-            }
-        });
-
-        mPresenter.getPpAlldate(category_id, status, page_no);*/
 
     }
 
@@ -172,11 +141,11 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
 
         // 头部
         slidTabLayout.setOnTabSelectListener(this);
-        List<PpAllDateBean.DataBeanX.MainCategoryBean> main_category = allDateBean.getData().getMain_category();
+        List<PpAllDateBean.DataBean.MainCategoryBean> main_category = allDateBean.getData().getMain_category();
         mTitles = new String[main_category.size()];
         for (int i = 0; i < main_category.size(); i++) {
             mTitles[i] = main_category.get(i).getName();
-            mFragments.add(SimpleCardFragment.getInstance(main_category.get(i).getName(), main_category.get(i).getCategory_id()));
+            mFragments.add(SimpleCardFragment.getInstance(main_category.get(i).getName(), Integer.parseInt(main_category.get(i).getCategory_id())));
         }
         basePageStateAdapter = new BasePageStateAdapter(getActivity().getSupportFragmentManager(), mFragments, Arrays.asList(mTitles));
         viewpager.setAdapter(basePageStateAdapter);

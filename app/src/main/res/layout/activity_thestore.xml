@@ -43,7 +43,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/y40"
 
-                android:src="@mipmap/ic_launcher" />
+                />
 
             <TextView
                 android:id="@+id/tv_store_name"

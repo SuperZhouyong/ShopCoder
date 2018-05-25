@@ -16,7 +16,7 @@ import com.intention.sqtwin.bean.PpAllDateBean;
  * QQ: 437397161
  */
 
-public class PpAuctionAdapter extends CommonRecycleViewAdapter<PpAllDateBean.DataBeanX.AuctionFieldListBean> {
+public class PpAuctionAdapter extends CommonRecycleViewAdapter<PpAllDateBean.DataBean.AuctionFieldListBean> {
 //    private String[] mTitles = {"全部","拍卖中","预展中","已结拍"};
 
     public PpAuctionAdapter(Context context) {
@@ -24,10 +24,10 @@ public class PpAuctionAdapter extends CommonRecycleViewAdapter<PpAllDateBean.Dat
     }
 
     @Override
-    public void convert(ViewHolderHelper helper, PpAllDateBean.DataBeanX.AuctionFieldListBean auctionFieldListBean, int position) {
+    public void convert(ViewHolderHelper helper, PpAllDateBean.DataBean.AuctionFieldListBean auctionFieldListBean, int position) {
 //        helper.setVisible(R.id.ll_sort, position == 0);
-        helper.setText(R.id.tv_company_name, auctionFieldListBean.getOrganzation().getName());
-        helper.setImageRoundUrl(R.id.iv_logo, auctionFieldListBean.getOrganzation().getLogo());
+        helper.setText(R.id.tv_company_name, auctionFieldListBean.getOrganization().getName());
+        helper.setImageRoundUrl(R.id.iv_logo, auctionFieldListBean.getOrganization().getImage());
         helper.setText(R.id.tv_fouce_num, String.valueOf(auctionFieldListBean.getFans_count()));
         helper.setText(R.id.tv_lot_num, String.valueOf(auctionFieldListBean.getItem_count()));
         helper.setText(R.id.tv_price_num, String.valueOf(auctionFieldListBean.getBid_count()));

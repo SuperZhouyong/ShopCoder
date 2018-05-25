@@ -194,9 +194,14 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
             ImageLoaderUtils.displayRound(this, iv_icon, artDetailBean.getData().getArtist_info().getAvatar());
             tv_name.setText(artDetailBean.getData().getArtist_info().getName());
-            tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getGoods_count());
-            tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count());
-            tv_desc.setText(artDetailBean.getData().getArtist_info().getDescription());
+            tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getAuction_count()+"");
+            tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count()+"");
+            tv_desc.setText(artDetailBean.getData().getArtist_info().getResume());
+
+           /* if (organization_info.isIs_favorite()) {
+                ivFocus.setVisibility(View.GONE);
+                tvFocus.setText("已关注");
+            }*/
 
         }
         mcomAdapter.addAll(artDetailBean.getData().getItem_list());

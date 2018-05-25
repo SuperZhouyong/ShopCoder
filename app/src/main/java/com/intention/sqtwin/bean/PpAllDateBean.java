@@ -16,12 +16,12 @@ public class PpAllDateBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"main_category":[{"category_id":20,"name":"山水","image":"","parent_id":19,"create_time":"2018-04-19 13:26:52","description":"山水","display_order":0},{"category_id":21,"name":"花鸟","image":"","parent_id":19,"create_time":"2018-04-19 13:27:16","description":"花鸟","display_order":0},{"category_id":22,"name":"人物","image":"","parent_id":19,"create_time":"2018-04-19 13:27:33","description":"人物","display_order":0},{"category_id":23,"name":"画瓷","image":"","parent_id":19,"create_time":"2018-04-19 13:28:34","description":"画瓷","display_order":0},{"category_id":24,"name":"楷书","image":"","parent_id":19,"create_time":"2018-04-19 13:28:48","description":"楷书","display_order":0},{"category_id":25,"name":"行书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:07","description":"行书","display_order":0},{"category_id":26,"name":"隶书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:24","description":"隶书","display_order":0},{"category_id":27,"name":"篆书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:36","description":"篆书","display_order":0},{"category_id":28,"name":"草书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:48","description":"草书","display_order":0},{"category_id":29,"name":"篆刻","image":"","parent_id":19,"create_time":"2018-04-19 13:30:02","description":"篆刻","display_order":0},{"category_id":30,"name":"匾额","image":"","parent_id":19,"create_time":"2018-04-19 13:30:17","description":"匾额","display_order":0},{"category_id":31,"name":"漆书","image":"","parent_id":19,"create_time":"2018-04-19 13:30:30","description":"漆书","display_order":0},{"category_id":32,"name":"其他","image":"","parent_id":19,"create_time":"2018-04-19 13:30:44","description":"其他","display_order":0}],"adv":{"is_success":true,"message":"操作成功","data":[{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/c113f58beba6513c87d39940776ade26.jpg","link":"链接"},{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/c6742b0a8834fdd2bd52755329009f4e.jpg","link":"链接"},{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/4fde81b8316b0981bc9b3cf0c0220696.jpg","link":"链接"}]},"auction_field_list":[{"id":5,"name":"拍场名称","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":5,"name":"拍场名称","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":5,"name":"拍场名称","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}}],"total_page":20}
+     * data : {"main_category":[{"category_id":"0","name":"全部"},{"category_id":19,"name":"中国书画","image":"","parent_id":107,"create_time":"2018-04-19 13:17:13","description":"书画","display_order":11,"is_system":0},{"category_id":33,"name":"古典文献","image":"","parent_id":107,"create_time":"2018-04-19 13:32:47","description":"古典文献","display_order":22,"is_system":0},{"category_id":43,"name":"西画雕塑","image":"","parent_id":107,"create_time":"2018-04-19 13:36:02","description":"西画雕塑","display_order":0,"is_system":0},{"category_id":51,"name":"邮品钱币","image":"","parent_id":107,"create_time":"2018-04-19 13:38:21","description":"邮品钱币","display_order":0,"is_system":0},{"category_id":59,"name":"茶酒滋补","image":"","parent_id":107,"create_time":"2018-04-19 13:41:30","description":"茶酒滋补","display_order":0,"is_system":0},{"category_id":67,"name":"古董珍玩","image":"","parent_id":107,"create_time":"2018-04-19 13:44:12","description":"古董珍玩","display_order":0,"is_system":0},{"category_id":74,"name":"玉翠珠宝","image":"","parent_id":107,"create_time":"2018-04-19 14:05:11","description":"玉翠珠宝","display_order":0,"is_system":0},{"category_id":86,"name":"文玩杂项","image":"","parent_id":107,"create_time":"2018-04-19 14:13:49","description":"文玩杂项","display_order":0,"is_system":0},{"category_id":95,"name":"香道花道","image":"","parent_id":107,"create_time":"2018-04-19 14:28:04","description":"香道花道","display_order":0,"is_system":0},{"category_id":103,"name":"奢侈品","image":"","parent_id":107,"create_time":"2018-04-19 14:30:02","description":"奢侈品","display_order":8,"is_system":0}],"adv":[{"adv_id":23,"adv_title":"自营拍广告","link":"","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_74938_2018050511465791819.jpg"},{"adv_id":42,"adv_title":"自营拍首页1-1","link":"","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_40164_2018050511460795014.jpg"},{"adv_id":43,"adv_title":"自营拍首页1-2","link":"","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38263_2018050511461975639.png"}],"auction_field_list":[{"id":27,"name":"精选古典家具专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg","organization_id":12,"is_favorite":"true","item_count":7,"bid_count":25,"fans_count":9,"organization":{"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"true"},"start_time":"2018-05-04 05:05:00","end_time":"2018-09-10 19:55:00"}],"total_page":1}
      */
 
     private boolean is_success;
     private String message;
-    private DataBeanX data;
+    private DataBean data;
 
     public boolean isIs_success() {
         return is_success;
@@ -39,34 +39,26 @@ public class PpAllDateBean {
         this.message = message;
     }
 
-    public DataBeanX getData() {
+    public DataBean getData() {
         return data;
     }
 
-    public void setData(DataBeanX data) {
+    public void setData(DataBean data) {
         this.data = data;
     }
 
-    public static class DataBeanX {
+    public static class DataBean {
         /**
-         * main_category : [{"category_id":20,"name":"山水","image":"","parent_id":19,"create_time":"2018-04-19 13:26:52","description":"山水","display_order":0},{"category_id":21,"name":"花鸟","image":"","parent_id":19,"create_time":"2018-04-19 13:27:16","description":"花鸟","display_order":0},{"category_id":22,"name":"人物","image":"","parent_id":19,"create_time":"2018-04-19 13:27:33","description":"人物","display_order":0},{"category_id":23,"name":"画瓷","image":"","parent_id":19,"create_time":"2018-04-19 13:28:34","description":"画瓷","display_order":0},{"category_id":24,"name":"楷书","image":"","parent_id":19,"create_time":"2018-04-19 13:28:48","description":"楷书","display_order":0},{"category_id":25,"name":"行书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:07","description":"行书","display_order":0},{"category_id":26,"name":"隶书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:24","description":"隶书","display_order":0},{"category_id":27,"name":"篆书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:36","description":"篆书","display_order":0},{"category_id":28,"name":"草书","image":"","parent_id":19,"create_time":"2018-04-19 13:29:48","description":"草书","display_order":0},{"category_id":29,"name":"篆刻","image":"","parent_id":19,"create_time":"2018-04-19 13:30:02","description":"篆刻","display_order":0},{"category_id":30,"name":"匾额","image":"","parent_id":19,"create_time":"2018-04-19 13:30:17","description":"匾额","display_order":0},{"category_id":31,"name":"漆书","image":"","parent_id":19,"create_time":"2018-04-19 13:30:30","description":"漆书","display_order":0},{"category_id":32,"name":"其他","image":"","parent_id":19,"create_time":"2018-04-19 13:30:44","description":"其他","display_order":0}]
-         * adv : {"is_success":true,"message":"操作成功","data":[{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/c113f58beba6513c87d39940776ade26.jpg","link":"链接"},{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/c6742b0a8834fdd2bd52755329009f4e.jpg","link":"链接"},{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/4fde81b8316b0981bc9b3cf0c0220696.jpg","link":"链接"}]}
-         * auction_field_list : [{"id":5,"name":"拍场名称","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":5,"name":"拍场名称","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}},{"id":5,"name":"拍场名称","image":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg","is_favorite":"false","start_time":"2018-2-1 10:00:00","end_time":"2018-3-1 10:00:00","item_count":"50","bid_count":"50","fans_count":"500","organzation":{"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}}]
-         * total_page : 20
+         * main_category : [{"category_id":"0","name":"全部"},{"category_id":19,"name":"中国书画","image":"","parent_id":107,"create_time":"2018-04-19 13:17:13","description":"书画","display_order":11,"is_system":0},{"category_id":33,"name":"古典文献","image":"","parent_id":107,"create_time":"2018-04-19 13:32:47","description":"古典文献","display_order":22,"is_system":0},{"category_id":43,"name":"西画雕塑","image":"","parent_id":107,"create_time":"2018-04-19 13:36:02","description":"西画雕塑","display_order":0,"is_system":0},{"category_id":51,"name":"邮品钱币","image":"","parent_id":107,"create_time":"2018-04-19 13:38:21","description":"邮品钱币","display_order":0,"is_system":0},{"category_id":59,"name":"茶酒滋补","image":"","parent_id":107,"create_time":"2018-04-19 13:41:30","description":"茶酒滋补","display_order":0,"is_system":0},{"category_id":67,"name":"古董珍玩","image":"","parent_id":107,"create_time":"2018-04-19 13:44:12","description":"古董珍玩","display_order":0,"is_system":0},{"category_id":74,"name":"玉翠珠宝","image":"","parent_id":107,"create_time":"2018-04-19 14:05:11","description":"玉翠珠宝","display_order":0,"is_system":0},{"category_id":86,"name":"文玩杂项","image":"","parent_id":107,"create_time":"2018-04-19 14:13:49","description":"文玩杂项","display_order":0,"is_system":0},{"category_id":95,"name":"香道花道","image":"","parent_id":107,"create_time":"2018-04-19 14:28:04","description":"香道花道","display_order":0,"is_system":0},{"category_id":103,"name":"奢侈品","image":"","parent_id":107,"create_time":"2018-04-19 14:30:02","description":"奢侈品","display_order":8,"is_system":0}]
+         * adv : [{"adv_id":23,"adv_title":"自营拍广告","link":"","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_74938_2018050511465791819.jpg"},{"adv_id":42,"adv_title":"自营拍首页1-1","link":"","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_40164_2018050511460795014.jpg"},{"adv_id":43,"adv_title":"自营拍首页1-2","link":"","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38263_2018050511461975639.png"}]
+         * auction_field_list : [{"id":27,"name":"精选古典家具专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg","organization_id":12,"is_favorite":"true","item_count":7,"bid_count":25,"fans_count":9,"organization":{"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"true"},"start_time":"2018-05-04 05:05:00","end_time":"2018-09-10 19:55:00"}]
+         * total_page : 1
          */
 
-        private AdvBean adv;
         private int total_page;
         private List<MainCategoryBean> main_category;
+        private List<AdvBean> adv;
         private List<AuctionFieldListBean> auction_field_list;
-
-        public AdvBean getAdv() {
-            return adv;
-        }
-
-        public void setAdv(AdvBean adv) {
-            this.adv = adv;
-        }
 
         public int getTotal_page() {
             return total_page;
@@ -84,6 +76,14 @@ public class PpAllDateBean {
             this.main_category = main_category;
         }
 
+        public List<AdvBean> getAdv() {
+            return adv;
+        }
+
+        public void setAdv(List<AdvBean> adv) {
+            this.adv = adv;
+        }
+
         public List<AuctionFieldListBean> getAuction_field_list() {
             return auction_field_list;
         }
@@ -92,112 +92,32 @@ public class PpAllDateBean {
             this.auction_field_list = auction_field_list;
         }
 
-        public static class AdvBean {
-            /**
-             * is_success : true
-             * message : 操作成功
-             * data : [{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/c113f58beba6513c87d39940776ade26.jpg","link":"链接"},{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/c6742b0a8834fdd2bd52755329009f4e.jpg","link":"链接"},{"id":5,"name":"图片名称","image":"http://picture1.yidianchina.com/assets/upload/image/4fde81b8316b0981bc9b3cf0c0220696.jpg","link":"链接"}]
-             */
-
-            private boolean is_success;
-            private String message;
-            private List<DataBean> data;
-
-            public boolean isIs_success() {
-                return is_success;
-            }
-
-            public void setIs_success(boolean is_success) {
-                this.is_success = is_success;
-            }
-
-            public String getMessage() {
-                return message;
-            }
-
-            public void setMessage(String message) {
-                this.message = message;
-            }
-
-            public List<DataBean> getData() {
-                return data;
-            }
-
-            public void setData(List<DataBean> data) {
-                this.data = data;
-            }
-
-            public static class DataBean {
-                /**
-                 * id : 5
-                 * name : 图片名称
-                 * image : http://picture1.yidianchina.com/assets/upload/image/c113f58beba6513c87d39940776ade26.jpg
-                 * link : 链接
-                 */
-
-                private int id;
-                private String name;
-                private String image;
-                private String link;
-
-                public int getId() {
-                    return id;
-                }
-
-                public void setId(int id) {
-                    this.id = id;
-                }
-
-                public String getName() {
-                    return name;
-                }
-
-                public void setName(String name) {
-                    this.name = name;
-                }
-
-                public String getImage() {
-                    return image;
-                }
-
-                public void setImage(String image) {
-                    this.image = image;
-                }
-
-                public String getLink() {
-                    return link;
-                }
-
-                public void setLink(String link) {
-                    this.link = link;
-                }
-            }
-        }
-
         public static class MainCategoryBean {
             /**
-             * category_id : 20
-             * name : 山水
+             * category_id : 0
+             * name : 全部
              * image :
-             * parent_id : 19
-             * create_time : 2018-04-19 13:26:52
-             * description : 山水
-             * display_order : 0
+             * parent_id : 107
+             * create_time : 2018-04-19 13:17:13
+             * description : 书画
+             * display_order : 11
+             * is_system : 0
              */
 
-            private int category_id;
+            private String category_id;
             private String name;
             private String image;
             private int parent_id;
             private String create_time;
             private String description;
             private int display_order;
+            private int is_system;
 
-            public int getCategory_id() {
+            public String getCategory_id() {
                 return category_id;
             }
 
-            public void setCategory_id(int category_id) {
+            public void setCategory_id(String category_id) {
                 this.category_id = category_id;
             }
 
@@ -248,32 +168,88 @@ public class PpAllDateBean {
             public void setDisplay_order(int display_order) {
                 this.display_order = display_order;
             }
+
+            public int getIs_system() {
+                return is_system;
+            }
+
+            public void setIs_system(int is_system) {
+                this.is_system = is_system;
+            }
+        }
+
+        public static class AdvBean {
+            /**
+             * adv_id : 23
+             * adv_title : 自营拍广告
+             * link :
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_74938_2018050511465791819.jpg
+             */
+
+            private int adv_id;
+            private String adv_title;
+            private String link;
+            private String image;
+
+            public int getAdv_id() {
+                return adv_id;
+            }
+
+            public void setAdv_id(int adv_id) {
+                this.adv_id = adv_id;
+            }
+
+            public String getAdv_title() {
+                return adv_title;
+            }
+
+            public void setAdv_title(String adv_title) {
+                this.adv_title = adv_title;
+            }
+
+            public String getLink() {
+                return link;
+            }
+
+            public void setLink(String link) {
+                this.link = link;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
         }
 
         public static class AuctionFieldListBean {
             /**
-             * id : 5
-             * name : 拍场名称
-             * image : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_380x380.jpg
-             * is_favorite : false
-             * start_time : 2018-2-1 10:00:00
-             * end_time : 2018-3-1 10:00:00
-             * item_count : 50
-             * bid_count : 50
-             * fans_count : 500
-             * organzation : {"id":"5","name":"拍卖机构名称","logo":"http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg"}
+             * id : 27
+             * name : 精选古典家具专场
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg
+             * organization_id : 12
+             * is_favorite : true
+             * item_count : 7
+             * bid_count : 25
+             * fans_count : 9
+             * organization : {"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"true"}
+             * start_time : 2018-05-04 05:05:00
+             * end_time : 2018-09-10 19:55:00
              */
 
             private int id;
             private String name;
             private String image;
+            private int organization_id;
             private String is_favorite;
+            private int item_count;
+            private int bid_count;
+            private int fans_count;
+            private OrganizationBean organization;
             private String start_time;
             private String end_time;
-            private String item_count;
-            private String bid_count;
-            private String fans_count;
-            private OrganzationBean organzation;
 
             public int getId() {
                 return id;
@@ -299,12 +275,52 @@ public class PpAllDateBean {
                 this.image = image;
             }
 
+            public int getOrganization_id() {
+                return organization_id;
+            }
+
+            public void setOrganization_id(int organization_id) {
+                this.organization_id = organization_id;
+            }
+
             public String getIs_favorite() {
                 return is_favorite;
             }
 
             public void setIs_favorite(String is_favorite) {
                 this.is_favorite = is_favorite;
+            }
+
+            public int getItem_count() {
+                return item_count;
+            }
+
+            public void setItem_count(int item_count) {
+                this.item_count = item_count;
+            }
+
+            public int getBid_count() {
+                return bid_count;
+            }
+
+            public void setBid_count(int bid_count) {
+                this.bid_count = bid_count;
+            }
+
+            public int getFans_count() {
+                return fans_count;
+            }
+
+            public void setFans_count(int fans_count) {
+                this.fans_count = fans_count;
+            }
+
+            public OrganizationBean getOrganization() {
+                return organization;
+            }
+
+            public void setOrganization(OrganizationBean organization) {
+                this.organization = organization;
             }
 
             public String getStart_time() {
@@ -323,55 +339,25 @@ public class PpAllDateBean {
                 this.end_time = end_time;
             }
 
-            public String getItem_count() {
-                return item_count;
-            }
-
-            public void setItem_count(String item_count) {
-                this.item_count = item_count;
-            }
-
-            public String getBid_count() {
-                return bid_count;
-            }
-
-            public void setBid_count(String bid_count) {
-                this.bid_count = bid_count;
-            }
-
-            public String getFans_count() {
-                return fans_count;
-            }
-
-            public void setFans_count(String fans_count) {
-                this.fans_count = fans_count;
-            }
-
-            public OrganzationBean getOrganzation() {
-                return organzation;
-            }
-
-            public void setOrganzation(OrganzationBean organzation) {
-                this.organzation = organzation;
-            }
-
-            public static class OrganzationBean {
+            public static class OrganizationBean {
                 /**
-                 * id : 5
-                 * name : 拍卖机构名称
-                 * logo : http://picture1.yidianchina.com/assets/upload/product/c64361c46cb89980f169bf385ece09a5_800x800.jpg
+                 * organization_id : 12
+                 * name : 荣宝斋
+                 * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png
+                 * is_favorite : true
                  */
 
-                private String id;
+                private int organization_id;
                 private String name;
-                private String logo;
+                private String image;
+                private String is_favorite;
 
-                public String getId() {
-                    return id;
+                public int getOrganization_id() {
+                    return organization_id;
                 }
 
-                public void setId(String id) {
-                    this.id = id;
+                public void setOrganization_id(int organization_id) {
+                    this.organization_id = organization_id;
                 }
 
                 public String getName() {
@@ -382,12 +368,20 @@ public class PpAllDateBean {
                     this.name = name;
                 }
 
-                public String getLogo() {
-                    return logo;
+                public String getImage() {
+                    return image;
                 }
 
-                public void setLogo(String logo) {
-                    this.logo = logo;
+                public void setImage(String image) {
+                    this.image = image;
+                }
+
+                public String getIs_favorite() {
+                    return is_favorite;
+                }
+
+                public void setIs_favorite(String is_favorite) {
+                    this.is_favorite = is_favorite;
                 }
             }
         }

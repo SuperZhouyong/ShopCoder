@@ -16,7 +16,7 @@ public class AuctionOrgBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"organization_info":{"organization_id":1,"name":"中国嘉德","image":"","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","create_time":"2018-04-04 13:53:18","description":"中国嘉德","fans_count":1,"goods_count":21},"auction_field_list":[{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":21,"bid_count":7,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00"}]}
+     * data : {"organization_info":{"organization_id":1,"name":"中国嘉德","image":"","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","create_time":"2018-04-04 13:53:18","description":"中国嘉德","fans_count":1,"goods_count":20,"is_favorite":false},"auction_field_list":[{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":19,"bid_count":28,"fans_count":2,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 01:05:00","end_time":"2018-08-31 23:55:00"},{"id":37,"name":"重要古董珍玩专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050214311936760.jpg","organization_id":1,"is_favorite":"true","item_count":1,"bid_count":0,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-04 00:05:00","end_time":"2018-07-31 00:05:00"}]}
      */
 
     private boolean is_success;
@@ -49,8 +49,8 @@ public class AuctionOrgBean {
 
     public static class DataBean {
         /**
-         * organization_info : {"organization_id":1,"name":"中国嘉德","image":"","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","create_time":"2018-04-04 13:53:18","description":"中国嘉德","fans_count":1,"goods_count":21}
-         * auction_field_list : [{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":21,"bid_count":7,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00"}]
+         * organization_info : {"organization_id":1,"name":"中国嘉德","image":"","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38692_2018042608251131882.png","create_time":"2018-04-04 13:53:18","description":"中国嘉德","fans_count":1,"goods_count":20,"is_favorite":false}
+         * auction_field_list : [{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":19,"bid_count":28,"fans_count":2,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 01:05:00","end_time":"2018-08-31 23:55:00"},{"id":37,"name":"重要古董珍玩专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050214311936760.jpg","organization_id":1,"is_favorite":"true","item_count":1,"bid_count":0,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-04 00:05:00","end_time":"2018-07-31 00:05:00"}]
          */
 
         private OrganizationInfoBean organization_info;
@@ -81,7 +81,8 @@ public class AuctionOrgBean {
              * create_time : 2018-04-04 13:53:18
              * description : 中国嘉德
              * fans_count : 1
-             * goods_count : 21
+             * goods_count : 20
+             * is_favorite : false
              */
 
             private int organization_id;
@@ -92,6 +93,7 @@ public class AuctionOrgBean {
             private String description;
             private int fans_count;
             private int goods_count;
+            private boolean is_favorite;
 
             public int getOrganization_id() {
                 return organization_id;
@@ -156,6 +158,14 @@ public class AuctionOrgBean {
             public void setGoods_count(int goods_count) {
                 this.goods_count = goods_count;
             }
+
+            public boolean isIs_favorite() {
+                return is_favorite;
+            }
+
+            public void setIs_favorite(boolean is_favorite) {
+                this.is_favorite = is_favorite;
+            }
         }
 
         public static class AuctionFieldListBean {
@@ -165,12 +175,12 @@ public class AuctionOrgBean {
              * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg
              * organization_id : 1
              * is_favorite : true
-             * item_count : 21
-             * bid_count : 7
-             * fans_count : 0
+             * item_count : 19
+             * bid_count : 28
+             * fans_count : 2
              * organization : {"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"}
-             * start_time : 2018-05-02 00:05:00
-             * end_time : 2018-12-31 00:05:00
+             * start_time : 2018-05-02 01:05:00
+             * end_time : 2018-08-31 23:55:00
              */
 
             private int id;

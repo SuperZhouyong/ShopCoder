@@ -32,14 +32,14 @@
         android:src="@mipmap/home_focus"
         android:layout_marginLeft="@dimen/x22"
         android:layout_centerVertical="true"
-        android:layout_width="@dimen/x45"
-        android:layout_height="@dimen/y45" />
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/y40" />
     <ImageView
         android:layout_toLeftOf="@id/iv_love"
         android:id="@+id/iv_readme"
         android:src="@mipmap/remind_logo"
 
         android:layout_centerVertical="true"
-        android:layout_width="@dimen/x45"
-        android:layout_height="@dimen/y45" />
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/y40" />
 </RelativeLayout>

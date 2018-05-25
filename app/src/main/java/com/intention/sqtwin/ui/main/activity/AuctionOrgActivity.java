@@ -220,6 +220,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
             return;
         }
         AuctionOrgBean.DataBean.OrganizationInfoBean organization_info = auctionOrgBean.getData().getOrganization_info();
+        if (organization_info.isIs_favorite()) {
+            ivFocus.setVisibility(View.GONE);
+            tvFocus.setText("已关注");
+        }
         orgName.setText(organization_info.getName());
         ImageLoaderUtils.displayRound(this, ivIcon, organization_info.getImage());
         tvLostNum.setText(organization_info.getGoods_count() + "件");
@@ -238,6 +242,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         /*if (page == auctionOrgBean.getData().getTotal_page())
             mRecyclerView.setNoMore(true);*/
     }
+
     // 机构的关注
     @Override
     public void returnArtFavBean(AddFavBean addFavBean) {
@@ -249,13 +254,14 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         ivFocus.setVisibility(View.GONE);
         tvFocus.setText("已关注");
     }
+
     // 拍场机构的关注
     @Override
     public void returnArtFavBeanFiled(AddFavBean addFavBean) {
         showShortToast(addFavBean.getMessage());
         if (!addFavBean.isIs_success())
             return;
-        if (currentFavId != -1 && currentPostion != -1){
+        if (currentFavId != -1 && currentPostion != -1) {
 
             mList.add(currentFavId);
             mcomAdapter.notifyItemChanged(currentPostion);

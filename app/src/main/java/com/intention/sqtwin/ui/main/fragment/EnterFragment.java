@@ -22,6 +22,7 @@ import com.intention.sqtwin.ui.main.contract.EnterContract;
 import com.intention.sqtwin.ui.main.model.EnterModel;
 import com.intention.sqtwin.ui.main.presenter.EnterPresenter;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
+import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.CircleImageView;
 
 import butterknife.BindView;
@@ -107,7 +108,7 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("店铺");
         relSearch.setVisibility(View.GONE);
-
+        ImageLoaderUtils.displayRoundInt(getActivity(),ivHeadIcon,R.mipmap.ic_launcher);
         mRxManager.on(AppConstant.EnterFragment, new Action1<Boolean>() {
             @Override
             public void call(Boolean aBoolean) {

@@ -103,7 +103,17 @@ public class ImageLoaderUtils {
                 .error(R.mipmap.colleges_icon)
                 .crossFade().into(imageView);
     }
-
+    public static void displayRoundInt(Context context, ImageView imageView, int url) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(context).load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .placeholder(R.mipmap.colleges_icon)
+                .error(R.mipmap.colleges_icon)
+                .crossFade().transform(new GlideRoundTransformUtil(context)).into(imageView);
+    }
     public static void displayRound(Context context, ImageView imageView, String url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
