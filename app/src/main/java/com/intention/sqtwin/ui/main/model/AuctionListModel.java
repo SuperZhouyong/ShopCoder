@@ -18,7 +18,7 @@ import rx.Observable;
 
 public class AuctionListModel implements AuctionListContract.Model {
     @Override
-    public Observable<AuctionListBean> getAuctionListBean(Integer category, Integer page) {
-        return Api.getDefault(HostType.Jsonpart).getAuctionList(category,page).compose(RxSchedulers.<AuctionListBean>io_main());
+    public Observable<AuctionListBean> getAuctionListBean(Integer category, Integer page,Integer goods_type) {
+        return Api.getDefault(HostType.Jsonpart).getAuctionList(category,page,goods_type).compose(RxSchedulers.<AuctionListBean>io_main());
     }
 }

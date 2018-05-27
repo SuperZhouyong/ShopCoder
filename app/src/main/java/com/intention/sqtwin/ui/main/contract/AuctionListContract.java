@@ -18,12 +18,12 @@ import rx.Observable;
 
 public class AuctionListContract {
     public interface Model extends BaseModel{
-     Observable<AuctionListBean>    getAuctionListBean(Integer category,Integer page);
+     Observable<AuctionListBean>    getAuctionListBean(Integer category,Integer page,Integer goods_type);
     }
     public interface View extends BaseView{
         void returnAuctionList(AuctionListBean auctionListBean);
     }
     public abstract static class Presenter extends BasePresenter<View,Model>{
-        public abstract void getRequestAuctionList(Integer category,Integer page);
+        public abstract void getRequestAuctionList(Integer category,Integer page,Integer goods_type);
     }
 }

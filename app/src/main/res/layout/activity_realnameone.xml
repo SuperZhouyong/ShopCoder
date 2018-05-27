@@ -52,7 +52,8 @@
 
                 <EditText
                     android:id="@+id/ec_name"
-                    android:layout_width="wrap_content"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
                     android:background="@null"
@@ -72,6 +73,9 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y100"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:paddingLeft="@dimen/x22">
 
                 <TextView
@@ -86,7 +90,8 @@
 
                 <EditText
                     android:id="@+id/ec_identity_num"
-                    android:layout_width="wrap_content"
+                    android:layout_marginRight="@dimen/x30"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
                     android:background="@null"
@@ -118,6 +123,9 @@
                     android:textSize="@dimen/x28" />
 
                 <EditText
+                    android:layout_marginRight="@dimen/x30"
+
+                    android:inputType="number"
                     android:id="@+id/ec_phone_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

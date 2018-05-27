@@ -102,4 +102,14 @@ public class AppConstant {
 
     // 进入店铺需要的Id
     public static String StoreId;
+    //  分类名字
+    public static String CategoryTitle = "CategoryTitle";
+    // 商品 列表或者 拍品列表
+    public static final String ListType = "ListType";
+    public static final String ListTypeTitle = "ListTypeTitle";
+    public static final String ListTypeCategoryId = "ListTypeCategoryId";
+    // 商品Id
+    public static final String GoodsPageId = "GoodsPageId";
+    // 商品名字
+    public static final String GoodsPageTitle = "GoodsPageTitle";
 }

@@ -128,7 +128,8 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
 
     @Override
     public void StartLoading(String RequestId) {
-        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        if (mAdapter.getDataList().size() == 0)
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override
@@ -212,20 +213,20 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
     @Override
     public void onItemClick(View view, int position) {
         if (mcategory_id == 1) {
-            AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) getActivity(),((StoreInfoComBean.DataBean.FavoriteItemBean)mAdapter.get(position)).getId());
+            AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteItemBean) mAdapter.get(position)).getId());
         }
         //拍场
         if (mcategory_id == 2) {
             // 常规的排场
-            AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity)getActivity(),((StoreInfoComBean.DataBean.FavoriteFieldBean)mAdapter.get(position)).getId(),AppConstant.IntoWayOne);
+            AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteFieldBean) mAdapter.get(position)).getId(), AppConstant.IntoWayOne);
         }
 
         if (mcategory_id == 3) {
-            OrganPeoActivity.gotoActivity((BaseActivity)getActivity(),((StoreInfoComBean.DataBean.FavoriteOrganBean)mAdapter.get(position)).getOrganization_id());
+            OrganPeoActivity.gotoActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteOrganBean) mAdapter.get(position)).getOrganization_id());
 //            mAdapter.addAll(storeInfoComBean.getData().getFavorite_organ());
         }
         if (mcategory_id == 4) {
-            ArtDetatilActivity.GotoArtDetailActivity((BaseActivity)getActivity(),((StoreInfoComBean.DataBean.FavoriteArtistBean)mAdapter.get(position)).getId());
+            ArtDetatilActivity.GotoArtDetailActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteArtistBean) mAdapter.get(position)).getId());
 //            mAdapter.addAll(storeInfoComBean.getData().getFavorite_artist());
         }
         //店鋪，需要設置底部的价格为gone

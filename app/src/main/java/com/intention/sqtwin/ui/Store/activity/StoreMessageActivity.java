@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -33,7 +34,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class StoreMessageActivity extends BaseActivity implements LoadingTip.onReloadListener {
+public class StoreMessageActivity extends BaseActivity implements LoadingTip.onReloadListener, OnRefreshListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -52,6 +53,7 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
     LoadingTip mLoadingTip;
     private LRecyclerViewAdapter mLadapter;
     private CommonRecycleViewAdapter<StoreMessageBean.DataBean> mAdapter;
+    private int pagesize = 10;
 
     @Override
     public int getLayoutId() {
@@ -79,6 +81,7 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);
         mLRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mLRecyclerView.setOnRefreshListener(this);
         mLRecyclerView.setAdapter(mLadapter);
         mLRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 10, 1, getResources().getColor(R.color.app_bottom_colour)));
         RequestDate();
@@ -88,6 +91,7 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
         mRxManager.add(Api.getDefault(HostType.Jsonpart).getStoreMessagebean().compose(RxSchedulers.<StoreMessageBean>io_main()).subscribe(new RxSubscriber<StoreMessageBean>(mContext) {
             @Override
             protected void _onNext(StoreMessageBean storeMessageBean) {
+                showShortToast(storeMessageBean.getMessage());
                 if (!storeMessageBean.isIs_success()) {
                     mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
                     return;
@@ -95,6 +99,8 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
 
                 if (mLoadingTip.getVisibility() == View.VISIBLE)
                     mLoadingTip.setViewGone();
+                if (mAdapter.getDataList().size() != 0)
+                    mAdapter.clear();
                 mAdapter.addAll(storeMessageBean.getData());
             }
 
@@ -114,7 +120,7 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
             @Override
             public void onCompleted() {
                 super.onCompleted();
-
+                mLRecyclerView.refreshComplete(pagesize);
             }
         }));
     }
@@ -133,6 +139,11 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
 
     @Override
     public void reloadLodTip() {
+        RequestDate();
+    }
+
+    @Override
+    public void onRefresh() {
         RequestDate();
     }
 }

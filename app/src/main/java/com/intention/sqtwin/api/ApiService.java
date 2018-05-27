@@ -20,6 +20,7 @@ import com.intention.sqtwin.bean.ChargeBean;
 import com.intention.sqtwin.bean.DeleteFavBean;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.DerivativesBean;
+import com.intention.sqtwin.bean.GoosPageInfoBean;
 import com.intention.sqtwin.bean.IdentityProveBean;
 import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
@@ -28,7 +29,10 @@ import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
+import com.intention.sqtwin.bean.RealJoinStatusBean;
+import com.intention.sqtwin.bean.RealNamePeoTwoBean;
 import com.intention.sqtwin.bean.RealNameStatusBean;
+import com.intention.sqtwin.bean.ReanlNameStoreInfoBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
@@ -42,6 +46,9 @@ import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
 import com.intention.sqtwin.bean.TaobaoStoreInfoBean;
 import com.intention.sqtwin.bean.TradingDeatilBean;
+import com.intention.sqtwin.bean.UpComPanyTwoBean;
+import com.intention.sqtwin.bean.UpEnterThreeBean;
+import com.intention.sqtwin.bean.UpPeoTwoBean;
 import com.intention.sqtwin.bean.UpdateAddressBean;
 import com.intention.sqtwin.bean.UpdateImageBean;
 import com.intention.sqtwin.bean.UpdateIndentityBean;
@@ -165,7 +172,8 @@ public interface ApiService {
     @GET("auction/get_auction_item_list")
     Observable<AuctionListBean> getAuctionList(
             @Query("category_id") Integer category,
-            @Query("page_no") Integer page);
+            @Query("page_no") Integer page,
+            @Query("goods_type") Integer goods_type);
 
     /**
      * 获取订单列表 （会员中心）
@@ -525,4 +533,61 @@ public interface ApiService {
      */
     @GET("Membercenter/join_in_home")
     Observable<RealNameStatusBean> getRealNameStatus();
+
+    /**
+     * 上传个人认证 的 个人信息
+     *
+     * @param upPerTwoBean
+     * @return
+     */
+    @POST("membercenter/post_member_info")
+    Observable<RealNamePeoTwoBean> getPostRealNamePeoTwo(
+            @Body UpPeoTwoBean upPerTwoBean
+    );
+
+    /**
+     * 上传公司认证信息的第二部    RealNamePeoTwoBean 都是一个返回格式的数据
+     *
+     * @param upComPanyTwoBean
+     * @return
+     */
+    @POST("membercenter/post_company_info")
+    Observable<RealNamePeoTwoBean> getPostCompanyTwo(
+            @Body UpComPanyTwoBean upComPanyTwoBean
+    );
+
+    /**
+     * 暂时用不到  上传店铺信息 第三部
+     *
+     * @param upPeoTwoBean
+     * @return
+     */
+    @POST("membercenter/post_member_info")
+    Observable<RealNamePeoTwoBean> getPostRealEnterThree(@Body UpEnterThreeBean upPeoTwoBean);
+
+    /**
+     * 上传 店铺信息
+     *
+     * @param name
+     * @param logo
+     * @param description
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("membercenter/join_post_store_info")
+    Observable<ReanlNameStoreInfoBean> getPostRealNameStoreInfo(
+            @Field("name") String name,
+            @Field("logo") String logo,
+            @Field("description") String description
+
+    );
+
+    /**
+     * 获取商品信息页面
+     * @param goodsId
+     * @return
+     */
+    @GET("shop/get_goods_info")
+    Observable<GoosPageInfoBean> getGoodsPageInfo(
+            @Query("goods_id") Integer goodsId);
 }

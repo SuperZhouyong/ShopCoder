@@ -270,11 +270,14 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 mRxManager.post(AppConstant.SwitchToPostion, 1);
                 break;
             case R.id.iv_two:
+                // 衍生品
                 startActivity(DerivativesActivity.class);
                 break;
             case R.id.iv_three:
+                // 商城
                 break;
             case R.id.iv_fore:
+                // 同步拍
                 startActivity(SynchronousAuctionActivity.class);
                 break;
         }

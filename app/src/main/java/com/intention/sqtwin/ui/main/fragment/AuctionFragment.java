@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.base.BasePageStateAdapter;
 import com.intention.sqtwin.bean.PpAllDateBean;
@@ -77,8 +78,6 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
         mPresenter.getPpAlldate(category_id, status, page_no);
 
 
-
-
     }
 
 
@@ -116,7 +115,8 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
     void onCLick(View v) {
         switch (v.getId()) {
             case R.id.category_logo:
-                startActivity(CategoryActivity.class );
+//                startActivity(CategoryActivity.class );
+                CategoryActivity.GotoCategoryActivity((BaseActivity) getActivity(), 0, "拍品分类");
                 break;
 
         }
@@ -136,7 +136,7 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
             mLoadingTip.setOnReloadListener(this);
             return;
         }
-        if (mLoadingTip.getVisibility()==View.VISIBLE)
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
 
         // 头部

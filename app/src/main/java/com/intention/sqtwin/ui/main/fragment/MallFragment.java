@@ -135,7 +135,7 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
 
     @Override
     public void StartLoading(String RequestId) {
-
+        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override

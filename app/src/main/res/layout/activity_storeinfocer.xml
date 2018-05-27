@@ -7,10 +7,11 @@
     <include layout="@layout/actionbar_title" />
 
     <LinearLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:orientation="vertical">
+
         <com.baoyachi.stepview.HorizontalStepView
 
             android:id="@+id/stepView"
@@ -61,7 +62,7 @@
         <include layout="@layout/item_divider" />
 
         <RelativeLayout
-
+            android:id="@+id/rel_logo"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y100"
             android:paddingLeft="@dimen/x22">
@@ -76,19 +77,24 @@
                 android:textColor="@color/font_4"
                 android:textSize="@dimen/x28" />
 
-            <EditText
-                android:id="@+id/ec_identity_num"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="@dimen/x100"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/x210"
-                android:background="@null"
-                android:hint="请上传店铺LOGO"
-                android:maxLines="1"
-                android:minWidth="@dimen/x200"
-                android:singleLine="true"
-                android:textColor="@color/font_1"
-                android:textColorHint="@color/font_3"
-                android:textSize="@dimen/x30" />
+                android:layout_marginLeft="@dimen/x210" />
+            <!-- <EditText
+                 android:id="@+id/ec_identity_num"
+                 android:layout_width="wrap_content"
+                 android:layout_height="match_parent"
+                 android:layout_marginLeft="@dimen/x210"
+                 android:background="@null"
+                 android:hint="请上传店铺LOGO"
+                 android:maxLines="1"
+                 android:minWidth="@dimen/x200"
+                 android:singleLine="true"
+                 android:textColor="@color/font_1"
+                 android:textColorHint="@color/font_3"
+                 android:textSize="@dimen/x30" />-->
 
         </RelativeLayout>
 
@@ -127,6 +133,7 @@
         </RelativeLayout>
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/tv_confirm"
         android:layout_width="@dimen/x560"

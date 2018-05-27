@@ -157,6 +157,10 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
             mAdapter.clear();
             mLAdapter.notifyDataSetChanged();
         }
+        if (page == 0 && orderListBean.getData().size() == 0) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+            return;
+        }
         mAdapter.addAll(orderListBean.getData());
         ++page;
     }

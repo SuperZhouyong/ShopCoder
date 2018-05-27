@@ -99,6 +99,7 @@ public class StoreReportOneFragment extends LazzyFragment implements LoadingTip.
                     @SuppressLint("SetTextI18n")
                     @Override
                     protected void _onNext(StoreReportOne storeReportOne) {
+                        showShortToast(storeReportOne.getMessage());
                         if (!storeReportOne.isIs_success()) {
                             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
                             return;
@@ -131,6 +132,7 @@ public class StoreReportOneFragment extends LazzyFragment implements LoadingTip.
 
                     @Override
                     protected void _onError(String message) {
+
                         mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
                         mLoadingTip.setOnReloadListener(StoreReportOneFragment.this);
                     }

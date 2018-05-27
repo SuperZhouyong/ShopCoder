@@ -224,7 +224,8 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.category_logo:
-                startActivity(CategoryActivity.class);
+                CategoryActivity.GotoCategoryActivity(this,1,"商品分类");
+//                startActivity(CategoryActivity.class);
                 break;
             case R.id.iv_love:
                 break;

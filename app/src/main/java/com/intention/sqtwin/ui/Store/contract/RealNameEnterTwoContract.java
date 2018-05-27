@@ -4,7 +4,7 @@ import com.intention.sqtwin.base.BaseModel;
 import com.intention.sqtwin.base.BasePresenter;
 import com.intention.sqtwin.base.BaseView;
 import com.intention.sqtwin.bean.RealNamePeoTwoBean;
-import com.intention.sqtwin.bean.UpEnterThreeBean;
+import com.intention.sqtwin.bean.UpComPanyTwoBean;
 import com.intention.sqtwin.bean.UpPeoTwoBean;
 import com.intention.sqtwin.bean.UpdateImageBean;
 
@@ -15,22 +15,19 @@ import rx.Observable;
 
 /**
  * Description: 保佑无bug
- * Data：2018/5/25-上午1:11
+ * Data：2018/5/26-下午1:29
  * Blog：Super简单
  * Author: ZhouYong
  * QQ: 437397161
  */
 
-public interface RealnameContract {
+public interface RealNameEnterTwoContract {
     interface View extends BaseView {
         // 获取图片上传的信息
         void returnUpdateImage(UpdateImageBean updateImageBean);
 
-        //个人信息第二部上传接口 返回
-        void returnUpdatePeoTwo(RealNamePeoTwoBean realNamePeoTwoBean);
-
-        // 企业信息 法人信息上传
-//        void returnUpdatEnterThree(RealNamePeoTwoBean realNamePeoTwoBean);
+        //企业信息第二部上传接口 返回
+        void returnUpdateEnterTwo(RealNamePeoTwoBean realNamePeoTwoBean);
     }
 
     interface Model extends BaseModel {
@@ -40,10 +37,8 @@ public interface RealnameContract {
         Observable<UpdateImageBean> updateImage(Map<String, RequestBody> mMaps);
 
 
-        // 个人信息 上传第二部接口
-        Observable<RealNamePeoTwoBean> UpPeoTwoInfo(UpPeoTwoBean upPeoTwoBean);
-
-//        Observable<RealNamePeoTwoBean> UpEnterThreeInfo(UpEnterThreeBean upPeoTwoBean);
+        // 企业信息第二部上传接口 上传第二部接口
+        Observable<RealNamePeoTwoBean> UpEnterTwoInfo(UpComPanyTwoBean upPeoTwoBean);
 
     }
 
@@ -51,13 +46,7 @@ public interface RealnameContract {
         //    上传照片
         public abstract void updateImageRequest(Map<String, RequestBody> mMaps);
 
-        // 个人信息 上传第二部接口
-        public abstract void UpPeoTwoInfoRequest(UpPeoTwoBean upPeoTwoBean);
-
-
-        //企业信息 第三部 上传
-
-//        public abstract void UpEnterThreeInfoRequest(UpEnterThreeBean upEnterThreeBean);
+        // 企业信息第二部上传接口 上传第二部接口
+        public abstract void UpPeoEnterInfoRequest(UpComPanyTwoBean upPeoTwoBean);
     }
-
 }

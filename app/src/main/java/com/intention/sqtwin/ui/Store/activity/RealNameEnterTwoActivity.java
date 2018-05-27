@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,16 +16,28 @@ import com.baoyachi.stepview.bean.StepBean;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.bean.RealNamePeoTwoBean;
+import com.intention.sqtwin.bean.UpComPanyTwoBean;
+import com.intention.sqtwin.bean.UpdateImageBean;
+import com.intention.sqtwin.ui.Store.contract.RealNameEnterTwoContract;
+import com.intention.sqtwin.ui.Store.model.RealNameEnterTwoModel;
+import com.intention.sqtwin.ui.Store.presenter.RealNameEnterTwoPresenter;
 import com.intention.sqtwin.utils.TakePictureManager;
+import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.shaohui.bottomdialog.BaseBottomDialog;
 import me.shaohui.bottomdialog.BottomDialog;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * Description: 保佑无bug
@@ -34,7 +47,7 @@ import me.shaohui.bottomdialog.BottomDialog;
  * QQ: 437397161
  */
 
-public class RealNameEnterTwoActivity extends BaseActivity implements TakePictureManager.takePictureCallBackListener, BottomDialog.ViewListener {
+public class RealNameEnterTwoActivity extends BaseActivity<RealNameEnterTwoPresenter, RealNameEnterTwoModel> implements RealNameEnterTwoContract.View, TakePictureManager.takePictureCallBackListener, BottomDialog.ViewListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -84,6 +97,9 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
     HorizontalStepView horizontalStepView;
     private TakePictureManager takePictureManager;
     private BaseBottomDialog bottomDialog;
+    private HashMap<String, String> mHashMap;
+    private Map<String, RequestBody> mMaps;
+    private UpComPanyTwoBean upComPanyTwoBean;
 
     @Override
     public int getLayoutId() {
@@ -92,7 +108,7 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
@@ -101,9 +117,13 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
         relSearch.setVisibility(View.GONE);
         centerTitle.setText("认证中心");
 
+        mHashMap = new HashMap<>();
+        mMaps = new LinkedHashMap<>();
+        upComPanyTwoBean = new UpComPanyTwoBean();
 
         takePictureManager = new TakePictureManager(this);
-        takePictureManager.setTailor(1, 3, 320, 200);
+        takePictureManager.setTailor(1, 1, 300, 300);
+
 
         takePictureManager.setTakePictureCallBackListener(this);
 
@@ -123,9 +143,8 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
                 .setStepViewComplectedTextColor(ContextCompat.getColor(this, R.color.font_1))//设置StepsView text完成线的颜色
                 .setStepViewUnComplectedTextColor(ContextCompat.getColor(this, R.color.font_1))//设置StepsView text未完成线的颜色
                 .setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_ing))//设置StepsViewIndicator CompleteIcon
-                .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_ing))//设置StepsViewIndicator DefaultIcon
+                .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_nomal))//设置StepsViewIndicator DefaultIcon
                 .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_nomal));//设置StepsViewIndicator AttentionIcon
-
     }
 
 
@@ -146,13 +165,71 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
                 break;
 
             case R.id.tv_confirm:
-                startActivity(RealNameEnterThreeActivity.class);
+                // 企业名称
+                String comName = this.ecName.getText().toString().trim();
+                //法人姓名
+                String comPeoName = ecIdentityNum.getText().toString().trim();
+                //身份证号
+                String comUserIdenNum = ecPhoneNum.getText().toString().trim();
+
+                if (TextUtils.isEmpty(comName) || TextUtils.isEmpty(comPeoName) || TextUtils.isEmpty(comUserIdenNum)) {
+                    showShortToast("请检查必填信息，确认是否完整填写");
+                    return;
+                }
+                upComPanyTwoBean.setCompany_name(comName);
+                upComPanyTwoBean.setCorporation_name(comPeoName);
+                upComPanyTwoBean.setCorporation_id_card_number(comUserIdenNum);
+
+                mMaps.clear();
+                if (TextUtils.isEmpty(mHashMap.get(AppConstant.oneMessage))) {
+                    showShortToast("请上传营业执照照片");
+                    return;
+                }
+                if (TextUtils.isEmpty(mHashMap.get(AppConstant.twoMessage))) {
+                    showShortToast("请上传法人身份证正面照");
+                    return;
+                }
+                if (TextUtils.isEmpty(mHashMap.get(AppConstant.threeMessage))) {
+                    showShortToast("请上传法人身份证反面照");
+                    return;
+                }
+                File file1 = new File(mHashMap.get(AppConstant.oneMessage));
+                RequestBody requestFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+                mMaps.put("1image\"; filename=\"" + file1.getName(), requestFile1);
+
+                File file2 = new File(mHashMap.get(AppConstant.twoMessage));
+                RequestBody requestFile2 = RequestBody.create(MediaType.parse("multipart/form-data"), file2);
+                mMaps.put("2image\"; filename=\"" + file2.getName(), requestFile2);
+
+
+                File file3 = new File(mHashMap.get(AppConstant.threeMessage));
+                RequestBody requestFile3 = RequestBody.create(MediaType.parse("multipart/form-data"), file3);
+                mMaps.put("3image\"; filename=\"" + file3.getName(), requestFile3);
+
+
+                mPresenter.updateImageRequest(mMaps);
+
+//                startActivity(RealNameEnterThreeActivity.class);
                 break;
         }
     }
 
     @Override
     public void successful(boolean isTailor, File outFile, Uri filePath) {
+        // 正面照
+        String tag = bottomDialog.getFragmentTag();
+        if (AppConstant.oneMessage.equals(bottomDialog.getFragmentTag())) {
+            ImageLoaderUtils.display(this, ivSrcIdentityOne, outFile.getAbsolutePath());
+            mHashMap.put(AppConstant.oneMessage, outFile.getAbsolutePath());
+        } else if (AppConstant.twoMessage.equals(bottomDialog.getFragmentTag())) {
+            //背面照
+            ImageLoaderUtils.display(this, ivSrcIdentityTwo, outFile.getAbsolutePath());
+            mHashMap.put(AppConstant.twoMessage, outFile.getAbsolutePath());
+        } else if (AppConstant.threeMessage.equals(bottomDialog.getFragmentTag())) {
+            ImageLoaderUtils.display(this, ivSrcIdentityThree, outFile.getAbsolutePath());
+            mHashMap.put(AppConstant.threeMessage, outFile.getAbsolutePath());
+
+        }
 
     }
 
@@ -181,8 +258,9 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
                 .show();
     }
 
+
     @Override
-    public void bindView(View view) {
+    public void bindView(android.view.View view) {
         view.findViewById(R.id.tv_take_carema).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,5 +276,46 @@ public class RealNameEnterTwoActivity extends BaseActivity implements TakePictur
                 takePictureManager.startTakeWayByAlbum();
             }
         });
+    }
+
+    @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
+    public void showLoading(String RequestId, String title) {
+
+    }
+
+    @Override
+    public void stopLoading(String RequestId) {
+
+    }
+
+    @Override
+    public void showErrorTip(String RequestId, String msg) {
+
+    }
+
+    @Override
+    public void returnUpdateImage(UpdateImageBean updateImageBean) {
+        if (!updateImageBean.isIs_success()) {
+            showShortToast(updateImageBean.getMessage());
+            return;
+        }
+        upComPanyTwoBean.setBusiness_licence_number_electronic(updateImageBean.getData().get(0).getUrl());
+        upComPanyTwoBean.setCorporation_id_card_photo_front(updateImageBean.getData().get(1).getUrl());
+        upComPanyTwoBean.setCorporation_id_card_photo_back(updateImageBean.getData().get(2).getUrl());
+        mPresenter.UpPeoEnterInfoRequest(upComPanyTwoBean);
+    }
+
+    @Override
+    public void returnUpdateEnterTwo(RealNamePeoTwoBean realNamePeoTwoBean) {
+        if (!realNamePeoTwoBean.isIs_success()) {
+            showShortToast(realNamePeoTwoBean.getMessage());
+            return;
+        }
+        startActivity(RealNameEnterThreeActivity.class);
     }
 }

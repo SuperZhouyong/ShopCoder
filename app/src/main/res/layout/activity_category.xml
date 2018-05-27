@@ -8,9 +8,12 @@
    <!-- <include
         android:id="@+id/title"
         layout="@layout/actionbar_title_two" />-->
+   <!-- <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title_three" />-->
     <include
         android:id="@+id/title"
-        layout="@layout/actionbar_title_three" />
+        layout="@layout/actionbar_title"/>
 
     <RelativeLayout
         android:background="@color/white"

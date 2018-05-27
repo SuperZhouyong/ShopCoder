@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:orientation="vertical">
 
     <include layout="@layout/actionbar_title" />
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -16,6 +17,7 @@
             android:layout_height="match_parent"
             android:background="@color/white"
             android:orientation="vertical">
+
             <com.baoyachi.stepview.HorizontalStepView
 
                 android:id="@+id/stepView"
@@ -49,8 +51,9 @@
                     android:textSize="@dimen/x28" />
 
                 <EditText
+                    android:layout_marginRight="@dimen/x30"
                     android:id="@+id/ec_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
                     android:background="@null"
@@ -83,8 +86,9 @@
                     android:textSize="@dimen/x28" />
 
                 <EditText
+                    android:layout_marginRight="@dimen/x30"
                     android:id="@+id/ec_identity_num"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
                     android:background="@null"
@@ -116,12 +120,16 @@
                     android:textSize="@dimen/x28" />
 
                 <EditText
+                    android:inputType="number"
+                    android:layout_marginRight="@dimen/x30"
                     android:id="@+id/ec_phone_num"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x210"
                     android:layout_marginTop="@dimen/y30"
                     android:background="@null"
+
                     android:hint="请输入联系电话（确保有效电话，方便工作人员致电核实）"
                     android:lineSpacingExtra="@dimen/x10"
                     android:minWidth="@dimen/x200"
@@ -332,8 +340,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>

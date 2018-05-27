@@ -78,6 +78,7 @@ public class StoreReportTwoFragment extends LazzyFragment implements LoadingTip.
                     @SuppressLint("SetTextI18n")
                     @Override
                     protected void _onNext(StoreReportTwo storeReportTwo) {
+                        showShortToast(storeReportTwo.getMessage());
                         if (!storeReportTwo.isIs_success()) {
                             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
                             return;
@@ -107,6 +108,7 @@ public class StoreReportTwoFragment extends LazzyFragment implements LoadingTip.
                         super.onStart();
                         mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
                     }
+
                 }));
 
     }

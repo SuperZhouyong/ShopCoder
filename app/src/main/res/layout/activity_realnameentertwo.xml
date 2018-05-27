@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:orientation="vertical">
 
     <include layout="@layout/actionbar_title" />
+
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,9 +51,10 @@
 
                 <EditText
                     android:id="@+id/ec_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
+                    android:layout_marginRight="@dimen/x30"
                     android:background="@null"
                     android:hint="请输入真实名字"
                     android:maxLines="1"
@@ -78,17 +80,18 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="法人名字"
+                    android:text="法人姓名"
                     android:textColor="@color/font_4"
                     android:textSize="@dimen/x28" />
 
                 <EditText
                     android:id="@+id/ec_identity_num"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
+                    android:layout_marginRight="@dimen/x30"
                     android:background="@null"
-                    android:hint="请输入身份证号"
+                    android:hint="请输入法人姓名"
                     android:maxLines="1"
                     android:minWidth="@dimen/x200"
                     android:singleLine="true"
@@ -103,26 +106,28 @@
             <RelativeLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y150"
+                android:layout_height="@dimen/y100"
                 android:paddingLeft="@dimen/x22">
 
                 <TextView
                     android:layout_width="@dimen/x200"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/y30"
+                    android:layout_height="match_parent"
 
-                    android:text="联系电话"
+                    android:gravity="center_vertical"
+                    android:text="身份证号"
                     android:textColor="@color/font_4"
                     android:textSize="@dimen/x28" />
 
                 <EditText
                     android:id="@+id/ec_phone_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x210"
-                    android:layout_marginTop="@dimen/y30"
+                    android:layout_marginRight="@dimen/x30"
+
                     android:background="@null"
-                    android:hint="请输入联系电话（确保有效电话，方便工作人员致电核实）"
+                    android:gravity="center_vertical"
+                    android:hint="请输入身份证号"
                     android:lineSpacingExtra="@dimen/x10"
                     android:minWidth="@dimen/x200"
                     android:paddingRight="@dimen/x22"
@@ -332,8 +337,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </LinearLayout>

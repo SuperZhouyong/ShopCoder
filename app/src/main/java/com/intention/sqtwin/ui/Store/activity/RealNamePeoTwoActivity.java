@@ -16,6 +16,8 @@ import com.baoyachi.stepview.bean.StepBean;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.bean.RealNamePeoTwoBean;
+import com.intention.sqtwin.bean.UpPeoTwoBean;
 import com.intention.sqtwin.bean.UpdateImageBean;
 import com.intention.sqtwin.ui.Store.activity.TheStoreActivity;
 import com.intention.sqtwin.ui.Store.contract.RealnameContract;
@@ -27,6 +29,7 @@ import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -98,6 +101,8 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
     private HashMap<String, String> mHashMap;
     private Map<String, RequestBody> mMaps;
 
+    private UpPeoTwoBean upPeoTwoBean;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_realnameone;
@@ -105,7 +110,7 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
 
     @Override
     public void initPresenter() {
-        mPresenter.setVM(this,mModel);
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
@@ -115,11 +120,11 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
         centerTitle.setText("认证中心");
 
         mHashMap = new HashMap<>();
-        mMaps = new HashMap<>();
-
-
+        mMaps = new LinkedHashMap<>();
+        upPeoTwoBean = new UpPeoTwoBean();
+        upPeoTwoBean.setJoin_type(1);
         takePictureManager = new TakePictureManager(this);
-        takePictureManager.setTailor(320, 200, 300, 300);
+        takePictureManager.setTailor(1, 1, 300, 300);
 
         takePictureManager.setTakePictureCallBackListener(this);
 
@@ -160,6 +165,18 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
                 break;
 
             case R.id.tv_confirm:
+                String UserName = this.ecName.getText().toString().trim();
+                String userIdenNum = ecIdentityNum.getText().toString().trim();
+                String userPhone = ecPhoneNum.getText().toString().trim();
+
+                if (TextUtils.isEmpty(UserName) || TextUtils.isEmpty(userIdenNum) || TextUtils.isEmpty(userPhone)) {
+                    showShortToast("请检查必填信息，确认是否完整填写");
+                    return;
+                }
+                upPeoTwoBean.setName(UserName);
+                upPeoTwoBean.setId_card(userIdenNum);
+                upPeoTwoBean.setPhone(Integer.parseInt(userPhone));
+
                 mMaps.clear();
                 if (TextUtils.isEmpty(mHashMap.get(AppConstant.oneMessage))) {
                     showShortToast("请上传身份证正面照");
@@ -173,18 +190,19 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
                     showShortToast("请上传手持身份证照");
                     return;
                 }
+
                 File file1 = new File(mHashMap.get(AppConstant.oneMessage));
                 RequestBody requestFile1 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
-                mMaps.put("image\"; filename=\"" + file1.getName(), requestFile1);
+                mMaps.put("1image\"; filename=\"" + file1.getName(), requestFile1);
 
                 File file2 = new File(mHashMap.get(AppConstant.twoMessage));
-                RequestBody requestFile2 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
-                mMaps.put("image\"; filename=\"" + file2.getName(), requestFile2);
+                RequestBody requestFile2 = RequestBody.create(MediaType.parse("multipart/form-data"), file2);
+                mMaps.put("2image\"; filename=\"" + file2.getName(), requestFile2);
 
 
                 File file3 = new File(mHashMap.get(AppConstant.threeMessage));
-                RequestBody requestFile3 = RequestBody.create(MediaType.parse("multipart/form-data"), file1);
-                mMaps.put("image\"; filename=\"" + file3.getName(), requestFile3);
+                RequestBody requestFile3 = RequestBody.create(MediaType.parse("multipart/form-data"), file3);
+                mMaps.put("3image\"; filename=\"" + file3.getName(), requestFile3);
 
 
                 mPresenter.updateImageRequest(mMaps);
@@ -201,14 +219,13 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
         if (AppConstant.oneMessage.equals(bottomDialog.getFragmentTag())) {
             ImageLoaderUtils.display(this, ivSrcIdentityOne, outFile.getAbsolutePath());
             mHashMap.put(AppConstant.oneMessage, outFile.getAbsolutePath());
-//            updateMySelf.setId_card_photo_front(outFile);
         } else if (AppConstant.twoMessage.equals(bottomDialog.getFragmentTag())) {
             //背面照
             ImageLoaderUtils.display(this, ivSrcIdentityTwo, outFile.getAbsolutePath());
             mHashMap.put(AppConstant.twoMessage, outFile.getAbsolutePath());
         } else if (AppConstant.threeMessage.equals(bottomDialog.getFragmentTag())) {
             ImageLoaderUtils.display(this, ivSrcIdentityThree, outFile.getAbsolutePath());
-            mHashMap.put(AppConstant.twoMessage, outFile.getAbsolutePath());
+            mHashMap.put(AppConstant.threeMessage, outFile.getAbsolutePath());
 
         }
 
@@ -276,16 +293,29 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
-
+        showShortToast(msg);
     }
 
     @Override
     public void returnUpdateImage(UpdateImageBean updateImageBean) {
-        if (!updateImageBean.isIs_success()){
+        if (!updateImageBean.isIs_success()) {
             showShortToast(updateImageBean.getMessage());
             return;
         }
+        upPeoTwoBean.setId_card_photo_front(updateImageBean.getData().get(0).getUrl());
+        upPeoTwoBean.setId_card_photo_back(updateImageBean.getData().get(1).getUrl());
+        upPeoTwoBean.setId_card_in_hand(updateImageBean.getData().get(2).getUrl());
+        mPresenter.UpPeoTwoInfoRequest(upPeoTwoBean);
+    }
 
+    // 上传个人信息
+    @Override
+    public void returnUpdatePeoTwo(RealNamePeoTwoBean realNamePeoTwoBean) {
+        showShortToast(realNamePeoTwoBean.getMessage());
+        if (!realNamePeoTwoBean.isIs_success()) {
+            return;
+        }
+        StoreInfoCerActivity.gotoTheActivity(this, AppConstant.RealNameTypeOne);
 
 
     }

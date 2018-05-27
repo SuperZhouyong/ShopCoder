@@ -16,7 +16,7 @@ public class AuctionListBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"list":[{"id":171,"name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg","start_price":2000,"current_price":2000},{"id":180,"name":"a10540267 现代 和田浓绿碧玉苏工镂雕灵芝如意摆件","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050411033118183.jpg","start_price":1300,"current_price":1300},{"id":190,"name":"a10540335 20世纪80年代 和田白玉岁岁平安大玉璧","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050411462028477.jpg","start_price":12000,"current_price":12000}],"page_count":3}
+     * data : {"item_list":[{"id":171,"name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg","start_price":"2000.00","current_price":"2000.00"}],"page_count":1}
      */
 
     private boolean is_success;
@@ -49,12 +49,12 @@ public class AuctionListBean {
 
     public static class DataBean {
         /**
-         * list : [{"id":171,"name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg","start_price":2000,"current_price":2000},{"id":180,"name":"a10540267 现代 和田浓绿碧玉苏工镂雕灵芝如意摆件","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050411033118183.jpg","start_price":1300,"current_price":1300},{"id":190,"name":"a10540335 20世纪80年代 和田白玉岁岁平安大玉璧","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050411462028477.jpg","start_price":12000,"current_price":12000}]
-         * page_count : 3
+         * item_list : [{"id":171,"name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg","start_price":"2000.00","current_price":"2000.00"}]
+         * page_count : 1
          */
 
         private int page_count;
-        private List<ListBean> list;
+        private List<ItemListBean> item_list;
 
         public int getPage_count() {
             return page_count;
@@ -64,28 +64,28 @@ public class AuctionListBean {
             this.page_count = page_count;
         }
 
-        public List<ListBean> getList() {
-            return list;
+        public List<ItemListBean> getItem_list() {
+            return item_list;
         }
 
-        public void setList(List<ListBean> list) {
-            this.list = list;
+        public void setItem_list(List<ItemListBean> item_list) {
+            this.item_list = item_list;
         }
 
-        public static class ListBean {
+        public static class ItemListBean {
             /**
              * id : 171
              * name : a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串
              * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg
-             * start_price : 2000
-             * current_price : 2000
+             * start_price : 2000.00
+             * current_price : 2000.00
              */
 
             private int id;
             private String name;
             private String image;
-            private int start_price;
-            private int current_price;
+            private String start_price;
+            private String current_price;
 
             public int getId() {
                 return id;
@@ -111,19 +111,19 @@ public class AuctionListBean {
                 this.image = image;
             }
 
-            public int getStart_price() {
+            public String getStart_price() {
                 return start_price;
             }
 
-            public void setStart_price(int start_price) {
+            public void setStart_price(String start_price) {
                 this.start_price = start_price;
             }
 
-            public int getCurrent_price() {
+            public String getCurrent_price() {
                 return current_price;
             }
 
-            public void setCurrent_price(int current_price) {
+            public void setCurrent_price(String current_price) {
                 this.current_price = current_price;
             }
         }

@@ -36,7 +36,29 @@ import butterknife.OnClick;
  */
 
 public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryModel> implements CategoryContract.View, LoadingTip.onReloadListener {
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.rel_back)
+    RelativeLayout relBack;
+    @BindView(R.id.left_title)
+    TextView leftTitle;
+    @BindView(R.id.center_title)
+    TextView centerTitle;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
     @BindView(R.id.rel_search)
+    RelativeLayout relSearch;
+    @BindView(R.id.mrecy_left)
+    RecyclerView mrecyLeft;
+    @BindView(R.id.iv_dilver)
+    ImageView ivDilver;
+    @BindView(R.id.mrecy_right)
+    LRecyclerView mrecyRight;
+    @BindView(R.id.rel_all)
+    RelativeLayout relAll;
+    @BindView(R.id.mLoadingTip)
+    LoadingTip mLoadingTip;
+   /* @BindView(R.id.rel_search)
     RelativeLayout relSearch;
     @BindView(R.id.iv_love)
     ImageView ivLove;
@@ -51,7 +73,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     @BindView(R.id.rel_all)
     RelativeLayout relAll;
     @BindView(R.id.mLoadingTip)
-    LoadingTip mLoadingTip;
+    LoadingTip mLoadingTip;*/
 
   /*  @BindView(R.id.mrecy_right)
     LRecyclerView mrecyRight;
@@ -71,9 +93,12 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     ImageView ivDilver*/;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean> mLeftAdapter;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.SubCategoryBean> mRightAdapter;
-    private Integer current_category_id = 19;
+    // 进来默认为1
+    private Integer current_category_id = 1;
     private LRecyclerViewAdapter mLadapter;
     private TextView viewById;
+    // 由上一个界面传入进来
+    private Integer CategoryType;
 
     @Override
     public int getLayoutId() {
@@ -87,6 +112,14 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
 
     @Override
     public void initView() {
+        leftTitle.setVisibility(View.GONE);
+        relSearch.setVisibility(View.GONE);
+//        centerTitle.set
+        String mTitle = getIntent().getExtras().getString(AppConstant.CategoryTitle);
+        centerTitle.setText(mTitle);
+        CategoryType = getIntent().getExtras().getInt(AppConstant.CategoryType, -1);
+//        current_category_id = getIntent().getExtras().getInt(AppConstant.)
+
 //        categoryLogo.setImageResource(R.mipmap.logo);
 
         mLeftAdapter = new CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean>(this, R.layout.item_category_left) {
@@ -117,13 +150,14 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
 
         mRightAdapter = new CommonRecycleViewAdapter<CategoryAllBean.DataBean.SubCategoryBean>(this, R.layout.item_category_right) {
             @Override
-            public void convert(ViewHolderHelper helper, CategoryAllBean.DataBean.SubCategoryBean categoryBean, int position) {
+            public void convert(ViewHolderHelper helper, final CategoryAllBean.DataBean.SubCategoryBean categoryBean, int position) {
                 helper.setImageUrl(R.id.iv_goods, categoryBean.getImage());
                 helper.setText(R.id.tv_name, categoryBean.getName());
                 helper.getConvertView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(AuctionItemListActivity.class);
+                        AuctionItemListActivity.GotoAuctionItemListActivity((BaseActivity) mContext, CategoryType, categoryBean.getName(), categoryBean.getCategory_id());
+
                     }
                 });
             }
@@ -147,15 +181,21 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
         mPresenter.getCategoryBeanRequest(current_category_id);
     }
 
-    public static void GotoCategoryActivity(BaseActivity mActivity, Integer type) {
+    // 入口目前为 两个地方  1拍品---拍品分类，，，， 2衍生品的分类--商品
+    //商品类型：0=拍品，1=普通商品，2=众筹商品  分类界面的入口
+    public static void GotoCategoryActivity(BaseActivity mActivity, Integer type, String title) {
         Bundle bundle = new Bundle();
         bundle.putInt(AppConstant.CategoryType, type);
+        bundle.putString(AppConstant.CategoryTitle, title);
         mActivity.startActivity(CategoryActivity.class, bundle);
 
     }
 
     @Override
     public void StartLoading(String RequestId) {
+        if (mLeftAdapter.getDataList().size() == 0) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        }
 
     }
 
@@ -171,6 +211,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
+        showShortToast(msg);
 
     }
 
@@ -198,7 +239,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     }
 
 
-    @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
+   /* @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             // 去搜索
@@ -209,6 +250,18 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
                 break;
             // 去提醒
             case R.id.iv_readme:
+                break;
+        }
+    }*/
+
+
+    @OnClick({R.id.rel_back, R.id.rel_search})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_back:
+                finish();
+                break;
+            case R.id.rel_search:
                 break;
         }
     }

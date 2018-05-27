@@ -50,7 +50,7 @@
             android:layout_alignLeft="@+id/imageView"
             android:layout_alignStart="@+id/imageView"
             android:layout_below="@id/imageView"
-            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginLeft="@dimen/x24"
             android:layout_marginTop="@dimen/y5"
             android:background="@color/font_2" />
 
@@ -75,7 +75,7 @@
             android:layout_alignLeft="@+id/imageView"
             android:layout_alignStart="@+id/imageView"
             android:layout_below="@id/imageView2"
-            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginLeft="@dimen/x24"
             android:layout_marginTop="@dimen/y5"
             android:background="@color/font_2" />
 

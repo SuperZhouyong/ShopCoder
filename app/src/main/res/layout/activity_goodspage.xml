@@ -1,249 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:AmountView="http://schemas.android.com/tools">
 
-    <include layout="@layout/actionbar_title" />
-
-    <ScrollView
+    <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title" />
+    <LinearLayout
+       android:layout_below="@id/title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+
+
+        <ScrollView
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-
-            <ezy.ui.view.BannerView
-                android:id="@+id/mLoopViewPager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:bvAspectRatio="0.427350"
-                app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
-                app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
-                app:bvIsAuto="true"
-                app:bvIsLoop="true" />
-
-            <TextView
-                android:id="@+id/tv_goods_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="@dimen/x22"
-                android:text="瓷器的发明是中华名族对世界闻名的伟大"
-                android:textSize="@dimen/x28" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:padding="@dimen/x22">
+                android:orientation="vertical">
+
+
+                <ezy.ui.view.BannerView
+                    android:id="@+id/mLoopViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:bvAspectRatio="0.427350"
+                    app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
+                    app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
+                    app:bvIsAuto="true"
+                    app:bvIsLoop="true" />
 
                 <TextView
-                    android:id="@+id/tv_current_price"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_goods_name"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="￥1098"
-                    android:textColor="@color/font_2"
-                    android:textSize="@dimen/x36" />
-                <!--textview.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //中划线 -->
-                <TextView
-                    android:id="@+id/tv_old_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x30"
-                    android:text="￥1678"
-                    android:textColor="@color/font_3"
-                    android:textSize="@dimen/x24" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/y20"
-                android:background="@color/white"
-                android:padding="@dimen/x22">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="品牌"
-                    android:textColor="@color/font_3"
-                    android:textSize="@dimen/x24" />
-
-                <TextView
-                    android:id="@+id/tv_brand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x30"
-                    android:text="产品"
-                    android:textColor="@color/font_1"
-                    android:textSize="@dimen/x28" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x350"
-                    android:text="库存"
-                    android:textColor="@color/font_3"
-                    android:textSize="@dimen/x24" />
-
-                <TextView
-
-                    android:id="@+id/tv_beleft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x30"
-                    android:text="20"
-                    android:textColor="@color/font_1"
-                    android:textSize="@dimen/x28" />
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-
-                android:layout_height="@dimen/y100"
-                android:layout_marginTop="@dimen/y20"
-                android:background="@color/white"
-                android:paddingLeft="@dimen/x22">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="选择数量"
-                    android:textColor="@color/font_10"
+                    android:background="@color/white"
+                    android:padding="@dimen/x22"
+                    android:text="瓷器的发明是中华名族对世界闻名的伟大"
                     android:textSize="@dimen/x28" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
+                    android:background="@color/white"
+                    android:padding="@dimen/x22">
 
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:orientation="horizontal"
-                    android:showDividers="middle">
+                    <TextView
+                        android:id="@+id/tv_current_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥1098"
+                        android:textColor="@color/font_2"
+                        android:textSize="@dimen/x36" />
+                    <!--textview.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //中划线 -->
+                    <TextView
+                        android:id="@+id/tv_old_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:text="￥1678"
+                        android:textColor="@color/font_3"
+                        android:textSize="@dimen/x24" />
 
-                    <Button
 
-                        android:id="@+id/btnDecrease"
-                        android:layout_width="@dimen/x80"
-                        android:layout_height="@dimen/y80"
-                        android:layout_gravity="center"
-                        android:background="@drawable/btn_amount"
-                        android:gravity="center"
-                        android:text="—"
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y20"
+                    android:background="@color/white"
+                    android:padding="@dimen/x22">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="品牌"
+                        android:textColor="@color/font_3"
+                        android:textSize="@dimen/x24" />
+
+                    <TextView
+                        android:id="@+id/tv_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:text="产品"
                         android:textColor="@color/font_1"
-                        android:textSize="@dimen/x34" />
+                        android:textSize="@dimen/x28" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x350"
+                        android:text="库存"
+                        android:textColor="@color/font_3"
+                        android:textSize="@dimen/x24" />
 
                     <TextView
 
-                        android:id="@+id/etAmount"
-                        android:layout_width="@dimen/x80"
-                        android:layout_height="@dimen/y80"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="1"
+                        android:id="@+id/tv_beleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:text="20"
                         android:textColor="@color/font_1"
-                        android:textCursorDrawable="@drawable/shape_edittext_cursour"
-                        android:textSize="@dimen/x36" />
+                        android:textSize="@dimen/x28" />
 
-                    <Button
-                        android:id="@+id/btnIncrease"
-                        android:layout_width="@dimen/x80"
-                        android:layout_height="@dimen/y80"
-                        android:layout_gravity="center"
-                        android:background="@drawable/btn_amount"
-                        android:gravity="center"
-                        android:text="+"
-                        android:textColor="@color/font_1"
-                        android:textSize="@dimen/x34" />
                 </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="@dimen/y100"
+                    android:layout_marginTop="@dimen/y20"
+                    android:background="@color/white"
+                    android:paddingLeft="@dimen/x22">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="选择数量"
+                        android:textColor="@color/font_10"
+                        android:textSize="@dimen/x28" />
+                    <com.intention.sqtwin.widget.AmountView
+                        android:id="@+id/amount_view"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_goods_price"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/x30"
+                        AmountView:btnTextSize="@dimen/x20"
+                        AmountView:btnWidth="@dimen/x80"
+                        AmountView:tvTextSize="@dimen/x18"
+                        AmountView:tvWidth="@dimen/x80" />
+                   <!-- <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="horizontal"
+                        android:showDividers="middle">
+
+                        <Button
+
+                            android:id="@+id/btnDecrease"
+                            android:layout_width="@dimen/x80"
+                            android:layout_height="@dimen/y80"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_amount"
+                            android:gravity="center"
+                            android:text="—"
+
+                            android:textColor="@color/font_1"
+                            android:textSize="@dimen/x34" />
+
+                        <TextView
+
+                            android:id="@+id/etAmount"
+                            android:layout_width="@dimen/x80"
+                            android:layout_height="@dimen/y80"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:text="1"
+                            android:textColor="@color/font_1"
+                            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                            android:textSize="@dimen/x36" />
+
+                        <Button
+                            android:id="@+id/btnIncrease"
+                            android:layout_width="@dimen/x80"
+                            android:layout_height="@dimen/y80"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_amount"
+                            android:gravity="center"
+                            android:text="+"
+                            android:textColor="@color/font_1"
+                            android:textSize="@dimen/x34" />
+                    </LinearLayout>-->
+                </RelativeLayout>
+
+                <ezy.ui.view.BannerView
+                    android:id="@+id/mLoopViewPager_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y20"
+                    android:background="@color/white"
+                    app:bvAspectRatio="0.427350"
+                    app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
+                    app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
+                    app:bvIsAuto="true"
+                    app:bvIsLoop="true" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:gravity="center_vertical">
+
+            <RelativeLayout
+                android:id="@+id/rel_add_shopCart"
+                android:layout_width="@dimen/x300"
+                android:layout_height="@dimen/y80"
+                android:background="@drawable/tv_agent_price"
+
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_one"
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:src="@mipmap/shop_cart" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_toRightOf="@id/iv_one"
+
+                    android:text="加入购物车"
+                    android:textColor="@color/font_2" />
             </RelativeLayout>
 
-            <ezy.ui.view.BannerView
-                android:id="@+id/mLoopViewPager_two"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/y20"
-                android:background="@color/white"
-                app:bvAspectRatio="0.427350"
-                app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
-                app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
-                app:bvIsAuto="true"
-                app:bvIsLoop="true" />
+            <RelativeLayout
+                android:id="@+id/rel_immediately_buy"
+                android:layout_width="@dimen/x300"
+                android:layout_height="@dimen/y80"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:background="@drawable/tv_agent_price"
+                android:gravity="center">
 
-        </LinearLayout>
-    </ScrollView>
+                <ImageView
+                    android:id="@+id/iv_two"
+                    android:layout_width="@dimen/x40"
+                    android:layout_height="@dimen/y40"
+                    android:src="@mipmap/shop_cart" />
 
-    <RelativeLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x10"
+                    android:layout_toRightOf="@id/iv_two"
+
+                    android:text="立即购买"
+                    android:textColor="@color/font_2" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        android:id="@+id/mLoadingTip"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y150"
-        android:layout_marginLeft="@dimen/x30"
-        android:layout_marginRight="@dimen/x30"
-        android:gravity="center_vertical">
+        android:layout_height="match_parent" />
 
-        <RelativeLayout
-            android:id="@+id/rel_add_shopCart"
-            android:layout_width="@dimen/x300"
-            android:layout_height="@dimen/y80"
-            android:background="@drawable/tv_agent_price"
-
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iv_one"
-                android:layout_width="@dimen/x40"
-                android:layout_height="@dimen/y40"
-                android:src="@mipmap/shop_cart" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x10"
-                android:layout_toRightOf="@id/iv_one"
-
-                android:text="加入购物车"
-                android:textColor="@color/font_2" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/rel_immediately_buy"
-            android:layout_width="@dimen/x300"
-            android:layout_height="@dimen/y80"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/x30"
-            android:background="@drawable/tv_agent_price"
-            android:gravity="center">
-
-            <ImageView
-                android:id="@+id/iv_two"
-                android:layout_width="@dimen/x40"
-                android:layout_height="@dimen/y40"
-                android:src="@mipmap/shop_cart" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x10"
-                android:layout_toRightOf="@id/iv_two"
-
-                android:text="立即购买"
-                android:textColor="@color/font_2" />
-        </RelativeLayout>
-
-    </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>
