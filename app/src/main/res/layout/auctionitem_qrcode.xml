@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:id="@+id/rel_qd"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y350"
+        android:layout_height="@dimen/y200"
         android:background="@mipmap/myinfo_head_bg"
         android:orientation="vertical">
 
@@ -19,12 +20,21 @@
             android:textColor="@color/white"
             android:textSize="@dimen/x35" />
 
-        <ImageView
+       <!-- <ImageView
             android:id="@+id/iv_qr_code"
             android:layout_width="@dimen/x200"
             android:layout_height="@dimen/y200"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/y30" />
+            android:layout_marginTop="@dimen/y30" />-->
+
+        <TextView
+            android:layout_marginTop="@dimen/y40"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="生成图片二维码，好作品可以分享至朋友圈" />
+
     </LinearLayout>
 
 </RelativeLayout>

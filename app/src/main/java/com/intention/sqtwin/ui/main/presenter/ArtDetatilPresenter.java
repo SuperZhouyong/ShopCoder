@@ -34,6 +34,12 @@ public class ArtDetatilPresenter extends ArtDetatilContract.Presenter {
                 super.onCompleted();
                 mView.stopLoading(AppConstant.oneMessage);
             }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
+            }
         }));
     }
 
@@ -47,7 +53,7 @@ public class ArtDetatilPresenter extends ArtDetatilContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.twoMessage,message);
+                mView.showErrorTip(AppConstant.twoMessage, message);
             }
         }));
     }

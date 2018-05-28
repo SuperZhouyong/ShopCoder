@@ -15,8 +15,7 @@
             android:layout_marginLeft="@dimen/x22"
 
             android:layout_marginRight="@dimen/x22"
-            android:layout_marginTop="@dimen/y20"
-            android:background="@color/orange" />
+            android:layout_marginTop="@dimen/y20" />
 
         <RelativeLayout
             android:id="@+id/rel_time_d"

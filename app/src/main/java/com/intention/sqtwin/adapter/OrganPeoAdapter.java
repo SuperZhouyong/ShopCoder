@@ -10,6 +10,7 @@ import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.baserx.RxBus;
 import com.intention.sqtwin.bean.AllMallDateBean;
 import com.intention.sqtwin.bean.FavBean;
+import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.ui.main.activity.AuctionOrgActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
@@ -20,14 +21,14 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Description: 保佑无bug
- * Data：2018/4/19-下午10:34
+ * Description: 绝无Bug
+ * Data：2018/5/28 0028-下午 18:13
  * Blog：Super简单
  * Author: ZhouYong
- * QQ: 437397161
  */
 
-public class MallAdapter extends CommonRecycleViewAdapter<AllMallDateBean.DataBean.FieldBean> {
+public class OrganPeoAdapter extends CommonRecycleViewAdapter<OrganPeBean.DataBean.AuctionFieldListBean> {
+
 
     private List<Integer> mList;
 
@@ -41,14 +42,14 @@ public class MallAdapter extends CommonRecycleViewAdapter<AllMallDateBean.DataBe
         mList.add(FavId);
     }
 
-    public MallAdapter(Context context) {
+    public OrganPeoAdapter(Context context) {
         super(context, R.layout.item_wholegoods);
         mList = new ArrayList<>();
     }
 
 
     @Override
-    public void convert(ViewHolderHelper helper, final AllMallDateBean.DataBean.FieldBean recommendFieldBean, final int position) {
+    public void convert(ViewHolderHelper helper, final OrganPeBean.DataBean.AuctionFieldListBean recommendFieldBean, final int position) {
 
         if (recommendFieldBean.getOrganization() == null) {
             helper.setVisible(R.id.tv_company_name, false);
@@ -81,7 +82,7 @@ public class MallAdapter extends CommonRecycleViewAdapter<AllMallDateBean.DataBe
                 @Override
                 public void onClick(View v) {
                     // 点击关注
-                    RxBus.getInstance().post(AppConstant.MallFiled, new FavBean(position, recommendFieldBean.getId()));
+                    RxBus.getInstance().post(AppConstant.OrganPeoFiled, new FavBean(position, recommendFieldBean.getId()));
 
                 }
             });

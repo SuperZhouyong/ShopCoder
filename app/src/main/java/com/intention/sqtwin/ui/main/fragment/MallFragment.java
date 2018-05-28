@@ -22,7 +22,9 @@ import com.intention.sqtwin.adapter.MallWorksAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllMallDateBean;
+import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.ui.main.contract.MallContract;
 import com.intention.sqtwin.ui.main.model.MallModel;
 import com.intention.sqtwin.ui.main.presenter.MallPresenter;
@@ -32,6 +34,7 @@ import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import butterknife.BindView;
 import butterknife.Unbinder;
 import ezy.ui.view.BannerView;
+import rx.functions.Action1;
 
 /**
  * Description: 商城列表
@@ -63,6 +66,8 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
     private BannerView mBannerView;
     //    private HeadTwoAdapter mHeadTwoAdapter;
     private int pagesize = 10;
+    private Integer currentPostion;
+    private Integer currentFavId;
 
     @Override
     protected int getLayoutResource() {
@@ -129,7 +134,16 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         mLadapter.addHeaderView(homeHeadTitle);
 
         mPresenter.getAllMallDateRequest();
+        mRxManager.on(AppConstant.MallFiled, new Action1<FavBean>() {
+            @Override
+            public void call(FavBean favBean) {
+                currentPostion = favBean.getPostion();
+                currentFavId = favBean.getFavId();
+                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+            }
 
+
+        });
     }
 
 
@@ -194,6 +208,18 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
 
         mallAdapter.addAll(allMallDateBean.getData().getField());
 
+    }
+
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        // 收藏完毕就刷新
+        mallAdapter.AddList(currentFavId);
+        mallAdapter.notifyItemChanged(currentPostion);
+        showShortToast(addFavBean.getMessage());
     }
 
     @Override

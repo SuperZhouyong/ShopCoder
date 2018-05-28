@@ -25,8 +25,7 @@
             android:layout_width="@dimen/x116"
             android:layout_height="@dimen/y116"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/y50"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_marginTop="@dimen/y50" />
 
         <TextView
             android:id="@+id/art_name"

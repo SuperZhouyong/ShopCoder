@@ -1,6 +1,8 @@
 package com.intention.sqtwin.ui.main.presenter;
 
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
 import com.intention.sqtwin.ui.main.contract.AuctionFiledContract;
 
@@ -23,8 +25,34 @@ public class AuctionFiledPresenter extends AuctionFiledContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip("one", message);
+                mView.showErrorTip(AppConstant.oneMessage, message);
             }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.oneMessage);
+            }
+        }));
+    }
+
+    @Override
+    public void getAddFavBean(Integer fav_id, final String fav_type) {
+        mRxManage.add(mModel.getAddFavFiled(fav_id, fav_type).subscribe(new RxSubscriber<AddFavBean>(mContext) {
+            @Override
+            protected void _onNext(AddFavBean addFavBean) {
+                if (AppConstant.field.equals(fav_type))
+                    mView.returnAddFavBeanFiled(addFavBean);
+                else
+                    mView.returnAddFavBean(addFavBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.twoMessage, message);
+            }
+
+
         }));
     }
 }

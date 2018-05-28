@@ -12,10 +12,13 @@ import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.adapter.OrganPeoAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.bean.AddFavBean;
+import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.ui.main.contract.OrganPeContract;
 import com.intention.sqtwin.ui.main.model.OrganPeModel;
@@ -30,6 +33,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.functions.Action1;
 
 /**
  * Description: 主理人界面没找到
@@ -53,7 +57,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     LoadingTip mLoadingTip;
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
-    private CommonRecycleViewAdapter<OrganPeBean.DataBean.AuctionFieldListBean> mcomAdapter;
+    //    private CommonRecycleViewAdapter<OrganPeBean.DataBean.AuctionFieldListBean> mcomAdapter;
     private LRecyclerViewAdapter mLadapter;
     private Integer staffID = 1;
     private Integer page = 0;
@@ -61,6 +65,9 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     private TextView tv_one;
     private TextView tv_two;
     private TextView tv_three;
+    private OrganPeoAdapter organpeoAdapter;
+    private Integer currentPostion;
+    private Integer currentFavId;
 
     @Override
     public int getLayoutId() {
@@ -79,49 +86,10 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         leftTitle.setVisibility(View.GONE);
         relSearch.setVisibility(View.GONE);
         centerTitle.setText("主理人");
-        mcomAdapter = new CommonRecycleViewAdapter<OrganPeBean.DataBean.AuctionFieldListBean>(this, R.layout.item_wholegoods) {
-            @Override
-            public void convert(ViewHolderHelper helper, OrganPeBean.DataBean.AuctionFieldListBean itemListBean, int position) {
-//                helper.setText(R.id.tv_company_name, itemListBean.getOrganzation().getName());
-//                helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganzation().getLogo());
-//                helper.setText(R.id.tv_fouce_num, itemListBean.get);
-                helper.setText(R.id.tv_lot_num, String.valueOf(itemListBean.getItem_count()));
-                helper.setText(R.id.tv_price_num, String.valueOf(itemListBean.getBid_count()));
-                helper.setText(R.id.tv_filed_name, itemListBean.getName());
-                helper.setImageUrl(R.id.iv_pos_goods, itemListBean.getImage());
-                LogUtils.logd("我是每个条目");
-                helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 点击关注
-                    }
-                });
-                String start_time = itemListBean.getStart_time();
-                String end_time = itemListBean.getEnd_time();
 
-                try {
-                    Date startTime = PublicKetUtils.df.get().parse(start_time);
-                    Date endTime = PublicKetUtils.df.get().parse(end_time);
-                    Date currentTime = new Date();
-                    if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
-                        // 拍卖中
-                        long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
-                        helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
-
-                    } else if (currentTime.getTime() < startTime.getTime()) {
-//                未开拍
-                        helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
-
-                    } else {
-                        helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
-                    }
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
+        organpeoAdapter = new OrganPeoAdapter(this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mLadapter = new LRecyclerViewAdapter(mcomAdapter);
+        mLadapter = new LRecyclerViewAdapter(organpeoAdapter);
         mRecyclerView.setAdapter(mLadapter);
         mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setOnLoadMoreListener(this);
@@ -143,11 +111,24 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 //        View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
 //        mLadapter.addHeaderView(allHeadView);
         mPresenter.getRequestData(staffID, page);
+
+        mRxManager.on(AppConstant.OrganPeoFiled, new Action1<FavBean>() {
+            @Override
+            public void call(FavBean favBean) {
+                currentPostion = favBean.getPostion();
+                currentFavId = favBean.getFavId();
+                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+            }
+
+
+        });
     }
+
 
     @Override
     public void StartLoading(String RequestId) {
-
+        if (AppConstant.oneMessage.equals(RequestId))
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override
@@ -197,10 +178,22 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 //            tv_two.setText(organPeBean.getData().getStaff_info().get);
 
         }
-        mcomAdapter.addAll(organPeBean.getData().getAuction_field_list());
+        organpeoAdapter.addAll(organPeBean.getData().getAuction_field_list());
         ++page;
 //        if (page == organPeBean.getData().getTotal_page())
 //            mRecyclerView.setNoMore(true);
+    }
+
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        // 收藏完毕就刷新
+        organpeoAdapter.AddList(currentFavId);
+        organpeoAdapter.notifyItemChanged(currentPostion);
+        showShortToast(addFavBean.getMessage());
     }
 
 

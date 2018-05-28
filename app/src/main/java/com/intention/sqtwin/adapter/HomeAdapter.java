@@ -76,7 +76,32 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
         helper.setImageUrl(R.id.iv_pos_goods, recommendFieldBean.getImage());
         String start_time = recommendFieldBean.getStart_time();
         String end_time = recommendFieldBean.getEnd_time();
+        // 显示拍卖时间
+        showAuctionTime(helper, start_time, end_time);
 
+        // 如果机构不存在
+        if (recommendFieldBean.getOrganization() == null) {
+            helper.setVisible(R.id.tv_company_name, false);
+            helper.setVisible(R.id.iv_logo, false);
+        }
+
+        // 增加的点击事件
+        helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+            }
+        });
+        helper.setOnClickListener(R.id.iv_logo, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+            }
+        });
+    }
+
+
+    private void showAuctionTime(ViewHolderHelper helper, String start_time, String end_time) {
         try {
             Date startTime = PublicKetUtils.df.get().parse(start_time);
             Date endTime = PublicKetUtils.df.get().parse(end_time);
@@ -88,22 +113,13 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
 
             } else if (currentTime.getTime() < startTime.getTime()) {
 //                未开拍
-                helper.setText(R.id.tv_time_calculate, "距开拍 " + start_time);
+                helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
 
             } else {
-                helper.setText(R.id.tv_time_calculate, "已结束 " + end_time);
+                helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
             }
-//            if (new Date().getTime()<endTime.getTime()&&)
         } catch (ParseException e) {
             e.printStackTrace();
         }
-//        helper.setText(R.id.tv_time_calculate)
-
-        helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
-            }
-        });
     }
 }

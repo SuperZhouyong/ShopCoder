@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -177,8 +177,9 @@
         tl:tl_iconWidth="20dp"
         tl:tl_indicator_color="@color/gray"
         tl:tl_indicator_height="0dp"
-        tl:tl_textSelectColor="@color/title_bg"
+        tl:tl_textSelectColor="@color/font_3"
         tl:tl_textUnselectColor="@color/font_3"
         tl:tl_textsize="11sp"
         tl:tl_underline_height="0dp" />
+    <!-- tl:tl_textSelectColor="@color/title_bg"-->
 </LinearLayout>

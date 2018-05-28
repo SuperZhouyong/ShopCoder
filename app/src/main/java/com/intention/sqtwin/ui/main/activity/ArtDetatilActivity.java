@@ -147,7 +147,8 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
     @Override
     public void StartLoading(String RequestId) {
-
+        if (AppConstant.oneMessage.equals(RequestId))
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override
@@ -182,8 +183,8 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
     public void returnArtDetail(ArtDetailBean artDetailBean) {
         if (!artDetailBean.isIs_success()) {
             if (page == 0) {
-                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-                mLoadingTip.setOnReloadListener(this);
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+//                mLoadingTip.setOnReloadListener(this);
             }
             return;
         }
@@ -194,8 +195,8 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
             ImageLoaderUtils.displayRound(this, iv_icon, artDetailBean.getData().getArtist_info().getAvatar());
             tv_name.setText(artDetailBean.getData().getArtist_info().getName());
-            tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getAuction_count()+"");
-            tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count()+"");
+            tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getAuction_count() + "");
+            tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count() + "");
             tv_desc.setText(artDetailBean.getData().getArtist_info().getResume());
 
            /* if (organization_info.isIs_favorite()) {
@@ -204,6 +205,13 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
             }*/
 
         }
+
+
+        if (artDetailBean.getData().getArtist_info().isIs_favorite()) {
+            ivFocus.setVisibility(View.GONE);
+            tvFocus.setText("已关注");
+        }
+
         mcomAdapter.addAll(artDetailBean.getData().getItem_list());
         ++page;
         //TODO 这里我取出来了

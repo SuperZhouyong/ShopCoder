@@ -105,13 +105,13 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private TextView tvLotsTwo;
     private TextView tvLotsThree;
     private TextView tvLotsfocus;
-    private TextView tvDisclaimer;
+    //    private TextView tvDisclaimer;
     private TextView tvNumOneCom;
     private TextView tvNumTwoCom;
     private TextView tvNumThreeCom;
     private TextView tvNumForeCom;
     private TextView tvAutherDesc;
-    private ImageView ivQrcode;
+    //    private ImageView ivQrcode;
     private TextView tvPriceNum;
     private TextView priceTitle;
     private TextView OtherTitle;
@@ -130,6 +130,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private RecyclerView mRecyclerView;
     private boolean isAgentBid;
     private boolean isBid;
+    private RelativeLayout rel_qr;
 
     @Override
     public int getLayoutId() {
@@ -192,7 +193,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tvLotsfocus = (TextView) auction_three.findViewById(R.id.tv_focus_ren);
 
         //
-        tvDisclaimer = (TextView) auction_three.findViewById(R.id.tv_disclaimer);
+//        tvDisclaimer = (TextView) auction_three.findViewById(R.id.tv_disclaimer);
         tvNumOneCom = (TextView) auction_three.findViewById(R.id.tv_num_one_com);
         tvNumTwoCom = (TextView) auction_three.findViewById(R.id.tv_num_two_com);
         tvNumThreeCom = (TextView) auction_three.findViewById(R.id.tv_num_three_com);
@@ -206,7 +207,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         //二维码图片
         iv_qrcode = getLayoutInflater().inflate(R.layout.auctionitem_qrcode, null);
-        ivQrcode = (ImageView) iv_qrcode.findViewById(R.id.iv_qr_code);
+//        ivQrcode = (ImageView) iv_qrcode.findViewById(R.id.iv_qr_code);
+        rel_qr = (RelativeLayout) iv_qrcode.findViewById(R.id.rel_qd);
 
         //出价记录
         price_title = getLayoutInflater().inflate(R.layout.item_auction_three, null);
@@ -343,10 +345,15 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         // 关注状态
         iv_fav_status.setImageResource(autionItemDetailBean.getData().isIs_fav() ? R.mipmap.aution_remind_select : R.mipmap.aution_remind);
 
+        tvLotsfocus.setText(autionItemDetailBean.getData().getItem_info().getFans_count() + "人关注");
+
         final AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
         AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
         //title
-        TvTimeTwo.setText(item_info.getStart_time() + "-" + item_info.getEnd_time());
+        String start_time = item_info.getStart_time();
+        String end_time = item_info.getEnd_time();
+
+        TvTimeTwo.setText(item_info.getStart_time().substring(start_time.indexOf("-")) + "-" + item_info.getEnd_time());
         // 拍卖人详情
 
         if (autionItemDetailBean.getData().getStaff_list() == null || autionItemDetailBean.getData().getStaff_list().size() == 0) {
@@ -434,13 +441,13 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             }
         });
         // 免责申明
-        tvDisclaimer.setOnClickListener(new View.OnClickListener() {
+      /*  tvDisclaimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MyWebviewActivity.GotoActiviy(AuctionItemActivity.this, autionItemDetailBean.getData().getArticle(), "免责申明");
             }
-        });
-        ivQrcode.setOnClickListener(new View.OnClickListener() {
+        });*/
+        rel_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -575,17 +582,14 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         view.findViewById(R.id.tv_confirm_price).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isLogin()) {
-                    if (bottomDialog.getTag().equals("one")) {
-                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
-                    } else {
-                        mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
-                    }
 
-
+                if (bottomDialog.getTag().equals("one")) {
+                    mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
                 } else {
-                    startActivity(LoginActivity.class);
+                    mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
                 }
+
+
             }
         });
         tvNum = (TextView) view.findViewById(R.id.etAmount);

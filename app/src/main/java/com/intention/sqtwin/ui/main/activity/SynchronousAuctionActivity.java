@@ -112,7 +112,6 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
         mAdapter = new CommonRecycleViewAdapter<SynchronousAuctionBean.DataBean.SyncAuctionFieldBean>(this, R.layout.item_wholegoods) {
             @Override
             public void convert(ViewHolderHelper helper, final SynchronousAuctionBean.DataBean.SyncAuctionFieldBean recommendFieldBean, int position) {
-//        helper.setVisible(R.id.tv_filed_title, position == 0);
                 helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
                 helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
                 helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
@@ -122,43 +121,42 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
                 helper.setImageUrl(R.id.iv_pos_goods, recommendFieldBean.getImage());
                 String start_time = recommendFieldBean.getStart_time();
                 String end_time = recommendFieldBean.getEnd_time();
-                try {
-                    Date startTime = PublicKetUtils.df.get().parse(start_time);
-                    Date endTime = PublicKetUtils.df.get().parse(end_time);
-                    Date currentTime = new Date();
-                    if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
-                        // 拍卖中
-                        long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
-                        helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
-
-                    } else if (currentTime.getTime() < startTime.getTime()) {
-//                未开拍
-                        helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
-
-                    } else {
-                        helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
-                    }
-//            if (new Date().getTime()<endTime.getTime()&&)
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                // 显示拍卖时间
+                showAuctionTime(helper, start_time, end_time);
+                if (recommendFieldBean.getOrganization() == null) {
+                    helper.setVisible(R.id.tv_company_name, false);
+                    helper.setVisible(R.id.iv_logo, false);
+                } else {
+                    helper.setVisible(R.id.tv_company_name, true);
+                    helper.setVisible(R.id.iv_logo, true);
+                    helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
+                    helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+                    helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                        }
+                    });
+                    helper.setOnClickListener(R.id.iv_logo, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                        }
+                    });
                 }
-                helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+                // 同步拍 不能关注
+                helper.setVisible(R.id.rel_focus, false);
+               /* helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         // 点击关注
                     }
-                });
-                helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
-                    }
-                });
+                });*/
+
                 helper.getConvertView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext,recommendFieldBean.getId());
-                        AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) mContext, recommendFieldBean.getId(),AppConstant.IntoWayTwo);
+                        AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) mContext, recommendFieldBean.getId(), AppConstant.IntoWayTwo);
                     }
                 });
             }
@@ -171,6 +169,28 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
         mRecyclerView.setOnLoadMoreListener(this);
 
         mPresenter.getSynchronousAuctionRequest(page_no);
+    }
+
+    private void showAuctionTime(ViewHolderHelper helper, String start_time, String end_time) {
+        try {
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
+            Date currentTime = new Date();
+            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+                // 拍卖中
+                long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
+                helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+
+            } else if (currentTime.getTime() < startTime.getTime()) {
+//                未开拍
+                helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
+
+            } else {
+                helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 

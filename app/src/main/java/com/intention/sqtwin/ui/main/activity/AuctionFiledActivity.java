@@ -1,6 +1,5 @@
 package com.intention.sqtwin.ui.main.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,6 +22,7 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AuctionFiledAllBean;
 import com.intention.sqtwin.bean.TabEntity;
 import com.intention.sqtwin.ui.main.contract.AuctionFiledContract;
@@ -44,7 +44,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, AuctionFiledModel> implements AuctionFiledContract.View, LoadingTip.onReloadListener, OnTabSelectListener {
+public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, AuctionFiledModel> implements AuctionFiledContract.View, LoadingTip.onReloadListener, OnTabSelectListener, View.OnClickListener {
 
 
     @BindView(R.id.iv_back)
@@ -121,18 +121,22 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     private CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.ArtistListBean> mAAboutAdapter;
     private String[] mTitles = {"参拍指南", "参拍提醒", "联系客服"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private int[] mIconUnselectIds = {
-            R.mipmap.aution_guide_unselect, R.mipmap.aution_remind, R.mipmap.auction_contact};
-    private int[] mIconSelectIds = {
-            R.mipmap.aution_guide, R.mipmap.aution_remind_select, R.mipmap.contact_peo};
+    private int[] mIconUnselectIds = {R.mipmap.aution_guide_unselect, R.mipmap.aution_remind, R.mipmap.auction_contact};
+    //    private int[] mIconSelectIds = {R.mipmap.aution_guide, R.mipmap.aution_remind_select, R.mipmap.contact_peo};
+    private int[] mIconSelectIds = {R.mipmap.aution_guide_unselect, R.mipmap.aution_remind_select, R.mipmap.auction_contact};
     private ImageView iv_com_icon;
     private TextView tv_com_name;
-    private ImageView iv_add_fouce;
-    private TextView tv_fouce;
-    private RelativeLayout rel_fouce;
+    private ImageView iv_add_focus;
+    private TextView tv_focus;
+    private RelativeLayout rel_focus;
     private boolean isLoadHead;
     // 进入排场的方式
     private String intoWay;
+    //    private AuctionFiledAllBean.DataBean.FieldInfoBean.OrganizationBean organization;
+    private AuctionFiledAllBean.DataBean.FieldInfoBean field_info;
+    //    private RelativeLayout rel_com_focus;
+//    private TextView tv_com_focus;
+    //    private int organization_id;
 
     public static void gotoAuctionFiledActivity(BaseActivity mActivity, Integer auctiuonFiled, String IntoTheWay) {
         Bundle bundle = new Bundle();
@@ -153,7 +157,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
     @Override
     public void initView() {
-
+        relSearch.setVisibility(View.GONE);
         auctiuonFiled = getIntent().getExtras().getInt(AppConstant.aucotonFileId, -1);
         intoWay = getIntent().getExtras().getString(AppConstant.IntoTheWay, "");
         mAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean>(this, R.layout.item_auction_file_item) {
@@ -186,16 +190,20 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         mLRecyclerView.setPullRefreshEnabled(false);
         mLRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 20, 1, getResources().getColor(R.color.app_bottom_colour)));
 
-
+        // 主理人
         mArtAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.StaffListBean>(this, R.layout.item_auction_one) {
             @Override
             public void convert(ViewHolderHelper helper, final AuctionFiledAllBean.DataBean.StaffListBean artistListBean, int position) {
                 helper.setImageRoundUrl(R.id.iv_icon, artistListBean.getAvatar());
                 helper.setText(R.id.tv_1_name, artistListBean.getName());
-
                 helper.setText(R.id.tv_2_name, artistListBean.getType() == 0 ? "主理人" : "专家");
                 helper.setText(R.id.tv_3_name, artistListBean.getRun_count() + "场拍卖");
-
+                helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        OrganPeoActivity.gotoActivity(AuctionFiledActivity.this, artistListBean.getId());
+                    }
+                });
             }
         };
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -203,7 +211,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         mRecyclerView.addItemDecoration(new com.intention.sqtwin.widget.SpacesItemDecoration(5));
 
 //        View HeadView = getLayoutInflater().inflate(R.layout.item_auction_file_header, null);
-
+        // 相关作者
         mAAboutAdapter = new CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.ArtistListBean>(this, R.layout.item_auction_file_foot_item) {
             @Override
             public void convert(ViewHolderHelper helper, final AuctionFiledAllBean.DataBean.ArtistListBean artistListBean, int position) {
@@ -220,9 +228,16 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
         iv_com_icon = (ImageView) footView.findViewById(R.id.iv_logo);
         tv_com_name = (TextView) footView.findViewById(R.id.tv_company_name);
-        iv_add_fouce = (ImageView) footView.findViewById(R.id.iv_focus);
-        tv_fouce = (TextView) footView.findViewById(R.id.tv_focus);
-        rel_fouce = (RelativeLayout) footView.findViewById(R.id.rel_focus);
+        iv_add_focus = (ImageView) footView.findViewById(R.id.iv_focus);
+       /* rel_com_focus = (RelativeLayout) footView.findViewById(R.id.rel_focus);
+        tv_com_focus = (TextView) footView.findViewById(R.id.tv_focus);*/
+        tv_focus = (TextView) footView.findViewById(R.id.tv_focus);
+        rel_focus = (RelativeLayout) footView.findViewById(R.id.rel_focus);
+        rel_focus.setOnClickListener(this);
+        iv_com_icon.setOnClickListener(this);
+        tv_com_name.setOnClickListener(this);
+
+
         RecyclerView mRecyAbout = (RecyclerView) footView.findViewById(R.id.mRecyclerView_about);
         mRecyAbout.setLayoutManager(new GridLayoutManager(this, 3));
         mRecyAbout.setAdapter(mAAboutAdapter);
@@ -238,7 +253,8 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         tvLostPriceDescOne.setText("拍品");
 
         for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+//            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mTabEntities.add(new TabEntity(mTitles[i], mIconUnselectIds[i], mIconUnselectIds[i]));
         }
         tabLayout.setTabData(mTabEntities);
         tabLayout.setOnTabSelectListener(this);
@@ -249,7 +265,9 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
 
     @Override
     public void StartLoading(String RequestId) {
-
+        if (AppConstant.oneMessage.equals(RequestId)) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        }
     }
 
     @Override
@@ -288,18 +306,20 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
             mLadapter.notifyDataSetChanged();
             return;
         }
+//        organization = auctionFiledAllBean.getData().getField_info().getOrganization();
 
+        field_info = auctionFiledAllBean.getData().getField_info();
+//        iv_add_focus
+        //机构的关注
+        if (auctionFiledAllBean.getData().getField_info().getOrganization().isIs_favorite()) {
+            iv_add_focus.setVisibility(View.GONE);
+            tv_focus.setText("已关注");
+        }
 
         TvTimeTwo.setText(auctionFiledAllBean.getData().getField_info().getStart_time() + "-" + auctionFiledAllBean.getData().getField_info().getEnd_time());
 
         ImageLoaderUtils.displayRound(this, iv_com_icon, auctionFiledAllBean.getData().getField_info().getOrganization().getLogo());
         tv_com_name.setText(auctionFiledAllBean.getData().getField_info().getOrganization().getName());
-        //机构的关注
-        /*if (auctionFiledAllBean.getData().getField_info().getOrganization().getIs_favorite()){
-            iv_add_fouce.setVisibility(View.GONE);
-            tv_fouce.setText("已关注");
-
-        }*/
 
         tvLotName.setText(auctionFiledAllBean.getData().getField_info().getName());
         tvAuthorDesc.setText(auctionFiledAllBean.getData().getField_info().getDescription());
@@ -318,20 +338,47 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         isLoadHead = true;
     }
 
+    //机构的关注
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        iv_add_focus.setVisibility(View.GONE);
+        tv_focus.setText("已关注");
+    }
 
- /*   @Override
-    public void reload() {
-        mPresenter.getAuctionFiledRequest(auctiuonFiled);
-    }*/
+    // 排场的关注 成功
+    @Override
+    public void returnAddFavBeanFiled(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        mTabEntities.clear();
+        for (int i = 0; i < mTitles.length; i++) {
+//            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconSelectIds[i]));
+        }
+        tabLayout.setTabData(mTabEntities);
+//        iv_add_focus.setVisibility(View.GONE);
+//        tv_focus.setText("已关注");
+    }
+
 
     @Override
     public void onTabSelect(int i) {
         switch (i) {
+            // 参拍指南
             case 0:
                 break;
             case 1:
+                // 排场关注
+                mPresenter.getAddFavBean(field_info.getId(), AppConstant.field);
                 break;
             case 2:
+                showContractDialog();
                 break;
         }
     }
@@ -418,5 +465,23 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
                 break;
         }
         mPresenter.getAuctionFiledRequest(auctiuonFiled, sort);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            // 进入机构
+            case R.id.iv_logo:
+            case R.id.tv_company_name:
+                AuctionOrgActivity.gotoAuctionOrg((AuctionFiledActivity) mContext, field_info.getOrganization() != null ? field_info.getOrganization().getId() : -1);
+                break;
+            // 机构加入关注
+            case R.id.rel_focus:
+                if (field_info.getOrganization() != null)
+                    mPresenter.getAddFavBean(field_info.getOrganization().getId(), AppConstant.organ);
+                else
+                    showShortToast("此机构暂不支持关注");
+                break;
+        }
     }
 }

@@ -12,9 +12,11 @@
     <TextView
 
         android:id="@+id/tv_lot_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginRight="@dimen/x300"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="青花器摆件一晚茶一对"
         android:textColor="@color/font_1"
         android:textSize="@dimen/x30" />
@@ -43,12 +45,12 @@
                 android:textSize="@dimen/x28" />
 
             <TextView
-                android:maxLines="1"
-
                 android:id="@+id/tv_num_one"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x10"
+                android:maxLines="1"
                 android:text="1600"
                 android:textColor="@color/font_2"
                 android:textSize="@dimen/x36" />
@@ -125,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@id/tv_lot_name"
+
 
         android:background="@drawable/shape_time_countdown"
         android:padding="@dimen/x2"
