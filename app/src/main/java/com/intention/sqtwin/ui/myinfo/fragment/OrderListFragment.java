@@ -121,7 +121,8 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
 
     @Override
     public void StartLoading(String RequestId) {
-        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        if (page == 0 && mAdapter.getDataList().size() == 0)
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override
