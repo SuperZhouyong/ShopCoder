@@ -7,8 +7,8 @@
             android:scaleType="centerCrop"
             android:id="@+id/iv_share_code"
             android:layout_centerInParent="true"
-            android:layout_width="@dimen/x580"
-            android:layout_height="@dimen/y801" />
+            android:layout_width="@dimen/x450"
+            android:layout_height="@dimen/y720" />
 
   <!--  <RelativeLayout
         android:id="@+id/rel_all"
@@ -148,6 +148,7 @@
     </RelativeLayout>
 -->
     <ImageView
+
         android:src="@mipmap/close_all"
         android:id="@+id/iv_close"
         android:layout_width="@dimen/x40"

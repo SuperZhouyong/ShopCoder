@@ -255,10 +255,10 @@ public class IdentityProveActivity extends BaseActivity<IdentityProvePresenter, 
                     return;
 
                 }
-               /* if (!RegexUtils.isIDCard15(idenNUm) || !RegexUtils.isIDCard18(idenNUm)) {
-                    showShortToast("请检查身份证码是否填写正确");
+                if (!RegexUtils.isIDCard15(idenNUm) && !RegexUtils.isIDCard18(idenNUm)) {
+                    showShortToast("请输入正确的身份证号");
                     return;
-                }*/
+                }
 
                 updateMySelf.setMember_name(uName);
                 updateMySelf.setId_card_number(idenNUm);

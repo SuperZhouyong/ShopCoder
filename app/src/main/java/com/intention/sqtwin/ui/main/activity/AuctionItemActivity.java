@@ -130,7 +130,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private RecyclerView mRecyclerView;
     private boolean isAgentBid;
     private boolean isBid;
-    private RelativeLayout rel_qr;
+    private LinearLayout rel_qr;
 
     @Override
     public int getLayoutId() {
@@ -208,7 +208,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         //二维码图片
         iv_qrcode = getLayoutInflater().inflate(R.layout.auctionitem_qrcode, null);
 //        ivQrcode = (ImageView) iv_qrcode.findViewById(R.id.iv_qr_code);
-        rel_qr = (RelativeLayout) iv_qrcode.findViewById(R.id.rel_qd);
+        rel_qr = (LinearLayout) iv_qrcode.findViewById(R.id.rel_qd);
 
         //出价记录
         price_title = getLayoutInflater().inflate(R.layout.item_auction_three, null);
@@ -353,7 +353,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         String start_time = item_info.getStart_time();
         String end_time = item_info.getEnd_time();
 
-        TvTimeTwo.setText(item_info.getStart_time().substring(start_time.indexOf("-")) + "-" + item_info.getEnd_time());
+        TvTimeTwo.setText(start_time.substring(start_time.indexOf("-") + 1) + "-" + end_time.substring(end_time.indexOf("-") + 1));
         // 拍卖人详情
 
         if (autionItemDetailBean.getData().getStaff_list() == null || autionItemDetailBean.getData().getStaff_list().size() == 0) {
@@ -452,15 +452,20 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public void onClick(View v) {
 
 //                ShareDialog shareDialog = new ShareDialog(this);
-                Dialog shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
+                final Dialog shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
                 View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
                 ImageView ivShareCode = (ImageView) shareView.findViewById(R.id.iv_share_code);
-
+                shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        shareDialog.dismiss();
+                    }
+                });
                 shareDialog.setContentView(shareView);
 //                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 shareDialog.show();
-                ImageLoaderUtils.displayBigPhoto(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getWx_code());
+                ImageLoaderUtils.displayRoundTwo(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getWx_code());
             }
         });
         auctionItem_one.setOnClickListener(new View.OnClickListener() {

@@ -24,6 +24,7 @@ import com.intention.sqtwin.ui.Store.model.RealNameEnterTwoModel;
 import com.intention.sqtwin.ui.Store.presenter.RealNameEnterTwoPresenter;
 import com.intention.sqtwin.utils.TakePictureManager;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.RegexUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -174,6 +175,11 @@ public class RealNameEnterTwoActivity extends BaseActivity<RealNameEnterTwoPrese
 
                 if (TextUtils.isEmpty(comName) || TextUtils.isEmpty(comPeoName) || TextUtils.isEmpty(comUserIdenNum)) {
                     showShortToast("请检查必填信息，确认是否完整填写");
+                    return;
+                }
+
+                if (!RegexUtils.isIDCard15(comUserIdenNum) && !RegexUtils.isIDCard18(comUserIdenNum)) {
+                    showShortToast("请输入正确的身份证号");
                     return;
                 }
                 upComPanyTwoBean.setCompany_name(comName);

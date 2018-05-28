@@ -25,6 +25,7 @@ import com.intention.sqtwin.ui.Store.model.RealNameModel;
 import com.intention.sqtwin.ui.Store.presenter.RealNamePresenter;
 import com.intention.sqtwin.utils.TakePictureManager;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.RegexUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -171,6 +172,14 @@ public class RealNamePeoTwoActivity extends BaseActivity<RealNamePresenter, Real
 
                 if (TextUtils.isEmpty(UserName) || TextUtils.isEmpty(userIdenNum) || TextUtils.isEmpty(userPhone)) {
                     showShortToast("请检查必填信息，确认是否完整填写");
+                    return;
+                }
+                if (!RegexUtils.isMobileSimple(userPhone)) {
+                    showShortToast("请输入正确的手机号");
+                    return;
+                }
+                if (!RegexUtils.isIDCard18(userIdenNum) && !RegexUtils.isIDCard15(userIdenNum)) {
+                    showShortToast("请输入正确的身份证号");
                     return;
                 }
                 upPeoTwoBean.setName(UserName);

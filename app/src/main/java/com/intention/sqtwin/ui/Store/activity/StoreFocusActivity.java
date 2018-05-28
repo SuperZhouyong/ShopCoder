@@ -53,7 +53,7 @@ public class StoreFocusActivity extends BaseActivity implements OnTabSelectListe
     LoadingTip mLoadingTip;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
-    private String[] mTitles = {"拍品", "拍场", "出品方", "艺术家", "店铺"};
+    private String[] mTitles = {"拍品", "拍场", "拍卖机构", "艺术家", "店铺"};
 
     private BasePageStateAdapter basePageStateAdapter;
 
