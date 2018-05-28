@@ -87,14 +87,15 @@ public class AppConstant {
 //    类型:goods为商品,store为店铺, artst为艺术家, organ为拍卖机构，field为拍场
     public static final String HomeFiled = "HomeFiled";
     public static final String TaoBaoFiled = "TaoBaoFiled";
+    //排场
     public static final String field = "field";
-
+    // 拍品
     public static final String goods = "goods";
-
+    // 店铺
     public static final String store = "store";
-
+    // 艺术家
     public static final String artst = "artst";
-
+    // 机构
     public static final String organ = "prgan";
 
     // 进入艺术家主页Id

@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.mall.activity;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,27 +86,30 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
 
     @Override
     public void initView() {
-
         centerTitle.setText(getIntent().getExtras().getString(AppConstant.GoodsPageTitle));
         relSearch.setVisibility(View.GONE);
         goodsId = getIntent().getExtras().getInt(AppConstant.GoodsPageId, -1);
         mPresenter.getGoodsPageInfoRequest(goodsId);
 
+        showShortToast("功能代完善");
     }
 
-
-    @OnClick({R.id.rel_back, R.id.btnDecrease, R.id.btnIncrease, R.id.rel_add_shopCart, R.id.rel_immediately_buy})
+    // R.id.btnDecrease, R.id.btnIncrease,
+    @OnClick({R.id.rel_back, R.id.rel_add_shopCart, R.id.rel_immediately_buy})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
                 finish();
                 break;
-            case R.id.btnDecrease:
+          /*  case R.id.btnDecrease:
                 break;
             case R.id.btnIncrease:
-                break;
+                break;*/
+            //加入购物车
             case R.id.rel_add_shopCart:
+                startActivity(ShopCartActivity.class);
                 break;
+            //立即购买
             case R.id.rel_immediately_buy:
                 break;
         }
@@ -161,9 +165,13 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, imagesBean.getGoodsimage_url());
                 return iv;
             }
-
-
         });
+        mLoopViewPager.setDataList(info.getImages());
+        mLoopViewPager.start();
+        tvCurrentPrice.setText(info.getGoods_price());
+        tvOldPrice.setText(info.getGoods_marketprice() + "");
+        tvOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        tvBeleft.setText(info.getGoods_storage() + "");
 
 
     }

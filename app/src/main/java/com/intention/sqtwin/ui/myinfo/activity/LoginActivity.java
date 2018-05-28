@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.ClearEditText;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +56,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @BindView(R.id.tv_login_confirm)
     TextView tvLoginConfirm;
     @BindView(R.id.rel_boot)
-    ImageView relBoot ;
+    ImageView relBoot;
 
     private BitmapFactory.Options getBitmapOption() {
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -81,7 +83,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     @Override
     public void initView() {
-        relBoot.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.login_bg,getBitmapOption()));
+        relBoot.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.login_bg, getBitmapOption()));
 //        ImageLoaderUtils.display(this,relBoot,R.mipmap.login_bg);
 //        re
     }
@@ -131,8 +133,17 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(loginBean.getData()), SQTUser.class));
             // 目前登录为当前关闭 就好
             finish();
+            // 回调执行登录
+            SingleCall.getInstance().doCall();
         } else {
             showShortToast(loginBean.getMessage());
         }
+
+
+    }
+
+    // 进入登陆界面
+    public static void start(BaseActivity context) {
+        context.startActivity(LoginActivity.class);
     }
 }

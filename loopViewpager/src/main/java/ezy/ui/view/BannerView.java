@@ -192,7 +192,8 @@ public class BannerView<Item> extends FrameLayout {
 
         vIndicator = new ViewPagerIndicator(context);
         vIndicator.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        vIndicator.setItemSize(indicatorWidth*4, indicatorHeight);
+        // 修改长度
+        vIndicator.setItemSize(indicatorWidth * 4, indicatorHeight);
         vIndicator.setItemGap(indicatorGap);
         if (indicatorDrawable != null && indicatorDrawableSelected != null) {
             vIndicator.setItemDrawable(indicatorDrawable, indicatorDrawableSelected);
@@ -311,6 +312,7 @@ public class BannerView<Item> extends FrameLayout {
             e.printStackTrace();
         }
     }
+
     void initIndicator() {
         vIndicator.setupWithViewPager(vViewPager);
         boolean visible = mIndicatorVisible == VISIBLE_ALWAYS || (mIndicatorVisible == VISIBLE_AUTO && mDataList.size() > 1);
@@ -396,15 +398,15 @@ public class BannerView<Item> extends FrameLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int action = ev.getAction();
         switch (action) {
-        case MotionEvent.ACTION_DOWN:
-            mIsResumed = false;
-            update();
-            break;
-        case MotionEvent.ACTION_UP:
-        case MotionEvent.ACTION_CANCEL:
-            mIsResumed = true;
-            update();
-            break;
+            case MotionEvent.ACTION_DOWN:
+                mIsResumed = false;
+                update();
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                mIsResumed = true;
+                update();
+                break;
         }
         return super.dispatchTouchEvent(ev);
     }

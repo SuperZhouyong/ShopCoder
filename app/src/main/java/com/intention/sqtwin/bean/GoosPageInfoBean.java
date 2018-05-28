@@ -12,6 +12,7 @@ import java.util.List;
 
 public class GoosPageInfoBean {
 
+
     /**
      * is_success : true
      * message : 操作成功
@@ -84,7 +85,7 @@ public class GoosPageInfoBean {
             private int goods_commonid;
             private String goods_name;
             private String goods_price;
-            private String  goods_marketprice;
+            private String goods_marketprice;
             private int brand_id;
             private String description;
             private int goods_storage;

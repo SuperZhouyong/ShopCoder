@@ -62,9 +62,10 @@ public class BidRecordActivity extends BaseActivity<BidRecordPresenter, BidRecor
     @Override
     public void initView() {
 
-        goodId = getIntent().getExtras().getInt(AppConstant.BidRecordId,-1);
+        goodId = getIntent().getExtras().getInt(AppConstant.BidRecordId, -1);
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("出价列表");
+        relSearch.setVisibility(View.GONE);
         bidRecordAdapter = new BidRecordAdapter(this);
         mLadapter = new LRecyclerViewAdapter(bidRecordAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));

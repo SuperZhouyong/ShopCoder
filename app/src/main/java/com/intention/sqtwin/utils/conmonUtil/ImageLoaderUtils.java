@@ -13,6 +13,8 @@ import com.intention.sqtwin.R;
 
 import java.io.File;
 
+import retrofit2.http.Url;
+
 /**
  * Description : 图片加载工具类 使用glide框架封装
  */
@@ -103,6 +105,7 @@ public class ImageLoaderUtils {
                 .error(R.mipmap.colleges_icon)
                 .crossFade().into(imageView);
     }
+
     public static void displayRoundInt(Context context, ImageView imageView, int url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
@@ -112,8 +115,9 @@ public class ImageLoaderUtils {
                 .centerCrop()
                 .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)
-                .crossFade().transform(new GlideRoundTransformUtil(context)).into(imageView);
+                .crossFade().transform(new GlideCircleTransfromUtil(context)).into(imageView);
     }
+
     public static void displayRound(Context context, ImageView imageView, String url) {
         if (imageView == null) {
             throw new IllegalArgumentException("argument error");
@@ -123,7 +127,7 @@ public class ImageLoaderUtils {
                 .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)
                 .thumbnail(0.5f)
-                .centerCrop().transform(new GlideRoundTransformUtil(context)).into(imageView);
+                .centerCrop().transform(new GlideCircleTransfromUtil(context)).into(imageView);
     }
 
     public static void displayRoundFile(Context context, ImageView imageView, File url) {
@@ -135,7 +139,20 @@ public class ImageLoaderUtils {
                 .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)
                 .thumbnail(0.5f)
-                .centerCrop().transform(new GlideRoundTransformUtil(context)).into(imageView);
+                .centerCrop().transform(new GlideCircleTransfromUtil(context)).into(imageView);
     }
 
+    public static void displayRoundTwo(Context context, ImageView imageView, String url) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
+        Glide.with(context).load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+//                .fitCenter()
+                .placeholder(R.mipmap.colleges_icon)
+                .error(R.mipmap.colleges_icon)
+//                .thumbnail(0.5f)
+                .centerCrop().transform(new GlideRoundTransformUtil(context, 3)).into(imageView);
+    }
 }

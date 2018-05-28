@@ -99,6 +99,7 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
         tv.setText(text);
         return this;
     }
+
     public ViewHolderHelper setTextColorFont1(int viewId, String text) {
         TextView tv = getView(viewId);
 
@@ -106,6 +107,7 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
         tv.setText(text);
         return this;
     }
+
     public ViewHolderHelper setTextColorMain(int viewId, String text) {
         TextView tv = getView(viewId);
 
@@ -153,6 +155,12 @@ public class ViewHolderHelper extends RecyclerView.ViewHolder {
     public ViewHolderHelper setImageRoundUrl(int viewId, String url) {
         ImageView view = getView(viewId);
         ImageLoaderUtils.displayRound(mContext, view, url);
+        return this;
+    }
+
+    public ViewHolderHelper setImageRoundTwoUrl(int viewId, String url) {
+        ImageView view = getView(viewId);
+        ImageLoaderUtils.displayRoundTwo(mContext, view, url);
         return this;
     }
 

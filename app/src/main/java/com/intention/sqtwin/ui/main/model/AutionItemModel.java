@@ -3,6 +3,7 @@ package com.intention.sqtwin.ui.main.model;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.baserx.RxSchedulers;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.ArtistDetailBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
@@ -36,5 +37,9 @@ public class AutionItemModel implements AutionItemContract.Model {
     @Override
     public Observable<BidBean> getBindDate(Integer goods_id, Integer price, Integer member_id) {
         return Api.getDefault(HostType.Jsonpart).getBidDate(goods_id, price, member_id).compose(RxSchedulers.<BidBean>io_main());
+    }
+    @Override
+    public Observable<AddFavBean> getAddFavFiled(Integer fav_id, String fav_type) {
+        return Api.getDefault(HostType.Jsonpart).getAddFavbean(fav_id, fav_type).compose(RxSchedulers.<AddFavBean>io_main());
     }
 }

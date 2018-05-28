@@ -88,10 +88,10 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
 
             } else if (currentTime.getTime() < startTime.getTime()) {
 //                未开拍
-                helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
+                helper.setText(R.id.tv_time_calculate, "距开拍 " + start_time);
 
             } else {
-                helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
+                helper.setText(R.id.tv_time_calculate, "已结束 " + end_time);
             }
 //            if (new Date().getTime()<endTime.getTime()&&)
         } catch (ParseException e) {

@@ -38,7 +38,8 @@ public class HeadTwoAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBea
 
     @Override
     public void convert(ViewHolderHelper helper, final AllDateBean.DataBean.RecommendItemBean recommendItemBean, int position) {
-        helper.setImageUrl(R.id.iv_headtwo, recommendItemBean.getImage());
+//        helper.setImageUrl(R.id.iv_headtwo, recommendItemBean.getImage());
+        helper.setImageRoundTwoUrl(R.id.iv_headtwo,recommendItemBean.getImage());
         helper.setText(R.id.tv_headtwo, recommendItemBean.getName());
         helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override

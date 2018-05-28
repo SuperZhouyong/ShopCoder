@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            // 去除 多余的资源文件
+//            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+            minifyEnabled false
+//            shrinkResources false
+            zipAlignEnabled false
+            versionNameSuffix "-debug"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        // 设置虚拟机堆内存的空间大小 ， 避免在编译期间OOM
+        dexOptions {
+            incremental true
+            javaMaxHeapSize "4g"
+        }
+        //打包不检查
+        lintOptions {
+            abortOnError false
+            checkReleaseBuilds false
+            abortOnError false
+        }
+
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    provided "com.android.support:appcompat-v7:${rootProject.ext.androidSupportSdkVersion}"
+    testCompile 'junit:junit:4.12'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//请进入指定目录进行操作
+//gradle install
+//gradle install -xjavadoc
+//gradle bintrayUpload

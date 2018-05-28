@@ -37,6 +37,8 @@
         android:visibility="visible" />
 
     <TextView
+        android:ellipsize="end"
+        android:maxLength="5"
         android:id="@+id/center_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

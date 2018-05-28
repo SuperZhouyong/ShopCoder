@@ -498,7 +498,13 @@ public interface ApiService {
             @Query("fav_type") String fav_type
     );
 
-    // 删除收藏
+    /**
+     * 删除关注
+     *
+     * @param fac_id
+     * @param fav_type
+     * @return
+     */
     @GET("index/del_fav_info")
     Observable<DeleteFavBean> getDeleteFavBean(
             @Query("fav_id") Integer fac_id,
@@ -584,6 +590,7 @@ public interface ApiService {
 
     /**
      * 获取商品信息页面
+     *
      * @param goodsId
      * @return
      */

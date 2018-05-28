@@ -24,7 +24,7 @@
             android:gravity="center"
             android:text="—"
             android:textColor="@color/font_3"
-            android:textSize="@dimen/x34" />
+            />
         <TextView
 
             android:id="@+id/etAmount"
@@ -36,7 +36,7 @@
             android:text="1"
             android:textColor="@color/font_1"
             android:textCursorDrawable="@drawable/shape_edittext_cursour"
-            android:textSize="@dimen/x26" />
+             />
     <!--    <EditText
 
             android:id="@+id/etAmount"
@@ -58,8 +58,7 @@
             android:background="@drawable/btn_amount"
             android:gravity="center"
             android:text="+"
-            android:textColor="@color/font_3"
-            android:textSize="@dimen/x34" />
+            android:textColor="@color/font_3" />
 
     </LinearLayout>
 

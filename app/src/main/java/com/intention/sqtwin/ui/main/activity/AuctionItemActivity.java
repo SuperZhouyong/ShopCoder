@@ -19,8 +19,10 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
 import com.intention.sqtwin.bean.BidBean;
@@ -32,6 +34,8 @@ import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.util.List;
 
@@ -49,7 +53,7 @@ import me.shaohui.bottomdialog.BottomDialog;
  * QQ: 437397161
  */
 
-public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, AutionItemModel> implements AutionItemContract.View, LoadingTip.onReloadListener, BottomDialog.ViewListener {
+public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, AutionItemModel> implements AutionItemContract.View, LoadingTip.onReloadListener, BottomDialog.ViewListener, Action {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -70,6 +74,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     TextView tvAgentPrice;
     @BindView(R.id.tv_noagent_price)
     TextView tvNoagentPrice;
+    @BindView(R.id.iv_fav_status)
+    ImageView iv_fav_status;
 
 
     private TextView tv1Name;
@@ -306,6 +312,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
+        // 出价的话只是刷新这个地方
         if (isAgentBid || isBid) {
             tvPriceNum.setVisibility(View.VISIBLE);
             tvPriceNum.setText(autionItemDetailBean.getData().getPrice_count() + "次");
@@ -333,7 +340,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             return;
 
         }
-
+        // 关注状态
+        iv_fav_status.setImageResource(autionItemDetailBean.getData().isIs_fav() ? R.mipmap.aution_remind_select : R.mipmap.aution_remind);
 
         final AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
         AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
@@ -479,6 +487,16 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
     }
 
+    // 加入关注
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        iv_fav_status.setImageResource(R.mipmap.aution_remind_select);
+    }
+
 
     @OnClick({R.id.rel_back, R.id.tv_agent_price, R.id.tv_noagent_price})
     void onclick(View v) {
@@ -490,29 +508,37 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
             // 代理出价
             case R.id.tv_agent_price:
-                if (!isLogin())
-                    startActivity(LoginActivity.class);
-                bottomDialog = BottomDialog
+//                if (!isLogin()) {
+                SingleCall.getInstance()
+                        .addAction(AuctionItemActivity.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(AuctionItemActivity.this))
+                        .doCall();
+
+
+//                }
+
+
+             /*   bottomDialog = BottomDialog
                         .create(getSupportFragmentManager())
                         .setLayoutRes(R.layout.price_dialog)
                         .setCancelOutside(true)
                         .setViewListener(this)
                         .setTag("One")
-                        .show();
+                        .show();*/
 
 
                 break;
             // 出价
             case R.id.tv_noagent_price:
-                if (!isLogin())
-                    startActivity(LoginActivity.class);
-                bottomDialog = BottomDialog
-                        .create(getSupportFragmentManager())
-                        .setLayoutRes(R.layout.price_dialog)
-                        .setCancelOutside(true)
-                        .setViewListener(this)
-                        .setTag("Two")
-                        .show();
+//                if (!isLogin()) {
+                SingleCall.getInstance()
+                        .addAction(AuctionItemActivity.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(AuctionItemActivity.this))
+                        .doCall();
+
+
+//                }
+
                 break;
 
         }
@@ -534,7 +560,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     @Override
     public void bindView(View view) {
         TextView mTextConfirm = (TextView) view.findViewById(R.id.tv_confirm_price);
-        if (bottomDialog.getTag().equals("One"))
+        if (bottomDialog.getFragmentTag().equals("One"))
             mTextConfirm.setText("代理出价");
         else
             mTextConfirm.setText("确认出价");
@@ -551,7 +577,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public void onClick(View v) {
                 if (isLogin()) {
                     if (bottomDialog.getTag().equals("one")) {
-                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)),null);
+                        mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
                     } else {
                         mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
                     }
@@ -604,9 +630,12 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 break;
             case R.id.rel_search:
                 break;
+            // 参拍提醒  加入关注
             case R.id.ll_one_bottom:
+                mPresenter.getAddFavBean(auctItemId, AppConstant.goods);
                 break;
             case R.id.ll_two_bottom:
+                showContractDialog();
                 break;
             case R.id.tv_agent_price:
                 break;
@@ -619,5 +648,29 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         Bundle bundle = new Bundle();
         bundle.putInt(AppConstant.auctionItemId, id);
         mContext.startActivity(AuctionItemActivity.class, bundle);
+    }
+
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag)) {
+            bottomDialog = BottomDialog
+                    .create(getSupportFragmentManager())
+                    .setLayoutRes(R.layout.price_dialog)
+                    .setCancelOutside(true)
+                    .setViewListener(this)
+                    .setTag("One")
+                    .show();
+
+
+        } else if (AppConstant.twoMessage.equals(tag)) {
+            bottomDialog = BottomDialog
+                    .create(getSupportFragmentManager())
+                    .setLayoutRes(R.layout.price_dialog)
+                    .setCancelOutside(true)
+                    .setViewListener(this)
+                    .setTag("Two")
+                    .show();
+        }
     }
 }

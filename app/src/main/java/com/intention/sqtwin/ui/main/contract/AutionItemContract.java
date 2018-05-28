@@ -3,6 +3,7 @@ package com.intention.sqtwin.ui.main.contract;
 import com.intention.sqtwin.base.BaseModel;
 import com.intention.sqtwin.base.BasePresenter;
 import com.intention.sqtwin.base.BaseView;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.ArtistDetailBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
@@ -29,6 +30,10 @@ public class AutionItemContract {
         Observable<AgentBidBean> getAgentBidDate(Integer goods_id,Integer price,Integer member_id);
         //出价
         Observable<BidBean> getBindDate(Integer goods_id,Integer price,Integer member_id);
+
+
+        // 收藏排场
+        Observable<AddFavBean> getAddFavFiled(Integer fav_id, String fav_type);
     }
 
     public interface View extends BaseView {
@@ -38,6 +43,8 @@ public class AutionItemContract {
         void returnAgentBidDate(AgentBidBean agentBidBean);
 
         void returnBidDate(BidBean bidBean);
+
+        void returnAddFavBean(AddFavBean addFavBean);
     }
 
     public abstract static class Presenter extends BasePresenter<View, Model> {
@@ -47,5 +54,7 @@ public class AutionItemContract {
         public abstract void getAgentBidBeanRequest(Integer goods_id,Integer price,Integer member_id);
 
         public abstract void getBidBeanRequest(Integer goods_id,Integer price,Integer member_id);
+
+        public abstract void getAddFavBean(Integer fav_id, String fav_type);
     }
 }

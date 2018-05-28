@@ -15,7 +15,7 @@ import java.io.OptionalDataException;
 import java.io.StreamCorruptedException;
 
 public class UserUtil {
-    private static SQTUser sqtUser = new SQTUser();
+    private static SQTUser sqtUser ;
 
     /**
      * 获取处理用户信息的实体类

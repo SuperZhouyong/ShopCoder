@@ -1,19 +1,11 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/super/AndroidStudioProjects/ShopCoder/loopViewpager/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+            "outputFile": "E:\\CompanyProjectAndSantao\\ShopCoder\\loopViewpager\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
             "map": []
         },
         {
-            "outputFile": "/Users/super/AndroidStudioProjects/ShopCoder/loopViewpager/build/intermediates/res/merged/androidTest/debug/values/values.xml",
-            "map": []
-        },
-        {
-            "outputFile": "/Users/super/AndroidStudioProjects/ShopCoder/E:\\CompanyProjectAndSantao\\ShopCoder\\loopViewpager\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
-            "map": []
-        },
-        {
-            "outputFile": "/Users/super/AndroidStudioProjects/ShopCoder/E:\\CompanyProjectAndSantao\\ShopCoder\\loopViewpager\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+            "outputFile": "E:\\CompanyProjectAndSantao\\ShopCoder\\loopViewpager\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
             "map": []
         }
     ]

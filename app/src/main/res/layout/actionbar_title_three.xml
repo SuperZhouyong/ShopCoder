@@ -16,9 +16,10 @@
         android:layout_centerVertical="true"
         android:layout_width="@dimen/x400"
         android:layout_height="@dimen/y60">
+        <!--search_black-->
         <ImageView
             android:layout_marginLeft="@dimen/x10"
-            android:src="@mipmap/search_black"
+            android:src="@mipmap/home_search"
 
             android:layout_centerVertical="true"
             android:layout_width="@dimen/x35"

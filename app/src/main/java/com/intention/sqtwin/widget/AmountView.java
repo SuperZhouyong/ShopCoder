@@ -24,7 +24,7 @@ import com.intention.sqtwin.utils.conmonUtil.LogUtils;
  * @data 2017/4/17 0017
  * @aurher Administrator
  */
-public class AmountView extends LinearLayout implements View.OnClickListener{
+public class AmountView extends LinearLayout implements View.OnClickListener, TextWatcher {
 
     private static final String TAG = "AmountView";
     private int amount = 1; //购买数量
@@ -136,7 +136,7 @@ public class AmountView extends LinearLayout implements View.OnClickListener{
         }
     }
 
-/*    @Override
+    @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
     }
@@ -155,10 +155,10 @@ public class AmountView extends LinearLayout implements View.OnClickListener{
             return;
         }
 
-       *//* String SPut = s.toString();
+        String SPut = s.toString();
         while (SPut.startsWith("0")&&SPut.length()>=2) {
             SPut = SPut.substring(1);
-        }*//*
+        }
         amount = Integer.valueOf(s.toString());
 //        etAmount.setText(amount + "");
         if (amount > goods_storage) {
@@ -176,7 +176,7 @@ public class AmountView extends LinearLayout implements View.OnClickListener{
             LogUtils.logd("ShoCartAdapter---Edittext" + "接口监听了");
             mListener.onAmountChange(this, amount);
         }
-    }*/
+    }
 
 
     public interface OnAmountChangeListener {
