@@ -29,6 +29,7 @@ import com.intention.sqtwin.ui.myinfo.activity.MyCompeteActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
 import com.intention.sqtwin.ui.myinfo.contract.MyCompeteContract;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.SPUtils;
 import com.intention.sqtwin.widget.CircleImageView;
 
@@ -68,16 +69,16 @@ public class MyInfoFragment extends LazzyFragment {
     RelativeLayout relMycompete;
     @BindView(R.id.iv_identity)
     ImageView ivIdentity;
-    @BindView(R.id.rel_identit)
-    RelativeLayout relIdentit;
+   /* @BindView(R.id.rel_identit)
+    RelativeLayout relIdentit;*/
     @BindView(R.id.iv_setting)
     ImageView ivSetting;
     @BindView(R.id.rel_setting)
     RelativeLayout relSetting;
     @BindView(R.id.iv_help)
     ImageView ivHelp;
-    @BindView(R.id.rel_help)
-    RelativeLayout relHelp;
+   /* @BindView(R.id.rel_help)
+    RelativeLayout relHelp;*/
     @BindView(R.id.iv_store_manage)
     ImageView ivStoreManage;
     @BindView(R.id.rel_store_mange)
@@ -88,6 +89,7 @@ public class MyInfoFragment extends LazzyFragment {
     RelativeLayout relFocus;
     @BindView(R.id.tv_name)
     TextView tvname;
+    private java.lang.String TAG = "MyInfoFragment";
 
     @Override
     protected int getLayoutResource() {
@@ -108,13 +110,14 @@ public class MyInfoFragment extends LazzyFragment {
     protected void initView() {
 //        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
         ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
+        LogUtils.logd(TAG +"-------------"+ SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
 //        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName)))
         tvname.setText(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName));
 
     }
 
-
-    @OnClick({R.id.iv_shareicon, R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.rel_message, R.id.rel_acount, R.id.rel_mycompete, R.id.rel_identit, R.id.rel_setting, R.id.rel_help, R.id.rel_store_mange, R.id.rel_focus})
+    // R.id.rel_identit,  R.id.rel_help,
+    @OnClick({R.id.iv_shareicon, R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.rel_message, R.id.rel_acount, R.id.rel_mycompete, R.id.rel_setting, R.id.rel_store_mange, R.id.rel_focus})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_shareicon:
@@ -146,17 +149,17 @@ public class MyInfoFragment extends LazzyFragment {
                 startActivity(getActivity(), MyCompeteActivity.class);
                 break;
             // 身份认证
-            case R.id.rel_identit:
+          /*  case R.id.rel_identit:
                 startActivity(getActivity(), IdentityProveActivity.class);
-                break;
+                break;*/
             // 设置
             case R.id.rel_setting:
 
 
                 break;
-            // 帮助中心
+         /*   // 帮助中心
             case R.id.rel_help:
-                break;
+                break;*/
             // 店铺管理
             case R.id.rel_store_mange:
                 ((MainActivity) getActivity()).setCurrentPostion(2);

@@ -193,9 +193,13 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     }
 
 
-    @OnClick({R.id.rel_back, R.id.rel_search, R.id.rel_icon, R.id.tv_confirm, R.id.rel_sex, R.id.rel_phone, R.id.rel_adress})
+    @OnClick({R.id.rel_back, R.id.rel_search, R.id.rel_icon, R.id.tv_confirm, R.id.rel_sex, R.id.rel_phone, R.id.rel_adress, R.id.rel_name})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            // 修改名字
+            case R.id.rel_name:
+                startActivityForResult(EditTextInputActivity.class, requestCodeName);
+                break;
             case R.id.rel_back:
                 finish();
                 break;
@@ -219,7 +223,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
                     mPresenter.updateImageRequest(mMaps);
                 else {
                     if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
-                        submitClientInfo.setSex(userSex.getText().toString().trim());
+                        submitClientInfo.setSex(userSex.getText().toString().trim().equals("男") ? "1" : "0");
 
                     /*if (!TextUtils.isEmpty(userAddress.getText().toString().trim()))
                         submitClientInfo.setAddress(userAddress.getText().toString().trim());*/
@@ -272,6 +276,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     public void successful(boolean isTailor, File outFile, Uri filePath) {
         // 生成图片
         ImageLoaderUtils.displayRoundFile(this, userIcon, outFile);
+        mList.clear();
         mList.add(outFile.getAbsolutePath());
     }
 
@@ -371,13 +376,16 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
             SPUtils.setSharedStringData(mContext, AppConstant.UserName, myInfoBean.getData().getName());
         MyInfoBean.DataBean data = myInfoBean.getData();
         userName.setText(data.getName());
+
 //        userPostion.setText(data.getTitle());
-        userSex.setText(data.getSex());
+        userSex.setText(data.getSex().equals("0") ? "女" : "男");
 //        userBirthday.setText(data.getBirthday());
         // 城市Id 不对
 //                        userCity.setText(data.getCity_id());
         userAddress.setText(data.getAddress());
         userPhone.setText(data.getPhone());
+        mList.clear();
+        mList.add(myInfoBean.getData().getImage());
     }
 
     @Override
@@ -389,7 +397,8 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
         }
         if (!TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl()))
             submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
-
+        // 每次图片上传成功都更新本地头像
+        SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, submitClientInfo.getAvatar());
         if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
             submitClientInfo.setSex(userSex.getText().toString().trim());
 
@@ -411,7 +420,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
 
     @Override
     public void returnUodateInfo(UpdateResultInfo updateResultInfo) {
-
+        showShortToast(updateResultInfo.getMessage());
     }
 
     @Override

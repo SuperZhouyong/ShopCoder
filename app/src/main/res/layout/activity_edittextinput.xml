@@ -20,9 +20,9 @@
         android:paddingLeft="@dimen/x30"
         android:paddingRight="@dimen/x30"
         android:singleLine="true"
-        android:textColor="@color/font_2"
+        android:textColor="@color/font_1"
         android:textColorHint="@color/font_3"
         android:textCursorDrawable="@drawable/shape_edittext_cursour"
-        android:textSize="@dimen/x24" />
+        android:textSize="@dimen/x30" />
 
 </LinearLayout>

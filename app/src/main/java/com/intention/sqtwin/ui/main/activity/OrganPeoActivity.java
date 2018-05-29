@@ -180,8 +180,8 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         }
         organpeoAdapter.addAll(organPeBean.getData().getAuction_field_list());
         ++page;
-//        if (page == organPeBean.getData().getTotal_page())
-//            mRecyclerView.setNoMore(true);
+        if (page == organPeBean.getData().getPage_count())
+            mRecyclerView.setNoMore(true);
     }
 
     @Override

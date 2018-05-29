@@ -14,6 +14,7 @@
         android:src="@mipmap/category_logo" />
 
     <RelativeLayout
+        android:id="@+id/rel_search"
         android:layout_width="@dimen/x400"
         android:layout_height="@dimen/y60"
         android:layout_centerVertical="true"

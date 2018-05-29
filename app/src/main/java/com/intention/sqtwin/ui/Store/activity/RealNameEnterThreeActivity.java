@@ -188,7 +188,7 @@ public class RealNameEnterThreeActivity extends BaseActivity<RealNamePresenter, 
                 }
                 upPeoTwoBean.setName(UserName);
                 upPeoTwoBean.setId_card(userIdenNum);
-                upPeoTwoBean.setPhone(Integer.parseInt(userPhone));
+                upPeoTwoBean.setPhone(userPhone);
 
                 mMaps.clear();
                 if (TextUtils.isEmpty(mHashMap.get(AppConstant.oneMessage))) {

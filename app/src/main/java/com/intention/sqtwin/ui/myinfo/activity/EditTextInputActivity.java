@@ -54,6 +54,7 @@ public class EditTextInputActivity extends BaseActivity {
     public void initView() {
         toolTitleLeft.setVisibility(View.GONE);
         centerTitle.setText("信息编辑");
+        toolTitleRight.setText("保存");
 
     }
 

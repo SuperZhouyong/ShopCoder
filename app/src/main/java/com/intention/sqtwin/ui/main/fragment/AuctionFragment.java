@@ -11,10 +11,13 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.base.BasePageStateAdapter;
 import com.intention.sqtwin.bean.PpAllDateBean;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.activity.CategoryActivity;
+import com.intention.sqtwin.ui.main.activity.SearchActivity;
 import com.intention.sqtwin.ui.main.contract.PpAuctionContract;
 import com.intention.sqtwin.ui.main.model.PpAuctionModel;
 import com.intention.sqtwin.ui.main.presenter.PpAuctionPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.widget.SlidingTabLayout;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
@@ -151,6 +154,22 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
         viewpager.setAdapter(basePageStateAdapter);
         slidTabLayout.setViewPager(viewpager);
 
+    }
+    @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_search:
+                startActivity(SearchActivity.class);
+                break;
+            // 关注
+            case R.id.iv_love:
+                startActivity(StoreFocusActivity.class);
+                break;
+            // 提醒
+            case R.id.iv_readme:
+                startActivity(MessageActicity.class);
+                break;
+        }
     }
 
 

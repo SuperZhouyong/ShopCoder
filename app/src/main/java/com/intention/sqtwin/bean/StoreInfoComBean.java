@@ -48,7 +48,48 @@ public class StoreInfoComBean {
     }
 
     public static class DataBean {
-        private Integer store_page_total ;
+        //拍品
+        private Integer item_page_total;
+        //拍场
+        private Integer field_page_total;
+        //拍卖机构
+        private Integer organization_page_total;
+        // 艺术家
+        private Integer artist_page_total;
+        //店铺
+        private Integer store_page_total;
+
+        public Integer getItem_page_total() {
+            return item_page_total;
+        }
+
+        public void setItem_page_total(Integer item_page_total) {
+            this.item_page_total = item_page_total;
+        }
+
+        public Integer getField_page_total() {
+            return field_page_total;
+        }
+
+        public void setField_page_total(Integer field_page_total) {
+            this.field_page_total = field_page_total;
+        }
+
+        public Integer getOrganization_page_total() {
+            return organization_page_total;
+        }
+
+        public void setOrganization_page_total(Integer organization_page_total) {
+            this.organization_page_total = organization_page_total;
+        }
+
+        public Integer getArtist_page_total() {
+            return artist_page_total;
+        }
+
+        public void setArtist_page_total(Integer artist_page_total) {
+            this.artist_page_total = artist_page_total;
+        }
 
         public Integer getStore_page_total() {
             return store_page_total;

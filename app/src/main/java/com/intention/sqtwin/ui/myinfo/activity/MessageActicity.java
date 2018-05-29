@@ -132,7 +132,7 @@ public class MessageActicity extends BaseActivity<MessagePresenter, MessageModel
 
     @Override
     public void returnMessage(MessageBean messageBean) {
-        if (!messageBean.isIs_success()) {
+        if (!messageBean.isIs_success()||messageBean.getData().size()==0) {
             showShortToast(messageBean.getMessage());
             if (page_no == 0) {
                 mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);

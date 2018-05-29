@@ -209,7 +209,9 @@ public class LoadingFooter extends RelativeLayout implements ILoadMoreFooter {
 
                 mTheEndView.setVisibility(showView ? VISIBLE : GONE);
                 mNoMoreText.setText(TextUtils.isEmpty(noMoreHint) ? getResources().getString(R.string.list_footer_end) : noMoreHint);
-                mNoMoreText.setTextColor(ContextCompat.getColor(getContext(), hintColor));
+//                mNoMoreText.setTextColor(ContextCompat.getColor(getContext(), hintColor));
+                // 修改加载完毕的字体颜色
+                mNoMoreText.setTextColor(ContextCompat.getColor(getContext(),R.color.bottom_foot_color));
                 break;
             case NetWorkError:
                 if (mLoadingView != null) {

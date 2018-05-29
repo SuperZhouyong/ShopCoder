@@ -24,6 +24,7 @@ import com.intention.sqtwin.ui.main.activity.ArtDetatilActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 import com.intention.sqtwin.ui.main.activity.OrganPeoActivity;
+import com.intention.sqtwin.ui.mall.activity.TaoBaoStoreInfoActivity;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
@@ -140,6 +141,7 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
     @Override
     public void stopLoading(String RequestId) {
         mLRecyclerView.refreshComplete(pagesize);
+//        mLRecyclerView.setNoMore(true);
     }
 
     @Override
@@ -171,25 +173,39 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
 
         if (mcategory_id == 1) {
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_item());
+            ++page;
+            if (page >= storeInfoComBean.getData().getItem_page_total())
+                mLRecyclerView.setNoMore(true);
         }
         //拍场
         if (mcategory_id == 2) {
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
+            ++page;
+            if (page >= storeInfoComBean.getData().getField_page_total())
+                mLRecyclerView.setNoMore(true);
         }
 
         if (mcategory_id == 3) {
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_organ());
+            ++page;
+            if (page >= storeInfoComBean.getData().getOrganization_page_total())
+                mLRecyclerView.setNoMore(true);
         }
         if (mcategory_id == 4) {
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_artist());
+            ++page;
+            if (page >= storeInfoComBean.getData().getArtist_page_total())
+                mLRecyclerView.setNoMore(true);
         }
         //店鋪，需要設置底部的价格为gone
         if (mcategory_id == 5) {
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_store());
+            ++page;
+            if (page >= storeInfoComBean.getData().getStore_page_total())
+                mLRecyclerView.setNoMore(true);
         }
-        ++page;
-        if (page >= storeInfoComBean.getData().getStore_page_total())
-            mLRecyclerView.setNoMore(true);
+
+
     }
 
 
@@ -217,22 +233,17 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         }
         //拍场
         if (mcategory_id == 2) {
-            // 常规的排场
             AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteFieldBean) mAdapter.get(position)).getId(), AppConstant.IntoWayOne);
         }
 
         if (mcategory_id == 3) {
             OrganPeoActivity.gotoActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteOrganBean) mAdapter.get(position)).getOrganization_id());
-//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_organ());
         }
         if (mcategory_id == 4) {
             ArtDetatilActivity.GotoArtDetailActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteArtistBean) mAdapter.get(position)).getId());
-//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_artist());
         }
-        //店鋪，需要設置底部的价格为gone
         if (mcategory_id == 5) {
-
-//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_store());
+            TaoBaoStoreInfoActivity.GotoTaoBaoSTireInfoActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteStoreBean) mAdapter.get(position)).getStore_id());
         }
     }
 }

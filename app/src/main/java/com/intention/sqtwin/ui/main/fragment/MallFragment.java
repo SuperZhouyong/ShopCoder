@@ -20,18 +20,26 @@ import com.intention.sqtwin.adapter.MallAdapter;
 import com.intention.sqtwin.adapter.MallStoreAdapter;
 import com.intention.sqtwin.adapter.MallWorksAdapter;
 import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllMallDateBean;
 import com.intention.sqtwin.bean.FavBean;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
+import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
+import com.intention.sqtwin.ui.main.activity.SearchActivity;
 import com.intention.sqtwin.ui.main.contract.MallContract;
 import com.intention.sqtwin.ui.main.model.MallModel;
 import com.intention.sqtwin.ui.main.presenter.MallPresenter;
+import com.intention.sqtwin.ui.mall.activity.TaoBaoStoreInfoActivity;
+import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import ezy.ui.view.BannerView;
 import rx.functions.Action1;
@@ -144,6 +152,13 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
 
 
         });
+        mLadapter.setOnItemClickListener(new com.github.jdsjlzx.interfaces.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                LogUtils.logd("Postion   " + position);
+                AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) getActivity(), mallAdapter.get(position).getId(), AppConstant.IntoWayOne);
+            }
+        });
     }
 
 
@@ -220,6 +235,22 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         mallAdapter.AddList(currentFavId);
         mallAdapter.notifyItemChanged(currentPostion);
         showShortToast(addFavBean.getMessage());
+    }
+    @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_search:
+                startActivity(SearchActivity.class);
+                break;
+            // 关注
+            case R.id.iv_love:
+                startActivity(StoreFocusActivity.class);
+                break;
+            // 提醒
+            case R.id.iv_readme:
+                startActivity(MessageActicity.class);
+                break;
+        }
     }
 
     @Override

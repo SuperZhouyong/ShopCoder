@@ -3,5 +3,9 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FFB5B5B5</color>
+    <color name="font_20">#ff303030</color>
+    <color name="lred">#b60005</color>
+    <color name="bottom_foot_color">#303030</color>
+    <!--<color name="colorAccent">#ff303030</color>-->
 
 </resources>

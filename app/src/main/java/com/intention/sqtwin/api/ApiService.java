@@ -26,6 +26,7 @@ import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
 import com.intention.sqtwin.bean.MyCompeteBean;
 import com.intention.sqtwin.bean.MyInfoBean;
+import com.intention.sqtwin.bean.NormalBankInfoBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
@@ -34,6 +35,7 @@ import com.intention.sqtwin.bean.RealNamePeoTwoBean;
 import com.intention.sqtwin.bean.RealNameStatusBean;
 import com.intention.sqtwin.bean.ReanlNameStoreInfoBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SetDefaultAddressBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.bean.StoreMessageBean;
@@ -597,4 +599,24 @@ public interface ApiService {
     @GET("shop/get_goods_info")
     Observable<GoosPageInfoBean> getGoodsPageInfo(
             @Query("goods_id") Integer goodsId);
+
+    /**
+     * 获得会员银行卡的信息
+     *
+     * @return
+     */
+    @GET("membercenter/get_bank_card")
+    Observable<NormalBankInfoBean> getNormalBankInfo();
+
+    /**
+     * 设置为默认地址
+     * @param address_id
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("membercenter/set_default_address")
+    Observable<SetDefaultAddressBean> getSetDefaultAddress(
+            @Field("address_id") Integer address_id
+    );
+
 }

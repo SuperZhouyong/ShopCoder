@@ -58,39 +58,7 @@ public class CategoryActivity extends BaseActivity<CategorPresenter, CategoryMod
     RelativeLayout relAll;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-   /* @BindView(R.id.rel_search)
-    RelativeLayout relSearch;
-    @BindView(R.id.iv_love)
-    ImageView ivLove;
-    @BindView(R.id.iv_readme)
-    ImageView ivReadme;
-    @BindView(R.id.mrecy_left)
-    RecyclerView mrecyLeft;
-    @BindView(R.id.iv_dilver)
-    ImageView ivDilver;
-    @BindView(R.id.mrecy_right)
-    LRecyclerView mrecyRight;
-    @BindView(R.id.rel_all)
-    RelativeLayout relAll;
-    @BindView(R.id.mLoadingTip)
-    LoadingTip mLoadingTip;*/
 
-  /*  @BindView(R.id.mrecy_right)
-    LRecyclerView mrecyRight;
-    @BindView(R.id.rel_all)
-    RelativeLayout relAll;
-    @BindView(R.id.iv_love)
-    ImageView ivLove;
-    @BindView(R.id.iv_readme)
-    ImageView ivReadme;
-    @BindView(R.id.mrecy_left)
-    RecyclerView mrecyLeft;
-    @BindView(R.id.mLoadingTip)
-    LoadingTip mLoadingTip;
-    @BindView(R.id.category_logo)
-    ImageView categoryLogo;
-    @BindView(R.id.iv_dilver)
-    ImageView ivDilver*/;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.CategoryBean> mLeftAdapter;
     private CommonRecycleViewAdapter<CategoryAllBean.DataBean.SubCategoryBean> mRightAdapter;
     // 进来默认为1

@@ -5,6 +5,7 @@ import com.intention.sqtwin.base.BasePresenter;
 import com.intention.sqtwin.base.BaseView;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SetDefaultAddressBean;
 
 import rx.Observable;
 
@@ -21,6 +22,9 @@ public class ReceivedGoodsContract {
         void returnReceiverGoosBean(ReceivedGoodsBean receivedGoodsBean);
 
         void returnDeleteReceiver(DeleteReceiverBean deleteReceiverBean);
+
+
+        void returnSetDefultAddress(SetDefaultAddressBean setDefaultAddressBean);
     }
 
     public interface Model extends BaseModel {
@@ -30,11 +34,15 @@ public class ReceivedGoodsContract {
         // 删除收获地址
         Observable<DeleteReceiverBean> getDeleteReceiver(Integer receiverId);
 
+        Observable<SetDefaultAddressBean> getSetDefaultAddress(Integer addressId);
+
     }
 
     public static abstract class Presenter extends BasePresenter<View, Model> {
         public abstract void getReceiverGoodRequest();
 
         public abstract void getDeleteReciverRequest(Integer receiverId);
+
+        public abstract void getSetDefaultAddressRequest(Integer addressId);
     }
 }

@@ -57,12 +57,13 @@
 
         <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
             android:id="@+id/sCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            app:color_checked="@color/font_2"
-            app:color_tick="@color/white"
-            app:color_unchecked="@color/app_bottom_colour" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:color_unchecked="@color/app_bottom_colour"
+            app:color_checked="@color/app_bottom_colour"
+            app:color_tick="@color/font_2"
+            app:stroke_width="@dimen/x2"
+            android:layout_centerVertical="true" />
 
         <TextView
             android:layout_width="wrap_content"

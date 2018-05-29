@@ -4,6 +4,7 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SetDefaultAddressBean;
 import com.intention.sqtwin.ui.main.contract.ReceivedGoodsContract;
 
 /**
@@ -64,6 +65,21 @@ public class ReceivedGoodsPresenter extends ReceivedGoodsContract.Presenter {
             public void onCompleted() {
                 super.onCompleted();
                 mView.stopLoading(AppConstant.twoMessage);
+            }
+        }));
+    }
+
+    @Override
+    public void getSetDefaultAddressRequest(Integer addressId) {
+        mRxManage.add(mModel.getSetDefaultAddress(addressId).subscribe(new RxSubscriber<SetDefaultAddressBean>(mContext) {
+            @Override
+            protected void _onNext(SetDefaultAddressBean setDefaultAddressBean) {
+                mView.returnSetDefultAddress(setDefaultAddressBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.threeMessage,message);
             }
         }));
     }

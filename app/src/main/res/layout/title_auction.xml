@@ -51,7 +51,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="@dimen/y20"
-            android:text="拍卖时间"
+            android:text="时间"
             android:textColor="@color/white"
             android:textSize="@dimen/x24" />
 
@@ -63,13 +63,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/y15"
+            android:layout_marginBottom="@dimen/y25"
             android:layout_marginLeft="@dimen/x20"
             android:layout_marginRight="@dimen/x100"
             android:layout_toRightOf="@id/Tv_time_one"
 
             android:textColor="@color/white"
-            android:textSize="@dimen/x36" />
+            android:textSize="@dimen/x28" />
 
     </RelativeLayout>
 

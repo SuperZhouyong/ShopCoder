@@ -247,6 +247,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rel_identit"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
@@ -329,6 +330,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/rel_help"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"

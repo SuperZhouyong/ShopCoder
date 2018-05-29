@@ -1,6 +1,5 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,24 +10,23 @@ import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
-import com.intention.sqtwin.api.Api;
-import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
-import com.intention.sqtwin.baserx.RxSchedulers;
-import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SetDefaultAddressBean;
 import com.intention.sqtwin.ui.main.contract.ReceivedGoodsContract;
 import com.intention.sqtwin.ui.main.model.ReceivedGoodsModel;
 import com.intention.sqtwin.ui.main.presenter.ReceivedGoodsPresenter;
 import com.intention.sqtwin.utils.checkbox.SmoothCheckBox;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -38,7 +36,7 @@ import butterknife.OnClick;
  * Author: ZhouYong
  */
 
-public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, ReceivedGoodsModel> implements LoadingTip.onReloadListener, OnRefreshListener, ReceivedGoodsContract.View {
+public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, ReceivedGoodsModel> implements LoadingTip.onReloadListener, OnRefreshListener, ReceivedGoodsContract.View, View.OnClickListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -58,6 +56,9 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
     private CommonRecycleViewAdapter<ReceivedGoodsBean.DataBean> mAdapter;
     private LRecyclerViewAdapter mLadapter;
     private int pagesize = 10;
+    private List<Integer> mAddressIdList;
+    private Integer currentDefultAddressId;
+
 
     @Override
     public int getLayoutId() {
@@ -74,14 +75,20 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("收货地址");
         relSearch.setVisibility(View.GONE);
+        mAddressIdList = new ArrayList<>();
         mAdapter = new CommonRecycleViewAdapter<ReceivedGoodsBean.DataBean>(this, R.layout.item_receivedgoods) {
             @Override
             public void convert(ViewHolderHelper helper, final ReceivedGoodsBean.DataBean receivedGoodsBean, int position) {
                 helper.setText(R.id.tv_name, receivedGoodsBean.getName());
                 helper.setText(R.id.tv_phone_num, receivedGoodsBean.getPhone());
                 helper.setText(R.id.tv_address_deatil, receivedGoodsBean.getAddress());
-                SmoothCheckBox sCheckBox = helper.getView(R.id.sCheckbox);
-                sCheckBox.setChecked("1".equals(receivedGoodsBean.getAddress_is_default()));
+                final SmoothCheckBox sCheckBox = helper.getView(R.id.sCheckbox);
+               /* if (mAddressIdList.size() == 0)
+                    sCheckBox.setChecked("1".equals(receivedGoodsBean.getAddress_is_default()), true);
+                else
+                    sCheckBox.setChecked(mAddressIdList.add(receivedGoodsBean.getId()), true);*/
+
+                sCheckBox.setChecked(mAddressIdList.size() == 0?"1".equals(receivedGoodsBean.getAddress_is_default()):mAddressIdList.add(receivedGoodsBean.getId()), true);
                 // 删除地址
                 helper.getView(R.id.ll_delete).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -95,6 +102,15 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
                         AddReAddressActivity.GotoAddReAddressActivity((ReceivedGoodsActivity) mContext, receivedGoodsBean.getId(), receivedGoodsBean);
                     }
                 });
+                helper.setOnClickListener(R.id.sCheckbox, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        sCheckBox.setChecked(!sCheckBox.isChecked(), true);
+                        if (sCheckBox.isChecked())
+                            mPresenter.getSetDefaultAddressRequest(receivedGoodsBean.getId());
+                        currentDefultAddressId = receivedGoodsBean.getId();
+                    }
+                });
             }
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);
@@ -103,6 +119,10 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
         mLRecyclerView.setPullRefreshEnabled(true);
         mLRecyclerView.setLoadMoreEnabled(false);
         mLRecyclerView.setOnRefreshListener(this);
+
+        View foot = getLayoutInflater().inflate(R.layout.item_address_bottom, null);
+        foot.findViewById(R.id.add_address).setOnClickListener(this);
+        mLadapter.addFooterView(foot);
 //        RequestDateInfo();
         mPresenter.getReceiverGoodRequest();
     }
@@ -184,5 +204,26 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
         }
 //        mLRecyclerView.refresh();
         mLRecyclerView.forceToRefresh();
+    }
+
+    @Override
+    public void returnSetDefultAddress(SetDefaultAddressBean setDefaultAddressBean) {
+        showShortToast(setDefaultAddressBean.getMessage());
+        if (!setDefaultAddressBean.isIs_success()) {
+            return;
+        }
+        mAddressIdList.clear();
+        mAddressIdList.add(currentDefultAddressId);
+        mAdapter.notifyDataSetChanged();
+        mLadapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.add_address:
+                AddReAddressActivity.GotoAddReAddressActivity(this, -1, null);
+                break;
+        }
     }
 }

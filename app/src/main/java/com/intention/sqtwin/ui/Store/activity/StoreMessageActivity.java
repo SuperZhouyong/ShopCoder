@@ -92,7 +92,7 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
             @Override
             protected void _onNext(StoreMessageBean storeMessageBean) {
                 showShortToast(storeMessageBean.getMessage());
-                if (!storeMessageBean.isIs_success()) {
+                if (!storeMessageBean.isIs_success() || storeMessageBean.getData().size() == 0) {
                     mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
                     return;
                 }
@@ -126,10 +126,10 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
     }
 
 
-    @OnClick({R.id.left_title, R.id.rel_search})
+    @OnClick({R.id.rel_back, R.id.rel_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.left_title:
+            case R.id.rel_back:
                 finish();
                 break;
             case R.id.rel_search:

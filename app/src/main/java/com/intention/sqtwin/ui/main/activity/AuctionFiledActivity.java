@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.main.activity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -290,6 +291,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void returnAuctionFileData(final AuctionFiledAllBean auctionFiledAllBean) {
         if (!auctionFiledAllBean.isIs_success()) {
@@ -315,8 +317,20 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
             iv_add_focus.setVisibility(View.GONE);
             tv_focus.setText("已关注");
         }
+        //排场的关注
+        if (auctionFiledAllBean.getData().getField_info().isIs_favorite()) {
+            mTabEntities.clear();
+            for (int i = 0; i < mTitles.length; i++) {
+                mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconSelectIds[i]));
+            }
+            tabLayout.setTabData(mTabEntities);
+        }
 
-        TvTimeTwo.setText(auctionFiledAllBean.getData().getField_info().getStart_time() + "-" + auctionFiledAllBean.getData().getField_info().getEnd_time());
+        String start_time = field_info.getStart_time();
+        String end_time = field_info.getEnd_time();
+
+        TvTimeTwo.setText(start_time.substring(start_time.indexOf("-") + 1) + "-" + end_time.substring(end_time.indexOf("-") + 1));
+//        TvTimeTwo.setText(auctionFiledAllBean.getData().getField_info().getStart_time() + "-" + auctionFiledAllBean.getData().getField_info().getEnd_time());
 
         ImageLoaderUtils.displayRound(this, iv_com_icon, auctionFiledAllBean.getData().getField_info().getOrganization().getLogo());
         tv_com_name.setText(auctionFiledAllBean.getData().getField_info().getOrganization().getName());

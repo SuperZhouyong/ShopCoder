@@ -24,6 +24,7 @@
             android:textSize="@dimen/x28" />
 
         <EditText
+            android:gravity="right|center_vertical|end"
             android:id="@+id/ec_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -36,7 +37,7 @@
             android:singleLine="true"
             android:textColor="@color/font_1"
             android:textColorHint="@color/font_3"
-            android:textSize="@dimen/x24" />
+            android:textSize="@dimen/x30" />
 
     </RelativeLayout>
 
@@ -60,19 +61,20 @@
             android:textSize="@dimen/x28" />
 
         <EditText
+            android:gravity="right|center_vertical|end"
             android:id="@+id/ec_bank"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/x22"
             android:background="@null"
-            android:hint="请输入您的名字"
+            android:hint="请输入您的开户银行单位"
             android:maxLines="1"
             android:minWidth="@dimen/x200"
             android:singleLine="true"
             android:textColor="@color/font_1"
             android:textColorHint="@color/font_3"
-            android:textSize="@dimen/x24" />
+            android:textSize="@dimen/x30" />
 
     </RelativeLayout>
 
@@ -96,19 +98,21 @@
             android:textSize="@dimen/x28" />
 
         <EditText
+            android:gravity="right|center_vertical|end"
+            android:maxLength="26"
             android:id="@+id/ec_bank_num"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/x22"
             android:background="@null"
-            android:hint="请输入您的名字"
+            android:hint="请输入您的银行卡号"
             android:maxLines="1"
             android:minWidth="@dimen/x200"
             android:singleLine="true"
             android:textColor="@color/font_1"
             android:textColorHint="@color/font_3"
-            android:textSize="@dimen/x24" />
+            android:textSize="@dimen/x30" />
 
     </RelativeLayout>
 

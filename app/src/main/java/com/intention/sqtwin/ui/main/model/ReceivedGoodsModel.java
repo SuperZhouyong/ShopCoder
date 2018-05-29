@@ -5,6 +5,7 @@ import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SetDefaultAddressBean;
 import com.intention.sqtwin.ui.main.contract.ReceivedGoodsContract;
 
 import rx.Observable;
@@ -25,5 +26,10 @@ public class ReceivedGoodsModel implements ReceivedGoodsContract.Model {
     @Override
     public Observable<DeleteReceiverBean> getDeleteReceiver(Integer receiverId) {
         return Api.getDefault(HostType.Jsonpart).getDeleteReceiver(receiverId).compose(RxSchedulers.<DeleteReceiverBean>io_main());
+    }
+
+    @Override
+    public Observable<SetDefaultAddressBean> getSetDefaultAddress(Integer addressId) {
+        return Api.getDefault(HostType.Jsonpart).getSetDefaultAddress(addressId).compose(RxSchedulers.<SetDefaultAddressBean>io_main());
     }
 }

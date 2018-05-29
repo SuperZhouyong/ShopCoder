@@ -15,6 +15,8 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baserx.RxSchedulers;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.BindCardInfoBean;
+import com.intention.sqtwin.bean.NormalBankInfoBean;
+import com.intention.sqtwin.utils.conmonUtil.RegexUtils;
 import com.intention.sqtwin.widget.BankCardTextWatcher;
 
 import butterknife.BindView;
@@ -72,6 +74,31 @@ public class BindBankCardActivity extends BaseActivity {
         centerTitle.setText("绑定银行卡");
         relSearch.setVisibility(View.GONE);
         BankCardTextWatcher.bind(ecBankNum);
+
+        mRxManager.add(Api.getDefault(HostType.Jsonpart)
+                .getNormalBankInfo()
+                .compose(RxSchedulers.<NormalBankInfoBean>io_main())
+                .subscribe(new RxSubscriber<NormalBankInfoBean>(mContext) {
+                    @Override
+                    protected void _onNext(NormalBankInfoBean normalBankInfoBean) {
+                        if (!normalBankInfoBean.isIs_success()) {
+                            showShortToast(normalBankInfoBean.getMessage());
+                            return;
+                        }
+                        NormalBankInfoBean.DataBean data = normalBankInfoBean.getData();
+                        String bank_account_name = data.getBank_account_name();
+                        String bank_card_number = data.getBank_card_number();
+                        String bank_name = data.getBank_name();
+                        ecName.setText(bank_account_name);
+                        ecBank.setText(bank_name);
+                        ecBankNum.setText(bank_card_number);
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+
+                    }
+                }));
     }
 
 
@@ -91,6 +118,7 @@ public class BindBankCardActivity extends BaseActivity {
                     showShortToast("请检查填写的内容");
                     return;
                 }
+
                 mRxManager.add(Api.getDefault(HostType.Jsonpart)
                         .getBindCardInfo(name, bankName, bankNum)
                         .compose(RxSchedulers.<BindCardInfoBean>io_main())
@@ -98,6 +126,7 @@ public class BindBankCardActivity extends BaseActivity {
                             @Override
                             protected void _onNext(BindCardInfoBean bindCardInfoBean) {
 
+                                showShortToast(bindCardInfoBean.getMessage());
                             }
 
                             @Override

@@ -12,6 +12,9 @@ import com.baoyachi.stepview.bean.StepBean;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.baseapp.AppManager;
+import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.utils.conmonUtil.AppUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +51,7 @@ public class SubmitAuditActivity extends BaseActivity {
     TextView tvConfirm;
     @BindView(R.id.stepView)
     HorizontalStepView horizontalStepView;
+    private String string;
 
     @Override
     public int getLayoutId() {
@@ -64,7 +68,7 @@ public class SubmitAuditActivity extends BaseActivity {
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("认证中心");
         relSearch.setVisibility(View.GONE);
-        String string = getIntent().getExtras().getString(AppConstant.RealNameType);
+        string = getIntent().getExtras().getString(AppConstant.RealNameType);
         List<StepBean> stepsBeanList = new ArrayList<>();
         if (AppConstant.RealNameTypeOne.equals(string)) {
             StepBean stepBean0 = new StepBean("个人信息", -1);
@@ -96,7 +100,7 @@ public class SubmitAuditActivity extends BaseActivity {
                 .setStepViewComplectedTextColor(ContextCompat.getColor(this, R.color.font_1))//设置StepsView text完成线的颜色
                 .setStepViewUnComplectedTextColor(ContextCompat.getColor(this, R.color.font_1))//设置StepsView text未完成线的颜色
                 .setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_ing))//设置StepsViewIndicator CompleteIcon
-                .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this,R.mipmap.icon_current_nomal))//设置StepsViewIndicator DefaultIcon
+                .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_nomal))//设置StepsViewIndicator DefaultIcon
                 .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(this, R.mipmap.icon_current_nomal));//设置StepsViewIndicator AttentionIcon
 
 
@@ -112,14 +116,30 @@ public class SubmitAuditActivity extends BaseActivity {
             case R.id.rel_search:
                 break;
             case R.id.tv_confirm:
+                // 个人信息
+
+                AppManager.getAppManager().returnToActivity(MainActivity.class);
+                /*if (AppConstant.RealNameTypeOne.equals(string)) {
+                    AppManager.getAppManager().finishActivity(RealNamePeoOneActivity.class);
+                    AppManager.getAppManager().finishActivity(RealNamePeoTwoActivity.class);
+                    AppManager.getAppManager().finishActivity(StoreInfoCerActivity.class);
+                } else {
+                    // 企业信息
+                    AppManager.getAppManager().finishActivity(RealNameEnterOneActivity.class);
+                    AppManager.getAppManager().finishActivity(RealNameEnterTwoActivity.class);
+                    AppManager.getAppManager().finishActivity(RealNameEnterThreeActivity.class);
+                    AppManager.getAppManager().finishActivity(StoreInfoCerActivity.class);
+                }*/
+
+
                 finish();
                 break;
         }
     }
 
-    public static void gotoSubmitAuditActivity(BaseActivity mActivity ,String type) {
+    public static void gotoSubmitAuditActivity(BaseActivity mActivity, String type) {
         Bundle bundle = new Bundle();
-        bundle.putString(AppConstant.RealNameType,type);
-        mActivity.startActivity(SubmitAuditActivity.class,bundle);
+        bundle.putString(AppConstant.RealNameType, type);
+        mActivity.startActivity(SubmitAuditActivity.class, bundle);
     }
 }

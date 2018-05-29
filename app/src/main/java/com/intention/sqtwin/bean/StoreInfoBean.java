@@ -1,5 +1,7 @@
 package com.intention.sqtwin.bean;
 
+import java.util.List;
+
 /**
  * Description: 保佑无bug
  * Data：2018/5/19-上午10:01
@@ -10,15 +12,16 @@ package com.intention.sqtwin.bean;
 
 public class StoreInfoBean {
 
+
     /**
      * is_success : false
      * message : 您没有店铺！
-     * data : null
+     * data : []
      */
 
     private boolean is_success;
     private String message;
-    private Object data;
+    private List<?> data;
 
     public boolean isIs_success() {
         return is_success;
@@ -36,11 +39,11 @@ public class StoreInfoBean {
         this.message = message;
     }
 
-    public Object getData() {
+    public List<?> getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(List<?> data) {
         this.data = data;
     }
 }

@@ -2,12 +2,12 @@ package com.intention.sqtwin.bean;
 
 /**
  * Description: 绝无Bug
- * Data：2018/5/22 0022-上午 10:26
+ * Data：2018/5/29 0029-下午 16:47
  * Blog：Super简单
  * Author: ZhouYong
  */
 
-public class UpdateResultInfo {
+public class SetDefaultAddressBean {
 
     /**
      * is_success : true

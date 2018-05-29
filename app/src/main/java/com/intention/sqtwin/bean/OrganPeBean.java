@@ -16,7 +16,7 @@ public class OrganPeBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"staff_info":{"staff_id":1,"create_time":"2018-04-04 14:25:11","name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"description":"描述"},"auction_field_list":[{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":21,"bid_count":7,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00"}]}
+     * data : {"staff_info":{"staff_id":1,"create_time":"2018-04-04 14:25:11","name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"description":"描述","store_id":0},"page_count":1,"auction_field_list":[{"id":43,"name":"测试3","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052315182750943.png","organization_id":0,"is_favorite":"false","item_count":2,"bid_count":0,"fans_count":0,"start_time":"2018-05-23 00:00:00","end_time":"2018-05-26 00:00:00"},{"id":42,"name":"测试3","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052123012710447.jpg","organization_id":1,"is_favorite":"false","item_count":0,"bid_count":0,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"false"}},{"id":39,"name":"111","image":"","organization_id":0,"is_favorite":"false","item_count":0,"bid_count":0,"fans_count":0},{"id":27,"name":"精选古典家具专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg","organization_id":12,"is_favorite":"true","item_count":7,"bid_count":33,"fans_count":10,"organization":{"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"false"},"start_time":"2018-05-04 05:05:00","end_time":"2018-09-10 19:55:00"},{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":19,"bid_count":30,"fans_count":2,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"false"},"start_time":"2018-05-02 01:05:00","end_time":"2018-08-31 23:55:00"}]}
      */
 
     private boolean is_success;
@@ -49,11 +49,13 @@ public class OrganPeBean {
 
     public static class DataBean {
         /**
-         * staff_info : {"staff_id":1,"create_time":"2018-04-04 14:25:11","name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"description":"描述"}
-         * auction_field_list : [{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":21,"bid_count":7,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"},"start_time":"2018-05-02 00:05:00","end_time":"2018-12-31 00:05:00"}]
+         * staff_info : {"staff_id":1,"create_time":"2018-04-04 14:25:11","name":"张三","avatar":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png","type":0,"description":"描述","store_id":0}
+         * page_count : 1
+         * auction_field_list : [{"id":43,"name":"测试3","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052315182750943.png","organization_id":0,"is_favorite":"false","item_count":2,"bid_count":0,"fans_count":0,"start_time":"2018-05-23 00:00:00","end_time":"2018-05-26 00:00:00"},{"id":42,"name":"测试3","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052123012710447.jpg","organization_id":1,"is_favorite":"false","item_count":0,"bid_count":0,"fans_count":0,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"false"}},{"id":39,"name":"111","image":"","organization_id":0,"is_favorite":"false","item_count":0,"bid_count":0,"fans_count":0},{"id":27,"name":"精选古典家具专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg","organization_id":12,"is_favorite":"true","item_count":7,"bid_count":33,"fans_count":10,"organization":{"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"false"},"start_time":"2018-05-04 05:05:00","end_time":"2018-09-10 19:55:00"},{"id":26,"name":"集萃斋玉器杂项","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg","organization_id":1,"is_favorite":"true","item_count":19,"bid_count":30,"fans_count":2,"organization":{"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"false"},"start_time":"2018-05-02 01:05:00","end_time":"2018-08-31 23:55:00"}]
          */
 
         private StaffInfoBean staff_info;
+        private int page_count;
         private List<AuctionFieldListBean> auction_field_list;
 
         public StaffInfoBean getStaff_info() {
@@ -62,6 +64,14 @@ public class OrganPeBean {
 
         public void setStaff_info(StaffInfoBean staff_info) {
             this.staff_info = staff_info;
+        }
+
+        public int getPage_count() {
+            return page_count;
+        }
+
+        public void setPage_count(int page_count) {
+            this.page_count = page_count;
         }
 
         public List<AuctionFieldListBean> getAuction_field_list() {
@@ -80,6 +90,7 @@ public class OrganPeBean {
              * avatar : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_16351_2018041110104892614.png
              * type : 0
              * description : 描述
+             * store_id : 0
              */
 
             private int staff_id;
@@ -88,6 +99,7 @@ public class OrganPeBean {
             private String avatar;
             private int type;
             private String description;
+            private int store_id;
 
             public int getStaff_id() {
                 return staff_id;
@@ -136,21 +148,29 @@ public class OrganPeBean {
             public void setDescription(String description) {
                 this.description = description;
             }
+
+            public int getStore_id() {
+                return store_id;
+            }
+
+            public void setStore_id(int store_id) {
+                this.store_id = store_id;
+            }
         }
 
         public static class AuctionFieldListBean {
             /**
-             * id : 26
-             * name : 集萃斋玉器杂项
-             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213454947150.jpg
-             * organization_id : 1
-             * is_favorite : true
-             * item_count : 21
-             * bid_count : 7
+             * id : 43
+             * name : 测试3
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052315182750943.png
+             * organization_id : 0
+             * is_favorite : false
+             * item_count : 2
+             * bid_count : 0
              * fans_count : 0
-             * organization : {"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"true"}
-             * start_time : 2018-05-02 00:05:00
-             * end_time : 2018-12-31 00:05:00
+             * start_time : 2018-05-23 00:00:00
+             * end_time : 2018-05-26 00:00:00
+             * organization : {"organization_id":1,"name":"中国嘉德","image":"","is_favorite":"false"}
              */
 
             private int id;
@@ -161,9 +181,9 @@ public class OrganPeBean {
             private int item_count;
             private int bid_count;
             private int fans_count;
-            private OrganizationBean organization;
             private String start_time;
             private String end_time;
+            private OrganizationBean organization;
 
             public int getId() {
                 return id;
@@ -229,14 +249,6 @@ public class OrganPeBean {
                 this.fans_count = fans_count;
             }
 
-            public OrganizationBean getOrganization() {
-                return organization;
-            }
-
-            public void setOrganization(OrganizationBean organization) {
-                this.organization = organization;
-            }
-
             public String getStart_time() {
                 return start_time;
             }
@@ -253,12 +265,20 @@ public class OrganPeBean {
                 this.end_time = end_time;
             }
 
+            public OrganizationBean getOrganization() {
+                return organization;
+            }
+
+            public void setOrganization(OrganizationBean organization) {
+                this.organization = organization;
+            }
+
             public static class OrganizationBean {
                 /**
                  * organization_id : 1
                  * name : 中国嘉德
                  * image :
-                 * is_favorite : true
+                 * is_favorite : false
                  */
 
                 private int organization_id;

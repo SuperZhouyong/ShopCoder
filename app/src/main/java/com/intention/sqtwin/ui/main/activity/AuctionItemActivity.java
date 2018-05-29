@@ -1,5 +1,6 @@
 package com.intention.sqtwin.ui.main.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -303,6 +304,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void returnAutionItemDeatil(final AutionItemDetailBean autionItemDetailBean) {
 

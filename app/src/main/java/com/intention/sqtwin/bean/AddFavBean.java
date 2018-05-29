@@ -1,5 +1,7 @@
 package com.intention.sqtwin.bean;
 
+import java.util.List;
+
 /**
  * Description: 绝无Bug
  * Data：2018/5/23 0023-下午 17:11
@@ -9,15 +11,16 @@ package com.intention.sqtwin.bean;
 
 public class AddFavBean {
 
+
     /**
-     * is_success : true
-     * message : 操作成功
-     * data : 1
+     * is_success : false
+     * message : 您已关注过！
+     * data : []
      */
 
     private boolean is_success;
     private String message;
-    private int data;
+    private List<?> data;
 
     public boolean isIs_success() {
         return is_success;
@@ -35,11 +38,11 @@ public class AddFavBean {
         this.message = message;
     }
 
-    public int getData() {
+    public List<?> getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(List<?> data) {
         this.data = data;
     }
 }

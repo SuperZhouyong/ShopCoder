@@ -7,8 +7,8 @@
         android:src="@mipmap/logo"
         android:layout_marginLeft="@dimen/x22"
         android:layout_centerVertical="true"
-        android:layout_width="@dimen/x70"
-        android:layout_height="@dimen/y45" />
+        android:layout_width="@dimen/x85"
+        android:layout_height="@dimen/y55" />
     <RelativeLayout
         android:id="@+id/rel_search"
         android:background="@drawable/shape_bg_search"

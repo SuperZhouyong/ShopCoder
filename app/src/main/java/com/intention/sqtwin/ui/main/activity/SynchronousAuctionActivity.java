@@ -1,6 +1,7 @@
 package com.intention.sqtwin.ui.main.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -122,6 +123,7 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
                 String start_time = recommendFieldBean.getStart_time();
                 String end_time = recommendFieldBean.getEnd_time();
                 // 显示拍卖时间
+
                 showAuctionTime(helper, start_time, end_time);
                 if (recommendFieldBean.getOrganization() == null) {
                     helper.setVisible(R.id.tv_company_name, false);
@@ -173,19 +175,23 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
 
     private void showAuctionTime(ViewHolderHelper helper, String start_time, String end_time) {
         try {
-            Date startTime = PublicKetUtils.df.get().parse(start_time);
-            Date endTime = PublicKetUtils.df.get().parse(end_time);
+            Date startTime = null;
+            Date endTime = null;
+            if (!TextUtils.isEmpty(start_time))
+                startTime = PublicKetUtils.df.get().parse(start_time);
+            if (!TextUtils.isEmpty(end_time))
+                endTime = PublicKetUtils.df.get().parse(end_time);
             Date currentTime = new Date();
-            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+            if (startTime != null && endTime != null && currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
                 // 拍卖中
                 long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
                 helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
 
-            } else if (currentTime.getTime() < startTime.getTime()) {
+            } else if (startTime != null && currentTime.getTime() < startTime.getTime()) {
 //                未开拍
                 helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
 
-            } else {
+            } else if (endTime != null && currentTime.getTime() > endTime.getTime()) {
                 helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
             }
         } catch (ParseException e) {

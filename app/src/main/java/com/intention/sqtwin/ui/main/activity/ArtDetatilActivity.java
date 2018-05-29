@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -85,7 +86,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         mcomAdapter = new CommonRecycleViewAdapter<ArtDetailBean.DataBean.ItemListBean>(this, R.layout.item_artdetail) {
             @Override
             public void convert(ViewHolderHelper helper, ArtDetailBean.DataBean.ItemListBean itemListBean, int position) {
-                helper.setImageUrl(R.id.iv_goods_pic, itemListBean.getImage());
+                helper.setImageRoundTwoUrl(R.id.iv_goods_pic, itemListBean.getImage());
                 helper.setText(R.id.tv_goods_name, itemListBean.getName());
 //                helper.setText(R.id.tv_price,itemListBean.getCurrent_price());
                 helper.setText(R.id.tv_price, "￥ " + itemListBean.getCurrent_price());
@@ -114,6 +115,13 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         mLadapter.addHeaderView(allHeadView);
         mPresenter.getArtDetailRequest(artId, page);
+
+        mLadapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+               AuctionItemActivity.gotoAuctionItemActivity((BaseActivity)mContext,mcomAdapter.get(position).getId());
+            }
+        });
     }
 
     private void updateTextColor(TextView tv, int starts, int end, int textSize) {
@@ -147,7 +155,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
 
     @Override
     public void StartLoading(String RequestId) {
-        if (AppConstant.oneMessage.equals(RequestId))
+        if (AppConstant.oneMessage.equals(RequestId) && mcomAdapter.getDataList().size() == 0)
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
@@ -188,7 +196,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
             }
             return;
         }
-        if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
 //            if (artDetailBean.getData().getArtist_info().)
@@ -199,18 +207,18 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
             tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count() + "");
             tv_desc.setText(artDetailBean.getData().getArtist_info().getResume());
 
-           /* if (organization_info.isIs_favorite()) {
+          /*  if (organization_info.isIs_favorite()) {
                 ivFocus.setVisibility(View.GONE);
                 tvFocus.setText("已关注");
             }*/
-
+            if (artDetailBean.getData().getArtist_info().isIs_favorite()) {
+                ivFocus.setVisibility(View.GONE);
+                tvFocus.setText("已关注");
+            }
         }
 
 
-        if (artDetailBean.getData().getArtist_info().isIs_favorite()) {
-            ivFocus.setVisibility(View.GONE);
-            tvFocus.setText("已关注");
-        }
+
 
         mcomAdapter.addAll(artDetailBean.getData().getItem_list());
         ++page;

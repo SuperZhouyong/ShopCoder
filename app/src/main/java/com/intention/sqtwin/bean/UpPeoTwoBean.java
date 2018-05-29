@@ -14,7 +14,8 @@ public class UpPeoTwoBean {
     // 名字
     private String name;
     private String id_card;
-    private int phone;
+    // 电弧
+    private String phone;
     // 正面
     private String id_card_photo_front;
     // 背面
@@ -50,11 +51,11 @@ public class UpPeoTwoBean {
         this.id_card = id_card;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
