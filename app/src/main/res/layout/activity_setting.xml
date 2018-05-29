@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <include layout="@layout/actionbar_title"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+    <RelativeLayout
+        android:id="@+id/rel_pay_pw"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y107"
+        android:background="@color/white">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+
+            android:text="支付密码"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_right" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@color/app_bottom_colour" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel_login_pw"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y107"
+        android:background="@color/white">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+
+            android:text="登录密码"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/list_right" />
+
+
+    </RelativeLayout>
 </LinearLayout>

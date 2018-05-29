@@ -29,6 +29,7 @@ import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.NormalBankInfoBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
+import com.intention.sqtwin.bean.PayPassWordBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.bean.RealJoinStatusBean;
 import com.intention.sqtwin.bean.RealNamePeoTwoBean;
@@ -610,6 +611,7 @@ public interface ApiService {
 
     /**
      * 设置为默认地址
+     *
      * @param address_id
      * @return
      */
@@ -617,6 +619,31 @@ public interface ApiService {
     @POST("membercenter/set_default_address")
     Observable<SetDefaultAddressBean> getSetDefaultAddress(
             @Field("address_id") Integer address_id
+    );
+
+    /**
+     * 修改支付密码
+     *
+     * @param password
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("Membercenter/pay_password_edit")
+    Observable<PayPassWordBean> getResetPayPassword(
+            @Field("password") String password
+    );
+
+    /**
+     * 修改登录密码
+     *
+     * @param password
+     * @return
+     */
+    @FormUrlEncoded
+
+    @POST("Membercenter/log_password_edit")
+    Observable<PayPassWordBean> getResetLoginPassword(
+            @Field("password") String password
     );
 
 }

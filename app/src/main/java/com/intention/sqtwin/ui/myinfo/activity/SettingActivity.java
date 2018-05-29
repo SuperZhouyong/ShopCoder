@@ -34,6 +34,10 @@ public class SettingActivity extends BaseActivity {
     ImageView ivSearch;
     @BindView(R.id.rel_search)
     RelativeLayout relSearch;
+    @BindView(R.id.rel_pay_pw)
+    RelativeLayout relPayPw;
+    @BindView(R.id.rel_login_pw)
+    RelativeLayout relLoginPw;
 
     @Override
     public int getLayoutId() {
@@ -54,7 +58,7 @@ public class SettingActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_back, R.id.rel_back})
+    @OnClick({R.id.iv_back, R.id.rel_back, R.id.rel_pay_pw, R.id.rel_login_pw})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -62,6 +66,16 @@ public class SettingActivity extends BaseActivity {
             case R.id.rel_back:
                 finish();
                 break;
+            case R.id.rel_pay_pw:
+                SettingPassWordActivity.gotoSettingPwActivity(this, "支付密码");
+
+                break;
+            case R.id.rel_login_pw:
+                SettingPassWordActivity.gotoSettingPwActivity(this, "登录密码");
+
+                break;
         }
     }
+
+
 }

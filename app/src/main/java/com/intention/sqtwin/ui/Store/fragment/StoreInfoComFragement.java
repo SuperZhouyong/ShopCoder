@@ -165,6 +165,50 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
 
             return;
         }
+        if (mcategory_id == 1) {
+//            mAdapter.addAll(storeInfoComBean.getData().getFavorite_item());
+            if (storeInfoComBean.getData().getFavorite_item().size() == 0) {
+
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+                return;
+            }
+
+        }
+        //拍场
+        if (mcategory_id == 2 && page == 0) {
+            if (storeInfoComBean.getData().getFavorite_field().size() == 0) {
+
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+                return;
+            }
+
+        }
+
+        if (mcategory_id == 3 && page == 0) {
+            if (storeInfoComBean.getData().getFavorite_organ().size() == 0) {
+
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+                return;
+            }
+
+        }
+        if (mcategory_id == 4 && page == 0) {
+            if (storeInfoComBean.getData().getFavorite_artist().size() == 0) {
+
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+                return;
+            }
+
+        }
+        //店鋪，需要設置底部的价格为gone
+        if (mcategory_id == 5 && page == 0) {
+            if (storeInfoComBean.getData().getFavorite_store().size() == 0) {
+
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+                return;
+            }
+
+        }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
 
@@ -179,6 +223,8 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         }
         //拍场
         if (mcategory_id == 2) {
+            mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
+            mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
             ++page;
             if (page >= storeInfoComBean.getData().getField_page_total())

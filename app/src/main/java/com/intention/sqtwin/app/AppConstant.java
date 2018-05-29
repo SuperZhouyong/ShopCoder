@@ -115,4 +115,5 @@ public class AppConstant {
     public static final String GoodsPageId = "GoodsPageId";
     // 商品名字
     public static final String GoodsPageTitle = "GoodsPageTitle";
+    public static final String SettingPw = "SettingPw";
 }

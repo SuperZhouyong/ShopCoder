@@ -69,10 +69,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y10"
-                    android:text="代付款"
+                    android:text="待付款"
                     android:textColor="@color/font_7"
                     android:textSize="@dimen/x26" />
-
+okhttp
             </LinearLayout>
 
             <LinearLayout
@@ -168,6 +168,9 @@
             android:id="@+id/rel_acount"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:background="@color/white">
 
             <ImageView

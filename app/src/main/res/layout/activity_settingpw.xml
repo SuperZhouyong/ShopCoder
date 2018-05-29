@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <com.intention.sqtwin.widget.ClearEditText
+            android:id="@+id/ed_one"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+
+            android:background="@null"
+            android:hint="请输入密码"
+            android:inputType="number"
+            android:maxLength="11"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x28" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@color/app_bottom_colour" />
+
+        <com.intention.sqtwin.widget.ClearEditText
+            android:id="@+id/ed_two"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+
+            android:background="@null"
+            android:hint="请再次输入密码"
+            android:inputType="number"
+            android:maxLength="11"
+            android:paddingLeft="@dimen/x30"
+            android:paddingRight="@dimen/x30"
+            android:textColor="@color/font_1"
+            android:textColorHint="@color/font_3"
+            android:textCursorDrawable="@drawable/shape_edittext_cursour"
+            android:textSize="@dimen/x28" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="@dimen/x560"
+        android:layout_height="@dimen/y70"
+        android:layout_centerHorizontal="true"
+
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/y50"
+        android:layout_marginTop="@dimen/y50"
+        android:background="@drawable/tv_bg_confirm"
+        android:gravity="center"
+
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
+
+</LinearLayout>

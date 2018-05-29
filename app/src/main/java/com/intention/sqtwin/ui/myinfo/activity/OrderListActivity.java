@@ -51,7 +51,7 @@ public class OrderListActivity extends BaseActivity implements OnTabSelectListen
     ViewPager viewpager;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    private String[] mTitles = {"全部", "未付款", "已发货", "已收货"};
+    private String[] mTitles = {"全部", "待付款", "待发货", "待收货"};
     private BasePageStateAdapter basePageStateAdapter;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 

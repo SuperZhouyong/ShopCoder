@@ -370,9 +370,9 @@ public class LRecyclerView extends RecyclerView {
             mRefreshing = false;
             mRefreshHeader.refreshComplete();
 
-            /*if(mWrapAdapter.getInnerAdapter().getItemCount() < pageSize) {
+            if(mWrapAdapter.getInnerAdapter().getItemCount() < pageSize) {
                 mFootView.setVisibility(GONE);
-            }*/
+            }
         } else if (mLoadingData) {
             mLoadingData = false;
             mLoadMoreFooter.onComplete();

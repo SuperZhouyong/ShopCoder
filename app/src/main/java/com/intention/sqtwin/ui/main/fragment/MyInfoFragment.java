@@ -27,6 +27,7 @@ import com.intention.sqtwin.ui.myinfo.activity.IdentityProveActivity;
 import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.ui.myinfo.activity.MyCompeteActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
+import com.intention.sqtwin.ui.myinfo.activity.SettingActivity;
 import com.intention.sqtwin.ui.myinfo.contract.MyCompeteContract;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
@@ -125,15 +126,15 @@ public class MyInfoFragment extends LazzyFragment {
                 break;
 
             case R.id.ll_one:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 1);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_two:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 1);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_three:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 0, 1);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             // 消息
@@ -154,7 +155,7 @@ public class MyInfoFragment extends LazzyFragment {
                 break;*/
             // 设置
             case R.id.rel_setting:
-
+                startActivity(getActivity(), SettingActivity.class);
 
                 break;
          /*   // 帮助中心
