@@ -318,8 +318,16 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
+        final AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
         // 出价的话只是刷新这个地方
         if (isAgentBid || isBid) {
+
+            tvNumOneCom.setText(item_info.getStart_price() + "");
+            tvNumTwoCom.setText(item_info.getIncrement_value() + "");
+            tvNumThreeCom.setText(item_info.getCommission());
+            tvNumForeCom.setText(item_info.getDeposit());
+
+
             tvPriceNum.setVisibility(View.VISIBLE);
             tvPriceNum.setText(autionItemDetailBean.getData().getPrice_count() + "次");
 
@@ -351,13 +359,13 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         tvLotsfocus.setText(autionItemDetailBean.getData().getItem_info().getFans_count() + "人关注");
 
-        final AutionItemDetailBean.DataBean.ItemInfoBean item_info = autionItemDetailBean.getData().getItem_info();
+
         AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
         //title
-        String start_time = item_info.getStart_time();
-        String end_time = item_info.getEnd_time();
-
-        TvTimeTwo.setText(start_time.substring(start_time.indexOf("-") + 1) + "-" + end_time.substring(end_time.indexOf("-") + 1));
+        String start_time = item_info.getStart_time().replace("-", ".");
+        String end_time = item_info.getEnd_time().replace("-", ".");
+        String s = start_time.substring(start_time.indexOf(".") + 1) + "-" + end_time.substring(end_time.indexOf(".") + 1);
+        TvTimeTwo.setText(s);
         // 拍卖人详情
 
         if (autionItemDetailBean.getData().getStaff_list() == null || autionItemDetailBean.getData().getStaff_list().size() == 0) {

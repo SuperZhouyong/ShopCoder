@@ -198,6 +198,7 @@ public class LoadingFooter extends RelativeLayout implements ILoadMoreFooter {
                     mNetworkErrorView.setVisibility(GONE);
                 }
 
+
                 if (mTheEndView == null) {
                     ViewStub viewStub = (ViewStub) findViewById(R.id.end_viewstub);
                     mTheEndView = viewStub.inflate();

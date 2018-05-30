@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -15,6 +16,7 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.contract.SynchronousAuctionContract;
 import com.intention.sqtwin.ui.main.model.SynchronousAuctionModel;
 import com.intention.sqtwin.ui.main.presenter.SynchronousAuctionPresenter;
@@ -90,11 +92,14 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
+        if (page_no >= synchronousAuctionBean.getData().getPage_count()) {
+            mRecyclerView.setNoMore(true);
+            return;
+        }
+
         mAdapter.addAll(synchronousAuctionBean.getData().getSync_auction_field());
         ++page_no;
-        if (page_no == synchronousAuctionBean.getData().getPage_count()) {
-            mRecyclerView.setNoMore(true);
-        }
+
     }
 
     @Override
@@ -122,8 +127,8 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
                 String start_time = recommendFieldBean.getStart_time();
                 String end_time = recommendFieldBean.getEnd_time();
                 // 显示拍卖时间
-
-                showAuctionTime(helper, start_time, end_time);
+                if (!TextUtils.isEmpty(start_time) && !TextUtils.isEmpty(end_time))
+                    showAuctionTime(helper, start_time, end_time);
                 if (recommendFieldBean.getOrganization() == null) {
                     helper.setVisible(R.id.tv_company_name, false);
                     helper.setVisible(R.id.iv_logo, false);
@@ -168,7 +173,7 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
         mRecyclerView.setAdapter(mLadapter);
         mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setOnLoadMoreListener(this);
-
+        mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 20, 1, getResources().getColor(R.color.app_bottom_colour)));
         mPresenter.getSynchronousAuctionRequest(page_no);
     }
 
@@ -199,11 +204,17 @@ public class SynchronousAuctionActivity extends BaseActivity<SynchronousAuctionP
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.category_logo:
-                startActivity(CategoryActivity.class);
+                CategoryActivity.GotoCategoryActivity(this, 0, "拍品分类");
+
+//                startActivity(CategoryActivity.class);
                 break;
+            // 关注
             case R.id.iv_love:
+                startActivity(StoreFocusActivity.class);
                 break;
+            // 提醒
             case R.id.iv_readme:
+                startActivitreadme:
                 break;
         }
     }

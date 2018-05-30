@@ -262,12 +262,14 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
             tvFans.setText(organization_info.getFans_count() + "人");
             tvDesc.setText(organization_info.getDescription());
         }
-        mcomAdapter.addAll(auctionOrgBean.getData().getAuction_field_list());
-        ++page;
-        if (page == auctionOrgBean.getData().getPage_count()) {
+        if (page >= auctionOrgBean.getData().getPage_count()) {
             mRecyclerView.setNoMore(true);
             return;
         }
+
+        mcomAdapter.addAll(auctionOrgBean.getData().getAuction_field_list());
+        ++page;
+
     }
 
     // 机构的关注

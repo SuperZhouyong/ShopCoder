@@ -170,26 +170,29 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
             // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
             showShortToast(organPeBean.getMessage());
             if (page == 0) {
-                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
                 mLoadingTip.setOnReloadListener(this);
             }
             return;
         }
 
-        tv_one.setText(organPeBean.getData().getStaff_info().getName());
-        tv_two.setText(organPeBean.getData().getStaff_info().getType() == 0 ? "主理人" : "专家");
-        tv_three.setText(organPeBean.getData().getStaff_info().getDescription());
-        if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
             tv_one.setText(organPeBean.getData().getStaff_info().getName());
-//            tv_two.setText(organPeBean.getData().getStaff_info().get);
-
+            tv_two.setText(organPeBean.getData().getStaff_info().getType() == 0 ? "主理人" : "专家");
+            tv_three.setText(organPeBean.getData().getStaff_info().getDescription());
         }
+
+
+        if (page >= organPeBean.getData().getPage_count()) {
+            mRecyclerView.setNoMore(true);
+            return;
+        }
+
         organpeoAdapter.addAll(organPeBean.getData().getAuction_field_list());
         ++page;
-        if (page == organPeBean.getData().getPage_count())
-            mRecyclerView.setNoMore(true);
+
     }
 
     @Override

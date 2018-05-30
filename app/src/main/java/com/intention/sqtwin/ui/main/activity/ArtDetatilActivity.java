@@ -210,23 +210,20 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
             tv_bid_nUm.setText(artDetailBean.getData().getArtist_info().getAuction_count() + "");
             tv_price_num.setText(artDetailBean.getData().getArtist_info().getFans_count() + "");
             tv_desc.setText(artDetailBean.getData().getArtist_info().getResume());
-
-          /*  if (organization_info.isIs_favorite()) {
-                ivFocus.setVisibility(View.GONE);
-                tvFocus.setText("已关注");
-            }*/
             if (artDetailBean.getData().getArtist_info().isIs_favorite()) {
                 ivFocus.setVisibility(View.GONE);
                 tvFocus.setText("已关注");
             }
         }
+//TODO 这里我取出来了
+        if (page >= artDetailBean.getData().getTotal_page()) {
+            mRecyclerView.setNoMore(true);
+            return;
 
+        }
 
         mcomAdapter.addAll(artDetailBean.getData().getItem_list());
         ++page;
-        //TODO 这里我取出来了
-        if (page == artDetailBean.getData().getTotal_page())
-            mRecyclerView.setNoMore(true);
 
 
     }

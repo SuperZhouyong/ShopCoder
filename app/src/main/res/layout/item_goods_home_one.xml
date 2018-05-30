@@ -43,7 +43,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x10"
                 android:layout_toRightOf="@id/iv_time"
-                android:text="距结束  9时30分"
+                android:text=""
                 android:textColor="@color/font_2" />
 
         </RelativeLayout>

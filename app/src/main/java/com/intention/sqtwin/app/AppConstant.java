@@ -118,4 +118,5 @@ public class AppConstant {
     public static final String GoodsPageTitle = "GoodsPageTitle";
     public static final String SettingPw = "SettingPw";
 
+    public static final String Exception ="Exception";
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 
 
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.app.BaseApplication;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.NetWorkUtils;
@@ -113,6 +114,7 @@ public abstract class RxSubscriber<T> extends Subscriber<T> {
             _onNext(t);
         } catch (Exception r) {
             LogUtils.logd(TAG + "--onNext" + r.getMessage());
+            onError(r);
         }
     }
 

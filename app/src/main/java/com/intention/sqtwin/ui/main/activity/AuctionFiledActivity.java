@@ -290,6 +290,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         if (AppConstant.oneMessage.equals(RequestId)) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
             mLoadingTip.setOnReloadListener(this);
+
         }
 
     }
@@ -317,7 +318,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
         field_info = auctionFiledAllBean.getData().getField_info();
 //        iv_add_focus
         //机构的关注
-        if (auctionFiledAllBean.getData().getField_info().getOrganization().isIs_favorite()) {
+        if (auctionFiledAllBean.getData().getField_info().getOrganization() != null && auctionFiledAllBean.getData().getField_info().getOrganization().isIs_favorite()) {
             iv_add_focus.setVisibility(View.GONE);
             tv_focus.setText("已关注");
         }
@@ -330,10 +331,10 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
             tabLayout.setTabData(mTabEntities);
         }
 
-        String start_time = field_info.getStart_time();
-        String end_time = field_info.getEnd_time();
-
-        TvTimeTwo.setText(start_time.substring(start_time.indexOf("-") + 1) + "-" + end_time.substring(end_time.indexOf("-") + 1));
+        String start_time = field_info.getStart_time().replace("-",".");
+        String end_time = field_info.getEnd_time().replace("-",".");
+        String s = start_time.substring(start_time.indexOf(".") + 1) + "-" + end_time.substring(end_time.indexOf(".") + 1);
+        TvTimeTwo.setText(s);
 //        TvTimeTwo.setText(auctionFiledAllBean.getData().getField_info().getStart_time() + "-" + auctionFiledAllBean.getData().getField_info().getEnd_time());
 
         ImageLoaderUtils.displayRound(this, iv_com_icon, auctionFiledAllBean.getData().getField_info().getOrganization().getLogo());

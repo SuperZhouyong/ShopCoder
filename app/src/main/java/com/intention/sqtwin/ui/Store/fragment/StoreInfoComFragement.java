@@ -28,6 +28,8 @@ import com.intention.sqtwin.ui.mall.activity.TaoBaoStoreInfoActivity;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 
+import java.util.List;
+
 import butterknife.BindView;
 
 /**
@@ -216,44 +218,56 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
             mAdapter.clear();
 
         if (mcategory_id == 1) {
+            if (page >= storeInfoComBean.getData().getItem_page_total()) {
+                mLRecyclerView.setNoMore(true);
+                return;
+            }
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_item());
             ++page;
-            if (page >= storeInfoComBean.getData().getItem_page_total())
-                mLRecyclerView.setNoMore(true);
+
         }
         //拍场
         if (mcategory_id == 2) {
-            if (page >= storeInfoComBean.getData().getField_page_total()){
+            if (page >= storeInfoComBean.getData().getField_page_total()) {
                 mLRecyclerView.setNoMore(true);
                 return;
 
             }
-            mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
-            mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
+
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
             ++page;
-            if (page >= storeInfoComBean.getData().getField_page_total())
-                mLRecyclerView.setNoMore(true);
+
         }
 
         if (mcategory_id == 3) {
+            if (page >= storeInfoComBean.getData().getOrganization_page_total()) {
+                mLRecyclerView.setNoMore(true);
+                return;
+            }
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_organ());
             ++page;
-            if (page >= storeInfoComBean.getData().getOrganization_page_total())
-                mLRecyclerView.setNoMore(true);
+
         }
         if (mcategory_id == 4) {
+            if (page >= storeInfoComBean.getData().getArtist_page_total()) {
+
+                mLRecyclerView.setNoMore(true);
+                return;
+            }
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_artist());
             ++page;
-            if (page >= storeInfoComBean.getData().getArtist_page_total())
-                mLRecyclerView.setNoMore(true);
+
         }
         //店鋪，需要設置底部的价格为gone
         if (mcategory_id == 5) {
+            if (page >= storeInfoComBean.getData().getStore_page_total()) {
+
+                mLRecyclerView.setNoMore(true);
+                return;
+            }
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_store());
             ++page;
-            if (page >= storeInfoComBean.getData().getStore_page_total())
-                mLRecyclerView.setNoMore(true);
+
         }
 
 

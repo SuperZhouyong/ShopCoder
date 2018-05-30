@@ -131,6 +131,7 @@ public class LoadingTip extends LinearLayout {
                 setVisibility(View.VISIBLE);
                 relTip.setVisibility(GONE);
                 llTip.setVisibility(VISIBLE);
+                img_tip_logo.setVisibility(VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_network);
                 tv_tips.setText("网络不太给力，点击重新加载");
                 bt_operate.setVisibility(View.VISIBLE);

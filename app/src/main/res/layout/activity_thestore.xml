@@ -52,7 +52,7 @@
                 android:layout_below="@id/iv_head_icon"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/y30"
-                android:text="名字"
+                android:text="店鋪名字"
                 android:textColor="@color/white"
                 android:textSize="@dimen/x28" />
 
@@ -89,7 +89,7 @@
                     android:maxLines="2"
                     android:paddingLeft="@dimen/x22"
                     android:paddingRight="@dimen/x22"
-                    android:text="@string/pay_result_callback_msg"
+                    android:text="店鋪描述"
                     android:textColor="@color/white"
                     android:textSize="@dimen/x24" />
 
@@ -174,7 +174,7 @@
 
             </LinearLayout>
 
-            <!-- <LinearLayout
+             <LinearLayout
                  android:id="@+id/ll_fore"
                  android:layout_width="0dp"
                  android:layout_height="match_parent"
@@ -191,11 +191,11 @@
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_marginTop="@dimen/y10"
-                     android:text="售后"
+                     android:text="全部订单"
                      android:textColor="@color/font_7"
                      android:textSize="@dimen/x26" />
 
-             </LinearLayout>-->
+             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_five"

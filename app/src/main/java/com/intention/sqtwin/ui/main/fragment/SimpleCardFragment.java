@@ -188,18 +188,27 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         if (page_no == 0 && mAdapter.getDataList().size() != 0)
             mAdapter.clearData();
 
-        mBannerView.setViewFactory(new BannerView.ViewFactory<PpAllDateBean.DataBean.AdvBean>() {
 
-            @Override
-            public View create(PpAllDateBean.DataBean.AdvBean dataBean, int position, ViewGroup container) {
-                ImageView iv = new ImageView(container.getContext());
-                ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, dataBean.getImage());
-                return iv;
-            }
-        });
-        mBannerView.setDataList(allDateBean.getData().getAdv());
-        mBannerView.start();
+        if (page_no == 0) {
+            mBannerView.setViewFactory(new BannerView.ViewFactory<PpAllDateBean.DataBean.AdvBean>() {
 
+                @Override
+                public View create(PpAllDateBean.DataBean.AdvBean dataBean, int position, ViewGroup container) {
+                    ImageView iv = new ImageView(container.getContext());
+                    ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, dataBean.getImage());
+                    return iv;
+                }
+            });
+            mBannerView.setDataList(allDateBean.getData().getAdv());
+            mBannerView.start();
+        }
+
+
+        if (page_no >= allDateBean.getData().getTotal_page()) {
+            mRecyclerView.setNoMore(true);
+            return;
+
+        }
         mAdapter.addAll(allDateBean.getData().getAuction_field_list());
 
        /* tv_all.setText("全部");
@@ -209,8 +218,6 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         vgll.setVisibility(View.VISIBLE);
         ++page_no;
 
-        if (allDateBean.getData().getTotal_page() == page_no)
-            mRecyclerView.setNoMore(true);
 
     }
 
@@ -276,6 +283,6 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
 
     @Override
     public void call(String tag) {
-        mPresenter.getAddFavBean(currentFavId,AppConstant.field);
+        mPresenter.getAddFavBean(currentFavId, AppConstant.field);
     }
 }

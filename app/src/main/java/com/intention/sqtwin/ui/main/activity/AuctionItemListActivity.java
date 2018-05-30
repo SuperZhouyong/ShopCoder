@@ -110,11 +110,11 @@ public class AuctionItemListActivity extends BaseActivity<AuctionListPresenter, 
             public void onItemClick(View view, int position) {
                 // 拍品
                 if (goodType == 0) {
-                    AuctionItemActivity.gotoAuctionItemActivity((BaseActivity)mContext,mAdapter.get(position).getId());
+                    AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, mAdapter.get(position).getId());
 
                 } else if (goodType == 1) {
                     //商品
-                    GoodsPageActivity.gotoGoodsPageActivity((BaseActivity)mContext,mAdapter.get(position).getId(),mAdapter.get(position).getName());
+                    GoodsPageActivity.gotoGoodsPageActivity((BaseActivity) mContext, mAdapter.get(position).getId(), mAdapter.get(position).getName());
                 }
             }
         });
@@ -172,10 +172,14 @@ public class AuctionItemListActivity extends BaseActivity<AuctionListPresenter, 
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
 
+        if (page == auctionListBean.getData().getPage_count()) {
+            mRecyclerView.setNoMore(true);
+            return;
+
+        }
         mAdapter.addAll(auctionListBean.getData().getItem_list());
         ++page;
-        if (page == auctionListBean.getData().getPage_count())
-            mRecyclerView.setNoMore(true);
+
     }
 
     @Override

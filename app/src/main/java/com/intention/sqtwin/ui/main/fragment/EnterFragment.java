@@ -175,26 +175,32 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
 
     @OnClick({R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.ll_five, R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit})
     public void onViewClicked(View view) {
+        if (!isLogin()) {
+            LoginActivity.start(getActivity());
+            return;
+        }
+
 
         switch (view.getId()) {
             // 待付款
             case R.id.ll_one:
 
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 0);
                 break;
             //待发货---> 已发货
             case R.id.ll_two:
 
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 2, 0);
                 break;
             // 待收货 ---> 已收货
             case R.id.ll_three:
 
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 10, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 0);
                 break;
             //售后
-          /*  case R.id.ll_fore:
-                break;*/
+            case R.id.ll_fore:
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 0, 0);
+                break;
             //店铺报表
             case R.id.ll_five:
                 startActivity(StoreReportActivity.class, null);
@@ -207,8 +213,10 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
             case R.id.rel_seller_message:
                 startActivity(StoreMessageActivity.class, null);
                 break;
-
+            // 实名认证
             case R.id.rel_identit:
+
+                startActivity(RealCerOneActivity.class, null);
                 break;
         }
     }

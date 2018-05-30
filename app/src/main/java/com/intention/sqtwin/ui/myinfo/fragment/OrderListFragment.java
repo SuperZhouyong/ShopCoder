@@ -162,6 +162,13 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
             return;
         }
+        //Todo 这里单独处理数据？？
+        if (page != 0 && orderListBean.getData().size() == 0) {
+
+            mRecyclerView.setNoMore(true);
+            return;
+        }
+
         mAdapter.addAll(orderListBean.getData());
         ++page;
     }

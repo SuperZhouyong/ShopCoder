@@ -11,6 +11,7 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.StoreInfoComBean;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionOrgActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
@@ -142,13 +143,13 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
             helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                    AuctionOrgActivity.gotoAuctionOrg((StoreFocusActivity) mContext, recommendFieldBean.getOrganization_id());
                 }
             });
             helper.setOnClickListener(R.id.iv_logo, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                    AuctionOrgActivity.gotoAuctionOrg((StoreFocusActivity) mContext, recommendFieldBean.getOrganization_id());
                 }
             });
         }
