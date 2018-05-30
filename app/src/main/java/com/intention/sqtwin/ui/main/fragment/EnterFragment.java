@@ -11,19 +11,25 @@ import android.widget.TextView;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.LazzyFragment;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.ui.Store.activity.RealCerOneActivity;
 import com.intention.sqtwin.ui.Store.activity.StoreMessageActivity;
 import com.intention.sqtwin.ui.Store.activity.StoreRemainingMoneyActivity;
 import com.intention.sqtwin.ui.Store.activity.StoreReportActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.ui.main.activity.OrganPeoActivity;
 import com.intention.sqtwin.ui.main.contract.EnterContract;
 import com.intention.sqtwin.ui.main.model.EnterModel;
 import com.intention.sqtwin.ui.main.presenter.EnterPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.CircleImageView;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,7 +44,7 @@ import rx.functions.Action1;
  * Author: ZhouYong
  */
 
-public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> implements EnterContract.View {
+public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> implements EnterContract.View, Action {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -102,18 +108,31 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+
+    }
+
+    @Override
     public void initView() {
         relHeadTitle.setBackgroundColor(getResources().getColor(R.color.transparent));
         relBack.setVisibility(View.GONE);
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("店铺");
         relSearch.setVisibility(View.GONE);
-        ImageLoaderUtils.displayRoundInt(getActivity(),ivHeadIcon,R.mipmap.ic_launcher);
+        ImageLoaderUtils.displayRoundInt(getActivity(), ivHeadIcon, R.mipmap.ic_launcher);
         mRxManager.on(AppConstant.EnterFragment, new Action1<Boolean>() {
             @Override
             public void call(Boolean aBoolean) {
-                if (aBoolean)
-                    mPresenter.getStoreInfoRequest();
+                if (aBoolean) {
+                    SingleCall.getInstance()
+                            .addAction(EnterFragment.this, AppConstant.oneMessage)
+                            .addValid(new LoginValid(getActivity()))
+                            .doCall();
+
+
+                }
             }
         });
     }
@@ -192,5 +211,11 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
             case R.id.rel_identit:
                 break;
         }
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getStoreInfoRequest();
     }
 }

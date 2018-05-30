@@ -57,18 +57,20 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
         } else {
             helper.setVisible(R.id.iv_focus, true);
             helper.setText(R.id.tv_focus, "关注");
-            helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 点击关注
-                    RxBus.getInstance().post(AppConstant.HomeFiled, new FavBean(position, recommendFieldBean.getId()));
 
-                }
-            });
         }
+        helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击关注
+                RxBus.getInstance().post(AppConstant.HomeFiled, new FavBean(position, recommendFieldBean.getId()));
 
-        helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
-        helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+            }
+        });
+
+
+
+
         helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
         helper.setText(R.id.tv_lot_num, String.valueOf(recommendFieldBean.getItem_count()));
         helper.setText(R.id.tv_price_num, String.valueOf(recommendFieldBean.getBid_count()));
@@ -83,21 +85,24 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
         if (recommendFieldBean.getOrganization() == null) {
             helper.setVisible(R.id.tv_company_name, false);
             helper.setVisible(R.id.iv_logo, false);
+        } else {
+            helper.setVisible(R.id.tv_company_name, true);
+            helper.setVisible(R.id.iv_logo, true);
+            helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
+            helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+            helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                }
+            });
+            helper.setOnClickListener(R.id.iv_logo, new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                }
+            });
         }
-
-        // 增加的点击事件
-        helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
-            }
-        });
-        helper.setOnClickListener(R.id.iv_logo, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
-            }
-        });
     }
 
 
@@ -109,7 +114,7 @@ public class HomeAdapter extends CommonRecycleViewAdapter<AllDateBean.DataBean.R
             if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
                 // 拍卖中
                 long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
-                helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+                helper.setText(R.id.tv_time_calculate, "距结束" + (OverMin / (60 * 24) == 0 ? "" : (OverMin / 60 / 24 + "天")) + ((OverMin % (60 * 24)) / 60 == 0 ? "" : ((OverMin % (60 * 24)) / 60 + "时")) + OverMin % 60 + "分");
 
             } else if (currentTime.getTime() < startTime.getTime()) {
 //                未开拍

@@ -79,16 +79,16 @@ public class OrganPeoAdapter extends CommonRecycleViewAdapter<OrganPeBean.DataBe
         } else {
             helper.setVisible(R.id.iv_focus, true);
             helper.setText(R.id.tv_focus, "关注");
-            helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 点击关注
-                    RxBus.getInstance().post(AppConstant.OrganPeoFiled, new FavBean(position, recommendFieldBean.getId()));
 
-                }
-            });
         }
+        helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击关注
+                RxBus.getInstance().post(AppConstant.OrganPeoFiled, new FavBean(position, recommendFieldBean.getId()));
 
+            }
+        });
 
         helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
         helper.setText(R.id.tv_lot_num, String.valueOf(recommendFieldBean.getItem_count()));
@@ -112,23 +112,19 @@ public class OrganPeoAdapter extends CommonRecycleViewAdapter<OrganPeBean.DataBe
 
     private void showAuctionTime(ViewHolderHelper helper, String start_time, String end_time) {
         try {
-            Date startTime = null;
-            Date endTime = null;
-            if (!TextUtils.isEmpty(start_time))
-                startTime = PublicKetUtils.df.get().parse(start_time);
-            if (!TextUtils.isEmpty(end_time))
-                endTime = PublicKetUtils.df.get().parse(end_time);
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
             Date currentTime = new Date();
-            if (startTime != null && endTime != null && currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
                 // 拍卖中
                 long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
-                helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+                helper.setText(R.id.tv_time_calculate, "距结束" + (OverMin / (60 * 24) == 0 ? "" : (OverMin / 60 / 24 + "天")) + ((OverMin % (60 * 24)) / 60 == 0 ? "" : ((OverMin % (60 * 24)) / 60 + "时")) + OverMin % 60 + "分");
 
-            } else if (startTime != null && currentTime.getTime() < startTime.getTime()) {
+            } else if (currentTime.getTime() < startTime.getTime()) {
 //                未开拍
                 helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
 
-            } else if (endTime != null && currentTime.getTime() > endTime.getTime()) {
+            } else {
                 helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
             }
         } catch (ParseException e) {

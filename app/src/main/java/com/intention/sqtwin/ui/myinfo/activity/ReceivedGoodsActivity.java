@@ -88,7 +88,7 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
                 else
                     sCheckBox.setChecked(mAddressIdList.add(receivedGoodsBean.getId()), true);*/
 
-                sCheckBox.setChecked(mAddressIdList.size() == 0?"1".equals(receivedGoodsBean.getAddress_is_default()):mAddressIdList.add(receivedGoodsBean.getId()), true);
+                sCheckBox.setChecked(mAddressIdList.size() == 0?"1".equals(receivedGoodsBean.getAddress_is_default()):mAddressIdList.contains(receivedGoodsBean.getId()));
                 // 删除地址
                 helper.getView(R.id.ll_delete).setOnClickListener(new View.OnClickListener() {
                     @Override

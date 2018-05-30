@@ -10,6 +10,7 @@ import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.base.BasePageStateAdapter;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.activity.CategoryActivity;
@@ -155,6 +156,12 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
         slidTabLayout.setViewPager(viewpager);
 
     }
+
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+
+    }
+
     @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
     public void onViewClicked(View view) {
         switch (view.getId()) {

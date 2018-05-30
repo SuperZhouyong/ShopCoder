@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -42,7 +43,7 @@ import ezy.ui.view.BannerView;
  * Author: ZhouYong
  */
 
-public class DerivativesActivity extends BaseActivity<DerivativesPresenter, DerivativesModel> implements DerivativesContract.View, LoadingTip.onReloadListener {
+public class DerivativesActivity extends BaseActivity<DerivativesPresenter, DerivativesModel> implements DerivativesContract.View, LoadingTip.onReloadListener, OnTabSelectListener {
 
     @BindView(R.id.category_logo)
     ImageView categoryLogo;
@@ -64,6 +65,7 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
     private int[] mIconSelectIds = {
             R.mipmap.ic_home_selected, R.mipmap.icon_specialist_s, R.mipmap.ic_care_selected, R.mipmap.ic_myinfo_slect};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_derivatives;
@@ -132,6 +134,7 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
             public void convert(ViewHolderHelper helper, DerivativesBean.DataBean.ShopListBean shopListBean, int position) {
                 helper.setImageUrl(R.id.iv_headtwo, shopListBean.getStore_logo());
                 helper.setText(R.id.tv_headtwo, shopListBean.getStore_name());
+
             }
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);
@@ -151,19 +154,17 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
         }
         tabLayout.setTabData(mTabEntities);
         //点击监听
-        tabLayout.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-//                initTabBackGround(position);
-                SwitchTo(position);
+        tabLayout.setOnTabSelectListener(this);
 
-            }
-
+        mLadapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onTabReselect(int position) {
+            public void onItemClick(View view, int position) {
+                TaoBaoStoreInfoActivity.GotoTaoBaoSTireInfoActivity((BaseActivity) mContext, mAdapter.get(position).getStore_id());
             }
         });
+
     }
+
     // 知道点击的哪一个
     private void SwitchTo(int position) {
 
@@ -224,7 +225,7 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.category_logo:
-                CategoryActivity.GotoCategoryActivity(this,1,"商品分类");
+                CategoryActivity.GotoCategoryActivity(this, 1, "商品分类");
 //                startActivity(CategoryActivity.class);
                 break;
             case R.id.iv_love:
@@ -240,4 +241,13 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
     }
 
 
+    @Override
+    public void onTabSelect(int position) {
+
+    }
+
+    @Override
+    public void onTabReselect(int position) {
+
+    }
 }

@@ -19,6 +19,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AddFavBean;
@@ -26,8 +27,11 @@ import com.intention.sqtwin.bean.ArtDetailBean;
 import com.intention.sqtwin.ui.main.contract.ArtDetatilContract;
 import com.intention.sqtwin.ui.main.model.ArtDetatilModel;
 import com.intention.sqtwin.ui.main.presenter.ArtDetatilPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,7 +44,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDetatilModel> implements OnLoadMoreListener, ArtDetatilContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, View.OnClickListener {
+public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDetatilModel> implements OnLoadMoreListener, ArtDetatilContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, View.OnClickListener, Action {
 
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
@@ -119,7 +123,7 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         mLadapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-               AuctionItemActivity.gotoAuctionItemActivity((BaseActivity)mContext,mcomAdapter.get(position).getId());
+                AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, mcomAdapter.get(position).getId());
             }
         });
     }
@@ -218,8 +222,6 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
         }
 
 
-
-
         mcomAdapter.addAll(artDetailBean.getData().getItem_list());
         ++page;
         //TODO 这里我取出来了
@@ -254,9 +256,22 @@ public class ArtDetatilActivity extends BaseActivity<ArtDetatilPresenter, ArtDet
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rel_focus:
-                mPresenter.getAddFavArtRequest(artId, AppConstant.artst);
+
+
+                SingleCall.getInstance()
+                        .addAction(ArtDetatilActivity.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(ArtDetatilActivity.this))
+                        .doCall();
+
+
                 // 关注
                 break;
         }
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavArtRequest(artId, AppConstant.artst);
     }
 }

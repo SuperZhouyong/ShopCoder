@@ -20,7 +20,7 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
     @Override
     public void getAutionDetailRequest(Integer id) {
-        mRxManage.add(mModel.getAutionDetaiData(id).subscribe(new RxSubscriber<AutionItemDetailBean>(mContext,true) {
+        mRxManage.add(mModel.getAutionDetaiData(id).subscribe(new RxSubscriber<AutionItemDetailBean>(mContext, true) {
             @Override
             protected void _onNext(AutionItemDetailBean autionItemDetailBean) {
                 mView.returnAutionItemDeatil(autionItemDetailBean);
@@ -28,7 +28,7 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.oneMessage,message);
+                mView.showErrorTip(AppConstant.oneMessage, message);
             }
 
             @Override
@@ -47,7 +47,7 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
     @Override
     public void getAgentBidBeanRequest(Integer goods_id, Integer price, Integer member_id) {
-        mRxManage.add(mModel.getAgentBidDate(goods_id, price, member_id).subscribe(new RxSubscriber<AgentBidBean>(mContext,true) {
+        mRxManage.add(mModel.getAgentBidDate(goods_id, price, member_id).subscribe(new RxSubscriber<AgentBidBean>(mContext) {
             @Override
             protected void _onNext(AgentBidBean agentBidBean) {
                 mView.returnAgentBidDate(agentBidBean);
@@ -55,25 +55,26 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-            mView.showErrorTip(AppConstant.twoMessage,message);
+                mView.showErrorTip(AppConstant.twoMessage, message);
             }
         }));
     }
 
     @Override
     public void getBidBeanRequest(Integer goods_id, Integer price, Integer member_id) {
-            mRxManage.add(mModel.getBindDate(goods_id, price, member_id).subscribe(new RxSubscriber<BidBean>(mContext,true) {
-                @Override
-                protected void _onNext(BidBean bidBean) {
-                    mView.returnBidDate(bidBean);
-                }
+        mRxManage.add(mModel.getBindDate(goods_id, price, member_id).subscribe(new RxSubscriber<BidBean>(mContext) {
+            @Override
+            protected void _onNext(BidBean bidBean) {
+                mView.returnBidDate(bidBean);
+            }
 
-                @Override
-                protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.threeMessage,message);
-                }
-            }));
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.threeMessage, message);
+            }
+        }));
     }
+
     @Override
     public void getAddFavBean(Integer fav_id, String fav_type) {
         mRxManage.add(mModel.getAddFavFiled(fav_id, fav_type).subscribe(new RxSubscriber<AddFavBean>(mContext) {
@@ -84,7 +85,7 @@ public class AutionItemPresenter extends AutionItemContract.Presenter {
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.foreMessage,message);
+                mView.showErrorTip(AppConstant.foreMessage, message);
             }
 
 

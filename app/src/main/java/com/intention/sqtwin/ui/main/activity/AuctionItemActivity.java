@@ -32,6 +32,7 @@ import com.intention.sqtwin.ui.main.contract.AutionItemContract;
 import com.intention.sqtwin.ui.main.model.AutionItemModel;
 import com.intention.sqtwin.ui.main.presenter.AutionItemPresenter;
 import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
+import com.intention.sqtwin.utils.checkbox.SmoothCheckBox;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
@@ -132,6 +133,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private boolean isAgentBid;
     private boolean isBid;
     private LinearLayout rel_qr;
+//    private SmoothCheckBox sCheckBox;
 
     @Override
     public int getLayoutId() {
@@ -310,7 +312,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
 
         if (!autionItemDetailBean.isIs_success()) {
-            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
             mLoadingTip.setOnReloadListener(this);
             return;
         }
@@ -505,6 +507,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     @Override
     public void returnAddFavBean(AddFavBean addFavBean) {
         showShortToast(addFavBean.getMessage());
+
         if (!addFavBean.isIs_success()) {
             return;
         }
@@ -512,7 +515,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     }
 
 
-    @OnClick({R.id.rel_back, R.id.tv_agent_price, R.id.tv_noagent_price})
+    @OnClick({R.id.rel_back, R.id.tv_agent_price, R.id.tv_noagent_price, R.id.ll_one_bottom, R.id.ll_two_bottom, R.id.rel_search})
     void onclick(View v) {
         switch (v.getId()) {
             case R.id.rel_back:
@@ -522,39 +525,53 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
             // 代理出价
             case R.id.tv_agent_price:
-//                if (!isLogin()) {
-                SingleCall.getInstance()
+               /* SingleCall.getInstance()
                         .addAction(AuctionItemActivity.this, AppConstant.oneMessage)
                         .addValid(new LoginValid(AuctionItemActivity.this))
-                        .doCall();
+                        .doCall();*/
 
-
-//                }
-
-
-             /*   bottomDialog = BottomDialog
+                bottomDialog = BottomDialog
                         .create(getSupportFragmentManager())
                         .setLayoutRes(R.layout.price_dialog)
                         .setCancelOutside(true)
                         .setViewListener(this)
-                        .setTag("One")
-                        .show();*/
-
-
+                        .setTag(AppConstant.oneMessage)
+                        .show();
                 break;
             // 出价
             case R.id.tv_noagent_price:
 //                if (!isLogin()) {
-                SingleCall.getInstance()
+              /*  SingleCall.getInstance()
                         .addAction(AuctionItemActivity.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(AuctionItemActivity.this))
+                        .doCall();*/
+
+                bottomDialog = BottomDialog
+                        .create(getSupportFragmentManager())
+                        .setLayoutRes(R.layout.price_dialog)
+                        .setCancelOutside(true)
+                        .setViewListener(this)
+                        .setTag(AppConstant.twoMessage)
+                        .show();
+//                }
+
+                break;
+            // 参拍提醒  加入关注
+            case R.id.ll_one_bottom:
+
+                SingleCall.getInstance()
+                        .addAction(AuctionItemActivity.this, AppConstant.threeMessage)
                         .addValid(new LoginValid(AuctionItemActivity.this))
                         .doCall();
 
 
-//                }
-
                 break;
-
+            case R.id.ll_two_bottom:
+                showContractDialog();
+                break;
+            // 分享
+            case R.id.rel_search:
+                break;
         }
     }
 
@@ -574,12 +591,12 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     @Override
     public void bindView(View view) {
         TextView mTextConfirm = (TextView) view.findViewById(R.id.tv_confirm_price);
-        if (bottomDialog.getFragmentTag().equals("One"))
+        if (bottomDialog.getFragmentTag().equals(AppConstant.oneMessage))
             mTextConfirm.setText("代理出价");
         else
             mTextConfirm.setText("确认出价");
 
-
+//        sCheckBox = (SmoothCheckBox) view.findViewById(R.id.sCheckbox);
         view.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -590,10 +607,20 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             @Override
             public void onClick(View v) {
 
-                if (bottomDialog.getTag().equals("one")) {
-                    mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
+                if (bottomDialog.getFragmentTag().equals(AppConstant.oneMessage)) {
+                    SingleCall.getInstance()
+                            .addAction(AuctionItemActivity.this, AppConstant.oneMessage)
+                            .addValid(new LoginValid(AuctionItemActivity.this))
+                            .doCall();
+
+
                 } else {
-                    mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
+                    SingleCall.getInstance()
+                            .addAction(AuctionItemActivity.this, AppConstant.twoMessage)
+                            .addValid(new LoginValid(AuctionItemActivity.this))
+                            .doCall();
+
+
                 }
 
 
@@ -634,54 +661,24 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     }
 
 
-    @OnClick({R.id.rel_back, R.id.rel_search, R.id.ll_one_bottom, R.id.ll_two_bottom, R.id.tv_agent_price, R.id.tv_noagent_price})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rel_back:
-                break;
-            case R.id.rel_search:
-                break;
-            // 参拍提醒  加入关注
-            case R.id.ll_one_bottom:
-                mPresenter.getAddFavBean(auctItemId, AppConstant.goods);
-                break;
-            case R.id.ll_two_bottom:
-                showContractDialog();
-                break;
-            case R.id.tv_agent_price:
-                break;
-            case R.id.tv_noagent_price:
-                break;
-        }
-    }
-
     public static void gotoAuctionItemActivity(BaseActivity mContext, int id) {
         Bundle bundle = new Bundle();
         bundle.putInt(AppConstant.auctionItemId, id);
         mContext.startActivity(AuctionItemActivity.class, bundle);
     }
 
-
+    // 登录验证执行操作
     @Override
     public void call(String tag) {
+        //todo 不能在 onresume 中执行Commit
         if (AppConstant.oneMessage.equals(tag)) {
-            bottomDialog = BottomDialog
-                    .create(getSupportFragmentManager())
-                    .setLayoutRes(R.layout.price_dialog)
-                    .setCancelOutside(true)
-                    .setViewListener(this)
-                    .setTag("One")
-                    .show();
-
-
-        } else if (AppConstant.twoMessage.equals(tag)) {
-            bottomDialog = BottomDialog
-                    .create(getSupportFragmentManager())
-                    .setLayoutRes(R.layout.price_dialog)
-                    .setCancelOutside(true)
-                    .setViewListener(this)
-                    .setTag("Two")
-                    .show();
+            mPresenter.getAgentBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
+        }
+        if (AppConstant.twoMessage.equals(tag)) {
+            mPresenter.getBidBeanRequest(goods_id, (int) Float.parseFloat(tvNum.getText().toString().substring(1)), null);
+        }
+        if (AppConstant.threeMessage.equals(tag)) {
+            mPresenter.getAddFavBean(auctItemId, AppConstant.goods);
         }
     }
 }

@@ -2,12 +2,14 @@ package com.intention.sqtwin.ui.main.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -15,6 +17,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.baserx.RxBus;
@@ -24,10 +27,13 @@ import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.ui.main.contract.AuctionOrgContract;
 import com.intention.sqtwin.ui.main.model.AuctionOrgModel;
 import com.intention.sqtwin.ui.main.presenter.AuctionOrgPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -46,7 +52,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, AuctionOrgModel> implements AuctionOrgContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener, View.OnClickListener {
+public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, AuctionOrgModel> implements AuctionOrgContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener, View.OnClickListener, Action {
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
     @BindView(R.id.left_title)
@@ -102,18 +108,23 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                 } else {
                     helper.setVisible(R.id.iv_focus, true);
                     helper.setText(R.id.tv_focus, "关注");
-                    helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            // 关注拍场
 
-                            currentPostion = position;
-                            currentFavId = itemListBean.getId();
-                            mPresenter.getAddFavArtFiledRequest(itemListBean.getId(), AppConstant.field);
-                        }
-                    });
                 }
+                helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 关注拍场
 
+                        currentPostion = position;
+                        currentFavId = itemListBean.getId();
+
+                        SingleCall.getInstance()
+                                .addAction(AuctionOrgActivity.this, AppConstant.oneMessage)
+                                .addValid(new LoginValid(AuctionOrgActivity.this))
+                                .doCall();
+
+                    }
+                });
                 helper.setText(R.id.tv_company_name, itemListBean.getOrganization().getName());
                 helper.setImageRoundUrl(R.id.iv_logo, itemListBean.getOrganization().getImage());
 //                helper.setText(R.id.tv_fouce_num, itemListBean.get);
@@ -125,26 +136,8 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
 
                 String start_time = itemListBean.getStart_time();
                 String end_time = itemListBean.getEnd_time();
-                try {
-                    Date startTime = PublicKetUtils.df.get().parse(start_time);
-                    Date endTime = PublicKetUtils.df.get().parse(end_time);
-                    Date currentTime = new Date();
-                    if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
-                        // 拍卖中
-                        long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
-                        helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
-
-                    } else if (currentTime.getTime() < startTime.getTime()) {
-//                未开拍
-                        helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
-
-                    } else {
-                        helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
-                    }
-//            if (new Date().getTime()<endTime.getTime()&&)
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                if (!TextUtils.isEmpty(start_time) && !TextUtils.isEmpty(end_time))
+                    showAuctionTime(helper, start_time, end_time);
 
 
             }
@@ -176,11 +169,41 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
 //        View allHeadView = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
 //        mLadapter.addHeaderView(allHeadView);
         mPresenter.getAuctionOrgRequest(artOrgId, page, status);
+
+        mLadapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) mContext, mcomAdapter.get(position).getId(), AppConstant.IntoWayOne);
+            }
+        });
+    }
+
+    private void showAuctionTime(ViewHolderHelper helper, String start_time, String end_time) {
+        try {
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
+            Date currentTime = new Date();
+            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+                // 拍卖中
+                long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
+                helper.setText(R.id.tv_time_calculate, "距结束" + (OverMin / (60 * 24) == 0 ? "" : (OverMin / 60 / 24 + "天")) + ((OverMin % (60 * 24)) / 60 == 0 ? "" : ((OverMin % (60 * 24)) / 60 + "时")) + OverMin % 60 + "分");
+
+            } else if (currentTime.getTime() < startTime.getTime()) {
+//                未开拍
+                helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
+
+            } else {
+                helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void StartLoading(String RequestId) {
-
+        if (AppConstant.oneMessage.equals(RequestId) && page == 0)
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
     @Override
@@ -212,35 +235,39 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
 
     @Override
     public void returnAuctionOrg(AuctionOrgBean auctionOrgBean) {
+
+
         // 第一页数据请求失败
         if (!auctionOrgBean.isIs_success() && page == 0) {
-            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-            mLoadingTip.setOnReloadListener(this);
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+//            mLoadingTip.setOnReloadListener(this);
             showShortToast(auctionOrgBean.getMessage());
             return;
         }
-        AuctionOrgBean.DataBean.OrganizationInfoBean organization_info = auctionOrgBean.getData().getOrganization_info();
-        if (organization_info.isIs_favorite()) {
-            ivFocus.setVisibility(View.GONE);
-            tvFocus.setText("已关注");
-        }
-        orgName.setText(organization_info.getName());
-        ImageLoaderUtils.displayRound(this, ivIcon, organization_info.getImage());
-        tvLostNum.setText(organization_info.getGoods_count() + "件");
-        tvFans.setText(organization_info.getFans_count() + "人");
-        tvDesc.setText(organization_info.getDescription());
+
         // 非第一页数据请求失败 不同于网路请求，由服务器不反悔数据
-        if (!auctionOrgBean.isIs_success())
+        if (!auctionOrgBean.isIs_success() && page != 0)
             return;
         if (page == 0 && mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
-
+            AuctionOrgBean.DataBean.OrganizationInfoBean organization_info = auctionOrgBean.getData().getOrganization_info();
+            if (organization_info.isIs_favorite()) {
+                ivFocus.setVisibility(View.GONE);
+                tvFocus.setText("已关注");
+            }
+            orgName.setText(organization_info.getName());
+            ImageLoaderUtils.displayRound(this, ivIcon, organization_info.getImage());
+            tvLostNum.setText(organization_info.getGoods_count() + "件");
+            tvFans.setText(organization_info.getFans_count() + "人");
+            tvDesc.setText(organization_info.getDescription());
         }
         mcomAdapter.addAll(auctionOrgBean.getData().getAuction_field_list());
         ++page;
-        /*if (page == auctionOrgBean.getData().getTotal_page())
-            mRecyclerView.setNoMore(true);*/
+        if (page == auctionOrgBean.getData().getPage_count()) {
+            mRecyclerView.setNoMore(true);
+            return;
+        }
     }
 
     // 机构的关注
@@ -318,7 +345,11 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                 break;
             // 拍卖机构的关注
             case R.id.rel_focus:
-                mPresenter.getAddFavArtRequest(artOrgId, AppConstant.organ);
+                SingleCall.getInstance()
+                        .addAction(AuctionOrgActivity.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(AuctionOrgActivity.this))
+                        .doCall();
+
                 break;
 
 
@@ -336,5 +367,13 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     @OnClick(R.id.rel_back)
     public void onViewClicked() {
         finish();
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavArtFiledRequest(currentFavId, AppConstant.field);
+        if (AppConstant.twoMessage.equals(tag))
+            mPresenter.getAddFavArtRequest(artOrgId, AppConstant.organ);
     }
 }

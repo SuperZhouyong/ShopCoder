@@ -223,6 +223,11 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         }
         //拍场
         if (mcategory_id == 2) {
+            if (page >= storeInfoComBean.getData().getField_page_total()){
+                mLRecyclerView.setNoMore(true);
+                return;
+
+            }
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());
             mAdapter.addAll(storeInfoComBean.getData().getFavorite_field());

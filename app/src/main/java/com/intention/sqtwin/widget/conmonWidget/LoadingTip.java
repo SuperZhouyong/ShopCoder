@@ -3,14 +3,10 @@ package com.intention.sqtwin.widget.conmonWidget;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -124,6 +120,9 @@ public class LoadingTip extends LinearLayout {
         switch (noLoadTip) {
             case NoCollect:
                 setVisibility(View.VISIBLE);
+                relTip.setVisibility(GONE);
+                llTip.setVisibility(VISIBLE);
+                img_tip_logo.setVisibility(VISIBLE);
                 img_tip_logo.setImageResource(R.mipmap.no_date);
                 tv_tips.setText("暂无内容");
                 bt_operate.setVisibility(View.GONE);

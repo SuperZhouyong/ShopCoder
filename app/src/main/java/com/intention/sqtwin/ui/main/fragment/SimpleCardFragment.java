@@ -17,6 +17,9 @@ import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.PpAuctionAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.LazzyFragment;
+import com.intention.sqtwin.base.LoginValid;
+import com.intention.sqtwin.bean.AddFavBean;
+import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
@@ -26,13 +29,16 @@ import com.intention.sqtwin.ui.main.presenter.PpAuctionPresenter;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import ezy.ui.view.BannerView;
+import rx.functions.Action1;
 
 
 //@SuppressLint("ValidFragment")
-public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnLoadMoreListener, View.OnClickListener, OnRefreshListener {
+public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnLoadMoreListener, View.OnClickListener, OnRefreshListener, Action {
     @BindView(R.id.mRecyclerView)
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -52,6 +58,8 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     private TextView tv_preview;
     private TextView tv_over;
     private View vgll;
+    private Integer currentPostion;
+    private Integer currentFavId;
 
     public static SimpleCardFragment getInstance(String title, Integer category_id) {
         SimpleCardFragment sf = new SimpleCardFragment();
@@ -112,7 +120,20 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
                 AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), mAdapter.get(position).getId(), AppConstant.IntoWayOne);
             }
         });
+        mRxManager.on(AppConstant.PpAuction, new Action1<FavBean>() {
+            @Override
+            public void call(FavBean favBean) {
+                currentPostion = favBean.getPostion();
+                currentFavId = favBean.getFavId();
+                SingleCall.getInstance()
+                        .addAction(SimpleCardFragment.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
 
+            }
+
+
+        });
     }
 
     @Override
@@ -193,6 +214,18 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
 
     }
 
+    @Override
+    public void returnAddFavBean(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        // 收藏完毕就刷新
+        mAdapter.AddList(currentFavId);
+        mAdapter.notifyItemChanged(currentPostion);
+        showShortToast(addFavBean.getMessage());
+    }
+
 
     @Override
     public void reloadLodTip() {
@@ -239,5 +272,10 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     public void onRefresh() {
         page_no = 0;
         mPresenter.getPpAlldate(category_id, status, page_no);
+    }
+
+    @Override
+    public void call(String tag) {
+        mPresenter.getAddFavBean(currentFavId,AppConstant.field);
     }
 }

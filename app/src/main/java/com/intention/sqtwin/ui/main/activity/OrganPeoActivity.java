@@ -15,6 +15,7 @@ import com.intention.sqtwin.R;
 import com.intention.sqtwin.adapter.OrganPeoAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AddFavBean;
@@ -23,9 +24,12 @@ import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.ui.main.contract.OrganPeContract;
 import com.intention.sqtwin.ui.main.model.OrganPeModel;
 import com.intention.sqtwin.ui.main.presenter.OrganPePresenter;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -43,7 +47,7 @@ import rx.functions.Action1;
  * QQ: 437397161
  */
 
-public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeModel> implements OrganPeContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener {
+public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeModel> implements OrganPeContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener, Action {
 
     @BindView(R.id.left_title)
     TextView leftTitle;
@@ -117,7 +121,11 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
             public void call(FavBean favBean) {
                 currentPostion = favBean.getPostion();
                 currentFavId = favBean.getFavId();
-                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+                SingleCall.getInstance()
+                        .addAction(OrganPeoActivity.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(OrganPeoActivity.this))
+                        .doCall();
+
             }
 
 
@@ -230,5 +238,11 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
             case R.id.center_title:
                 break;
         }
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavBean(currentFavId, AppConstant.field);
     }
 }

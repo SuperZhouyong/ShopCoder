@@ -18,17 +18,22 @@ import com.intention.sqtwin.adapter.HotAuctionItemAdapter;
 import com.intention.sqtwin.adapter.TaoBaoAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.bean.TaobaoStoreInfoBean;
 import com.intention.sqtwin.ui.main.activity.AuctionFiledActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.ui.main.fragment.MallFragment;
 import com.intention.sqtwin.ui.mall.contract.TaoBaoStoreContract;
 import com.intention.sqtwin.ui.mall.model.TaoBaoStorModel;
 import com.intention.sqtwin.ui.mall.presenter.TaoBaoStorPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +48,7 @@ import rx.functions.Action1;
  * QQ: 437397161
  */
 
-public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, TaoBaoStorModel> implements TaoBaoStoreContract.View, OnRefreshListener, LoadingTip.onReloadListener, View.OnClickListener {
+public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, TaoBaoStorModel> implements TaoBaoStoreContract.View, OnRefreshListener, LoadingTip.onReloadListener, View.OnClickListener, Action {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -149,7 +154,11 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
             public void call(FavBean favBean) {
                 currentPostion = favBean.getPostion();
                 currentFavId = favBean.getFavId();
-                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+                SingleCall.getInstance()
+                        .addAction(TaoBaoStoreInfoActivity.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(TaoBaoStoreInfoActivity.this))
+                        .doCall();
+
             }
 
 
@@ -258,5 +267,11 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
                 break;
 
         }
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavBean(currentFavId, AppConstant.field);
     }
 }

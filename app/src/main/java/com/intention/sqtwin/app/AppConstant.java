@@ -89,6 +89,7 @@ public class AppConstant {
     public static final String TaoBaoFiled = "TaoBaoFiled";
     public static final String MallFiled = "MallFiled";
     public static final String OrganPeoFiled = "OrganPeoFiled";
+    public static final String PpAuction = "PpAuction";
     //排场
     public static final String field = "field";
     // 拍品
@@ -116,4 +117,5 @@ public class AppConstant {
     // 商品名字
     public static final String GoodsPageTitle = "GoodsPageTitle";
     public static final String SettingPw = "SettingPw";
+
 }

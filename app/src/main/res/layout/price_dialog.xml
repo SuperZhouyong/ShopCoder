@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -10,6 +11,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tv_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -18,14 +20,24 @@
             android:textColor="@color/font_1"
             android:textSize="@dimen/x30" />
 
-        <CheckBox
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+       <!-- <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+            android:id="@+id/sCheckbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/tv_desc" />
+            android:layout_toRightOf="@id/tv_desc"
+            app:color_checked="@color/app_bottom_colour"
+            app:color_tick="@color/font_2"
+            app:color_unchecked="@color/app_bottom_colour" />-->
+        <!--  <CheckBox
+
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:layout_toRightOf="@id/tv_desc" />-->
 
         <ImageView
+
             android:id="@+id/iv_close"
             android:layout_width="@dimen/x50"
             android:layout_height="@dimen/y50"
@@ -92,10 +104,10 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="@dimen/y20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x30">
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginTop="@dimen/y20">
 
         <TextView
             android:id="@+id/tv_one"
@@ -138,12 +150,12 @@
     </RelativeLayout>
 
     <TextView
-        android:layout_marginBottom="@dimen/y40"
         android:id="@+id/tv_confirm_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_gravity="center_horizontal"
+
+        android:layout_marginBottom="@dimen/y40"
         android:layout_marginTop="@dimen/y30"
         android:background="@drawable/tv_noagent_price"
         android:paddingBottom="@dimen/y10"

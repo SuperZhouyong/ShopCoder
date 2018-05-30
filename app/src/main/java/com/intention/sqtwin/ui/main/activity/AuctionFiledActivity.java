@@ -21,6 +21,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.AddFavBean;
@@ -29,8 +30,11 @@ import com.intention.sqtwin.bean.TabEntity;
 import com.intention.sqtwin.ui.main.contract.AuctionFiledContract;
 import com.intention.sqtwin.ui.main.model.AuctionFiledModel;
 import com.intention.sqtwin.ui.main.presenter.AuctionFiledPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.util.ArrayList;
 
@@ -45,7 +49,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, AuctionFiledModel> implements AuctionFiledContract.View, LoadingTip.onReloadListener, OnTabSelectListener, View.OnClickListener {
+public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, AuctionFiledModel> implements AuctionFiledContract.View, LoadingTip.onReloadListener, OnTabSelectListener, View.OnClickListener, Action {
 
 
     @BindView(R.id.iv_back)
@@ -491,11 +495,22 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
                 break;
             // 机构加入关注
             case R.id.rel_focus:
-                if (field_info.getOrganization() != null)
-                    mPresenter.getAddFavBean(field_info.getOrganization().getId(), AppConstant.organ);
-                else
-                    showShortToast("此机构暂不支持关注");
+                SingleCall.getInstance()
+                        .addAction(AuctionFiledActivity.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(AuctionFiledActivity.this))
+                        .doCall();
+
                 break;
+        }
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag)) {
+            if (field_info.getOrganization() != null)
+                mPresenter.getAddFavBean(field_info.getOrganization().getId(), AppConstant.organ);
+            else
+                showShortToast("此机构暂不支持关注");
         }
     }
 }

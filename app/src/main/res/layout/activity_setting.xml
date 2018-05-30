@@ -5,12 +5,12 @@
     android:orientation="vertical">
 
     <include layout="@layout/actionbar_title" />
+
     <RelativeLayout
         android:id="@+id/rel_pay_pw"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y107"
         android:background="@color/white">
-
 
 
         <TextView
@@ -39,12 +39,12 @@
             android:layout_marginRight="@dimen/x22"
             android:background="@color/app_bottom_colour" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/rel_login_pw"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y107"
         android:background="@color/white">
-
 
 
         <TextView
@@ -67,4 +67,21 @@
 
 
     </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_login_out"
+        android:layout_width="@dimen/x560"
+        android:layout_height="@dimen/y70"
+        android:layout_centerHorizontal="true"
+
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/y50"
+        android:layout_marginTop="@dimen/y50"
+        android:background="@drawable/tv_bg_confirm"
+        android:gravity="center"
+
+        android:text="退出登录"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x30" />
 </LinearLayout>

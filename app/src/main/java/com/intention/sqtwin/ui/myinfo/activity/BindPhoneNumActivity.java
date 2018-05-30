@@ -12,12 +12,13 @@ import android.widget.TextView;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.utils.conmonUtil.RegexUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
+/**ap
  * Description: 保佑无bug
  * Data：2018/5/18-上午1:15
  * Blog：Super简单
@@ -80,8 +81,11 @@ public class BindPhoneNumActivity extends BaseActivity {
                 break;
             case R.id.tv_confirm:
                 String PhoneNum = ecName.getText().toString();
-                if (TextUtils.isEmpty(PhoneNum))
+                if (TextUtils.isEmpty(PhoneNum) || !RegexUtils.isMobileSimple(PhoneNum)) {
                     showShortToast("请输入正确的手机号");
+                    return;
+                }
+
                 Intent intent = new Intent();
                 intent.putExtra(AppConstant.PhoneNum, PhoneNum);
                 setResult(RESULT_OK, intent);

@@ -22,6 +22,7 @@ import com.intention.sqtwin.adapter.MallWorksAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.OnItemClickListener;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllMallDateBean;
@@ -33,10 +34,13 @@ import com.intention.sqtwin.ui.main.contract.MallContract;
 import com.intention.sqtwin.ui.main.model.MallModel;
 import com.intention.sqtwin.ui.main.presenter.MallPresenter;
 import com.intention.sqtwin.ui.mall.activity.TaoBaoStoreInfoActivity;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -51,7 +55,7 @@ import rx.functions.Action1;
  * Author: ZhouYong
  */
 
-public class MallFragment extends BaseFragment<MallPresenter, MallModel> implements MallContract.View, OnRefreshListener, LoadingTip.onReloadListener {
+public class MallFragment extends BaseFragment<MallPresenter, MallModel> implements MallContract.View, OnRefreshListener, LoadingTip.onReloadListener, Action {
     @BindView(R.id.rel_search)
     RelativeLayout relSearch;
     @BindView(R.id.iv_love)
@@ -147,7 +151,11 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
             public void call(FavBean favBean) {
                 currentPostion = favBean.getPostion();
                 currentFavId = favBean.getFavId();
-                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+                SingleCall.getInstance()
+                        .addAction(MallFragment.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+
             }
 
 
@@ -261,5 +269,11 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
     @Override
     public void reloadLodTip() {
         mPresenter.getAllMallDateRequest();
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavBean(currentFavId, AppConstant.field);
     }
 }

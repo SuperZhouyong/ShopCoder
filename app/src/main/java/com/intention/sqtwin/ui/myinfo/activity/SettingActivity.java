@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +39,8 @@ public class SettingActivity extends BaseActivity {
     RelativeLayout relPayPw;
     @BindView(R.id.rel_login_pw)
     RelativeLayout relLoginPw;
+    @BindView(R.id.tv_login_out)
+    TextView tvLoginOut;
 
     @Override
     public int getLayoutId() {
@@ -53,12 +56,12 @@ public class SettingActivity extends BaseActivity {
     public void initView() {
         leftTitle.setVisibility(View.GONE);
         relSearch.setVisibility(View.GONE);
-        centerTitle.setText("会员中心");
+        centerTitle.setText("设置密码");
 
     }
 
 
-    @OnClick({R.id.iv_back, R.id.rel_back, R.id.rel_pay_pw, R.id.rel_login_pw})
+    @OnClick({R.id.iv_back, R.id.rel_back, R.id.rel_pay_pw, R.id.rel_login_pw, R.id.tv_login_out})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
@@ -74,6 +77,17 @@ public class SettingActivity extends BaseActivity {
                 SettingPassWordActivity.gotoSettingPwActivity(this, "登录密码");
 
                 break;
+            // 退出登录
+            case R.id.tv_login_out:
+                if (isLogin()) {
+                    UserUtil.setLoginInfo(null);
+                    showShortToast("已完成退出登录");
+
+                } else
+                    showShortToast("您未登录");
+
+                break;
+
         }
     }
 

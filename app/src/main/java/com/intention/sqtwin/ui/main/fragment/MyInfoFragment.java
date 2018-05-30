@@ -14,6 +14,7 @@ import com.intention.sqtwin.R;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.app.AppConstant;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.baserx.RxSchedulers;
@@ -24,6 +25,7 @@ import com.intention.sqtwin.ui.main.activity.MainActivity;
 import com.intention.sqtwin.ui.myinfo.activity.AccountActivity;
 import com.intention.sqtwin.ui.myinfo.activity.EditInfoActivity;
 import com.intention.sqtwin.ui.myinfo.activity.IdentityProveActivity;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.ui.myinfo.activity.MyCompeteActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
@@ -70,16 +72,16 @@ public class MyInfoFragment extends LazzyFragment {
     RelativeLayout relMycompete;
     @BindView(R.id.iv_identity)
     ImageView ivIdentity;
-   /* @BindView(R.id.rel_identit)
-    RelativeLayout relIdentit;*/
+    /* @BindView(R.id.rel_identit)
+     RelativeLayout relIdentit;*/
     @BindView(R.id.iv_setting)
     ImageView ivSetting;
     @BindView(R.id.rel_setting)
     RelativeLayout relSetting;
     @BindView(R.id.iv_help)
     ImageView ivHelp;
-   /* @BindView(R.id.rel_help)
-    RelativeLayout relHelp;*/
+    /* @BindView(R.id.rel_help)
+     RelativeLayout relHelp;*/
     @BindView(R.id.iv_store_manage)
     ImageView ivStoreManage;
     @BindView(R.id.rel_store_mange)
@@ -109,9 +111,18 @@ public class MyInfoFragment extends LazzyFragment {
 
     @Override
     protected void initView() {
+
+
 //        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
-        LogUtils.logd(TAG +"-------------"+ SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
+        LogUtils.logd(TAG + "-------------" + SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
 //        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName)))
         tvname.setText(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName));
 
@@ -120,6 +131,12 @@ public class MyInfoFragment extends LazzyFragment {
     // R.id.rel_identit,  R.id.rel_help,
     @OnClick({R.id.iv_shareicon, R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.rel_message, R.id.rel_acount, R.id.rel_mycompete, R.id.rel_setting, R.id.rel_store_mange, R.id.rel_focus})
     public void onViewClicked(View view) {
+
+        if (!isLogin()) {
+            LoginActivity.start(getActivity());
+            return;
+        }
+
         switch (view.getId()) {
             case R.id.iv_shareicon:
                 startActivity(getActivity(), EditInfoActivity.class);

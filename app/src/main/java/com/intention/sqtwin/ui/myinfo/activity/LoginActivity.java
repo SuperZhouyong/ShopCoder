@@ -1,6 +1,7 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -143,7 +144,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     }
 
     // 进入登陆界面
-    public static void start(BaseActivity context) {
-        context.startActivity(LoginActivity.class);
+    public static void start(Context context) {
+        ((BaseActivity) context).startActivity(LoginActivity.class);
     }
 }

@@ -19,7 +19,7 @@
 
         <RelativeLayout
             android:id="@+id/rel_time_d"
-            android:layout_width="@dimen/x234"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/y40"
             android:layout_alignBottom="@id/iv_pos_goods"
             android:layout_alignParentLeft="true"

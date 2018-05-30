@@ -2,6 +2,7 @@ package com.intention.sqtwin.ui.main.presenter;
 
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.ui.main.contract.PpAuctionContract;
 
@@ -38,6 +39,22 @@ public class PpAuctionPresenter extends PpAuctionContract.Presenter {
                 super.onStart();
                 mView.StartLoading(AppConstant.oneMessage);
             }
+        }));
+    }
+    @Override
+    public void getAddFavBean(Integer fav_id, String fav_type) {
+        mRxManage.add(mModel.getAddFavFiled(fav_id, fav_type).subscribe(new RxSubscriber<AddFavBean>(mContext) {
+            @Override
+            protected void _onNext(AddFavBean addFavBean) {
+                mView.returnAddFavBean(addFavBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.twoMessage,message);
+            }
+
+
         }));
     }
 }

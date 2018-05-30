@@ -90,14 +90,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     TextView userName;
     @BindView(R.id.rel_name)
     RelativeLayout relName;
-    /*  @BindView(R.id.iv_postion)
-      ImageView ivPostion;
-      @BindView(R.id.tv_postion)
-      TextView tvPostion;
-      @BindView(R.id.user_postion)
-      TextView userPostion;
-      @BindView(R.id.rel_postion)
-      RelativeLayout relPostion;*/
+
     @BindView(R.id.tv_sex)
     TextView tvSex;
     @BindView(R.id.iv_sex)
@@ -106,22 +99,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     TextView userSex;
     @BindView(R.id.rel_sex)
     RelativeLayout relSex;
-    /* @BindView(R.id.tv_birthday)
-     TextView tvBirthday;
-     @BindView(R.id.iv_birthday)
-     ImageView ivBirthday;
-     @BindView(R.id.user_birthday)
-     TextView userBirthday;
-     @BindView(R.id.rel_birthday)
-     RelativeLayout relBirthday;*/
-  /*  @BindView(R.id.tv_city)
-    TextView tvCity;
-    @BindView(R.id.iv_city)
-    ImageView ivCity;
-    @BindView(R.id.user_city)
-    TextView userCity;
-    @BindView(R.id.rel_city)
-    RelativeLayout relCity;*/
+
     @BindView(R.id.tv_address)
     TextView tvAddress;
     @BindView(R.id.iv_address)
@@ -231,8 +209,8 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
                     if (!TextUtils.isEmpty(userName.getText().toString().trim()))
                         submitClientInfo.setName(userName.getText().toString().trim());
 
-                    /*if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
-                        submitClientInfo.setPhone(userPhone.getText().toString().trim());*/
+                   /* if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
+                        submitClientInfo.set(userPhone.getText().toString().trim());*/
 
                    /* if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getImage_url()))
                         submitClientInfo.setAvatar(updateImageBean.getData().get(0).getImage_url());*/
@@ -364,12 +342,14 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     @Override
     public void returnEditInfoBena(MyInfoBean myInfoBean) {
         if (!myInfoBean.isIs_success()) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
             showShortToast(myInfoBean.getMessage());
             return;
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         ImageLoaderUtils.displayRound(mContext, userIcon, myInfoBean.getData().getImage());
+        submitClientInfo.setAvatar(myInfoBean.getData().getImage());
         if (!TextUtils.isEmpty(myInfoBean.getData().getImage()))
             SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, myInfoBean.getData().getImage());
         if (!TextUtils.isEmpty(myInfoBean.getData().getName()))
@@ -384,8 +364,10 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
 //                        userCity.setText(data.getCity_id());
         userAddress.setText(data.getAddress());
         userPhone.setText(data.getPhone());
-        mList.clear();
-        mList.add(myInfoBean.getData().getImage());
+
+
+       /* mList.clear();
+        mList.add(myInfoBean.getData().getImage());*/
     }
 
     @Override
@@ -395,10 +377,10 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
             showShortToast(updateImageBean.getMessage());
             return;
         }
-        if (!TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl()))
-            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
+       /* if (!TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl()))
+            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());*/
         // 每次图片上传成功都更新本地头像
-        SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, submitClientInfo.getAvatar());
+
         if (!TextUtils.isEmpty(userSex.getText().toString().trim()))
             submitClientInfo.setSex(userSex.getText().toString().trim());
 
@@ -411,9 +393,12 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
 //        if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
 //            submitClientInfo.setPhone(userPhone.getText().toString().trim());
 
-        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl()))
-            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
+        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl())){
 
+            submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
+            SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, updateImageBean.getData().get(0).getUrl());
+
+        }
         mPresenter.updateAnnEditInfoRequest(submitClientInfo);
 
     }

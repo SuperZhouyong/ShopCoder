@@ -1,6 +1,6 @@
 package com.intention.sqtwin.ui.main.activity;
 
-import android.os.Bundle;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -9,12 +9,13 @@ import android.widget.TextView;
 import com.flyco.tablayout.CommonTabLayout;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.ui.main.contract.SearchContract;
 import com.intention.sqtwin.widget.ClearEditText;
 import com.intention.sqtwin.widget.flow.FlowTagLayout;
 import com.intention.sqtwin.widget.flow.TagAdapter;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+
 import butterknife.OnClick;
 
 /**
@@ -24,7 +25,7 @@ import butterknife.OnClick;
  * Author: ZhouYong
  */
 
-public class SearchActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity implements SearchContract.View {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -62,9 +63,9 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        leftTitle.setVisibility(View.GONE);
+        leftTitle.setVisibility(android.view.View.GONE);
         centerTitle.setText("搜索");
-        relSearch.setVisibility(View.GONE);
+        relSearch.setVisibility(android.view.View.GONE);
 
 
         TagAdapter tagAdapter = new TagAdapter(this);
@@ -85,4 +86,28 @@ public class SearchActivity extends BaseActivity {
     }
 
 
+    @Override
+    public void StartLoading(String RequestId) {
+
+    }
+
+    @Override
+    public void showLoading(String RequestId, String title) {
+
+    }
+
+    @Override
+    public void stopLoading(String RequestId) {
+
+    }
+
+    @Override
+    public void showErrorTip(String RequestId, String msg) {
+
+    }
+
+    @Override
+    public void returnSearchInfo() {
+
+    }
 }

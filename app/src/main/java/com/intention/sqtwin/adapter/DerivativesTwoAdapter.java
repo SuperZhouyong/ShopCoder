@@ -4,12 +4,15 @@ import android.content.Context;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
+import android.view.View;
 import android.widget.TextView;
 
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.DerivativesBean;
+import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
 
 import java.util.List;
 
@@ -26,12 +29,20 @@ public class DerivativesTwoAdapter extends CommonRecycleViewAdapter<DerivativesB
     }
 
     @Override
-    public void convert(ViewHolderHelper helper, DerivativesBean.DataBean.GoodsListBean goodsListBean, int position) {
+    public void convert(ViewHolderHelper helper, final DerivativesBean.DataBean.GoodsListBean goodsListBean, int position) {
         helper.setImageUrl(R.id.iv_goods_pic, goodsListBean.getGoods_image());
         helper.setText(R.id.tv_goods_name, goodsListBean.getGoods_name());
 //                helper.setText(R.id.tv_price,itemListBean.getCurrent_price());
         helper.setText(R.id.tv_price, "￥ " + goodsListBean.getGoods_price());
         updateTextColor((TextView) helper.getView(R.id.tv_price), 0, 1);
+
+        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 拍品页
+                AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext,goodsListBean.getGoods_id());
+            }
+        });
     }
 
     private void updateTextColor(TextView tv, int starts, int end) {

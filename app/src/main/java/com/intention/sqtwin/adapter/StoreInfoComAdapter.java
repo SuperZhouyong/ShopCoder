@@ -113,8 +113,7 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
 
     private void convertTwo(ViewHolderHelper helper, Object o, int position) {
         final StoreInfoComBean.DataBean.FavoriteFieldBean recommendFieldBean = (StoreInfoComBean.DataBean.FavoriteFieldBean) o;
-        helper.setText(R.id.tv_company_name, recommendFieldBean.getOrganization().getName());
-        helper.setImageRoundUrl(R.id.iv_logo, recommendFieldBean.getOrganization().getImage());
+
         helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
         helper.setText(R.id.tv_lot_num, String.valueOf(recommendFieldBean.getItem_count()));
         helper.setText(R.id.tv_price_num, String.valueOf(recommendFieldBean.getBid_count()));
@@ -158,23 +157,19 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
 
     private void showAuctionTime(ViewHolderHelper helper, String start_time, String end_time) {
         try {
-            Date startTime = null;
-            Date endTime = null;
-            if (!TextUtils.isEmpty(start_time))
-                startTime = PublicKetUtils.df.get().parse(start_time);
-            if (!TextUtils.isEmpty(end_time))
-                endTime = PublicKetUtils.df.get().parse(end_time);
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
             Date currentTime = new Date();
-            if (startTime != null && endTime != null && currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
+            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
                 // 拍卖中
                 long OverMin = (endTime.getTime() - currentTime.getTime()) / (1000 * 60);
-                helper.setText(R.id.tv_time_calculate, OverMin / 60 + "时" + OverMin % 60 + "分");
+                helper.setText(R.id.tv_time_calculate, "距结束" + (OverMin / (60 * 24) == 0 ? "" : (OverMin / 60 / 24 + "天")) + ((OverMin % (60 * 24)) / 60 == 0 ? "" : ((OverMin % (60 * 24)) / 60 + "时")) + OverMin % 60 + "分");
 
-            } else if (startTime != null && currentTime.getTime() < startTime.getTime()) {
+            } else if (currentTime.getTime() < startTime.getTime()) {
 //                未开拍
                 helper.setText(R.id.tv_time_calculate, "距开拍" + start_time);
 
-            } else if (endTime != null && currentTime.getTime() > endTime.getTime()) {
+            } else {
                 helper.setText(R.id.tv_time_calculate, "已结束" + end_time);
             }
         } catch (ParseException e) {

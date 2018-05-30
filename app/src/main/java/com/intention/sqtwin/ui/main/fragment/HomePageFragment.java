@@ -21,6 +21,7 @@ import com.intention.sqtwin.adapter.HeadTwoAdapter;
 import com.intention.sqtwin.adapter.HomeAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseFragment;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AllDateBean;
 import com.intention.sqtwin.bean.FavBean;
@@ -33,10 +34,13 @@ import com.intention.sqtwin.ui.main.contract.MainContract;
 import com.intention.sqtwin.ui.main.model.MainModel;
 import com.intention.sqtwin.ui.main.presenter.MainPresenter;
 import com.intention.sqtwin.ui.mall.activity.DerivativesActivity;
+import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +54,7 @@ import rx.functions.Action1;
  * Created by Administrator on 2017/2/9 0009.
  */
 
-public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener, View.OnClickListener, OnRefreshListener {
+public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> implements MainContract.View, LoadingTip.onReloadListener, View.OnClickListener, OnRefreshListener, Action {
     @BindView(R.id.mLRecyclerView)
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -158,7 +162,11 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
             public void call(FavBean favBean) {
                 currentPostion = favBean.getPostion();
                 currentFavId = favBean.getFavId();
-                mPresenter.getAddFavBean(favBean.getFavId(), AppConstant.field);
+                SingleCall.getInstance()
+                        .addAction(HomePageFragment.this, AppConstant.oneMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+
             }
 
 
@@ -274,6 +282,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 startActivity(DerivativesActivity.class);
                 break;
             case R.id.iv_three:
+                mRxManager.post(AppConstant.SwitchToPostion, 3);
                 // 商城
                 break;
             case R.id.iv_fore:
@@ -304,5 +313,11 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     @Override
     public void onRefresh() {
         mPresenter.getHomeAllDate();
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavBean(currentFavId, AppConstant.field);
     }
 }
