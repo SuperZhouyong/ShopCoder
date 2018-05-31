@@ -2,7 +2,11 @@ package com.intention.sqtwin.ui.main.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -15,6 +19,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
@@ -23,6 +32,8 @@ import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.baserx.RxSchedulers;
+import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AutionItemDetailBean;
@@ -33,19 +44,33 @@ import com.intention.sqtwin.ui.main.model.AutionItemModel;
 import com.intention.sqtwin.ui.main.presenter.AutionItemPresenter;
 import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.checkbox.SmoothCheckBox;
+import com.intention.sqtwin.utils.conmonUtil.AppUtil;
+import com.intention.sqtwin.utils.conmonUtil.DiskUtil;
+import com.intention.sqtwin.utils.conmonUtil.FileUtils;
+import com.intention.sqtwin.utils.conmonUtil.GlideRoundTransformUtil;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
+import com.intention.sqtwin.utils.conmonUtil.ImageUtils;
+import com.intention.sqtwin.utils.conmonUtil.ShareUtil;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
 import ezy.ui.view.BannerView;
 import me.shaohui.bottomdialog.BaseBottomDialog;
 import me.shaohui.bottomdialog.BottomDialog;
+import rx.Observable;
+import rx.Subscriber;
 
 /**
  * Description: 拍品页
@@ -55,7 +80,7 @@ import me.shaohui.bottomdialog.BottomDialog;
  * QQ: 437397161
  */
 
-public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, AutionItemModel> implements AutionItemContract.View, LoadingTip.onReloadListener, BottomDialog.ViewListener, Action {
+public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, AutionItemModel> implements AutionItemContract.View, LoadingTip.onReloadListener, BottomDialog.ViewListener, Action, View.OnClickListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -133,7 +158,9 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private boolean isAgentBid;
     private boolean isBid;
     private LinearLayout rel_qr;
-//    private SmoothCheckBox sCheckBox;
+    private Dialog shareDialog;
+    private String wx_code;
+    //    private SmoothCheckBox sCheckBox;
 
     @Override
     public int getLayoutId() {
@@ -147,11 +174,11 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
     @Override
     public void initView() {
-        // 获取拍品Id
-//        auctItemId = getIntent().getIntExtra(AppConstant.auctionItemId, -1);
-        auctItemId = getIntent().getExtras().getInt(AppConstant.auctionItemId, -1);
-//        relSearch.setVisibility(View.GONE);
 
+
+        // 获取拍品Id
+        auctItemId = getIntent().getExtras().getInt(AppConstant.auctionItemId, -1);
+        relSearch.setVisibility(View.GONE);
         mAdapter = new CommonRecycleViewAdapter<AutionItemDetailBean.DataBean.PriceListBean>(this, R.layout.item_price_list) {
             @Override
             public void convert(ViewHolderHelper helper, AutionItemDetailBean.DataBean.PriceListBean priceListBean, int position) {
@@ -373,10 +400,16 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         } else {
             ImageLoaderUtils.displayRound(this, ivIcon, autionItemDetailBean.getData().getStaff_list().get(0).getAvatar());
             tv1Name.setText(staffListBean.getName());
-            tv1Name.setText(staffListBean.getName());
             tv2Name.setText(staffListBean.getType() == 0 ? "主理人" : "专家");
             tv3Name.setText(staffListBean.getRun_count() + "场拍卖");
-
+            //item_info.getAuthor_id()
+            auctionItem_one.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 主理人
+                    OrganPeoActivity.gotoActivity(AuctionItemActivity.this, autionItemDetailBean.getData().getStaff_list().get(0).getId());
+                }
+            });
         }
 
 
@@ -464,28 +497,46 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public void onClick(View v) {
 
 //                ShareDialog shareDialog = new ShareDialog(this);
-                final Dialog shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
+                shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
                 View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
                 ImageView ivShareCode = (ImageView) shareView.findViewById(R.id.iv_share_code);
-                shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+               /* shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         shareDialog.dismiss();
                     }
-                });
+                });*/
+                shareView.findViewById(R.id.iv_close).setOnClickListener(AuctionItemActivity.this);
+                shareView.findViewById(R.id.ll_wx).setOnClickListener(AuctionItemActivity.this);
+                shareView.findViewById(R.id.ll_friends).setOnClickListener(AuctionItemActivity.this);
+                shareView.findViewById(R.id.ll_save_pic).setOnClickListener(AuctionItemActivity.this);
                 shareDialog.setContentView(shareView);
 //                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                 shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 shareDialog.show();
+
+
                 ImageLoaderUtils.displayRoundTwo(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getWx_code());
+               /* Glide.with(AuctionItemActivity.this).load(autionItemDetailBean.getData().getWx_code())
+                        .asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .centerCrop()
+
+                        .error(R.mipmap.colleges_icon)
+//
+                        .centerCrop().transform(new GlideRoundTransformUtil(AuctionItemActivity.this, 3)).
+                        into(new SimpleTarget<Bitmap>() {
+                            @Override
+                            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                ivShareCode.setImageBitmap(resource);
+                                ivShareCode.get
+                            }
+                        });*/
+
+                wx_code = autionItemDetailBean.getData().getWx_code();
             }
         });
-        auctionItem_one.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OrganPeoActivity.gotoActivity(AuctionItemActivity.this, item_info.getAuthor_id());
-            }
-        });
+
 
     }
 
@@ -579,6 +630,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 break;
             // 分享
             case R.id.rel_search:
+
+//                ShareUtil.showShareURL(this,);
                 break;
         }
     }
@@ -687,6 +740,56 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
         if (AppConstant.threeMessage.equals(tag)) {
             mPresenter.getAddFavBean(auctItemId, AppConstant.goods);
+        }
+    }
+
+    /*    shareView.findViewById(R.id.iv_close).setOnClickListener(AuctionItemActivity.this);
+                    shareView.findViewById(R.id.ll_wx).setOnClickListener(AuctionItemActivity.this);
+                    shareView.findViewById(R.id.ll_friends).setOnClickListener(AuctionItemActivity.this);
+                    shareView.findViewById(R.id.ll_save_pic).setOnClickListener(AuctionItemActivity.this);*/
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_close:
+                shareDialog.dismiss();
+                break;
+            case R.id.ll_wx:
+                ShareUtil.showShareURL(this, ShareSDK.getPlatform(Wechat.NAME).getName(), wx_code);
+                break;
+            case R.id.ll_friends:
+                ShareUtil.showShareURL(this, ShareSDK.getPlatform(WechatMoments.NAME).getName(), wx_code);
+                break;
+            case R.id.ll_save_pic:
+                Glide.with(AuctionItemActivity.this).load(wx_code)
+                        .asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .centerCrop().transform(new GlideRoundTransformUtil(AuctionItemActivity.this, 3)).
+                        into(new SimpleTarget<Bitmap>(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL) {
+                            @Override
+                            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                                String fileName = System.currentTimeMillis() + ".JPEG";
+                                File diskCacheDir = DiskUtil.getDiskCacheDir(mContext, fileName);
+                                boolean save = ImageUtils.save(resource,diskCacheDir, Bitmap.CompressFormat.JPEG);
+//                                MediaStore.Images.Media.insertImage(this.getContentResolver(), file.getAbsolutePath(), bitName, null);
+                                if (save) {
+                                    try {
+                                        MediaStore.Images.Media.insertImage(mContext.getContentResolver(),diskCacheDir.getAbsolutePath(), fileName, null);
+                                        mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
+                                        showShortToast("保存成功，请在相册查看");
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                        showShortToast("保存失败");
+                                    }
+
+                                }else
+                                    showShortToast("保存失败");
+                            }
+                        });
+
+
+                break;
+
+
         }
     }
 }

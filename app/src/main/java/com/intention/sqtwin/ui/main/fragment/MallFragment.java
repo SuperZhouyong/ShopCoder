@@ -244,6 +244,7 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         mallAdapter.notifyItemChanged(currentPostion);
         showShortToast(addFavBean.getMessage());
     }
+
     @OnClick({R.id.rel_search, R.id.iv_love, R.id.iv_readme})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -252,11 +253,18 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
                 break;
             // 关注
             case R.id.iv_love:
-                startActivity(StoreFocusActivity.class);
+                SingleCall.getInstance()
+                        .addAction(MallFragment.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+
                 break;
             // 提醒
             case R.id.iv_readme:
-                startActivity(MessageActicity.class);
+                SingleCall.getInstance()
+                        .addAction(MallFragment.this, AppConstant.threeMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
                 break;
         }
     }
@@ -275,5 +283,9 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
     public void call(String tag) {
         if (AppConstant.oneMessage.equals(tag))
             mPresenter.getAddFavBean(currentFavId, AppConstant.field);
+        if (AppConstant.twoMessage.equals(tag))
+            startActivity(StoreFocusActivity.class);
+        if (AppConstant.threeMessage.equals(tag))
+            startActivity(MessageActicity.class);
     }
 }

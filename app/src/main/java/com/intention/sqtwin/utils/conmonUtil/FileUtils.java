@@ -8,6 +8,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,6 +26,11 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.intention.sqtwin.app.MemoryConstants.BYTE;
+import static com.intention.sqtwin.app.MemoryConstants.GB;
+import static com.intention.sqtwin.app.MemoryConstants.KB;
+import static com.intention.sqtwin.app.MemoryConstants.MB;
 
 /**
  * <pre>
@@ -1064,7 +1070,28 @@ public final class FileUtils {
         long len = getDirLength(dir);
         return len == -1 ? "0.00M" : byte2FitMemorySize(len);
     }
-
+    /**
+     * 以unit为单位的size转字节数
+     *
+     * @param size 大小
+     * @param unit <ul>
+ >
+     *             </ul>
+     * @return 字节数
+     */
+    public static long size2Byte(long size, ConstUtils.MemoryUnit unit) {
+        switch (unit) {
+            default:
+            case BYTE:
+                return size * BYTE;
+            case KB:
+                return size * KB;
+            case MB:
+                return size * MB;
+            case GB:
+                return size * GB;
+        }
+    }
     /**
      * 获取文件大小
      *
@@ -1074,7 +1101,23 @@ public final class FileUtils {
     public static String getFileSize(String filePath) {
         return getFileSize(getFileByPath(filePath));
     }
-
+    /**
+     * 关闭IO
+     *
+     * @param closeables closeable
+     */
+    public static void closeIO(Closeable... closeables) {
+        if (closeables == null) return;
+        try {
+            for (Closeable closeable : closeables) {
+                if (closeable != null) {
+                    closeable.close();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 获取文件大小
      *
@@ -1372,14 +1415,14 @@ public final class FileUtils {
     private static String byte2FitMemorySize(long byteNum) {
         if (byteNum < 0) {
             return "shouldn't be less than zero!";
-        } else if (byteNum < MemoryConstants.KB) {
+        } else if (byteNum < KB) {
             return String.format("%.3fB", (double) byteNum + 0.0005);
-        } else if (byteNum < MemoryConstants.MB) {
-            return String.format("%.3fKB", (double) byteNum / MemoryConstants.KB + 0.0005);
-        } else if (byteNum < MemoryConstants.GB) {
-            return String.format("%.3fMB", (double) byteNum / MemoryConstants.MB + 0.0005);
+        } else if (byteNum < MB) {
+            return String.format("%.3fKB", (double) byteNum / KB + 0.0005);
+        } else if (byteNum < GB) {
+            return String.format("%.3fMB", (double) byteNum / MB + 0.0005);
         } else {
-            return String.format("%.3fGB", (double) byteNum / MemoryConstants.GB + 0.0005);
+            return String.format("%.3fGB", (double) byteNum / GB + 0.0005);
         }
     }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.intention.sqtwin">
 
     <!--  <uses-sdk
@@ -28,6 +29,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+
     <application
 
         android:name=".app.BaseApplication"
@@ -36,7 +38,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme.AllActivity">
+        android:theme="@style/AppTheme.AllActivity"
+        tools:replace="android:name">
         <!--<meta-data
             android:name="com.intention.sqtwin.base.BaseGlideCache"
             android:value="GlideModule" />-->
@@ -88,7 +91,10 @@
 
         </activity>
         <!--登录界面-->
-        <activity android:name=".ui.myinfo.activity.LoginActivity"></activity>
+        <activity
+            android:name=".ui.myinfo.activity.LoginActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|touchscreen"
+            android:theme="@style/LoginActivityTheme" />
         <!--出价列表-->
         <activity android:name=".ui.main.activity.BidRecordActivity" />
         <!--加载H5界面-->
@@ -164,9 +170,11 @@
         <!--交易明细-->
         <activity android:name=".ui.Store.activity.TradingDetailActivity" />
         <!--修改密码界面-->
-        <activity android:name=".ui.myinfo.activity.SettingPassWordActivity"/>
+        <activity android:name=".ui.myinfo.activity.SettingPassWordActivity" />
         <!--设置界面-->
-        <activity android:name=".ui.myinfo.activity.SettingActivity"/>
+        <activity android:name=".ui.myinfo.activity.SettingActivity" />
+        <!-- 店铺修改密码-->
+        <activity android:name=".ui.myinfo.activity.StorePassWordActivity" />
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

@@ -63,7 +63,7 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <com.flyco.tablayout.CommonTabLayout
+ <!--   <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
@@ -74,7 +74,7 @@
         tl:tl_indicator_width="10dp"
         tl:tl_textSelectColor="@color/app_main"
         tl:tl_textUnselectColor="@color/font_1"
-        tl:tl_textsize="@dimen/x30" />
+        tl:tl_textsize="@dimen/x30" />-->
 
     <com.intention.sqtwin.widget.flow.FlowTagLayout
         android:id="@+id/tag_flow"

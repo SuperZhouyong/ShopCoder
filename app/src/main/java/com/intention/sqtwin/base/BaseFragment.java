@@ -21,7 +21,6 @@ import com.intention.sqtwin.utils.conmonUtil.TUtil;
 import com.intention.sqtwin.utils.conmonUtil.ToastUitl;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.conmonWidget.LoadingDialog;
-import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -116,13 +115,13 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
 //        LogUtils.logd("当前onVisibilityChangedToUser----" + pageName + "--Start---" + isVisibleToUser + "----------" + isHappenedInSetUserVisibleHintMethod);
         if (isVisibleToUser) {
             if (pageName != null) {
-                MobclickAgent.onPageStart(pageName);
+//                MobclickAgent.onPageStart(pageName);
 //                LogUtils.logd("当前Fragment的名字" + pageName + "--Start---" + isVisibleToUser);
 //                LogUtils.logd("UmengPageTrack" + pageName + " - display - " + (isHappenedInSetUserVisibleHintMethod ? "setUserVisibleHint" : "onResume"));
             }
         } else {
             if (pageName != null) {
-                MobclickAgent.onPageEnd(pageName);
+//                MobclickAgent.onPageEnd(pageName);
 //                LogUtils.logd("当前Fragment的名字" + pageName + "--End---" + isVisibleToUser);
 //                LogUtils.logd("UmengPageTrack" + pageName + " - hidden - " + (isHappenedInSetUserVisibleHintMethod ? "setUserVisibleHint" : "onPause"));
             }

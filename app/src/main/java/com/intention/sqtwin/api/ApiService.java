@@ -31,7 +31,6 @@ import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PayPassWordBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
-import com.intention.sqtwin.bean.RealJoinStatusBean;
 import com.intention.sqtwin.bean.RealNamePeoTwoBean;
 import com.intention.sqtwin.bean.RealNameStatusBean;
 import com.intention.sqtwin.bean.ReanlNameStoreInfoBean;
@@ -39,8 +38,10 @@ import com.intention.sqtwin.bean.ReceivedGoodsBean;
 import com.intention.sqtwin.bean.SetDefaultAddressBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
+import com.intention.sqtwin.bean.StoreLoginNameBean;
 import com.intention.sqtwin.bean.StoreMessageBean;
 import com.intention.sqtwin.bean.StoreMoneyBean;
+import com.intention.sqtwin.bean.StorePwInfoBean;
 import com.intention.sqtwin.bean.StoreReportOne;
 import com.intention.sqtwin.bean.StoreReportTwo;
 import com.intention.sqtwin.bean.SubmitAddressBean;
@@ -640,10 +641,28 @@ public interface ApiService {
      * @return
      */
     @FormUrlEncoded
-
     @POST("Membercenter/log_password_edit")
     Observable<PayPassWordBean> getResetLoginPassword(
             @Field("password") String password
     );
 
+    /**
+     * 上传账户密码
+     *
+     * @return
+     */
+    @POST("membercenter/set_store_login_password")
+    @FormUrlEncoded
+    Observable<StorePwInfoBean> PostStorePwInfo(
+            @Field("member_name") String member_name,
+            @Field("password") String password
+    );
+
+    /**
+     * 获得登录名
+     *
+     * @return
+     */
+    @GET("Membercenter/get_member_name")
+    Observable<StoreLoginNameBean> getStoreLoginName();
 }

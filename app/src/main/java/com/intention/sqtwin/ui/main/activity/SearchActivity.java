@@ -7,12 +7,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.bean.TabEntity;
+import com.intention.sqtwin.bean.TabsEntity;
 import com.intention.sqtwin.ui.main.contract.SearchContract;
 import com.intention.sqtwin.widget.ClearEditText;
 import com.intention.sqtwin.widget.flow.FlowTagLayout;
 import com.intention.sqtwin.widget.flow.TagAdapter;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -46,8 +51,8 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
     ClearEditText searchEt;
     @BindView(R.id.activity_search_head)
     RelativeLayout activitySearchHead;
-    @BindView(R.id.tab_layout)
-    CommonTabLayout tabLayout;
+/*    @BindView(R.id.tab_layout)
+    CommonTabLayout tabLayout;*/
     @BindView(R.id.tag_flow)
     FlowTagLayout tagFlow;
 
@@ -66,8 +71,9 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
         leftTitle.setVisibility(android.view.View.GONE);
         centerTitle.setText("搜索");
         relSearch.setVisibility(android.view.View.GONE);
-
-
+//        ArrayList<CustomTabEntity> customTabEntities = new ArrayList<>();
+//        customTabEntities.add(new TabsEntity(""))
+//        tabLayout.setTabData();
         TagAdapter tagAdapter = new TagAdapter(this);
         tagFlow.setAdapter(tagAdapter);
     }

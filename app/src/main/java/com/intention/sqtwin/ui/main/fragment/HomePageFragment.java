@@ -301,11 +301,24 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
                 break;
             // 关注
             case R.id.iv_love:
-                startActivity(StoreFocusActivity.class);
+                SingleCall.getInstance()
+                        .addAction(HomePageFragment.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+                /*if (isLogin())
+                    startActivity(StoreFocusActivity.class);
+                else
+                    LoginActivity.start(getActivity());*/
                 break;
             // 提醒
             case R.id.iv_readme:
-                startActivity(MessageActicity.class);
+                SingleCall.getInstance()
+                        .addAction(HomePageFragment.this, AppConstant.threeMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+
+
+//                startActivity(MessageActicity.class);
                 break;
         }
     }
@@ -319,5 +332,9 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
     public void call(String tag) {
         if (AppConstant.oneMessage.equals(tag))
             mPresenter.getAddFavBean(currentFavId, AppConstant.field);
+        if (AppConstant.twoMessage.equals(tag))
+            startActivity(StoreFocusActivity.class);
+        if (AppConstant.threeMessage.equals(tag))
+            startActivity(MessageActicity.class);
     }
 }

@@ -179,3 +179,17 @@ public static java.lang.String TABLENAME;
 
 -dontwarn okio.**
 -dontwarn javax.annotation.**
+
+-keep class com.umeng.** {*;}
+
+
+-keep class cn.sharesdk.**{*;}
+-keep class com.sina.**{*;}
+-keep class **.R$* {*;}
+-keep class **.R{*;}
+-keep class com.mob.**{*;}
+-keep class m.framework.**{*;}
+-dontwarn cn.sharesdk.**
+-dontwarn com.sina.**
+-dontwarn com.mob.**
+-dontwarn **.R$*

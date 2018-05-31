@@ -34,6 +34,6 @@ public class LoginValid implements Valid {
 
     @Override
     public void doValid() {
-        LoginActivity.start((BaseActivity) context);
+        LoginActivity.start( context);
     }
 }

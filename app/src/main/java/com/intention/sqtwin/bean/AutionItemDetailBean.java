@@ -165,7 +165,7 @@ public class AutionItemDetailBean {
 
             private String description;
             private String author;
-            private int author_id;
+            private String author_id;
             private String resume;
             private int goods_id;
             private String name;
@@ -197,11 +197,11 @@ public class AutionItemDetailBean {
                 this.author = author;
             }
 
-            public int getAuthor_id() {
+            public String getAuthor_id() {
                 return author_id;
             }
 
-            public void setAuthor_id(int author_id) {
+            public void setAuthor_id(String author_id) {
                 this.author_id = author_id;
             }
 

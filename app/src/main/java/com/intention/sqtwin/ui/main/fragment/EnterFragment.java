@@ -1,9 +1,6 @@
 package com.intention.sqtwin.ui.main.fragment;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -11,7 +8,6 @@ import android.widget.TextView;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
-import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.LazzyFragment;
 import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.bean.StoreInfoBean;
@@ -20,21 +16,18 @@ import com.intention.sqtwin.ui.Store.activity.StoreMessageActivity;
 import com.intention.sqtwin.ui.Store.activity.StoreRemainingMoneyActivity;
 import com.intention.sqtwin.ui.Store.activity.StoreReportActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
-import com.intention.sqtwin.ui.main.activity.OrganPeoActivity;
 import com.intention.sqtwin.ui.main.contract.EnterContract;
 import com.intention.sqtwin.ui.main.model.EnterModel;
 import com.intention.sqtwin.ui.main.presenter.EnterPresenter;
 import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.ui.myinfo.activity.OrderListActivity;
+import com.intention.sqtwin.ui.myinfo.activity.StorePassWordActivity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
-import com.intention.sqtwin.widget.CircleImageView;
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import rx.functions.Action1;
 
 /**
@@ -72,8 +65,6 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     LinearLayout llTwo;
     @BindView(R.id.ll_three)
     LinearLayout llThree;
-    /*   @BindView(R.id.ll_fore)
-       LinearLayout llFore;*/
     @BindView(R.id.ll_five)
     LinearLayout llFive;
     @BindView(R.id.iv_account)
@@ -90,7 +81,6 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     RelativeLayout relIdentit;
     @BindView(R.id.title)
     RelativeLayout relHeadTitle;
-    Unbinder unbinder;
 
     @Override
     protected int getLayoutResource() {
@@ -162,20 +152,15 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     public void returnStoreInfo(StoreInfoBean storeInfoBean) {
         if (!storeInfoBean.isIs_success())
             showShortToast(storeInfoBean.getMessage());
-       /* new android.os.Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        },1000);*/
         startActivity(RealCerOneActivity.class, null);
-//        sta
     }
 
 
-    @OnClick({R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.ll_five, R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit})
+    @OnClick({R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.ll_five, R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit, R.id.rel_store_pw})
     public void onViewClicked(View view) {
         if (!isLogin()) {
+            SingleCall.getInstance().clear();
             LoginActivity.start(getActivity());
             return;
         }
@@ -184,17 +169,14 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
         switch (view.getId()) {
             // 待付款
             case R.id.ll_one:
-
                 OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 0);
                 break;
             //待发货---> 已发货
             case R.id.ll_two:
-
                 OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 2, 0);
                 break;
             // 待收货 ---> 已收货
             case R.id.ll_three:
-
                 OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 0);
                 break;
             //售后
@@ -215,8 +197,10 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
                 break;
             // 实名认证
             case R.id.rel_identit:
-
                 startActivity(RealCerOneActivity.class, null);
+                break;
+            case R.id.rel_store_pw:
+                startActivity(StorePassWordActivity.class, null);
                 break;
         }
     }

@@ -7,9 +7,11 @@ import android.widget.ImageView;
 
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.BaseFragment;
 import com.intention.sqtwin.base.BasePageStateAdapter;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.PpAllDateBean;
 import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
@@ -21,6 +23,8 @@ import com.intention.sqtwin.ui.main.presenter.PpAuctionPresenter;
 import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.widget.SlidingTabLayout;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +40,7 @@ import butterknife.OnClick;
  * Author: ZhouYong
  */
 
-public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, OnTabSelectListener, LoadingTip.onReloadListener {
+public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, OnTabSelectListener, LoadingTip.onReloadListener, Action {
     /* @BindView(R.id.mRecyclerView)
      LRecyclerView mRecyclerView;*/
     @BindView(R.id.mLoadingTip)
@@ -169,12 +173,26 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
                 startActivity(SearchActivity.class);
                 break;
             // 关注
+            // 关注
             case R.id.iv_love:
-                startActivity(StoreFocusActivity.class);
+                SingleCall.getInstance()
+                        .addAction(AuctionFragment.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+                /*if (isLogin())
+                    startActivity(StoreFocusActivity.class);
+                else
+                    LoginActivity.start(getActivity());*/
                 break;
             // 提醒
             case R.id.iv_readme:
-                startActivity(MessageActicity.class);
+                SingleCall.getInstance()
+                        .addAction(AuctionFragment.this, AppConstant.threeMessage)
+                        .addValid(new LoginValid(getActivity()))
+                        .doCall();
+
+
+//                startActivity(MessageActicity.class);
                 break;
         }
     }
@@ -200,5 +218,13 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
         mPresenter.getPpAlldate(category_id, status, page_no);
     }
 
-
+    @Override
+    public void call(String tag) {
+        /*if (AppConstant.oneMessage.equals(tag))
+            mPresenter.getAddFavBean(currentFavId, AppConstant.field);*/
+        if (AppConstant.twoMessage.equals(tag))
+            startActivity(StoreFocusActivity.class);
+        if (AppConstant.threeMessage.equals(tag))
+            startActivity(MessageActicity.class);
+    }
 }

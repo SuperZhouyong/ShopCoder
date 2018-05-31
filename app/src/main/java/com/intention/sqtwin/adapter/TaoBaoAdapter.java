@@ -14,6 +14,7 @@ import com.intention.sqtwin.bean.FavBean;
 import com.intention.sqtwin.bean.TaobaoStoreInfoBean;
 import com.intention.sqtwin.ui.main.activity.AuctionOrgActivity;
 import com.intention.sqtwin.ui.main.activity.MainActivity;
+import com.intention.sqtwin.ui.mall.activity.TaoBaoStoreInfoActivity;
 import com.intention.sqtwin.utils.conmonUtil.PublicKetUtils;
 
 import java.text.ParseException;
@@ -90,13 +91,13 @@ public class TaoBaoAdapter extends CommonRecycleViewAdapter<TaobaoStoreInfoBean.
             helper.setOnClickListener(R.id.tv_company_name, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                    AuctionOrgActivity.gotoAuctionOrg((TaoBaoStoreInfoActivity) mContext, recommendFieldBean.getOrganization_id());
                 }
             });
             helper.setOnClickListener(R.id.iv_logo, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AuctionOrgActivity.gotoAuctionOrg((MainActivity) mContext, recommendFieldBean.getOrganization_id());
+                    AuctionOrgActivity.gotoAuctionOrg((TaoBaoStoreInfoActivity) mContext, recommendFieldBean.getOrganization_id());
                 }
             });
         }

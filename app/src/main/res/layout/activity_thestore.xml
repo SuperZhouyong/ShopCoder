@@ -174,28 +174,28 @@
 
             </LinearLayout>
 
-             <LinearLayout
-                 android:id="@+id/ll_fore"
-                 android:layout_width="0dp"
-                 android:layout_height="match_parent"
-                 android:layout_weight="1"
-                 android:gravity="center"
-                 android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ll_fore"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                 <ImageView
-                     android:layout_width="@dimen/x60"
-                     android:layout_height="@dimen/y60"
-                     android:src="@mipmap/store_fore" />
+                <ImageView
+                    android:layout_width="@dimen/x60"
+                    android:layout_height="@dimen/y60"
+                    android:src="@mipmap/store_fore" />
 
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="@dimen/y10"
-                     android:text="全部订单"
-                     android:textColor="@color/font_7"
-                     android:textSize="@dimen/x26" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/y10"
+                    android:text="全部订单"
+                    android:textColor="@color/font_7"
+                    android:textSize="@dimen/x26" />
 
-             </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_five"
@@ -347,6 +347,49 @@
                 android:background="@color/app_bottom_colour" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/rel_store_pw"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_store_pw"
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y40"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/iv_store_pw"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginStart="@dimen/x30"
+                android:layout_toEndOf="@+id/iv_store_pw"
+                android:layout_toRightOf="@+id/iv_store_pw"
+                android:text="设置管理密码"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <ImageView
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/y40"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                android:src="@mipmap/list_right" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginRight="@dimen/x22"
+                android:background="@color/app_bottom_colour" />
+        </RelativeLayout>
 
     </LinearLayout>
 

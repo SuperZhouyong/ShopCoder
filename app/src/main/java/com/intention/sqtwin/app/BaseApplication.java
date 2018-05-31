@@ -10,17 +10,15 @@ import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
 import com.intention.sqtwin.greendaohelper.DaoManager;
-import com.intention.sqtwin.sqtexception.CrashHandler;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
-import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.liulishuo.filedownloader.FileDownloader;
-//import com.squareup.leakcanary.LeakCanary;
-import com.umeng.analytics.MobclickAgent;
+import com.mob.MobSDK;
 
-import cn.sharesdk.framework.ShareSDK;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+
+//import com.squareup.leakcanary.LeakCanary;
 
 /**
  * APPLICATION
@@ -35,7 +33,7 @@ public class BaseApplication extends Application {
         baseApplication = this;
         // 这里会初始化本地的 user 信息
         // 关闭默认的Umeng 统计
-        MobclickAgent.openActivityDurationTrack(false);
+//        MobclickAgent.openActivityDurationTrack(false);
         //内部存储查看
 //        Stetho.initializeWithDefaults(this);
         //初始化logger  初始化 调试模式
@@ -45,7 +43,9 @@ public class BaseApplication extends Application {
         // 初始化异常捕获类
 //        CrashHandler.getInstance().init(this);
         // 内存检测工具
-        ShareSDK.initSDK(this);
+//        UMConfigure.setLogEnabled(true);
+//        ShareSDK.initSDK(this);
+        MobSDK.init(this);
         // 这里和Manifest中的文件不可重复添加
 //        UMGameAgent.startWithConfigure(new MobclickAgent.UMAnalyticsConfig(this,"58fefa5182b6355d31000505","Channel_ID"));
      /*   if (LeakCanary.isInAnalyzerProcess(this)) {

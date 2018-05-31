@@ -64,7 +64,9 @@
     <string name="text_18">"完成"</string>
     <string name="text_19">"警告"</string>
     <string name="text_20">"出现错误"</string>
-
+    <string name="auth_cancel">授权操作已取消</string>
+    <string name="auth_error">授权操作遇到错误：如微信登录，需要微信客户端</string>
+    <string name="auth_complete">授权成功，正在跳转登录操作…</string>
 
     <string name="share_url">https://www.zhiyuan360.cn/site/DownAppJ</string>
     <string name="share_title">选专业就用志愿360</string>

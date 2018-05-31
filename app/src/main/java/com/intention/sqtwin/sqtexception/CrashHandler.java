@@ -10,13 +10,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.intention.sqtwin.api.Api;
-import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.app.BaseApplication;
-import com.intention.sqtwin.baserx.RxSchedulers;
-import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
-import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +29,8 @@ import java.util.Map;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
+
+//import com.umeng.analytics.MobclickAgent;
 
 public class CrashHandler implements UncaughtExceptionHandler {
     public static final String TAG = "CrashHandler";
@@ -92,7 +88,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
                 Log.e(TAG, "出现未捕获异常 ", e);
             }
             //退出之前保留统计
-            MobclickAgent.onKillProcess(mContext);
+//            MobclickAgent.onKillProcess(mContext);
             // 退出程序
             android.os.Process.killProcess(android.os.Process.myPid());
             System.exit(1);

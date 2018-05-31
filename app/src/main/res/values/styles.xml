@@ -46,6 +46,13 @@
         <item name="android:windowBackground">@color/app_bottom_colour</item>
         <!--<item name="android:listDivider">@drawable/divider</item>-->
     </style>
+    <style name="LoginActivityTheme"  parent="Theme.AppCompat.Light.NoActionBar.FullScreen">
+
+        <item name="android:windowBackground">@mipmap/login_bg</item>
+
+    </style>
+
+
     <!--普通dialoh-->
     <style name="CustomProgressDialog" parent="@style/CustomDialog">
         <item name="android:windowBackground">@android:color/transparent</item>

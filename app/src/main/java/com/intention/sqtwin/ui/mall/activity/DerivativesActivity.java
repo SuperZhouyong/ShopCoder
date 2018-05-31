@@ -19,16 +19,23 @@ import com.intention.sqtwin.adapter.DerivativesOneAdapter;
 import com.intention.sqtwin.adapter.DerivativesTwoAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.base.LoginValid;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
 import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.TabEntity;
+import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.activity.CategoryActivity;
+import com.intention.sqtwin.ui.main.activity.SearchActivity;
+import com.intention.sqtwin.ui.main.fragment.HomePageFragment;
 import com.intention.sqtwin.ui.mall.contract.DerivativesContract;
 import com.intention.sqtwin.ui.mall.model.DerivativesModel;
 import com.intention.sqtwin.ui.mall.presenter.DerivativesPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.MessageActicity;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.util.ArrayList;
 
@@ -43,7 +50,7 @@ import ezy.ui.view.BannerView;
  * Author: ZhouYong
  */
 
-public class DerivativesActivity extends BaseActivity<DerivativesPresenter, DerivativesModel> implements DerivativesContract.View, LoadingTip.onReloadListener, OnTabSelectListener {
+public class DerivativesActivity extends BaseActivity<DerivativesPresenter, DerivativesModel> implements DerivativesContract.View, LoadingTip.onReloadListener, OnTabSelectListener, Action {
 
     @BindView(R.id.category_logo)
     ImageView categoryLogo;
@@ -162,13 +169,14 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
                 TaoBaoStoreInfoActivity.GotoTaoBaoSTireInfoActivity((BaseActivity) mContext, mAdapter.get(position).getStore_id());
             }
         });
-
+        // 设置衍生品
+        tabLayout.setCurrentTab(1);
     }
 
-    // 知道点击的哪一个
+/*    // 知道点击的哪一个
     private void SwitchTo(int position) {
 
-    }
+    }*/
 
     @Override
     public void StartLoading(String RequestId) {
@@ -221,16 +229,36 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
     }
 
 
-    @OnClick({R.id.category_logo, R.id.iv_love, R.id.iv_readme})
+    @OnClick({R.id.category_logo, R.id.iv_love, R.id.iv_readme, R.id.rel_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.rel_search:
+                startActivity(SearchActivity.class);
+                break;
             case R.id.category_logo:
                 CategoryActivity.GotoCategoryActivity(this, 1, "商品分类");
-//                startActivity(CategoryActivity.class);
+
                 break;
+            // 关注
             case R.id.iv_love:
+                SingleCall.getInstance()
+                        .addAction(this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(this))
+                        .doCall();
+                /*if (isLogin())
+                    startActivity(StoreFocusActivity.class);
+                else
+                    LoginActivity.start(getActivity());*/
                 break;
+            // 提醒
             case R.id.iv_readme:
+                SingleCall.getInstance()
+                        .addAction(this, AppConstant.threeMessage)
+                        .addValid(new LoginValid(this))
+                        .doCall();
+
+
+//                startActivity(MessageActicity.class);
                 break;
         }
     }
@@ -243,11 +271,32 @@ public class DerivativesActivity extends BaseActivity<DerivativesPresenter, Deri
 
     @Override
     public void onTabSelect(int position) {
+        switch (position) {
+            case 0:
+                finish();
+                break;
+            case 2:
+                mRxManager.post(AppConstant.SwitchToPostion, 3);
+                finish();
+                break;
+            case 3:
+                mRxManager.post(AppConstant.SwitchToPostion, 4);
+                finish();
+                break;
 
+        }
     }
 
     @Override
     public void onTabReselect(int position) {
 
+    }
+
+    @Override
+    public void call(String tag) {
+        if (AppConstant.twoMessage.equals(tag))
+            startActivity(StoreFocusActivity.class);
+        if (AppConstant.threeMessage.equals(tag))
+            startActivity(MessageActicity.class);
     }
 }

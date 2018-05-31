@@ -38,7 +38,7 @@ import rx.functions.Action1;
 
 
 //@SuppressLint("ValidFragment")
-public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnLoadMoreListener, View.OnClickListener, OnRefreshListener, Action {
+public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuctionModel> implements PpAuctionContract.View, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnLoadMoreListener, View.OnClickListener, OnRefreshListener, Action, PpAuctionAdapter.AddFocusInterface {
     @BindView(R.id.mRecyclerView)
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
@@ -77,6 +77,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     @Override
     protected void initView() {
         mAdapter = new PpAuctionAdapter(getActivity());
+        mAdapter.setAddFocusInterface(this);
         mLAdapter = new LRecyclerViewAdapter(mAdapter);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -120,7 +121,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
                 AuctionFiledActivity.gotoAuctionFiledActivity((MainActivity) getActivity(), mAdapter.get(position).getId(), AppConstant.IntoWayOne);
             }
         });
-        mRxManager.on(AppConstant.PpAuction, new Action1<FavBean>() {
+     /*   mRxManager.on(AppConstant.PpAuction, new Action1<FavBean>() {
             @Override
             public void call(FavBean favBean) {
                 currentPostion = favBean.getPostion();
@@ -133,7 +134,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
             }
 
 
-        });
+        });*/
     }
 
     @Override
@@ -148,7 +149,8 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
 
     @Override
     public void StartLoading(String RequestId) {
-//        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        if (page_no == 0 && AppConstant.oneMessage.equals(RequestId) && mAdapter.getDataList().size() == 0)
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
 
     }
 
@@ -284,5 +286,15 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     @Override
     public void call(String tag) {
         mPresenter.getAddFavBean(currentFavId, AppConstant.field);
+    }
+
+    @Override
+    public void addFocus(FavBean favBean) {
+        currentPostion = favBean.getPostion();
+        currentFavId = favBean.getFavId();
+        SingleCall.getInstance()
+                .addAction(SimpleCardFragment.this, AppConstant.oneMessage)
+                .addValid(new LoginValid(getActivity()))
+                .doCall();
     }
 }

@@ -37,14 +37,14 @@
         android:visibility="visible" />
 
     <TextView
-        android:ellipsize="end"
-        android:maxLength="5"
         android:id="@+id/center_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
+        android:ellipsize="end"
+        android:maxLength="6"
         android:textColor="#ffffff"
         android:textSize="@dimen/x36"
         android:visibility="visible" />

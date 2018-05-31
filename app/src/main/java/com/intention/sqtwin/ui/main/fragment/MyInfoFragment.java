@@ -35,6 +35,7 @@ import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.SPUtils;
 import com.intention.sqtwin.widget.CircleImageView;
+import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -133,6 +134,7 @@ public class MyInfoFragment extends LazzyFragment {
     public void onViewClicked(View view) {
 
         if (!isLogin()) {
+            SingleCall.getInstance().clear();
             LoginActivity.start(getActivity());
             return;
         }

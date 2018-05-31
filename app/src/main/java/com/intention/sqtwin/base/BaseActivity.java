@@ -21,14 +21,12 @@ import com.intention.sqtwin.baserx.RxManager;
 import com.intention.sqtwin.bean.SQTUser;
 import com.intention.sqtwin.utils.StatusBarUtil.StatusBarCompat;
 import com.intention.sqtwin.utils.conmonUtil.ActivityUtil;
-import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 import com.intention.sqtwin.utils.conmonUtil.TUtil;
 import com.intention.sqtwin.utils.conmonUtil.ToastUitl;
 import com.intention.sqtwin.utils.conmonUtil.UserUtil;
 import com.intention.sqtwin.widget.NormalDialog;
 import com.intention.sqtwin.widget.ShareDialog;
 import com.intention.sqtwin.widget.conmonWidget.LoadingDialog;
-import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -277,10 +275,10 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         if (!"MainActivity".equals(runningActivityName) && !"SchoolDetailActivity".equals(runningActivityName)) {
             // 不纯的Activity 这里不调用
 //            LogUtils.logd("当前activity的名字" + runningActivityName + "执行了OnPageStart");
-            MobclickAgent.onPageStart(runningActivityName);
+//            MobclickAgent.onPageStart(runningActivityName);
         }
 //        LogUtils.logd("当前activity的名字" + runningActivityName);
-        MobclickAgent.onResume(this);
+//        MobclickAgent.onResume(this);
 
     }
 
@@ -292,9 +290,9 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         * */
         String runningActivityName = ActivityUtil.getRunningActivityName();
         if (!"MainActivity".equals(runningActivityName) && !"CollegesAllActivity".equals(runningActivityName)) {
-            MobclickAgent.onPageEnd(runningActivityName);
+//            MobclickAgent.onPageEnd(runningActivityName);
         }
-        MobclickAgent.onPause(this);
+//        MobclickAgent.onPause(this);
     }
 
 

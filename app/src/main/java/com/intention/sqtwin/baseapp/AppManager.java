@@ -6,7 +6,6 @@ import android.app.ActivityManager;
 import android.content.Context;
 
 import com.intention.sqtwin.app.BaseApplication;
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.Stack;
 
@@ -170,7 +169,7 @@ public class AppManager {
      */
     public void AppExit(Context context, Boolean isBackground) {
         try {
-            MobclickAgent.onKillProcess(BaseApplication.getAppContext());
+//            MobclickAgent.onKillProcess(BaseApplication.getAppContext());
             finishAllActivity();
             ActivityManager activityMgr = (ActivityManager) context
                     .getSystemService(Context.ACTIVITY_SERVICE);

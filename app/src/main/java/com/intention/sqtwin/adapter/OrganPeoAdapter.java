@@ -99,7 +99,8 @@ public class OrganPeoAdapter extends CommonRecycleViewAdapter<OrganPeBean.DataBe
         String end_time = recommendFieldBean.getEnd_time();
 
         // 显示拍卖时间
-        showAuctionTime(helper, start_time, end_time);
+        if (!TextUtils.isEmpty(start_time) && !TextUtils.isEmpty(end_time))
+            showAuctionTime(helper, start_time, end_time);
 //        helper.setText(R.id.tv_time_calculate)
         helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
             @Override

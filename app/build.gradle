@@ -2,6 +2,37 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.mob.sdk'
+
+
+MobSDK {
+    appKey "261d7ae277ee8"
+    appSecret "6d5fe2d7a44cd007d689a71178721546"
+
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            // 微信朋友圈
+            WechatMoments {
+                appKey "wxd2fb38f960eb278e"
+                appSecret "36e1f4140c4eb739d6c958c9e047fee8"
+//                callbackUri "http://www.sharesdk.cn"
+            }
+            // 微信
+            Wechat {
+                appId "wxd2fb38f960eb278e"
+                appSecret "36e1f4140c4eb739d6c958c9e047fee8"
+            }
+           // 支付宝
+            Alipay {
+                appKey "1412473428822331"
+                appSecret "a42f4f3f867dc947b9ed6020c2e93558"
+                callbackUri "https://mob.com"
+            }
+        }
+    }
+
+}
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
     buildToolsVersion rootProject.ext.androidBuildToolsVersion
@@ -15,7 +46,7 @@ android {
 * 1.4
 * */
     defaultConfig {
-        applicationId "com.huiwang.app"
+        applicationId "com.intention.sqtwin"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.releaseVersionCode
@@ -210,10 +241,8 @@ dependencies {
     compile 'io.reactivex:rxjava:1.2.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'me.codeboy.android:align-text-view:2.3.2'
-    //    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    //    compile 'io.reactivex.rxjava2:rxjava:2.1.0'
+
     compile 'com.orhanobut:logger:2.1.1'
-    //    compile 'com.orhanobut:logger:1.15'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
@@ -223,7 +252,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.jakewhartonVersion}"
     compile 'com.android.support:multidex:1.0.0'
-    compile 'com.umeng.analytics:analytics:latest.integration'
+//    compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.commit451:PhotoView:1.2.4'
     //微信Gradle
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.1.6'
@@ -243,6 +272,10 @@ dependencies {
     implementation project(':LRecyclerview')
     implementation project(':stepview')
     implementation project(':libaction')
+
+
+//    compile 'com.umeng.sdk:common:latest.integration'
+//    compile 'com.umeng.sdk:utdid:1.1.5.3'
 }
 
 
