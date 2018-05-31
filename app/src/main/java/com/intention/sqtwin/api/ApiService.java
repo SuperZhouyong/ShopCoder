@@ -27,6 +27,7 @@ import com.intention.sqtwin.bean.MessageBean;
 import com.intention.sqtwin.bean.MyCompeteBean;
 import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.NormalBankInfoBean;
+import com.intention.sqtwin.bean.OrderIdBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PayPassWordBean;
@@ -49,6 +50,7 @@ import com.intention.sqtwin.bean.SubmitClientInfo;
 import com.intention.sqtwin.bean.SynchronousAuctionBean;
 import com.intention.sqtwin.bean.SynchronousItemBean;
 import com.intention.sqtwin.bean.TaobaoStoreInfoBean;
+import com.intention.sqtwin.bean.TellBackBean;
 import com.intention.sqtwin.bean.TradingDeatilBean;
 import com.intention.sqtwin.bean.UpComPanyTwoBean;
 import com.intention.sqtwin.bean.UpEnterThreeBean;
@@ -665,4 +667,31 @@ public interface ApiService {
      */
     @GET("Membercenter/get_member_name")
     Observable<StoreLoginNameBean> getStoreLoginName();
+
+    /**
+     * 获取支付订单
+     *
+     * @param num
+     * @param type
+     * @param remark
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("paycenter/recharge")
+    Observable<OrderIdBean> getOrderIdBean(
+            @Field("amount") Integer num,
+            @Field("pay_type") String type,
+            @Field("remark") String remark);
+
+    /**
+     * 再次验证 是否支付成功
+     *
+     * @param orderId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("")
+    Observable<TellBackBean> getTellBackBean(
+            @Field("orderId") String orderId
+    );
 }

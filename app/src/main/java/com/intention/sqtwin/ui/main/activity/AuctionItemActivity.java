@@ -42,6 +42,7 @@ import com.intention.sqtwin.bean.NullBean;
 import com.intention.sqtwin.ui.main.contract.AutionItemContract;
 import com.intention.sqtwin.ui.main.model.AutionItemModel;
 import com.intention.sqtwin.ui.main.presenter.AutionItemPresenter;
+import com.intention.sqtwin.ui.myinfo.activity.ChargeActivity;
 import com.intention.sqtwin.ui.myinfo.activity.LoginActivity;
 import com.intention.sqtwin.utils.checkbox.SmoothCheckBox;
 import com.intention.sqtwin.utils.conmonUtil.AppUtil;
@@ -687,6 +688,15 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
             }
         });
+        view.findViewById(R.id.tv_up_money).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                showShortToast("提升额度,去充值界面");
+
+                startActivity(ChargeActivity.class);
+
+            }
+        });
         tvNum = (TextView) view.findViewById(R.id.etAmount);
         tvNum.setText("￥" + (Float.parseFloat(current_price) + Float.parseFloat(increment_value)));
 
@@ -769,11 +779,11 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                 String fileName = System.currentTimeMillis() + ".JPEG";
                                 File diskCacheDir = DiskUtil.getDiskCacheDir(mContext, fileName);
-                                boolean save = ImageUtils.save(resource,diskCacheDir, Bitmap.CompressFormat.JPEG);
+                                boolean save = ImageUtils.save(resource, diskCacheDir, Bitmap.CompressFormat.JPEG);
 //                                MediaStore.Images.Media.insertImage(this.getContentResolver(), file.getAbsolutePath(), bitName, null);
                                 if (save) {
                                     try {
-                                        MediaStore.Images.Media.insertImage(mContext.getContentResolver(),diskCacheDir.getAbsolutePath(), fileName, null);
+                                        MediaStore.Images.Media.insertImage(mContext.getContentResolver(), diskCacheDir.getAbsolutePath(), fileName, null);
                                         mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
                                         showShortToast("保存成功，请在相册查看");
                                     } catch (FileNotFoundException e) {
@@ -781,7 +791,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                                         showShortToast("保存失败");
                                     }
 
-                                }else
+                                } else
                                     showShortToast("保存失败");
                             }
                         });
