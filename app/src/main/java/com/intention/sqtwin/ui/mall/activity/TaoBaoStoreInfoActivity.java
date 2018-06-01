@@ -178,6 +178,9 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
 
     @Override
     public void StartLoading(String RequestId) {
+        if (AppConstant.oneMessage.equals(RequestId)) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        }
 
     }
 
@@ -209,6 +212,8 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
             return;
 //            mLoadingTip.setOnReloadListener(this);
         }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
         if (hotAuctionItemAdapter.getDataList().size() != 0)
             hotAuctionItemAdapter.clear();
         if (taoBaoAdapter.getDataList().size() != 0)
@@ -237,6 +242,17 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
         showShortToast(addFavBean.getMessage());
     }
 
+    // 店铺关注
+    @Override
+    public void returnAddFavBeanStore(AddFavBean addFavBean) {
+        showShortToast(addFavBean.getMessage());
+        if (!addFavBean.isIs_success()) {
+            return;
+        }
+        iv_focus.setVisibility(View.GONE);
+        tv_focus.setText("已关注");
+    }
+
     @Override
     public void onRefresh() {
         mPresenter.getTaoBaoStoreInfoRequest(store_id);
@@ -263,7 +279,11 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rel_focus:
-
+                SingleCall.getInstance()
+                        .addAction(TaoBaoStoreInfoActivity.this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(TaoBaoStoreInfoActivity.this))
+                        .doCall();
+//                mPresenter.getAddFavBean(,AppConstant.store);
                 break;
 
         }
@@ -273,5 +293,7 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
     public void call(String tag) {
         if (AppConstant.oneMessage.equals(tag))
             mPresenter.getAddFavBean(currentFavId, AppConstant.field);
+        if (AppConstant.twoMessage.equals(tag))
+            mPresenter.getAddFavBean(store_id, AppConstant.store);
     }
 }

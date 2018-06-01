@@ -3,6 +3,7 @@ package com.intention.sqtwin.ui.main.contract;
 import com.intention.sqtwin.base.BaseModel;
 import com.intention.sqtwin.base.BasePresenter;
 import com.intention.sqtwin.base.BaseView;
+import com.intention.sqtwin.bean.HotSearchInfoBean;
 import com.intention.sqtwin.bean.SearchInfoBean;
 
 import rx.Observable;
@@ -16,16 +17,20 @@ import rx.Observable;
 
 public interface SearchContract {
     interface View extends BaseView {
-        void returnSearchInfo();
+        void returnSearchInfo(SearchInfoBean searchInfoBean);
 
-
+        void returnHotSearchInfo(HotSearchInfoBean hotSearchInfoBean);
     }
 
     interface Model extends BaseModel {
-        Observable<SearchInfoBean> getSearchInfoData();
+        Observable<HotSearchInfoBean> getHotSearchInfoData();
+
+        Observable<SearchInfoBean> getSearchDate(String password,Integer page);
     }
 
     abstract class Presenter extends BasePresenter<View, Model> {
-        public abstract void getSearchInfoRequest();
+        public abstract void getHotSearchInfoRequest();
+
+        public abstract void getSearchInfoRequest(String password,Integer page);
     }
 }

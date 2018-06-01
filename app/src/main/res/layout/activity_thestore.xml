@@ -372,7 +372,7 @@
                 android:layout_toRightOf="@+id/iv_store_pw"
                 android:text="设置管理密码"
                 android:textColor="@color/font_1"
-                android:textSize="@dimen/x28" />
+                android:textSize="@dimen/x28"/>
 
             <ImageView
                 android:layout_width="@dimen/x40"

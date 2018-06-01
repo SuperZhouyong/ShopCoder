@@ -14,7 +14,7 @@ import com.intention.sqtwin.ui.mall.contract.TaoBaoStoreContract;
  * QQ: 437397161
  */
 
-public class TaoBaoStorPresenter  extends TaoBaoStoreContract.Presenter{
+public class TaoBaoStorPresenter extends TaoBaoStoreContract.Presenter {
     @Override
     public void getTaoBaoStoreInfoRequest(Integer store_id) {
         mRxManage.add(mModel.getTaoBaoStorInfoData(store_id).subscribe(new RxSubscriber<TaobaoStoreInfoBean>(mContext) {
@@ -25,7 +25,7 @@ public class TaoBaoStorPresenter  extends TaoBaoStoreContract.Presenter{
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.oneMessage,message);
+                mView.showErrorTip(AppConstant.oneMessage, message);
             }
 
             @Override
@@ -43,16 +43,20 @@ public class TaoBaoStorPresenter  extends TaoBaoStoreContract.Presenter{
     }
 
     @Override
-    public void getAddFavBean(Integer fav_id, String fav_type) {
+    public void getAddFavBean(Integer fav_id, final String fav_type) {
         mRxManage.add(mModel.getAddFavFiled(fav_id, fav_type).subscribe(new RxSubscriber<AddFavBean>(mContext) {
             @Override
             protected void _onNext(AddFavBean addFavBean) {
-                mView.returnAddFavBean(addFavBean);
+                if (AppConstant.field.equals(fav_type))
+
+                    mView.returnAddFavBean(addFavBean);
+                else
+                    mView.returnAddFavBeanStore(addFavBean);
             }
 
             @Override
             protected void _onError(String message) {
-                mView.showErrorTip(AppConstant.twoMessage,message);
+                mView.showErrorTip(AppConstant.twoMessage, message);
             }
 
 

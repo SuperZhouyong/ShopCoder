@@ -17,4 +17,8 @@ public class ChooseBean1 {
     public void setName(String name) {
         this.name = name;
     }
+
+    public ChooseBean1(String name) {
+        this.name = name;
+    }
 }

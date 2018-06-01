@@ -28,17 +28,7 @@
     <color name="font_14">#bfbfbf</color>
     <color name="text_bg">#18ffffff</color>
     <color name="colo_refalsh">#5f5f5f</color>
-
-
-
-
-
-
-
-
-
-
-
+    <color name="hot_search">#EEEEEE</color>
 
 
     <color name="colorPrimary">#3F51B5</color>
@@ -172,7 +162,7 @@
     <color name="text_color_no">#F42C35</color>
     <color name="tv_intention_bg">#FDB110</color>
     <color name="tv_select">#E5F6FF</color>
-<!--学生情况的几种颜色-->
+    <!--学生情况的几种颜色-->
     <color name="school1">#2f8edf</color>
     <color name="school2">#efabab</color>
     <color name="school3">#e5e5e5</color>
@@ -180,7 +170,6 @@
 
     <color name="shadow">#b3000000</color>
     <color name="bt_to_grade">#f2f2f2</color>
-
 
 
 </resources>

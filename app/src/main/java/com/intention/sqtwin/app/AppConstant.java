@@ -118,5 +118,7 @@ public class AppConstant {
     public static final String GoodsPageTitle = "GoodsPageTitle";
     public static final String SettingPw = "SettingPw";
 
-    public static final String Exception ="Exception";
+    public static final String Exception = "Exception";
+    // 取消关注接口
+//    public static final String DeletFocus = "DeletFocus";
 }

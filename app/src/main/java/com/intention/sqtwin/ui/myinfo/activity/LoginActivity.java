@@ -237,8 +237,37 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         }
         return false;
     }
+    private Platform mPlatform;
+    private void doLogined(String platform)  {
+        // TODO Auto-generated method stub
+        mPlatform = ShareSDK.getPlatform(platform);
+        //获取数平台数据DB
+        String gender = "";
+        if (platform != null) {
+            //Sex
+            gender = mPlatform.getDb().getUserGender();
+            if (gender.equals("m")) {
+                //  userInfo.setUserGender(UserInfo.Gender.BOY);
+                gender = "男";
+            } else {
+                //userInfo.setUserGender(UserInfo.Gender.GIRL);
+                gender = "女";
+            }
+            //type
+            String typeName = mPlatform.getName();
+            //token
+            String token = mPlatform.getDb().getToken();
+            //Avatar
+            String usericon = mPlatform.getDb().getUserIcon();
+            //openid
+            final String userId = mPlatform.getDb().getUserId();
+            //Nickname
+            String userName = mPlatform.getDb().getUserName();
 
-    private void doLogined(String platform) {
+
+
+        }
+
 
     }
 }

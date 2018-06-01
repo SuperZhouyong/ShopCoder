@@ -157,7 +157,7 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     }
 
 
-    @OnClick({R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.ll_five, R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit, R.id.rel_store_pw})
+    @OnClick({R.id.ll_one, R.id.ll_two, R.id.ll_three, R.id.ll_fore, R.id.ll_five, R.id.rel_remaining_sum, R.id.rel_seller_message, R.id.rel_identit, R.id.rel_store_pw})
     public void onViewClicked(View view) {
         if (!isLogin()) {
             SingleCall.getInstance().clear();

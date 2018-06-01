@@ -99,18 +99,18 @@ public class MainActivity extends BaseActivity {
         super.onNewIntent(intent);
     }
 
-    /**
+/*    *//**
      * 入口
      *
      * @param activity
-     */
+     *//*
     public static void startAction(Activity activity, String Moneynum) {
         Intent intent = new Intent(activity, MainActivity.class);
         intent.putExtra(AppConstant.Moneynum, Moneynum);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.fade_in,
                 R.anim.fade_out);
-    }
+    }*/
 
     /**
      * 入口
@@ -151,7 +151,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        moneyNum = getIntent().getStringExtra(AppConstant.Moneynum);
+//        moneyNum = getIntent().getStringExtra(AppConstant.Moneynum);
         initTab();
         initRxBus();
 

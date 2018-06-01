@@ -11,27 +11,18 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- <ImageView
-             android:id="@+id/iv_color"
-             android:layout_width="@dimen/x22"
-             android:layout_height="@dimen/y22"
-             android:src="@color/app_focus"
-              />-->
-    <!--    <com.intention.sqtwin.widget.CircleImageView
-            android:id="@+id/iv_color"
-            android:layout_width="@dimen/x22"
-            android:layout_height="@dimen/y22"
-            android:src="@color/app_focus" />-->
+
 
         <TextView
             android:id="@+id/tv_name"
-
+            android:padding="@dimen/x10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x14"
             android:text="UI设计师"
+            android:background="@drawable/hot_search_bg"
             android:textColor="@color/font_1"
-            android:textSize="@dimen/x22" />
+            android:textSize="@dimen/x30" />
     </LinearLayout>
 
 </LinearLayout>

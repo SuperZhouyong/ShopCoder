@@ -11,7 +11,6 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.utils.conmonUtil.LogUtils;
@@ -20,7 +19,7 @@ import com.intention.sqtwin.utils.conmonUtil.LogUtils;
 /**
  * 自带清除按钮的输入框，清除按钮的作用是清空输入框的输入内容；
  * 需要注意的是，清除按钮会占据drawableRight的位置，所以设置drawableRight会无效
- * Created by liruchun on 2015/7/2.
+ *
  */
 public class ClearEditText extends AppCompatEditText implements View.OnFocusChangeListener {
     /**

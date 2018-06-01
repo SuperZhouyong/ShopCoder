@@ -10,6 +10,7 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import com.intention.sqtwin.baseadapterL.commonadcpter.ViewHolderHelper;
+import com.intention.sqtwin.baserx.RxManager;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.ui.Store.activity.StoreFocusActivity;
 import com.intention.sqtwin.ui.main.activity.AuctionItemActivity;
@@ -32,10 +33,22 @@ import java.util.List;
 
 public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
     private Integer mTypeId;
+    private RxManager rxManager;
 
-    public StoreInfoComAdapter(Context context, int layoutId, Integer mTypeId) {
+    public interface CancelFocusInterfeac {
+        void toCancelFocus(Integer favId, Integer postion, String FocusType);
+    }
+
+    private CancelFocusInterfeac cancelFocusInterfeac;
+
+    public void setCancelFocusInterfeac(CancelFocusInterfeac cancelFocusInterfeac) {
+        this.cancelFocusInterfeac = cancelFocusInterfeac;
+    }
+
+    public StoreInfoComAdapter(Context context, int layoutId, Integer mTypeId, RxManager rxManager) {
         super(context, layoutId);
         this.mTypeId = mTypeId;
+        this.rxManager = rxManager;
     }
 
     @Override
@@ -74,15 +87,22 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
 
     }
 
-    private void convertFive(ViewHolderHelper helper, Object o, int position) {
-        StoreInfoComBean.DataBean.FavoriteStoreBean mBean = (StoreInfoComBean.DataBean.FavoriteStoreBean)o;
-        helper.setImageUrl(R.id.iv_goods_pic,mBean.getStore_logo());
-        helper.setText(R.id.tv_goods_name,mBean.getStore_name());
-
+    private void convertFive(ViewHolderHelper helper, Object o, final int position) {
+        final StoreInfoComBean.DataBean.FavoriteStoreBean mBean = (StoreInfoComBean.DataBean.FavoriteStoreBean) o;
+        helper.setImageUrl(R.id.iv_goods_pic, mBean.getStore_logo());
+        helper.setText(R.id.tv_goods_name, mBean.getStore_name());
+        helper.setVisible(R.id.tv_time, true);
+        helper.setOnClickListener(R.id.tv_time, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cancelFocusInterfeac != null)
+                    cancelFocusInterfeac.toCancelFocus(mBean.getStore_id(), position, AppConstant.store);
+            }
+        });
     }
 
-    private void convertFore(ViewHolderHelper helper, Object o, int position) {
-        StoreInfoComBean.DataBean.FavoriteArtistBean mBean = (StoreInfoComBean.DataBean.FavoriteArtistBean) o;
+    private void convertFore(ViewHolderHelper helper, Object o, final int position) {
+        final StoreInfoComBean.DataBean.FavoriteArtistBean mBean = (StoreInfoComBean.DataBean.FavoriteArtistBean) o;
         helper.setText(R.id.tv_name, mBean.getName());
         helper.setText(R.id.tv_bid_desc, "拍品数量");
         helper.setText(R.id.tv_bid_price, mBean.getAuction_count() + "");
@@ -90,14 +110,15 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
         helper.getView(R.id.tv_time).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (cancelFocusInterfeac != null)
+                    cancelFocusInterfeac.toCancelFocus(mBean.getId(), position, AppConstant.artst);
             }
         });
 
     }
 
-    private void convertThree(ViewHolderHelper helper, Object o, int position) {
-        StoreInfoComBean.DataBean.FavoriteOrganBean mBean = (StoreInfoComBean.DataBean.FavoriteOrganBean) o;
+    private void convertThree(ViewHolderHelper helper, Object o, final int position) {
+        final StoreInfoComBean.DataBean.FavoriteOrganBean mBean = (StoreInfoComBean.DataBean.FavoriteOrganBean) o;
         helper.setImageUrl(R.id.iv_icon, mBean.getLogo());
         helper.setText(R.id.tv_name, mBean.getName());
         helper.setText(R.id.tv_bid_desc, mBean.getDescription());
@@ -106,13 +127,14 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
         helper.getView(R.id.tv_time).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (cancelFocusInterfeac != null)
+                    cancelFocusInterfeac.toCancelFocus(mBean.getOrganization_id(), position, AppConstant.organ);
             }
         });
 
     }
 
-    private void convertTwo(ViewHolderHelper helper, Object o, int position) {
+    private void convertTwo(ViewHolderHelper helper, Object o, final int position) {
         final StoreInfoComBean.DataBean.FavoriteFieldBean recommendFieldBean = (StoreInfoComBean.DataBean.FavoriteFieldBean) o;
 
         helper.setText(R.id.tv_fouce_num, String.valueOf(recommendFieldBean.getFans_count()));
@@ -125,11 +147,14 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
 
         // 显示拍卖时间
         showAuctionTime(helper, start_time, end_time);
+        helper.setVisible(R.id.iv_focus, false);
+        helper.setText(R.id.tv_focus, "取消");
         // 取消关注
         helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (cancelFocusInterfeac != null)
+                    cancelFocusInterfeac.toCancelFocus(recommendFieldBean.getId(), position, AppConstant.field);
             }
         });
         if (recommendFieldBean.getOrganization() == null) {
@@ -178,7 +203,7 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
         }
     }
 
-    private void convertOne(ViewHolderHelper helper, Object o, int position) {
+    private void convertOne(ViewHolderHelper helper, Object o, final int position) {
         final StoreInfoComBean.DataBean.FavoriteItemBean auctionItemListBean = (StoreInfoComBean.DataBean.FavoriteItemBean) o;
         helper.setImageUrl(R.id.iv_goods, auctionItemListBean.getImage());
         helper.setText(R.id.tv_goods_name, auctionItemListBean.getName());
@@ -188,6 +213,15 @@ public class StoreInfoComAdapter extends CommonRecycleViewAdapter {
 
         helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
         helper.setText(R.id.tv_goods_desc, "当前价");
+
+        helper.setVisible(R.id.tv_cancle_focus, true);
+        helper.setOnClickListener(R.id.tv_cancle_focus, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (cancelFocusInterfeac != null)
+                    cancelFocusInterfeac.toCancelFocus(auctionItemListBean.getId(), position, AppConstant.goods);
+            }
+        });
      /*   helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

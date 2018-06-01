@@ -16,6 +16,7 @@ import com.intention.sqtwin.adapter.StoreInfoComAdapter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.base.LazzyFragment;
+import com.intention.sqtwin.bean.DeleteFavBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.ui.Store.contract.StoreInfoComContract;
 import com.intention.sqtwin.ui.Store.model.StoreInfoComModel;
@@ -31,6 +32,7 @@ import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.functions.Action1;
 
 /**
  * Description: 保佑无bug
@@ -40,7 +42,7 @@ import butterknife.BindView;
  * QQ: 437397161
  */
 
-public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, StoreInfoComModel> implements StoreInfoComContract.View, OnNetWorkErrorListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener {
+public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, StoreInfoComModel> implements StoreInfoComContract.View, OnNetWorkErrorListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener, StoreInfoComAdapter.CancelFocusInterfeac {
 
     private String mTitle;
     private Integer mcategory_id;
@@ -55,6 +57,7 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
     private Integer page = 0;
     private int pagesize = 10;
     private java.lang.String TAG = "StoreInfoComFragement";
+    private Integer currentPostion;
 
     @Override
     public void initPresenter() {
@@ -69,7 +72,8 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
             return;
         }
         LogUtils.logd(TAG + "     " + resId + "-----" + mcategory_id);
-        mAdapter = new StoreInfoComAdapter(getActivity(), resId, mcategory_id);
+        mAdapter = new StoreInfoComAdapter(getActivity(), resId, mcategory_id, mRxManager);
+        mAdapter.setCancelFocusInterfeac(this);
         mLadapter = new LRecyclerViewAdapter(mAdapter);
 
         if (mcategory_id == 5)
@@ -87,6 +91,14 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         mLRecyclerView.setOnRefreshListener(this);
 
         mLadapter.setOnItemClickListener(this);
+
+
+      /*  mRxManager.on(AppConstant.DeletFocus, new Action1<Integer>() {
+            @Override
+            public void call(Integer integer) {
+
+            }
+        });*/
     }
 
     private Integer switctResId(Integer mcategory_id) {
@@ -167,7 +179,7 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
 
             return;
         }
-        if (mcategory_id == 1) {
+        if (mcategory_id == 1 && page == 0) {
 //            mAdapter.addAll(storeInfoComBean.getData().getFavorite_item());
             if (storeInfoComBean.getData().getFavorite_item().size() == 0) {
 
@@ -273,6 +285,13 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
 
     }
 
+    @Override
+    public void returnCancelFocus(DeleteFavBean deleteFavBean) {
+
+        mAdapter.removeAt(currentPostion);
+        mLadapter.notifyDataSetChanged();
+    }
+
 
     @Override
     public void reload() {
@@ -310,5 +329,11 @@ public class StoreInfoComFragement extends LazzyFragment<StoreInfoComPresenter, 
         if (mcategory_id == 5) {
             TaoBaoStoreInfoActivity.GotoTaoBaoSTireInfoActivity((BaseActivity) getActivity(), ((StoreInfoComBean.DataBean.FavoriteStoreBean) mAdapter.get(position)).getStore_id());
         }
+    }
+
+    @Override
+    public void toCancelFocus(Integer favId, Integer postion, String FocusType) {
+        mPresenter.getCancelFocuRequest(favId, FocusType);
+        currentPostion = postion;
     }
 }

@@ -22,6 +22,7 @@ public interface TaoBaoStoreContract {
 
         void returnAddFavBean(AddFavBean addFavBean);
 
+        void returnAddFavBeanStore(AddFavBean addFavBean);
     }
 
     interface Model extends BaseModel {

@@ -131,7 +131,7 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
 
     @Override
     public void returnMyCompeteBean(MyCompeteBean myCompeteBean) {
-        if (!myCompeteBean.isIs_success()) {
+        if (!myCompeteBean.isIs_success() || myCompeteBean.getData().getGoods_list().size() == 0) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
             return;
         }

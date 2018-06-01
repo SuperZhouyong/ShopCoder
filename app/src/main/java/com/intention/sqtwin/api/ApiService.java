@@ -21,6 +21,8 @@ import com.intention.sqtwin.bean.DeleteFavBean;
 import com.intention.sqtwin.bean.DeleteReceiverBean;
 import com.intention.sqtwin.bean.DerivativesBean;
 import com.intention.sqtwin.bean.GoosPageInfoBean;
+import com.intention.sqtwin.bean.HotSearchBean;
+import com.intention.sqtwin.bean.HotSearchInfoBean;
 import com.intention.sqtwin.bean.IdentityProveBean;
 import com.intention.sqtwin.bean.LoginBean;
 import com.intention.sqtwin.bean.MessageBean;
@@ -36,6 +38,8 @@ import com.intention.sqtwin.bean.RealNamePeoTwoBean;
 import com.intention.sqtwin.bean.RealNameStatusBean;
 import com.intention.sqtwin.bean.ReanlNameStoreInfoBean;
 import com.intention.sqtwin.bean.ReceivedGoodsBean;
+import com.intention.sqtwin.bean.SearchAuctionBean;
+import com.intention.sqtwin.bean.SearchInfoBean;
 import com.intention.sqtwin.bean.SetDefaultAddressBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
@@ -693,5 +697,24 @@ public interface ApiService {
     @POST("")
     Observable<TellBackBean> getTellBackBean(
             @Field("orderId") String orderId
+    );
+
+    /**
+     * 热门搜索推荐
+     *
+     * @return
+     */
+    @GET("search/hot_search")
+    Observable<HotSearchInfoBean> getHotSearchBean();
+
+    /** 获取搜索拍品
+     * @param keyword
+     * @param page_no
+     * @return
+     */
+    @GET("search_auction_item")
+    Observable<SearchInfoBean> getSearchAuctionBean(
+            @Field("keyword") String keyword,
+            @Field("page_no") Integer page_no
     );
 }

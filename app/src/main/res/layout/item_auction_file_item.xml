@@ -24,25 +24,42 @@
             android:layout_marginLeft="@dimen/x22"
             android:layout_marginRight="@dimen/x22"
             android:layout_marginTop="@dimen/y50"
+            android:ellipsize="end"
+            android:maxLines="2"
             android:textColor="@color/font_1"
             android:textSize="@dimen/x32" />
 
+
+        <TextView
+            android:id="@+id/tv_cancle_focus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_toRightOf="@id/iv_focus"
+            android:background="@drawable/shape_focus_cancel"
+            android:text="取消"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x24"
+            android:visibility="gone" />
+
         <LinearLayout
-            android:padding="@dimen/x8"
-            android:background="@drawable/shape_time_countdown"
             android:id="@+id/ll_footer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/y30"
             android:layout_marginLeft="@dimen/x22"
-            android:orientation="horizontal">
+            android:background="@drawable/shape_time_countdown"
+            android:orientation="horizontal"
+            android:padding="@dimen/x8">
 
             <ImageView
-                android:src="@mipmap/leading_peo"
-                android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/x30"
-                android:layout_height="@dimen/y30" />
+                android:layout_height="@dimen/y30"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/leading_peo" />
 
             <TextView
                 android:id="@+id/tv_goods_desc_foot"
@@ -61,21 +78,21 @@
         </LinearLayout>
 
         <LinearLayout
-            android:padding="@dimen/x8"
-            android:background="@drawable/shape_time_countdown"
             android:id="@+id/ll_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/ll_footer"
             android:layout_marginBottom="@dimen/y20"
             android:layout_marginLeft="@dimen/x22"
-            android:orientation="horizontal">
+            android:background="@drawable/shape_time_countdown"
+            android:orientation="horizontal"
+            android:padding="@dimen/x8">
 
             <ImageView
-                android:src="@mipmap/current_price"
-                android:layout_gravity="center_vertical"
                 android:layout_width="@dimen/x30"
-                android:layout_height="@dimen/y30" />
+                android:layout_height="@dimen/y30"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/current_price" />
 
             <TextView
                 android:id="@+id/tv_goods_desc"
@@ -85,11 +102,11 @@
                 android:textColor="@color/title_bg" />
 
             <TextView
-                android:textColor="@color/title_bg"
                 android:id="@+id/tv_goods_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x20" />
+                android:layout_marginLeft="@dimen/x20"
+                android:textColor="@color/title_bg" />
 
         </LinearLayout>
 

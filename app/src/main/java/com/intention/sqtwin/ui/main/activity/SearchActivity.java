@@ -1,26 +1,40 @@
 package com.intention.sqtwin.ui.main.activity;
 
 
+import android.content.Context;
+import android.graphics.Paint;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
+import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
+import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.adapter.SearchAdapter;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
-import com.intention.sqtwin.bean.TabEntity;
-import com.intention.sqtwin.bean.TabsEntity;
+import com.intention.sqtwin.bean.ChooseBean1;
+import com.intention.sqtwin.bean.HotSearchInfoBean;
+import com.intention.sqtwin.bean.SearchInfoBean;
 import com.intention.sqtwin.ui.main.contract.SearchContract;
+import com.intention.sqtwin.ui.main.model.SearchModel;
+import com.intention.sqtwin.ui.myinfo.presenter.SearchPresenter;
 import com.intention.sqtwin.widget.ClearEditText;
+import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
 import com.intention.sqtwin.widget.flow.FlowTagLayout;
+import com.intention.sqtwin.widget.flow.OnTagClickListener;
 import com.intention.sqtwin.widget.flow.TagAdapter;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -30,7 +44,7 @@ import butterknife.OnClick;
  * Author: ZhouYong
  */
 
-public class SearchActivity extends BaseActivity implements SearchContract.View {
+public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> implements SearchContract.View, OnTagClickListener, ClearEditText.SearchInterface, View.OnKeyListener, LoadingTip.onReloadListener, OnLoadMoreListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -51,10 +65,21 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
     ClearEditText searchEt;
     @BindView(R.id.activity_search_head)
     RelativeLayout activitySearchHead;
-/*    @BindView(R.id.tab_layout)
-    CommonTabLayout tabLayout;*/
+
+
     @BindView(R.id.tag_flow)
     FlowTagLayout tagFlow;
+    @BindView(R.id.mLRecyclerView)
+    LRecyclerView mLRecyclerView;
+    @BindView(R.id.mLoadingTip)
+    LoadingTip mLoadingTip;
+    @BindView(R.id.rel_search_info)
+    RelativeLayout relSearchInfo;
+    private TagAdapter tagAdapter;
+    private SearchAdapter searchAdapter;
+    private LRecyclerViewAdapter mLadapter;
+    private Integer page = 0;
+    private String sSerchName;
 
     @Override
     public int getLayoutId() {
@@ -63,32 +88,36 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
 
     @Override
     public void initPresenter() {
-
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
     public void initView() {
-        leftTitle.setVisibility(android.view.View.GONE);
+        leftTitle.setVisibility(View.GONE);
         centerTitle.setText("搜索");
-        relSearch.setVisibility(android.view.View.GONE);
+        relSearch.setVisibility(View.GONE);
 //        ArrayList<CustomTabEntity> customTabEntities = new ArrayList<>();
 //        customTabEntities.add(new TabsEntity(""))
 //        tabLayout.setTabData();
-        TagAdapter tagAdapter = new TagAdapter(this);
+        tagAdapter = new TagAdapter(this);
         tagFlow.setAdapter(tagAdapter);
-    }
+        tagFlow.setOnTagClickListener(this);
+        searchEt.setSearchInterface(this);
+        searchEt.setOnKeyListener(this);
+        searchAdapter = new SearchAdapter(this);
+        mLadapter = new LRecyclerViewAdapter(searchAdapter);
+        mLRecyclerView.setAdapter(mLadapter);
+        mLRecyclerView.setOnLoadMoreListener(this);
+
+        View homeHeadTitleOnew = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
+        TextView viewById1 = (TextView) homeHeadTitleOnew.findViewById(R.id.yv_all_recy_head_title);
+        viewById1.setText("拍品");
+        viewById1.getPaint().setFlags(Paint.FAKE_BOLD_TEXT_FLAG);
+        setMarGinTop(viewById1, (int) getResources().getDimension(R.dimen.x22), 0);
+        mLadapter.addHeaderView(homeHeadTitleOnew);
 
 
-    @OnClick({R.id.rel_back, R.id.activity_search_return})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rel_back:
-                finish();
-                break;
-            case R.id.activity_search_return:
-                break;
-
-        }
+        mPresenter.getHotSearchInfoRequest();
     }
 
 
@@ -109,11 +138,99 @@ public class SearchActivity extends BaseActivity implements SearchContract.View 
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
+        if (AppConstant.twoMessage.equals(RequestId) && page == 0) {
+            relSearchInfo.setVisibility(View.VISIBLE);
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
+            mLoadingTip.setOnReloadListener(this);
+        }
+    }
+
+
+    @Override
+    public void returnSearchInfo(SearchInfoBean searchInfoBean) {
+        relSearch.setVisibility(View.VISIBLE);
+        if (!searchInfoBean.isIs_success()) {
+            showShortToast(searchInfoBean.getMessage());
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+            return;
+        }
+        if (mLoadingTip.getVisibility() == View.VISIBLE)
+            mLoadingTip.setViewGone();
+
+        searchAdapter.addAll(searchInfoBean.getData());
 
     }
 
     @Override
-    public void returnSearchInfo() {
+    public void returnHotSearchInfo(HotSearchInfoBean hotSearchInfoBean) {
+        if (!hotSearchInfoBean.isIs_success()) {
+            showShortToast(hotSearchInfoBean.getMessage());
+            return;
+        }
+        ArrayList<ChooseBean1> chooseBean1s = new ArrayList<>();
+        for (String s : hotSearchInfoBean.getData()) {
+            chooseBean1s.add(new ChooseBean1(s));
+        }
+        tagAdapter.onlyAddAll(chooseBean1s);
+    }
 
+    @Override
+    public void onItemClick(FlowTagLayout parent, View view, int position) {
+        searchEt.setText(tagAdapter.getItem(position).getName());
+        searchEt.setSelection(tagAdapter.getItem(position).getName().length());
+        searchEt.requestFocus();
+    }
+
+    @Override
+    public void UpdateSearchResult(String ImportText) {
+
+    }
+
+    @Override
+    public void UpdateEmptyImpore() {
+        relSearchInfo.setVisibility(View.INVISIBLE);
+        tagFlow.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                    getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//            tagFlow.setVisibility(View.INVISIBLE);
+//            if (searchEt.getText().)
+            sSerchName = searchEt.getText().toString().trim();
+            if (TextUtils.isEmpty(sSerchName)) {
+                showShortToast("请输入有效内容");
+                return false;
+            }
+            mPresenter.getSearchInfoRequest(sSerchName, page);
+        }
+
+        return false;
+    }
+
+
+    @OnClick({R.id.rel_back, R.id.activity_search_return})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rel_back:
+                finish();
+                break;
+            case R.id.activity_search_return:
+                finish();
+                break;
+
+        }
+    }
+
+    @Override
+    public void reloadLodTip() {
+        mPresenter.getSearchInfoRequest(sSerchName, page);
+    }
+
+    @Override
+    public void onLoadMore() {
+        mPresenter.getSearchInfoRequest(sSerchName, page);
     }
 }

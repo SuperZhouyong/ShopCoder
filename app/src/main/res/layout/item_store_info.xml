@@ -22,4 +22,17 @@
         android:textColor="@color/font_1"
         android:textSize="@dimen/x35" />
 
+    <TextView
+
+        android:layout_marginTop="@dimen/y20"
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/font_2"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/x22"
+        android:background="@drawable/focus_art"
+        android:text="取消" />
+
 </LinearLayout>

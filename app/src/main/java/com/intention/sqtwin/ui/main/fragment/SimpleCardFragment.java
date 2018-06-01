@@ -213,10 +213,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         }
         mAdapter.addAll(allDateBean.getData().getAuction_field_list());
 
-       /* tv_all.setText("全部");
-        tv_preview.setText("预展中");
-        tv_ongoing.setText("拍卖中");
-        tv_over.setText("已结拍");*/
+
         vgll.setVisibility(View.VISIBLE);
         ++page_no;
 
@@ -280,6 +277,7 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     @Override
     public void onRefresh() {
         page_no = 0;
+
         mPresenter.getPpAlldate(category_id, status, page_no);
     }
 

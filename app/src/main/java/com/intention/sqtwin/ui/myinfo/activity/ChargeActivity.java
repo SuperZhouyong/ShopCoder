@@ -71,7 +71,7 @@ public class ChargeActivity extends BaseActivity {
                 break;
             case R.id.tv_confirm:
                 String MoneyNum = edMoney.getText().toString().trim();
-
+                SelectChargeActivity.gotoSelectChargeActivity(this,Integer.parseInt(MoneyNum));
                 break;
         }
     }

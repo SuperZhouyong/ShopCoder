@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/actionbar_title" />
+    <include
+        android:id="@+id/title"
+        layout="@layout/actionbar_title" />
 
     <RelativeLayout
+        android:layout_below="@id/title"
         android:id="@+id/activity_search_head"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/y96"
@@ -34,7 +36,7 @@
             android:layout_toLeftOf="@id/activity_search_return"
             android:background="@drawable/ed_search_corner"
             android:paddingRight="@dimen/x30">
-<!--search_black-->
+            <!--search_black-->
             <ImageView
                 android:id="@+id/search_iv"
                 android:layout_width="@dimen/x30"
@@ -63,24 +65,42 @@
         </RelativeLayout>
     </RelativeLayout>
 
- <!--   <com.flyco.tablayout.CommonTabLayout
-        android:id="@+id/tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y100"
-        android:background="@color/white"
-        tl:tl_iconVisible="false"
-        tl:tl_indicator_corner_radius="1.5dp"
-        tl:tl_indicator_height="3dp"
-        tl:tl_indicator_width="10dp"
-        tl:tl_textSelectColor="@color/app_main"
-        tl:tl_textUnselectColor="@color/font_1"
-        tl:tl_textsize="@dimen/x30" />-->
+    <!--   <com.flyco.tablayout.CommonTabLayout
+           android:id="@+id/tab_layout"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/y100"
+           android:background="@color/white"
+           tl:tl_iconVisible="false"
+           tl:tl_indicator_corner_radius="1.5dp"
+           tl:tl_indicator_height="3dp"
+           tl:tl_indicator_width="10dp"
+           tl:tl_textSelectColor="@color/app_main"
+           tl:tl_textUnselectColor="@color/font_1"
+           tl:tl_textsize="@dimen/x30" />-->
 
     <com.intention.sqtwin.widget.flow.FlowTagLayout
+        android:layout_below="@id/activity_search_head"
         android:id="@+id/tag_flow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x30"
         android:layout_marginRight="@dimen/x30"
         android:layout_marginTop="@dimen/y30" />
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rel_search_info"
+        android:layout_below="@id/activity_search_head"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/mLRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+            android:layout_width="match_parent"
+            android:id="@+id/mLoadingTip"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+</RelativeLayout>

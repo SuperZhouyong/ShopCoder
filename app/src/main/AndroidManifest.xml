@@ -106,7 +106,8 @@
         <!--充值界面-->
         <activity android:name=".ui.myinfo.activity.ChargeActivity" />
         <!--充值方式界面-->
-        <activity android:name=".ui.myinfo.activity.ChargeWayActivity" />
+        <activity android:name=".ui.myinfo.activity.SelectChargeActivity"/>
+        <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity" />-->
         <!--编辑资料-->
         <activity android:name=".ui.myinfo.activity.EditInfoActivity" />
         <!--订单列表-->
@@ -175,6 +176,8 @@
         <activity android:name=".ui.myinfo.activity.SettingActivity" />
         <!-- 店铺修改密码-->
         <activity android:name=".ui.myinfo.activity.StorePassWordActivity" />
+        <!--确认支付界面 无效-->
+        <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity"-->
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

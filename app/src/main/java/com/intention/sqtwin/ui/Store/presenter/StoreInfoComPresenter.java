@@ -2,6 +2,7 @@ package com.intention.sqtwin.ui.Store.presenter;
 
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.DeleteFavBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.ui.Store.contract.StoreInfoComContract;
 
@@ -38,6 +39,28 @@ public class StoreInfoComPresenter extends StoreInfoComContract.Presenter {
                 super.onCompleted();
                 mView.stopLoading(AppConstant.oneMessage);
             }
+        }));
+    }
+
+    @Override
+    public void getCancelFocuRequest(Integer fac_id, String fav_type) {
+        mRxManage.add(mModel.getCancelFocus(fac_id, fav_type).subscribe(new RxSubscriber<DeleteFavBean>(mContext) {
+            @Override
+            protected void _onNext(DeleteFavBean deleteFavBean) {
+                mView.returnCancelFocus(deleteFavBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.twoMessage,message);
+            }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.StartLoading(AppConstant.twoMessage);
+            }
+
         }));
     }
 }
