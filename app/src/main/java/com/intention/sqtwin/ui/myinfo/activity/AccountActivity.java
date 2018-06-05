@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.intention.sqtwin.R;
+import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.AccountBean;
 import com.intention.sqtwin.ui.Store.activity.TradingDetailActivity;
@@ -109,9 +110,17 @@ public class AccountActivity extends BaseActivity<AccountPresenter, AccountModel
     }
 
 
-    @OnClick({R.id.rel_back, R.id.tv_bank_card_manager, R.id.tv_Transaction_manage,R.id.rel_search})
+    @OnClick({R.id.rel_back, R.id.tv_bank_card_manager, R.id.tv_Transaction_manage, R.id.rel_search, R.id.tv_recharge, R.id.tv_withdrawal})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            // 提现
+            case R.id.tv_withdrawal:
+               ChargeActivity.gotoChargeActivity(this,AppConstant.twoMessage);
+                break;
+            //充值
+            case R.id.tv_recharge:
+                ChargeActivity.gotoChargeActivity(this, AppConstant.oneMessage);
+                break;
             case R.id.rel_back:
                 finish();
                 break;

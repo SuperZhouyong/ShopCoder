@@ -7,19 +7,20 @@
     android:orientation="vertical">
 
     <ImageView
-        android:scaleType="fitXY"
         android:id="@+id/iv_headtwo"
         android:layout_width="@dimen/x330"
-        android:layout_height="@dimen/y200" />
+        android:layout_height="@dimen/y200"
+        android:scaleType="fitXY" />
 
     <TextView
-
         android:id="@+id/tv_headtwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/iv_headtwo"
         android:layout_below="@id/iv_headtwo"
         android:layout_marginTop="@dimen/y25"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:text="青花器摆件一对"
         android:textColor="@color/font_1"
         android:textSize="@dimen/x28" />

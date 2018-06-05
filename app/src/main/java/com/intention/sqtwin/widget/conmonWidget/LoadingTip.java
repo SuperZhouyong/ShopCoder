@@ -78,7 +78,7 @@ public class LoadingTip extends LinearLayout {
     // 扣费失败 ，没有收藏 ，无网络 ， 没有收藏记录 ， 购物车为空 ,搜素无结果
 
     public static enum NoloadStatus {
-        NoCollect, NoNetWork, StartLoading, NoReceivedAdress
+        NoCollect, NoNetWork, StartLoading, NoShopCart, NoReceivedAdress
     }
 
     private void initView(Context context) {
@@ -127,6 +127,7 @@ public class LoadingTip extends LinearLayout {
                 tv_tips.setText("暂无内容");
                 bt_operate.setVisibility(View.GONE);
                 break;
+
             case NoNetWork:
                 setVisibility(View.VISIBLE);
                 relTip.setVisibility(GONE);
@@ -152,6 +153,23 @@ public class LoadingTip extends LinearLayout {
                     }
                 });
                 break;
+            case NoShopCart:
+                setVisibility(View.VISIBLE);
+                relTip.setVisibility(GONE);
+                llTip.setVisibility(VISIBLE);
+                img_tip_logo.setVisibility(VISIBLE);
+                img_tip_logo.setImageResource(R.mipmap.shop_cart_empty);
+                tv_tips.setText("暂无内容");
+                bt_operate.setVisibility(View.GONE);
+               /* tvTipConfirl.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onReloadListener != null)
+                            onReloadListener.reloadLodTip();
+                    }
+                });*/
+                break;
+
             case StartLoading:
                 setVisibility(VISIBLE);
                 llTip.setVisibility(VISIBLE);

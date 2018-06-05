@@ -2,6 +2,7 @@ package com.intention.sqtwin.ui.mall.presenter;
 
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
+import com.intention.sqtwin.bean.AddCartInfoBean;
 import com.intention.sqtwin.bean.GoosPageInfoBean;
 import com.intention.sqtwin.ui.mall.contract.GoodsPageContract;
 
@@ -31,6 +32,21 @@ public class GoodsPagePresenter extends GoodsPageContract.Presenter {
             public void onStart() {
                 super.onStart();
                 mView.StartLoading(AppConstant.oneMessage);
+            }
+        }));
+    }
+
+    @Override
+    public void getAddCartInfoBeanRequest(Integer goodid, Integer count) {
+        mRxManage.add(mModel.getAddCartInfoBean(goodid, count).subscribe(new RxSubscriber<AddCartInfoBean>(mContext) {
+            @Override
+            protected void _onNext(AddCartInfoBean addCartInfoBean) {
+                mView.returnAddGoodCart(addCartInfoBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.twoMessage, message);
             }
         }));
     }

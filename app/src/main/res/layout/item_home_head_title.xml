@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:background="@mipmap/item_fore_bg"
             android:gravity="center"
-
+            android:textColor="@color/white"
             android:text="全部"
             android:textSize="@dimen/x31"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:background="@mipmap/item_fore_bg"
             android:gravity="center"
-
+            android:textColor="@color/font_8"
             android:text="拍卖中"
             android:textSize="@dimen/x31"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:layout_weight="1"
             android:background="@mipmap/item_fore_bg"
             android:gravity="center"
-
+            android:textColor="@color/font_8"
             android:text="预展中"
             android:textSize="@dimen/x31"
             android:textStyle="bold" />
@@ -59,7 +59,7 @@
             android:layout_weight="1"
             android:background="@mipmap/item_fore_bg"
             android:gravity="center"
-
+            android:textColor="@color/font_8"
             android:text="已结拍"
             android:textSize="@dimen/x31"
             android:textStyle="bold" />

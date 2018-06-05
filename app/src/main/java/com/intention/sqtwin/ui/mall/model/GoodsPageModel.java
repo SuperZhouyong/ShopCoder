@@ -3,6 +3,7 @@ package com.intention.sqtwin.ui.mall.model;
 import com.intention.sqtwin.api.Api;
 import com.intention.sqtwin.api.HostType;
 import com.intention.sqtwin.baserx.RxSchedulers;
+import com.intention.sqtwin.bean.AddCartInfoBean;
 import com.intention.sqtwin.bean.GoosPageInfoBean;
 import com.intention.sqtwin.ui.mall.contract.GoodsPageContract;
 
@@ -16,9 +17,16 @@ import rx.Observable;
  * QQ: 437397161
  */
 
-public class GoodsPageModel implements GoodsPageContract.Model{
+public class GoodsPageModel implements GoodsPageContract.Model {
     @Override
     public Observable<GoosPageInfoBean> getGoodspageInfo(Integer goodsId) {
         return Api.getDefault(HostType.Jsonpart).getGoodsPageInfo(goodsId).compose(RxSchedulers.<GoosPageInfoBean>io_main());
     }
+
+    @Override
+    public Observable<AddCartInfoBean> getAddCartInfoBean(Integer goodId, Integer count) {
+        return Api.getDefault(HostType.Jsonpart).getAddGoodCart(goodId, count).compose(RxSchedulers.<AddCartInfoBean>io_main());
+    }
+
+
 }

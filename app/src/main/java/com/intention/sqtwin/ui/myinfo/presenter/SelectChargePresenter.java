@@ -3,6 +3,7 @@ package com.intention.sqtwin.ui.myinfo.presenter;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.baserx.RxSubscriber;
 import com.intention.sqtwin.bean.OrderIdBean;
+import com.intention.sqtwin.bean.OrderIdDetailBean;
 import com.intention.sqtwin.bean.TellBackBean;
 import com.intention.sqtwin.ui.myinfo.contract.SelectChargeContract;
 
@@ -16,7 +17,7 @@ import com.intention.sqtwin.ui.myinfo.contract.SelectChargeContract;
 
 public class SelectChargePresenter extends SelectChargeContract.Presenter {
     @Override
-    public void getOrderIdBeanRequest(Integer Num, String type, String remark) {
+    public void getOrderIdBeanRequest(Float Num, String type, String remark) {
         mRxManage.add(mModel.getOrderIdBeanData(Num, type, remark).subscribe(new RxSubscriber<OrderIdBean>(mContext) {
             @Override
             protected void _onNext(OrderIdBean orderIdBean) {
@@ -55,6 +56,21 @@ public class SelectChargePresenter extends SelectChargeContract.Presenter {
             public void onStart() {
                 super.onStart();
                 mView.StartLoading(AppConstant.twoMessage);
+            }
+        }));
+    }
+
+    @Override
+    public void getOrderIdDetailRequest(String orderid, String type) {
+        mRxManage.add(mModel.getOrderIdDetaleData(orderid, type).subscribe(new RxSubscriber<OrderIdDetailBean>(mContext) {
+            @Override
+            protected void _onNext(OrderIdDetailBean orderIdDetailBean) {
+                mView.returnOderIdDetail(orderIdDetailBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.threeMessage, message);
             }
         }));
     }

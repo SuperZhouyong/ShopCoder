@@ -87,6 +87,7 @@
         android:layout_marginRight="@dimen/x30"
         android:layout_marginTop="@dimen/y30" />
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/rel_search_info"
         android:layout_below="@id/activity_search_head"
         android:layout_width="match_parent"

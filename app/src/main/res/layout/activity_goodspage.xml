@@ -140,9 +140,9 @@
 
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="@dimen/x30"
-                        app:btnTextSize="@dimen/x10"
+                        app:btnTextSize="@dimen/x20"
                         app:btnWidth="@dimen/x80"
-                        app:tvTextSize="@dimen/x10"
+                        app:tvTextSize="@dimen/x20"
                         app:tvWidth="@dimen/x80" />
                   <!--  <LinearLayout
                         android:layout_width="wrap_content"
@@ -193,8 +193,16 @@
                             android:textSize="@dimen/x34" />
                     </LinearLayout>-->
                 </RelativeLayout>
-
-                <ezy.ui.view.BannerView
+                <TextView
+                    android:padding="@dimen/x22"
+                    android:textSize="@dimen/x28"
+                    android:textColor="@color/font_10"
+                    android:background="@color/white"
+                    android:id="@+id/tv_bottom"
+                    android:layout_marginTop="@dimen/y20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+               <!-- <ezy.ui.view.BannerView
                     android:id="@+id/mLoopViewPager_two"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -204,7 +212,7 @@
                     app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
                     app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
                     app:bvIsAuto="true"
-                    app:bvIsLoop="true" />
+                    app:bvIsLoop="true" />-->
 
             </LinearLayout>
         </ScrollView>

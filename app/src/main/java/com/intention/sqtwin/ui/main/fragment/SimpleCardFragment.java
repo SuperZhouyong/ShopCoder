@@ -247,6 +247,10 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
     public void onLoadMore() {
         mPresenter.getPpAlldate(category_id, status, page_no);
     }
+// tv_all = (TextView) homeHeadTitle.findViewById(R.id.tv_all);
+//    tv_ongoing =(TextView)homeHeadTitle.findViewById(R.id.tv_ongoing);
+//    tv_preview =(TextView)homeHeadTitle.findViewById(R.id.tv_preview);
+//    tv_over =(TextView)homeHeadTitle.findViewById(R.id.tv_over);
 
     @Override
     public void onClick(View v) {
@@ -254,15 +258,31 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
         switch (v.getId()) {
             case R.id.tv_all:
                 intdex = 0;
+                tv_all.setTextColor(getResources().getColor(R.color.white));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.font_8));
+                tv_preview.setTextColor(getResources().getColor(R.color.font_8));
+                tv_over.setTextColor(getResources().getColor(R.color.font_8));
                 break;
             case R.id.tv_ongoing:
                 intdex = 1;
+                tv_all.setTextColor(getResources().getColor(R.color.font_8));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.white));
+                tv_preview.setTextColor(getResources().getColor(R.color.font_8));
+                tv_over.setTextColor(getResources().getColor(R.color.font_8));
                 break;
             case R.id.tv_preview:
                 intdex = 2;
+                tv_all.setTextColor(getResources().getColor(R.color.font_8));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.font_8));
+                tv_preview.setTextColor(getResources().getColor(R.color.white));
+                tv_over.setTextColor(getResources().getColor(R.color.font_8));
                 break;
             case R.id.tv_over:
                 intdex = 3;
+                tv_all.setTextColor(getResources().getColor(R.color.font_8));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.font_8));
+                tv_preview.setTextColor(getResources().getColor(R.color.font_8));
+                tv_over.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
         if (status != intdex) {

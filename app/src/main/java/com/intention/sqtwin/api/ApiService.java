@@ -2,6 +2,7 @@ package com.intention.sqtwin.api;
 
 
 import com.intention.sqtwin.bean.AccountBean;
+import com.intention.sqtwin.bean.AddCartInfoBean;
 import com.intention.sqtwin.bean.AddFavBean;
 import com.intention.sqtwin.bean.AgentBidBean;
 import com.intention.sqtwin.bean.AllDateBean;
@@ -30,6 +31,7 @@ import com.intention.sqtwin.bean.MyCompeteBean;
 import com.intention.sqtwin.bean.MyInfoBean;
 import com.intention.sqtwin.bean.NormalBankInfoBean;
 import com.intention.sqtwin.bean.OrderIdBean;
+import com.intention.sqtwin.bean.OrderIdDetailBean;
 import com.intention.sqtwin.bean.OrderListBean;
 import com.intention.sqtwin.bean.OrganPeBean;
 import com.intention.sqtwin.bean.PayPassWordBean;
@@ -41,6 +43,7 @@ import com.intention.sqtwin.bean.ReceivedGoodsBean;
 import com.intention.sqtwin.bean.SearchAuctionBean;
 import com.intention.sqtwin.bean.SearchInfoBean;
 import com.intention.sqtwin.bean.SetDefaultAddressBean;
+import com.intention.sqtwin.bean.ShopCartGoodsBean;
 import com.intention.sqtwin.bean.StoreInfoBean;
 import com.intention.sqtwin.bean.StoreInfoComBean;
 import com.intention.sqtwin.bean.StoreLoginNameBean;
@@ -676,14 +679,14 @@ public interface ApiService {
      * 获取支付订单
      *
      * @param num
-     * @param type
+     * @param type   pay_type	 支付平台	int	1=微信，2=支付宝
      * @param remark
      * @return
      */
     @FormUrlEncoded
     @POST("paycenter/recharge")
     Observable<OrderIdBean> getOrderIdBean(
-            @Field("amount") Integer num,
+            @Field("amount") Float num,
             @Field("pay_type") String type,
             @Field("remark") String remark);
 
@@ -707,14 +710,48 @@ public interface ApiService {
     @GET("search/hot_search")
     Observable<HotSearchInfoBean> getHotSearchBean();
 
-    /** 获取搜索拍品
+    /**
+     * 获取搜索拍品
+     *
      * @param keyword
      * @param page_no
      * @return
      */
-    @GET("search_auction_item")
+    @GET("search/get_search_goods")
     Observable<SearchInfoBean> getSearchAuctionBean(
-            @Field("keyword") String keyword,
-            @Field("page_no") Integer page_no
+            @Query("keyword") String keyword,
+            @Query("page_no") Integer page_no
     );
+
+    /**
+     * 获取详细支付订单信息
+     *
+     * @param orderid
+     * @param type
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("order/get_order")
+    Observable<OrderIdDetailBean> getOrderIdDeatil(
+            @Field("order_id") String orderid,
+            @Field("order_state") String type);
+
+    /**
+     * 加入购物车
+     *
+     * @param goodId
+     * @param count
+     * @return
+     */
+    @POST("shop/get_goods_in_cart")
+    @FormUrlEncoded
+    Observable<AddCartInfoBean> getAddGoodCart(
+            @Field("goods_id") Integer goodId,
+            @Field("goods_count") Integer count);
+
+    /**
+     * @return
+     */
+    @GET("shop/get_cart_list")
+    Observable<ShopCartGoodsBean> getShopCartInfo();
 }

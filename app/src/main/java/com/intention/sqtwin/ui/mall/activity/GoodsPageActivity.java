@@ -2,6 +2,9 @@ package com.intention.sqtwin.ui.mall.activity;
 
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
+import com.intention.sqtwin.bean.AddCartInfoBean;
 import com.intention.sqtwin.bean.GoosPageInfoBean;
 import com.intention.sqtwin.ui.mall.contract.GoodsPageContract;
 import com.intention.sqtwin.ui.mall.model.GoodsPageModel;
@@ -18,6 +22,7 @@ import com.intention.sqtwin.ui.mall.presenter.GoodsPagePresenter;
 import com.intention.sqtwin.utils.conmonUtil.ImageLoaderUtils;
 import com.intention.sqtwin.widget.AmountView;
 import com.intention.sqtwin.widget.conmonWidget.LoadingTip;
+import com.jakewharton.rxbinding.view.RxView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,8 +65,8 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
     TextView tvBeleft;
     @BindView(R.id.amount_view)
     AmountView amountView;
-    @BindView(R.id.mLoopViewPager_two)
-    BannerView mLoopViewPagerTwo;
+    /* @BindView(R.id.mLoopViewPager_two)
+     BannerView mLoopViewPagerTwo;*/
     @BindView(R.id.iv_one)
     ImageView ivOne;
     @BindView(R.id.rel_add_shopCart)
@@ -72,6 +77,8 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
     RelativeLayout relImmediatelyBuy;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
+    @BindView(R.id.tv_bottom)
+    TextView tvBottom;
     private int goodsId;
 
     @Override
@@ -91,7 +98,7 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
         goodsId = getIntent().getExtras().getInt(AppConstant.GoodsPageId, -1);
         mPresenter.getGoodsPageInfoRequest(goodsId);
 
-        showShortToast("功能代完善");
+//        showShortToast("功能代完善");
     }
 
     // R.id.btnDecrease, R.id.btnIncrease,
@@ -107,7 +114,9 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
                 break;*/
             //加入购物车
             case R.id.rel_add_shopCart:
-                startActivity(ShopCartActivity.class);
+
+                mPresenter.getAddCartInfoBeanRequest(goodsId, amountView.getAmount());
+//                startActivity(ShopCartActivity.class);
                 break;
             //立即购买
             case R.id.rel_immediately_buy:
@@ -166,14 +175,29 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
                 return iv;
             }
         });
+
         mLoopViewPager.setDataList(info.getImages());
         mLoopViewPager.start();
+//        tv_goods_name
+        tvGoodsName.setText(getIntent().getExtras().getString(AppConstant.GoodsPageTitle));
+//        tv_brand
+        tvBottom.setText(info.getDescription() + "");
+        tvBrand.setText(info.getBrand_id() + "");
         tvCurrentPrice.setText(info.getGoods_price());
         tvOldPrice.setText(info.getGoods_marketprice() + "");
         tvOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         tvBeleft.setText(info.getGoods_storage() + "");
 
 
+    }
+
+    @Override
+    public void returnAddGoodCart(AddCartInfoBean addCartInfoBean) {
+        if (!addCartInfoBean.isIs_success()) {
+            showShortToast(addCartInfoBean.getMessage());
+            return;
+        }
+        startActivity(ShopCartActivity.class);
     }
 
     @Override

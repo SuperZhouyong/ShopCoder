@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/actionbar_title" />
@@ -42,8 +43,9 @@
                 android:id="@+id/iv_wx_pay"
                 android:layout_width="@dimen/x60"
                 android:layout_height="@dimen/y60"
+                android:layout_alignLeft="@+id/imageView6"
+                android:layout_alignStart="@+id/imageView6"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x30"
                 android:src="@mipmap/wx_pay" />
 
             <TextView
@@ -56,13 +58,19 @@
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
-            <ImageView
-                android:layout_width="@dimen/x40"
-                android:layout_height="@dimen/y40"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+            <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
                 android:layout_marginRight="@dimen/x30"
-                android:src="@mipmap/list_right" />
+                android:layout_alignParentRight="true"
+                android:id="@+id/sCheckbox_wx"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:color_unchecked="@color/app_bottom_colour"
+                app:color_checked="@color/font_2"
+                app:color_tick="@color/white"
+                app:color_unchecked_stroke="@color/app_bottom_colour"
+                app:stroke_width="@dimen/x2"
+
+                android:layout_centerVertical="true" />
 
             <ImageView
                 android:layout_width="match_parent"
@@ -70,7 +78,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/x22"
                 android:layout_marginRight="@dimen/x22"
-                android:background="@color/app_bottom_colour" />
+                android:background="@color/app_bottom_colour"
+                android:id="@+id/imageView6" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -97,21 +106,27 @@
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
-            <ImageView
-                android:layout_width="@dimen/x40"
-                android:layout_height="@dimen/y40"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/x30"
-                android:src="@mipmap/list_right" />
+            <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
 
-            <ImageView
+                android:layout_marginRight="@dimen/x30"
+                android:layout_alignParentRight="true"
+                android:id="@+id/sCheckbox_ali"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:color_unchecked="@color/app_bottom_colour"
+                app:color_checked="@color/font_2"
+                app:color_tick="@color/white"
+                app:color_unchecked_stroke="@color/app_bottom_colour"
+                app:stroke_width="@dimen/x2"
+                android:layout_centerVertical="true" />
+
+         <!--   <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y2"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/x22"
                 android:layout_marginRight="@dimen/x22"
-                android:background="@color/app_bottom_colour" />
+                android:background="@color/app_bottom_colour" />-->
         </RelativeLayout>
 
 

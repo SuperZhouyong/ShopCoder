@@ -3,12 +3,17 @@ package com.intention.sqtwin.ui.main.activity;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +22,8 @@ import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.baseapp.AppManager;
 import com.intention.sqtwin.widget.conmonWidget.LoadingDialog;
+import com.just.agentweb.AgentWeb;
+import com.just.agentweb.DefaultWebClient;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,8 +38,8 @@ import butterknife.OnClick;
  */
 
 public class MyWebviewActivity extends BaseActivity {
-    @BindView(R.id.my_web_view)
-    WebView myWebView;
+//    @BindView(R.id.my_web_view)
+//    WebView myWebView;
     @BindView(R.id.iv_back)
     ImageView ivBack;
 
@@ -48,7 +55,10 @@ public class MyWebviewActivity extends BaseActivity {
     TextView centerTitle;
     @BindView(R.id.rel_search)
     RelativeLayout relSearch;
-    private String webUrl;
+    @BindView(R.id.ll_layout)
+    LinearLayout linearLayout;
+//    private String webUrl;
+    private AgentWeb mAgentWeb;
 
     @Override
     public int getLayoutId() {
@@ -62,14 +72,28 @@ public class MyWebviewActivity extends BaseActivity {
 
     @Override
     public void initView() {
+
+        mAgentWeb = AgentWeb.with(this)
+                .setAgentWebParent( linearLayout, new LinearLayout.LayoutParams(-1, -1))
+                .useDefaultIndicator()
+                .setWebChromeClient(mWebChromeClient)
+                .setWebViewClient(mWebViewClient)
+                .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+                .setSecurityType(AgentWeb.SecurityType.STRICT_CHECK)
+//                .setWebLayout(new WebLayout(this))
+                .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)//打开其他应用时，弹窗咨询用户是否前往其他应用
+                .interceptUnkownUrl() //拦截找不到相关页面的Scheme
+                .createAgentWeb()
+                .ready()
+                .go(getIntent().getExtras().getString(AppConstant.WEBURL));
         String sTitle = getIntent().getExtras().getString(AppConstant.WEBTITLE);
-        webUrl = getIntent().getExtras().getString(AppConstant.WEBURL);
+//        webUrl = getIntent().getExtras().getString(AppConstant.WEBURL);
         leftTitle.setText(sTitle);
         relSearch.setVisibility(View.GONE);
 
-        WebSettings settings = myWebView.getSettings();
+//        WebSettings settings = myWebView.getSettings();
         //todo 缓存
-        settings.setDomStorageEnabled(false);
+        /*settings.setDomStorageEnabled(false);
 //        settings.setSupportZoom(true);
         settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
         settings.setLoadsImagesAutomatically(true);
@@ -117,13 +141,13 @@ public class MyWebviewActivity extends BaseActivity {
                     LoadingDialog.cancelDialogForLoading();
                 }
 
-               /* ShowDialog = true;
+               *//* ShowDialog = true;
 
 
-                view.loadUrl(javascript);*//*
-                view.loadUrl("javascript:hideEle();");*/
+                view.loadUrl(javascript);*//**//*
+                view.loadUrl("javascript:hideEle();");*//*
             }
-        });
+        });*/
     }
 
 
@@ -144,5 +168,59 @@ public class MyWebviewActivity extends BaseActivity {
             case R.id.rel_search:
                 break;
         }
+    }
+    private WebViewClient mWebViewClient = new WebViewClient() {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+            return super.shouldOverrideUrlLoading(view, request);
+        }
+
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            //do you  work
+            Log.i("Info", "BaseWebActivity onPageStarted");
+        }
+    };
+    private WebChromeClient mWebChromeClient = new WebChromeClient() {
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            //do you work
+//            Log.i("Info","onProgress:"+newProgress);
+        }
+
+        @Override
+        public void onReceivedTitle(WebView view, String title) {
+            super.onReceivedTitle(view, title);
+           /* if (centerTitle != null) {
+                centerTitle.setText(title);
+            }*/
+        }
+    };
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (mAgentWeb.handleKeyEvent(keyCode, event)) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    protected void onPause() {
+        mAgentWeb.getWebLifeCycle().onPause();
+        super.onPause();
+
+    }
+
+    @Override
+    protected void onResume() {
+        mAgentWeb.getWebLifeCycle().onResume();
+        super.onResume();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //mAgentWeb.destroy();
+        mAgentWeb.getWebLifeCycle().onDestroy();
     }
 }

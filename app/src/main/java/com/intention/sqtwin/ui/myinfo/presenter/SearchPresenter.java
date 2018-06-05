@@ -41,6 +41,12 @@ public class SearchPresenter extends SearchContract.Presenter {
             protected void _onError(String message) {
                 mView.showErrorTip(AppConstant.twoMessage, message);
             }
+
+            @Override
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading(AppConstant.twoMessage);
+            }
         }));
     }
 }

@@ -22,7 +22,7 @@ import java.util.List;
  * Author: ZhouYong
  */
 
-public class SearchAdapter extends CommonRecycleViewAdapter<SearchInfoBean.DataBean> {
+public class SearchAdapter extends CommonRecycleViewAdapter<SearchInfoBean.DataBean.ItemListBean> {
 
 
     public SearchAdapter(Context context) {
@@ -30,7 +30,7 @@ public class SearchAdapter extends CommonRecycleViewAdapter<SearchInfoBean.DataB
     }
 
     @Override
-    public void convert(ViewHolderHelper helper, final SearchInfoBean.DataBean auctionItemListBean, int position) {
+    public void convert(ViewHolderHelper helper, final SearchInfoBean.DataBean.ItemListBean auctionItemListBean, int position) {
         helper.setImageUrl(R.id.iv_goods, auctionItemListBean.getImage());
         helper.setText(R.id.tv_goods_name, auctionItemListBean.getName());
 

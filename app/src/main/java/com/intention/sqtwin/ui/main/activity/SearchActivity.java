@@ -4,6 +4,7 @@ package com.intention.sqtwin.ui.main.activity;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -80,6 +81,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
     private LRecyclerViewAdapter mLadapter;
     private Integer page = 0;
     private String sSerchName;
+    private int pagesize = 10;
 
     @Override
     public int getLayoutId() {
@@ -106,6 +108,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
         searchEt.setOnKeyListener(this);
         searchAdapter = new SearchAdapter(this);
         mLadapter = new LRecyclerViewAdapter(searchAdapter);
+        mLRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mLRecyclerView.setAdapter(mLadapter);
         mLRecyclerView.setOnLoadMoreListener(this);
 
@@ -133,13 +136,14 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
 
     @Override
     public void stopLoading(String RequestId) {
-
+        mLRecyclerView.refreshComplete(pagesize);
     }
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
         if (AppConstant.twoMessage.equals(RequestId) && page == 0) {
             relSearchInfo.setVisibility(View.VISIBLE);
+            tagFlow.setVisibility(View.INVISIBLE);
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
             mLoadingTip.setOnReloadListener(this);
         }
@@ -148,7 +152,8 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
 
     @Override
     public void returnSearchInfo(SearchInfoBean searchInfoBean) {
-        relSearch.setVisibility(View.VISIBLE);
+        relSearchInfo.setVisibility(View.VISIBLE);
+        tagFlow.setVisibility(View.INVISIBLE);
         if (!searchInfoBean.isIs_success()) {
             showShortToast(searchInfoBean.getMessage());
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
@@ -156,8 +161,11 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
         }
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
-
-        searchAdapter.addAll(searchInfoBean.getData());
+        if (page >= searchInfoBean.getData().getPage_count()) {
+            mLRecyclerView.setNoMore(true);
+            return;
+        }
+        searchAdapter.addAll(searchInfoBean.getData().getItem_list());
 
     }
 
@@ -179,6 +187,8 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
         searchEt.setText(tagAdapter.getItem(position).getName());
         searchEt.setSelection(tagAdapter.getItem(position).getName().length());
         searchEt.requestFocus();
+        ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(
+                searchEt, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     @Override
@@ -204,6 +214,8 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
                 showShortToast("请输入有效内容");
                 return false;
             }
+            // 可以加载更多
+            mLRecyclerView.setNoMore(false);
             mPresenter.getSearchInfoRequest(sSerchName, page);
         }
 

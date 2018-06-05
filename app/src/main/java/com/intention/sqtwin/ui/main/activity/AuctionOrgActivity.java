@@ -81,6 +81,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
     private List<Integer> mList;
     private int currentPostion = -1;
     private int currentFavId = -1;
+    private TextView tv_all;
+    private TextView tv_ongoing;
+    private TextView tv_preview;
+    private TextView tv_over;
 
     @Override
     public int getLayoutId() {
@@ -161,6 +165,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
         tvDesc = (TextView) artDetailHead.findViewById(R.id.tv_desc);
         mLadapter.addHeaderView(artDetailHead);
         View homeHeadTitle = getLayoutInflater().inflate(R.layout.item_home_head_title, null);
+        tv_all = (TextView) homeHeadTitle.findViewById(R.id.tv_all);
+        tv_ongoing = (TextView) homeHeadTitle.findViewById(R.id.tv_ongoing);
+        tv_preview = (TextView) homeHeadTitle.findViewById(R.id.tv_preview);
+        tv_over = (TextView) homeHeadTitle.findViewById(R.id.tv_over);
         homeHeadTitle.findViewById(R.id.tv_all).setOnClickListener(this);
         homeHeadTitle.findViewById(R.id.tv_ongoing).setOnClickListener(this);
         homeHeadTitle.findViewById(R.id.tv_preview).setOnClickListener(this);
@@ -202,7 +210,7 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
 
     @Override
     public void StartLoading(String RequestId) {
-        if (AppConstant.oneMessage.equals(RequestId) && page == 0)
+        if (AppConstant.oneMessage.equals(RequestId) && page == 0 && mcomAdapter.getDataList().size() == 0)
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 
@@ -322,6 +330,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                     return;
                 page = 0;
                 status = 0;
+                tv_all.setTextColor(getResources().getColor(R.color.white));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.font_8));
+                tv_preview.setTextColor(getResources().getColor(R.color.font_8));
+                tv_over.setTextColor(getResources().getColor(R.color.font_8));
                 mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             case R.id.tv_ongoing:
@@ -329,6 +341,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                     return;
                 page = 0;
                 status = 1;
+                tv_all.setTextColor(getResources().getColor(R.color.font_8));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.white));
+                tv_preview.setTextColor(getResources().getColor(R.color.font_8));
+                tv_over.setTextColor(getResources().getColor(R.color.font_8));
                 mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             case R.id.tv_preview:
@@ -336,6 +352,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                     return;
                 page = 0;
                 status = 2;
+                tv_all.setTextColor(getResources().getColor(R.color.font_8));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.font_8));
+                tv_preview.setTextColor(getResources().getColor(R.color.white));
+                tv_over.setTextColor(getResources().getColor(R.color.font_8));
                 mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             case R.id.tv_over:
@@ -343,6 +363,10 @@ public class AuctionOrgActivity extends BaseActivity<AuctionOrgPresenter, Auctio
                     return;
                 page = 0;
                 status = 3;
+                tv_all.setTextColor(getResources().getColor(R.color.font_8));
+                tv_ongoing.setTextColor(getResources().getColor(R.color.font_8));
+                tv_preview.setTextColor(getResources().getColor(R.color.font_8));
+                tv_over.setTextColor(getResources().getColor(R.color.white));
                 mPresenter.getAuctionOrgRequest(artOrgId, page, status);
                 break;
             // 拍卖机构的关注

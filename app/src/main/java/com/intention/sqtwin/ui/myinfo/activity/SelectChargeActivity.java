@@ -1,21 +1,34 @@
 package com.intention.sqtwin.ui.myinfo.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alipay.sdk.app.PayTask;
 import com.intention.sqtwin.R;
 import com.intention.sqtwin.app.AppConstant;
 import com.intention.sqtwin.base.BaseActivity;
 import com.intention.sqtwin.bean.OrderIdBean;
+import com.intention.sqtwin.bean.OrderIdDetailBean;
 import com.intention.sqtwin.bean.TellBackBean;
 import com.intention.sqtwin.ui.myinfo.contract.SelectChargeContract;
 import com.intention.sqtwin.ui.myinfo.model.SelectChargeModel;
 import com.intention.sqtwin.ui.myinfo.presenter.SelectChargePresenter;
+import com.intention.sqtwin.utils.PayResult;
+import com.intention.sqtwin.utils.checkbox.SmoothCheckBox;
+import com.intention.sqtwin.utils.conmonUtil.LogUtils;
+import com.intention.sqtwin.utils.conmonUtil.UserUtil;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -58,6 +71,44 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
     CheckBox cbCheck;
     @BindView(R.id.tv_agreement)
     TextView tvAgreement;
+    @BindView(R.id.sCheckbox_wx)
+    SmoothCheckBox smoothCheckBoxWx;
+    @BindView(R.id.sCheckbox_ali)
+    SmoothCheckBox smoothCheckBoxAli;
+    private Float moneyNum;
+    private String AliAppId = "2018060160317416";
+    private static final int SDK_PAY_FLAG = 1;
+    /*
+       * 支付宝的处理方式
+       * */
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case SDK_PAY_FLAG: {
+                    @SuppressWarnings("unchecked")
+                    PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                    LogUtils.logd("resultStatus------" + payResult.toString());
+                    /**
+                     对于支付结果，请商户依赖服务端的异步通知结果。同步通知结果，仅作为支付结束的通知。
+                     */
+                    String resultInfo = payResult.getResult();// 同步返回需要验证的信息
+                    String resultStatus = payResult.getResultStatus();
+//                    LogUtils.logd("支付" + resultStatus + "------" + payResult.getResultStatus() + "-----------" + TextUtils.equals(resultInfo, "9000"));
+                    // 判断resultStatus 为9000则代表支付成功
+//                    if (TextUtils.equals(resultStatus.trim(), "9000")) {
+                    if (TextUtils.equals(resultStatus, "9000")) {
+                        // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+//                        mPresenter.getOrderBackGroundRequest(UserUtil.getLoginInfo().getGid(), mOrderId, actionType);
+                    } else {
+                        // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
+                        Toast.makeText(mContext, "支付失败", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
+    };
 
     @Override
     public void StartLoading(String RequestId) {
@@ -79,14 +130,65 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
 
     }
 
-    @Override
-    public void returnOrderIdData(OrderIdBean orderIdBean) {
 
+    private void AliPayType(final OrderIdDetailBean orderIdBean) {
+        Runnable payRunnable = new Runnable() {
+            @Override
+            public void run() {
+                PayTask alipay = new PayTask(SelectChargeActivity.this);
+                String version = alipay.getVersion();
+                LogUtils.logd("AliPayType" + version);
+                Map<String, String> result = alipay.payV2("", true);
+//                        LogUtils.logd("msp" + JsonUtils.toJson(mPayInfo.getData().getPara()) + "-----------" + alipay.getVersion() + "----------" + result.toString() + "alipay" + JsonUtils.toJson(mPayInfo.getData().getPara()));
+                Message msg = new Message();
+                msg.what = SDK_PAY_FLAG;
+                msg.obj = result;
+                mHandler.sendMessage(msg);
+            }
+        };
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
     }
 
+    private void WxPayTyoe(OrderIdDetailBean orderIdBean) {
+    }
+
+    /**
+     * 获取订单id
+     *
+     * @param orderIdBean
+     */
+    @Override
+    public void returnOrderIdData(OrderIdBean orderIdBean) {
+        if (!orderIdBean.isIs_success()) {
+            showShortToast(orderIdBean.getMessage());
+            return;
+        }
+        mPresenter.getOrderIdDetailRequest(orderIdBean.getData().getPay_sn(), "10");
+    }
+
+    /**
+     * 告诉服务器信息，支付成功
+     *
+     * @param tellBackBean
+     */
     @Override
     public void tellBackOrderId(TellBackBean tellBackBean) {
 
+    }
+
+    /**
+     * 根据订单id获取详细信息
+     *
+     * @param orderIdDetailBean
+     */
+    @Override
+    public void returnOderIdDetail(OrderIdDetailBean orderIdDetailBean) {
+        if (smoothCheckBoxWx.isChecked()) {
+            WxPayTyoe(orderIdDetailBean);
+        } else {
+            AliPayType(orderIdDetailBean);
+        }
     }
 
     @Override
@@ -101,25 +203,42 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
 
     @Override
     public void initView() {
-        int moneyNum = getIntent().getExtras().getInt(AppConstant.Moneynum);
+        moneyNum = getIntent().getExtras().getFloat(AppConstant.Moneynum, -1);
+        tvMoney.setText("￥" + moneyNum);
+        relSearch.setVisibility(View.GONE);
     }
 
-    public static void gotoSelectChargeActivity(Context context, int moneyNum) {
+    public static void gotoSelectChargeActivity(Context context, Float moneyNum) {
         Bundle bundle = new Bundle();
-        bundle.putInt(AppConstant.Moneynum, moneyNum);
+        bundle.putFloat(AppConstant.Moneynum, moneyNum);
         ((BaseActivity) context).startActivity(SelectChargeActivity.class, bundle);
     }
 
 
-
-    @OnClick({R.id.rel_back, R.id.tv_confirm, R.id.tv_agreement})
+    @OnClick({R.id.rel_back, R.id.tv_confirm, R.id.tv_agreement, R.id.sCheckbox_ali, R.id.sCheckbox_wx})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
+                finish();
                 break;
             case R.id.tv_confirm:
+                if (!smoothCheckBoxWx.isChecked() && !smoothCheckBoxAli.isChecked()) {
+                    showShortToast("请选择支付方式");
+                    return;
+                }
+                mPresenter.getOrderIdBeanRequest(moneyNum, smoothCheckBoxWx.isChecked() ? "1" : "2", "我是支付");
                 break;
             case R.id.tv_agreement:
+                break;
+            // 支付宝
+            case R.id.sCheckbox_ali:
+                smoothCheckBoxAli.setChecked(true, true);
+                smoothCheckBoxWx.setChecked(false);
+                break;
+            // 微信
+            case R.id.sCheckbox_wx:
+                smoothCheckBoxWx.setChecked(true, true);
+                smoothCheckBoxAli.setChecked(false);
                 break;
         }
     }
