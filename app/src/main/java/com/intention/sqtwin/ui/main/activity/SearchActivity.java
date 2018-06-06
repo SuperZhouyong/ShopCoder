@@ -166,7 +166,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
             return;
         }
         searchAdapter.addAll(searchInfoBean.getData().getItem_list());
-
+        ++page;
     }
 
     @Override
