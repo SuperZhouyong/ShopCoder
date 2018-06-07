@@ -58,7 +58,7 @@
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
-            <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+            <cn.hancang.www.utils.checkbox.SmoothCheckBox
                 android:layout_marginRight="@dimen/x30"
                 android:layout_alignParentRight="true"
                 android:id="@+id/sCheckbox_wx"
@@ -106,7 +106,7 @@
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
-            <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+            <cn.hancang.www.utils.checkbox.SmoothCheckBox
 
                 android:layout_marginRight="@dimen/x30"
                 android:layout_alignParentRight="true"

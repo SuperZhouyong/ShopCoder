@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/item_new_one"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y100"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_one"
+                android:layout_width="@dimen/x62"
+                android:layout_height="@dimen/y57"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_auction_new" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="拍卖"
+                android:textColor="@color/font_8"
+                android:textSize="@dimen/x30" />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/item_home_d"
+            android:layout_width="@dimen/x8"
+            android:layout_height="@dimen/y80" />
+        <LinearLayout
+            android:id="@+id/item_new_two"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/y100"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_two"
+                android:layout_width="@dimen/x62"
+                android:layout_height="@dimen/y57"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_girl_selected" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="商城"
+                android:textColor="@color/font_8"
+                android:textSize="@dimen/x30" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

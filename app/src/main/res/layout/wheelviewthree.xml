@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.intention.sqtwin.widget.wheelpicker.WheelPicker
+            <cn.hancang.www.widget.wheelpicker.WheelPicker
                 android:id="@+id/provincePicker"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/y362"
@@ -63,7 +63,7 @@
                 aigestudio:wheel_maximum_width_text="哈哈哈哈"
                 aigestudio:wheel_selected_item_text_color="#536D8A" />
 
-            <com.intention.sqtwin.widget.wheelpicker.WheelPicker
+            <cn.hancang.www.widget.wheelpicker.WheelPicker
                 android:id="@+id/cityPicker"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/y362"
@@ -78,7 +78,7 @@
                 aigestudio:wheel_maximum_width_text="哈哈哈哈哈哈"
                 aigestudio:wheel_selected_item_text_color="#536D8A" />
 
-            <com.intention.sqtwin.widget.wheelpicker.WheelPicker
+            <cn.hancang.www.widget.wheelpicker.WheelPicker
                 android:id="@+id/regionPicker"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/y362"

@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
 
-        <com.intention.sqtwin.widget.ClearEditText
+        <cn.hancang.www.widget.ClearEditText
             android:id="@+id/ed_one"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y100"
@@ -37,7 +37,7 @@
             android:layout_marginRight="@dimen/x22"
             android:background="@color/app_bottom_colour" />
 
-        <com.intention.sqtwin.widget.ClearEditText
+        <cn.hancang.www.widget.ClearEditText
             android:id="@+id/ed_two"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y88"

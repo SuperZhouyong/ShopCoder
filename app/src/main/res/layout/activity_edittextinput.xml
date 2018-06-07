@@ -6,7 +6,7 @@
 
     <include layout="@layout/actionbar_title_fore" />
 
-    <com.intention.sqtwin.widget.ClearEditText
+    <cn.hancang.www.widget.ClearEditText
         android:id="@+id/ed_name"
         style="@style/my_info_title_normal"
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
 
     android:orientation="vertical">
 
-    <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+    <cn.hancang.www.utils.checkbox.SmoothCheckBox
         android:id="@+id/sCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         android:layout_marginRight="21dp"
         android:src="@mipmap/goods_cart_delete" />
 
-    <com.intention.sqtwin.widget.AmountView
+    <cn.hancang.www.widget.AmountView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/tv_goods_price"

@@ -132,7 +132,7 @@
                         android:text="选择数量"
                         android:textColor="@color/font_10"
                         android:textSize="@dimen/x28" />
-                    <com.intention.sqtwin.widget.AmountView
+                    <cn.hancang.www.widget.AmountView
                         android:id="@+id/amount_view"
                         android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
@@ -276,7 +276,7 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+    <cn.hancang.www.widget.conmonWidget.LoadingTip
         android:id="@+id/mLoadingTip"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.intention.sqtwin.widget.wheelpicker.WheelPicker
+        <cn.hancang.www.widget.wheelpicker.WheelPicker
             android:id="@+id/wheelPicker"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y362"

@@ -22,7 +22,7 @@
             android:textColor="@color/font_1"
             android:textSize="@dimen/x30" />
 
-       <!-- <com.intention.sqtwin.utils.checkbox.SmoothCheckBox
+  <!--     <!SmoothCheckBoxkBox
             android:id="@+id/sCheckbox"
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -30,7 +30,7 @@
             android:layout_toRightOf="@id/tv_desc"
             app:color_checked="@color/app_bottom_colour"
             app:color_tick="@color/font_2"
-            app:color_unchecked="@color/app_bottom_colour" />-->
+            app:color_unchecked="@color/app_bottom_colour" />&ndash;&gt;-->
         <!--  <CheckBox
 
               android:layout_width="wrap_content"

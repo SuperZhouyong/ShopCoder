@@ -14,14 +14,15 @@ MobSDK {
         devInfo {
             // 微信朋友圈
             WechatMoments {
-                appKey "wxd2fb38f960eb278e"
-                appSecret "36e1f4140c4eb739d6c958c9e047fee8"
+                appKey "wx54fa8a2ea47c977b"
+                appSecret "77120bf6c1cadbba855e4ff533e0ae3d"
 //                callbackUri "http://www.sharesdk.cn"
             }
             // 微信
             Wechat {
-                appId "wxd2fb38f960eb278e"
-                appSecret "36e1f4140c4eb739d6c958c9e047fee8"
+                appId "wx54fa8a2ea47c977b"
+
+                appSecret "77120bf6c1cadbba855e4ff533e0ae3d"
             }
            // 支付宝
             Alipay {
@@ -46,7 +47,9 @@ android {
 * 1.4
 * */
     defaultConfig {
-        applicationId "com.huiwang.app"
+
+//        applicationId "com.huiwang.app"
+        applicationId "cn.hancang.www"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.releaseVersionCode
@@ -219,7 +222,7 @@ greendao {
 
     /*   *greendao输出dao数据库操作实体类文件夹
        **/
-    daoPackage 'com.intention.sqtwin.gen'
+    daoPackage 'cn.hancang.www.gen'
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -252,17 +255,17 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.jakewhartonVersion}"
     compile 'com.android.support:multidex:1.0.0'
     //    compile 'com.umeng.analytics:analytics:latest.integration'
-    compile 'com.commit451:PhotoView:1.2.4'
+//    compile 'com.commit451:PhotoView:1.2.4'
     //微信Gradle
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.1.6'
     //底部
     compile "me.shaohui:bottomdialog:${rootProject.ext.bootDialogVersion}"
     //版本下载
-    compile 'com.liulishuo.filedownloader:library:1.4.3'
+//    compile 'com.liulishuo.filedownloader:library:1.4.3'
     // 圆形进度条
-    compile 'com.github.lzyzsd:circleprogress:1.2.1'
+//    compile 'com.github.lzyzsd:circleprogress:1.2.1'
     compile 'com.flipboard:bottomsheet-core:1.5.1'
-    compile 'com.android.support:cardview-v7:27.0.0'
+//    compile 'com.android.support:cardview-v7:27.0.0'
     /* compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
                                      compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'*/
     // 权限文件

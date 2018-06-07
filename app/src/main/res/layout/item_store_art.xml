@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.intention.sqtwin.widget.CircleImageView
+    <cn.hancang.www.widget.CircleImageView
         android:id="@+id/iv_icon"
         android:layout_width="@dimen/x110"
         android:layout_height="@dimen/y110"

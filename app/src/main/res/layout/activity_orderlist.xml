@@ -10,7 +10,7 @@
         layout="@layout/actionbar_title" />
 
 
-    <com.intention.sqtwin.widget.SlidingTabLayout
+    <cn.hancang.www.widget.SlidingTabLayout
         android:id="@+id/slid_tab_layout"
 
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/slid_tab_layout" />
 
-    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+    <cn.hancang.www.widget.conmonWidget.LoadingTip
         android:id="@+id/mLoadingTip"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

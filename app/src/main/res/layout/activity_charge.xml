@@ -42,7 +42,7 @@
                 android:textSize="@dimen/x50"
                 android:textStyle="bold" />
 
-            <com.intention.sqtwin.widget.ClearEditText
+            <cn.hancang.www.widget.ClearEditText
                 android:layout_marginRight="@dimen/x30"
                 android:id="@+id/ed_money"
                 android:layout_width="match_parent"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.intention.sqtwin">
+    package="cn.hancang.www">
 
     <!--  <uses-sdk
           android:minSdkVersion="16"
@@ -31,7 +31,7 @@
 
     <application
 
-        android:name=".app.BaseApplication"
+        android:name="cn.hancang.www.app.BaseApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -40,11 +40,11 @@
         android:theme="@style/AppTheme.AllActivity"
         tools:replace="android:name">
         <!--<meta-data
-            android:name="com.intention.sqtwin.base.BaseGlideCache"
+            android:naBaseGlideCacheache"
             android:value="GlideModule" />-->
 
 
-        <activity android:name="com.intention.sqtwin.ui.main.activity.MainActivity">
+        <activity android:name=".ui.main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,127 +54,127 @@
 
 
         <!--拍品页-->
-        <activity android:name=".ui.main.activity.AuctionItemActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.AuctionItemActivity">
 
 
         </activity>
         <!--拍场页-->
-        <activity android:name=".ui.main.activity.AuctionFiledActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.AuctionFiledActivity">
 
 
         </activity>
         <!--艺术家主页-->
-        <activity android:name=".ui.main.activity.ArtDetatilActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.ArtDetatilActivity">
 
 
         </activity>
         <!--拍卖机构页-->
-        <activity android:name=".ui.main.activity.AuctionOrgActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.AuctionOrgActivity">
 
         </activity>
         <!--主理人界面-->
-        <activity android:name=".ui.main.activity.OrganPeoActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.OrganPeoActivity">
 
         </activity>
         <!--f分类-->
-        <activity android:name=".ui.main.activity.CategoryActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.CategoryActivity">
 
         </activity>
         <!--拍品列表页-->
-        <activity android:name=".ui.main.activity.AuctionItemListActivity">
+        <activity android:name="cn.hancang.www.ui.main.activity.AuctionItemListActivity">
 
         </activity>
 
         <!--衍生品界面-->
-        <activity android:name=".ui.mall.activity.DerivativesActivity">
+        <activity android:name="cn.hancang.www.ui.mall.activity.DerivativesActivity">
 
         </activity>
         <!--登录界面-->
         <activity
-            android:name=".ui.myinfo.activity.LoginActivity"
+            android:name="cn.hancang.www.ui.myinfo.activity.LoginActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|touchscreen"
             android:theme="@style/LoginActivityTheme" />
         <!--出价列表-->
-        <activity android:name=".ui.main.activity.BidRecordActivity" />
+        <activity android:name="cn.hancang.www.ui.main.activity.BidRecordActivity" />
         <!--加载H5界面-->
-        <activity android:name=".ui.main.activity.MyWebviewActivity" />
+        <activity android:name="cn.hancang.www.ui.main.activity.MyWebviewActivity" />
         <!--同步拍-->
-        <activity android:name=".ui.main.activity.SynchronousAuctionActivity" />
+        <activity android:name="cn.hancang.www.ui.main.activity.SynchronousAuctionActivity" />
         <!--同步拍拍品页-->
-        <activity android:name=".ui.main.activity.SynchAuctionItemActivity" />
+        <activity android:name="cn.hancang.www.ui.main.activity.SynchAuctionItemActivity" />
         <!--充值界面-->
-        <activity android:name=".ui.myinfo.activity.ChargeActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.ChargeActivity" />
         <!--充值方式界面-->
-        <activity android:name=".ui.myinfo.activity.SelectChargeActivity"/>
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.SelectChargeActivity" />
         <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity" />-->
         <!--编辑资料-->
-        <activity android:name=".ui.myinfo.activity.EditInfoActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.EditInfoActivity" />
         <!--订单列表-->
-        <activity android:name=".ui.myinfo.activity.OrderListActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.OrderListActivity" />
         <!--消息列表-->
-        <activity android:name=".ui.myinfo.activity.MessageActicity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.MessageActicity" />
         <!--账户-->
-        <activity android:name=".ui.myinfo.activity.AccountActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.AccountActivity" />
 
         <!--参拍-->
-        <activity android:name=".ui.myinfo.activity.MyCompeteActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.MyCompeteActivity" />
         <!--身份认证-->
-        <activity android:name=".ui.myinfo.activity.IdentityProveActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.IdentityProveActivity" />
         <!--绑定手机号-->
-        <activity android:name=".ui.myinfo.activity.BindPhoneNumActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.BindPhoneNumActivity" />
         <!--绑定银行卡-->
-        <activity android:name=".ui.myinfo.activity.BindBankCardActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.BindBankCardActivity" />
         <!--收获地址-->
-        <activity android:name=".ui.myinfo.activity.ReceivedGoodsActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.ReceivedGoodsActivity" />
         <!--增加收货地址-->
-        <activity android:name=".ui.myinfo.activity.AddReAddressActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.AddReAddressActivity" />
         <!--商品详情页-->
-        <activity android:name=".ui.mall.activity.GoodsPageActivity" />
+        <activity android:name="cn.hancang.www.ui.mall.activity.GoodsPageActivity" />
         <!--购物车-->
-        <activity android:name=".ui.mall.activity.ShopCartActivity" />
+        <activity android:name="cn.hancang.www.ui.mall.activity.ShopCartActivity" />
         <!--搜索界面-->
-        <activity android:name=".ui.main.activity.SearchActivity" />
+        <activity android:name="cn.hancang.www.ui.main.activity.SearchActivity" />
         <!--店铺-->
         <!--<activity android:name=".ui.Store.activity.TheStoreActivity" />-->
         <!--店铺实名认证流程-->
-        <activity android:name=".ui.Store.activity.RealNamePeoOneActivity">
+        <activity android:name="cn.hancang.www.ui.Store.activity.RealNamePeoOneActivity">
 
         </activity>
         <!--店铺认证第一步-->
-        <activity android:name=".ui.Store.activity.RealCerOneActivity">
+        <activity android:name="cn.hancang.www.ui.Store.activity.RealCerOneActivity">
 
 
         </activity>
         <!--店铺认证，个人信息-->
-        <activity android:name=".ui.Store.activity.RealNamePeoTwoActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.RealNamePeoTwoActivity" />
         <!--店铺认证，店铺信息-->
-        <activity android:name=".ui.Store.activity.StoreInfoCerActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.StoreInfoCerActivity" />
         <!--企业认证-->
-        <activity android:name=".ui.Store.activity.RealNameEnterOneActivity" />
-        <activity android:name=".ui.Store.activity.RealNameEnterTwoActivity" />
-        <activity android:name=".ui.Store.activity.RealNameEnterThreeActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.RealNameEnterOneActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.RealNameEnterTwoActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.RealNameEnterThreeActivity" />
         <!--提交-->
-        <activity android:name=".ui.Store.activity.SubmitAuditActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.SubmitAuditActivity" />
         <!--店铺关注界面-->
-        <activity android:name=".ui.Store.activity.StoreFocusActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.StoreFocusActivity" />
         <!--卖家消息-->
-        <activity android:name=".ui.Store.activity.StoreMessageActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.StoreMessageActivity" />
         <!--店铺金额-->
-        <activity android:name=".ui.Store.activity.StoreRemainingMoneyActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.StoreRemainingMoneyActivity" />
         <!--店铺报表-->
-        <activity android:name=".ui.Store.activity.StoreReportActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.StoreReportActivity" />
         <!--文本编辑的类，名字修改-->
-        <activity android:name=".ui.myinfo.activity.EditTextInputActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.EditTextInputActivity" />
         <!--淘宝店铺信息页面-->
-        <activity android:name=".ui.mall.activity.TaoBaoStoreInfoActivity" />
+        <activity android:name="cn.hancang.www.ui.mall.activity.TaoBaoStoreInfoActivity" />
         <!--交易明细-->
-        <activity android:name=".ui.Store.activity.TradingDetailActivity" />
+        <activity android:name="cn.hancang.www.ui.Store.activity.TradingDetailActivity" />
         <!--修改密码界面-->
-        <activity android:name=".ui.myinfo.activity.SettingPassWordActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.SettingPassWordActivity" />
         <!--设置界面-->
-        <activity android:name=".ui.myinfo.activity.SettingActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.SettingActivity" />
         <!-- 店铺修改密码-->
-        <activity android:name=".ui.myinfo.activity.StorePassWordActivity" />
+        <activity android:name="cn.hancang.www.ui.myinfo.activity.StorePassWordActivity" />
         <!--确认支付界面 无效-->
         <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity"-->
         <!--照片的内容提供者-->
@@ -193,16 +193,27 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name="com.alipay.sdk.app.H5AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <!-- 支付宝支付结束-->
+        <!--shareSdk-->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <!--微信分享回调 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

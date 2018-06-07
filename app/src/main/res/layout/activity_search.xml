@@ -45,7 +45,7 @@
                 android:layout_marginLeft="@dimen/x20"
                 android:src="@mipmap/search_black" />
 
-            <com.intention.sqtwin.widget.ClearEditText
+            <cn.hancang.www.widget.ClearEditText
                 android:id="@+id/search_et"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -78,7 +78,7 @@
            tl:tl_textUnselectColor="@color/font_1"
            tl:tl_textsize="@dimen/x30" />-->
 
-    <com.intention.sqtwin.widget.flow.FlowTagLayout
+    <cn.hancang.www.widget.flow.FlowTagLayout
         android:layout_below="@id/activity_search_head"
         android:id="@+id/tag_flow"
         android:layout_width="match_parent"
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        <cn.hancang.www.widget.conmonWidget.LoadingTip
             android:layout_width="match_parent"
             android:id="@+id/mLoadingTip"
             android:layout_height="match_parent" />

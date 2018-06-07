@@ -7,7 +7,7 @@
 
     <include layout="@layout/actionbar_title" />
 
-    <com.intention.sqtwin.widget.SlidingTabLayout
+    <cn.hancang.www.widget.SlidingTabLayout
         android:background="@color/white"
         android:id="@+id/slid_tab_layout"
         android:layout_width="match_parent"

@@ -6,16 +6,22 @@
 
 
     android:orientation="vertical">
+
     <ImageView
-        android:scaleType="centerCrop"
         android:id="@+id/rel_boot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
     <RelativeLayout
+
         android:id="@+id/rel_bottom"
         android:layout_width="@dimen/x602"
         android:layout_height="@dimen/y300"
-        android:layout_centerInParent="true"
+
+        android:layout_alignLeft="@+id/rel_one"
+        android:layout_alignStart="@+id/rel_one"
+        android:layout_centerVertical="true"
         android:background="@drawable/login_all_bg">
 
         <RelativeLayout
@@ -32,7 +38,7 @@
             android:focusableInTouchMode="true">
 
 
-            <com.intention.sqtwin.widget.ClearEditText
+            <cn.hancang.www.widget.ClearEditText
                 android:id="@+id/username"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/y88"
@@ -65,7 +71,7 @@
             android:focusableInTouchMode="true">
 
 
-            <com.intention.sqtwin.widget.ClearEditText
+            <cn.hancang.www.widget.ClearEditText
                 android:id="@+id/code"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/y88"
@@ -103,6 +109,7 @@
     </RelativeLayout>
 
     <TextView
+
         android:id="@+id/tv_login_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,6 +122,7 @@
         android:textSize="@dimen/x30" />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/tv_regist_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,7 +135,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/x30" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tv_login_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,35 +149,103 @@
         android:paddingTop="@dimen/y20"
         android:text="• 登录 •"
         android:textColor="@color/white"
-        android:textSize="@dimen/x30" />
-
-    <ImageView
-        android:id="@+id/iv_one_login"
-        android:layout_width="@dimen/x100"
-        android:layout_height="@dimen/x100"
+        android:textSize="@dimen/x30" />-->
+    <RelativeLayout
+        android:id="@+id/rel_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="@dimen/x60"
-        app:srcCompat="@mipmap/ali_pay" />
+        android:layout_marginLeft="@dimen/x60">
 
-    <ImageView
-        android:id="@+id/iv_two_login"
-        android:layout_width="@dimen/x100"
-        android:layout_height="@dimen/x100"
-        android:layout_alignTop="@+id/iv_one_login"
+        <ImageView
+            android:id="@+id/iv_one_login"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x100"
+            app:srcCompat="@mipmap/login_account" />
+        <TextView
+            android:layout_marginTop="@dimen/y5"
+            android:layout_below="@id/iv_one_login"
+            android:layout_centerHorizontal="true"
+            android:text="账号"
+            android:textSize="@dimen/x28"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_centerHorizontal="true"
-        app:srcCompat="@mipmap/ali_pay" />
+        android:layout_alignTop="@+id/rel_one"
+        android:id="@+id/rel_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="@dimen/x60">
 
-    <ImageView
+        <ImageView
+            android:id="@+id/iv_two_login"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x100"
 
-        android:id="@+id/iv_three_login"
-        android:layout_width="@dimen/x100"
-        android:layout_height="@dimen/x100"
+
+            app:srcCompat="@mipmap/login_wx" />
+        <TextView
+            android:layout_marginTop="@dimen/y5"
+            android:layout_below="@id/iv_two_login"
+            android:layout_centerHorizontal="true"
+            android:text="微信"
+            android:textSize="@dimen/x28"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginRight="@dimen/x60"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/x60"
-        android:layout_alignTop="@+id/iv_one_login"
-        app:srcCompat="@mipmap/ali_pay" />
+        android:layout_alignTop="@+id/rel_one"
+        android:id="@+id/rel_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="@dimen/x60">
+        <ImageView
+
+            android:id="@+id/iv_three_login"
+            android:layout_width="@dimen/x100"
+            android:layout_height="@dimen/x100"
+
+
+
+            app:srcCompat="@mipmap/login_ali" />
+        <TextView
+            android:layout_marginTop="@dimen/y5"
+            android:layout_below="@id/iv_three_login"
+            android:layout_centerHorizontal="true"
+            android:text="支付宝"
+            android:textSize="@dimen/x28"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/tv_login_confirm"
+        android:layout_width="@dimen/x200"
+        android:layout_height="@dimen/y100"
+        android:layout_below="@id/rel_bottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y50"
+
+        app:srcCompat="@mipmap/login_bt" />
 
 
 </RelativeLayout>

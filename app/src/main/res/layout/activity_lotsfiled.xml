@@ -150,13 +150,13 @@
             android:layout_height="match_parent"
             tl:layout_behavior="@string/appbar_scrolling_view_behavior" />
         <!--tools:layout_editor_absoluteY="352dp" -->
-        <!--  <com.intention.sqtwin.widget.ViewPagerFixed
+  <!--      <!-ViewPagerFixedixed
               tl:layout_behavior="@string/appbar_scrolling_view_behavior"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">-->
+              android:layout_height="match_parent">&ndash;&gt;-->
 
 
-        <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+        <cn.hancang.www.widget.conmonWidget.LoadingTip
             android:id="@+id/mLoadingTip"
 
             android:layout_width="match_parent"

@@ -5,7 +5,7 @@
     android:paddingBottom="@dimen/y30"
     android:layout_height="wrap_content">
 
-    <com.intention.sqtwin.widget.CircleImageView
+    <cn.hancang.www.widget.CircleImageView
         android:id="@+id/iv_head"
         android:layout_width="@dimen/x104"
         android:layout_height="@dimen/y104"

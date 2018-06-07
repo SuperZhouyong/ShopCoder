@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-    <com.intention.sqtwin.widget.wheelpicker.widgets.WheelYearPicker
+    <cn.hancang.www.widget.wheelpicker.widgets.WheelYearPicker
         android:id="@+id/wheel_date_picker_year"
         android:layout_width="wrap_content"
         app:wheel_visible_item_count="9"
@@ -28,7 +28,7 @@
         android:layout_marginRight="@dimen/WheelMargins"
         android:text="年" />
 
-    <com.intention.sqtwin.widget.wheelpicker.widgets.WheelMonthPicker
+    <cn.hancang.www.widget.wheelpicker.widgets.WheelMonthPicker
         app:wheel_visible_item_count="9"
         app:wheel_atmospheric="true"
         app:wheel_curved="true"

@@ -42,7 +42,7 @@
 
     </RelativeLayout>
 
-    <com.intention.sqtwin.widget.conmonWidget.LoadingTip
+    <cn.hancang.www.widget.conmonWidget.LoadingTip
         android:id="@+id/mLoadingTip"
         android:layout_below="@id/title"
         android:layout_width="match_parent"
