@@ -5,8 +5,10 @@ import android.widget.TextView;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.bean.LoginBean;
+import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
 import cn.hancang.www.ui.myinfo.contract.LoginContract;
+
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
@@ -81,6 +83,21 @@ public class LoginPresenter extends LoginContract.Presenter {
                 super.onStart();
                 RxView.enabled(tv).call(false);
 
+            }
+        }));
+    }
+
+    @Override
+    public void getOtherLoginBean(String openid, String nickname, String headimgurl) {
+        mRxManage.add(mModel.getOtherLoginBean(openid, nickname, headimgurl).subscribe(new RxSubscriber<OtherLoginBean>(mContext) {
+            @Override
+            protected void _onNext(OtherLoginBean otherLoginBean) {
+                mView.returnOtherLoginBean(otherLoginBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.threeMessage, message);
             }
         }));
     }

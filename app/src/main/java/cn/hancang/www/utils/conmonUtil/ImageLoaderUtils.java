@@ -119,8 +119,8 @@ public class ImageLoaderUtils {
         }
         Glide.with(context).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.mipmap.colleges_icon)
-                .error(R.mipmap.colleges_icon)
+                .placeholder(R.mipmap.normal_icon)
+                .error(R.mipmap.normal_icon)
                 .thumbnail(0.5f)
                 .centerCrop().transform(new GlideCircleTransfromUtil(context)).into(imageView);
     }

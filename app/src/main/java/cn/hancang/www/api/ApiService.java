@@ -33,6 +33,7 @@ import cn.hancang.www.bean.OrderIdBean;
 import cn.hancang.www.bean.OrderIdDetailBean;
 import cn.hancang.www.bean.OrderListBean;
 import cn.hancang.www.bean.OrganPeBean;
+import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.PayPassWordBean;
 import cn.hancang.www.bean.PpAllDateBean;
 import cn.hancang.www.bean.RealNamePeoTwoBean;
@@ -766,4 +767,13 @@ public interface ApiService {
             @Query("phone") String phone,
             @Query("type") String type
     );
+
+    // 第三方信息上传
+    @GET("membercenter/login_wx")
+    Observable<OtherLoginBean> getOtherLoginBean(
+            @Query("openid") String openid,
+            @Query("nickname") String nickname,
+            @Query("headimgurl") String headimgurl
+    );
+
 }

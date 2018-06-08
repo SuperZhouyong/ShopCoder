@@ -6,6 +6,7 @@ import cn.hancang.www.base.BaseModel;
 import cn.hancang.www.base.BasePresenter;
 import cn.hancang.www.base.BaseView;
 import cn.hancang.www.bean.LoginBean;
+import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
 
 import rx.Observable;
@@ -24,6 +25,9 @@ public class LoginContract {
     void returnSmsBean(SmsInfoBean smsInfoBean);
 
 //    void returnShowTvOver(Long mLong);
+
+
+     void returnOtherLoginBean(OtherLoginBean otherLoginBean);
     }
     public interface  Model extends BaseModel {
         Observable<LoginBean> getLoginBean(String phone,String code);
@@ -31,6 +35,9 @@ public class LoginContract {
         Observable<SmsInfoBean> getSmsInfoBean(String phone,String type);
 
         Observable<Long> ShowTv(TextView tv);
+
+
+        Observable<OtherLoginBean> getOtherLoginBean(String openid,String nickname ,String headimgurl);
     }
     public static abstract class Presenter extends BasePresenter<View,Model> {
         public abstract void getLoginRequest(String phone,String code);
@@ -39,5 +46,9 @@ public class LoginContract {
 
         // 计时请求
         public abstract void ShowTvRequest(TextView tv);
+
+        // 发起信息保存
+
+        public abstract void getOtherLoginBean(String openid,String nickname ,String headimgurl);
     }
 }

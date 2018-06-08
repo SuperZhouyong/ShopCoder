@@ -23,7 +23,8 @@ import cn.hancang.www.bean.TellBackBean;
 import cn.hancang.www.ui.myinfo.contract.SelectChargeContract;
 import cn.hancang.www.ui.myinfo.model.SelectChargeModel;
 import cn.hancang.www.ui.myinfo.presenter.SelectChargePresenter;
-import cn.hancang.www.utils.PayResult;
+import cn.hancang.www.utils.payUtils.AuthResult;
+import cn.hancang.www.utils.payUtils.PayResult;
 import cn.hancang.www.utils.checkbox.SmoothCheckBox;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
 
@@ -76,6 +77,8 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
     private Float moneyNum;
     private String AliAppId = "2018060160317416";
     private static final int SDK_PAY_FLAG = 1;
+    private static final int SDK_AUTH_FLAG = 2;
+
     /*
        * 支付宝的处理方式
        * */
@@ -103,7 +106,10 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
                         Toast.makeText(mContext, "支付失败", Toast.LENGTH_SHORT).show();
                     }
+                    break;
                 }
+
+
             }
         }
     };
@@ -129,14 +135,14 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
     }
 
 
-    private void AliPayType(final OrderIdDetailBean orderIdBean) {
+    private void AliPayType(final OrderIdBean orderIdBean) {
         Runnable payRunnable = new Runnable() {
             @Override
             public void run() {
                 PayTask alipay = new PayTask(SelectChargeActivity.this);
                 String version = alipay.getVersion();
                 LogUtils.logd("AliPayType" + version);
-                Map<String, String> result = alipay.payV2("", true);
+                Map<String, String> result = alipay.payV2(orderIdBean.getData().getAlipay_app_orderString(), true);
 //                        LogUtils.logd("msp" + JsonUtils.toJson(mPayInfo.getData().getPara()) + "-----------" + alipay.getVersion() + "----------" + result.toString() + "alipay" + JsonUtils.toJson(mPayInfo.getData().getPara()));
                 Message msg = new Message();
                 msg.what = SDK_PAY_FLAG;
@@ -148,7 +154,7 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
         payThread.start();
     }
 
-    private void WxPayTyoe(OrderIdDetailBean orderIdBean) {
+    private void WxPayTyoe(OrderIdBean orderIdBean) {
     }
 
     /**
@@ -162,7 +168,12 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
             showShortToast(orderIdBean.getMessage());
             return;
         }
-        mPresenter.getOrderIdDetailRequest(orderIdBean.getData().getPay_sn(), "10");
+        if (smoothCheckBoxWx.isChecked()) {
+            WxPayTyoe(orderIdBean);
+        } else {
+            AliPayType(orderIdBean);
+        }
+//        mPresenter.getOrderIdDetailRequest(orderIdBean.getData().getPay_sn(), "10");
     }
 
     /**
@@ -182,11 +193,11 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
      */
     @Override
     public void returnOderIdDetail(OrderIdDetailBean orderIdDetailBean) {
-        if (smoothCheckBoxWx.isChecked()) {
+      /*  if (smoothCheckBoxWx.isChecked()) {
             WxPayTyoe(orderIdDetailBean);
         } else {
             AliPayType(orderIdDetailBean);
-        }
+        }*/
     }
 
     @Override

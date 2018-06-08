@@ -1,20 +1,25 @@
 package cn.hancang.www.ui.myinfo.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import cn.hancang.www.R;
 
+import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.bean.LoginBean;
+import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SQTUser;
 import cn.hancang.www.bean.SmsInfoBean;
 import cn.hancang.www.ui.myinfo.contract.LoginContract;
@@ -23,13 +28,20 @@ import cn.hancang.www.ui.myinfo.presenter.LoginPresenter;
 import cn.hancang.www.utils.conmonUtil.JsonUtils;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
 import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
+import cn.hancang.www.utils.conmonUtil.SPUtils;
 import cn.hancang.www.utils.conmonUtil.UserUtil;
+import cn.hancang.www.utils.payUtils.AuthResult;
+import cn.hancang.www.utils.payUtils.PayResult;
 import cn.hancang.www.widget.ClearEditText;
 
+import com.alipay.sdk.app.AuthTask;
+import com.alipay.sdk.app.PayTask;
+import com.intention.sqtwin.bean.LoginAliOrderBean;
 import com.jakewharton.rxbinding.view.RxView;
 import com.toptechs.libaction.action.SingleCall;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -72,6 +84,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     ImageView relBoot;
     private String TAG = "LoginActivity";
     private String iphone_number;
+    private String usericon;
+    private String userName;
 
     private BitmapFactory.Options getBitmapOption() {
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -86,6 +100,54 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         return options;
     }
 
+    /**
+     * 支付宝支付业务：入参app_id
+     */
+    public static final String APPID = "2018060160317416";
+    /**
+     * 支付宝账户登录授权业务：入参pid值
+     */
+    public static final String PID = "2088131106864170";
+    /**
+     * 支付宝账户登录授权业务：入参target_id值
+     */
+    public static final String TARGET_ID = "";
+    private static final int SDK_PAY_FLAG = 1;
+    private static final int SDK_AUTH_FLAG = 2;
+    /*
+      * 支付宝的处理方式
+      * */
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+        @SuppressWarnings("unused")
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+
+                case SDK_AUTH_FLAG: {
+                    @SuppressWarnings("unchecked")
+                    AuthResult authResult = new AuthResult((Map<String, String>) msg.obj, true);
+                    String resultStatus = authResult.getResultStatus();
+
+                    // 判断resultStatus 为“9000”且result_code
+                    // 为“200”则代表授权成功，具体状态码代表含义可参考授权接口文档
+                    if (TextUtils.equals(resultStatus, "9000") && TextUtils.equals(authResult.getResultCode(), "200")) {
+                        // 获取alipay_open_id，调支付时作为参数extern_token 的value
+                        // 传入，则支付账户为该授权账户
+                        Toast.makeText(LoginActivity.this,
+                                "授权成功\n" + String.format("authCode:%s", authResult.getAuthCode()), Toast.LENGTH_SHORT)
+                                .show();
+                    } else {
+                        // 其他状态值则为授权失败
+                        Toast.makeText(LoginActivity.this,
+                                "授权失败" + String.format("authCode:%s", authResult.getAuthCode()), Toast.LENGTH_SHORT).show();
+
+                    }
+                    break;
+                }
+            }
+        }
+    };
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
@@ -98,10 +160,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     @Override
     public void initView() {
-     /*   this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        relBoot.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.login_bg, getBitmapOption()));*/
-        handler = new Handler(LoginActivity.this);
+
+//        handler = new Handler(LoginActivity.this);
 
         RxView.clicks(authCodeTime).throttleFirst(5, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
             @Override
@@ -157,10 +217,32 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 loginWx(Wechat.NAME);
                 break;
             case R.id.iv_three_login:
-                loginWx(Alipay.NAME);
+                loginAli(null);
                 break;
 
         }
+    }
+
+    private void loginAli(LoginAliOrderBean loginAliOrderBean) {
+        Runnable authRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                // 构造AuthTask 对象
+                AuthTask authTask = new AuthTask(LoginActivity.this);
+                // 调用授权接口，获取授权结果
+                Map<String, String> result = authTask.authV2("", true);
+
+                Message msg = new Message();
+                msg.what = SDK_AUTH_FLAG;
+                msg.obj = result;
+                mHandler.sendMessage(msg);
+            }
+        };
+
+        // 必须异步调用
+        Thread authThread = new Thread(authRunnable);
+        authThread.start();
     }
 
     @Override
@@ -205,6 +287,16 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             return;
         }
         mPresenter.ShowTvRequest(authCodeTime);
+    }
+
+    @Override
+    public void returnOtherLoginBean(OtherLoginBean otherLoginBean) {
+
+
+        if (!TextUtils.isEmpty(usericon))
+            SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, usericon);
+        if (!TextUtils.isEmpty(userName))
+            SPUtils.setSharedStringData(mContext, AppConstant.UserName, userName);
     }
 
     private static final int MSG_AUTH_CANCEL = 2;
@@ -294,12 +386,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             //token
             String token = mPlatform.getDb().getToken();
             //Avatar
-            String usericon = mPlatform.getDb().getUserIcon();
+            usericon = mPlatform.getDb().getUserIcon();
             //openid
             final String userId = mPlatform.getDb().getUserId();
             //Nickname
-            String userName = mPlatform.getDb().getUserName();
+            userName = mPlatform.getDb().getUserName();
 
+            mPresenter.getOtherLoginBean(userId, userName, usericon);
 
         }
 

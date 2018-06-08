@@ -6,6 +6,7 @@ import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
 import cn.hancang.www.bean.LoginBean;
+import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
 import cn.hancang.www.ui.myinfo.contract.LoginContract;
 import com.jakewharton.rxbinding.view.RxView;
@@ -38,5 +39,10 @@ public class LoginModel implements LoginContract.Model {
         RxView.enabled(tv).call(false);
         return Observable.interval(0, 1, TimeUnit.SECONDS, Schedulers.io())
                 .take(120).compose(RxSchedulers.<Long>io_main());
+    }
+
+    @Override
+    public Observable<OtherLoginBean> getOtherLoginBean(String openid,String nickname ,String headimgurl) {
+        return Api.getDefault(HostType.Jsonpart).getOtherLoginBean(openid, nickname, headimgurl).compose(RxSchedulers.<OtherLoginBean>io_main());
     }
 }

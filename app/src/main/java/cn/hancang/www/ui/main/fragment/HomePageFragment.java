@@ -14,6 +14,7 @@ import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
 import cn.hancang.www.R;
 import cn.hancang.www.adapter.HeadTwoAdapter;
 import cn.hancang.www.adapter.HomeAdapter;
@@ -36,6 +37,7 @@ import cn.hancang.www.ui.myinfo.activity.MessageActicity;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
@@ -135,7 +137,6 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         home_two.findViewById(R.id.item_new_one).setOnClickListener(this);
 
 
-
         View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
         viewById.setText("推荐专场");
@@ -178,7 +179,9 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
     @Override
     public void StartLoading(String RequestId) {
-
+        if (AppConstant.oneMessage.equals(RequestId) && homeAdapter.getDataList().size() == 0) {
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        }
     }
 
     @Override

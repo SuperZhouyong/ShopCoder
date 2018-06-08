@@ -194,7 +194,7 @@ android {
             // 去除 多余的资源文件
             shrinkResources false
             signingConfig signingConfigs.config
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
 //            buildConfigField "boolean", "LOG_DEBUG", "true"
