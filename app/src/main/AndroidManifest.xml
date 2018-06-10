@@ -114,7 +114,9 @@
         <!--消息列表-->
         <activity android:name="cn.hancang.www.ui.myinfo.activity.MessageActicity" />
         <!--账户-->
-        <activity android:name="cn.hancang.www.ui.myinfo.activity.AccountActivity" />
+        <activity
+            android:launchMode="singleTask"
+            android:name="cn.hancang.www.ui.myinfo.activity.AccountActivity" />
 
         <!--参拍-->
         <activity android:name="cn.hancang.www.ui.myinfo.activity.MyCompeteActivity" />
@@ -214,6 +216,10 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

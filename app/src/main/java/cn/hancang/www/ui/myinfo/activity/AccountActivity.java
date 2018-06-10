@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.myinfo.activity;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -94,6 +95,12 @@ public class AccountActivity extends BaseActivity<AccountPresenter, AccountModel
     @Override
     public void showErrorTip(String RequestId, String msg) {
 
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mPresenter.getAccountBeanRequest(null);
     }
 
     @Override

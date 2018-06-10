@@ -44,8 +44,8 @@ public class AppConstant {
     public static final String ConfirmOk = "ConfirmOk";
     //    wxd2fb38f960eb278e appid  wxd2fb38f960eb278e
     //wxe28f83bf7e4a9ecc
-    public static final String WxAPP_ID = "wxd2fb38f960eb278e";
-    public static final String WxAppSecret = "36e1f4140c4eb739d6c958c9e047fee8";
+    public static final String WxAPP_ID = "wx54fa8a2ea47c977b";
+//    public static final String WxAppSecret = "36e1f4140c4eb739d6c958c9e047fee8";
 
     public static final String KEY = "sqtapi123456";
     /*
@@ -123,4 +123,6 @@ public class AppConstant {
     public static String ChargeType = "ChargeType";
     // 取消关注接口
 //    public static final String DeletFocus = "DeletFocus";
+
+    public static final String TOCONFIRMORDER = "toconfirmorder";// 微信支付支付完成返回确认订单，通知支付完成
 }

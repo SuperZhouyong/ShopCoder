@@ -14,15 +14,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.baseapp.AppManager;
 import cn.hancang.www.bean.OrderIdBean;
 import cn.hancang.www.bean.OrderIdDetailBean;
 import cn.hancang.www.bean.TellBackBean;
+import cn.hancang.www.bean.WxPayBean;
 import cn.hancang.www.ui.myinfo.contract.SelectChargeContract;
 import cn.hancang.www.ui.myinfo.model.SelectChargeModel;
 import cn.hancang.www.ui.myinfo.presenter.SelectChargePresenter;
+import cn.hancang.www.utils.conmonUtil.AppUtil;
+import cn.hancang.www.utils.conmonUtil.JsonUtils;
 import cn.hancang.www.utils.payUtils.AuthResult;
 import cn.hancang.www.utils.payUtils.PayResult;
 import cn.hancang.www.utils.checkbox.SmoothCheckBox;
@@ -32,6 +40,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import rx.functions.Action1;
 
 /**
  * Description: 保佑无bug
@@ -78,7 +87,7 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
     private String AliAppId = "2018060160317416";
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
-
+    private final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, AppConstant.WxAPP_ID);
     /*
        * 支付宝的处理方式
        * */
@@ -155,6 +164,21 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
     }
 
     private void WxPayTyoe(OrderIdBean orderIdBean) {
+        msgApi.registerApp(AppConstant.WxAPP_ID);
+        PayReq request = new PayReq();
+        String wechat_app_orderString = orderIdBean.getData().getWechat_app_orderString();
+        WxPayBean wxPayBean = (WxPayBean) JsonUtils.fromJson(wechat_app_orderString, WxPayBean.class);
+//        request.appId = mPayInfo.getData().getWxpay().
+//        request.partnerId = mPayInfo.getData().getWxpay().get
+        request.appId = wxPayBean.getResult().getAppid();
+        request.partnerId = wxPayBean.getResult().getPartnerid();
+        request.prepayId = wxPayBean.getResult().getPrepayid();
+        request.nonceStr = wxPayBean.getResult().getNoncestr();
+        request.timeStamp = String.valueOf(wxPayBean.getResult().getTimestamp());
+        request.packageValue = wxPayBean.getResult().getPackageX();
+        request.sign = wxPayBean.getResult().getSign();
+        msgApi.sendReq(request);
+
     }
 
     /**
@@ -215,6 +239,14 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
         moneyNum = getIntent().getExtras().getFloat(AppConstant.Moneynum, -1);
         tvMoney.setText("￥" + moneyNum);
         relSearch.setVisibility(View.GONE);
+
+        mRxManager.on(AppConstant.TOCONFIRMORDER, new Action1<Boolean>() {
+            @Override
+            public void call(Boolean aBoolean) {
+//                AppManager.getAppManager().returnToActivity();
+                startActivity(AccountActivity.class);
+            }
+        });
     }
 
     public static void gotoSelectChargeActivity(Context context, Float moneyNum) {

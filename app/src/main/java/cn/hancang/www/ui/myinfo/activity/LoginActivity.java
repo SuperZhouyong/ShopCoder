@@ -7,17 +7,26 @@ import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import cn.hancang.www.R;
+import com.alipay.sdk.app.AuthTask;
+import com.jakewharton.rxbinding.view.RxView;
+import com.toptechs.libaction.action.SingleCall;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.bean.LoginAliOrderBean;
 import cn.hancang.www.bean.LoginBean;
 import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SQTUser;
@@ -31,22 +40,7 @@ import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
 import cn.hancang.www.utils.conmonUtil.SPUtils;
 import cn.hancang.www.utils.conmonUtil.UserUtil;
 import cn.hancang.www.utils.payUtils.AuthResult;
-import cn.hancang.www.utils.payUtils.PayResult;
 import cn.hancang.www.widget.ClearEditText;
-
-import com.alipay.sdk.app.AuthTask;
-import com.alipay.sdk.app.PayTask;
-import com.intention.sqtwin.bean.LoginAliOrderBean;
-import com.jakewharton.rxbinding.view.RxView;
-import com.toptechs.libaction.action.SingleCall;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import butterknife.BindView;
-import butterknife.OnClick;
-import cn.sharesdk.alipay.friends.Alipay;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
