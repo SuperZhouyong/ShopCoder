@@ -176,7 +176,7 @@ public class AutionItemDetailBean {
             private String increment_value;
             private String commission;
             private String deposit;
-            private int auction_field_id;
+            private String auction_field_id;
             private String current_price;
             private int fans_count;
             private List<ImagesBean> images;
@@ -285,11 +285,11 @@ public class AutionItemDetailBean {
                 this.deposit = deposit;
             }
 
-            public int getAuction_field_id() {
+            public String getAuction_field_id() {
                 return auction_field_id;
             }
 
-            public void setAuction_field_id(int auction_field_id) {
+            public void setAuction_field_id(String auction_field_id) {
                 this.auction_field_id = auction_field_id;
             }
 

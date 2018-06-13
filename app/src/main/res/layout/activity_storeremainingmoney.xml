@@ -134,6 +134,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:layout_marginTop="@dimen/y40"
         android:id="@+id/rel_charge"
         android:layout_width="match_parent"
@@ -203,6 +204,7 @@
 
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:layout_marginTop="@dimen/y15"
         android:id="@+id/rel_management_bank"
         android:layout_width="match_parent"

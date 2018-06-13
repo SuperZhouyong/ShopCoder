@@ -179,7 +179,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
     @Override
     public void StartLoading(String RequestId) {
-        if (AppConstant.oneMessage.equals(RequestId) && homeAdapter.getDataList().size() == 0) {
+        if (AppConstant.oneMessage.equals(RequestId) && homeAdapter.getDataList().size() == 0 && mHeadTwoAdapter.getDataList().size() == 0) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
         }
     }

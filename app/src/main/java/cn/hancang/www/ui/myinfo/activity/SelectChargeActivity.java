@@ -110,6 +110,7 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
 //                    if (TextUtils.equals(resultStatus.trim(), "9000")) {
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        startActivity(AccountActivity.class);
 //                        mPresenter.getOrderBackGroundRequest(UserUtil.getLoginInfo().getGid(), mOrderId, actionType);
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。

@@ -154,6 +154,13 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
     }
 
+    public void removeViewHeadView(View view) {
+        if (mHeaderViews.contains(view))
+            mHeaderViews.remove(view);
+        mHeaderTypes.remove(HEADER_INIT_INDEX);
+//        this.notifyDataSetChanged();
+    }
+
     public void removeFooterView() {
         if (getFooterViewsCount() > 0) {
             View footerView = getFooterView();
@@ -202,6 +209,7 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+        Log.i(TAG, TAG + "我是LrecyclerView" + position);
         if (isHeader(position) || isRefreshHeader(position)) {
             return;
         }

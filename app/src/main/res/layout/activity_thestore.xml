@@ -81,7 +81,7 @@
                     android:layout_marginRight="@dimen/x22" />
 
                 <TextView
-
+                    android:id="@+id/tv_store_desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -370,7 +370,7 @@
                 android:layout_marginStart="@dimen/x30"
                 android:layout_toEndOf="@+id/iv_store_pw"
                 android:layout_toRightOf="@+id/iv_store_pw"
-                android:text="设置管理密码"
+                android:text="登录电脑端商户中心"
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28"/>
 

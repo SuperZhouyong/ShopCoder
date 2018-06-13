@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.main.fragment;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,6 +24,7 @@ import cn.hancang.www.ui.myinfo.activity.LoginActivity;
 import cn.hancang.www.ui.myinfo.activity.OrderListActivity;
 import cn.hancang.www.ui.myinfo.activity.StorePassWordActivity;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
+
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
@@ -81,6 +83,8 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     RelativeLayout relIdentit;
     @BindView(R.id.title)
     RelativeLayout relHeadTitle;
+    @BindView(R.id.tv_store_desc)
+    TextView tvstoredesc ;
 
     @Override
     protected int getLayoutResource() {
@@ -150,10 +154,16 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
 
     @Override
     public void returnStoreInfo(StoreInfoBean storeInfoBean) {
-        if (!storeInfoBean.isIs_success())
+        if (!storeInfoBean.isIs_success()) {
             showShortToast(storeInfoBean.getMessage());
-
-        startActivity(RealCerOneActivity.class, null);
+            startActivity(RealCerOneActivity.class, null);
+            return;
+        }
+        StoreInfoBean.DataBean data = storeInfoBean.getData();
+        ImageLoaderUtils.displayRoundTwo(getActivity(), ivHeadIcon, data.getStore_logo());
+        tvStoreName.setText(TextUtils.isEmpty(data.getStore_name()) ? "" : data.getStore_name());
+        tvFansNum.setText("粉丝    " + data.getFans_count());
+        tvstoredesc.setText(data.getStore_description());
     }
 
 
