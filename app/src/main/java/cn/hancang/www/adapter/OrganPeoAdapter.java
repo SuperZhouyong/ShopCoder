@@ -101,12 +101,7 @@ public class OrganPeoAdapter extends CommonRecycleViewAdapter<OrganPeBean.DataBe
         if (!TextUtils.isEmpty(start_time) && !TextUtils.isEmpty(end_time))
             showAuctionTime(helper, start_time, end_time);
 //        helper.setText(R.id.tv_time_calculate)
-        helper.setOnClickListener(R.id.rel_focus, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 点击关注
-            }
-        });
+
 
     }
 

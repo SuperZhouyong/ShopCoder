@@ -3,6 +3,7 @@ package cn.hancang.www.ui.main.activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import cn.hancang.www.bean.OrganPeBean;
 import cn.hancang.www.ui.main.contract.OrganPeContract;
 import cn.hancang.www.ui.main.model.OrganPeModel;
 import cn.hancang.www.ui.main.presenter.OrganPePresenter;
+import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
@@ -63,6 +65,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     private OrganPeoAdapter organpeoAdapter;
     private Integer currentPostion;
     private Integer currentFavId;
+    private ImageView ivHead;
 
     @Override
     public int getLayoutId() {
@@ -90,6 +93,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         mRecyclerView.setOnLoadMoreListener(this);
         mRecyclerView.addItemDecoration(SpacesItemDecoration.newInstance(0, 30, 1, getResources().getColor(R.color.app_bottom_colour)));
         View artDetailHead = getLayoutInflater().inflate(R.layout.item_organpeo_head, null);
+        ivHead = (ImageView) artDetailHead.findViewById(R.id.iv_icon);
         tv_one = (TextView) artDetailHead.findViewById(R.id.tv_one);
         tv_two = (TextView) artDetailHead.findViewById(R.id.tv_two);
         tv_three = (TextView) artDetailHead.findViewById(R.id.tv_three);
@@ -170,6 +174,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
+            ImageLoaderUtils.displayRound(this,ivHead,organPeBean.getData().getStaff_info().getAvatar());
             tv_one.setText(organPeBean.getData().getStaff_info().getName());
             tv_two.setText(organPeBean.getData().getStaff_info().getType() == 0 ? "主理人" : "专家");
             tv_three.setText(organPeBean.getData().getStaff_info().getDescription());

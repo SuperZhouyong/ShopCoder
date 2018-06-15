@@ -155,7 +155,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @Override
     public void initView() {
 
-//        handler = new Handler(LoginActivity.this);
+        handler = new Handler(LoginActivity.this);
 
         RxView.clicks(authCodeTime).throttleFirst(5, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
             @Override
@@ -169,6 +169,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 }
             }
         });
+
     }
 
     private void loginWx(String platName) {
@@ -286,11 +287,23 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     @Override
     public void returnOtherLoginBean(OtherLoginBean otherLoginBean) {
 
+        if (otherLoginBean.isIs_success()) {
+            UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(otherLoginBean.getData()), SQTUser.class));
+            if (!TextUtils.isEmpty(usericon))
+                SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, usericon);
+            if (!TextUtils.isEmpty(userName))
+                SPUtils.setSharedStringData(mContext, AppConstant.UserName, userName);
+            // 目前登录为当前关闭 就好
+            // 回调执行登录
+            finish();
+            SingleCall.getInstance().doCall();
+        } else {
+            showShortToast(otherLoginBean.getMessage());
+        }
 
-        if (!TextUtils.isEmpty(usericon))
-            SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, usericon);
-        if (!TextUtils.isEmpty(userName))
-            SPUtils.setSharedStringData(mContext, AppConstant.UserName, userName);
+
+
+
     }
 
     private static final int MSG_AUTH_CANCEL = 2;
@@ -305,7 +318,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     @Override
     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-        LogUtils.logd(TAG + "onComplete");
+        LogUtils.logd(TAG + "onCompletei-----"+i);
         if (i == Platform.ACTION_USER_INFOR) {
             Message msg = new Message();
             msg.what = MSG_AUTH_COMPLETE;

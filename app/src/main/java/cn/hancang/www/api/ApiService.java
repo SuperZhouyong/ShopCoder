@@ -1,6 +1,8 @@
 package cn.hancang.www.api;
 
 
+import com.intention.sqtwin.bean.AmpunInfoBean;
+
 import cn.hancang.www.bean.AccountBean;
 import cn.hancang.www.bean.AddCartInfoBean;
 import cn.hancang.www.bean.AddFavBean;
@@ -774,6 +776,11 @@ public interface ApiService {
             @Query("openid") String openid,
             @Query("nickname") String nickname,
             @Query("headimgurl") String headimgurl
+    );
+    @FormUrlEncoded
+    @POST("Membercenter/amount_info")
+    Observable<AmpunInfoBean> getPostAmoutbInfo(
+            @Field("amount") Float amount
     );
 
 }

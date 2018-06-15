@@ -207,7 +207,10 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tv3Name = (TextView) auctionItem_one.findViewById(R.id.tv_3_name);
 
         // 轮播图
-        headViewPager = getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
+       /* headViewPager = getLayoutInflater().inflate(R.layout.item_homepage_headview, null);
+        mLoopViewPager = (BannerView) headViewPager.findViewById(R.id.mLoopViewPager);*/
+
+        headViewPager = getLayoutInflater().inflate(R.layout.item_auitem_viewpager, null);
         mLoopViewPager = (BannerView) headViewPager.findViewById(R.id.mLoopViewPager);
 
 
@@ -540,7 +543,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         mLadapter.addHeaderView(viewSpace1);
         mLadapter.addHeaderView(other_item);
         mLadapter.addHeaderView(viewSpace2);
-        mLadapter.addHeaderView(auction_guide);
+//        mLadapter.addHeaderView(auction_guide);
 
         mComAdapter.notifyDataSetChanged();
     }

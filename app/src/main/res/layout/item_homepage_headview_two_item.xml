@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/iv_headtwo"
         android:layout_width="@dimen/x330"
-        android:layout_height="@dimen/y200"
+        android:layout_height="@dimen/y330"
         android:scaleType="fitXY" />
 
     <TextView

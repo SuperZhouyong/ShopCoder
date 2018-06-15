@@ -129,17 +129,17 @@ public class MyInfoFragment extends LazzyFragment {
             case R.id.iv_shareicon:
                 startActivity(getActivity(), EditInfoActivity.class);
                 break;
-
+            //0：拍卖订单 1：商品订单
             case R.id.ll_one:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 0);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_two:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 0);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             case R.id.ll_three:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 0, 1);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 0, 0);
 //                startActivity(getActivity(), OrderListActivity.class);
                 break;
             // 消息

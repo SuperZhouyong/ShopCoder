@@ -4,46 +4,64 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/x22"
-        android:orientation="vertical">
+        android:paddingBottom="@dimen/y30"
+        android:paddingTop="@dimen/y30">
 
-        <TextView
-            android:textSize="@dimen/x30"
-            android:paddingRight="@dimen/y10"
-            android:paddingTop="@dimen/y20"
-            android:paddingBottom="@dimen/y20"
-            android:id="@+id/tv_one"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/y120"
+
+            />
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/x50"
+            android:layout_toRightOf="@id/iv_icon"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="主理人名字"
-            android:textColor="@color/font_1" />
 
-        <TextView
-            android:textSize="@dimen/x25"
-            android:paddingRight="@dimen/y10"
-            android:paddingTop="@dimen/y10"
-            android:paddingBottom="@dimen/y10"
-            android:id="@+id/tv_two"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/x22">
 
-            android:textColor="@color/font_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="主理人职位" />
+            <TextView
+                android:id="@+id/tv_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/y20"
+                android:paddingRight="@dimen/y10"
+                android:paddingTop="@dimen/y20"
+                android:text="主理人名字"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x30" />
 
-        <TextView
-            android:textSize="@dimen/x25"
-            android:textColor="@color/font_4"
-            android:paddingTop="@dimen/y10"
-            android:paddingRight="@dimen/y10"
-            android:paddingBottom="@dimen/y10"
-            android:id="@+id/tv_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="主理人介绍" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/y10"
+                android:paddingRight="@dimen/y10"
 
+                android:paddingTop="@dimen/y10"
+                android:text="主理人职位"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x25" />
+
+            <TextView
+                android:id="@+id/tv_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/y10"
+                android:paddingRight="@dimen/y10"
+                android:paddingTop="@dimen/y10"
+                android:text="主理人介绍"
+                android:textColor="@color/font_4"
+                android:textSize="@dimen/x25" />
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

@@ -55,7 +55,7 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
 
     /**
      * @param title
-     * @param category_id 订单状态：0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
+     * @param category_id 订单状态：-1表示全部；0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
      * @param type        0=商城订单；1=拍卖订单
      * @return
      */
@@ -63,7 +63,7 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
         OrderListFragment sf = new OrderListFragment();
         sf.mTitle = title;
         if (category_id == 0)
-            category_id = 0;
+            category_id = -1;
         if (category_id == 1)
             category_id = 10;
         if (category_id == 2)
@@ -85,6 +85,8 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
                 helper.setImageUrl(R.id.iv_goods_pic, orderListBean.getMain_goods_image());
                 helper.setText(R.id.tv_goods_name, orderListBean.getMain_goods_name());
                 helper.setText(R.id.tv_goods_time, orderListBean.getOrder_time());
+                //
+                helper.setVisible(R.id.tv_goto_pay,category_id==10);
 
             }
         };

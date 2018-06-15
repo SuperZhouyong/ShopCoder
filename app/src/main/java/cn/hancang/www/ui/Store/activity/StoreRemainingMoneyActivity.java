@@ -12,6 +12,7 @@ import android.widget.TextView;
 import cn.hancang.www.R;
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
+import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.baserx.RxSchedulers;
 import cn.hancang.www.baserx.RxSubscriber;
@@ -19,6 +20,7 @@ import cn.hancang.www.bean.StoreMoneyBean;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.hancang.www.ui.myinfo.activity.ChargeActivity;
 
 /**
  * Description: 保佑无bug
@@ -95,6 +97,7 @@ public class StoreRemainingMoneyActivity extends BaseActivity {
                 break;
             // 取现
             case R.id.rel_cash:
+                ChargeActivity.gotoChargeActivity(this, AppConstant.twoMessage);
                 break;
             // 银行卡管理
             case R.id.rel_management_bank:

@@ -18,6 +18,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -32,6 +33,7 @@ import cn.hancang.www.ui.main.model.AuctionFiledModel;
 import cn.hancang.www.ui.main.presenter.AuctionFiledPresenter;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
@@ -329,10 +331,17 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
             }
             tabLayout.setTabData(mTabEntities);
         }
-
-        String start_time = field_info.getStart_time().replace("-",".");
-        String end_time = field_info.getEnd_time().replace("-",".");
-        String s = start_time.substring(start_time.indexOf(".") + 1) + "-" + end_time.substring(end_time.indexOf(".") + 1);
+        String start_time = null;
+        String end_time = null;
+        if (!TextUtils.isEmpty(field_info.getStart_time()))
+            start_time = field_info.getStart_time().replace("-", ".");
+        if (!TextUtils.isEmpty(field_info.getEnd_time()))
+            end_time = field_info.getEnd_time().replace("-", ".");
+        String s ;
+        if (start_time == null && end_time == null) {
+            s = "拍卖时间暂未确定";
+        } else
+            s = start_time.substring(start_time.indexOf(".") + 1) + "-" + end_time.substring(end_time.indexOf(".") + 1);
         TvTimeTwo.setText(s);
 //        TvTimeTwo.setText(auctionFiledAllBean.getData().getField_info().getStart_time() + "-" + auctionFiledAllBean.getData().getField_info().getEnd_time());
 

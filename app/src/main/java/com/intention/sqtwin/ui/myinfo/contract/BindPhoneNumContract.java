@@ -1,0 +1,55 @@
+package com.intention.sqtwin.ui.myinfo.contract;
+
+import android.widget.TextView;
+
+import cn.hancang.www.base.BaseModel;
+import cn.hancang.www.base.BasePresenter;
+import cn.hancang.www.base.BaseView;
+import cn.hancang.www.bean.LoginBean;
+import cn.hancang.www.bean.OtherLoginBean;
+import cn.hancang.www.bean.SmsInfoBean;
+//import cn.hancang.www.ui.myinfo.contract.LoginContract;
+import rx.Observable;
+
+/**
+ * Description: 保佑无bug
+ * Data：2018/6/15-上午12:04
+ * Blog：Super简单
+ * Author: ZhouYong
+ * QQ: 437397161
+ */
+
+public interface BindPhoneNumContract {
+     interface View extends BaseView {
+
+
+        void returnSmsBean(SmsInfoBean smsInfoBean);
+
+
+
+
+        void returnBindPhoneNUm(OtherLoginBean otherLoginBean);
+    }
+     interface  Model extends BaseModel {
+
+
+        Observable<SmsInfoBean> getSmsInfoBean(String phone,String type);
+
+        Observable<Long> ShowTv(TextView tv);
+
+
+        Observable<OtherLoginBean> getBindPhoneNumBean(String openid,String nickname ,String headimgurl);
+    }
+   abstract class Presenter extends BasePresenter<View,Model> {
+
+
+        public abstract void getSmsRequest(String phone,String type);
+
+        // 计时请求
+        public abstract void ShowTvRequest(TextView tv);
+
+        // 发起信息保存
+
+        public abstract void getBindPhonNumBean(String openid,String nickname ,String headimgurl);
+    }
+}

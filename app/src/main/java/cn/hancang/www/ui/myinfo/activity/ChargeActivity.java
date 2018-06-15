@@ -7,9 +7,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.intention.sqtwin.bean.AmpunInfoBean;
+
 import cn.hancang.www.R;
+import cn.hancang.www.api.Api;
+import cn.hancang.www.api.HostType;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.baserx.RxBus;
+import cn.hancang.www.baserx.RxSchedulers;
+import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.widget.ClearEditText;
 
 import butterknife.BindView;
@@ -78,17 +85,34 @@ public class ChargeActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_confirm:
+                String MoneyNum = edMoney.getText().toString().trim();
+                try {
+                    fMoneyNum = Float.parseFloat(MoneyNum);
+                } catch (Exception e) {
+                    showShortToast("请输入正确的金额");
+                    return;
+                }
                 if (AppConstant.oneMessage.equals(getIntent().getExtras().getString(AppConstant.ChargeType))) {
-                    String MoneyNum = edMoney.getText().toString().trim();
-                    try {
-                        fMoneyNum = Float.parseFloat(MoneyNum);
-                    } catch (Exception e) {
-                        showShortToast("请输入正确的金额");
-                        return;
-                    }
+
+
                     SelectChargeActivity.gotoSelectChargeActivity(this, fMoneyNum);
 
                 } else {
+                    mRxManager.add(Api.getDefault(HostType.Jsonpart)
+                            .getPostAmoutbInfo(fMoneyNum)
+                            .compose(RxSchedulers.<AmpunInfoBean>io_main())
+                            .subscribe(new RxSubscriber<AmpunInfoBean>(this) {
+                                @Override
+                                protected void _onNext(AmpunInfoBean ampunInfoBean) {
+
+
+                                }
+
+                                @Override
+                                protected void _onError(String message) {
+
+                                }
+                            }));
                     // 进入提现的操作
                 }
                 break;
