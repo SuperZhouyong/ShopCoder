@@ -34,7 +34,7 @@ import butterknife.OnClick;
  * QQ: 437397161
  */
 
-public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompeteModel> implements MyCompeteContract.View, OnRefreshListener, LoadingTip.onReloadListener {
+/*public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompeteModel> implements MyCompeteContract.View, OnRefreshListener, LoadingTip.onReloadListener {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -161,4 +161,4 @@ public class MyCompeteActivity extends BaseActivity<MyCompetePresenter, MyCompet
     public void reloadLodTip() {
         mPresenter.getMyCompeteRequest(null);
     }
-}
+}*/

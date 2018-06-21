@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.hancang.www.bean.BindPhoneNumBean;
-import com.intention.sqtwin.ui.myinfo.contract.BindPhoneNumContract;
+import cn.hancang.www.ui.myinfo.contract.BindPhoneNumContract;
 import cn.hancang.www.ui.myinfo.model.BindPhoneNumModel;
 import cn.hancang.www.ui.myinfo.presenter.BindPhoneNumPresenter;
 import com.jakewharton.rxbinding.view.RxView;
@@ -80,6 +80,7 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
 
     @Override
     public void initView() {
+        relSearch.setVisibility(View.GONE);
         leftTitle.setVisibility(View.GONE);
         centerTitle.setText("绑定手机");
         relSearch.setVisibility(View.GONE);
@@ -127,7 +128,6 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
                             protected void _onNext(BindPhoneNumBean bindPhoneNumBean) {
                                 showShortToast(bindPhoneNumBean.getMessage());
                                 if (!bindPhoneNumBean.isIs_success()) {
-
                                     return;
                                 } else {
                                     Intent intent = new Intent();

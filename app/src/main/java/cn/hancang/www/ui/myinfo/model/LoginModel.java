@@ -5,6 +5,8 @@ import android.widget.TextView;
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
+import cn.hancang.www.bean.AliLoginAfterBean;
+import cn.hancang.www.bean.AliLoginBean;
 import cn.hancang.www.bean.LoginBean;
 import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
@@ -42,7 +44,17 @@ public class LoginModel implements LoginContract.Model {
     }
 
     @Override
+    public Observable<AliLoginBean> getAliLoginBean() {
+        return Api.getDefault(HostType.Jsonpart).getAliLoginBean().compose(RxSchedulers.<AliLoginBean>io_main());
+    }
+
+    @Override
     public Observable<OtherLoginBean> getOtherLoginBean(String openid,String nickname ,String headimgurl) {
         return Api.getDefault(HostType.Jsonpart).getOtherLoginBean(openid, nickname, headimgurl).compose(RxSchedulers.<OtherLoginBean>io_main());
+    }
+
+    @Override
+    public Observable<AliLoginAfterBean> getAliLoginAfterBean(String auth_code) {
+        return Api.getDefault(HostType.Jsonpart).getAliLoginAfterBean(auth_code).compose(RxSchedulers.<AliLoginAfterBean>io_main());
     }
 }

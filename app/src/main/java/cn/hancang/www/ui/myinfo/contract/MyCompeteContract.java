@@ -5,6 +5,7 @@ import cn.hancang.www.base.BasePresenter;
 import cn.hancang.www.base.BaseView;
 import cn.hancang.www.bean.MyCompeteBean;
 
+import cn.hancang.www.bean.OrderCreatBean;
 import rx.Observable;
 
 /**
@@ -17,13 +18,18 @@ import rx.Observable;
 
 public class MyCompeteContract {
     public interface Model extends BaseModel {
-        Observable<MyCompeteBean> getMyCompeteDate(Integer page);
+        Observable<MyCompeteBean> getMyCompeteDate(Integer page,Integer type);
 
+        Observable<OrderCreatBean> getCreatOrderBean(String good_id_list);
     }
     public interface View extends BaseView{
         void returnMyCompeteBean(MyCompeteBean myCompeteBean);
+
+        void returnOrderCreatBean(OrderCreatBean orderCreatBean);
     }
     public static abstract class Presenter extends BasePresenter<View,Model> {
-        public abstract void getMyCompeteRequest(Integer page);
+        public abstract void getMyCompeteRequest(Integer page,Integer type);
+
+        public abstract void getOrderCreatBeanRequest(String good_id_list);
     }
 }

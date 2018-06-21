@@ -2,6 +2,7 @@ package cn.hancang.www.ui.myinfo.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -26,6 +27,7 @@ import cn.hancang.www.ui.myinfo.contract.AddReAddressContract;
 import cn.hancang.www.ui.myinfo.model.AddReAddressModel;
 import cn.hancang.www.ui.myinfo.presenter.AddReAddressPresenter;
 import cn.hancang.www.widget.wheelpicker.WheelPickerUtils;
+
 import com.kyleduo.switchbutton.SwitchButton;
 
 import java.util.List;
@@ -241,6 +243,9 @@ public class AddReAddressActivity extends BaseActivity<AddReAddressPresenter, Ad
             return;
         }
         showShortToast(submitAddressBean.getMessage());
+
+        setResult(RESULT_OK);
+        finish();
     }
 
     @Override

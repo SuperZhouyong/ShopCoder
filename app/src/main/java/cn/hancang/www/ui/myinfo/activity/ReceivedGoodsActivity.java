@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.myinfo.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
@@ -136,6 +137,15 @@ public class ReceivedGoodsActivity extends BaseActivity<ReceivedGoodsPresenter, 
                 break;
             case R.id.rel_search:
                 break;
+        }
+    }
+    private static final int requestCodeReceived = 101 ;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK&&requestCode == requestCodeReceived){
+            mPresenter.getReceiverGoodRequest();
         }
     }
 

@@ -16,7 +16,8 @@ import cn.hancang.www.ui.myinfo.activity.AccountActivity;
 import cn.hancang.www.ui.myinfo.activity.EditInfoActivity;
 import cn.hancang.www.ui.myinfo.activity.LoginActivity;
 import cn.hancang.www.ui.myinfo.activity.MessageActicity;
-import cn.hancang.www.ui.myinfo.activity.MyCompeteActivity;
+//import cn.hancang.www.ui.myinfo.activity.MyCompeteActivity;
+import cn.hancang.www.ui.myinfo.activity.MyCompeteNewActivity;
 import cn.hancang.www.ui.myinfo.activity.OrderListActivity;
 import cn.hancang.www.ui.myinfo.activity.SettingActivity;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
@@ -109,7 +110,7 @@ public class MyInfoFragment extends LazzyFragment {
     public void onResume() {
         super.onResume();
         ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
-        LogUtils.logd(TAG + "-------------" + SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl));
+        LogUtils.logd(TAG + "-------------" + SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl) + "-----" + SPUtils.getSharedStringData(getActivity(), AppConstant.UserName));
 //        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName)))
         tvname.setText(SPUtils.getSharedStringData(getActivity(), AppConstant.UserName));
 
@@ -152,7 +153,8 @@ public class MyInfoFragment extends LazzyFragment {
                 break;
             // 我的竞拍
             case R.id.rel_mycompete:
-                startActivity(getActivity(), MyCompeteActivity.class);
+                startActivity(getActivity(), MyCompeteNewActivity.class);
+//                startActivity(getActivity(), MyCompeteActivity.class);
                 break;
             // 身份认证
           /*  case R.id.rel_identit:

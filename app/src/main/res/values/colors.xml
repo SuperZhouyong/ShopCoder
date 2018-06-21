@@ -15,7 +15,7 @@
     <color name="title_bg">#ffc0000d</color>
     <color name="lots_bg">#f8f8f8</color>
     <color name="filed_head_bg">#ffdddddd</color>
-    <color name="app_bottom_colour">#ffe7e7e7</color>
+    <color name="app_bottom_colour">#fff8f8f8</color>
     <color name="code_bg">#E7E5E6</color>
     <color name="login_bg">#99808080</color>
     <color name="code_textcolor">#661612</color>

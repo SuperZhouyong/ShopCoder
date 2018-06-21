@@ -349,7 +349,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
         userName.setText(data.getName());
 
 //        userPostion.setText(data.getTitle());
-        userSex.setText(data.getSex().equals("0") ? "女" : "男");
+        userSex.setText("0".equals(data.getSex()) ? "女" : "男");
 //        userBirthday.setText(data.getBirthday());
         // 城市Id 不对
 //                        userCity.setText(data.getCity_id());
@@ -384,7 +384,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
 //        if (!TextUtils.isEmpty(userPhone.getText().toString().trim()))
 //            submitClientInfo.setPhone(userPhone.getText().toString().trim());
 
-        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl())){
+        if (updateImageBean.getData() != null && updateImageBean.getData().size() != 0 && !TextUtils.isEmpty(updateImageBean.getData().get(0).getUrl())) {
 
             submitClientInfo.setAvatar(updateImageBean.getData().get(0).getUrl());
             SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, updateImageBean.getData().get(0).getUrl());
@@ -397,6 +397,12 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
     @Override
     public void returnUodateInfo(UpdateResultInfo updateResultInfo) {
         showShortToast(updateResultInfo.getMessage());
+        if (updateResultInfo.isIs_success()) {
+
+            SPUtils.setSharedStringData(mContext, AppConstant.UserName, userName.getText().toString().trim());
+
+        }
+
     }
 
     @Override

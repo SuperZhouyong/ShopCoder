@@ -160,7 +160,7 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
             return;
         }
         StoreInfoBean.DataBean data = storeInfoBean.getData();
-        ImageLoaderUtils.displayRoundTwo(getActivity(), ivHeadIcon, data.getStore_logo());
+        ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, data.getStore_logo());
         tvStoreName.setText(TextUtils.isEmpty(data.getStore_name()) ? "" : data.getStore_name());
         tvFansNum.setText("粉丝    " + data.getFans_count());
         tvstoredesc.setText(data.getStore_description());

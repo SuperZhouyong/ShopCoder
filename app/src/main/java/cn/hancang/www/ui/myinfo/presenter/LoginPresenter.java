@@ -4,6 +4,8 @@ import android.widget.TextView;
 
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxSubscriber;
+import cn.hancang.www.bean.AliLoginAfterBean;
+import cn.hancang.www.bean.AliLoginBean;
 import cn.hancang.www.bean.LoginBean;
 import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
@@ -98,6 +100,36 @@ public class LoginPresenter extends LoginContract.Presenter {
             @Override
             protected void _onError(String message) {
                 mView.showErrorTip(AppConstant.threeMessage, message);
+            }
+        }));
+    }
+
+    @Override
+    public void getaLiLoginBean() {
+        mRxManage.add(mModel.getAliLoginBean().subscribe(new RxSubscriber<AliLoginBean>(mContext) {
+            @Override
+            protected void _onNext(AliLoginBean aliLoginBean) {
+                mView.returnAliBean(aliLoginBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+//                mView.showErrorTip(AppConstant.foreMessage, message);
+            }
+        }));
+    }
+
+    @Override
+    public void getAliLoginAfterBeanRequest(String auth_code) {
+        mRxManage.add(mModel.getAliLoginAfterBean(auth_code).subscribe(new RxSubscriber<AliLoginAfterBean>(mContext) {
+            @Override
+            protected void _onNext(AliLoginAfterBean aliLoginAfterBean) {
+                mView.returnAliLoginAfter(aliLoginAfterBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+
             }
         }));
     }

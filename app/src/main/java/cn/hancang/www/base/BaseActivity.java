@@ -355,7 +355,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
 
     public void showContractDialog() {
         final ShareDialog shareDialog = new ShareDialog(this, R.layout.item_reminder, false);
-        shareDialog.setMessage("17600298095");
+        shareDialog.setMessage("13070167219");
         shareDialog.setYesOnclickListener("确定", new NormalDialog.onYesOnclickListener() {
             @Override
             public void onYesClick() {

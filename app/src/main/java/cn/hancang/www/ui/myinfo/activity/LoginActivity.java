@@ -26,6 +26,8 @@ import butterknife.OnClick;
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.bean.AliLoginAfterBean;
+import cn.hancang.www.bean.AliLoginBean;
 import cn.hancang.www.bean.LoginAliOrderBean;
 import cn.hancang.www.bean.LoginBean;
 import cn.hancang.www.bean.OtherLoginBean;
@@ -130,6 +132,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                         Toast.makeText(LoginActivity.this,
                                 "授权成功\n" + String.format("authCode:%s", authResult.getAuthCode()), Toast.LENGTH_SHORT)
                                 .show();
+                        String memo = authResult.getMemo();
+                        mPresenter.getAliLoginAfterBeanRequest(authResult.getAuthCode());
+
                     } else {
                         // 其他状态值则为授权失败
                         Toast.makeText(LoginActivity.this,
@@ -188,7 +193,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     }
 
-    @OnClick({R.id.auth_code_time, R.id.tv_login_confirm, R.id.iv_one_login, R.id.iv_two_login, R.id.iv_three_login})
+    @OnClick({R.id.auth_code_time, R.id.tv_login_confirm, R.id.iv_two_login, R.id.iv_three_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             // 发送验证嘛
@@ -206,19 +211,19 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 else
                     showShortToast("请输入正确的手机号");
                 break;
-            case R.id.iv_one_login:
-                break;
+
             case R.id.iv_two_login:
                 loginWx(Wechat.NAME);
                 break;
             case R.id.iv_three_login:
-                loginAli(null);
+                mPresenter.getaLiLoginBean();
+//                loginAli(null);
                 break;
 
         }
     }
 
-    private void loginAli(LoginAliOrderBean loginAliOrderBean) {
+    private void loginAli(final AliLoginBean loginAliOrderBean) {
         Runnable authRunnable = new Runnable() {
 
             @Override
@@ -226,7 +231,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
                 // 构造AuthTask 对象
                 AuthTask authTask = new AuthTask(LoginActivity.this);
                 // 调用授权接口，获取授权结果
-                Map<String, String> result = authTask.authV2("", true);
+                Map<String, String> result = authTask.authV2(loginAliOrderBean.getData(), true);
 
                 Message msg = new Message();
                 msg.what = SDK_AUTH_FLAG;
@@ -285,25 +290,55 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
     }
 
     @Override
+    public void returnAliBean(AliLoginBean aliLoginBean) {
+        if (!aliLoginBean.isIs_success()) {
+            showShortToast(aliLoginBean.getMessage());
+            return;
+        }
+        loginAli(aliLoginBean);
+    }
+
+    @Override
     public void returnOtherLoginBean(OtherLoginBean otherLoginBean) {
 
         if (otherLoginBean.isIs_success()) {
-            UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(otherLoginBean.getData()), SQTUser.class));
+//            UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(otherLoginBean.getData().getMember_id()), SQTUser.class));
+            SQTUser sqtUser = new SQTUser();
+            sqtUser.setMember_id(otherLoginBean.getData().getMember_id());
+            UserUtil.setLoginInfo(sqtUser);
+//            SQTUser loginInfo = UserUtil.getLoginInfo();
             if (!TextUtils.isEmpty(usericon))
                 SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, usericon);
             if (!TextUtils.isEmpty(userName))
                 SPUtils.setSharedStringData(mContext, AppConstant.UserName, userName);
             // 目前登录为当前关闭 就好
             // 回调执行登录
+            if (TextUtils.isEmpty(otherLoginBean.getData().getMember_mobile()))
+                startActivity(BindPhoneNumActivity.class);
             finish();
-            SingleCall.getInstance().doCall();
+//            SingleCall.getInstance().doCall();
         } else {
             showShortToast(otherLoginBean.getMessage());
         }
 
 
+    }
 
-
+    @Override
+    public void returnAliLoginAfter(AliLoginAfterBean aliLoginAfterBean) {
+        showShortToast(aliLoginAfterBean.getMessage());
+        if (!aliLoginAfterBean.isIs_success()) {
+            return;
+        }
+        SQTUser sqtUser = new SQTUser();
+        sqtUser.setMember_id(aliLoginAfterBean.getData().getMember_id());
+        UserUtil.setLoginInfo(sqtUser);
+//        UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(aliLoginAfterBean.getData().getMember_id()), SQTUser.class));
+        if (TextUtils.isEmpty(aliLoginAfterBean.getData().getMember_mobile()))
+            startActivity(BindPhoneNumActivity.class);
+        finish();
+//        SingleCall.getInstance().doCall();
+//        showShortToast("支付宝登陆成功");
     }
 
     private static final int MSG_AUTH_CANCEL = 2;
@@ -318,7 +353,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
     @Override
     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
-        LogUtils.logd(TAG + "onCompletei-----"+i);
+        LogUtils.logd(TAG + "onCompletei-----" + i);
         if (i == Platform.ACTION_USER_INFOR) {
             Message msg = new Message();
             msg.what = MSG_AUTH_COMPLETE;

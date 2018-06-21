@@ -107,7 +107,7 @@
         android:layout_marginTop="@dimen/y120"
         android:background="@drawable/tv_bg_confirm"
         android:gravity="center"
-        android:text="提交"
+        android:text="绑定"
         android:textColor="@color/white"
         android:textSize="@dimen/x30" />
 

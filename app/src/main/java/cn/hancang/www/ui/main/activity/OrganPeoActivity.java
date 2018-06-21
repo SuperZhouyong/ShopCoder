@@ -12,6 +12,7 @@ import com.github.jdsjlzx.interfaces.OnLoadMoreListener;
 import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
 import cn.hancang.www.R;
 import cn.hancang.www.adapter.OrganPeoAdapter;
 import cn.hancang.www.app.AppConstant;
@@ -25,6 +26,7 @@ import cn.hancang.www.ui.main.model.OrganPeModel;
 import cn.hancang.www.ui.main.presenter.OrganPePresenter;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
@@ -66,6 +68,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
     private Integer currentPostion;
     private Integer currentFavId;
     private ImageView ivHead;
+//    private ImageView ivOrganHead;
 
     @Override
     public int getLayoutId() {
@@ -97,7 +100,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         tv_one = (TextView) artDetailHead.findViewById(R.id.tv_one);
         tv_two = (TextView) artDetailHead.findViewById(R.id.tv_two);
         tv_three = (TextView) artDetailHead.findViewById(R.id.tv_three);
-
+//        ivOrganHead = (ImageView) artDetailHead.findViewById(R.id.iv_organ_head);
 //        setMarGinTop(artDetailHead.findViewById(R.id.rel_desc), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y30));
 //        setMarGinTop(artDetailHead.findViewById(R.id.rel_background), (int) getResources().getDimension(R.dimen.x22),(int) getResources().getDimension(R.dimen.y100));
         mLadapter.addHeaderView(artDetailHead);
@@ -174,10 +177,11 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
         if (mLoadingTip.getVisibility() == View.VISIBLE)
             mLoadingTip.setViewGone();
         if (page == 0) {
-            ImageLoaderUtils.displayRound(this,ivHead,organPeBean.getData().getStaff_info().getAvatar());
+            ImageLoaderUtils.displayRound(this, ivHead, organPeBean.getData().getStaff_info().getAvatar());
             tv_one.setText(organPeBean.getData().getStaff_info().getName());
             tv_two.setText(organPeBean.getData().getStaff_info().getType() == 0 ? "主理人" : "专家");
             tv_three.setText(organPeBean.getData().getStaff_info().getDescription());
+//            ImageLoaderUtils.displayRound(this, ivOrganHead, organPeBean.getData().getStaff_info().getAvatar());
         }
 
 
@@ -238,6 +242,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
                 break;
         }
     }
+
 
     @Override
     public void call(String tag) {

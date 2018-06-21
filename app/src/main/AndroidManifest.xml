@@ -119,7 +119,8 @@
             android:name="cn.hancang.www.ui.myinfo.activity.AccountActivity" />
 
         <!--参拍-->
-        <activity android:name="cn.hancang.www.ui.myinfo.activity.MyCompeteActivity" />
+        <activity android:name=".ui.myinfo.activity.MyCompeteNewActivity"/>
+        <!--<activity android:name="cn.hancang.www.ui.myinfo.activity.MyCompeteActivity" />-->
         <!--身份认证-->
         <activity android:name="cn.hancang.www.ui.myinfo.activity.IdentityProveActivity" />
         <!--绑定手机号-->

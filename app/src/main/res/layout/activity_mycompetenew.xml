@@ -18,7 +18,8 @@
         app:tl_indicator_corner_radius="5dp"
         app:tl_indicator_style="NORMAL"
         app:tl_indicator_width_equal_title="false"
-        app:tl_tab_space_equal="false"
+        app:tl_tab_space_equal="true"
+        android:background="@color/white"
         app:tl_textSelectColor="@color/title_bg"
         app:tl_textUnselectColor="@color/font_1"
         app:tl_textsize="@dimen/x28" />

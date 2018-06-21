@@ -50,8 +50,8 @@ android {
         config {
             keyAlias 'china'
             keyPassword '123456'
-
-            storeFile file('/Users/super/Desktop/MD文件/Sqtwin.jks')
+            storeFile file('C:/Users/Administrator/Desktop/Sqtwin.jks')
+//            storeFile file('/Users/super/Desktop/MD文件/Sqtwin.jks')
             storePassword '123456'
         }
 

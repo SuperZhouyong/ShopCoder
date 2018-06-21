@@ -1,12 +1,15 @@
 package cn.hancang.www.ui.myinfo.activity;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.hancang.www.R;
+import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.utils.conmonUtil.SPUtils;
 import cn.hancang.www.utils.conmonUtil.UserUtil;
 
 import butterknife.BindView;
@@ -80,7 +83,9 @@ public class SettingActivity extends BaseActivity {
                 if (isLogin()) {
                     UserUtil.setLoginInfo(null);
                     showShortToast("已完成退出登录");
-
+                    SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, "");
+                    SPUtils.setSharedStringData(mContext, AppConstant.UserName, "");
+                    finish();
                 } else
                     showShortToast("您未登录");
 

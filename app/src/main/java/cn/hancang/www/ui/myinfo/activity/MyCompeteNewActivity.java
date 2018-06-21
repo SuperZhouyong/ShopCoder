@@ -62,7 +62,9 @@ public class MyCompeteNewActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        for (int i = 0; i <= mTitles.length; i++) {
+        centerTitle.setText("我的参拍");
+        relSearch.setVisibility(View.GONE);
+        for (int i = 0; i < mTitles.length; i++) {
             mFragments.add(MyCompeteNewFragment.getInstance(mTitles[i], i));
         }
         basePageStateAdapter = new BasePageStateAdapter(getSupportFragmentManager(), mFragments, Arrays.asList(mTitles));

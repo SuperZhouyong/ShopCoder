@@ -75,7 +75,7 @@
                 android:id="@+id/tv_fouce_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="关注"
+                android:text="围观"
                 android:textColor="@color/font_3"
                 android:textSize="@dimen/x22" />
 

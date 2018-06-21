@@ -44,6 +44,8 @@ public class SingleCall {
             //执行验证。
             Valid valid = callUnit.getValidQueue().poll();
             callUnit.setLastValid(valid);
+            if (valid == null)
+                return;
             valid.doValid();
         }
 

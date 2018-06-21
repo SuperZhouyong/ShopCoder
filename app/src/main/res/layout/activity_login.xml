@@ -19,9 +19,8 @@
         android:layout_width="@dimen/x602"
         android:layout_height="@dimen/y300"
 
-        android:layout_alignLeft="@+id/rel_one"
-        android:layout_alignStart="@+id/rel_one"
-        android:layout_centerVertical="true"
+
+        android:layout_centerInParent="true"
         android:background="@drawable/login_all_bg">
 
         <RelativeLayout
@@ -122,18 +121,18 @@
         android:textSize="@dimen/x30" />
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_regist_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/rel_bottom"
         android:layout_toRightOf="@id/tv_login_desc"
-
         android:background="@drawable/regist_tv_bg"
+
         android:padding="@dimen/x10"
         android:text="注册"
         android:textColor="@color/white"
-        android:textSize="@dimen/x30" />
+        android:textSize="@dimen/x30"
+        android:visibility="gone" />
 
     <!--<TextView
         android:id="@+id/tv_login_confirm"
@@ -150,7 +149,84 @@
         android:text="• 登录 •"
         android:textColor="@color/white"
         android:textSize="@dimen/x30" />-->
-    <RelativeLayout
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/y30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/x60"
+        android:layout_marginRight="@dimen/x30">
+
+        <RelativeLayout
+            android:id="@+id/rel_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/iv_two_login"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/x100"
+
+
+                app:srcCompat="@mipmap/login_wx" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_two_login"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y5"
+                android:text="微信"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_three"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/rel_one"
+            android:layout_marginLeft="@dimen/x60"
+            android:layout_weight="1"
+
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/iv_three_login"
+                android:layout_width="@dimen/x100"
+                android:layout_height="@dimen/x100"
+
+
+                app:srcCompat="@mipmap/login_ali" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_three_login"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y5"
+                android:text="支付宝"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x28" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <!--<RelativeLayout
+
         android:id="@+id/rel_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -173,68 +249,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/rel_one"
-        android:id="@+id/rel_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="@dimen/x60">
-
-        <ImageView
-            android:id="@+id/iv_two_login"
-            android:layout_width="@dimen/x100"
-            android:layout_height="@dimen/x100"
-
-
-            app:srcCompat="@mipmap/login_wx" />
-        <TextView
-            android:layout_marginTop="@dimen/y5"
-            android:layout_below="@id/iv_two_login"
-            android:layout_centerHorizontal="true"
-            android:text="微信"
-            android:textSize="@dimen/x28"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_marginRight="@dimen/x60"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/rel_one"
-        android:id="@+id/rel_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="@dimen/x60">
-        <ImageView
-
-            android:id="@+id/iv_three_login"
-            android:layout_width="@dimen/x100"
-            android:layout_height="@dimen/x100"
-
-
-
-            app:srcCompat="@mipmap/login_ali" />
-        <TextView
-            android:layout_marginTop="@dimen/y5"
-            android:layout_below="@id/iv_three_login"
-            android:layout_centerHorizontal="true"
-            android:text="支付宝"
-            android:textSize="@dimen/x28"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 
     <ImageView

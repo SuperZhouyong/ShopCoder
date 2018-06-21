@@ -1,6 +1,8 @@
 package cn.hancang.www.api;
 
 
+import cn.hancang.www.bean.AliLoginAfterBean;
+import cn.hancang.www.bean.AliLoginBean;
 import cn.hancang.www.bean.AmpunInfoBean;
 import cn.hancang.www.bean.BindPhoneNumBean;
 
@@ -33,6 +35,7 @@ import cn.hancang.www.bean.MessageBean;
 import cn.hancang.www.bean.MyCompeteBean;
 import cn.hancang.www.bean.MyInfoBean;
 import cn.hancang.www.bean.NormalBankInfoBean;
+import cn.hancang.www.bean.OrderCreatBean;
 import cn.hancang.www.bean.OrderIdBean;
 import cn.hancang.www.bean.OrderIdDetailBean;
 import cn.hancang.www.bean.OrderListBean;
@@ -243,11 +246,13 @@ public interface ApiService {
      * 我的竞拍
      *
      * @param page
-     * @return
+     * @return 1    type	 拍品状态	int	1=参拍拍品，3=成交拍品
      */
     @GET("membercenter/get_bid_item_list")
     Observable<MyCompeteBean> getMyCompeteBean(
-            @Query("page_no") Integer page);
+            @Query("page_no") Integer page,
+            @Query("type") Integer type);
+
 
     /**
      * goods_id 拍品id  price 报价 member_id 报价者id
@@ -802,6 +807,8 @@ public interface ApiService {
      * @param code
      * @return 绑定手机号
      */
+    @POST("sms/add_phone")
+    @FormUrlEncoded
     Observable<BindPhoneNumBean> getBindphonNum(
             @Field("phone") String phoneNum,
             @Field("code") String code);
@@ -810,9 +817,30 @@ public interface ApiService {
      * @param goods_id_list
      * @return 返回订单详情
      */
-    @POST("/order/create_order_by_winner")
+    @POST("order/create_order_by_winner")
     Observable<ConfirmOrderBean> getconfirmorderDetail(
             @Field("goods_id_list") String goods_id_list
     );
 
+    /**
+     * @return 获取唤醒支付宝登录的信息
+     */
+    @GET("membercenter/get_alipay_login_str")
+    Observable<AliLoginBean> getAliLoginBean();
+
+    /**
+     * @param auth_code
+     * @return 获取支付宝登录的信息
+     */
+    @GET("membercenter/login_alipay")
+    Observable<AliLoginAfterBean> getAliLoginAfterBean(
+            @Query("auth_code") String auth_code);
+
+    /**
+     * @param good_id_list
+     * @return 生成订单
+     */
+    @POST("order/create_order_by_winner")
+    @FormUrlEncoded
+    Observable<OrderCreatBean> getOrderCreatBean(@Field("goods_id_list") String good_id_list);
 }

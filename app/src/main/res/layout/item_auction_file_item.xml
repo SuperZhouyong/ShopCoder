@@ -9,6 +9,7 @@
     android:paddingRight="@dimen/x2">
 
     <cn.hancang.www.utils.checkbox.SmoothCheckBox
+        android:visibility="gone"
         android:id="@+id/sCheckbox"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -20,7 +21,7 @@
         android:layout_centerVertical="true" />
 
     <ImageView
-        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginLeft="@dimen/x20"
         android:id="@+id/iv_goods"
         android:layout_width="@dimen/x300"
         android:layout_height="@dimen/x300"
