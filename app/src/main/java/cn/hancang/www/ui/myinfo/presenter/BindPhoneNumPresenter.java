@@ -1,14 +1,14 @@
-package com.intention.sqtwin.ui.myinfo.presenter;
+package cn.hancang.www.ui.myinfo.presenter;
 
 import android.widget.TextView;
 
-import com.intention.sqtwin.ui.myinfo.contract.BindPhoneNumContract;
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.widget.RxTextView;
 
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.bean.SmsInfoBean;
+import cn.hancang.www.ui.myinfo.contract.BindPhoneNumContract;
 
 /**
  * Description: 保佑无bug

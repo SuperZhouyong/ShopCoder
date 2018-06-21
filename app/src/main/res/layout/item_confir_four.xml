@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_marginRight="@dimen/x22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22"
+        android:paddingBottom="@dimen/y30">
+
+        <TextView
+            android:id="@+id/fore_tilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/y19"
+            android:paddingTop="@dimen/y30"
+            android:text="备注"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x34" />
+
+        <EditText
+            android:background="@null"
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fore_tilte" />
+
+
+    </RelativeLayout>
+</LinearLayout>

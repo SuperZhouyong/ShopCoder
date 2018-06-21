@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22"
+        android:paddingBottom="@dimen/y30">
+
+        <TextView
+            android:id="@+id/Three_tilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/y19"
+            android:paddingTop="@dimen/y30"
+            android:text="收货地址"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x34" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Three_tilte" />
+
+        <TextView
+            android:id="@+id/tv_mange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/mRecyclerView"
+            android:layout_marginRight="@dimen/x30"
+            android:text="管理收货地址" />
+    </RelativeLayout>
+</LinearLayout>

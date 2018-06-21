@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/y348"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="@dimen/y300"
     android:background="@color/white"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/x22"
     android:paddingRight="@dimen/x2">
 
-    <cn.hancang.www.utils.checkbox.SmoothCheckBox
-        android:id="@+id/sCheckbox"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="center_vertical"
-        app:color_unchecked="@color/app_bottom_colour"
-        app:color_checked="@color/app_bottom_colour"
-        app:color_tick="@color/font_2"
-        app:stroke_width="@dimen/x2"
-        android:layout_centerVertical="true" />
+
 
     <ImageView
         android:layout_marginLeft="@dimen/x40"
         android:id="@+id/iv_goods"
-        android:layout_width="@dimen/x300"
-        android:layout_height="@dimen/x300"
+        android:layout_width="@dimen/x150"
+        android:layout_height="@dimen/y150"
         android:layout_gravity="center_vertical" />
 
     <RelativeLayout
@@ -68,11 +58,7 @@
             android:orientation="horizontal"
             android:padding="@dimen/x8">
 
-            <ImageView
-                android:layout_width="@dimen/x30"
-                android:layout_height="@dimen/y30"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/leading_peo" />
+
 
             <TextView
                 android:id="@+id/tv_goods_desc_foot"
@@ -101,11 +87,7 @@
             android:orientation="horizontal"
             android:padding="@dimen/x8">
 
-            <ImageView
-                android:layout_width="@dimen/x30"
-                android:layout_height="@dimen/y30"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/current_price" />
+
 
             <TextView
                 android:id="@+id/tv_goods_desc"

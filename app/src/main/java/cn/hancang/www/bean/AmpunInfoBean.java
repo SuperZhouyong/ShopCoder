@@ -1,4 +1,4 @@
-package com.intention.sqtwin.bean;
+package cn.hancang.www.bean;
 
 /**
  * Description: 保佑无bug

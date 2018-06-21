@@ -262,7 +262,7 @@ public class EditInfoActivity extends BaseActivity<EditInfoPresenter, EditInfoMo
             return;
         }
         switch (requestCode) {
-            // 电话号码输入
+            // 电话号码输入m
             case requestCodePhone:
                 String phoneNum = data.getStringExtra(AppConstant.PhoneNum);
                 if (!TextUtils.isEmpty(phoneNum)) {

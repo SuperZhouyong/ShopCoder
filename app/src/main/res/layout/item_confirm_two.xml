@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x22">
+
+        <TextView
+            android:id="@+id/two_tilte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/y19"
+            android:paddingTop="@dimen/y30"
+            android:text="物流运费"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x34" />
+
+        <LinearLayout
+            android:paddingBottom="@dimen/y30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/two_tilte">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="运费"
+                android:textSize="@dimen/x25" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:text="￥ 189"
+                android:textSize="@dimen/x25" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

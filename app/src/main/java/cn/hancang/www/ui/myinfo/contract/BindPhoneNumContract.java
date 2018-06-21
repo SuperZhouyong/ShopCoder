@@ -1,15 +1,15 @@
-package com.intention.sqtwin.ui.myinfo.contract;
+package cn.hancang.www.ui.myinfo.contract;
 
 import android.widget.TextView;
 
 import cn.hancang.www.base.BaseModel;
 import cn.hancang.www.base.BasePresenter;
 import cn.hancang.www.base.BaseView;
-import cn.hancang.www.bean.LoginBean;
 import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
-//import cn.hancang.www.ui.myinfo.contract.LoginContract;
 import rx.Observable;
+
+//import cn.hancang.www.ui.myinfo.contract.LoginContract;
 
 /**
  * Description: 保佑无bug
@@ -33,12 +33,12 @@ public interface BindPhoneNumContract {
      interface  Model extends BaseModel {
 
 
-        Observable<SmsInfoBean> getSmsInfoBean(String phone,String type);
+        Observable<SmsInfoBean> getSmsInfoBean(String phone, String type);
 
         Observable<Long> ShowTv(TextView tv);
 
 
-        Observable<OtherLoginBean> getBindPhoneNumBean(String openid,String nickname ,String headimgurl);
+        Observable<OtherLoginBean> getBindPhoneNumBean(String openid, String nickname, String headimgurl);
     }
    abstract class Presenter extends BasePresenter<View,Model> {
 

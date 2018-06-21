@@ -7,14 +7,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.intention.sqtwin.bean.AmpunInfoBean;
+import cn.hancang.www.bean.AmpunInfoBean;
 
 import cn.hancang.www.R;
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
-import cn.hancang.www.baserx.RxBus;
 import cn.hancang.www.baserx.RxSchedulers;
 import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.widget.ClearEditText;

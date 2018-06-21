@@ -1,8 +1,7 @@
-package com.intention.sqtwin.ui.myinfo.model;
+package cn.hancang.www.ui.myinfo.model;
 
 import android.widget.TextView;
 
-import com.intention.sqtwin.ui.myinfo.contract.BindPhoneNumContract;
 import com.jakewharton.rxbinding.view.RxView;
 
 import java.util.concurrent.TimeUnit;
@@ -12,6 +11,7 @@ import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
 import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
+import cn.hancang.www.ui.myinfo.contract.BindPhoneNumContract;
 import rx.Observable;
 import rx.schedulers.Schedulers;
 

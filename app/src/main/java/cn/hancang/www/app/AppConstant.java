@@ -2,7 +2,7 @@ package cn.hancang.www.app;
 
 /**
  * des:
- * Created by xsf
+ * Created by xsfb
  * on 2016.09.10:44
  */
 public class AppConstant {

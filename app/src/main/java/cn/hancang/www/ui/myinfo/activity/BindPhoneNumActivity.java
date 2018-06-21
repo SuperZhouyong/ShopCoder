@@ -8,16 +8,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import cn.hancang.www.bean.BindPhoneNumBean;
 import com.intention.sqtwin.ui.myinfo.contract.BindPhoneNumContract;
-import com.intention.sqtwin.ui.myinfo.model.BindPhoneNumModel;
-import com.intention.sqtwin.ui.myinfo.presenter.BindPhoneNumPresenter;
+import cn.hancang.www.ui.myinfo.model.BindPhoneNumModel;
+import cn.hancang.www.ui.myinfo.presenter.BindPhoneNumPresenter;
 import com.jakewharton.rxbinding.view.RxView;
 
 import java.util.concurrent.TimeUnit;
 
 import cn.hancang.www.R;
+import cn.hancang.www.api.Api;
+import cn.hancang.www.api.HostType;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.baserx.RxSchedulers;
+import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.bean.OtherLoginBean;
 import cn.hancang.www.bean.SmsInfoBean;
 import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
@@ -27,7 +32,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import rx.functions.Action1;
 
-/**ap
+/**
+ * ap
  * Description: 保佑无bug
  * Data：2018/5/18-上午1:15
  * Blog：Super简单
@@ -35,7 +41,7 @@ import rx.functions.Action1;
  * QQ: 437397161
  */
 
-public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter,BindPhoneNumModel> implements BindPhoneNumContract.View {
+public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, BindPhoneNumModel> implements BindPhoneNumContract.View {
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
@@ -69,7 +75,7 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter,Bin
 
     @Override
     public void initPresenter() {
-        mPresenter.setVM(this,mModel);
+        mPresenter.setVM(this, mModel);
     }
 
     @Override
@@ -92,7 +98,7 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter,Bin
     }
 
 
-    @OnClick({R.id.rel_back,R.id.tv_confirm})
+    @OnClick({R.id.rel_back, R.id.tv_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
@@ -103,16 +109,40 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter,Bin
 //                mPresenter.getSmsRequest();
 //                break;
             case R.id.tv_confirm:
-                String PhoneNum = ecName.getText().toString();
+                final String PhoneNum = ecName.getText().toString().trim();
                 if (TextUtils.isEmpty(PhoneNum) || !RegexUtils.isMobileSimple(PhoneNum)) {
                     showShortToast("请输入正确的手机号");
                     return;
                 }
+                String code = ecBank.getText().toString().trim();
+                if (TextUtils.isEmpty(code)) {
+                    showShortToast("请输入正确的验证码");
+                    return;
+                }
+                mRxManager.add(Api.getDefault(HostType.Jsonpart)
+                        .getBindphonNum(PhoneNum, code)
+                        .compose(RxSchedulers.<BindPhoneNumBean>io_main())
+                        .subscribe(new RxSubscriber<BindPhoneNumBean>(this) {
+                            @Override
+                            protected void _onNext(BindPhoneNumBean bindPhoneNumBean) {
+                                showShortToast(bindPhoneNumBean.getMessage());
+                                if (!bindPhoneNumBean.isIs_success()) {
 
-                Intent intent = new Intent();
-                intent.putExtra(AppConstant.PhoneNum, PhoneNum);
-                setResult(RESULT_OK, intent);
-                finish();
+                                    return;
+                                } else {
+                                    Intent intent = new Intent();
+                                    intent.putExtra(AppConstant.PhoneNum, PhoneNum);
+                                    setResult(RESULT_OK, intent);
+                                    finish();
+                                }
+                            }
+
+                            @Override
+                            protected void _onError(String message) {
+
+                            }
+                        }));
+               /* ;*/
                 break;
         }
     }

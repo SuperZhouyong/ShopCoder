@@ -1,7 +1,8 @@
 package cn.hancang.www.api;
 
 
-import com.intention.sqtwin.bean.AmpunInfoBean;
+import cn.hancang.www.bean.AmpunInfoBean;
+import cn.hancang.www.bean.BindPhoneNumBean;
 
 import cn.hancang.www.bean.AccountBean;
 import cn.hancang.www.bean.AddCartInfoBean;
@@ -20,6 +21,7 @@ import cn.hancang.www.bean.BidRecordBean;
 import cn.hancang.www.bean.BindCardInfoBean;
 import cn.hancang.www.bean.CategoryAllBean;
 import cn.hancang.www.bean.ChargeBean;
+import cn.hancang.www.bean.ConfirmOrderBean;
 import cn.hancang.www.bean.DeleteFavBean;
 import cn.hancang.www.bean.DeleteReceiverBean;
 import cn.hancang.www.bean.DerivativesBean;
@@ -770,17 +772,47 @@ public interface ApiService {
             @Query("type") String type
     );
 
-    // 第三方信息上传
+    /**
+     * @param openid
+     * @param nickname
+     * @param headimgurl
+     * @return 第三方信息上传
+     */
     @GET("membercenter/login_wx")
     Observable<OtherLoginBean> getOtherLoginBean(
             @Query("openid") String openid,
             @Query("nickname") String nickname,
             @Query("headimgurl") String headimgurl
     );
+
+    /**
+     * 提现
+     *
+     * @param amount
+     * @return
+     */
     @FormUrlEncoded
     @POST("Membercenter/amount_info")
     Observable<AmpunInfoBean> getPostAmoutbInfo(
             @Field("amount") Float amount
+    );
+
+    /**
+     * @param phoneNum
+     * @param code
+     * @return 绑定手机号
+     */
+    Observable<BindPhoneNumBean> getBindphonNum(
+            @Field("phone") String phoneNum,
+            @Field("code") String code);
+
+    /**
+     * @param goods_id_list
+     * @return 返回订单详情
+     */
+    @POST("/order/create_order_by_winner")
+    Observable<ConfirmOrderBean> getconfirmorderDetail(
+            @Field("goods_id_list") String goods_id_list
     );
 
 }
