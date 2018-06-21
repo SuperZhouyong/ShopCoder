@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rel_wx_pay"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y110"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_marginRight="@dimen/x22"
+        android:background="@color/white">
+
+        <cn.hancang.www.utils.checkbox.SmoothCheckBox
+            android:id="@+id/sCheckbox_wx"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="@dimen/x22"
+            android:layout_centerVertical="true"
+
+            app:color_checked="@color/font_2"
+            app:color_tick="@color/white"
+            app:color_unchecked="@color/app_bottom_colour"
+            app:color_unchecked_stroke="@color/app_bottom_colour"
+            app:stroke_width="@dimen/x2" />
+
+        <TextView
+
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_toRightOf="@id/sCheckbox_wx"
+            android:text="微信支付"
+            android:textColor="@color/font_1"
+            android:textSize="@dimen/x28" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -303,9 +303,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 
         if (otherLoginBean.isIs_success()) {
 //            UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(otherLoginBean.getData().getMember_id()), SQTUser.class));
-            SQTUser sqtUser = new SQTUser();
+           /* SQTUser sqtUser = new SQTUser();
             sqtUser.setMember_id(otherLoginBean.getData().getMember_id());
-            UserUtil.setLoginInfo(sqtUser);
+            UserUtil.setLoginInfo(sqtUser);*/
 //            SQTUser loginInfo = UserUtil.getLoginInfo();
             if (!TextUtils.isEmpty(usericon))
                 SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, usericon);
@@ -314,7 +314,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             // 目前登录为当前关闭 就好
             // 回调执行登录
             if (TextUtils.isEmpty(otherLoginBean.getData().getMember_mobile()))
-                startActivity(BindPhoneNumActivity.class);
+                BindPhoneNumActivity.gotoBindPhoneActivity(this,otherLoginBean.getData().getMember_id());
+//                startActivity(BindPhoneNumActivity.class);
             finish();
 //            SingleCall.getInstance().doCall();
         } else {
@@ -330,12 +331,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
         if (!aliLoginAfterBean.isIs_success()) {
             return;
         }
-        SQTUser sqtUser = new SQTUser();
+      /*  SQTUser sqtUser = new SQTUser();
         sqtUser.setMember_id(aliLoginAfterBean.getData().getMember_id());
-        UserUtil.setLoginInfo(sqtUser);
+        UserUtil.setLoginInfo(sqtUser);*/
 //        UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(aliLoginAfterBean.getData().getMember_id()), SQTUser.class));
         if (TextUtils.isEmpty(aliLoginAfterBean.getData().getMember_mobile()))
-            startActivity(BindPhoneNumActivity.class);
+            BindPhoneNumActivity.gotoBindPhoneActivity(this,aliLoginAfterBean.getData().getMember_id());
         finish();
 //        SingleCall.getInstance().doCall();
 //        showShortToast("支付宝登陆成功");

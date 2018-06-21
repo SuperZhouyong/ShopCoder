@@ -1,0 +1,12 @@
+package com.intention.sqtwin.bean;
+
+/**
+ * Description: 保佑无bug
+ * Data：2018/6/22-上午1:23
+ * Blog：Super简单
+ * Author: ZhouYong
+ * QQ: 437397161
+ */
+
+public class SubmitOrderBean {
+}

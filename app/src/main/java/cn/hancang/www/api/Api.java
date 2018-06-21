@@ -6,6 +6,7 @@ import android.util.SparseArray;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.app.BaseApplication;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
@@ -104,15 +105,26 @@ public class Api {
 
 //                LogUtils.logd("Retorfit" + "调用了headerInterceptor" + "-------"+UserUtil.getLoginInfo()+"---"+UserUtil.getLoginInfo().getData()+"  "+UserUtil.getLoginInfo().getData().getMember_id());
                 String timestamp = PublicKetUtils.getTimestamp();
-                Request build = originalRequest.newBuilder()
+                Request build;
+                if (UserUtil.getLoginInfo() != null) {
+                    build = originalRequest.newBuilder()
 //                        .addHeader("Content-Type", getContentType(hostType))
 //                        .addHeader("timestamp", timestamp)
 //                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
-
-                        .addHeader("SESSIONID", UserUtil.getLoginInfo()==null?"":String.valueOf(UserUtil.getLoginInfo().getMember_id()))
-                        .addHeader("Cache-Control", getCacheControl())
+                            .addHeader("SESSIONID", String.valueOf(UserUtil.getLoginInfo().getMember_id()))
+                            .addHeader("Cache-Control", getCacheControl())
 //                        .header("Cache-Control", getCacheControl())
-                        .build();
+                            .build();
+                } else {
+                    build = originalRequest.newBuilder()
+//                        .addHeader("Content-Type", getContentType(hostType))
+//                        .addHeader("timestamp", timestamp)
+//                        .addHeader("publickey", PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY))
+                            .addHeader("Cache-Control", getCacheControl())
+//                        .header("Cache-Control", getCacheControl())
+                            .build();
+                }
+
                 LogUtils.logi("   timestamp  ====" + timestamp + "\n" + "     publickey   ====" + PublicKetUtils.encryptMD5ToString(timestamp, AppConstant.KEY));
                 return chain.proceed(build);
             }

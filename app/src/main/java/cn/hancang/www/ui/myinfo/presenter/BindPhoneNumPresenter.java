@@ -20,8 +20,8 @@ import cn.hancang.www.ui.myinfo.contract.BindPhoneNumContract;
 
 public class BindPhoneNumPresenter extends BindPhoneNumContract.Presenter {
     @Override
-    public void getSmsRequest(String phone, String type) {
-        mRxManage.add(mModel.getSmsInfoBean(phone, type).subscribe(new RxSubscriber<SmsInfoBean>(mContext) {
+    public void getSmsRequest(Integer memberId ,String phone, String type) {
+        mRxManage.add(mModel.getSmsInfoBean(memberId,phone, type).subscribe(new RxSubscriber<SmsInfoBean>(mContext) {
             @Override
             protected void _onNext(SmsInfoBean smsInfoBean) {
                 mView.returnSmsBean(smsInfoBean);

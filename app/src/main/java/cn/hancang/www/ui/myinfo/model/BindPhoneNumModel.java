@@ -25,8 +25,8 @@ import rx.schedulers.Schedulers;
 
 public class BindPhoneNumModel  implements BindPhoneNumContract.Model{
     @Override
-    public Observable<SmsInfoBean> getSmsInfoBean(String phone, String type) {
-        return Api.getDefault(HostType.Jsonpart).getSendSms(phone, type).compose(RxSchedulers.<SmsInfoBean>io_main());
+    public Observable<SmsInfoBean> getSmsInfoBean(Integer memberId ,String phone, String type) {
+        return Api.getDefault(HostType.Jsonpart).getSendSms(memberId,phone, type).compose(RxSchedulers.<SmsInfoBean>io_main());
     }
 
     @Override

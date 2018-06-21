@@ -33,7 +33,7 @@ public class LoginModel implements LoginContract.Model {
 
     @Override
     public Observable<SmsInfoBean> getSmsInfoBean(String phone, String type) {
-        return Api.getDefault(HostType.Jsonpart).getSendSms(phone, type).compose(RxSchedulers.<SmsInfoBean>io_main());
+        return Api.getDefault(HostType.Jsonpart).getSendSms(null,phone, type).compose(RxSchedulers.<SmsInfoBean>io_main());
     }
 
     @Override

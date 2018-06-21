@@ -82,6 +82,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PartMap;
@@ -773,6 +774,7 @@ public interface ApiService {
      */
     @GET("sms/send_code")
     Observable<SmsInfoBean> getSendSms(
+            @Header("SESSIONID") Integer memberId,
             @Query("phone") String phone,
             @Query("type") String type
     );
@@ -810,6 +812,7 @@ public interface ApiService {
     @POST("sms/add_phone")
     @FormUrlEncoded
     Observable<BindPhoneNumBean> getBindphonNum(
+            @Header("SESSIONID") Integer memberId,
             @Field("phone") String phoneNum,
             @Field("code") String code);
 
@@ -817,6 +820,7 @@ public interface ApiService {
      * @param goods_id_list
      * @return 返回订单详情
      */
+    @FormUrlEncoded
     @POST("order/create_order_by_winner")
     Observable<ConfirmOrderBean> getconfirmorderDetail(
             @Field("goods_id_list") String goods_id_list

@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <include layout="@layout/actionbar_title" />
-
-    <com.github.jdsjlzx.recyclerview.LRecyclerView
-        android:id="@+id/mLRecyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <cn.hancang.www.widget.conmonWidget.LoadingTip
-        android:id="@+id/mLoadingTip"
+
+
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+
+            android:id="@+id/mLRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <cn.hancang.www.widget.conmonWidget.LoadingTip
+            android:id="@+id/mLoadingTip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</RelativeLayout>
+        android:layout_height="@dimen/y100">
+
+        <TextView
+            android:id="@+id/tv_goods_total"
+            android:textColor="@color/font_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="商品总计： 3333元"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x22"
+            android:background="@drawable/tv_noagent_price"
+            android:paddingBottom="@dimen/y5"
+            android:paddingLeft="@dimen/x22"
+            android:paddingRight="@dimen/x22"
+            android:paddingTop="@dimen/y5"
+            android:text="提交订单"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x35" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -5,6 +5,10 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/y10"
+        android:layout_marginBottom="@dimen/y10"
+        android:layout_marginRight="@dimen/x22"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x22">
@@ -21,10 +25,10 @@
             android:textSize="@dimen/x34" />
 
         <LinearLayout
-            android:paddingBottom="@dimen/y30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/two_tilte">
+            android:layout_below="@id/two_tilte"
+            android:paddingBottom="@dimen/y30">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,6 +37,7 @@
                 android:textSize="@dimen/x25" />
 
             <TextView
+                android:id="@+id/tv_carriage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x30"

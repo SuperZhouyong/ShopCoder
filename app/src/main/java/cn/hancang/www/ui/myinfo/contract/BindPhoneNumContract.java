@@ -33,7 +33,7 @@ public interface BindPhoneNumContract {
      interface  Model extends BaseModel {
 
 
-        Observable<SmsInfoBean> getSmsInfoBean(String phone, String type);
+        Observable<SmsInfoBean> getSmsInfoBean(Integer memberId ,String phone, String type);
 
         Observable<Long> ShowTv(TextView tv);
 
@@ -43,7 +43,7 @@ public interface BindPhoneNumContract {
    abstract class Presenter extends BasePresenter<View,Model> {
 
 
-        public abstract void getSmsRequest(String phone,String type);
+        public abstract void getSmsRequest(Integer memberId ,String phone,String type);
 
         // 计时请求
         public abstract void ShowTvRequest(TextView tv);

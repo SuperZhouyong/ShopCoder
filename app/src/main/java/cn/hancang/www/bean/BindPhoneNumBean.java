@@ -12,14 +12,14 @@ public class BindPhoneNumBean {
 
 
     /**
-     * is_success : false
-     * message : 没有发送相关验证码
-     * data : null
+     * is_success : true
+     * message : 操作成功
+     * data : 16
      */
 
     private boolean is_success;
     private String message;
-    private Object data;
+    private int data;
 
     public boolean isIs_success() {
         return is_success;
@@ -37,11 +37,11 @@ public class BindPhoneNumBean {
         this.message = message;
     }
 
-    public Object getData() {
+    public int getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(int data) {
         this.data = data;
     }
 }

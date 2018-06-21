@@ -180,6 +180,8 @@
         <activity android:name="cn.hancang.www.ui.myinfo.activity.StorePassWordActivity" />
         <!--确认支付界面 无效-->
         <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity"-->
+        <!--订单确认界面-->
+        <activity android:name=".ui.mall.activity.ConfirmOrderActivity"/>
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

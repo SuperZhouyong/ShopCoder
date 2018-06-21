@@ -1,6 +1,7 @@
 package cn.hancang.www.ui.myinfo.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -9,9 +10,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.hancang.www.bean.BindPhoneNumBean;
+import cn.hancang.www.bean.SQTUser;
 import cn.hancang.www.ui.myinfo.contract.BindPhoneNumContract;
 import cn.hancang.www.ui.myinfo.model.BindPhoneNumModel;
 import cn.hancang.www.ui.myinfo.presenter.BindPhoneNumPresenter;
+
 import com.jakewharton.rxbinding.view.RxView;
 
 import java.util.concurrent.TimeUnit;
@@ -30,6 +33,7 @@ import cn.hancang.www.utils.conmonUtil.RegexUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.hancang.www.utils.conmonUtil.UserUtil;
 import rx.functions.Action1;
 
 /**
@@ -90,7 +94,7 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
 
                 iphone_number = ecName.getText().toString().trim();
                 if (!TextUtils.isEmpty(iphone_number) && PublicKetUtils.isMobileNO(iphone_number)) {
-                    mPresenter.getSmsRequest(iphone_number, "2");
+                    mPresenter.getSmsRequest(getIntent().getExtras().getInt(AppConstant.MenMberId) == 0 ? null : (getIntent().getExtras().getInt(AppConstant.MenMberId)), iphone_number, "2");
                 } else {
                     showShortToast("请检查输入的手机号");
                 }
@@ -98,6 +102,11 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
         });
     }
 
+    public static void gotoBindPhoneActivity(BaseActivity mBaseAvtivity, Integer memberId) {
+        Bundle bundle = new Bundle();
+        bundle.putInt(AppConstant.MenMberId, memberId);
+        mBaseAvtivity.startActivity(BindPhoneNumActivity.class, bundle);
+    }
 
     @OnClick({R.id.rel_back, R.id.tv_confirm})
     public void onViewClicked(View view) {
@@ -121,7 +130,7 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
                     return;
                 }
                 mRxManager.add(Api.getDefault(HostType.Jsonpart)
-                        .getBindphonNum(PhoneNum, code)
+                        .getBindphonNum(getIntent().getExtras().getInt(AppConstant.MenMberId) == 0 ? null : (getIntent().getExtras().getInt(AppConstant.MenMberId)), PhoneNum, code)
                         .compose(RxSchedulers.<BindPhoneNumBean>io_main())
                         .subscribe(new RxSubscriber<BindPhoneNumBean>(this) {
                             @Override
@@ -130,9 +139,15 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
                                 if (!bindPhoneNumBean.isIs_success()) {
                                     return;
                                 } else {
-                                    Intent intent = new Intent();
+                                    // 登录成功
+                                    SQTUser sqtUser = new SQTUser();
+                                    sqtUser.setMember_id(bindPhoneNumBean.getData());
+                                    UserUtil.setLoginInfo(sqtUser);
+
+
+                                   /* Intent intent = new Intent();
                                     intent.putExtra(AppConstant.PhoneNum, PhoneNum);
-                                    setResult(RESULT_OK, intent);
+                                    setResult(RESULT_OK, intent);*/
                                     finish();
                                 }
                             }

@@ -1,5 +1,7 @@
 package cn.hancang.www.ui.mall.contract;
 
+import com.intention.sqtwin.bean.SubmitOrderBean;
+
 import cn.hancang.www.bean.ConfirmOrderBean;
 
 import cn.hancang.www.base.BaseModel;
@@ -18,10 +20,15 @@ import rx.Observable;
 public interface ConfirmOrderContract {
     interface View extends BaseView {
         void returnConfirmOrderBean(ConfirmOrderBean confirmOrderBean);
+
+
+        void returnOrderSubmit(SubmitOrderBean submitOrderBean);
     }
 
     interface Model extends BaseModel {
         Observable<ConfirmOrderBean> getConfirmOrderData(String orderList);
+
+        Observable<SubmitOrderBean> getSubmitOrderBean();
     }
 
     abstract class Presenter extends BasePresenter<View, Model> {

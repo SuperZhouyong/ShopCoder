@@ -29,6 +29,7 @@ import cn.hancang.www.bean.AddFavBean;
 import cn.hancang.www.bean.AuctionFiledAllBean;
 import cn.hancang.www.bean.TabEntity;
 import cn.hancang.www.ui.main.contract.AuctionFiledContract;
+import cn.hancang.www.ui.main.fragment.HomePageFragment;
 import cn.hancang.www.ui.main.model.AuctionFiledModel;
 import cn.hancang.www.ui.main.presenter.AuctionFiledPresenter;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
@@ -125,7 +126,8 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     private CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.AuctionItemListBean> mAdapter;
     private CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.StaffListBean> mArtAdapter;
     private CommonRecycleViewAdapter<AuctionFiledAllBean.DataBean.ArtistListBean> mAAboutAdapter;
-    private String[] mTitles = {"参拍指南", "参拍提醒", "联系客服"};
+    //    private String[] mTitles = {"参拍指南", "参拍提醒", "联系客服"};
+    private String[] mTitles = {"参拍提醒", "联系客服"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private int[] mIconUnselectIds = {R.mipmap.aution_guide_unselect, R.mipmap.aution_remind, R.mipmap.auction_contact};
     //    private int[] mIconSelectIds = {R.mipmap.aution_guide, R.mipmap.aution_remind_select, R.mipmap.contact_peo};
@@ -337,7 +339,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
             start_time = field_info.getStart_time().replace("-", ".");
         if (!TextUtils.isEmpty(field_info.getEnd_time()))
             end_time = field_info.getEnd_time().replace("-", ".");
-        String s ;
+        String s;
         if (start_time == null && end_time == null) {
             s = "拍卖时间暂未确定";
         } else
@@ -397,14 +399,18 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     @Override
     public void onTabSelect(int i) {
         switch (i) {
-            // 参拍指南
+           /* // 参拍指南
             case 0:
+                break;*/
+            case 0:
+                // 排场关注
+                SingleCall.getInstance()
+                        .addAction(this, AppConstant.twoMessage)
+                        .addValid(new LoginValid(this))
+                        .doCall();
+
                 break;
             case 1:
-                // 排场关注
-                mPresenter.getAddFavBean(field_info.getId(), AppConstant.field);
-                break;
-            case 2:
                 showContractDialog();
                 break;
         }
@@ -521,5 +527,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
             else
                 showShortToast("此机构暂不支持关注");
         }
+        if (AppConstant.twoMessage.equals(tag))
+            mPresenter.getAddFavBean(field_info.getId(), AppConstant.field);
     }
 }

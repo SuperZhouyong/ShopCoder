@@ -1,5 +1,7 @@
 package cn.hancang.www.ui.mall.model;
 
+import com.intention.sqtwin.bean.SubmitOrderBean;
+
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
@@ -21,5 +23,10 @@ public class ConfirmOrderModel  implements ConfirmOrderContract.Model{
     @Override
     public Observable<ConfirmOrderBean> getConfirmOrderData(String orderList) {
         return Api.getDefault(HostType.Jsonpart).getconfirmorderDetail(orderList).compose(RxSchedulers.<ConfirmOrderBean>io_main());
+    }
+
+    @Override
+    public Observable<SubmitOrderBean> getSubmitOrderBean() {
+        return null;
     }
 }

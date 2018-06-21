@@ -31,6 +31,7 @@ import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.MyCompeteBean;
 import cn.hancang.www.bean.OrderCreatBean;
 import cn.hancang.www.ui.main.activity.AuctionItemActivity;
+import cn.hancang.www.ui.mall.activity.ConfirmOrderActivity;
 import cn.hancang.www.ui.myinfo.activity.ChargeActivity;
 import cn.hancang.www.ui.myinfo.contract.MyCompeteContract;
 import cn.hancang.www.ui.myinfo.model.MyCompeteModel;
@@ -77,10 +78,12 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
 
     @Override
     protected void initView() {
+        mCheckList = new ArrayList<>();
         tvOne.setText("");
         tvTwo.setText("");
-
-        mCheckList = new ArrayList<>();
+        if (category_id == 1) {
+            tvOne.setText("已选择" + mCheckList.size() + "件成交拍品");
+        }
         mAdapter = new CommonRecycleViewAdapter<MyCompeteBean.DataBean.GoodsListBean>(getActivity(), R.layout.item_auction_file_item) {
             @Override
             public void convert(ViewHolderHelper helper, final MyCompeteBean.DataBean.GoodsListBean auctionItemListBean, int position) {
@@ -104,7 +107,7 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
                                 mCheckList.add(auctionItemListBean.getId());
                             else if (!mCheckBox.isChecked() && mCheckList.contains(auctionItemListBean.getId()))
                                 mCheckList.remove(auctionItemListBean.getId());
-
+                            tvOne.setText("已选择" + mCheckList.size() + "件成交拍品");
                         }
                     });
                 }
@@ -192,7 +195,7 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
             tvOne.setText("账户余额 ￥" + myCompeteBean.getData().getBalance().getAvailable_predeposit());
             tvTwo.setText("冻结余额 ￥" + myCompeteBean.getData().getBalance().getFreeze_predeposit());
         } else {
-            tvOne.setText("");
+//            tvOne.setText("");
             tvTwo.setText("");
         }
         tvThree.setText(category_id == 0 ? "充值" : "生成订单");
@@ -231,7 +234,8 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
                         else
                             stringBuilder.append(mCheckList.get(i));
                     }
-                    mPresenter.getOrderCreatBeanRequest(stringBuilder.toString());
+//                    mPresenter.getOrderCreatBeanRequest(stringBuilder.toString());
+                    ConfirmOrderActivity.gotoConfirmOrderActivity((BaseActivity) getActivity(), stringBuilder.toString());
                 }
                 break;
         }

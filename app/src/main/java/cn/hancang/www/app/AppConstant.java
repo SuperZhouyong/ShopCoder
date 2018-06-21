@@ -7,7 +7,7 @@ package cn.hancang.www.app;
  */
 public class AppConstant {
 
-        public static final String appUrl = "http://api.hancang.cn/api/" ;
+    public static final String appUrl = "http://api.hancang.cn/api/";
 //    public static final String appUrl = "http://ta.beikunit.com/api/";
 //    public
 
@@ -126,4 +126,9 @@ public class AppConstant {
 //    public static final String DeletFocus = "DeletFocus";
 
     public static final String TOCONFIRMORDER = "toconfirmorder";// 微信支付支付完成返回确认订单，通知支付完成
+    // 确认订单页界面
+    public static final String orderList = "orderList";
+
+    // 订单界面的Id
+    public static final String MenMberId = "MenMberId";
 }

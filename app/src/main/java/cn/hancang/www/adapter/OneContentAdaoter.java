@@ -18,18 +18,24 @@ import cn.hancang.www.bean.MyCompeteBean;
  * QQ: 437397161
  */
 
-public class OneContentAdaoter extends CommonRecycleViewAdapter<ConfirmOrderBean> {
+public class OneContentAdaoter extends CommonRecycleViewAdapter<ConfirmOrderBean.DataBean.GoodsListBean> {
     public OneContentAdaoter(Context context) {
         super(context, R.layout.item_confirmorder_one);
     }
 
+    //tv_goods_name
+    //tv_goods_desc
+    //tv_goods_price
+    //tv_goods_desc_foot
+    //tv_goods_price_foot
+
+
     @Override
-    public void convert(ViewHolderHelper helper, ConfirmOrderBean confirmOrderBean, int position) {
-        //tv_goods_name
-        //tv_goods_desc
-        //tv_goods_price
-        //tv_goods_desc_foot
-        //tv_goods_price_foot
+    public void convert(ViewHolderHelper helper, ConfirmOrderBean.DataBean.GoodsListBean goodsListBean, int position) {
+        helper.setImageUrl(R.id.iv_goods, goodsListBean.getGoods_image());
+        helper.setText(R.id.tv_goods_name, goodsListBean.getGoods_name());
+        helper.setText(R.id.tv_goods_price, goodsListBean.getGoods_price());
+        helper.setText(R.id.tv_goods_price_foot, goodsListBean.getCount() + "");
 
     }
 }

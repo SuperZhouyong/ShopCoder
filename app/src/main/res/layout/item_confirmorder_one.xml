@@ -8,13 +8,12 @@
     android:paddingRight="@dimen/x2">
 
 
-
     <ImageView
-        android:layout_marginLeft="@dimen/x40"
         android:id="@+id/iv_goods"
         android:layout_width="@dimen/x150"
         android:layout_height="@dimen/y150"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/x40" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,10 +53,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="@dimen/y30"
             android:layout_marginLeft="@dimen/x22"
-            android:background="@drawable/shape_time_countdown"
+
             android:orientation="horizontal"
             android:padding="@dimen/x8">
-
 
 
             <TextView
@@ -65,17 +63,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x10"
-                android:textColor="@color/title_bg" />
+                android:text="数量:"
+                android:textColor="@color/font_1" />
 
             <TextView
                 android:id="@+id/tv_goods_price_foot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x20"
-                android:textColor="@color/title_bg" />
+                android:textColor="@color/font_1" />
 
         </LinearLayout>
-
+        <!-- android:background="@drawable/shape_time_countdown"-->
         <LinearLayout
             android:id="@+id/ll_header"
             android:layout_width="wrap_content"
@@ -83,10 +82,9 @@
             android:layout_above="@id/ll_footer"
             android:layout_marginBottom="@dimen/y20"
             android:layout_marginLeft="@dimen/x22"
-            android:background="@drawable/shape_time_countdown"
+
             android:orientation="horizontal"
             android:padding="@dimen/x8">
-
 
 
             <TextView
@@ -94,14 +92,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x10"
-                android:textColor="@color/title_bg" />
+                android:text="单价:"
+                android:textColor="@color/font_1" />
 
             <TextView
                 android:id="@+id/tv_goods_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/x20"
-                android:textColor="@color/title_bg" />
+                android:textColor="@color/font_1" />
 
         </LinearLayout>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:background="@color/white"
         android:id="@+id/yv_all_recy_head_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,4 +19,4 @@
         android:text="艺术家拍品"
         android:textColor="@color/font_1"
         android:textSize="@dimen/x34" />
-</LinearLayout>
+</RelativeLayout>

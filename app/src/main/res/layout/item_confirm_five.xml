@@ -4,38 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:background="@color/white"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x22"
-        android:layout_marginRight="@dimen/x22"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/fore_tilte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x22"
 
             android:paddingBottom="@dimen/y19"
             android:paddingTop="@dimen/y30"
-            android:text="备注"
+            android:text="支付方式"
             android:textColor="@color/font_1"
             android:textSize="@dimen/x34" />
 
-        <EditText
-
-            android:padding="@dimen/x10"
-            android:gravity="left|top|start"
-            android:textSize="@dimen/x25"
-            android:layout_margin="@dimen/x5"
-            android:id="@+id/et_beizhu"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerViewfive"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/fore_tilte"
-            android:background="@color/app_bottom_colour"
-            android:minHeight="@dimen/y100" />
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
-    </RelativeLayout>
 </LinearLayout>
