@@ -9,10 +9,11 @@ package cn.hancang.www.bean;
 
 public class RealNameStatusBean {
 
+
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"id":13,"image":"","name":"韦天水","sex":1,"birthday":"","member_provinceid":"","member_cityid":"","member_areaid":"","phone":"","join_type":1,"join_step":2}
+     * data : {"id":16,"image":"http://hancang.oss-cn-beijing.aliyuncs.com/20180529165505/8D148B21-11E0-BCD9-56B5-4F9DC9670003.jpg","name":"法国观后感","sex":0,"birthday":null,"member_provinceid":null,"member_cityid":null,"member_areaid":null,"phone":"17600298095","join_type":1,"join_step":3,"join_state":"20","join_message":""}
      */
 
     private boolean is_success;
@@ -45,30 +46,34 @@ public class RealNameStatusBean {
 
     public static class DataBean {
         /**
-         * id : 13
-         * image :
-         * name : 韦天水
-         * sex : 1
-         * birthday :
-         * member_provinceid :
-         * member_cityid :
-         * member_areaid :
-         * phone :
+         * id : 16
+         * image : http://hancang.oss-cn-beijing.aliyuncs.com/20180529165505/8D148B21-11E0-BCD9-56B5-4F9DC9670003.jpg
+         * name : 法国观后感
+         * sex : 0
+         * birthday : null
+         * member_provinceid : null
+         * member_cityid : null
+         * member_areaid : null
+         * phone : 17600298095
          * join_type : 1
-         * join_step : 2
+         * join_step : 3
+         * join_state : 20
+         * join_message :
          */
 
         private int id;
         private String image;
         private String name;
         private int sex;
-        private String birthday;
-        private String member_provinceid;
-        private String member_cityid;
-        private String member_areaid;
+        private Object birthday;
+        private Object member_provinceid;
+        private Object member_cityid;
+        private Object member_areaid;
         private String phone;
         private int join_type;
         private int join_step;
+        private String join_state;
+        private String join_message;
 
         public int getId() {
             return id;
@@ -102,35 +107,35 @@ public class RealNameStatusBean {
             this.sex = sex;
         }
 
-        public String getBirthday() {
+        public Object getBirthday() {
             return birthday;
         }
 
-        public void setBirthday(String birthday) {
+        public void setBirthday(Object birthday) {
             this.birthday = birthday;
         }
 
-        public String getMember_provinceid() {
+        public Object getMember_provinceid() {
             return member_provinceid;
         }
 
-        public void setMember_provinceid(String member_provinceid) {
+        public void setMember_provinceid(Object member_provinceid) {
             this.member_provinceid = member_provinceid;
         }
 
-        public String getMember_cityid() {
+        public Object getMember_cityid() {
             return member_cityid;
         }
 
-        public void setMember_cityid(String member_cityid) {
+        public void setMember_cityid(Object member_cityid) {
             this.member_cityid = member_cityid;
         }
 
-        public String getMember_areaid() {
+        public Object getMember_areaid() {
             return member_areaid;
         }
 
-        public void setMember_areaid(String member_areaid) {
+        public void setMember_areaid(Object member_areaid) {
             this.member_areaid = member_areaid;
         }
 
@@ -156,6 +161,22 @@ public class RealNameStatusBean {
 
         public void setJoin_step(int join_step) {
             this.join_step = join_step;
+        }
+
+        public String getJoin_state() {
+            return join_state;
+        }
+
+        public void setJoin_state(String join_state) {
+            this.join_state = join_state;
+        }
+
+        public String getJoin_message() {
+            return join_message;
+        }
+
+        public void setJoin_message(String join_message) {
+            this.join_message = join_message;
         }
     }
 }

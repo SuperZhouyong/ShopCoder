@@ -47,6 +47,7 @@ import cn.hancang.www.utils.conmonUtil.DiskUtil;
 import cn.hancang.www.utils.conmonUtil.GlideRoundTransformUtil;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.utils.conmonUtil.ImageUtils;
+import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
 import cn.hancang.www.utils.conmonUtil.ShareUtil;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
 
@@ -55,6 +56,8 @@ import com.toptechs.libaction.action.SingleCall;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -379,6 +382,9 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
 //        AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
         //title
+
+        showAuctionTime(item_info.getStart_time(),item_info.getEnd_time());
+
         String start_time = item_info.getStart_time().replace("-", ".");
         String end_time = item_info.getEnd_time().replace("-", ".");
         String s = start_time.substring(start_time.indexOf(".") + 1) + "-" + end_time.substring(end_time.indexOf(".") + 1);
@@ -413,6 +419,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             public View create(AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean imagesBean, int position, ViewGroup container) {
                 ImageView iv = new ImageView(container.getContext());
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, imagesBean.getGoodsimage_url());
+
+
                 return iv;
             }
         });
@@ -488,7 +496,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 MyWebviewActivity.GotoActiviy(AuctionItemActivity.this, autionItemDetailBean.getData().getArticle(), "免责申明");
             }
         });*/
-        rel_qr.setOnClickListener(new View.OnClickListener() {
+      //todo 微信分享
+      /*  rel_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -496,12 +505,12 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
                 View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
                 ImageView ivShareCode = (ImageView) shareView.findViewById(R.id.iv_share_code);
-               /* shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+               *//* shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         shareDialog.dismiss();
                     }
-                });*/
+                });*//*
                 shareView.findViewById(R.id.iv_close).setOnClickListener(AuctionItemActivity.this);
                 shareView.findViewById(R.id.ll_wx).setOnClickListener(AuctionItemActivity.this);
                 shareView.findViewById(R.id.ll_friends).setOnClickListener(AuctionItemActivity.this);
@@ -513,26 +522,10 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
 
                 ImageLoaderUtils.displayRoundTwo(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getWx_code());
-               /* Glide.with(AuctionItemActivity.this).load(autionItemDetailBean.getData().getWx_code())
-                        .asBitmap()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .centerCrop()
-
-                        .error(R.mipmap.colleges_icon)
-//
-                        .centerCrop().transform(new GlideRoundTransformUtil(AuctionItemActivity.this, 3)).
-                        into(new SimpleTarget<Bitmap>() {
-                            @Override
-                            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                                ivShareCode.setImageBitmap(resource);
-                                ivShareCode.get
-                            }
-                        });*/
 
                 wx_code = autionItemDetailBean.getData().getWx_code();
             }
-        });
-//        mLadapter.notifyDataSetChanged();
+        });*/
 
         mLadapter.addHeaderView(headViewPager);
         mLadapter.addHeaderView(auction_three);
@@ -547,7 +540,21 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         mComAdapter.notifyDataSetChanged();
     }
+    private void showAuctionTime( String start_time, String end_time) {
+        try {
+            Date startTime = PublicKetUtils.df.get().parse(start_time);
+            Date endTime = PublicKetUtils.df.get().parse(end_time);
+            Date currentTime = new Date();
+            if (currentTime.getTime() < endTime.getTime() && currentTime.getTime() > startTime.getTime()) {
 
+            } else {
+                tvNoagentPrice.setEnabled(false);
+                tvNoagentPrice.setBackgroundResource(R.drawable.tv_no_click);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void returnAgentBidDate(AgentBidBean agentBidBean) {
         if (agentBidBean.isIs_success()) {

@@ -29,6 +29,7 @@
     <color name="text_bg">#18ffffff</color>
     <color name="colo_refalsh">#5f5f5f</color>
     <color name="hot_search">#EEEEEE</color>
+    <color name="bt_no_click">#E9B7AF</color>
 
 
     <color name="colorPrimary">#3F51B5</color>

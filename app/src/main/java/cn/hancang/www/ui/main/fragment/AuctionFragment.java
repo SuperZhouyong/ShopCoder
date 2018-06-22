@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.flyco.tablayout.listener.OnTabSelectListener;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -23,6 +24,7 @@ import cn.hancang.www.ui.main.presenter.PpAuctionPresenter;
 import cn.hancang.www.ui.myinfo.activity.MessageActicity;
 import cn.hancang.www.widget.SlidingTabLayout;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
@@ -124,8 +126,9 @@ public class AuctionFragment extends BaseFragment<PpAuctionPresenter, PpAuctionM
         switch (v.getId()) {
             case R.id.category_logo:
 //                startActivity(CategoryActivity.class );
-                CategoryActivity.GotoCategoryActivity((BaseActivity) getActivity(), 0, "拍品分类");
-                break;
+
+//            CategoryActivity.GotoCategoryActivity((BaseActivity) getActivity(), 0, "拍品分类");
+            break;
 
         }
     }

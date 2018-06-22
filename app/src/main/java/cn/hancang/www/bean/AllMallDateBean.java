@@ -96,6 +96,24 @@ public class AllMallDateBean {
             private String adv_title;
             private String link;
             private String image;
+            private Integer link_type;
+            private String link_value;
+
+            public Integer getLink_type() {
+                return link_type;
+            }
+
+            public void setLink_type(Integer link_type) {
+                this.link_type = link_type;
+            }
+
+            public String getLink_value() {
+                return link_value;
+            }
+
+            public void setLink_value(String link_value) {
+                this.link_value = link_value;
+            }
 
             public int getAdv_id() {
                 return adv_id;

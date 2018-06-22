@@ -13,8 +13,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import cn.hancang.www.R;
+import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxManager;
 import cn.hancang.www.bean.SQTUser;
+import cn.hancang.www.ui.main.activity.ArtDetatilActivity;
+import cn.hancang.www.ui.main.activity.AuctionFiledActivity;
+import cn.hancang.www.ui.main.activity.AuctionItemActivity;
+import cn.hancang.www.ui.main.activity.AuctionOrgActivity;
+import cn.hancang.www.ui.main.activity.MyWebviewActivity;
 import cn.hancang.www.utils.conmonUtil.ActivityUtil;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
 import cn.hancang.www.utils.conmonUtil.TUtil;
@@ -88,7 +94,7 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     @Override
     public void onResume() {
         super.onResume();
-        LogUtils.logd(TAG+"----"+"onResume"+"-----"+pageName);
+        LogUtils.logd(TAG + "----" + "onResume" + "-----" + pageName);
         if (getUserVisibleHint()) {
             onVisibilityChangedToUser(true, false);
         }
@@ -98,7 +104,7 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     @Override
     public void onPause() {
         super.onPause();
-        LogUtils.logd(TAG+"----"+"onPause"+"-----"+pageName);
+        LogUtils.logd(TAG + "----" + "onPause" + "-----" + pageName);
         if (getUserVisibleHint()) {
             onVisibilityChangedToUser(false, false);
         }
@@ -300,13 +306,13 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LogUtils.logd(TAG+"----"+"onDestroy"+"-----"+pageName);
+        LogUtils.logd(TAG + "----" + "onDestroy" + "-----" + pageName);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        LogUtils.logd(TAG+"----"+"onDestroyView"+"-----"+pageName);
+        LogUtils.logd(TAG + "----" + "onDestroyView" + "-----" + pageName);
         if (mPresenter != null)
             mPresenter.onDestroy();
         mRxManager.clear();
@@ -338,6 +344,7 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
 
         return UserUtil.getLoginInfo();
     }
+
     public void setMarGinTop(View v, int marGTop, int top) {
         if (v.getLayoutParams() instanceof LinearLayout.LayoutParams) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) v.getLayoutParams();
@@ -351,10 +358,38 @@ public abstract class BaseFragment<T extends BasePresenter, E extends BaseModel>
 
         } else if (v.getLayoutParams() != null) {
             ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            layoutParams.setMargins(marGTop,top,marGTop,0);
+            layoutParams.setMargins(marGTop, top, marGTop, 0);
             v.setLayoutParams(layoutParams);
         }
 
+
+    }
+
+    /*：0=url，1=拍场详情页，2=拍品详情页，3=文章内容页，4=艺术家主页，5=拍卖机构主页，6=分类拍品页*/
+    public void GotoOthreVp(Integer link_type, String link_value, String title) {
+//        showShortToast("我是    "+link_type+"     "+link_value+"     "+title);
+        switch (link_type) {
+            case 0:
+                MyWebviewActivity.GotoActiviy((BaseActivity) getActivity(), link_value, title);
+                break;
+            case 1:
+                AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) getActivity(), Integer.parseInt(link_value), AppConstant.IntoWayOne);
+                break;
+            case 2:
+                AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) getActivity(), Integer.parseInt(link_value));
+                break;
+            case 3:
+                MyWebviewActivity.GotoActiviy((BaseActivity) getActivity(), link_value, title);
+                break;
+            case 4:
+                ArtDetatilActivity.GotoArtDetailActivity((BaseActivity) getActivity(), Integer.parseInt(link_value));
+                break;
+            case 5:
+                AuctionOrgActivity.gotoAuctionOrg((BaseActivity) getActivity(), Integer.parseInt(link_value));
+                break;
+            case 6:
+                break;
+        }
 
     }
 

@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.hancang.www.R;
+import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.bean.StoreLoginNameBean;
 import cn.hancang.www.bean.StorePwInfoBean;
@@ -63,6 +64,7 @@ public class StorePassWordActivity extends BaseActivity<StorePassWordPresenter, 
         centerTitle.setText("设置管理密码");
         relSearch.setVisibility(View.GONE);
         mPresenter.getStoreLoginNamerequest();
+        showShortToast("电脑端网址：  " + AppConstant.appWxUrl);
     }
 
 
@@ -121,8 +123,13 @@ public class StorePassWordActivity extends BaseActivity<StorePassWordPresenter, 
         edThree.setText(storeLoginNameBean.getData().getMember_name());
     }
 
+    //todo 暂时还未完成
     @Override
     public void returnStorePwInfo(StorePwInfoBean storePwInfoBean) {
-
+        showShortToast(storePwInfoBean.getMessage());
+        if (!storePwInfoBean.isIs_success()) {
+            return;
+        } else
+            finish();
     }
 }

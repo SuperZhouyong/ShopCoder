@@ -9,7 +9,7 @@
         app:bvIsAuto="true"
         app:bvIsLoop="true"
         android:id="@+id/mLoopViewPager"
-        app:bvAspectRatio="1"
+        app:bvAspectRatio="0.55555"
         android:layout_width="match_parent"
         app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
         app:bvIndicatorDrawable = "@drawable/home_indicta_unselect"

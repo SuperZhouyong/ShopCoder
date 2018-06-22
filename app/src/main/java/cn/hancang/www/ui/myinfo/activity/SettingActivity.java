@@ -85,6 +85,7 @@ public class SettingActivity extends BaseActivity {
                     showShortToast("已完成退出登录");
                     SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, "");
                     SPUtils.setSharedStringData(mContext, AppConstant.UserName, "");
+                    mRxManager.post(AppConstant.EnterClear, true);
                     finish();
                 } else
                     showShortToast("您未登录");

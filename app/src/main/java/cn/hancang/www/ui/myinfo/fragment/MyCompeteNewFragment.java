@@ -53,23 +53,21 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    Unbinder unbinder;
+
     @BindView(R.id.tv_one)
     TextView tvOne;
     @BindView(R.id.tv_two)
     TextView tvTwo;
     @BindView(R.id.tv_three)
     TextView tvThree;
-    Unbinder unbinder1;
-    Unbinder unbinder2;
-    Unbinder unbinder3;
+
     private String mTitle;
     private LRecyclerViewAdapter mLadapter;
     private Integer page = null;
     private int pagesize = 10;
     private CommonRecycleViewAdapter<MyCompeteBean.DataBean.GoodsListBean> mAdapter;
     private Integer category_id = 0;
-    private List<Integer> mCheckList;
+    private List<String> mCheckList;
 
     @Override
     public void initPresenter() {
@@ -99,14 +97,15 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
 
                 if (helper.getView(R.id.sCheckbox).getVisibility() == View.VISIBLE) {
                     final SmoothCheckBox mCheckBox = helper.getView(R.id.sCheckbox);
+
                     mCheckBox.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             mCheckBox.setChecked(!mCheckBox.isChecked());
-                            if (mCheckBox.isChecked() && !mCheckList.contains(auctionItemListBean.getId()))
-                                mCheckList.add(auctionItemListBean.getId());
-                            else if (!mCheckBox.isChecked() && mCheckList.contains(auctionItemListBean.getId()))
-                                mCheckList.remove(auctionItemListBean.getId());
+                            if (mCheckBox.isChecked() && !mCheckList.contains(auctionItemListBean.getId()+""))
+                                mCheckList.add(auctionItemListBean.getId()+"");
+                            else if (!mCheckBox.isChecked() && mCheckList.contains(auctionItemListBean.getId()+""))
+                                mCheckList.remove(auctionItemListBean.getId()+"");
                             tvOne.setText("已选择" + mCheckList.size() + "件成交拍品");
                         }
                     });
@@ -234,8 +233,9 @@ public class MyCompeteNewFragment extends LazzyFragment<MyCompetePresenter, MyCo
                         else
                             stringBuilder.append(mCheckList.get(i));
                     }
+                    showShortToast("订单暂不支持支付，请待后续");
 //                    mPresenter.getOrderCreatBeanRequest(stringBuilder.toString());
-                    ConfirmOrderActivity.gotoConfirmOrderActivity((BaseActivity) getActivity(), stringBuilder.toString());
+//                    ConfirmOrderActivity.gotoConfirmOrderActivity((BaseActivity) getActivity(), stringBuilder.toString());
                 }
                 break;
         }

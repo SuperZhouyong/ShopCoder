@@ -134,8 +134,8 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22), 0);
 
         mLadapter.addHeaderView(headViewPager);
-        mLadapter.addHeaderView(homeStoreTitle);
-        mLadapter.addHeaderView(HeadStoreView);
+//        mLadapter.addHeaderView(homeStoreTitle);
+//        mLadapter.addHeaderView(HeadStoreView);
         mLadapter.addHeaderView(homeHeadTitleOnew);
         mLadapter.addHeaderView(HeadViewTwo);
         mLadapter.addHeaderView(homeHeadTitle);
@@ -210,9 +210,15 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
 
         mBannerView.setViewFactory(new BannerView.ViewFactory<AllMallDateBean.DataBean.AdvBean>() {
             @Override
-            public View create(AllMallDateBean.DataBean.AdvBean advBean, int position, ViewGroup container) {
+            public View create(final AllMallDateBean.DataBean.AdvBean advBean, int position, ViewGroup container) {
                 ImageView iv = new ImageView(container.getContext());
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, advBean.getImage());
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GotoOthreVp(advBean.getLink_type(),advBean.getLink_value(),advBean.getAdv_title());
+                    }
+                });
                 return iv;
             }
         });

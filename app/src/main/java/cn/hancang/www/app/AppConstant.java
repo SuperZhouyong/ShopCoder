@@ -6,7 +6,7 @@ package cn.hancang.www.app;
  * on 2016.09.10:44
  */
 public class AppConstant {
-
+    public static final  String appWxUrl = "http://admin.hancang.cn/Home/seller";
     public static final String appUrl = "http://api.hancang.cn/api/";
 //    public static final String appUrl = "http://ta.beikunit.com/api/";
 //    public
@@ -131,4 +131,5 @@ public class AppConstant {
 
     // 订单界面的Id
     public static final String MenMberId = "MenMberId";
+    public static final String EnterClear = "EnterClear";
 }

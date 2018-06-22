@@ -261,7 +261,7 @@ public class StoreInfoCerActivity extends BaseActivity<StoreInfoCerPresenter, St
             showShortToast(updateImageBean.getMessage());
             return;
         }
-        mPresenter.UpdateStoreInfoCer(ecName.getText().toString().trim(), ecPhoneNum.getText().toString().trim(), updateImageBean.getData().get(0).getUrl());
+        mPresenter.UpdateStoreInfoCer(ecName.getText().toString().trim(),  updateImageBean.getData().get(0).getUrl(),ecPhoneNum.getText().toString().trim());
 
     }
 

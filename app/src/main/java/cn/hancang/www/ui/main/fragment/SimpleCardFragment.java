@@ -194,9 +194,15 @@ public class SimpleCardFragment extends LazzyFragment<PpAuctionPresenter, PpAuct
             mBannerView.setViewFactory(new BannerView.ViewFactory<PpAllDateBean.DataBean.AdvBean>() {
 
                 @Override
-                public View create(PpAllDateBean.DataBean.AdvBean dataBean, int position, ViewGroup container) {
+                public View create(final PpAllDateBean.DataBean.AdvBean dataBean, int position, ViewGroup container) {
                     ImageView iv = new ImageView(container.getContext());
                     ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, dataBean.getImage());
+                    iv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GotoOthreVp(dataBean.getLink_type(),dataBean.getLink_value(),dataBean.getAdv_title());
+                        }
+                    });
                     return iv;
                 }
             });

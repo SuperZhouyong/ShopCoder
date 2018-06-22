@@ -315,9 +315,15 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
             // 回调执行登录
             if (TextUtils.isEmpty(otherLoginBean.getData().getMember_mobile()))
                 BindPhoneNumActivity.gotoBindPhoneActivity(this,otherLoginBean.getData().getMember_id());
+            else {
+                SQTUser sqtUser = new SQTUser();
+                sqtUser.setMember_id(otherLoginBean.getData().getMember_id());
+                UserUtil.setLoginInfo(sqtUser);
+                SingleCall.getInstance().doCall();
+            }
 //                startActivity(BindPhoneNumActivity.class);
             finish();
-//            SingleCall.getInstance().doCall();
+//
         } else {
             showShortToast(otherLoginBean.getMessage());
         }
@@ -337,6 +343,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 //        UserUtil.setLoginInfo((SQTUser) JsonUtils.fromJson(JsonUtils.toJson(aliLoginAfterBean.getData().getMember_id()), SQTUser.class));
         if (TextUtils.isEmpty(aliLoginAfterBean.getData().getMember_mobile()))
             BindPhoneNumActivity.gotoBindPhoneActivity(this,aliLoginAfterBean.getData().getMember_id());
+        else {
+            SQTUser sqtUser = new SQTUser();
+            sqtUser.setMember_id(aliLoginAfterBean.getData().getMember_id());
+            UserUtil.setLoginInfo(sqtUser);
+            SingleCall.getInstance().doCall();
+        }
         finish();
 //        SingleCall.getInstance().doCall();
 //        showShortToast("支付宝登陆成功");

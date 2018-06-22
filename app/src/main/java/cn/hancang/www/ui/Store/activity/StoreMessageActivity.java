@@ -89,8 +89,9 @@ public class StoreMessageActivity extends BaseActivity implements LoadingTip.onR
         mRxManager.add(Api.getDefault(HostType.Jsonpart).getStoreMessagebean().compose(RxSchedulers.<StoreMessageBean>io_main()).subscribe(new RxSubscriber<StoreMessageBean>(mContext) {
             @Override
             protected void _onNext(StoreMessageBean storeMessageBean) {
-                showShortToast(storeMessageBean.getMessage());
+
                 if (!storeMessageBean.isIs_success() || storeMessageBean.getData().size() == 0) {
+
                     mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
                     return;
                 }

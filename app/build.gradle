@@ -48,10 +48,10 @@ android {
 * */
     signingConfigs{
         config {
-            keyAlias 'china'
+            keyAlias 'hancang'
             keyPassword '123456'
-            storeFile file('/Users/super/Desktop/MD文件/Sqtwin.jks')
 //            storeFile file('/Users/super/Desktop/MD文件/Sqtwin.jks')
+            storeFile file('C:/Users/Administrator/Desktop/hancang.jks')
 
             storePassword '123456'
         }

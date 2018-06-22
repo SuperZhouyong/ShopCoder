@@ -359,7 +359,7 @@
                 android:layout_height="@dimen/y40"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/login_store" />
 
             <TextView
 

@@ -10,12 +10,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.hancang.www.bean.BindPhoneNumBean;
+import cn.hancang.www.bean.MyInfoBean;
 import cn.hancang.www.bean.SQTUser;
 import cn.hancang.www.ui.myinfo.contract.BindPhoneNumContract;
 import cn.hancang.www.ui.myinfo.model.BindPhoneNumModel;
 import cn.hancang.www.ui.myinfo.presenter.BindPhoneNumPresenter;
 
 import com.jakewharton.rxbinding.view.RxView;
+import com.toptechs.libaction.action.SingleCall;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +35,7 @@ import cn.hancang.www.utils.conmonUtil.RegexUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.hancang.www.utils.conmonUtil.SPUtils;
 import cn.hancang.www.utils.conmonUtil.UserUtil;
 import rx.functions.Action1;
 
@@ -143,12 +146,37 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
                                     SQTUser sqtUser = new SQTUser();
                                     sqtUser.setMember_id(bindPhoneNumBean.getData());
                                     UserUtil.setLoginInfo(sqtUser);
+                                    mRxManager.add(Api.getDefault(HostType.Jsonpart)
+                                            .getMyInfoBean()
+                                            .compose(RxSchedulers.<MyInfoBean>io_main())
+                                            .subscribe(new RxSubscriber<MyInfoBean>(mContext) {
+                                                @Override
+                                                protected void _onNext(MyInfoBean myInfoBean) {
+                                                    if (!myInfoBean.isIs_success())
+                                                        return;
+                                                    if (!TextUtils.isEmpty(myInfoBean.getData().getImage()))
+                                                        SPUtils.setSharedStringData(mContext, AppConstant.ImageUrl, myInfoBean.getData().getImage());
+                                                    if (!TextUtils.isEmpty(myInfoBean.getData().getName()))
+                                                        SPUtils.setSharedStringData(mContext, AppConstant.UserName, myInfoBean.getData().getName());
+                                                }
 
+                                                @Override
+                                                protected void _onError(String message) {
+
+                                                }
+
+                                                @Override
+                                                public void onCompleted() {
+                                                    super.onCompleted();
+                                                    SingleCall.getInstance().doCall();
+                                                    finish();
+                                                }
+                                            }));
 
                                    /* Intent intent = new Intent();
                                     intent.putExtra(AppConstant.PhoneNum, PhoneNum);
                                     setResult(RESULT_OK, intent);*/
-                                    finish();
+
                                 }
                             }
 
@@ -157,6 +185,8 @@ public class BindPhoneNumActivity extends BaseActivity<BindPhoneNumPresenter, Bi
 
                             }
                         }));
+
+
                /* ;*/
                 break;
         }

@@ -64,8 +64,8 @@ ext {
     /*
     *2018 3-12 11.30
     * */
-    releaseVersionCode = 1400
-    releaseVersionName = '2.4.0'
+    releaseVersionCode = 500
+    releaseVersionName = '0.5.0'
 
     androidCompileSdkVersion = 25
     androidBuildToolsVersion = '27.0.3'

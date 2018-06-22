@@ -84,7 +84,8 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
     @BindView(R.id.title)
     RelativeLayout relHeadTitle;
     @BindView(R.id.tv_store_desc)
-    TextView tvstoredesc ;
+    TextView tvstoredesc;
+    private boolean isCan = false;
 
     @Override
     protected int getLayoutResource() {
@@ -124,9 +125,16 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
                             .addAction(EnterFragment.this, AppConstant.oneMessage)
                             .addValid(new LoginValid(getActivity()))
                             .doCall();
-
-
                 }
+            }
+        });
+        mRxManager.on(AppConstant.EnterClear, new Action1<Boolean>() {
+            @Override
+            public void call(Boolean aBoolean) {
+                ImageLoaderUtils.displayRound(getActivity(), ivHeadIcon, "");
+                tvStoreName.setText("店铺名字");
+                tvFansNum.setText("粉丝    ");
+                tvstoredesc.setText("");
             }
         });
     }
@@ -154,6 +162,7 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
 
     @Override
     public void returnStoreInfo(StoreInfoBean storeInfoBean) {
+        isCan = storeInfoBean.isIs_success();
         if (!storeInfoBean.isIs_success()) {
             showShortToast(storeInfoBean.getMessage());
             startActivity(RealCerOneActivity.class, null);
@@ -207,9 +216,18 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
                 break;
             // 实名认证
             case R.id.rel_identit:
+                if (isCan) {
+                    showShortToast("您已完成认证，不需要再次认证");
+                    return;
+                }
+
                 startActivity(RealCerOneActivity.class, null);
                 break;
             case R.id.rel_store_pw:
+                if (!isCan) {
+                    showShortToast("您目前没有入住店铺，不能设置密码");
+                    return;
+                }
                 startActivity(StorePassWordActivity.class, null);
                 break;
         }

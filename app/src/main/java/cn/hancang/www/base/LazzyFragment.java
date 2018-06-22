@@ -10,8 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxManager;
 import cn.hancang.www.bean.SQTUser;
+import cn.hancang.www.ui.main.activity.ArtDetatilActivity;
+import cn.hancang.www.ui.main.activity.AuctionFiledActivity;
+import cn.hancang.www.ui.main.activity.AuctionItemActivity;
+import cn.hancang.www.ui.main.activity.AuctionOrgActivity;
+import cn.hancang.www.ui.main.activity.MyWebviewActivity;
 import cn.hancang.www.utils.conmonUtil.TUtil;
 import cn.hancang.www.utils.conmonUtil.ToastUitl;
 import cn.hancang.www.utils.conmonUtil.UserUtil;
@@ -203,7 +209,33 @@ public abstract class LazzyFragment<T extends BasePresenter, E extends BaseModel
     public void showShortToast(String text) {
         ToastUitl.showShort(text);
     }
+    /*：0=url，1=拍场详情页，2=拍品详情页，3=文章内容页，4=艺术家主页，5=拍卖机构主页，6=分类拍品页*/
+    public void GotoOthreVp(Integer link_type, String link_value, String title) {
+//        showShortToast("我是    "+link_type+"     "+link_value+"     "+title);
+        switch (link_type) {
+            case 0:
+                MyWebviewActivity.GotoActiviy((BaseActivity) getActivity(), link_value, title);
+                break;
+            case 1:
+                AuctionFiledActivity.gotoAuctionFiledActivity((BaseActivity) getActivity(), Integer.parseInt(link_value), AppConstant.IntoWayOne);
+                break;
+            case 2:
+                AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) getActivity(), Integer.parseInt(link_value));
+                break;
+            case 3:
+                MyWebviewActivity.GotoActiviy((BaseActivity) getActivity(), link_value, title);
+                break;
+            case 4:
+                ArtDetatilActivity.GotoArtDetailActivity((BaseActivity) getActivity(), Integer.parseInt(link_value));
+                break;
+            case 5:
+                AuctionOrgActivity.gotoAuctionOrg((BaseActivity) getActivity(), Integer.parseInt(link_value));
+                break;
+            case 6:
+                break;
+        }
 
+    }
     /**
      * 短暂显示Toast提示(id)
      **/

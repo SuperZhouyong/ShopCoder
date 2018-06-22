@@ -227,9 +227,15 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         // 第一个轮播图
         mBannerView.setViewFactory(new BannerView.ViewFactory<AllDateBean.DataBean.Adv1Bean>() {
             @Override
-            public View create(AllDateBean.DataBean.Adv1Bean adv1Bean, int position, ViewGroup container) {
+            public View create(final AllDateBean.DataBean.Adv1Bean adv1Bean, int position, ViewGroup container) {
                 ImageView iv = new ImageView(container.getContext());
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, adv1Bean.getImage());
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GotoOthreVp(adv1Bean.getLink_type(),adv1Bean.getLink_value(),adv1Bean.getAdv_title());
+                    }
+                });
                 return iv;
             }
 
@@ -243,9 +249,15 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
         // 轮播图第二
         mBannerViewTwo.setViewFactory(new BannerView.ViewFactory<AllDateBean.DataBean.Adv2Bean>() {
             @Override
-            public View create(AllDateBean.DataBean.Adv2Bean adv2Bean, int position, ViewGroup container) {
+            public View create(final AllDateBean.DataBean.Adv2Bean adv2Bean, int position, ViewGroup container) {
                 ImageView iv = new ImageView(container.getContext());
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, adv2Bean.getImage());
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GotoOthreVp(adv2Bean.getLink_type(),adv2Bean.getLink_value(),adv2Bean.getAdv_title());
+                    }
+                });
                 return iv;
             }
         });
@@ -256,6 +268,8 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
 
     }
+
+
 
     @Override
     public void returnAddFavBean(AddFavBean addFavBean) {
