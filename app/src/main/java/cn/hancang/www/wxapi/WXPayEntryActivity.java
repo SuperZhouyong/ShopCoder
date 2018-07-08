@@ -149,11 +149,12 @@ public class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandl
 
     @Override
     public void onBackPressed() {
-        updata();
+        super.onBackPressed();
     }
 
     private void updata() {
         if (msg.equals("支付成功")) {
+            RxBus.getInstance().post(AppConstant.TOCONFIRMORDER, true);
 //            switch (split[0]) {
 //                case AppConstant.FROMRECRE:// 推荐
 //            RxBus.getInstance().post(AppConstant.TOCONFIRMORDER, true);
@@ -177,7 +178,8 @@ public class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
-                updata();
+                finish();
+//                updata();
                 break;
         }
     }
@@ -186,7 +188,7 @@ public class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandl
     protected void onDestroy() {
         super.onDestroy();
 //        mRxManager.post();
-        RxBus.getInstance().post(AppConstant.TOCONFIRMORDER, true);
+        updata();
 //        mRxManager.add(RxBus.getInstance().unregister(AppConstant.TOCONFIRMORDER));
     }
 }

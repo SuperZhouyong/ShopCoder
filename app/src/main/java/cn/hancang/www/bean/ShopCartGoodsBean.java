@@ -52,14 +52,14 @@ public class ShopCartGoodsBean {
          * price_sum : 4382
          */
 
-        private int price_sum;
+        private Float price_sum;
         private List<CartBean> cart;
 
-        public int getPrice_sum() {
+        public Float getPrice_sum() {
             return price_sum;
         }
 
-        public void setPrice_sum(int price_sum) {
+        public void setPrice_sum(Float price_sum) {
             this.price_sum = price_sum;
         }
 

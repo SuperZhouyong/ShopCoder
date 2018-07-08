@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import cn.hancang.www.bean.GoodsBuyNewBean;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -115,6 +117,9 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
                 break;
             //立即购买
             case R.id.rel_immediately_buy:
+//                mPresenter.getGoodsBuyNewRequest(goodsId,amountView.getAmount());
+                ConfirmOrderActivity.gotoConfirmOrderActivity(this,String.valueOf(goodsId),String.valueOf(amountView.getAmount()),AppConstant.oneMessage);
+
                 break;
         }
     }
@@ -178,8 +183,8 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
 //        tv_brand
         tvBottom.setText(info.getDescription() + "");
         tvBrand.setText(info.getBrand_id() + "");
-        tvCurrentPrice.setText(info.getGoods_price());
-        tvOldPrice.setText(info.getGoods_marketprice() + "");
+        tvCurrentPrice.setText("￥"+info.getGoods_price());
+        tvOldPrice.setText("￥"+info.getGoods_marketprice() + "");
         tvOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         tvBeleft.setText(info.getGoods_storage() + "");
 
@@ -194,6 +199,12 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
         }
         startActivity(ShopCartActivity.class);
     }
+
+    @Override
+    public void returnBuyNew(GoodsBuyNewBean goodsBuyNewBean) {
+
+    }
+
 
     @Override
     public void reloadLodTip() {

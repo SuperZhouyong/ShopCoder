@@ -9,16 +9,22 @@ import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
+import java.util.Date;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
+import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.base.LazzyFragment;
 import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.OrderListBean;
 import cn.hancang.www.ui.main.activity.AuctionFiledActivity;
+import cn.hancang.www.ui.mall.activity.ToBePaidActivity;
 import cn.hancang.www.ui.myinfo.contract.OrderListContract;
 import cn.hancang.www.ui.myinfo.model.OrderListModer;
 import cn.hancang.www.ui.myinfo.presenter.OrderListPresenter;
+import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
 
 import butterknife.BindView;
@@ -56,7 +62,7 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
     /**
      * @param title
      * @param category_id 订单状态：-1表示全部；0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
-     * @param type        0=商城订单；1=拍卖订单
+     * @param type        0=商城订单；1=拍卖订单  {"全部", "未付款", "已付款", "已发货", "已收货"};
      * @return
      */
     public static OrderListFragment getInstance(String title, Integer category_id, Integer type) {
@@ -67,8 +73,10 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
         if (category_id == 1)
             category_id = 10;
         if (category_id == 2)
-            category_id = 30;
+            category_id = 20;
         if (category_id == 3)
+            category_id = 30;
+        if (category_id == 4)
             category_id = 40;
         sf.category_id = category_id;
         sf.type = type;
@@ -79,14 +87,27 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
     protected void initView() {
         mAdapter = new CommonRecycleViewAdapter<OrderListBean.DataBean>(getActivity(), R.layout.item_orderlist) {
             @Override
-            public void convert(ViewHolderHelper helper, OrderListBean.DataBean orderListBean, int position) {
+            public void convert(ViewHolderHelper helper, final OrderListBean.DataBean orderListBean, int position) {
                 //todo type 可以换成内置的type
                 helper.setText(R.id.tv_order_name, type == 0 ? "商城订单" : "拍卖订单");
-                helper.setImageUrl(R.id.iv_goods_pic, orderListBean.getMain_goods_image());
-                helper.setText(R.id.tv_goods_name, orderListBean.getMain_goods_name());
-                helper.setText(R.id.tv_goods_time, orderListBean.getOrder_time());
+                helper.setImageUrl(R.id.iv_goods_pic, orderListBean.getGoods_image());
+                helper.setText(R.id.tv_goods_name, orderListBean.getGoods_name());
+                Date date = new Date();
+                date.setTime(orderListBean.getAdd_time());
+                helper.setText(R.id.tv_goods_time, PublicKetUtils.df.get().format(date));
+                helper.setText(R.id.tv_goods_price, "￥" + orderListBean.getOrder_amount());
+                helper.setText(R.id.tv_goods_num, "x" + orderListBean.getCount());
+
                 //
-                helper.setVisible(R.id.tv_goto_pay,category_id==10);
+                helper.setVisible(R.id.tv_goto_pay, category_id == 10);
+                if (helper.getView(R.id.tv_goto_pay).getVisibility() == View.VISIBLE) {
+                    helper.setOnClickListener(R.id.tv_goto_pay, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ToBePaidActivity.gotoToBePaidActivity((BaseActivity) mContext, orderListBean);
+                        }
+                    });
+                }
 
             }
         };
@@ -103,7 +124,7 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
         mLAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                startActivity(getActivity(), AuctionFiledActivity.class);
+//                startActivity(getActivity(), AuctionFiledActivity.class);
             }
         });
 

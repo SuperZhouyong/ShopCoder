@@ -182,6 +182,14 @@
         <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity"-->
         <!--订单确认界面-->
         <activity android:name=".ui.mall.activity.ConfirmOrderActivity"/>
+        <!--获取店铺商品的列表-->
+        <activity android:name=".ui.mall.activity.StoreInfoOrderListActivity"/>
+        <!--查看拍品的大图数据-->
+        <activity android:name=".ui.main.activity.auitemItemPicActivity"/>
+        <!--待支付界面-->
+        <activity android:name=".ui.mall.activity.ToBePaidActivity"/>
+        <!--开发者后台-->
+        <activity android:name=".ui.myinfo.activity.DeveloperActivity"/>
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

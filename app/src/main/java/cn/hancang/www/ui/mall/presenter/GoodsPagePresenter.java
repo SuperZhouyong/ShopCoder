@@ -1,5 +1,7 @@
 package cn.hancang.www.ui.mall.presenter;
 
+import cn.hancang.www.bean.GoodsBuyNewBean;
+
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.bean.AddCartInfoBean;
@@ -47,6 +49,21 @@ public class GoodsPagePresenter extends GoodsPageContract.Presenter {
             @Override
             protected void _onError(String message) {
                 mView.showErrorTip(AppConstant.twoMessage, message);
+            }
+        }));
+    }
+
+    @Override
+    public void getGoodsBuyNewRequest(String  goods_id, String count) {
+        mRxManage.add(mModel.getGoodsBuyNew(goods_id, count).subscribe(new RxSubscriber<GoodsBuyNewBean>(mContext) {
+            @Override
+            protected void _onNext(GoodsBuyNewBean goodsBuyNewBean) {
+                mView.returnBuyNew(goodsBuyNewBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.threeMessage, message);
             }
         }));
     }

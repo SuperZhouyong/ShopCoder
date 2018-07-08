@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.View;
 
 import cn.hancang.www.R;
+import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.AllMallDateBean;
 import cn.hancang.www.ui.main.activity.AuctionItemActivity;
 import cn.hancang.www.ui.main.activity.MainActivity;
+import cn.hancang.www.ui.mall.activity.GoodsPageActivity;
 
 /**
  * Description: 绝无Bug
@@ -41,7 +43,13 @@ public class MallWorksAdapter extends CommonRecycleViewAdapter<AllMallDateBean.D
                 intent.putExtra(AppConstant.auctionItemId,recommendItemBean.getId());
                 LogUtils.logd(TAG+"-------"+recommendItemBean.getId());
                 mContext.startActivity(intent);*/
-                AuctionItemActivity.gotoAuctionItemActivity((MainActivity) mContext, recommendItemBean.getId());
+
+                if (recommendItemBean.getGoods_type() == 1)
+                    GoodsPageActivity.gotoGoodsPageActivity((BaseActivity) mContext, recommendItemBean.getId(), recommendItemBean.getName());
+                else
+                    AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, recommendItemBean.getId());
+//                AuctionItemActivity.gotoAuctionItemActivity((MainActivity) mContext, recommendItemBean.getId());
+//                GoodsPageActivity.gotoGoodsPageActivity((MainActivity) mContext,recommendItemBean.getId(),recommendItemBean.getName());
             }
         });
     }

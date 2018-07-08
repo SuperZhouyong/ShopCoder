@@ -22,7 +22,7 @@ public class SelectChargeModel implements SelectChargeContract.Model {
 
 
     @Override
-    public Observable<OrderIdBean> getOrderIdBeanData(Float Num, String type, String remark) {
+    public Observable<OrderIdBean> getOrderIdBeanData(Double Num, String type, String remark) {
         return Api.getDefault(HostType.Jsonpart).getOrderIdBean(Num, type, remark).compose(RxSchedulers.<OrderIdBean>io_main());
     }
 

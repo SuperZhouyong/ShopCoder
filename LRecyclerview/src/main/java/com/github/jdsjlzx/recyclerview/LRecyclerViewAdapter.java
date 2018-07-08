@@ -32,7 +32,7 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
         this.mHeaderViews = mHeaderViews;
     }
 
-    private static List<Integer> mHeaderTypes = new ArrayList<>();
+    private  List<Integer> mHeaderTypes = new ArrayList<>();
 
     private IRefreshHeader mRefreshHeader;
 
@@ -46,13 +46,13 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private ArrayList<View> mHeaderViews = new ArrayList<>();
     private ArrayList<View> mFooterViews = new ArrayList<>();
-
-    public static List<Integer> getmHeaderTypes() {
+    //  这坑比作者。。。。。坑我好久
+    public List<Integer> getmHeaderTypes() {
         return mHeaderTypes;
     }
 
-    public static void setmHeaderTypes(List<Integer> mHeaderTypes) {
-        LRecyclerViewAdapter.mHeaderTypes = mHeaderTypes;
+    public  void setmHeaderTypes(List<Integer> mHeaderTypes) {
+        mHeaderTypes = mHeaderTypes;
     }
 
     private SpanSizeLookup mSpanSizeLookup;
@@ -276,15 +276,15 @@ public class LRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemViewType(int position) {
-//        Log.i(TAG,"sssssssss mHeaderTypes " +mHeaderTypes.toString());
-//        Log.i(TAG,"sssssssss position " +position+"---isheader   "+(isHeader(position)));
+        Log.i(TAG,"sssssssss mHeaderTypes " +mHeaderTypes.toString());
+        Log.i(TAG,"sssssssss position " +position+"---isheader   "+(isHeader(position)));
         int adjPosition = position - (getHeaderViewsCount() + 1);
         if (isRefreshHeader(position)) {
             return TYPE_REFRESH_HEADER;
         }
         if (isHeader(position)) {
             position = position - 1;
-//            Log.i(TAG,"sssssssss getItemViewTYpe " +mHeaderTypes.get(position));
+            Log.i(TAG,"sssssssss getItemViewTYpe " +mHeaderTypes.get(position));
             return mHeaderTypes.get(position);
         }
         if (isFooter(position)) {

@@ -7,12 +7,15 @@ import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 import cn.hancang.www.R;
 import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.TaobaoStoreInfoBean;
 import cn.hancang.www.ui.main.activity.AuctionItemActivity;
+import cn.hancang.www.ui.mall.activity.GoodsPageActivity;
 
 /**
  * Description: 保佑无bug
@@ -22,14 +25,18 @@ import cn.hancang.www.ui.main.activity.AuctionItemActivity;
  * QQ: 437397161
  */
 
-public class HotAuctionItemAdapter extends CommonRecycleViewAdapter<TaobaoStoreInfoBean.DataBean.ItemListBean> {
+public class HotAuctionItemAdapter extends CommonRecycleViewAdapter<TaobaoStoreInfoBean.DataBean.StoreGoodsBean> {
+
     public HotAuctionItemAdapter(Context context) {
-        super(context, R.layout.item_artdetail);
+//        super(context, R.layout.item_artdetail);
+        super(context, R.layout.item_store_goods);
     }
 
+
     @Override
-    public void convert(ViewHolderHelper helper, final TaobaoStoreInfoBean.DataBean.ItemListBean goodsListBean, int position) {
-        helper.setImageUrl(R.id.iv_goods_pic, goodsListBean.getImage());
+    public void convert(ViewHolderHelper helper, final TaobaoStoreInfoBean.DataBean.StoreGoodsBean goodsListBean, int position) {
+//        helper.setImageUrl(R.id.iv_goods_pic, goodsListBean.getImage());
+        helper.setImageRoundTwoUrl(R.id.iv_goods_pic, goodsListBean.getImage());
         helper.setText(R.id.tv_goods_name, goodsListBean.getName());
 //                helper.setText(R.id.tv_price,itemListBean.getCurrent_price());
         helper.setText(R.id.tv_price, "￥ " + goodsListBean.getCurrent_price());
@@ -38,7 +45,10 @@ public class HotAuctionItemAdapter extends CommonRecycleViewAdapter<TaobaoStoreI
         helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, goodsListBean.getId());
+                if (goodsListBean.getGoods_type() == 1)
+                    GoodsPageActivity.gotoGoodsPageActivity((BaseActivity) mContext, goodsListBean.getId(), goodsListBean.getName());
+                else
+                    AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, goodsListBean.getId());
             }
         });
     }

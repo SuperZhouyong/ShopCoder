@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.main.fragment;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,6 +14,7 @@ import cn.hancang.www.base.LazzyFragment;
 import cn.hancang.www.ui.Store.activity.StoreFocusActivity;
 import cn.hancang.www.ui.main.activity.MainActivity;
 import cn.hancang.www.ui.myinfo.activity.AccountActivity;
+import cn.hancang.www.ui.myinfo.activity.DeveloperActivity;
 import cn.hancang.www.ui.myinfo.activity.EditInfoActivity;
 import cn.hancang.www.ui.myinfo.activity.LoginActivity;
 import cn.hancang.www.ui.myinfo.activity.MessageActicity;
@@ -96,14 +98,35 @@ public class MyInfoFragment extends LazzyFragment {
     public void initPresenter() {
 //        mPresenter.setVM(this, mModel);
     }
-
+    private int clickNum = 0;   //点击后门的次数
+    private long mLimitTime; //临时存储第一次点击后门入口时候的毫秒值
     @Override
     protected void initView() {
 
 
 //        if (!TextUtils.isEmpty(SPUtils.getSharedStringData(getActivity(), AppConstant.ImageUrl)))
 
-
+        ivHeadIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //1.5秒 点击五次后门入口方可进入开发入口、
+                if (clickNum == 0) {
+                    mLimitTime = System.currentTimeMillis();
+                } else {
+                    if (System.currentTimeMillis() - mLimitTime > 1500 || System.currentTimeMillis() - mLimitTime < 0) {
+                        clickNum = 0;
+                        mLimitTime = System.currentTimeMillis();
+                    }
+                }
+                ++clickNum;
+                if (clickNum == 7) {
+                    //开启后门
+                    clickNum = 0;
+                    Intent intent = new Intent(getActivity(), DeveloperActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override

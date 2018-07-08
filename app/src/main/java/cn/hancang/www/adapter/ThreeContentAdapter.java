@@ -10,6 +10,7 @@ import cn.hancang.www.R;
 import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.ConfirmOrderBean;
+import cn.hancang.www.bean.GoodsBuyNewBean;
 import cn.hancang.www.utils.checkbox.SmoothCheckBox;
 
 /**
@@ -20,7 +21,7 @@ import cn.hancang.www.utils.checkbox.SmoothCheckBox;
  * QQ: 437397161
  */
 
-public class ThreeContentAdapter extends CommonRecycleViewAdapter<ConfirmOrderBean.DataBean.AddressListBean> {
+public class ThreeContentAdapter extends CommonRecycleViewAdapter<GoodsBuyNewBean.DataBean.AddressListBean> {
     private List<String> mList;
 
     public ThreeContentAdapter(Context context) {
@@ -28,12 +29,20 @@ public class ThreeContentAdapter extends CommonRecycleViewAdapter<ConfirmOrderBe
         mList = new ArrayList<>();
     }
 
+    public List<String> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<String> mList) {
+        this.mList = mList;
+    }
+
     @Override
-    public void convert(ViewHolderHelper helper, final ConfirmOrderBean.DataBean.AddressListBean addressListBean, int position) {
+    public void convert(ViewHolderHelper helper, final GoodsBuyNewBean.DataBean.AddressListBean addressListBean, int position) {
         SmoothCheckBox smoothCheckBox = helper.getView(R.id.sCheckbox_wx);
         helper.setText(R.id.tv_name, addressListBean.getProvince_name() + addressListBean.getCity_name() + addressListBean.getArea_name() + addressListBean.getAddress());
         smoothCheckBox.setChecked(mList.contains(addressListBean.getId() + ""));
-        smoothCheckBox.setOnClickListener(new View.OnClickListener() {
+        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mList.size() != 0)
@@ -44,6 +53,7 @@ public class ThreeContentAdapter extends CommonRecycleViewAdapter<ConfirmOrderBe
 
             }
         });
+        smoothCheckBox.setClickable(false);
 
     }
 }

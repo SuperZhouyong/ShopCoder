@@ -1,5 +1,7 @@
 package cn.hancang.www.ui.main.model;
 
+import cn.hancang.www.bean.StoreInfoOrderListBean;
+
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
@@ -20,5 +22,10 @@ public class AuctionListModel implements AuctionListContract.Model {
     @Override
     public Observable<AuctionListBean> getAuctionListBean(Integer category, Integer page, Integer goods_type) {
         return Api.getDefault(HostType.Jsonpart).getAuctionList(category,page,goods_type).compose(RxSchedulers.<AuctionListBean>io_main());
+    }
+
+    @Override
+    public Observable<StoreInfoOrderListBean> getStoreInfoOrderList(Integer Store_id, Integer page) {
+        return Api.getDefault(HostType.Jsonpart).getStoreOrderList(Store_id,page).compose(RxSchedulers.<StoreInfoOrderListBean>io_main());
     }
 }

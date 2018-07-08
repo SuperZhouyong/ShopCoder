@@ -83,6 +83,7 @@ public class ImageLoaderUtils {
         }
         Glide.with(context).load(url).asBitmap()
                 .format(DecodeFormat.PREFER_ARGB_8888)
+                .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)
@@ -143,7 +144,7 @@ public class ImageLoaderUtils {
         }
         Glide.with(context).load(url)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
+//                .centerCrop()
 //                .fitCenter()
 //                .placeholder(R.mipmap.colleges_icon)
                 .error(R.mipmap.colleges_icon)

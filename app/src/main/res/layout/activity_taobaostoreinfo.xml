@@ -1,19 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/title"
-        layout="@layout/actionbar_title" />
+    <!-- <include
+         android:id="@+id/title"
+         layout="@layout/actionbar_title" />-->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:orientation="vertical"
+            tl:layout_scrollFlags="enterAlwaysCollapsed|scroll">
+
+            <RelativeLayout
+                android:background="@mipmap/myinfo_head_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y346"
+                android:orientation="vertical">
+
+                <include
+                    android:layout_height="@dimen/y96"
+                    android:layout_width="match_parent"
+                    android:id="@+id/title"
+                    layout="@layout/store_info_header_title" />
+
+                <include
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y250"
+                    android:layout_below="@id/title"
+                    android:id="@+id/title_header"
+                    layout="@layout/store_info_header" />
+
+
+            </RelativeLayout>
+
+           <!-- <ImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y400"
+                android:layout_below="@id/rel_head"
+                android:layout_marginTop="@dimen/y40"
+                android:background="@color/white" />-->
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
 
     <com.github.jdsjlzx.recyclerview.LRecyclerView
         android:id="@+id/mLRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/title" />
+        android:layout_below="@id/title"
+        tl:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <cn.hancang.www.widget.conmonWidget.LoadingTip
         android:id="@+id/mLoadingTip"
@@ -21,52 +68,5 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/title" />
 
-    <!--<RelativeLayout
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y150">
 
-
-        <ImageView
-
-            android:id="@+id/iv_icon"
-            android:layout_width="@dimen/x100"
-            android:layout_height="@dimen/y100"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x22"
-            android:layout_marginStart="@dimen/x22"
-            app:srcCompat="@mipmap/colleges_icon" />
-
-        <TextView
-            android:id="@+id/tv_store_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="@dimen/x30"
-           android:layout_toRightOf="@id/iv_icon"
-            android:layout_marginTop="@dimen/y20"
-            android:text="TextView" />
-
-        <TextView
-            android:maxLines="1"
-            android:singleLine="true"
-            android:id="@+id/tv_store_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/tv_store_name"
-            android:layout_alignStart="@+id/tv_store_name"
-            android:layout_below="@+id/tv_store_name"
-            android:layout_marginTop="@dimen/y30"
-            android:text="TextView" />
-    </RelativeLayout>
-
-    <ImageView
-        android:background="@color/white"
-        android:layout_marginTop="@dimen/y40"
-        android:id="@+id/iv_banner"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y400"
-        app:srcCompat="@mipmap/ali_pay" />-->
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

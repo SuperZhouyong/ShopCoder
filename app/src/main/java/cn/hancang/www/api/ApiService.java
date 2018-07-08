@@ -1,6 +1,11 @@
 package cn.hancang.www.api;
 
 
+import cn.hancang.www.bean.StoreInfoOrderListBean;
+import cn.hancang.www.bean.ToBenPaidBean;
+
+import cn.hancang.www.bean.GoodsBuyNewBean;
+
 import cn.hancang.www.bean.AliLoginAfterBean;
 import cn.hancang.www.bean.AliLoginBean;
 import cn.hancang.www.bean.AmpunInfoBean;
@@ -23,7 +28,6 @@ import cn.hancang.www.bean.BidRecordBean;
 import cn.hancang.www.bean.BindCardInfoBean;
 import cn.hancang.www.bean.CategoryAllBean;
 import cn.hancang.www.bean.ChargeBean;
-import cn.hancang.www.bean.ConfirmOrderBean;
 import cn.hancang.www.bean.DeleteFavBean;
 import cn.hancang.www.bean.DeleteReceiverBean;
 import cn.hancang.www.bean.DerivativesBean;
@@ -61,6 +65,7 @@ import cn.hancang.www.bean.StoreReportOne;
 import cn.hancang.www.bean.StoreReportTwo;
 import cn.hancang.www.bean.SubmitAddressBean;
 import cn.hancang.www.bean.SubmitClientInfo;
+import cn.hancang.www.bean.SubmitOrderBean;
 import cn.hancang.www.bean.SynchronousAuctionBean;
 import cn.hancang.www.bean.SynchronousItemBean;
 import cn.hancang.www.bean.TaobaoStoreInfoBean;
@@ -539,7 +544,8 @@ public interface ApiService {
      *
      * @return
      */
-    @GET("auction/get_store_home_page")
+//    http://ta.beikunit.com/api/Taobao/taobao_store?store_id
+    @GET("Taobao/taobao_store")
     Observable<TaobaoStoreInfoBean> getTaoBaoStoreInfo(
             @Query("store_id") Integer store_id
     );
@@ -696,7 +702,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("paycenter/recharge")
     Observable<OrderIdBean> getOrderIdBean(
-            @Field("amount") Float num,
+            @Field("amount") Double num,
             @Field("pay_type") String type,
             @Field("remark") String remark);
 
@@ -819,10 +825,11 @@ public interface ApiService {
     /**
      * @param goods_id_list
      * @return 返回订单详情
+     * TODO 好像已经失效了
      */
     @FormUrlEncoded
     @POST("order/create_order_by_winner")
-    Observable<ConfirmOrderBean> getconfirmorderDetail(
+    Observable<GoodsBuyNewBean> getconfirmorderDetail(
             @Field("goods_id_list") String goods_id_list
     );
 
@@ -847,4 +854,56 @@ public interface ApiService {
     @POST("order/create_order_by_winner")
     @FormUrlEncoded
     Observable<OrderCreatBean> getOrderCreatBean(@Field("goods_id_list") String good_id_list);
+
+    /**
+     * @param goods_id
+     * @param count
+     * @return
+     */
+    @POST("order/buy_now")
+    @FormUrlEncoded
+    Observable<GoodsBuyNewBean> getGoodsBuyNew(
+            @Field("goods_id") String goods_id,
+            @Field("count") String count);
+
+    /**
+     * @param goods_id
+     * @param count
+     * @param address_id
+     * @param pay_type
+     * @param remark
+     * @return 提交订单
+     */
+    @POST("paycenter/pay_order")
+    @FormUrlEncoded
+    Observable<SubmitOrderBean> getSubmitOrderInfo(
+            @Field("goods_id") String goods_id,
+            @Field("count") String count,
+            @Field("address_id") Integer address_id,
+            @Field("pay_type") Integer pay_type,
+            @Field("remark") String remark);
+
+    /**
+     * @param store_id
+     * @param page
+     * @return 获取 店铺信息的列表
+     */
+    @GET("Taobao/get_goods_list")
+    Observable<StoreInfoOrderListBean> getStoreOrderList(
+            @Query("store_id") Integer store_id,
+            @Query("page") Integer page);
+
+    /**
+     *
+     * @param order_id
+     * @param pay_type
+     * @return 会员中心里可能有未支付的旧订单，通过调用本接口来进行支付
+
+
+     */
+    @POST("paycenter/pay_order_for_old")
+    @FormUrlEncoded
+    Observable<ToBenPaidBean> getToBePaid(
+            @Field("order_id") Integer order_id,
+            @Field("pay_type") Integer pay_type);
 }

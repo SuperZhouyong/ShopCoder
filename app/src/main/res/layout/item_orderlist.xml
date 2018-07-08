@@ -39,7 +39,10 @@
             android:layout_alignTop="@id/iv_goods_pic"
             android:layout_marginLeft="@dimen/x22"
             android:layout_toRightOf="@id/iv_goods_pic"
-            android:text="青花器拍卖"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:maxWidth="@dimen/x330"
+            android:text="青花器拍卖青花器拍卖青花器拍卖"
             android:textColor="@color/font_1"
             android:textSize="@dimen/x28" />
 

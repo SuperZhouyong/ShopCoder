@@ -389,6 +389,15 @@ public class AllDateBean {
             private String image;
             private int start_price;
             private int current_price;
+            private int goods_type;
+
+            public int getGoods_type() {
+                return goods_type;
+            }
+
+            public void setGoods_type(int goods_type) {
+                this.goods_type = goods_type;
+            }
 
             public int getId() {
                 return id;

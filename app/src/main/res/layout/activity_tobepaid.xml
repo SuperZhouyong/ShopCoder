@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/actionbar_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/y20">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/y20"
+            android:paddingTop="@dimen/y20"
+            android:text="代付款"
+            android:textColor="@color/font_2"
+            android:textSize="@dimen/x30" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y146"
+            android:layout_marginLeft="@dimen/x22">
+
+            <ImageView
+                android:id="@+id/iv_goods_pic"
+                android:layout_width="@dimen/x120"
+                android:layout_height="@dimen/y120"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/iv_goods_pic"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_toRightOf="@id/iv_goods_pic"
+                android:text="青花器拍卖"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <TextView
+                android:id="@+id/tv_goods_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_goods_pic"
+                android:layout_marginBottom="@dimen/y5"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_toRightOf="@id/iv_goods_pic"
+                android:text="2018-04-19"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+
+            <TextView
+                android:id="@+id/tv_goods_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_goods_name"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/x22"
+                android:text="x3"
+                android:textColor="@color/font_3"
+                android:textSize="@dimen/x26" />
+
+            <TextView
+
+                android:id="@+id/tv_goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_goods_name"
+                android:layout_alignBottom="@+id/tv_goods_name"
+                android:layout_marginEnd="@dimen/x30"
+                android:layout_marginRight="@dimen/x30"
+                android:layout_toLeftOf="@+id/tv_goods_num"
+                android:layout_toStartOf="@+id/tv_goods_num"
+                android:text="￥3900"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:layout_marginTop="@dimen/y100"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel_wx_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y110"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_wx_pay"
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/y60"
+                android:layout_alignLeft="@+id/imageView6"
+                android:layout_alignStart="@+id/imageView6"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/wx_pay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/iv_wx_pay"
+                android:text="微信支付"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <cn.hancang.www.utils.checkbox.SmoothCheckBox
+                android:id="@+id/sCheckbox_wx"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                app:color_checked="@color/font_2"
+                app:color_tick="@color/white"
+                app:color_unchecked="@color/app_bottom_colour"
+                app:color_unchecked_stroke="@color/app_bottom_colour"
+
+                app:stroke_width="@dimen/x2" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/x22"
+                android:layout_marginRight="@dimen/x22"
+                android:background="@color/app_bottom_colour" />
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:id="@+id/rel_ali_pay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y107"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/iv_message"
+                android:layout_width="@dimen/x60"
+                android:layout_height="@dimen/y60"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:src="@mipmap/ali_pay" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_toRightOf="@id/iv_message"
+                android:text="支付宝"
+                android:textColor="@color/font_1"
+                android:textSize="@dimen/x28" />
+
+            <cn.hancang.www.utils.checkbox.SmoothCheckBox
+
+                android:id="@+id/sCheckbox_ali"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                app:color_checked="@color/font_2"
+                app:color_tick="@color/white"
+                app:color_unchecked="@color/app_bottom_colour"
+                app:color_unchecked_stroke="@color/app_bottom_colour"
+                app:stroke_width="@dimen/x2" />
+
+            <!--   <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/y2"
+                   android:layout_alignParentBottom="true"
+                   android:layout_marginLeft="@dimen/x22"
+                   android:layout_marginRight="@dimen/x22"
+                   android:background="@color/app_bottom_colour" />-->
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="@dimen/x445"
+        android:layout_height="@dimen/y70"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y100"
+        android:background="@drawable/tv_bg_confirm"
+        android:gravity="center"
+        android:text="去付款"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x35" />
+</LinearLayout>

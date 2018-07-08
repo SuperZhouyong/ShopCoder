@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/title"
         layout="@layout/actionbar_title" />
+
     <LinearLayout
-       android:layout_below="@id/title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title"
         android:orientation="vertical">
-
 
 
         <ScrollView
@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    app:bvAspectRatio="0.427350"
+                    app:bvAspectRatio="1"
                     app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
                     app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
                     app:bvIsAuto="true"
@@ -132,87 +132,89 @@
                         android:text="选择数量"
                         android:textColor="@color/font_10"
                         android:textSize="@dimen/x28" />
+
                     <cn.hancang.www.widget.AmountView
                         android:id="@+id/amount_view"
-                        android:layout_centerVertical="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:layout_alignParentRight="true"
+
+                        android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/x30"
                         app:btnTextSize="@dimen/x20"
                         app:btnWidth="@dimen/x80"
                         app:tvTextSize="@dimen/x20"
                         app:tvWidth="@dimen/x80" />
-                  <!--  <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
+                    <!--  <LinearLayout
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentRight="true"
+                          android:layout_centerVertical="true"
 
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:orientation="horizontal"
-                        android:showDividers="middle">
+                          android:focusable="true"
+                          android:focusableInTouchMode="true"
+                          android:orientation="horizontal"
+                          android:showDividers="middle">
 
-                        <Button
+                          <Button
 
-                            android:id="@+id/btnDecrease"
-                            android:layout_width="@dimen/x80"
-                            android:layout_height="@dimen/y80"
-                            android:layout_gravity="center"
-                            android:background="@drawable/btn_amount"
-                            android:gravity="center"
-                            android:text="—"
+                              android:id="@+id/btnDecrease"
+                              android:layout_width="@dimen/x80"
+                              android:layout_height="@dimen/y80"
+                              android:layout_gravity="center"
+                              android:background="@drawable/btn_amount"
+                              android:gravity="center"
+                              android:text="—"
 
-                            android:textColor="@color/font_1"
-                            android:textSize="@dimen/x34" />
+                              android:textColor="@color/font_1"
+                              android:textSize="@dimen/x34" />
 
-                        <TextView
+                          <TextView
 
-                            android:id="@+id/etAmount"
-                            android:layout_width="@dimen/x80"
-                            android:layout_height="@dimen/y80"
-                            android:background="@null"
-                            android:gravity="center"
-                            android:inputType="number"
-                            android:text="1"
-                            android:textColor="@color/font_1"
-                            android:textCursorDrawable="@drawable/shape_edittext_cursour"
-                            android:textSize="@dimen/x36" />
+                              android:id="@+id/etAmount"
+                              android:layout_width="@dimen/x80"
+                              android:layout_height="@dimen/y80"
+                              android:background="@null"
+                              android:gravity="center"
+                              android:inputType="number"
+                              android:text="1"
+                              android:textColor="@color/font_1"
+                              android:textCursorDrawable="@drawable/shape_edittext_cursour"
+                              android:textSize="@dimen/x36" />
 
-                        <Button
-                            android:id="@+id/btnIncrease"
-                            android:layout_width="@dimen/x80"
-                            android:layout_height="@dimen/y80"
-                            android:layout_gravity="center"
-                            android:background="@drawable/btn_amount"
-                            android:gravity="center"
-                            android:text="+"
-                            android:textColor="@color/font_1"
-                            android:textSize="@dimen/x34" />
-                    </LinearLayout>-->
+                          <Button
+                              android:id="@+id/btnIncrease"
+                              android:layout_width="@dimen/x80"
+                              android:layout_height="@dimen/y80"
+                              android:layout_gravity="center"
+                              android:background="@drawable/btn_amount"
+                              android:gravity="center"
+                              android:text="+"
+                              android:textColor="@color/font_1"
+                              android:textSize="@dimen/x34" />
+                      </LinearLayout>-->
                 </RelativeLayout>
+
                 <TextView
-                    android:padding="@dimen/x22"
-                    android:textSize="@dimen/x28"
-                    android:textColor="@color/font_10"
-                    android:background="@color/white"
                     android:id="@+id/tv_bottom"
-                    android:layout_marginTop="@dimen/y20"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-               <!-- <ezy.ui.view.BannerView
-                    android:id="@+id/mLoopViewPager_two"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/y20"
                     android:background="@color/white"
-                    app:bvAspectRatio="0.427350"
-                    app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
-                    app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
-                    app:bvIsAuto="true"
-                    app:bvIsLoop="true" />-->
+                    android:padding="@dimen/x22"
+                    android:textColor="@color/font_10"
+                    android:textSize="@dimen/x28" />
+                <!-- <ezy.ui.view.BannerView
+                     android:id="@+id/mLoopViewPager_two"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="@dimen/y20"
+                     android:background="@color/white"
+                     app:bvAspectRatio="0.427350"
+                     app:bvIndicatorDrawable="@drawable/home_indicta_unselect"
+                     app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
+                     app:bvIsAuto="true"
+                     app:bvIsLoop="true" />-->
 
             </LinearLayout>
         </ScrollView>

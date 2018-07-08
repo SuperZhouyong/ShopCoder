@@ -133,7 +133,7 @@ public class OrganPeoActivity extends BaseActivity<OrganPePresenter, OrganPeMode
 
     @Override
     public void StartLoading(String RequestId) {
-        if (AppConstant.oneMessage.equals(RequestId))
+        if (AppConstant.oneMessage.equals(RequestId) && organpeoAdapter.getDataList().size() == 0)
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
     }
 

@@ -65,7 +65,7 @@ public class AutionItemDetailBean {
         private boolean is_fav;
         private String credit_line;
         private String article;
-        private String wx_code;
+//        private String wx_code;
         private String description_images;
         private List<StaffListBean> staff_list;
         private List<PriceListBean> price_list;
@@ -110,13 +110,13 @@ public class AutionItemDetailBean {
             this.article = article;
         }
 
-        public String getWx_code() {
+      /*  public String getWx_code() {
             return wx_code;
         }
 
         public void setWx_code(String wx_code) {
             this.wx_code = wx_code;
-        }
+        }*/
 
         public String getDescription_images() {
             return description_images;
@@ -180,6 +180,24 @@ public class AutionItemDetailBean {
             private String current_price;
             private int fans_count;
             private List<ImagesBean> images;
+            private boolean be_sold ;
+            private String goods_qrcode_img;
+
+            public String getGoods_qrcode_img() {
+                return goods_qrcode_img;
+            }
+
+            public void setGoods_qrcode_img(String goods_qrcode_img) {
+                this.goods_qrcode_img = goods_qrcode_img;
+            }
+
+            public boolean isBe_sold() {
+                return be_sold;
+            }
+
+            public void setBe_sold(boolean be_sold) {
+                this.be_sold = be_sold;
+            }
 
             public String getDescription() {
                 return description;

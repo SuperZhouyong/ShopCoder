@@ -10,6 +10,7 @@ import cn.hancang.www.R;
 import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.ConfirmOrderBean;
+import cn.hancang.www.bean.GoodsBuyNewBean;
 import cn.hancang.www.utils.checkbox.SmoothCheckBox;
 
 /**
@@ -20,16 +21,24 @@ import cn.hancang.www.utils.checkbox.SmoothCheckBox;
  * QQ: 437397161
  */
 
-public class FiveContentAdapter extends CommonRecycleViewAdapter<ConfirmOrderBean.DataBean.PayListBean> {
+public class FiveContentAdapter extends CommonRecycleViewAdapter<GoodsBuyNewBean.DataBean.PayListBean> {
     public FiveContentAdapter(Context context) {
         super(context, R.layout.item_pay_list);
         mList = new ArrayList<>();
     }
 
+    public List<String> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<String> mList) {
+        this.mList = mList;
+    }
+
     private List<String> mList;
 
     @Override
-    public void convert(ViewHolderHelper helper, final ConfirmOrderBean.DataBean.PayListBean payListBean, int position) {
+    public void convert(ViewHolderHelper helper, final GoodsBuyNewBean.DataBean.PayListBean payListBean, int position) {
         helper.setVisible(R.id.imageView6, position != getDataList().size() - 1);
         if (payListBean.getName().contains("宝"))
             helper.setBackgroundRes(R.id.iv_wx_pay, R.mipmap.ali_pay);
@@ -40,7 +49,8 @@ public class FiveContentAdapter extends CommonRecycleViewAdapter<ConfirmOrderBea
 
         final SmoothCheckBox smoothCheckBox = helper.getView(R.id.sCheckbox_wx);
         smoothCheckBox.setChecked(mList.contains(payListBean.getPay_type() + ""));
-        smoothCheckBox.setOnClickListener(new View.OnClickListener() {
+        smoothCheckBox.setClickable(false);
+        helper.getConvertView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mList.size() != 0)

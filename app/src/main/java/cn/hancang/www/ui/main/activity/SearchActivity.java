@@ -109,6 +109,7 @@ public class SearchActivity extends BaseActivity<SearchPresenter, SearchModel> i
         mLRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mLRecyclerView.setAdapter(mLadapter);
         mLRecyclerView.setOnLoadMoreListener(this);
+        mLRecyclerView.setPullRefreshEnabled(false);
 
         View homeHeadTitleOnew = getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById1 = (TextView) homeHeadTitleOnew.findViewById(R.id.yv_all_recy_head_title);

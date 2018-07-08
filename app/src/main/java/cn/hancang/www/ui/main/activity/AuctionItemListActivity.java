@@ -13,6 +13,8 @@ import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+import cn.hancang.www.bean.StoreInfoOrderListBean;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -178,6 +180,11 @@ public class AuctionItemListActivity extends BaseActivity<AuctionListPresenter, 
         }
         mAdapter.addAll(auctionListBean.getData().getItem_list());
         ++page;
+
+    }
+
+    @Override
+    public void returnStoreInfoList(StoreInfoOrderListBean storeInfoOrderListBean) {
 
     }
 

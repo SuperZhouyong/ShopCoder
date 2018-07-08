@@ -27,7 +27,18 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+import com.toptechs.libaction.action.Action;
+import com.toptechs.libaction.action.SingleCall;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -50,18 +61,6 @@ import cn.hancang.www.utils.conmonUtil.ImageUtils;
 import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
 import cn.hancang.www.utils.conmonUtil.ShareUtil;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
-
-import com.toptechs.libaction.action.Action;
-import com.toptechs.libaction.action.SingleCall;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.text.ParseException;
-import java.util.Date;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
@@ -160,6 +159,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
     private View viewSpace1;
     private View viewSpace2;
     private ImageView ivDelver;
+    private TextView tvLotsOneDesc;
     //    private SmoothCheckBox sCheckBox;
 
     @Override
@@ -219,6 +219,7 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         //瓷器当前价 起拍价
         auction_three = getLayoutInflater().inflate(R.layout.item_auction_two, null);
+        tvLotsOneDesc = (TextView) auction_three.findViewById(R.id.tv_lost_price_desc_one);
         tvLotsName = (TextView) auction_three.findViewById(R.id.tv_lot_name);
         tvLotsOne = (TextView) auction_three.findViewById(R.id.tv_num_one);
         tvLotsTwo = (TextView) auction_three.findViewById(R.id.tv_num_two);
@@ -383,7 +384,6 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 //        AutionItemDetailBean.DataBean.StaffListBean staffListBean = autionItemDetailBean.getData().getStaff_list().get(0);
         //title
 
-        showAuctionTime(item_info.getStart_time(),item_info.getEnd_time());
 
         String start_time = item_info.getStart_time().replace("-", ".");
         String end_time = item_info.getEnd_time().replace("-", ".");
@@ -410,16 +410,25 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         }
 
 
-        List<AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean> images = autionItemDetailBean.getData().getItem_info().getImages();
+        final List<AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean> images = autionItemDetailBean.getData().getItem_info().getImages();
         // 第二部分录播图
         mLoopViewPager.setViewFactory(new BannerView.ViewFactory<AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean>() {
 
 
             @Override
-            public View create(AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean imagesBean, int position, ViewGroup container) {
+            public View create(AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean imagesBean, final int position, ViewGroup container) {
                 ImageView iv = new ImageView(container.getContext());
                 ImageLoaderUtils.display(container.getContext().getApplicationContext(), iv, imagesBean.getGoodsimage_url());
-
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ArrayList<String> mImage = new ArrayList<>();
+                        for (AutionItemDetailBean.DataBean.ItemInfoBean.ImagesBean ImageS : images) {
+                            mImage.add(ImageS.getGoodsimage_url());
+                        }
+                        auitemItemPicActivity.startAction(AuctionItemActivity.this, v, mImage, position);
+                    }
+                });
 
                 return iv;
             }
@@ -489,6 +498,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 AuctionFiledActivity.gotoAuctionFiledActivity(AuctionItemActivity.this, Integer.parseInt(auction_field_id), AppConstant.IntoWayOne);
             }
         });
+
+        showAuctionTime(item_info.getStart_time(), item_info.getEnd_time(), item_info.isBe_sold());
         // 免责申明
       /*  tvDisclaimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -496,8 +507,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 MyWebviewActivity.GotoActiviy(AuctionItemActivity.this, autionItemDetailBean.getData().getArticle(), "免责申明");
             }
         });*/
-      //todo 微信分享
-      /*  rel_qr.setOnClickListener(new View.OnClickListener() {
+        //todo 微信分享
+        rel_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -505,12 +516,12 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
                 View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
                 ImageView ivShareCode = (ImageView) shareView.findViewById(R.id.iv_share_code);
-               *//* shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+                shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         shareDialog.dismiss();
                     }
-                });*//*
+                });
                 shareView.findViewById(R.id.iv_close).setOnClickListener(AuctionItemActivity.this);
                 shareView.findViewById(R.id.ll_wx).setOnClickListener(AuctionItemActivity.this);
                 shareView.findViewById(R.id.ll_friends).setOnClickListener(AuctionItemActivity.this);
@@ -521,16 +532,17 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
                 shareDialog.show();
 
 
-                ImageLoaderUtils.displayRoundTwo(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getWx_code());
+                ImageLoaderUtils.displayRoundTwo(AuctionItemActivity.this, ivShareCode, autionItemDetailBean.getData().getItem_info().getGoods_qrcode_img());
 
-                wx_code = autionItemDetailBean.getData().getWx_code();
+                wx_code = autionItemDetailBean.getData().getItem_info().getGoods_qrcode_img();
             }
-        });*/
+        });
 
         mLadapter.addHeaderView(headViewPager);
         mLadapter.addHeaderView(auction_three);
         mLadapter.addHeaderView(auther_desc);
-        mLadapter.addHeaderView(iv_qrcode);
+        if (!TextUtils.isEmpty(autionItemDetailBean.getData().getItem_info().getGoods_qrcode_img()))
+            mLadapter.addHeaderView(iv_qrcode);
         mLadapter.addHeaderView(price_title);
         mLadapter.addHeaderView(headViewTwo);
         mLadapter.addHeaderView(viewSpace1);
@@ -540,7 +552,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
 
         mComAdapter.notifyDataSetChanged();
     }
-    private void showAuctionTime( String start_time, String end_time) {
+
+    private void showAuctionTime(String start_time, String end_time, boolean isBeSold) {
         try {
             Date startTime = PublicKetUtils.df.get().parse(start_time);
             Date endTime = PublicKetUtils.df.get().parse(end_time);
@@ -550,11 +563,27 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             } else {
                 tvNoagentPrice.setEnabled(false);
                 tvNoagentPrice.setBackgroundResource(R.drawable.tv_no_click);
+                // 街拍了
+                if (currentTime.getTime() > endTime.getTime()) {
+                    if (isBeSold) {
+                        tvLotsOneDesc.setText("落槌价");
+
+                    } else {
+                        tvLotsOneDesc.setText("未成交");
+                        tvLotsOne.setText("");
+                    }
+
+                } else if (currentTime.getTime() < startTime.getTime()) {
+                    // 预展中
+                    tvLotsOne.setText("");
+                }
+
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public void returnAgentBidDate(AgentBidBean agentBidBean) {
         if (agentBidBean.isIs_success()) {
@@ -712,7 +741,12 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
             }
         });
         tvNum = (TextView) view.findViewById(R.id.etAmount);
-        tvNum.setText("￥" + (Float.parseFloat(current_price) + Float.parseFloat(increment_value)));
+        String currentPrice = tvLotsOne.getText().toString();
+        String startPrcie = tvLotsTwo.getText().toString();
+        if (Float.parseFloat(currentPrice) - Float.parseFloat(startPrcie) == 0) {
+            tvNum.setText("￥" + (Float.parseFloat(current_price)));
+        } else
+            tvNum.setText("￥" + (Float.parseFloat(current_price) + Float.parseFloat(increment_value)));
 
 
         tvOne = (TextView) view.findViewById(R.id.tv_one);

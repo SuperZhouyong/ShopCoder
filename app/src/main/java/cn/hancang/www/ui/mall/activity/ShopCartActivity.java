@@ -3,6 +3,7 @@ package cn.hancang.www.ui.mall.activity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.util.SparseArray;
 import android.view.View;
@@ -12,6 +13,10 @@ import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
+import java.math.BigDecimal;
+import java.util.List;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -61,7 +66,7 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     LoadingTip loadingTip;
     private LRecyclerViewAdapter mLadapter;
     private CommonRecycleViewAdapter<ShopCartGoodsBean.DataBean.CartBean> mAdapter;
-    private SparseArray<Integer> mCheckItem;
+    private SparseArray<String> mCheckItem;
 
     @Override
     public int getLayoutId() {
@@ -82,10 +87,12 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
         sCheckBox.setOnCheckedChangeListener(this);
         mAdapter = new CommonRecycleViewAdapter<ShopCartGoodsBean.DataBean.CartBean>(this, R.layout.item_shopcart) {
             @Override
-            public void convert(ViewHolderHelper helper, ShopCartGoodsBean.DataBean.CartBean shopCartGoodsBean, final int position) {
+            public void convert(ViewHolderHelper helper, final ShopCartGoodsBean.DataBean.CartBean shopCartGoodsBean, final int position1) {
+//                helper.setVisible(R.id.amount_view, false);
+                helper.setVisible(R.id.iv_delete, false);
 //                    helper.getView(R.id.sCheckBox)
                 helper.setText(R.id.tv_goods_name, shopCartGoodsBean.getGoods_name());
-                helper.setText(R.id.tv_goods_price, shopCartGoodsBean.getPrice());
+                helper.setText(R.id.tv_goods_price, "￥" + shopCartGoodsBean.getPrice());
                 TextView tvPrice = helper.getView(R.id.tv_goods_price);
                 helper.setImageRoundTwoUrl(R.id.iv_goods_pic, shopCartGoodsBean.getImage());
                 updateTextColor(tvPrice, 0, 0);
@@ -93,10 +100,20 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
                 smoothCheckBox.setOnCheckedChangeListener(new SmoothCheckBox.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
-//                        if (isChecked)
-//                            mCheckItem.append(position);
+                        if (isChecked && mCheckItem.get(shopCartGoodsBean.getGoods_id()) == null) {
+                            BigDecimal oneBig = new BigDecimal(Float.parseFloat(shopCartGoodsBean.getPrice()));
+                            BigDecimal twoBig = new BigDecimal(shopCartGoodsBean.getCount());
+                            BigDecimal multiply = oneBig.multiply(twoBig);
+                            mCheckItem.append(shopCartGoodsBean.getGoods_id(), String.valueOf(multiply));
+                        } else if (!isChecked && mCheckItem.get(shopCartGoodsBean.getGoods_id()) != null) {
+                            mCheckItem.remove(shopCartGoodsBean.getGoods_id());
+                        }
+                        showPriceTotle();
                     }
                 });
+                smoothCheckBox.setChecked(mCheckItem.get(shopCartGoodsBean.getGoods_id()) != null);
+                helper.setText(R.id.tv_goods_num, "x " + shopCartGoodsBean.getCount());
+
             }
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);
@@ -111,16 +128,29 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     }
 
 
-    @OnClick({R.id.rel_back, R.id.tv_confirm, R.id.sCheckBox})
+    @OnClick({R.id.rel_back, R.id.tv_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
                 finish();
                 break;
             case R.id.tv_confirm:
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < mCheckItem.size(); i++) {
+//                    int i1 = mCheckItem.keyAt(0);
+                    if (i != mCheckItem.size() - 1) {
+                        stringBuilder.append(mCheckItem.keyAt(0) + ",");
+                    } else
+                        stringBuilder.append(mCheckItem.keyAt(0));
+                }
+                String s = stringBuilder.toString();
+                if (TextUtils.isEmpty(s)) {
+                    showShortToast("请选择结算的商品");
+                    return;
+                }
+                ConfirmOrderActivity.gotoConfirmOrderActivity(this, s, "", AppConstant.twoMessage);
                 break;
-            case R.id.sCheckBox:
-                break;
+
 
         }
     }
@@ -128,7 +158,36 @@ public class ShopCartActivity extends BaseActivity<ShopCartPresenter, ShopCartMo
     @Override
     public void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
         if (isChecked) {
+            List<ShopCartGoodsBean.DataBean.CartBean> dataList = mAdapter.getDataList();
+            for (int i = 0; i < dataList.size(); i++) {
+                if (mCheckItem.get(dataList.get(i).getGoods_id()) == null) {
+                    BigDecimal oneBig = new BigDecimal(Float.parseFloat(dataList.get(i).getPrice()));
+                    BigDecimal twoBig = new BigDecimal(dataList.get(i).getCount());
+                    BigDecimal multiply = oneBig.multiply(twoBig);
+
+                    mCheckItem.append(dataList.get(i).getGoods_id(), String.valueOf(multiply));
+                }
+            }
+            mAdapter.notifyDataSetChanged();
+        } else {
+            mCheckItem.clear();
+            mAdapter.notifyDataSetChanged();
         }
+        showPriceTotle();
+    }
+
+    // 得到合适的金额  tv_price_num
+    private void showPriceTotle() {
+        Float mTotlePrice = Float.valueOf(0);
+        for (int i = 0; i < mCheckItem.size(); i++) {
+            String s = mCheckItem.valueAt(i);
+            if (!TextUtils.isEmpty(s))
+                mTotlePrice += Float.parseFloat(s);
+        }
+        if (mTotlePrice != null)
+            tvPriceNum.setText("￥" + mTotlePrice);
+
+
     }
 
     @Override

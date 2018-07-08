@@ -29,7 +29,7 @@ public interface SelectChargeContract {
     }
 
     interface Model extends BaseModel {
-        Observable<OrderIdBean> getOrderIdBeanData(Float Num, String type, String remark);
+        Observable<OrderIdBean> getOrderIdBeanData(Double Num, String type, String remark);
 
         Observable<TellBackBean> getTellbackData(String orderId);
 
@@ -39,7 +39,7 @@ public interface SelectChargeContract {
     }
 
     abstract class Presenter extends BasePresenter<View, Model> {
-        public abstract void getOrderIdBeanRequest(Float Num, String type, String remark);
+        public abstract void getOrderIdBeanRequest(Double Num, String type, String remark);
 
         public abstract void getTellBackDateRequest(String orderId);
 

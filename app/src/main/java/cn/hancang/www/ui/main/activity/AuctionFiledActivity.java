@@ -33,12 +33,15 @@ import cn.hancang.www.ui.main.fragment.HomePageFragment;
 import cn.hancang.www.ui.main.model.AuctionFiledModel;
 import cn.hancang.www.ui.main.presenter.AuctionFiledPresenter;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
+import cn.hancang.www.utils.conmonUtil.PublicKetUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
 
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -129,9 +132,10 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
     //    private String[] mTitles = {"参拍指南", "参拍提醒", "联系客服"};
     private String[] mTitles = {"参拍提醒", "联系客服"};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private int[] mIconUnselectIds = {R.mipmap.aution_guide_unselect, R.mipmap.aution_remind, R.mipmap.auction_contact};
+    //    aution_guide_unselect
+    private int[] mIconUnselectIds = {R.mipmap.aution_remind, R.mipmap.auction_contact};
     //    private int[] mIconSelectIds = {R.mipmap.aution_guide, R.mipmap.aution_remind_select, R.mipmap.contact_peo};
-    private int[] mIconSelectIds = {R.mipmap.aution_guide_unselect, R.mipmap.aution_remind_select, R.mipmap.auction_contact};
+    private int[] mIconSelectIds = {R.mipmap.aution_remind_select, R.mipmap.auction_contact};
     private ImageView iv_com_icon;
     private TextView tv_com_name;
     private ImageView iv_add_focus;
@@ -177,7 +181,7 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
                 helper.setText(R.id.tv_goods_price_foot, auctionItemListBean.getBid_leader());
                 helper.setText(R.id.tv_goods_desc_foot, "领先者");
 
-                helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
+                helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price() + "");
                 helper.setText(R.id.tv_goods_desc, "当前价");
 
                 helper.getConvertView().setOnClickListener(new View.OnClickListener() {
@@ -189,6 +193,36 @@ public class AuctionFiledActivity extends BaseActivity<AuctionFiledPresenter, Au
                             SynchAuctionItemActivity.gotoSynchAuctionItem((BaseActivity) mContext, auctionItemListBean.getId());
                     }
                 });
+                String auction_end_time = auctionItemListBean.getAuction_end_time();
+                String auction_start_time = auctionItemListBean.getAuction_start_time();
+                try {
+                    Date startTime = PublicKetUtils.df.get().parse(auction_end_time);
+                    Date endTime = PublicKetUtils.df.get().parse(auction_start_time);
+                    Date currentTime = new Date();
+
+                    //结束拍卖了
+                    if (currentTime.getTime() > endTime.getTime()) {
+                        if ("暂无".equals(auctionItemListBean.getBid_leader())) {
+                            helper.setText(R.id.tv_goods_price_foot, "");
+                            helper.setText(R.id.tv_goods_desc_foot, "未成交");
+                        }
+                       /* else {
+//                            helper.setText(R.id.tv_goods_price, auctionItemListBean.getCurrent_price());
+                            helper.setText(R.id.tv_goods_desc, "当前价");
+                        }*/
+                        if (auctionItemListBean.isBe_sold()){
+                            helper.setText(R.id.tv_goods_desc, "落槌价");
+                        }
+
+                    } else if (currentTime.getTime() < startTime.getTime()) {
+                        // 预展中
+                        helper.setText(R.id.tv_goods_desc, "起拍价");
+                    }
+
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         };
         mLadapter = new LRecyclerViewAdapter(mAdapter);

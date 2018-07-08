@@ -33,6 +33,9 @@
         android:layout_marginLeft="19dp"
         android:layout_marginStart="19dp"
         android:layout_marginTop="@dimen/y5"
+        android:maxEms="8"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:layout_toEndOf="@+id/iv_goods_pic"
         android:layout_toRightOf="@+id/iv_goods_pic"
         android:text="TextView"
@@ -61,7 +64,8 @@
         android:layout_marginRight="21dp"
         android:src="@mipmap/goods_cart_delete" />
 
-    <cn.hancang.www.widget.AmountView
+ <!--   <cn.hancang.www.widget.AmountView
+        android:id="@+id/amount_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/tv_goods_price"
@@ -70,7 +74,16 @@
         AmountView:btnTextSize="@dimen/x10"
         AmountView:btnWidth="@dimen/x50"
         AmountView:tvTextSize="@dimen/x10"
-        AmountView:tvWidth="@dimen/x50" />
+        AmountView:tvWidth="@dimen/x50" />-->
+        <TextView
+            android:id="@+id/tv_goods_num"
+            android:layout_alignBottom="@id/tv_goods_price"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x30"
+            android:textColor="@color/font_1"
+            android:text="x 2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     <ImageView
         android:layout_width="match_parent"

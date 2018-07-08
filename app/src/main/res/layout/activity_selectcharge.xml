@@ -83,7 +83,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:visibility="gone"
+
             android:id="@+id/rel_ali_pay"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
@@ -151,6 +151,7 @@
             android:textSize="@dimen/x35" />
 
         <RelativeLayout
+            android:visibility="invisible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_confirm">

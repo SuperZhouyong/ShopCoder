@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+    <!--store_auitem_bg-->
+    <RelativeLayout
+        android:background="@mipmap/store_auitem_bg"
+        android:id="@+id/mRecy_rel_parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y941">
+        <TextView
+
+           android:gravity="center_horizontal"
+            android:id="@+id/yv_all_recy_head_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:paddingBottom="@dimen/y19"
+            android:paddingTop="@dimen/y30"
+            android:text="热卖品"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x34" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/yv_all_recy_head_title"
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_all_goods"
+            android:background="@drawable/shape_focus_add"
+            android:layout_marginTop="@dimen/y20"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/mRecyclerView"
+            android:textColor="@color/white"
+            android:text="查看全部 >"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

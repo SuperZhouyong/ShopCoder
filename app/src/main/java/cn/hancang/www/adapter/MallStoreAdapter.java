@@ -19,7 +19,8 @@ import cn.hancang.www.ui.mall.activity.TaoBaoStoreInfoActivity;
 
 public class MallStoreAdapter extends CommonRecycleViewAdapter<AllMallDateBean.DataBean.StoreBean> {
     public MallStoreAdapter(Context context) {
-        super(context, R.layout.item_homepage_headview_two_item);
+//        item_homepage_headview_two_item
+        super(context, R.layout.item_mall_store);
     }
 
     @Override

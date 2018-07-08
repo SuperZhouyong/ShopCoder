@@ -48,7 +48,8 @@ public class TaoBaoAdapter extends CommonRecycleViewAdapter<TaobaoStoreInfoBean.
     @Override
     public void convert(ViewHolderHelper helper, final TaobaoStoreInfoBean.DataBean.AuctionFieldListBean recommendFieldBean, final int position) {
 //        helper.setVisible(R.id.tv_filed_title, position == 0);
-        if ("true".equals(recommendFieldBean.getIs_favorite()) || mList.contains(recommendFieldBean.getId())) {
+//        "true".equals(recommendFieldBean.getIs_favorite())
+        if (recommendFieldBean.isIs_favorite() || mList.contains(recommendFieldBean.getId())) {
             helper.setVisible(R.id.iv_focus, false);
             helper.setText(R.id.tv_focus, "已关注");
         } else {

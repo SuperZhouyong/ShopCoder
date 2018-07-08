@@ -47,6 +47,8 @@ public class StorePassWordActivity extends BaseActivity<StorePassWordPresenter, 
     ClearEditText edTwo;
     @BindView(R.id.tv_confirm)
     TextView tvConfirm;
+    private boolean isCanUpdate = false;
+    private String member_name;
 
     @Override
     public int getLayoutId() {
@@ -89,7 +91,7 @@ public class StorePassWordActivity extends BaseActivity<StorePassWordPresenter, 
                     showShortToast("两次密码输入不一致");
                     return;
                 }
-                mPresenter.getStorePwRequest(edName, onePw);
+                mPresenter.getStorePwRequest(isCanUpdate ? edName : member_name, onePw);
                 break;
         }
     }
@@ -120,7 +122,11 @@ public class StorePassWordActivity extends BaseActivity<StorePassWordPresenter, 
             showShortToast(storeLoginNameBean.getMessage());
             return;
         }
-        edThree.setText(storeLoginNameBean.getData().getMember_name());
+        // 空的代表了可以修改
+        isCanUpdate = TextUtils.isEmpty(storeLoginNameBean.getData().getMember_name());
+        member_name = storeLoginNameBean.getData().getMember_name();
+        edThree.setEnabled(isCanUpdate);
+        edThree.setText(isCanUpdate ? "" : member_name);
     }
 
     //todo 暂时还未完成

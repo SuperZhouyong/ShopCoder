@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.listener.OnTabSelectListener;
+
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -48,7 +49,8 @@ public class OrderListActivity extends BaseActivity implements OnTabSelectListen
     ViewPager viewpager;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    private String[] mTitles = {"全部", "待付款", "待发货", "待收货"};
+    //    private String[] mTitles = {"全部", "待付款", "待发货", "待收货"};
+    private String[] mTitles = {"全部", "未付款", "已付款", "已发货", "已收货"};
     private BasePageStateAdapter basePageStateAdapter;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
@@ -63,10 +65,9 @@ public class OrderListActivity extends BaseActivity implements OnTabSelectListen
     }
 
     /**
-     *
      * @param activity
-     * @param status 订单状态：0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
-     * @param type  0=商城订单；1=拍卖订单
+     * @param status   订单状态：0:已取消 10:未付款 20:已付款 30:已发货 40:已收货
+     * @param type     0=商城订单；1=拍卖订单
      */
     public static void GotoOrderListActivity(BaseActivity activity, Integer status, Integer type) {
         Bundle bundle = new Bundle();

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/black">
+
+    <cn.hancang.www.widget.ViewPagerFixed
+        android:id="@+id/Vp_Fix"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <!--   <com.intention.sqtwin.widget.PullBackLayout
+           android:id="@+id/pull_back_layout"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_centerInParent="true"
+           android:layout_gravity="center">
+
+           <uk.co.senab.photoview.PhotoView
+               android:id="@+id/photo_touch_iv"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_centerInParent="true"
+               android:layout_gravity="center"
+               android:transitionName="@string/transition_photos" />
+           &lt;!&ndash;使用PhotoView，共享动画不平滑&ndash;&gt;
+       </com.intention.sqtwin.widget.PullBackLayout>-->
+
+    <!--   <android.support.v7.widget.Toolbar
+           android:id="@+id/toolbar"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:alpha="0"
+           android:background="@drawable/bg_toolbar_shade"
+           android:fitsSystemWindows="true"
+           android:theme="@style/AppTheme_AppBarPic"
+           app:navigationIcon="@mipmap/return_app"
+           app:title="图片"
+           tools:alpha="1.0" />-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x96"
+        android:id="@+id/pic_title"
+        android:gravity="center_vertical"
+        tools:alpha="1.0"
+        android:background="@drawable/bg_toolbar_shade"
+        android:orientation="horizontal">
+        <!--返回键、基本信息-->
+        <RelativeLayout
+            android:paddingRight="@dimen/x30"
+            android:id="@+id/rel_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/y40"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x30"
+
+                android:scaleType="fitCenter"
+                android:src="@mipmap/return_app" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_toRightOf="@id/rel_back"
+            android:text="照片"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/x36"
+            android:visibility="visible" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+

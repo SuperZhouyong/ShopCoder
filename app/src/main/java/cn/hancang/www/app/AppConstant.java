@@ -6,7 +6,7 @@ package cn.hancang.www.app;
  * on 2016.09.10:44
  */
 public class AppConstant {
-    public static final  String appWxUrl = "http://admin.hancang.cn/Home/seller";
+    public static final String appWxUrl = "http://admin.hancang.cn/Home/seller";
     public static final String appUrl = "http://api.hancang.cn/api/";
 //    public static final String appUrl = "http://ta.beikunit.com/api/";
 //    public
@@ -106,7 +106,7 @@ public class AppConstant {
     public static String artDetailId = "artDetailId";
 
     // 进入店铺需要的Id
-    public static String StoreId;
+    public static final String StoreId = "StoreId";
     //  分类名字
     public static String CategoryTitle = "CategoryTitle";
     // 商品 列表或者 拍品列表
@@ -132,4 +132,12 @@ public class AppConstant {
     // 订单界面的Id
     public static final String MenMberId = "MenMberId";
     public static final String EnterClear = "EnterClear";
+    public static String PHOTO_DETAIL = "PHOTO_DETAIL";
+    public static String VpCutent = "VpCutent";
+    public static final String GoodsId = "GoodsId";
+
+    public static final String GoodsNum = "GoodsNum";
+    public static final String storeName = "storeName";
+    public static final String ConfirmTYpe = "ConfirmTYpe";
+    public static final String DataBean = "DataBean";
 }

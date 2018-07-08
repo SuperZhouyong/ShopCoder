@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/y25"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_headtwo"
+        android:layout_width="@dimen/x330"
+        android:layout_height="@dimen/y330"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:textColor="@color/font_2"
+        android:background="@drawable/focus_art"
+        android:id="@+id/tv_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_headtwo"
+        android:layout_marginTop="@dimen/y25"
+        android:text="店铺" />
+
+    <TextView
+        android:id="@+id/tv_headtwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_headtwo"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginTop="@dimen/y25"
+        android:layout_toRightOf="@id/tv_store"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="青花器摆件一对"
+        android:textColor="@color/font_1"
+        android:textSize="@dimen/x28" />
+</RelativeLayout>

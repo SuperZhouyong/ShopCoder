@@ -1,5 +1,7 @@
 package cn.hancang.www.ui.mall.model;
 
+import cn.hancang.www.bean.GoodsBuyNewBean;
+
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
@@ -26,6 +28,11 @@ public class GoodsPageModel implements GoodsPageContract.Model {
     @Override
     public Observable<AddCartInfoBean> getAddCartInfoBean(Integer goodId, Integer count) {
         return Api.getDefault(HostType.Jsonpart).getAddGoodCart(goodId, count).compose(RxSchedulers.<AddCartInfoBean>io_main());
+    }
+
+    @Override
+    public Observable<GoodsBuyNewBean> getGoodsBuyNew(String goods_id, String count) {
+        return Api.getDefault(HostType.Jsonpart).getGoodsBuyNew(goods_id,count).compose(RxSchedulers.<GoodsBuyNewBean>io_main());
     }
 
 

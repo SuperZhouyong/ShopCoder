@@ -336,6 +336,33 @@ public class AuctionFiledAllBean {
             private String bid_leader;
             private int fans_count;
             private int bid_count;
+            private String auction_start_time;
+            private String auction_end_time ;
+            private boolean be_sold ;
+
+            public boolean isBe_sold() {
+                return be_sold;
+            }
+
+            public void setBe_sold(boolean be_sold) {
+                this.be_sold = be_sold;
+            }
+
+            public String getAuction_start_time() {
+                return auction_start_time;
+            }
+
+            public void setAuction_start_time(String auction_start_time) {
+                this.auction_start_time = auction_start_time;
+            }
+
+            public String getAuction_end_time() {
+                return auction_end_time;
+            }
+
+            public void setAuction_end_time(String auction_end_time) {
+                this.auction_end_time = auction_end_time;
+            }
 
             public int getId() {
                 return id;

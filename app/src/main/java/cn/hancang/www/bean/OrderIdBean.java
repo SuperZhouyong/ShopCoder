@@ -144,7 +144,7 @@ public class OrderIdBean {
          * aliapy_account : xingzheng@hancang.cn*/
 
 
-        private Object openid;
+        private String openid;
         private String alipay_app_orderString;
         private String pay_sn;
         private String notify_url;
@@ -161,11 +161,11 @@ public class OrderIdBean {
             this.wechat_app_orderString = wechat_app_orderString;
         }
 
-        public Object getOpenid() {
+        public String getOpenid() {
             return openid;
         }
 
-        public void setOpenid(Object openid) {
+        public void setOpenid(String openid) {
             this.openid = openid;
         }
 

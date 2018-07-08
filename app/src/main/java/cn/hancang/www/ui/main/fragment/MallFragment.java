@@ -103,7 +103,7 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         // 推荐店铺标题
         View homeStoreTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewByIdStore = (TextView) homeStoreTitle.findViewById(R.id.yv_all_recy_head_title);
-        viewByIdStore.setText("推荐店铺");
+        viewByIdStore.setText("优选店铺");
         setMarGinTop(viewByIdStore, (int) getResources().getDimension(R.dimen.x22), 0);
 
         View HeadStoreView = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
@@ -117,7 +117,7 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         // 推荐作品标题
         View homeHeadTitleOnew = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById1 = (TextView) homeHeadTitleOnew.findViewById(R.id.yv_all_recy_head_title);
-        viewById1.setText("推荐作品");
+        viewById1.setText("人气作品");
         setMarGinTop(viewById1, (int) getResources().getDimension(R.dimen.x22), 0);
         // 推荐作品的列表
         View HeadViewTwo = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_two, null);
@@ -130,12 +130,16 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         // 推荐专场
         View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
-        viewById.setText("推荐专场");
+        viewById.setText("优选专场");
         setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22), 0);
 
+        mLadapter.getHeaderViews().clear();
+        mLadapter.getmHeaderTypes().clear();
+
+
         mLadapter.addHeaderView(headViewPager);
-//        mLadapter.addHeaderView(homeStoreTitle);
-//        mLadapter.addHeaderView(HeadStoreView);
+        mLadapter.addHeaderView(homeStoreTitle);
+        mLadapter.addHeaderView(HeadStoreView);
         mLadapter.addHeaderView(homeHeadTitleOnew);
         mLadapter.addHeaderView(HeadViewTwo);
         mLadapter.addHeaderView(homeHeadTitle);

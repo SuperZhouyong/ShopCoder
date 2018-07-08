@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/x330"
+    android:layout_height="@dimen/y420"
     android:layout_marginBottom="@dimen/y25"
     android:gravity="center_horizontal"
     android:orientation="vertical">
@@ -10,7 +10,7 @@
         android:id="@+id/iv_headtwo"
         android:layout_width="@dimen/x330"
         android:layout_height="@dimen/y330"
-        android:scaleType="fitXY" />
+        />
 
     <TextView
         android:id="@+id/tv_headtwo"

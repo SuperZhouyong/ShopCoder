@@ -109,7 +109,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 //        View headViewOne = getActivity().getLayoutInflater().inflate(R.layout.item_homepage_headview_one, null);
         View homeHeadTitleOnew = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById1 = (TextView) homeHeadTitleOnew.findViewById(R.id.yv_all_recy_head_title);
-        viewById1.setText("推荐作品");
+        viewById1.setText("优选甄品");
         setMarGinTop(viewById1, (int) getResources().getDimension(R.dimen.x22), 0);
 
 
@@ -139,7 +139,7 @@ public class HomePageFragment extends BaseFragment<MainPresenter, MainModel> imp
 
         View homeHeadTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewById = (TextView) homeHeadTitle.findViewById(R.id.yv_all_recy_head_title);
-        viewById.setText("推荐专场");
+        viewById.setText("优选专场");
         setMarGinTop(viewById, (int) getResources().getDimension(R.dimen.x22), 0);
 
         mLadapter.addHeaderView(headViewPager);

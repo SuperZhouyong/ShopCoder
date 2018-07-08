@@ -17,7 +17,7 @@ import cn.hancang.www.ui.myinfo.contract.SelectChargeContract;
 
 public class SelectChargePresenter extends SelectChargeContract.Presenter {
     @Override
-    public void getOrderIdBeanRequest(Float Num, String type, String remark) {
+    public void getOrderIdBeanRequest(Double Num, String type, String remark) {
         mRxManage.add(mModel.getOrderIdBeanData(Num, type, remark).subscribe(new RxSubscriber<OrderIdBean>(mContext) {
             @Override
             protected void _onNext(OrderIdBean orderIdBean) {

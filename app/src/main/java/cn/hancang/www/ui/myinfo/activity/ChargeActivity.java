@@ -94,7 +94,7 @@ public class ChargeActivity extends BaseActivity {
                 if (AppConstant.oneMessage.equals(getIntent().getExtras().getString(AppConstant.ChargeType))) {
 
 
-                    SelectChargeActivity.gotoSelectChargeActivity(this, fMoneyNum);
+                    SelectChargeActivity.gotoSelectChargeActivity(this, (double) fMoneyNum);
 
                 } else {
                     mRxManager.add(Api.getDefault(HostType.Jsonpart)

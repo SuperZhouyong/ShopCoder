@@ -12,10 +12,11 @@ import java.util.List;
 
 public class TaobaoStoreInfoBean {
 
+
     /**
      * is_success : true
-     * message : 操作成功
-     * data : {"store_info":{"store_id":1,"store_name":"拍卖拍115","store_logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_71534_2018042314223191306.png","store_description":"拍卖545请问请问","store_banner":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_31296_2018042009394293753.png"},"item_list":[{"id":169,"name":"a10565132 现代 新疆和田青玉细料一百单八子精圆念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050214494676367.jpg","start_price":null,"current_price":"1006.00"},{"id":171,"name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg","start_price":"2000.00","current_price":"2000.00"},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","start_price":"10000.00","current_price":"13000.00"},{"id":176,"name":"a10540289 建国初 和田白玉志在千里手把件","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215544550180.jpg","start_price":"12000.00","current_price":"12000.00"}],"auction_field_list":[{"id":27,"name":"精选古典家具专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg","organization_id":12,"is_favorite":"true","item_count":7,"bid_count":21,"fans_count":10,"organization":{"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"true"},"start_time":"2018-05-04 05:05:00","end_time":"2018-09-10 19:55:00"}]}
+     * message : 未登录
+     * data : {"store_info":{"store_id":1,"store_name":"瀚藏-文物","store_logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_71534_2018042314223191306.png","store_description":"艺术品拍卖","store_banner":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018061917323857048.png","fans_count":2,"is_fav":false},"auction_field_list":[{"id":104,"name":"天禄琳琅收藏专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214015360806.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":4,"is_favorite":false,"item_count":18,"bid_count":0,"fans_count":4,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-22 20:00:00","end_time":"2018-06-24 15:00:00"},{"id":105,"name":"聚宝斋收藏绘画作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214021193063.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":18,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-23 20:00:00","end_time":"2018-06-25 15:00:00"},{"id":106,"name":"正山堂收藏绘画作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062215263657380.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":17,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-24 20:00:00","end_time":"2018-06-26 15:00:00"},{"id":107,"name":"观堂绘画作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214032182631.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":22,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-25 20:00:00","end_time":"2018-06-27 15:00:00"},{"id":108,"name":"洗云轩藏品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062215500955395.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":17,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-26 20:00:00","end_time":"2018-06-28 15:00:00"},{"id":109,"name":"半溪草堂作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062216033740275.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":19,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-27 20:00:00","end_time":"2018-06-29 15:00:00"}],"store_goods":[{"id":200,"name":"测试商品22","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050415164838749.jpg","start_price":"313.00","current_price":"313.00","goods_type":1},{"id":201,"name":"第2个","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052309553957520.png","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":202,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":203,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":204,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":205,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1}]}
      */
 
     private boolean is_success;
@@ -48,14 +49,14 @@ public class TaobaoStoreInfoBean {
 
     public static class DataBean {
         /**
-         * store_info : {"store_id":1,"store_name":"拍卖拍115","store_logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_71534_2018042314223191306.png","store_description":"拍卖545请问请问","store_banner":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_31296_2018042009394293753.png"}
-         * item_list : [{"id":169,"name":"a10565132 现代 新疆和田青玉细料一百单八子精圆念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050214494676367.jpg","start_price":null,"current_price":"1006.00"},{"id":171,"name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg","start_price":"2000.00","current_price":"2000.00"},{"id":172,"name":"a10540126 现代 苏工摘色精雕和田双色籽料婴戏笔架","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215451930107.jpg","start_price":"10000.00","current_price":"13000.00"},{"id":176,"name":"a10540289 建国初 和田白玉志在千里手把件","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215544550180.jpg","start_price":"12000.00","current_price":"12000.00"}]
-         * auction_field_list : [{"id":27,"name":"精选古典家具专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg","organization_id":12,"is_favorite":"true","item_count":7,"bid_count":21,"fans_count":10,"organization":{"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"true"},"start_time":"2018-05-04 05:05:00","end_time":"2018-09-10 19:55:00"}]
+         * store_info : {"store_id":1,"store_name":"瀚藏-文物","store_logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_71534_2018042314223191306.png","store_description":"艺术品拍卖","store_banner":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018061917323857048.png","fans_count":2,"is_fav":false}
+         * auction_field_list : [{"id":104,"name":"天禄琳琅收藏专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214015360806.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":4,"is_favorite":false,"item_count":18,"bid_count":0,"fans_count":4,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-22 20:00:00","end_time":"2018-06-24 15:00:00"},{"id":105,"name":"聚宝斋收藏绘画作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214021193063.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":18,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-23 20:00:00","end_time":"2018-06-25 15:00:00"},{"id":106,"name":"正山堂收藏绘画作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062215263657380.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":17,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-24 20:00:00","end_time":"2018-06-26 15:00:00"},{"id":107,"name":"观堂绘画作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214032182631.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":22,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-25 20:00:00","end_time":"2018-06-27 15:00:00"},{"id":108,"name":"洗云轩藏品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062215500955395.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":17,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-26 20:00:00","end_time":"2018-06-28 15:00:00"},{"id":109,"name":"半溪草堂作品专场","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062216033740275.jpg?x-oss-process=image/auto-orient,1","organization_id":14,"view_count":0,"is_favorite":false,"item_count":19,"bid_count":0,"fans_count":0,"organization":{"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false},"start_time":"2018-06-27 20:00:00","end_time":"2018-06-29 15:00:00"}]
+         * store_goods : [{"id":200,"name":"测试商品22","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050415164838749.jpg","start_price":"313.00","current_price":"313.00","goods_type":1},{"id":201,"name":"第2个","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018052309553957520.png","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":202,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":203,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":204,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1},{"id":205,"name":"第一个","image":"","start_price":"3500.00","current_price":"3500.00","goods_type":1}]
          */
 
         private StoreInfoBean store_info;
-        private List<ItemListBean> item_list;
         private List<AuctionFieldListBean> auction_field_list;
+        private List<StoreGoodsBean> store_goods;
 
         public StoreInfoBean getStore_info() {
             return store_info;
@@ -63,14 +64,6 @@ public class TaobaoStoreInfoBean {
 
         public void setStore_info(StoreInfoBean store_info) {
             this.store_info = store_info;
-        }
-
-        public List<ItemListBean> getItem_list() {
-            return item_list;
-        }
-
-        public void setItem_list(List<ItemListBean> item_list) {
-            this.item_list = item_list;
         }
 
         public List<AuctionFieldListBean> getAuction_field_list() {
@@ -81,13 +74,23 @@ public class TaobaoStoreInfoBean {
             this.auction_field_list = auction_field_list;
         }
 
+        public List<StoreGoodsBean> getStore_goods() {
+            return store_goods;
+        }
+
+        public void setStore_goods(List<StoreGoodsBean> store_goods) {
+            this.store_goods = store_goods;
+        }
+
         public static class StoreInfoBean {
             /**
              * store_id : 1
-             * store_name : 拍卖拍115
+             * store_name : 瀚藏-文物
              * store_logo : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_71534_2018042314223191306.png
-             * store_description : 拍卖545请问请问
-             * store_banner : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_31296_2018042009394293753.png
+             * store_description : 艺术品拍卖
+             * store_banner : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018061917323857048.png
+             * fans_count : 2
+             * is_fav : false
              */
 
             private int store_id;
@@ -95,6 +98,8 @@ public class TaobaoStoreInfoBean {
             private String store_logo;
             private String store_description;
             private String store_banner;
+            private int fans_count;
+            private boolean is_fav;
 
             public int getStore_id() {
                 return store_id;
@@ -135,84 +140,46 @@ public class TaobaoStoreInfoBean {
             public void setStore_banner(String store_banner) {
                 this.store_banner = store_banner;
             }
-        }
 
-        public static class ItemListBean {
-            /**
-             * id : 169
-             * name : a10565132 现代 新疆和田青玉细料一百单八子精圆念珠串
-             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050214494676367.jpg
-             * start_price : null
-             * current_price : 1006.00
-             */
-
-            private int id;
-            private String name;
-            private String image;
-            private Object start_price;
-            private String current_price;
-
-            public int getId() {
-                return id;
+            public int getFans_count() {
+                return fans_count;
             }
 
-            public void setId(int id) {
-                this.id = id;
+            public void setFans_count(int fans_count) {
+                this.fans_count = fans_count;
             }
 
-            public String getName() {
-                return name;
+            public boolean isIs_fav() {
+                return is_fav;
             }
 
-            public void setName(String name) {
-                this.name = name;
-            }
-
-            public String getImage() {
-                return image;
-            }
-
-            public void setImage(String image) {
-                this.image = image;
-            }
-
-            public Object getStart_price() {
-                return start_price;
-            }
-
-            public void setStart_price(Object start_price) {
-                this.start_price = start_price;
-            }
-
-            public String getCurrent_price() {
-                return current_price;
-            }
-
-            public void setCurrent_price(String current_price) {
-                this.current_price = current_price;
+            public void setIs_fav(boolean is_fav) {
+                this.is_fav = is_fav;
             }
         }
 
         public static class AuctionFieldListBean {
             /**
-             * id : 27
-             * name : 精选古典家具专场
-             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050213450998552.jpg
-             * organization_id : 12
-             * is_favorite : true
-             * item_count : 7
-             * bid_count : 21
-             * fans_count : 10
-             * organization : {"organization_id":12,"name":"荣宝斋","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png","is_favorite":"true"}
-             * start_time : 2018-05-04 05:05:00
-             * end_time : 2018-09-10 19:55:00
+             * id : 104
+             * name : 天禄琳琅收藏专场
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018062214015360806.jpg?x-oss-process=image/auto-orient,1
+             * organization_id : 14
+             * view_count : 4
+             * is_favorite : false
+             * item_count : 18
+             * bid_count : 0
+             * fans_count : 4
+             * organization : {"organization_id":14,"name":"瀚藏文物","logo":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg","image":"http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png","is_favorite":false}
+             * start_time : 2018-06-22 20:00:00
+             * end_time : 2018-06-24 15:00:00
              */
 
             private int id;
             private String name;
             private String image;
             private int organization_id;
-            private String is_favorite;
+            private int view_count;
+            private boolean is_favorite;
             private int item_count;
             private int bid_count;
             private int fans_count;
@@ -252,11 +219,19 @@ public class TaobaoStoreInfoBean {
                 this.organization_id = organization_id;
             }
 
-            public String getIs_favorite() {
+            public int getView_count() {
+                return view_count;
+            }
+
+            public void setView_count(int view_count) {
+                this.view_count = view_count;
+            }
+
+            public boolean isIs_favorite() {
                 return is_favorite;
             }
 
-            public void setIs_favorite(String is_favorite) {
+            public void setIs_favorite(boolean is_favorite) {
                 this.is_favorite = is_favorite;
             }
 
@@ -310,16 +285,18 @@ public class TaobaoStoreInfoBean {
 
             public static class OrganizationBean {
                 /**
-                 * organization_id : 12
-                 * name : 荣宝斋
-                 * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_94501_2018042608290313825.png
-                 * is_favorite : true
+                 * organization_id : 14
+                 * name : 瀚藏文物
+                 * logo : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_38747_2018061218024664590.jpg
+                 * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/auction/oss_42886_2018061414540899263.png
+                 * is_favorite : false
                  */
 
                 private int organization_id;
                 private String name;
+                private String logo;
                 private String image;
-                private String is_favorite;
+                private boolean is_favorite;
 
                 public int getOrganization_id() {
                     return organization_id;
@@ -337,6 +314,14 @@ public class TaobaoStoreInfoBean {
                     this.name = name;
                 }
 
+                public String getLogo() {
+                    return logo;
+                }
+
+                public void setLogo(String logo) {
+                    this.logo = logo;
+                }
+
                 public String getImage() {
                     return image;
                 }
@@ -345,13 +330,79 @@ public class TaobaoStoreInfoBean {
                     this.image = image;
                 }
 
-                public String getIs_favorite() {
+                public boolean isIs_favorite() {
                     return is_favorite;
                 }
 
-                public void setIs_favorite(String is_favorite) {
+                public void setIs_favorite(boolean is_favorite) {
                     this.is_favorite = is_favorite;
                 }
+            }
+        }
+
+        public static class StoreGoodsBean {
+            /**
+             * id : 200
+             * name : 测试商品22
+             * image : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050415164838749.jpg
+             * start_price : 313.00
+             * current_price : 313.00
+             * goods_type : 1
+             */
+
+            private int id;
+            private String name;
+            private String image;
+            private String start_price;
+            private String current_price;
+            private int goods_type;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public String getStart_price() {
+                return start_price;
+            }
+
+            public void setStart_price(String start_price) {
+                this.start_price = start_price;
+            }
+
+            public String getCurrent_price() {
+                return current_price;
+            }
+
+            public void setCurrent_price(String current_price) {
+                this.current_price = current_price;
+            }
+
+            public int getGoods_type() {
+                return goods_type;
+            }
+
+            public void setGoods_type(int goods_type) {
+                this.goods_type = goods_type;
             }
         }
     }

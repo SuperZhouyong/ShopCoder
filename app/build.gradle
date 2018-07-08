@@ -50,8 +50,8 @@ android {
         config {
             keyAlias 'hancang'
             keyPassword '123456'
-//            storeFile file('/Users/super/Desktop/MD文件/Sqtwin.jks')
-            storeFile file('C:/Users/Administrator/Desktop/hancang.jks')
+            storeFile file('/Users/super/Desktop/MD文件/hancang.jks')
+//            storeFile file('C:/Users/Administrator/Desktop/hancang.jks')
 
             storePassword '123456'
         }
@@ -268,6 +268,7 @@ dependencies {
     compile 'com.orhanobut:logger:2.1.1'
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.commit451:PhotoView:1.2.4'
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'

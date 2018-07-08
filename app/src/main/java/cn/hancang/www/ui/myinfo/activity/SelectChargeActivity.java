@@ -75,15 +75,15 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
     RelativeLayout relAliPay;
     @BindView(R.id.tv_confirm)
     TextView tvConfirm;
-    @BindView(R.id.cb_check)
-    CheckBox cbCheck;
+//    @BindView(R.id.cb_check)
+//    CheckBox cbCheck;
     @BindView(R.id.tv_agreement)
     TextView tvAgreement;
     @BindView(R.id.sCheckbox_wx)
     SmoothCheckBox smoothCheckBoxWx;
     @BindView(R.id.sCheckbox_ali)
     SmoothCheckBox smoothCheckBoxAli;
-    private Float moneyNum;
+    private Double moneyNum;
     private String AliAppId = "2018060160317416";
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
@@ -237,7 +237,7 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
 
     @Override
     public void initView() {
-        moneyNum = getIntent().getExtras().getFloat(AppConstant.Moneynum, -1);
+        moneyNum = getIntent().getExtras().getDouble(AppConstant.Moneynum, -1);
         tvMoney.setText("￥" + moneyNum);
         relSearch.setVisibility(View.GONE);
 
@@ -250,14 +250,14 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
         });
     }
 
-    public static void gotoSelectChargeActivity(Context context, Float moneyNum) {
+    public static void gotoSelectChargeActivity(Context context, Double moneyNum) {
         Bundle bundle = new Bundle();
-        bundle.putFloat(AppConstant.Moneynum, moneyNum);
+        bundle.putDouble(AppConstant.Moneynum, moneyNum);
         ((BaseActivity) context).startActivity(SelectChargeActivity.class, bundle);
     }
 
 
-    @OnClick({R.id.rel_back, R.id.tv_confirm, R.id.tv_agreement, R.id.sCheckbox_ali, R.id.sCheckbox_wx})
+    @OnClick({R.id.rel_back, R.id.tv_confirm, R.id.sCheckbox_ali, R.id.sCheckbox_wx})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
@@ -270,8 +270,8 @@ public class SelectChargeActivity extends BaseActivity<SelectChargePresenter, Se
                 }
                 mPresenter.getOrderIdBeanRequest(moneyNum, smoothCheckBoxWx.isChecked() ? "1" : "2", "我是支付");
                 break;
-            case R.id.tv_agreement:
-                break;
+//            case R.id.tv_agreement:
+//                break;
             // 支付宝
             case R.id.sCheckbox_ali:
                 smoothCheckBoxAli.setChecked(true, true);

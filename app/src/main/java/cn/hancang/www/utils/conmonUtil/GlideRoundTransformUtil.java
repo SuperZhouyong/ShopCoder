@@ -10,6 +10,7 @@ import android.graphics.RectF;
 
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils;
 
 /**
  * description:glide转换圆角图片
@@ -31,6 +32,7 @@ public class GlideRoundTransformUtil extends BitmapTransformation {
 
     @Override
     protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+//        TransformationUtils.centerCrop(pool,)
         return roundCrop(pool, toTransform);
     }
 

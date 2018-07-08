@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x22"
-            android:text="商品总计： 3333元"
+            android:text=""
             android:textSize="@dimen/x30" />
 
         <TextView

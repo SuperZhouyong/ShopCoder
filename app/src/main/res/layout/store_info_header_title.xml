@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/y96">
+
+    <RelativeLayout
+        android:id="@+id/rel_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingRight="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="@dimen/x22"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x30"
+
+            android:scaleType="fitCenter"
+            android:src="@mipmap/return_app" />
+    </RelativeLayout>
+    <ImageView
+        android:layout_marginRight="@dimen/x22"
+        android:layout_alignParentRight="true"
+        android:id="@+id/iv_love"
+        android:src="@mipmap/home_focus"
+        android:layout_marginLeft="@dimen/x22"
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/y40" />
+    <ImageView
+        android:layout_toLeftOf="@id/iv_love"
+        android:id="@+id/iv_readme"
+        android:src="@mipmap/remind_logo"
+
+        android:layout_centerVertical="true"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/y40" />
+</RelativeLayout>
