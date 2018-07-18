@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/x300"
-        android:ellipsize="end"
-        android:maxLines="1"
+
         android:text="青花器摆件一晚茶一对"
         android:textColor="@color/font_1"
         android:textSize="@dimen/x30" />

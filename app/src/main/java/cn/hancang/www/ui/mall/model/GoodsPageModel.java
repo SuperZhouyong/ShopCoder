@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.mall.model;
 
+import cn.hancang.www.bean.AddFavBean;
 import cn.hancang.www.bean.GoodsBuyNewBean;
 
 import cn.hancang.www.api.Api;
@@ -33,6 +34,12 @@ public class GoodsPageModel implements GoodsPageContract.Model {
     @Override
     public Observable<GoodsBuyNewBean> getGoodsBuyNew(String goods_id, String count) {
         return Api.getDefault(HostType.Jsonpart).getGoodsBuyNew(goods_id,count).compose(RxSchedulers.<GoodsBuyNewBean>io_main());
+    }
+
+    @Override
+    public Observable<AddFavBean> getAddFavStore(Integer fav_id, String fav_type) {
+        return Api.getDefault(HostType.Jsonpart).getAddFavbean(fav_id, fav_type).compose(RxSchedulers.<AddFavBean>io_main());
+
     }
 
 

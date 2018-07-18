@@ -215,7 +215,73 @@
                      app:bvIndicatorDrawableSelected="@drawable/home_indicta_select"
                      app:bvIsAuto="true"
                      app:bvIsLoop="true" />-->
+                <!--增加进入店铺 和 收藏店铺-->
+                <RelativeLayout
+                    android:id="@+id/rel_goto_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y107"
+                    android:background="@color/white">
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y2"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="@dimen/x22"
+                        android:layout_marginRight="@dimen/x22"
+                        android:background="@color/app_bottom_colour" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x30"
+
+                        android:text="进入店铺"
+                        android:textColor="@color/font_1"
+                        android:textSize="@dimen/x28" />
+
+                    <ImageView
+                        android:layout_width="@dimen/x40"
+                        android:layout_height="@dimen/y40"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/x30"
+                        android:src="@mipmap/list_right" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/y2"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/x22"
+                        android:layout_marginRight="@dimen/x22"
+                        android:background="@color/app_bottom_colour" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rel_store_focus"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y107"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv_add_focus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x30"
+                        android:text="收藏店铺"
+                        android:textColor="@color/font_1"
+                        android:textSize="@dimen/x28" />
+
+                    <ImageView
+                        android:layout_width="@dimen/x40"
+                        android:layout_height="@dimen/y40"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/x30"
+                        android:src="@mipmap/list_right" />
+                </RelativeLayout>
             </LinearLayout>
         </ScrollView>
 

@@ -13,6 +13,7 @@ import com.github.jdsjlzx.ItemDecoration.SpacesItemDecoration;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
 import cn.hancang.www.R;
 
 import cn.hancang.www.adapter.MallAdapter;
@@ -35,6 +36,7 @@ import cn.hancang.www.ui.myinfo.activity.MessageActicity;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
@@ -50,7 +52,7 @@ import rx.functions.Action1;
  * Author: ZhouYong
  */
 
-public class MallFragment extends BaseFragment<MallPresenter, MallModel> implements MallContract.View, OnRefreshListener, LoadingTip.onReloadListener, Action {
+public class MallFragment extends BaseFragment<MallPresenter, MallModel> implements MallContract.View, OnRefreshListener, LoadingTip.onReloadListener, Action, View.OnClickListener {
     @BindView(R.id.rel_search)
     RelativeLayout relSearch;
     @BindView(R.id.iv_love)
@@ -103,6 +105,8 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         // 推荐店铺标题
         View homeStoreTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewByIdStore = (TextView) homeStoreTitle.findViewById(R.id.yv_all_recy_head_title);
+        RelativeLayout viewByAllStore = (RelativeLayout) homeStoreTitle.findViewById(R.id.rel_acount);
+        viewByAllStore.setOnClickListener(this);
         viewByIdStore.setText("优选店铺");
         setMarGinTop(viewByIdStore, (int) getResources().getDimension(R.dimen.x22), 0);
 
@@ -220,7 +224,7 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
                 iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        GotoOthreVp(advBean.getLink_type(),advBean.getLink_value(),advBean.getAdv_title());
+                        GotoOthreVp(advBean.getLink_type(), advBean.getLink_value(), advBean.getAdv_title());
                     }
                 });
                 return iv;
@@ -292,5 +296,14 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
             startActivity(StoreFocusActivity.class);
         if (AppConstant.threeMessage.equals(tag))
             startActivity(MessageActicity.class);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.rel_acount:
+
+                break;
+        }
     }
 }

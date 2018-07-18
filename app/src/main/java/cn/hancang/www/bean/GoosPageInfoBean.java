@@ -16,7 +16,7 @@ public class GoosPageInfoBean {
     /**
      * is_success : true
      * message : 操作成功
-     * data : {"info":{"store_id":1,"goods_id":171,"goods_commonid":165,"goods_name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","goods_price":"0.00","goods_marketprice":null,"brand_id":0,"description":"拍品信息\r\n年代：现代      \r\n直径：2.1厘米      \r\n拍品说明\r\n备注: 每粒直径：21mm，共19粒，总重：110g。配天然煤精佛头、顶珠。带北大宝石鉴定中心出具珠宝玉石鉴定证书。","goods_storage":0,"images":[{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382818049.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382980548.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215383630424.jpg"}]}}
+     * data : {"info":{"store_id":85,"goods_id":2893,"goods_commonid":2897,"goods_name":"赵秀林刻铜桶壶《心经壶》","goods_price":"8000.00","goods_marketprice":"0.00","brand_id":0,"description":"【匠人】铜雕赵秀林\r\n【尺寸】高28.5cm（其中器身高14cm），壶身直径12.7cm，壶口直径8.6cm，重量1005g，容量1700ml。\r\n【规格】1件\r\n【材质】紫铜（纯铜）\r\n【年代】2016年\r\n【工艺】半手工制器，手工凿刻\r\n【作品介绍】壶面绘刻的内容为佛教经典《般若波罗密多心经》全文，共260余字，以及佛章一枚。\r\n【推荐理由】该作品是目前赵秀林所有刻铜茶壶作品里面制作周期、工程量、艺术性最强的一件作品，目前存世三件。\r\n【绍兴铜雕介绍】绍兴铜雕也称\u201c越刻\u201d，是一门使用金属工具对铜制品进行文字或图案凿刻处理的传统手工技艺。她借鉴融贯了越地石、木、砖雕和其它姊妹艺术雕刻表现技法，代表了越地雕刻的最高工艺水平。\r\n    2009年，绍兴铜雕入选浙江省非物质文化遗产保护项目。赵秀林老师是该项目唯一的省级非遗传承人和浙江省工艺美术大师。","goods_storage":1,"is_fav_store":false,"images":[{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441466502.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441555465.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441790607.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441872504.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442012734.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442227909.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442318410.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442487179.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442424703.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442646886.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442771830.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442879980.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443067936.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443110813.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443254818.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443470613.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443550558.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443650088.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443722427.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443871555.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443944108.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443911854.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410444124532.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410445218785.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410445528415.jpg"}]}}
      */
 
     private boolean is_success;
@@ -49,10 +49,19 @@ public class GoosPageInfoBean {
 
     public static class DataBean {
         /**
-         * info : {"store_id":1,"goods_id":171,"goods_commonid":165,"goods_name":"a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串","goods_price":"0.00","goods_marketprice":null,"brand_id":0,"description":"拍品信息\r\n年代：现代      \r\n直径：2.1厘米      \r\n拍品说明\r\n备注: 每粒直径：21mm，共19粒，总重：110g。配天然煤精佛头、顶珠。带北大宝石鉴定中心出具珠宝玉石鉴定证书。","goods_storage":0,"images":[{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382818049.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382980548.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215383630424.jpg"}]}
+         * info : {"store_id":85,"goods_id":2893,"goods_commonid":2897,"goods_name":"赵秀林刻铜桶壶《心经壶》","goods_price":"8000.00","goods_marketprice":"0.00","brand_id":0,"description":"【匠人】铜雕赵秀林\r\n【尺寸】高28.5cm（其中器身高14cm），壶身直径12.7cm，壶口直径8.6cm，重量1005g，容量1700ml。\r\n【规格】1件\r\n【材质】紫铜（纯铜）\r\n【年代】2016年\r\n【工艺】半手工制器，手工凿刻\r\n【作品介绍】壶面绘刻的内容为佛教经典《般若波罗密多心经》全文，共260余字，以及佛章一枚。\r\n【推荐理由】该作品是目前赵秀林所有刻铜茶壶作品里面制作周期、工程量、艺术性最强的一件作品，目前存世三件。\r\n【绍兴铜雕介绍】绍兴铜雕也称\u201c越刻\u201d，是一门使用金属工具对铜制品进行文字或图案凿刻处理的传统手工技艺。她借鉴融贯了越地石、木、砖雕和其它姊妹艺术雕刻表现技法，代表了越地雕刻的最高工艺水平。\r\n    2009年，绍兴铜雕入选浙江省非物质文化遗产保护项目。赵秀林老师是该项目唯一的省级非遗传承人和浙江省工艺美术大师。","goods_storage":1,"is_fav_store":false,"images":[{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441466502.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441555465.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441790607.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441872504.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442012734.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442227909.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442318410.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442487179.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442424703.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442646886.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442771830.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442879980.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443067936.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443110813.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443254818.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443470613.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443550558.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443650088.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443722427.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443871555.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443944108.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443911854.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410444124532.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410445218785.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410445528415.jpg"}]}
          */
 
         private InfoBean info;
+        private String share_url ;
+
+        public String getShare_url() {
+            return share_url;
+        }
+
+        public void setShare_url(String share_url) {
+            this.share_url = share_url;
+        }
 
         public InfoBean getInfo() {
             return info;
@@ -64,20 +73,26 @@ public class GoosPageInfoBean {
 
         public static class InfoBean {
             /**
-             * store_id : 1
-             * goods_id : 171
-             * goods_commonid : 165
-             * goods_name : a10540004 现代 天然上品煤精正圆大珠十八罗汉念珠串
-             * goods_price : 0.00
-             * goods_marketprice : null
+             * store_id : 85
+             * goods_id : 2893
+             * goods_commonid : 2897
+             * goods_name : 赵秀林刻铜桶壶《心经壶》
+             * goods_price : 8000.00
+             * goods_marketprice : 0.00
              * brand_id : 0
-             * description : 拍品信息
-             年代：现代
-             直径：2.1厘米
-             拍品说明
-             备注: 每粒直径：21mm，共19粒，总重：110g。配天然煤精佛头、顶珠。带北大宝石鉴定中心出具珠宝玉石鉴定证书。
-             * goods_storage : 0
-             * images : [{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382818049.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382980548.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215383630424.jpg"}]
+             * description : 【匠人】铜雕赵秀林
+             【尺寸】高28.5cm（其中器身高14cm），壶身直径12.7cm，壶口直径8.6cm，重量1005g，容量1700ml。
+             【规格】1件
+             【材质】紫铜（纯铜）
+             【年代】2016年
+             【工艺】半手工制器，手工凿刻
+             【作品介绍】壶面绘刻的内容为佛教经典《般若波罗密多心经》全文，共260余字，以及佛章一枚。
+             【推荐理由】该作品是目前赵秀林所有刻铜茶壶作品里面制作周期、工程量、艺术性最强的一件作品，目前存世三件。
+             【绍兴铜雕介绍】绍兴铜雕也称“越刻”，是一门使用金属工具对铜制品进行文字或图案凿刻处理的传统手工技艺。她借鉴融贯了越地石、木、砖雕和其它姊妹艺术雕刻表现技法，代表了越地雕刻的最高工艺水平。
+             2009年，绍兴铜雕入选浙江省非物质文化遗产保护项目。赵秀林老师是该项目唯一的省级非遗传承人和浙江省工艺美术大师。
+             * goods_storage : 1
+             * is_fav_store : false
+             * images : [{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441466502.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441555465.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441790607.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441872504.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442012734.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442227909.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442318410.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442487179.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442424703.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442646886.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442771830.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410442879980.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443067936.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443110813.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443254818.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443470613.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443550558.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443650088.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443722427.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443871555.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443944108.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410443911854.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410444124532.JPG"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410445218785.jpg"},{"goodsimage_url":"http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410445528415.jpg"}]
              */
 
             private int store_id;
@@ -89,6 +104,7 @@ public class GoosPageInfoBean {
             private int brand_id;
             private String description;
             private int goods_storage;
+            private boolean is_fav_store;
             private List<ImagesBean> images;
 
             public int getStore_id() {
@@ -163,6 +179,14 @@ public class GoosPageInfoBean {
                 this.goods_storage = goods_storage;
             }
 
+            public boolean isIs_fav_store() {
+                return is_fav_store;
+            }
+
+            public void setIs_fav_store(boolean is_fav_store) {
+                this.is_fav_store = is_fav_store;
+            }
+
             public List<ImagesBean> getImages() {
                 return images;
             }
@@ -173,7 +197,7 @@ public class GoosPageInfoBean {
 
             public static class ImagesBean {
                 /**
-                 * goodsimage_url : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/1/oss_1_2018050215382784493.jpg
+                 * goodsimage_url : http://hancang.oss-cn-beijing.aliyuncs.com/home/store/goods/85/oss_85_2018070410441466502.JPG
                  */
 
                 private String goodsimage_url;

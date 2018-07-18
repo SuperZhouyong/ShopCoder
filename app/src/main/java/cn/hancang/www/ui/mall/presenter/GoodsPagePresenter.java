@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.mall.presenter;
 
+import cn.hancang.www.bean.AddFavBean;
 import cn.hancang.www.bean.GoodsBuyNewBean;
 
 import cn.hancang.www.app.AppConstant;
@@ -54,7 +55,7 @@ public class GoodsPagePresenter extends GoodsPageContract.Presenter {
     }
 
     @Override
-    public void getGoodsBuyNewRequest(String  goods_id, String count) {
+    public void getGoodsBuyNewRequest(String goods_id, String count) {
         mRxManage.add(mModel.getGoodsBuyNew(goods_id, count).subscribe(new RxSubscriber<GoodsBuyNewBean>(mContext) {
             @Override
             protected void _onNext(GoodsBuyNewBean goodsBuyNewBean) {
@@ -64,6 +65,21 @@ public class GoodsPagePresenter extends GoodsPageContract.Presenter {
             @Override
             protected void _onError(String message) {
                 mView.showErrorTip(AppConstant.threeMessage, message);
+            }
+        }));
+    }
+
+    @Override
+    public void getAddFavStoreBean(Integer fav_id, String fav_type) {
+        mRxManage.add(mModel.getAddFavStore(fav_id, fav_type).subscribe(new RxSubscriber<AddFavBean>(mContext) {
+            @Override
+            protected void _onNext(AddFavBean addFavBean) {
+                mView.returnAddFavBeanStore(addFavBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.foreMessage, message);
             }
         }));
     }

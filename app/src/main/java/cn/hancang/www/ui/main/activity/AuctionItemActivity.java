@@ -743,8 +743,8 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         tvNum = (TextView) view.findViewById(R.id.etAmount);
         String currentPrice = tvLotsOne.getText().toString();
         String startPrcie = tvLotsTwo.getText().toString();
-        if (Float.parseFloat(currentPrice) - Float.parseFloat(startPrcie) == 0) {
-            tvNum.setText("￥" + (Float.parseFloat(current_price)));
+        if (TextUtils.isEmpty(currentPrice)||Float.parseFloat(currentPrice) - Float.parseFloat(startPrcie) == 0) {
+            tvNum.setText("￥" + (Float.parseFloat(startPrcie)));
         } else
             tvNum.setText("￥" + (Float.parseFloat(current_price) + Float.parseFloat(increment_value)));
 

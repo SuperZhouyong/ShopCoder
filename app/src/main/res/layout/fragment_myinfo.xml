@@ -187,7 +187,7 @@ okhttp
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
                 android:layout_toRightOf="@id/iv_account"
-                android:text="资金账户"
+                android:text="保证金账户"
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 

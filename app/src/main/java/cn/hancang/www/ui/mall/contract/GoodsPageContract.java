@@ -1,5 +1,6 @@
 package cn.hancang.www.ui.mall.contract;
 
+import cn.hancang.www.bean.AddFavBean;
 import cn.hancang.www.bean.GoodsBuyNewBean;
 
 import cn.hancang.www.base.BaseModel;
@@ -26,6 +27,8 @@ public interface GoodsPageContract {
 
 
         void returnBuyNew(GoodsBuyNewBean goodsBuyNewBean);
+
+        void returnAddFavBeanStore(AddFavBean addFavBean);
     }
 
     interface Model extends BaseModel {
@@ -34,6 +37,9 @@ public interface GoodsPageContract {
         Observable<AddCartInfoBean> getAddCartInfoBean(Integer goodId,Integer count);
 
         Observable<GoodsBuyNewBean> getGoodsBuyNew(String goods_id,String count);
+
+        // 收藏排场
+        Observable<AddFavBean> getAddFavStore(Integer fav_id, String fav_type);
     }
 
     abstract class Presenter extends BasePresenter<View, Model> {
@@ -42,5 +48,7 @@ public interface GoodsPageContract {
          public abstract void getAddCartInfoBeanRequest(Integer goodid,Integer count);
 
          public abstract void getGoodsBuyNewRequest(String goods_id,String count);
+
+        public abstract void getAddFavStoreBean(Integer fav_id, String fav_type);
     }
 }

@@ -243,7 +243,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
                 android:layout_toRightOf="@id/iv_account"
-                android:text="余额"
+                android:text="成交额"
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
