@@ -292,6 +292,7 @@ okhttp
         </RelativeLayout>
 
         <RelativeLayout
+
             android:id="@+id/rel_setting"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y107"
@@ -311,11 +312,12 @@ okhttp
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/x30"
                 android:layout_toRightOf="@id/iv_setting"
-                android:text="设置"
+                android:text="退出登录"
                 android:textColor="@color/font_1"
                 android:textSize="@dimen/x28" />
 
             <ImageView
+                android:visibility="gone"
                 android:layout_width="@dimen/x40"
                 android:layout_height="@dimen/y40"
                 android:layout_alignParentRight="true"

@@ -4,7 +4,6 @@
     android:padding="@dimen/y20"
     android:layout_height="wrap_content">
     <ImageView
-        android:scaleType="fitXY"
         android:id="@+id/iv_goods_pic"
         android:layout_width="@dimen/x330"
         android:layout_height="@dimen/y330" />

@@ -1,11 +1,14 @@
 package cn.hancang.www.ui.mall.activity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,14 +20,11 @@ import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.toptechs.libaction.action.Action;
 import com.toptechs.libaction.action.SingleCall;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.hancang.www.R;
 import cn.hancang.www.adapter.HotAuctionItemAdapter;
-import cn.hancang.www.adapter.TaoBaoAdapter;
 import cn.hancang.www.adapter.TaoBaoStoreAdapter;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
@@ -41,7 +41,11 @@ import cn.hancang.www.ui.mall.presenter.TaoBaoStorPresenter;
 import cn.hancang.www.ui.myinfo.activity.MessageActicity;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
+import cn.hancang.www.utils.conmonUtil.ShareUtil;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.wechat.friends.Wechat;
+import cn.sharesdk.wechat.moments.WechatMoments;
 import rx.functions.Action1;
 
 /**
@@ -52,16 +56,21 @@ import rx.functions.Action1;
  * QQ: 437397161
  */
 
-public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, TaoBaoStorModel> implements TaoBaoStoreContract.View, OnRefreshListener, LoadingTip.onReloadListener, Action, View.OnClickListener {
+public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, TaoBaoStorModel>
+        implements TaoBaoStoreContract.View,
+        OnRefreshListener,
+        LoadingTip.onReloadListener,
+        Action,
+        View.OnClickListener {
 
     @BindView(R.id.iv_back)
     ImageView ivBack;
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
-    @BindView(R.id.iv_love)
-    ImageView ivLove;
-    @BindView(R.id.iv_readme)
-    ImageView ivReadme;
+    //    @BindView(R.id.iv_love)
+//    ImageView ivLove;
+//    @BindView(R.id.iv_readme)
+//    ImageView ivReadme;
     @BindView(R.id.iv_icon)
     ImageView ivIcon;
     @BindView(R.id.tv_store_name)
@@ -84,6 +93,8 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
     LRecyclerView mLRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
+    @BindView(R.id.rel_search)
+    RelativeLayout relSearch;
     // 主要的adapter
 //    private TaoBaoAdapter taoBaoAdapter;
     private Integer currentPostion;
@@ -109,6 +120,8 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
     private View image;
     private View taobaoFiledHear;
     private View headViewTwo;
+    private String share_url;
+    private Dialog shareDialog;
 
 
     @Override
@@ -132,7 +145,6 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
     @Override
     public void initView() {
         store_id = getIntent().getExtras().getInt(AppConstant.StoreId, -1);
-
 //        leftTitle.setVisibility(View.GONE);
 //        centerTitle.setText("店铺");
 //        relSearch.setVisibility(View.GONE);
@@ -306,10 +318,15 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
 
         if (taobaoStoreInfoBean.getData().getStore_goods().size() > 6)
             hotAuctionItemAdapter.addAll(taobaoStoreInfoBean.getData().getStore_goods().subList(0, 6));
+        else
+            hotAuctionItemAdapter.addAll(taobaoStoreInfoBean.getData().getStore_goods());
 //        hotAuctionItemAdapter.addAll(taobaoStoreInfoBean.getData().getStore_goods());
         taoBaoStoreAdapter.addAll(taobaoStoreInfoBean.getData().getAuction_field_list());
 //        taoBaoAdapter.addAll(new ArrayList<TaobaoStoreInfoBean.DataBean.AuctionFieldListBean>());
 
+//        if (!TextUtils.isEmpty(taobaoStoreInfoBean.getData().getStore_info().getShare_url())) {
+        share_url = taobaoStoreInfoBean.getData().getStore_info().getShare_url();
+//        }
     }
 
     // 关注拍场
@@ -390,7 +407,36 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
             startActivity(MessageActicity.class);
     }
 
-    @OnClick({R.id.rel_back, R.id.iv_love, R.id.iv_readme, R.id.rel_focus})
+    private void showShareDialog(String url) {
+        shareDialog = new Dialog(this, R.style.MyDialog);
+        View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
+        ImageView ivShareCode = (ImageView) shareView.findViewById(R.id.iv_share_code);
+        shareView.findViewById(R.id.iv_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareDialog.dismiss();
+            }
+        });
+        shareView.findViewById(R.id.iv_close).setOnClickListener(this);
+        shareView.findViewById(R.id.ll_wx).setOnClickListener(this);
+        shareView.findViewById(R.id.ll_friends).setOnClickListener(this);
+        shareView.findViewById(R.id.ll_save_pic).setOnClickListener(this);
+
+        shareView.findViewById(R.id.iv_close).setVisibility(View.GONE);
+        shareView.findViewById(R.id.iv_share_code).setVisibility(View.GONE);
+        shareView.findViewById(R.id.ll_save_pic).setVisibility(View.GONE);
+        View viewById = shareView.findViewById(R.id.rel_content);
+        viewById.setOnClickListener(this);
+        shareDialog.setContentView(shareView);
+//                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        shareDialog.show();
+
+
+//        ImageLoaderUtils.displayRoundTwo(this, ivShareCode, url);
+    }
+
+    @OnClick({R.id.rel_back, R.id.rel_focus,R.id.rel_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_focus:
@@ -402,19 +448,25 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
             case R.id.rel_back:
                 finish();
                 break;
+//                开始分享
             case R.id.rel_search:
-                startActivity(SearchActivity.class);
+                if (TextUtils.isEmpty(share_url)) {
+                    showShortToast("请稍后再试...");
+                    return;
+                }
+                showShareDialog(share_url);
+//                startActivity(SearchActivity.class);
                 break;
             // 关注
-            case R.id.iv_love:
+           /* case R.id.iv_love:
                 SingleCall.getInstance()
                         .addAction(this, AppConstant.threeMessage)
                         .addValid(new LoginValid(this))
                         .doCall();
 
-                break;
+                break;*/
             // 提醒
-            case R.id.iv_readme:
+           /* case R.id.iv_readme:
                 SingleCall.getInstance()
                         .addAction(this, AppConstant.foreMessage)
                         .addValid(new LoginValid(this))
@@ -422,7 +474,7 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
 
 
 //                startActivity(MessageActicity.class);
-                break;
+                break;*/
         }
     }
 
@@ -433,6 +485,19 @@ public class TaoBaoStoreInfoActivity extends BaseActivity<TaoBaoStorPresenter, T
             case R.id.tv_all_goods:
                 StoreInfoOrderListActivity.gotoStoreInfoOrderListActivity(this, store_id, store_name);
                 break;
+            case R.id.ll_wx:
+                ShareUtil.showShareWxURL(this, ShareSDK.getPlatform(Wechat.NAME).getName(), share_url);
+                break;
+            case R.id.ll_friends:
+                ShareUtil.showShareWxURL(this, ShareSDK.getPlatform(WechatMoments.NAME).getName(), share_url);
+                break;
+            case R.id.rel_content:
+                if (shareDialog != null && shareDialog.isShowing())
+                    shareDialog.dismiss();
+                break;
+
         }
     }
+
+
 }

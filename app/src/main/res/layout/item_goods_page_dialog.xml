@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y30"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_desc"
+            android:layout_marginLeft="@dimen/x250"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textSize="@dimen/x25"
+                android:textColor="@color/font_2"
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="9999" />
+
+            <TextView
+                android:id="@+id/tv_storage"
+                android:textSize="@dimen/x25"
+                android:layout_marginTop="@dimen/y10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="库存" />
+
+            <TextView
+
+                android:textSize="@dimen/x25"
+                android:layout_marginTop="@dimen/y10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="选择颜色分类" />
+
+        </LinearLayout>
+        <TextView
+            android:textSize="@dimen/x30"
+            android:textColor="@color/font_1"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginTop="@dimen/y80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="颜色分类" />
+
+        <cn.hancang.www.widget.flow.FlowTagLayout
+            android:layout_below="@id/activity_search_head"
+            android:id="@+id/tag_flow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_marginTop="@dimen/y30" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="@dimen/y100"
+            android:layout_marginTop="@dimen/y20"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/x22">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="购买数量"
+                android:textColor="@color/font_10"
+                android:textSize="@dimen/x28" />
+
+            <cn.hancang.www.widget.AmountView
+                android:id="@+id/amount_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x30"
+                app:btnTextSize="@dimen/x20"
+                app:btnWidth="@dimen/x80"
+                app:tvTextSize="@dimen/x20"
+                app:tvWidth="@dimen/x80" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_width="@dimen/x200"
+        android:layout_height="@dimen/y200" />
+
+</RelativeLayout>

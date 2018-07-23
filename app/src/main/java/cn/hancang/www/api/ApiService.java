@@ -1,6 +1,10 @@
 package cn.hancang.www.api;
 
 
+import com.intention.sqtwin.bean.AllStoreListBean;
+import com.intention.sqtwin.bean.DeleteAllShopCartBean;
+import com.intention.sqtwin.bean.DeleteGoodsBean;
+
 import cn.hancang.www.bean.StoreInfoOrderListBean;
 import cn.hancang.www.bean.ToBenPaidBean;
 
@@ -215,6 +219,22 @@ public interface ApiService {
             @Query("status") Integer status,
             @Query("page_no") Integer page_no,
             @Query("type") Integer type
+    );
+
+    /**
+     * 获取订单 店铺的订单
+     *
+     * @param status
+     * @param page_no
+     * @param type
+     * @return
+     */
+    @GET("membercenter/get_store_order_list")
+    Observable<OrderListBean> getStoreOrderList(
+            @Query("status") Integer status,
+            @Query("page_no") Integer page_no,
+            @Query("type") Integer type
+
     );
 
     /**
@@ -676,11 +696,12 @@ public interface ApiService {
      *
      * @return
      */
-    @POST("membercenter/set_store_login_password")
+    @POST("membercenter/set_store_login_password_v2")
     @FormUrlEncoded
     Observable<StorePwInfoBean> PostStorePwInfo(
             @Field("member_name") String member_name,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("old_password") String oldpassword
     );
 
     /**
@@ -886,24 +907,52 @@ public interface ApiService {
     /**
      * @param store_id
      * @param page
-     * @return 获取 店铺信息的列表
+     * @return 获取 店铺信息的列表    limit ：参数 0=》全部； 1=》商品升序； 2=》商品降序； 3=》价格升序； 4=》价格降序； 5=》销量升序； 6=》销量降序
      */
     @GET("Taobao/get_goods_list")
     Observable<StoreInfoOrderListBean> getStoreOrderList(
             @Query("store_id") Integer store_id,
-            @Query("page") Integer page);
+            @Query("page") Integer page,
+            @Query("limit") int limit);
 
     /**
-     *
      * @param order_id
      * @param pay_type
      * @return 会员中心里可能有未支付的旧订单，通过调用本接口来进行支付
-
-
      */
     @POST("paycenter/pay_order_for_old")
     @FormUrlEncoded
     Observable<ToBenPaidBean> getToBePaid(
             @Field("order_id") Integer order_id,
             @Field("pay_type") Integer pay_type);
+
+
+    /**
+     * @param page
+     * @return 获取全部的店铺列表
+     */
+    @GET("taobao/get_all_store")
+    Observable<AllStoreListBean> getAllStoreListData(
+            @Query("page") int page);
+
+    /**
+     * 删除购物车某个商品
+     *
+     * @param goods_id
+     * @return
+     */
+    @GET("shop/del_all_cart_goods")
+    Observable<DeleteGoodsBean> getDeleteGoodsBean(
+            @Query("goods_id") int goods_id
+    );
+
+    /**
+     * 清空购物车
+     *
+     * @return
+     */
+    @GET("shop/del_all_cart_goods")
+    Observable<DeleteAllShopCartBean> getDeleteAllShopCartBean(
+    );
 }
+

@@ -2,8 +2,10 @@ package cn.hancang.www.ui.mall.activity;
 
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,21 +15,23 @@ import com.github.jdsjlzx.interfaces.OnNetWorkErrorListener;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
-import cn.hancang.www.bean.StoreInfoOrderListBean;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.hancang.www.R;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
 import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
 import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
-//import cn.hancang.www.bean.AuctionListBean;
 import cn.hancang.www.bean.AuctionListBean;
+import cn.hancang.www.bean.StoreInfoOrderListBean;
 import cn.hancang.www.ui.main.contract.AuctionListContract;
 import cn.hancang.www.ui.main.model.AuctionListModel;
 import cn.hancang.www.ui.main.presenter.AuctionListPresenter;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+
+//import cn.hancang.www.bean.AuctionListBean;
 
 /**
  * Description: 保佑无bug
@@ -38,22 +42,55 @@ import cn.hancang.www.widget.conmonWidget.LoadingTip;
  */
 
 public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresenter, AuctionListModel> implements AuctionListContract.View, OnLoadMoreListener, LoadingTip.onReloadListener, OnNetWorkErrorListener, OnRefreshListener {
+
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
     @BindView(R.id.rel_back)
     RelativeLayout relBack;
     @BindView(R.id.left_title)
     TextView leftTitle;
     @BindView(R.id.center_title)
     TextView centerTitle;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
     @BindView(R.id.rel_search)
     RelativeLayout relSearch;
+    @BindView(R.id.tv_all)
+    TextView tvAll;
+    @BindView(R.id.iv_all)
+    ImageView ivAll;
+    @BindView(R.id.rel_all)
+    RelativeLayout relAll;
+    @BindView(R.id.tv_new)
+    TextView tvNew;
+    @BindView(R.id.iv_new_top)
+    ImageView ivNewTop;
+    @BindView(R.id.iv_new)
+    ImageView ivNew;
+    @BindView(R.id.rel_new)
+    RelativeLayout relNew;
+    @BindView(R.id.tv_price)
+    TextView tvPrice;
+    @BindView(R.id.iv_price_top)
+    ImageView ivPriceTop;
+    @BindView(R.id.iv_price)
+    ImageView ivPrice;
+    @BindView(R.id.rel_price)
+    RelativeLayout relPrice;
+    @BindView(R.id.tv_sales)
+    TextView tvSales;
+    @BindView(R.id.iv_sales_top)
+    ImageView ivSalesTop;
+    @BindView(R.id.iv_sales)
+    ImageView ivSales;
+    @BindView(R.id.rel_sales)
+    RelativeLayout relSales;
+    @BindView(R.id.ll_sort)
+    LinearLayout llSort;
     @BindView(R.id.mRecyclerView)
     LRecyclerView mRecyclerView;
     @BindView(R.id.mLoadingTip)
     LoadingTip mLoadingTip;
-    @BindView(R.id.iv_back)
-    ImageView ivBack;
-    @BindView(R.id.iv_search)
-    ImageView ivSearch;
     //    private Integer category = 111;
     private Integer page = 0;
     private CommonRecycleViewAdapter<StoreInfoOrderListBean.DataBean.GoodsBean> mAdapter;
@@ -61,6 +98,8 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
     private LRecyclerViewAdapter mLadapter;
     private int pagesize = 10;
     private int storeId;
+    //    limit ：参数 0=》全部； 1=》商品升序； 2=》商品降序； 3=》价格升序； 4=》价格降序； 5=》销量升序； 6=》销量降序
+    private int limit = 0;
     //    private int goodType;
 
     @Override
@@ -74,32 +113,13 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
     }
 
 
-/*    public static void GotoAuctionItemListActivity(BaseActivity baseActivity, int ListType, String title, Integer category_id) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(AppConstant.ListType, ListType);
-        bundle.putString(AppConstant.ListTypeTitle, title);
-        bundle.putInt(AppConstant.ListTypeCategoryId, category_id);
-        baseActivity.startActivity(AuctionItemListActivity.class, bundle);
-    }*/
-
     @Override
     public void initView() {
         centerTitle.setText(getIntent().getExtras().getString(AppConstant.storeName));
-//        category = getIntent().getExtras().getInt(AppConstant.ListTypeCategoryId, -1);
-//        goodType = getIntent().getExtras().getInt(AppConstant.ListType);
         storeId = getIntent().getExtras().getInt(AppConstant.StoreId);
         leftTitle.setVisibility(View.GONE);
-        centerTitle.setText(getIntent().getExtras().getString(AppConstant.ListTypeTitle));
         relSearch.setVisibility(View.GONE);
-       /* mAdapter = new CommonRecycleViewAdapter<AuctionListBean.DataBean.ItemListBean>(this, R.layout.item_artdetail) {
-            @Override
-            public void convert(ViewHolderHelper helper, AuctionListBean.DataBean.ItemListBean auctionListBean, int position) {
-                helper.setImageUrl(R.id.iv_goods_pic, auctionListBean.getImage());
-                helper.setText(R.id.tv_goods_name, auctionListBean.getName());
-                helper.setText(R.id.tv_price, "￥" + String.valueOf(auctionListBean.getCurrent_price()));
 
-            }
-        };*/
         mAdapter = new CommonRecycleViewAdapter<StoreInfoOrderListBean.DataBean.GoodsBean>(this, R.layout.item_artdetail) {
             @Override
             public void convert(ViewHolderHelper helper, StoreInfoOrderListBean.DataBean.GoodsBean goodsBean, int position) {
@@ -112,31 +132,23 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
         mLadapter = new LRecyclerViewAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.setAdapter(mLadapter);
-//        mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setOnRefreshListener(this);
         mRecyclerView.setOnLoadMoreListener(this);
         mLadapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // 拍品
-//                if (goodType == 0) {
-//                    AuctionItemActivity.gotoAuctionItemActivity((BaseActivity) mContext, mAdapter.get(position).getId());
-//
-//                } else if (goodType == 1) {
-//                    //商品
-//                }
+
                 GoodsPageActivity.gotoGoodsPageActivity((BaseActivity) mContext, mAdapter.get(position).getId(), mAdapter.get(position).getName());
             }
         });
-//        mPresenter.getRequestAuctionList(category, page, goodType);
 
-        mPresenter.getStoreInfoList(storeId, page);
+        mPresenter.getStoreInfoList(storeId, page, limit);
     }
 
-    public static void gotoStoreInfoOrderListActivity(BaseActivity mContext, Integer storeId,String storeTitle) {
+    public static void gotoStoreInfoOrderListActivity(BaseActivity mContext, Integer storeId, String storeTitle) {
         Bundle bundle = new Bundle();
         bundle.putInt(AppConstant.StoreId, storeId);
-        bundle.putString(AppConstant.storeName ,storeTitle);
+        bundle.putString(AppConstant.storeName, storeTitle);
         mContext.startActivity(StoreInfoOrderListActivity.class, bundle);
 
     }
@@ -171,34 +183,7 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
 
     @Override
     public void returnAuctionList(AuctionListBean auctionListBean) {
-        /*if (!auctionListBean.isIs_success()) {
-            if (page == 0) {
-                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-                mLoadingTip.setOnReloadListener(this);
-            }
-            return;
-        }
-        if (page == 0 && auctionListBean.getData().getItem_list().size() == 0) {
-            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
-            return;
-        }
-        if (page == 0 && mAdapter.getDataList().size() != 0) {
-            mAdapter.clear();
-            mLadapter.notifyDataSetChanged();
-        }
 
-
-        if (mLoadingTip.getVisibility() == View.VISIBLE)
-            mLoadingTip.setViewGone();
-
-        if (page == auctionListBean.getData().getPage_count()) {
-            mRecyclerView.setNoMore(true);
-            return;
-
-        }
-        mAdapter.addAll(auctionListBean.getData().getItem_list());
-        ++page;
-*/
     }
 
 
@@ -206,8 +191,10 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
     public void returnStoreInfoList(StoreInfoOrderListBean storeInfoOrderListBean) {
         if (!storeInfoOrderListBean.isIs_success()) {
             if (page == 0) {
-                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
-                mLoadingTip.setOnReloadListener(this);
+                mAdapter.clearData();
+                mLadapter.notifyDataSetChanged();
+                mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
+//                mLoadingTip.setOnReloadListener(this);
             }
             return;
         }
@@ -236,29 +223,94 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
     @Override
     public void onLoadMore() {
 //        mPresenter.getRequestAuctionList(category, page, goodType);
-        mPresenter.getStoreInfoList(storeId, page);
+        mPresenter.getStoreInfoList(storeId, page, limit);
     }
 
     @Override
     public void reloadLodTip() {
 //        mPresenter.getRequestAuctionList(category, page, goodType);
-        mPresenter.getStoreInfoList(storeId, page);
+        mPresenter.getStoreInfoList(storeId, page, limit);
     }
 
     @Override
     public void reload() {
 //        mPresenter.getRequestAuctionList(category, page, goodType);
-        mPresenter.getStoreInfoList(storeId, page);
+        mPresenter.getStoreInfoList(storeId, page, limit);
     }
 
+    private SparseArray<Integer> mSparseArray = new SparseArray<>();
 
-    @OnClick({R.id.rel_back, R.id.left_title})
+    //heat_slect_top   heat_select_bottom  heat_unselect
+    //    limit ：参数 0=》全部； 1=》商品升序； 2=》商品降序； 3=》价格升序； 4=》价格降序； 5=》销量升序； 6=》销量降序
+    @OnClick({R.id.rel_back, R.id.left_title, R.id.rel_all, R.id.rel_new, R.id.rel_price, R.id.rel_sales})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
                 finish();
                 break;
             case R.id.left_title:
+                break;
+            // 全部 0
+            case R.id.rel_all:
+                limit = 0;
+                page = 0;
+                ivAll.setVisibility(View.VISIBLE);
+                mPresenter.getStoreInfoList(storeId, page, limit);
+
+
+                ivNew.setVisibility(View.GONE);
+                ivPrice.setVisibility(View.GONE);
+                ivSales.setVisibility(View.GONE);
+
+                ivNewTop.setImageResource(R.mipmap.heat_unselect);
+                ivPriceTop.setImageResource(R.mipmap.heat_unselect);
+                ivSalesTop.setImageResource(R.mipmap.heat_unselect);
+                break;
+            //新品 1
+            case R.id.rel_new:
+                page =0 ;
+                limit = limit == 1 ? 2 : 1;
+                ivNew.setVisibility(View.VISIBLE);
+                ivNewTop.setImageResource(limit == 1 ? R.mipmap.heat_slect_top : R.mipmap.heat_select_bottom);
+                mPresenter.getStoreInfoList(storeId, page, limit);
+
+                ivAll.setVisibility(View.GONE);
+
+                ivPrice.setVisibility(View.GONE);
+                ivPriceTop.setImageResource(R.mipmap.heat_unselect);
+                ivSales.setVisibility(View.GONE);
+                ivSalesTop.setImageResource(R.mipmap.heat_unselect);
+                break;
+            //价格 2
+            case R.id.rel_price:
+                page =0 ;
+                limit = limit == 3 ? 4 : 3;
+                ivPrice.setVisibility(View.VISIBLE);
+                ivPriceTop.setImageResource(limit == 3 ? R.mipmap.heat_slect_top : R.mipmap.heat_select_bottom);
+                mPresenter.getStoreInfoList(storeId, page, limit);
+
+
+                ivAll.setVisibility(View.GONE);
+                ivNew.setVisibility(View.GONE);
+                ivNewTop.setImageResource(R.mipmap.heat_unselect);
+                ivSales.setVisibility(View.GONE);
+                ivSalesTop.setImageResource(R.mipmap.heat_unselect);
+                break;
+
+
+            //销量 3
+            case R.id.rel_sales:
+                page =0 ;
+                limit = limit == 5 ? 6 : 5;
+                ivSales.setVisibility(View.VISIBLE);
+                ivSalesTop.setImageResource(limit == 5 ? R.mipmap.heat_slect_top : R.mipmap.heat_select_bottom);
+                mPresenter.getStoreInfoList(storeId, page, limit);
+
+                ivAll.setVisibility(View.GONE);
+                ivNew.setVisibility(View.GONE);
+                ivNewTop.setImageResource(R.mipmap.heat_unselect);
+                ivPrice.setVisibility(View.GONE);
+                ivPriceTop.setImageResource(R.mipmap.heat_unselect);
                 break;
         }
     }
@@ -268,6 +320,9 @@ public class StoreInfoOrderListActivity extends BaseActivity<AuctionListPresente
     public void onRefresh() {
         page = 0;
 //        mPresenter.getRequestAuctionList(category, page, goodType);
-        mPresenter.getStoreInfoList(storeId, page);
+        mPresenter.getStoreInfoList(storeId, page, limit);
     }
+
+
+
 }

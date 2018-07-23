@@ -25,7 +25,9 @@ public class AuctionListModel implements AuctionListContract.Model {
     }
 
     @Override
-    public Observable<StoreInfoOrderListBean> getStoreInfoOrderList(Integer Store_id, Integer page) {
-        return Api.getDefault(HostType.Jsonpart).getStoreOrderList(Store_id,page).compose(RxSchedulers.<StoreInfoOrderListBean>io_main());
+    public Observable<StoreInfoOrderListBean> getStoreInfoOrderList(Integer Store_id, Integer page, int limit) {
+        return Api.getDefault(HostType.Jsonpart).getStoreOrderList(Store_id,page,limit).compose(RxSchedulers.<StoreInfoOrderListBean>io_main());
     }
+
+
 }

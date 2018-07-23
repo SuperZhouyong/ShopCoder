@@ -1,5 +1,8 @@
 package cn.hancang.www.ui.mall.presenter;
 
+import com.intention.sqtwin.bean.DeleteAllShopCartBean;
+import com.intention.sqtwin.bean.DeleteGoodsBean;
+
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.baserx.RxSubscriber;
 import cn.hancang.www.bean.ShopCartGoodsBean;
@@ -25,6 +28,39 @@ public class ShopCartPresenter extends ShopCartContract.Presenter {
             protected void _onError(String message) {
                 mView.showErrorTip(AppConstant.oneMessage, message);
             }
+
+
         }));
+    }
+
+    @Override
+    public void getDeleteGoodsRequest(int goodId) {
+        mRxManage.add(mModel.getDeleteBean(goodId).subscribe(new RxSubscriber<DeleteGoodsBean>(mContext) {
+            @Override
+            protected void _onNext(DeleteGoodsBean deleteGoodsBean) {
+                mView.returnDeleteGoodsInfo(deleteGoodsBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.twoMessage, message);
+            }
+        }));
+    }
+
+    @Override
+    public void getDeleteAllGoodsRequest() {
+        mRxManage.add(mModel.getDeleteAllShopCartInfo().subscribe(new RxSubscriber<DeleteAllShopCartBean>(mContext) {
+            @Override
+            protected void _onNext(DeleteAllShopCartBean deleteAllShopCartBean) {
+                mView.returnDeleteAllGoodsInfo(deleteAllShopCartBean);
+            }
+
+            @Override
+            protected void _onError(String message) {
+                mView.showErrorTip(AppConstant.threeMessage, message);
+            }
+        }));
+
     }
 }

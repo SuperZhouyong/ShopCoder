@@ -138,7 +138,12 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
 
     @Override
     protected void RequestNetWorkData() {
-        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        // 0 是 个人列表
+        if (type == 0)
+            mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        else
+            //             1是店铺订单
+            mPresenter.getStoreOrderListRequest(category_id == 0 ? null : category_id, page, type);
 
     }
 
@@ -206,16 +211,25 @@ public class OrderListFragment extends LazzyFragment<OrderListPresenter, OrderLi
     @Override
     public void onRefresh() {
 
-        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        if (type == 0)
+            mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        else
+            mPresenter.getStoreOrderListRequest(category_id == 0 ? null : category_id, page, type);
     }
 
     @Override
     public void reloadLodTip() {
-        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        if (type == 0)
+            mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        else
+            mPresenter.getStoreOrderListRequest(category_id == 0 ? null : category_id, page, type);
     }
 
     @Override
     public void reload() {
-        mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        if (type == 0)
+            mPresenter.getOrderListRquest(category_id == 0 ? null : category_id, page, type);
+        else
+            mPresenter.getStoreOrderListRequest(category_id == 0 ? null : category_id, page, type);
     }
 }

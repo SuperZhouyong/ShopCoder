@@ -22,7 +22,7 @@ public class AuctionListContract {
      Observable<AuctionListBean>    getAuctionListBean(Integer category, Integer page, Integer goods_type);
 
 
-     Observable<StoreInfoOrderListBean> getStoreInfoOrderList(Integer Store_id,Integer page);
+     Observable<StoreInfoOrderListBean> getStoreInfoOrderList(Integer Store_id,Integer page ,int limit);
     }
     public interface View extends BaseView{
         void returnAuctionList(AuctionListBean auctionListBean);
@@ -33,6 +33,6 @@ public class AuctionListContract {
         public abstract void getRequestAuctionList(Integer category,Integer page,Integer goods_type);
 
 
-        public abstract void getStoreInfoList(Integer Store_id,Integer page);
+        public abstract void getStoreInfoList(Integer Store_id,Integer page,int limit);
     }
 }

@@ -82,11 +82,11 @@ public class ShareUtil {
             oks.setPlatform(platform);
         }
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
-        oks.setTitle(mContext.getResources().getString(R.string.share_title));
+//        oks.setTitle(mContext.getResources().getString(R.string.share_title));
         // titleUrl是标题的网络链接，仅在Linked-in,QQ和QQ空间使用
 //        oks.setTitleUrl(shareUrl);
         // text是分享文本，所有平台都需要这个字段
-        oks.setText(mContext.getResources().getString(R.string.share_content));
+//        oks.setText(mContext.getResources().getString(R.string.share_content));
         //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
 //        oks.setImageUrl(mContext.getResources().getString(R.string.img_url));
         // url仅在微信（包括好友和朋友圈）中使用
@@ -102,4 +102,36 @@ public class ShareUtil {
         LogUtils.logd(TextUtils.isEmpty(shareUrl) ? "我是shareUrl空的" : "我shareUrl不是空的");
         oks.show(mContext);
     }
+
+    public static void showShareWxURL(Context mContext, String platform, String shareUrl) {
+//        oks = new OnekeyShare();
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+        //指定分享的平台，如果为空，还是会调用九宫格的平台列表界面
+        if (platform != null) {
+            oks.setPlatform(platform);
+        }
+        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+//        oks.setTitle(mContext.getResources().getString(R.string.share_title));
+        // titleUrl是标题的网络链接，仅在Linked-in,QQ和QQ空间使用
+//        oks.setTitleUrl(shareUrl);
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText(shareUrl);
+        //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+//        oks.setImageUrl(mContext.getResources().getString(R.string.img_url));
+        // url仅在微信（包括好友和朋友圈）中使用
+//        oks.setUrl(shareUrl);
+//        oks.setUrl(shareUrl);
+        // site是分享此内容的网站名称，仅在QQ空间使用
+//        oks.setSite(mContext.getResources().getString(R.string.app_name));
+        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+//        oks.setSiteUrl(shareUrl);
+        //启动分享
+        LogUtils.logd(mContext == null ? "我mContext是空的" : "我mContext不是空的");
+        LogUtils.logd(oks == null ? "我是oks空的" : "我oks不是空的");
+        LogUtils.logd(TextUtils.isEmpty(shareUrl) ? "我是shareUrl空的" : "我shareUrl不是空的");
+        oks.show(mContext);
+    }
+
 }

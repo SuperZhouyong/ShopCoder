@@ -23,7 +23,7 @@ public class StorePassWordModel implements StorePassWordContract.Model {
     }
 
     @Override
-    public Observable<StorePwInfoBean> postStorePw(String name, String pw) {
-        return Api.getDefault(HostType.Jsonpart).PostStorePwInfo(name, pw).compose(RxSchedulers.<StorePwInfoBean>io_main());
+    public Observable<StorePwInfoBean> postStorePw(String name, String pw,String oldPw) {
+        return Api.getDefault(HostType.Jsonpart).PostStorePwInfo(name, pw,oldPw).compose(RxSchedulers.<StorePwInfoBean>io_main());
     }
 }

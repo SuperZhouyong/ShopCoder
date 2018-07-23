@@ -30,8 +30,8 @@ public class StorePassWordPresenter extends StorePassWordContract.Presenter {
     }
 
     @Override
-    public void getStorePwRequest(String name, String pw) {
-        mRxManage.add(mModel.postStorePw(name, pw).subscribe(new RxSubscriber<StorePwInfoBean>(mContext) {
+    public void getStorePwRequest(String name, String pw, String oldPw) {
+        mRxManage.add(mModel.postStorePw(name, pw, oldPw).subscribe(new RxSubscriber<StorePwInfoBean>(mContext) {
             @Override
             protected void _onNext(StorePwInfoBean storePwInfoBean) {
                 mView.returnStorePwInfo(storePwInfoBean);

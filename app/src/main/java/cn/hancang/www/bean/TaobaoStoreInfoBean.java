@@ -100,6 +100,15 @@ public class TaobaoStoreInfoBean {
             private String store_banner;
             private int fans_count;
             private boolean is_fav;
+            private String share_url ;
+
+            public String getShare_url() {
+                return share_url;
+            }
+
+            public void setShare_url(String share_url) {
+                this.share_url = share_url;
+            }
 
             public int getStore_id() {
                 return store_id;

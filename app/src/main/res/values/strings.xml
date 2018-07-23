@@ -70,7 +70,7 @@
 
     <string name="share_url">https://www.zhiyuan360.cn/site/DownAppJ</string>
     <string name="share_title">选专业就用志愿360</string>
-    <string name="share_content">查看各专业就业分布、平均薪资、专业对口率、职业专业分布、职业成长周期、职业转行率，看看哪些专业更受市场欢迎。</string>
+    <!--<string name="share_content">查看各专业就业分布、平均薪资、专业对口率、职业专业分布、职业成长周期、职业转行率，看看哪些专业更受市场欢迎。</string>-->
     <string name="review_tv">你比较适合的专业方向为：</string>
     <string name="revew_tv_first">通过科学准确估计你的独特潜能优势，分析得出适合你的专业，为你规划未来学习方向，填报高考专业志愿提供重要参考依据。</string>
     <string name="img_url">https://www.zhiyuan360.cn/assets/img/applogo.png</string>

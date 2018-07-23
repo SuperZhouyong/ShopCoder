@@ -7,14 +7,164 @@
     <include
         android:id="@+id/title"
         layout="@layout/actionbar_title" />
+    <LinearLayout
 
+        android:layout_below="@id/title"
+        android:id="@+id/ll_sort"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y100"
+        android:background="@color/white"
+        android:orientation="horizontal"
+
+        android:paddingTop="@dimen/y20">
+
+        <RelativeLayout
+            android:id="@+id/rel_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="全部商品"
+                android:textColor="@color/font_5"
+                android:textSize="@dimen/x31"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iv_all"
+                android:layout_centerHorizontal="true"
+                android:layout_width="@dimen/x100"
+                android:paddingBottom="@dimen/y10"
+                android:background="@drawable/tv_noagent_price"
+                android:layout_height="@dimen/y10"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_new"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="新品"
+                android:textColor="@color/font_5"
+                android:textSize="@dimen/x31"
+                android:textStyle="bold" />
+            <ImageView
+
+                android:src="@mipmap/heat_unselect"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_new"
+                android:id="@+id/iv_new_top"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y40" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_new"
+                android:layout_centerHorizontal="true"
+                android:layout_width="@dimen/x100"
+                android:paddingBottom="@dimen/y10"
+                android:background="@drawable/tv_noagent_price"
+                android:layout_height="@dimen/y10"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="价格"
+                android:textColor="@color/font_5"
+                android:textSize="@dimen/x31"
+                android:textStyle="bold" />
+            <ImageView
+
+                android:src="@mipmap/heat_unselect"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_price"
+                android:id="@+id/iv_price_top"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y40" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_price"
+                android:layout_centerHorizontal="true"
+                android:layout_width="@dimen/x100"
+                android:paddingBottom="@dimen/y10"
+                android:background="@drawable/tv_noagent_price"
+                android:layout_height="@dimen/y10"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel_sales"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/tv_sales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="销量"
+                android:textColor="@color/font_5"
+                android:textSize="@dimen/x31"
+                android:textStyle="bold" />
+            <ImageView
+
+                android:src="@mipmap/heat_unselect"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/tv_sales"
+                android:id="@+id/iv_sales_top"
+                android:layout_width="@dimen/x20"
+                android:layout_height="@dimen/y40" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_sales"
+                android:layout_centerHorizontal="true"
+                android:layout_width="@dimen/x100"
+                android:paddingBottom="@dimen/y10"
+                android:background="@drawable/tv_noagent_price"
+                android:layout_height="@dimen/y10"
+                android:layout_alignParentBottom="true" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
     <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:layout_below="@id/ll_sort"
         android:layout_marginLeft="@dimen/x22"
         android:layout_marginRight="@dimen/x22"
         android:id="@+id/mRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/title" />
+        android:layout_height="match_parent" />
 
     <cn.hancang.www.widget.conmonWidget.LoadingTip
         android:id="@+id/mLoadingTip"

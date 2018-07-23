@@ -273,6 +273,8 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'com.jakewharton.rxbinding:rxbinding:1.0.1'
     compile 'com.kyleduo.switchbutton:library:1.4.5'
+    //底部
+    compile "me.shaohui:bottomdialog:${rootProject.ext.bootDialogVersion}"
     testCompile 'junit:junit:4.12'
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.ext.jakewhartonVersion}"
     compile 'com.android.support:multidex:1.0.0'

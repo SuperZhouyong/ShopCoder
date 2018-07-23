@@ -78,22 +78,22 @@ public class MyCompeteBean {
              * freeze_predeposit : 0
              */
 
-            private int available_predeposit;
-            private int freeze_predeposit;
+            private Double available_predeposit;
+            private Double freeze_predeposit;
 
-            public int getAvailable_predeposit() {
+            public Double getAvailable_predeposit() {
                 return available_predeposit;
             }
 
-            public void setAvailable_predeposit(int available_predeposit) {
+            public void setAvailable_predeposit(Double available_predeposit) {
                 this.available_predeposit = available_predeposit;
             }
 
-            public int getFreeze_predeposit() {
+            public Double getFreeze_predeposit() {
                 return freeze_predeposit;
             }
 
-            public void setFreeze_predeposit(int freeze_predeposit) {
+            public void setFreeze_predeposit(Double freeze_predeposit) {
                 this.freeze_predeposit = freeze_predeposit;
             }
         }

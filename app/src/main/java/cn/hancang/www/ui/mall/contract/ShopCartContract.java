@@ -1,5 +1,8 @@
 package cn.hancang.www.ui.mall.contract;
 
+import com.intention.sqtwin.bean.DeleteAllShopCartBean;
+import com.intention.sqtwin.bean.DeleteGoodsBean;
+
 import cn.hancang.www.base.BaseModel;
 import cn.hancang.www.base.BasePresenter;
 import cn.hancang.www.base.BaseView;
@@ -16,16 +19,31 @@ import rx.Observable;
 
 public interface ShopCartContract {
     interface View extends BaseView {
+
         void returnShopCartInfo(ShopCartGoodsBean shopCartGoodsBean);
+
+        void returnDeleteGoodsInfo(DeleteGoodsBean deleteGoodsBean);
+
+        void returnDeleteAllGoodsInfo(DeleteAllShopCartBean deleteAllShopCartBean);
 
     }
 
     interface Model extends BaseModel {
 
         Observable<ShopCartGoodsBean> getShopCartInfo();
+
+        Observable<DeleteGoodsBean> getDeleteBean(int goodsId);
+
+        Observable<DeleteAllShopCartBean> getDeleteAllShopCartInfo();
     }
 
     abstract class Presenter extends BasePresenter<View, Model> {
+        //获取购物车
         public abstract  void getShopCartInfoRequest();
+
+        //删除购物车某一个商品
+        public abstract void getDeleteGoodsRequest(int goodId);
+        // 删除购物车全部的商品
+        public abstract void getDeleteAllGoodsRequest();
     }
 }

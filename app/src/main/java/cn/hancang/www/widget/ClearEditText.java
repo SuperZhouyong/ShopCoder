@@ -19,7 +19,6 @@ import cn.hancang.www.utils.conmonUtil.LogUtils;
 /**
  * 自带清除按钮的输入框，清除按钮的作用是清空输入框的输入内容；
  * 需要注意的是，清除按钮会占据drawableRight的位置，所以设置drawableRight会无效
- *
  */
 public class ClearEditText extends AppCompatEditText implements View.OnFocusChangeListener {
     /**
@@ -28,6 +27,11 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
     private static final int ICON_CLEAR_DEFAULT = R.mipmap.clear_all;
     private boolean IsFcuse = false;
     private boolean canClick = false;
+    private boolean isCaned = true;
+    // 设置是否可以操作
+    public void setCaned(boolean caned) {
+        isCaned = caned;
+    }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
@@ -114,6 +118,8 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (!isCaned)
+                return super.onTouchEvent(event);
             // 点击是的 x 坐标
             int xDown = (int) event.getX();
             // 清除按钮的起始区间大致为[getWidth() - getCompoundPaddingRight(), getWidth()]，
@@ -131,8 +137,8 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
             LogUtils.logd("Edittext点击范围----" + xDown + "----" + (width - compoundPaddingRight) + "----" + width + "----" + compoundPaddingRight);
             LogUtils.logd("Edittext点击范围----" + ((xDown >= (width - compoundPaddingRight)) && (xDown < width)));
         }
-        if (event.getAction() == MotionEvent.ACTION_DOWN){
-            if (canClick){
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (canClick) {
                 return false;
             }
         }

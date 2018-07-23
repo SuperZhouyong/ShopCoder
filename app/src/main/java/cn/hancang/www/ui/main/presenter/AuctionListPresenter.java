@@ -44,8 +44,8 @@ public class AuctionListPresenter extends AuctionListContract.Presenter {
     }
 
     @Override
-    public void getStoreInfoList(Integer Store_id, Integer page) {
-        mRxManage.add(mModel.getStoreInfoOrderList(Store_id,page).subscribe(new RxSubscriber<StoreInfoOrderListBean>(mContext) {
+    public void getStoreInfoList(Integer Store_id, Integer page,int limit) {
+        mRxManage.add(mModel.getStoreInfoOrderList(Store_id,page,limit).subscribe(new RxSubscriber<StoreInfoOrderListBean>(mContext) {
             @Override
             protected void _onNext(StoreInfoOrderListBean storeInfoOrderListBean) {
                 mView.returnStoreInfoList(storeInfoOrderListBean);

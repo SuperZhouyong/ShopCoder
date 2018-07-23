@@ -83,7 +83,10 @@ public class OrderListActivity extends BaseActivity implements OnTabSelectListen
         int mOrderListStatus = getIntent().getExtras().getInt(AppConstant.OrderListStatus, 0);
         int mOdeerListStatusType = getIntent().getExtras().getInt(AppConstant.OrderListStatusType, 1);
         leftTitle.setVisibility(View.GONE);
-        centerTitle.setText("订单列表");
+        if (mOdeerListStatusType == 0)
+            centerTitle.setText("用户订单列表");
+        else
+            centerTitle.setText("店铺订单列表");
         relSearch.setVisibility(View.GONE);
 
         slidTabLayout.setOnTabSelectListener(this);

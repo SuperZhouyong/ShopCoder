@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical">
     <!--store_auitem_bg-->
@@ -24,6 +25,7 @@
             android:textSize="@dimen/x34" />
 
         <android.support.v7.widget.RecyclerView
+            tl:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_below="@id/yv_all_recy_head_title"
             android:id="@+id/mRecyclerView"
             android:layout_width="match_parent"

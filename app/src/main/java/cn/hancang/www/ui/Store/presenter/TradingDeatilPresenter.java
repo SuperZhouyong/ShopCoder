@@ -33,6 +33,12 @@ public class TradingDeatilPresenter extends TradingDetailContract.Presenter {
                 super.onStart();
                 mView.StartLoading(AppConstant.oneMessage);
             }
+
+            @Override
+            public void onCompleted() {
+                super.onCompleted();
+                mView.stopLoading(AppConstant.oneMessage);
+            }
         }));
     }
 }

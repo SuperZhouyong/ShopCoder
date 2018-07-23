@@ -188,19 +188,19 @@ public class EnterFragment extends LazzyFragment<EnterPresenter, EnterModel> imp
         switch (view.getId()) {
             // 待付款
             case R.id.ll_one:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 1, 1);
                 break;
             //待发货---> 已发货
             case R.id.ll_two:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 2, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 2, 1);
                 break;
             // 待收货 ---> 已收货
             case R.id.ll_three:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 3, 1);
                 break;
             //售后
             case R.id.ll_fore:
-                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 0, 0);
+                OrderListActivity.GotoOrderListActivity((MainActivity) getActivity(), 0, 1);
                 break;
             //店铺报表
             case R.id.ll_five:

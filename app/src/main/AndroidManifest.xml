@@ -44,7 +44,9 @@
             android:value="GlideModule" />-->
 
 
-        <activity android:name=".ui.main.activity.MainActivity">
+        <activity
+            android:name=".ui.main.activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -115,11 +117,11 @@
         <activity android:name="cn.hancang.www.ui.myinfo.activity.MessageActicity" />
         <!--账户-->
         <activity
-            android:launchMode="singleTask"
-            android:name="cn.hancang.www.ui.myinfo.activity.AccountActivity" />
+            android:name="cn.hancang.www.ui.myinfo.activity.AccountActivity"
+            android:launchMode="singleTask" />
 
         <!--参拍-->
-        <activity android:name=".ui.myinfo.activity.MyCompeteNewActivity"/>
+        <activity android:name=".ui.myinfo.activity.MyCompeteNewActivity" />
         <!--<activity android:name="cn.hancang.www.ui.myinfo.activity.MyCompeteActivity" />-->
         <!--身份认证-->
         <activity android:name="cn.hancang.www.ui.myinfo.activity.IdentityProveActivity" />
@@ -181,15 +183,17 @@
         <!--确认支付界面 无效-->
         <!--<activity android:name=".ui.myinfo.activity.ChargeWayActivity"-->
         <!--订单确认界面-->
-        <activity android:name=".ui.mall.activity.ConfirmOrderActivity"/>
+        <activity android:name=".ui.mall.activity.ConfirmOrderActivity" />
         <!--获取店铺商品的列表-->
-        <activity android:name=".ui.mall.activity.StoreInfoOrderListActivity"/>
+        <activity android:name=".ui.mall.activity.StoreInfoOrderListActivity" />
         <!--查看拍品的大图数据-->
-        <activity android:name=".ui.main.activity.auitemItemPicActivity"/>
+        <activity android:name=".ui.main.activity.auitemItemPicActivity" />
         <!--待支付界面-->
-        <activity android:name=".ui.mall.activity.ToBePaidActivity"/>
+        <activity android:name=".ui.mall.activity.ToBePaidActivity" />
         <!--开发者后台-->
-        <activity android:name=".ui.myinfo.activity.DeveloperActivity"/>
+        <activity android:name=".ui.myinfo.activity.DeveloperActivity" />
+        <!-- 全部的店铺-->
+        <activity android:name=".ui.mall.activity.MoreStoreActivity" />
         <!--照片的内容提供者-->
         <provider
             android:name="android.support.v4.content.FileProvider"

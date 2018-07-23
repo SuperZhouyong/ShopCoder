@@ -30,6 +30,7 @@ import com.toptechs.libaction.action.SingleCall;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.hancang.www.utils.conmonUtil.UserUtil;
 
 /**
  * Created by Administrator on 2017/2/9 0009.
@@ -98,8 +99,10 @@ public class MyInfoFragment extends LazzyFragment {
     public void initPresenter() {
 //        mPresenter.setVM(this, mModel);
     }
+
     private int clickNum = 0;   //点击后门的次数
     private long mLimitTime; //临时存储第一次点击后门入口时候的毫秒值
+
     @Override
     protected void initView() {
 
@@ -185,8 +188,16 @@ public class MyInfoFragment extends LazzyFragment {
                 break;*/
             // 设置
             case R.id.rel_setting:
-                startActivity(getActivity(), SettingActivity.class);
-
+//                startActivity(getActivity(), SettingActivity.class);
+                if (isLogin()) {
+                    UserUtil.setLoginInfo(null);
+                    showShortToast("已完成退出登录");
+                    SPUtils.setSharedStringData(getActivity(), AppConstant.ImageUrl, "");
+                    SPUtils.setSharedStringData(getActivity(), AppConstant.UserName, "");
+                    mRxManager.post(AppConstant.EnterClear, true);
+                    MainActivity.startAction(getActivity());
+                } else
+                    showShortToast("您未登录");
                 break;
          /*   // 帮助中心
             case R.id.rel_help:

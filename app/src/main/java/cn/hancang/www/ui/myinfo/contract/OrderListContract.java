@@ -18,11 +18,15 @@ import rx.Observable;
 public class OrderListContract  {
     public interface Model extends BaseModel{
         Observable<OrderListBean> getOrderList(Integer status,Integer page_no,Integer type);
+
+        Observable<OrderListBean> getStoreOrderList(Integer status,Integer page_no,Integer type);
     }
     public interface View extends BaseView{
         void returnOrderList(OrderListBean orderListBean);
     };
     public abstract static class Presenter extends BasePresenter<View,Model>{
         public abstract void getOrderListRquest(Integer status,Integer page_no,Integer type);
+
+        public abstract void  getStoreOrderListRequest(Integer status,Integer page_no,Integer type);
     }
 }

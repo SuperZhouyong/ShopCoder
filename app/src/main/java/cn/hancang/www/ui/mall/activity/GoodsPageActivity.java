@@ -7,10 +7,14 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +23,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.flipboard.bottomsheet.BottomSheetLayout;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,17 +31,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.hancang.www.R;
+import cn.hancang.www.adapter.SearchAdapter;
 import cn.hancang.www.app.AppConstant;
 import cn.hancang.www.base.BaseActivity;
+import cn.hancang.www.baseadapterL.commonadcpter.CommonRecycleViewAdapter;
+import cn.hancang.www.baseadapterL.commonadcpter.ViewHolderHelper;
 import cn.hancang.www.bean.AddCartInfoBean;
 import cn.hancang.www.bean.AddFavBean;
-import cn.hancang.www.bean.AutionItemDetailBean;
 import cn.hancang.www.bean.GoodsBuyNewBean;
 import cn.hancang.www.bean.GoosPageInfoBean;
-import cn.hancang.www.ui.main.activity.AuctionItemActivity;
 import cn.hancang.www.ui.main.activity.auitemItemPicActivity;
 import cn.hancang.www.ui.mall.contract.GoodsPageContract;
 import cn.hancang.www.ui.mall.model.GoodsPageModel;
@@ -48,6 +53,7 @@ import cn.hancang.www.utils.conmonUtil.ImageUtils;
 import cn.hancang.www.utils.conmonUtil.ShareUtil;
 import cn.hancang.www.widget.AmountView;
 import cn.hancang.www.widget.conmonWidget.LoadingTip;
+import cn.hancang.www.widget.flow.FlowTagLayout;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.wechat.friends.Wechat;
 import cn.sharesdk.wechat.moments.WechatMoments;
@@ -83,8 +89,8 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
     TextView tvCurrentPrice;
     @BindView(R.id.tv_old_price)
     TextView tvOldPrice;
-    @BindView(R.id.tv_brand)
-    TextView tvBrand;
+    /* @BindView(R.id.tv_brand)
+     TextView tvBrand;*/
     @BindView(R.id.tv_beleft)
     TextView tvBeleft;
     @BindView(R.id.amount_view)
@@ -109,11 +115,46 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
     RelativeLayout relStoreFocus;
     @BindView(R.id.tv_add_focus)
     TextView tvAddFocus;
-
+    @BindView(R.id.rel_qd)
+    LinearLayout relQd;
+    @BindView(R.id.mRecyImages)
+    RecyclerView mRecyclerImages;
+    @BindView(R.id.bottomSheetLayout)
+    BottomSheetLayout bottomSheetLayout;
+    private CommonRecycleViewAdapter<GoosPageInfoBean.DataBean.InfoBean.DescriptionImageBean> mImagesAdapter;
+    //    private SearchAdapter searchAdapter;
     private int goodsId;
     private int store_id;
     private Dialog shareDialog;
     private String share_url;
+    private View bottomSheet;
+    //    private RecyclerView rvSelected;
+    private TextView tvprice;
+    private TextView tvstorage;
+    private LinearLayout lldesc;
+    private cn.hancang.www.widget.flow.FlowTagLayout tagflow;
+//    private AmountView amountView;
+
+    private void showBootomDialog() {//
+        if (bottomSheet == null) {
+            bottomSheet = createBottomSheetView();
+        }
+        if (bottomSheetLayout.isSheetShowing()) {
+            bottomSheetLayout.dismissSheet();
+        } else {
+            bottomSheetLayout.showWithSheetView(bottomSheet);
+        }
+    }
+
+    private View createBottomSheetView() {
+        View view = LayoutInflater.from(this).inflate(R.layout.item_goods_page_dialog, (ViewGroup) getWindow().getDecorView(), false);
+        this.amountView = (AmountView) view.findViewById(R.id.amount_view);
+        this.tagflow = (FlowTagLayout) view.findViewById(R.id.tag_flow);
+        this.lldesc = (LinearLayout) view.findViewById(R.id.ll_desc);
+        this.tvstorage = (TextView) view.findViewById(R.id.tv_storage);
+        this.tvprice = (TextView) view.findViewById(R.id.tv_price);
+        return view;
+    }
 
     @Override
     public int getLayoutId() {
@@ -131,12 +172,22 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
 //        relSearch.setVisibility(View.GONE);
         goodsId = getIntent().getExtras().getInt(AppConstant.GoodsPageId, -1);
         mPresenter.getGoodsPageInfoRequest(goodsId);
-
+        relQd.setOnClickListener(this);
 //        showShortToast("功能代完善");
+        mImagesAdapter = new CommonRecycleViewAdapter<GoosPageInfoBean.DataBean.InfoBean.DescriptionImageBean>(mContext, R.layout.item_images) {
+            @Override
+            public void convert(ViewHolderHelper helper, GoosPageInfoBean.DataBean.InfoBean.DescriptionImageBean descriptionImageBean, int position) {
+                helper.setImageUrl(R.id.mImages, descriptionImageBean.getImage_url());
+            }
+        };
+        mRecyclerImages.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerImages.setAdapter(mImagesAdapter);
+
+
     }
 
     // R.id.btnDecrease, R.id.btnIncrease,
-    @OnClick({R.id.rel_back, R.id.rel_add_shopCart, R.id.rel_immediately_buy, R.id.rel_goto_store, R.id.rel_search})
+    @OnClick({R.id.rel_back, R.id.rel_add_shopCart, R.id.rel_immediately_buy, R.id.rel_goto_store, R.id.rel_search, R.id.rel_select_size})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rel_back:
@@ -168,6 +219,10 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
                 break;
             case R.id.rel_goto_store:
                 TaoBaoStoreInfoActivity.GotoTaoBaoSTireInfoActivity((BaseActivity) mContext, store_id);
+                break;
+            // 选择规格界面
+            case R.id.rel_select_size:
+                showBootomDialog();
                 break;
 
         }
@@ -219,6 +274,11 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
         shareView.findViewById(R.id.ll_wx).setOnClickListener(this);
         shareView.findViewById(R.id.ll_friends).setOnClickListener(this);
         shareView.findViewById(R.id.ll_save_pic).setOnClickListener(this);
+
+//        shareView.findViewById(R.id.iv_close).setVisibility(View.GONE);
+//        shareView.findViewById(R.id.iv_share_code).setVisibility(View.GONE);
+//        shareView.findViewById(R.id.ll_save_pic).setVisibility(View.GONE);
+
         shareDialog.setContentView(shareView);
 //                shareDialog.setContentView(getLayoutInflater().inflate(R.layout.share_dialog,null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         shareDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -268,19 +328,22 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
         tvGoodsName.setText(getIntent().getExtras().getString(AppConstant.GoodsPageTitle));
 //        tv_brand
         tvBottom.setText(info.getDescription() + "");
-        tvBrand.setText(info.getBrand_id() + "");
+//        tvBrand.setText(info.getBrand_id() + "");
         tvCurrentPrice.setText("￥" + info.getGoods_price());
         tvOldPrice.setText("￥" + info.getGoods_marketprice() + "");
         tvOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         tvBeleft.setText(info.getGoods_storage() + "");
-        share_url = goosPageInfoBean.getData().getShare_url();
 
+//        share_url = goosPageInfoBean.getData().getShare_url();
+        share_url = goosPageInfoBean.getData().getInfo().getGoods_qrcode_img();
         if (info.isIs_fav_store())
             tvAddFocus.setText("已收藏");
         else {
             tvAddFocus.setText("收藏店铺");
             relStoreFocus.setOnClickListener(this);
         }
+        if (goosPageInfoBean.getData().getInfo().getDescription_image() != null && goosPageInfoBean.getData().getInfo().getDescription_image().size() != 0)
+            mImagesAdapter.addAll(goosPageInfoBean.getData().getInfo().getDescription_image());
 
     }
 
@@ -359,8 +422,17 @@ public class GoodsPageActivity extends BaseActivity<GoodsPagePresenter, GoodsPag
 
 
                 break;
+            case R.id.rel_qd:
+                if (TextUtils.isEmpty(share_url)) {
+                    showShortToast("请稍后再分享");
+                    return;
+                }
+                showShareDialog(share_url);
+                break;
 
 
         }
     }
+
+
 }

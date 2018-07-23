@@ -6,6 +6,7 @@
 
 
         <RelativeLayout
+
             android:layout_alignParentBottom="true"
             android:id="@+id/rel_head"
             android:layout_width="match_parent"
@@ -34,15 +35,7 @@
                 android:text="TextView"
                 android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/tv_fouce_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/x30"
-                android:layout_marginTop="@dimen/y20"
-                android:layout_toRightOf="@id/tv_store_name"
-                android:text="粉丝    90"
-                android:textColor="@color/white" />
+
 
             <TextView
                 android:id="@+id/tv_store_desc"
@@ -58,14 +51,15 @@
                 android:textColor="@color/white" />
 
             <RelativeLayout
+                android:layout_marginTop="@dimen/y14"
                 android:id="@+id/rel_focus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/art_name"
-                android:layout_centerVertical="true"
+
+
                 android:layout_marginRight="@dimen/x30"
-                android:layout_marginTop="@dimen/y20"
+
                 android:background="@drawable/shape_focus_add">
                 <!--android:background="@drawable/shape_focus_add_redcolor"-->
 
@@ -87,6 +81,17 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/x25" />
             </RelativeLayout>
+
+            <TextView
+                android:layout_marginRight="@dimen/x30"
+                android:id="@+id/tv_fouce_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x30"
+                android:layout_marginTop="@dimen/y20"
+                android:layout_toLeftOf="@id/rel_focus"
+                android:text="粉丝    90"
+                android:textColor="@color/white" />
         </RelativeLayout>
 
 

@@ -147,7 +147,7 @@ public class ImageLoaderUtils {
 //                .centerCrop()
 //                .fitCenter()
 //                .placeholder(R.mipmap.colleges_icon)
-                .error(R.mipmap.colleges_icon)
+//                .error(R.mipmap.colleges_icon)
 //                .thumbnail(0.5f)
                 .centerCrop().transform(new GlideRoundTransformUtil(context, 3)).into(imageView);
     }

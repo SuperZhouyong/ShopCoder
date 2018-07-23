@@ -26,12 +26,12 @@ public interface StorePassWordContract {
     interface Model extends BaseModel {
         Observable<StoreLoginNameBean> getStoreLoginName();
 
-        Observable<StorePwInfoBean> postStorePw(String name, String pw);
+        Observable<StorePwInfoBean> postStorePw(String name, String pw,String oldPw);
     }
     abstract class Presenter extends BasePresenter<View,Model> {
         public abstract void getStoreLoginNamerequest();
 
-        public abstract void getStorePwRequest(String name ,String pw);
+        public abstract void getStorePwRequest(String name ,String pw,String oldPw);
 
     }
 }

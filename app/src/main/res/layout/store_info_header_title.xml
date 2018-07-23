@@ -19,7 +19,23 @@
             android:scaleType="fitCenter"
             android:src="@mipmap/return_app" />
     </RelativeLayout>
-    <ImageView
+
+    <RelativeLayout
+        android:id="@+id/rel_search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/x30"
+        android:paddingRight="@dimen/x30">
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/y40"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/share" />
+    </RelativeLayout>
+   <!-- <ImageView
         android:layout_marginRight="@dimen/x22"
         android:layout_alignParentRight="true"
         android:id="@+id/iv_love"
@@ -35,5 +51,5 @@
 
         android:layout_centerVertical="true"
         android:layout_width="@dimen/x40"
-        android:layout_height="@dimen/y40" />
+        android:layout_height="@dimen/y40" />-->
 </RelativeLayout>

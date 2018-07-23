@@ -6,6 +6,8 @@
     android:background="@mipmap/filed_bg">
 
     <ImageView
+        android:background="@drawable/iv_bg_shap"
+        android:padding="1dp"
         android:id="@+id/iv_logo"
         android:layout_width="@dimen/x76"
         android:layout_height="@dimen/y76"

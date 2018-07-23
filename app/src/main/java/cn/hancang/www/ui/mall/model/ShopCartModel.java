@@ -1,5 +1,8 @@
 package cn.hancang.www.ui.mall.model;
 
+import com.intention.sqtwin.bean.DeleteAllShopCartBean;
+import com.intention.sqtwin.bean.DeleteGoodsBean;
+
 import cn.hancang.www.api.Api;
 import cn.hancang.www.api.HostType;
 import cn.hancang.www.baserx.RxSchedulers;
@@ -20,5 +23,15 @@ public class ShopCartModel implements ShopCartContract.Model {
     @Override
     public Observable<ShopCartGoodsBean> getShopCartInfo() {
         return Api.getDefault(HostType.Jsonpart).getShopCartInfo().compose(RxSchedulers.<ShopCartGoodsBean>io_main());
+    }
+
+    @Override
+    public Observable<DeleteGoodsBean> getDeleteBean(int goodsId) {
+        return Api.getDefault(HostType.Jsonpart).getDeleteGoodsBean(goodsId).compose(RxSchedulers.<DeleteGoodsBean>io_main());
+    }
+
+    @Override
+    public Observable<DeleteAllShopCartBean> getDeleteAllShopCartInfo() {
+        return Api.getDefault(HostType.Jsonpart).getDeleteAllShopCartBean().compose(RxSchedulers.<DeleteAllShopCartBean>io_main());
     }
 }

@@ -21,4 +21,9 @@ public class OrderListModer implements OrderListContract.Model {
     public Observable<OrderListBean> getOrderList(Integer status, Integer page_no, Integer type) {
         return Api.getDefault(HostType.Jsonpart).getOrderList(status, page_no, type).compose(RxSchedulers.<OrderListBean>io_main());
     }
+
+    @Override
+    public Observable<OrderListBean> getStoreOrderList(Integer status, Integer page_no, Integer type) {
+        return Api.getDefault(HostType.Jsonpart).getStoreOrderList(status, page_no, type).compose(RxSchedulers.<OrderListBean>io_main());
+    }
 }

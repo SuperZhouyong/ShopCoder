@@ -32,6 +32,7 @@ import cn.hancang.www.ui.main.activity.SearchActivity;
 import cn.hancang.www.ui.main.contract.MallContract;
 import cn.hancang.www.ui.main.model.MallModel;
 import cn.hancang.www.ui.main.presenter.MallPresenter;
+import cn.hancang.www.ui.mall.activity.MoreStoreActivity;
 import cn.hancang.www.ui.myinfo.activity.MessageActicity;
 import cn.hancang.www.utils.conmonUtil.ImageLoaderUtils;
 import cn.hancang.www.utils.conmonUtil.LogUtils;
@@ -106,6 +107,7 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
         View homeStoreTitle = getActivity().getLayoutInflater().inflate(R.layout.item_all_recy_head_title, null);
         TextView viewByIdStore = (TextView) homeStoreTitle.findViewById(R.id.yv_all_recy_head_title);
         RelativeLayout viewByAllStore = (RelativeLayout) homeStoreTitle.findViewById(R.id.rel_acount);
+        viewByAllStore.setVisibility(View.VISIBLE);
         viewByAllStore.setOnClickListener(this);
         viewByIdStore.setText("优选店铺");
         setMarGinTop(viewByIdStore, (int) getResources().getDimension(R.dimen.x22), 0);
@@ -302,8 +304,10 @@ public class MallFragment extends BaseFragment<MallPresenter, MallModel> impleme
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rel_acount:
-
+                MoreStoreActivity.gotoMoreStoreActivity((BaseActivity) getActivity());
                 break;
+
+
         }
     }
 }

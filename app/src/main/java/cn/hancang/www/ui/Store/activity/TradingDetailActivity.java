@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
 import cn.hancang.www.R;
 
 import cn.hancang.www.app.AppConstant;
@@ -51,6 +52,7 @@ public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, 
     LoadingTip mLoadingTip;
     private LRecyclerViewAdapter mLadapter;
     private CommonRecycleViewAdapter<TradingDeatilBean.DataBean> mAdapter;
+    private int pagesize = 10;
 
     @Override
     public int getLayoutId() {
@@ -115,7 +117,8 @@ public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, 
 
     @Override
     public void StartLoading(String RequestId) {
-        mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
+        if (mAdapter.getDataList().size() == 0)
+            mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.StartLoading);
 
     }
 
@@ -126,12 +129,12 @@ public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, 
 
     @Override
     public void stopLoading(String RequestId) {
-
+        mLRecyclerView.refreshComplete(pagesize);
     }
 
     @Override
     public void showErrorTip(String RequestId, String msg) {
-        if (AppConstant.oneMessage.equals(RequestId)){
+        if (AppConstant.oneMessage.equals(RequestId)) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoNetWork);
             mLoadingTip.setOnReloadListener(this);
         }
@@ -139,7 +142,7 @@ public class TradingDetailActivity extends BaseActivity<TradingDeatilPresenter, 
 
     @Override
     public void returnTradingDetail(TradingDeatilBean tradingDeatilBean) {
-        if (!tradingDeatilBean.isIs_success()||tradingDeatilBean.getData().size()==0) {
+        if (!tradingDeatilBean.isIs_success() || tradingDeatilBean.getData().size() == 0) {
             mLoadingTip.setNoLoadTip(LoadingTip.NoloadStatus.NoCollect);
             return;
         }

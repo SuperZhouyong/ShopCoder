@@ -511,7 +511,6 @@ public class AuctionItemActivity extends BaseActivity<AutionItemPresenter, Autio
         rel_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 //                ShareDialog shareDialog = new ShareDialog(this);
                 shareDialog = new Dialog(AuctionItemActivity.this, R.style.MyDialog);
                 View shareView = getLayoutInflater().inflate(R.layout.share_dialog, null);
